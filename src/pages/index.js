@@ -403,6 +403,9 @@ const HomeIndex = ({ data }) => {
               "Wonder at work.",
               "Wonder at work.",
               "Wonder at work.",
+              "Wonder at work.",
+              "Wonder at work.",
+              "Wonder at work.",
             ]}
             multiTextDelay={3000}
             typeSpeed={150}
