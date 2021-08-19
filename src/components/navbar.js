@@ -105,7 +105,7 @@ const Dropdown = styled(motion.div)`
     cursor: pointer;
     text-align: right;
     font-family: "calibre-regular";
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     font-size: 18px;
     & > a:hover {
       font-weight: 900;

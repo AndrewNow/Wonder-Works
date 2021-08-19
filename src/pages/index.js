@@ -531,7 +531,7 @@ const Background = styled(motion.div)`
   height: 100vh;
   margin: 0 auto;
   position: absolute;
-  top: 0;
+  top: -2.5rem;
   left: 0;
   right: 0;
 `
@@ -555,7 +555,7 @@ const PortalWrapper = styled.div`
 const LandingText = styled.div`
   z-index: 2;
   position: relative;
-  padding-top: 9rem;
+  padding-top: 13rem;
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -568,15 +568,15 @@ const LandingText = styled.div`
     font-family: "balgin-medium";
     font-size: 140px;
     line-height: 100%;
-    color: black;
+    color: var(--color-black);
   }
-
+  
   h4 {
     z-index: 2;
     margin-top: 7.5rem;
     margin-bottom: 4rem;
     text-transform: uppercase;
-    color: black;
+    color: var(--color-black);
   }
 `
 
