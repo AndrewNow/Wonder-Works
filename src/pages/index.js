@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
-import TypeWriterEffect from "react-typewriter-effect"
+// import TypeWriterEffect from "react-typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import {
@@ -34,6 +34,11 @@ const HomeIndex = ({ data }) => {
     threshold: 0.85,
     triggerOnce: true,
   })
+  const [typeWriterRef, typewriterInView] = useInView({
+    root: null,
+    threshold: 0.85,
+    triggerOnce: true,
+  })
   const [logosRef, logosInView] = useInView({
     root: null,
     threshold: 0.85,
@@ -47,9 +52,10 @@ const HomeIndex = ({ data }) => {
       ref.current = node
       // Callback refs, like the one from `useInView`, is a function that takes the node as an argument
       sectionRef1(node)
+      typeWriterRef(node)
       logosRef(node)
     },
-    [sectionRef1, logosRef]
+    [sectionRef1, typeWriterRef, logosRef]
   )
 
   //framer motion landing page animation variants
@@ -392,8 +398,9 @@ const HomeIndex = ({ data }) => {
           </PillarHover>
           <TopRightPillar />
         </TopRight>
-        <BottomLeft>
-          <TypeWriterEffect
+        <BottomLeft ref={typeWriterRef}>
+          {/* <TypeWriterEffect
+            scrollArea={typeWriterRef}
             textStyle={{ fontFamily: "balgin-bold" }}
             startDelay={500}
             cursorColor="var(--color-purple)"
@@ -409,7 +416,7 @@ const HomeIndex = ({ data }) => {
             ]}
             multiTextDelay={3000}
             typeSpeed={150}
-          />
+          /> */}
           <BottomLeftPillar />
         </BottomLeft>
         <BottomRight
