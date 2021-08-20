@@ -13,29 +13,37 @@ const Footer = () => {
         <Icons>
           <div>
             <IconWrapper>
-              <a href="https:/twitter.com/WonderWorksRB" target="_blank">
+              <a
+                href="https:/twitter.com/WonderWorksRB"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <Twitter />
               </a>
               <a
                 href="https://www.instagram.com/wonderworksstudio/"
+                rel="noreferrer"
                 target="_blank"
               >
                 <Instagram />
               </a>
               <a
                 href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
+                rel="noreferrer"
                 target="_blank"
               >
                 <TikTok />
               </a>
               <a
                 href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
+                rel="noreferrer"
                 target="_blank"
               >
                 <YouTube />
               </a>
               <a
                 href="https://www.roblox.com/groups/6258143/Wonder-Works-Studio#!/about"
+                rel="noreferrer"
                 target="_blank"
               >
                 <Roblox />

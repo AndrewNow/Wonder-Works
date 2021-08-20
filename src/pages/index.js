@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from "react"
+import React, { useRef, useCallback, useState, useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
@@ -7,34 +7,20 @@ import styled from "styled-components"
 // import TypeWriterEffect from "react-typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import {
-  Staircase,
-  Cog,
-  Portal,
-  Circle,
-  CircleStroke,
-  BlueTriangles,
-  BlueTriangle,
-  PurpleTriangle,
-  OrangeTriangle,
-  GreenTriangle,
-  TopLeftPillar,
-  TopRightPillar,
-  BottomLeftPillar,
-  BottomRightPillar,
-} from "../svg/homepage"
+import * as svg from "../svg/homepage"
+import { useGlobalDispatchContext } from "../context/globalContext"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
 
-  // intersection observer logic
+  // ---------- intersection observer logic, Refs ----------
   const ref = useRef()
   const [sectionRef1, sectionInView1] = useInView({
     root: null,
     threshold: 0.85,
     triggerOnce: true,
   })
-  const [typeWriterRef, typewriterInView] = useInView({
+  const [typeWriterRef] = useInView({
     root: null,
     threshold: 0.85,
     triggerOnce: true,
@@ -46,11 +32,9 @@ const HomeIndex = ({ data }) => {
   })
 
   const setRefs = useCallback(
-    //assign multiple refs
+    //assign multiple refs with useInView
     node => {
-      // Ref's from useRef needs to have the node assigned to `current`
       ref.current = node
-      // Callback refs, like the one from `useInView`, is a function that takes the node as an argument
       sectionRef1(node)
       typeWriterRef(node)
       logosRef(node)
@@ -58,7 +42,38 @@ const HomeIndex = ({ data }) => {
     [sectionRef1, typeWriterRef, logosRef]
   )
 
-  //framer motion landing page animation variants
+  // ---------- determine if a blue background section is in view ----------
+  // ---------- if in view, update navigation menu text color to white ----------
+
+  const blueSectionRef = useRef()
+  const blueSectionRef2 = useRef()
+  const dispatch = useGlobalDispatchContext()
+
+  const toggleLightTheme = () => {
+    dispatch({ type: "TOGGLE_THEME", theme: "light" })
+  }
+  const toggleBlueTheme = () => {
+    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  }
+
+  useEffect(() => {
+    function onScroll() {
+      const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
+      const blueBackgroundDiv2 = blueSectionRef2.current.getBoundingClientRect()
+      if (
+        (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) ||
+        (blueBackgroundDiv2.y <= 90 && blueBackgroundDiv2.bottom >= 150)
+      ) {
+        toggleLightTheme()
+      } else {
+        toggleBlueTheme()
+      }
+    }
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  })
+
+  // ----------framer motion animation variants----------
   const line = {
     visible: {
       transition: {
@@ -80,7 +95,6 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 11,
-        // ...transition
       },
     },
     hidden: {
@@ -109,7 +123,6 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 13,
-        // ...transition
       },
     },
     hidden: {
@@ -181,11 +194,7 @@ const HomeIndex = ({ data }) => {
   )
   const orangeTriangle = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * -60
-  )
-  const greenTriangle = useTransform(
-    scrollYProgress,
-    scrollYProgress => scrollYProgress * -50
+    scrollYProgress => scrollYProgress * -20
   )
   const blueTriangle = useTransform(
     scrollYProgress,
@@ -204,13 +213,13 @@ const HomeIndex = ({ data }) => {
       <Seo title="Home" />
       <Background style={{ y: homeBackground }}>
         <StaircaseWrapper>
-          <Staircase />
+          <svg.Staircase />
         </StaircaseWrapper>
         <CogWrapper>
-          <Cog />
+          <svg.Cog />
         </CogWrapper>
         <PortalWrapper>
-          <Portal />
+          <svg.Portal />
         </PortalWrapper>
       </Background>
       <LandingText>
@@ -265,26 +274,25 @@ const HomeIndex = ({ data }) => {
         </motion.p>
         <ImaginationBG>
           <CircleWrapper>
-            <Circle />
+            <svg.Circle />
           </CircleWrapper>
           <CircleStrokeWrapper style={{ y: circleStroke }}>
-            <CircleStroke />
+            <svg.CircleStroke />
           </CircleStrokeWrapper>
           <BlueTrianglesWrapper>
-            <BlueTriangles />
+            <svg.BlueTriangles />
           </BlueTrianglesWrapper>
-
           <PurpleTriangleWrapper style={{ y: blueTriangle }}>
-            <PurpleTriangle />
+            <svg.PurpleTriangle />
           </PurpleTriangleWrapper>
           <OrangeTriangleWrapper style={{ y: orangeTriangle }}>
-            <OrangeTriangle />
+            <svg.OrangeTriangle />
           </OrangeTriangleWrapper>
-          <GreenTriangleWrapper style={{ y: greenTriangle }}>
-            <GreenTriangle />
+          <GreenTriangleWrapper style={{ y: circleStroke }}>
+            <svg.GreenTriangle />
           </GreenTriangleWrapper>
           <BlueTriangleWrapper style={{ y: blueTriangle }}>
-            <BlueTriangle />
+            <svg.BlueTriangle />
           </BlueTriangleWrapper>
         </ImaginationBG>
       </ImaginationSection>
@@ -304,7 +312,7 @@ const HomeIndex = ({ data }) => {
               quality={100}
             />
           </ImageWrapper>
-          <TopLeftPillar />
+          <svg.TopLeftPillar />
           <PillarHover
             variants={pillarVariants}
             initial="hidden"
@@ -396,7 +404,7 @@ const HomeIndex = ({ data }) => {
               </p>
             </PillarHoverInner>
           </PillarHover>
-          <TopRightPillar />
+          <svg.TopRightPillar />
         </TopRight>
         <BottomLeft ref={typeWriterRef}>
           {/* <TypeWriterEffect
@@ -417,9 +425,10 @@ const HomeIndex = ({ data }) => {
             multiTextDelay={3000}
             typeSpeed={150}
           /> */}
-          <BottomLeftPillar />
+          <svg.BottomLeftPillar />
         </BottomLeft>
         <BottomRight
+          ref={blueSectionRef2}
           onMouseEnter={() => setHover({ bottomRightHover: true })}
           onMouseLeave={() => setHover({ bottomRightHover: false })}
         >
@@ -448,7 +457,7 @@ const HomeIndex = ({ data }) => {
               </p>
             </PillarHoverInner>
           </PillarHover>
-          <BottomRightPillar />
+          <svg.BottomRightPillar />
         </BottomRight>
       </Pillars>
 
@@ -510,6 +519,16 @@ const HomeIndex = ({ data }) => {
           </motion.div>
         </Logos>
       </Press>
+      <LatestProjects ref={blueSectionRef}>
+        <div>
+          {/* {menuIsWhite ? <h2>Menu is white</h2> : <h2>Menu is blue</h2>} */}
+        </div>
+      </LatestProjects>
+      <InvestmentCenter>
+        <div>
+          {/* {menuIsWhite ? <h2>Menu is white</h2> : <h2>Menu is blue</h2>} */}
+        </div>
+      </InvestmentCenter>
     </Layout>
   )
 }
@@ -570,7 +589,7 @@ const LandingText = styled.div`
     line-height: 100%;
     color: var(--color-black);
   }
-  
+
   h4 {
     z-index: 2;
     margin-top: 7.5rem;
@@ -875,4 +894,23 @@ const Logos = styled(motion.div)`
     /* border: 1px solid black; */
     overflow: hidden;
   }
+`
+
+const LatestProjects = styled.section`
+  height: 100vh;
+  background-color: var(--color-black);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    color: white;
+  }
+`
+const InvestmentCenter = styled.section`
+  height: 100vh;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

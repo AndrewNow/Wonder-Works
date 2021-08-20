@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { Squash as Hamburger } from "hamburger-react"
-
 import { motion, AnimatePresence } from "framer-motion"
 
 const Navbar = () => {
@@ -14,7 +13,7 @@ const Navbar = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
+        delayChildren: 0.2,
       },
     },
     hidden: {
@@ -41,6 +40,7 @@ const Navbar = () => {
           quality={100}
           width={185}
           placeholder="none"
+          alt="Wonder Works logo"
         />
       </Link>
       <Hamburger
@@ -48,15 +48,15 @@ const Navbar = () => {
         toggle={setOpen}
         label="Show menu"
         rounded
-        color="var(--color-black)"
+        // color={theme}
       />
       <AnimatePresence exitBeforeEnter>
         {isOpen && (
           <Dropdown
-          initial="hidden"
-          animate={isOpen ? "visible" : "hidden"}
-          exit="hidden"
-          variants={navAnimation}
+            initial="hidden"
+            animate={isOpen ? "visible" : "hidden"}
+            exit="hidden"
+            variants={navAnimation}
           >
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link>About</Link>
@@ -92,6 +92,9 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   padding-top: 2.5rem;
+  div {
+    color: ${props => props.theme.color}!important;
+  }
 `
 
 const Dropdown = styled(motion.div)`
@@ -101,13 +104,22 @@ const Dropdown = styled(motion.div)`
   z-index: 2000;
   right: 0.5%;
   transform: translateY(30%);
+
+  a {
+    color: ${props => props.theme.color}!important;
+    transition: color .4s cubic-bezier(0, 0, 0, 1);
+    transition-delay: 0.2s;
+  }
+
   div {
     cursor: pointer;
     text-align: right;
     font-family: "calibre-regular";
     padding-bottom: 1rem;
     font-size: 18px;
-    & > a:hover {
+  }
+  & div:hover {
+    a {
       font-weight: 900;
     }
   }

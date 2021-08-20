@@ -1,8 +1,11 @@
-// custom typefaces
-// import "typeface-montserrat"
-// import "typeface-merriweather"
-// custom CSS styles
+import React from 'react'
+import { GlobalProvider } from './src/context/globalContext'
 import "./src/style.css"
 
-// Highlighting for code blocks
-// import "prismjs/themes/prism.css"
+export const wrapRootElement = ({ element }) => {
+  return (
+    <GlobalProvider>
+      {element}
+    </GlobalProvider>
+  )
+} 

@@ -1,15 +1,28 @@
 import React from "react"
-import styled from "styled-components"
-import Footer from '../components/footer'
-import Navbar from '../components/navbar'
+import styled, { ThemeProvider } from "styled-components"
+import Footer from "../components/footer"
+import Navbar from "../components/navbar"
+import { useGlobalStateContext } from "../context/globalContext"
+
 
 const Layout = ({ children }) => {
+  const darkNavTheme = {
+    color: "var(--color-black)",
+  }
+
+  const lightNavTheme = {
+    color: "var(--color-white)",
+  }
+  const {currentTheme} = useGlobalStateContext()
+
   return (
-    <GlobalWrapper>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </GlobalWrapper>
+    <ThemeProvider theme={currentTheme === 'blue' ? darkNavTheme : lightNavTheme}>
+      <GlobalWrapper>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </GlobalWrapper>
+    </ThemeProvider>
   )
 }
 
@@ -20,4 +33,3 @@ const GlobalWrapper = styled.div`
   background-color: var(--color-white);
   width: 100%;
 `
-
