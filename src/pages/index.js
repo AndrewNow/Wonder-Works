@@ -52,12 +52,13 @@ const HomeIndex = ({ data }) => {
   const blueSectionRef2 = useRef()
   const dispatch = useGlobalDispatchContext()
 
-  const toggleLightTheme = () => {
+  const toggleLightTheme = useCallback(() => {
     dispatch({ type: "TOGGLE_THEME", theme: "light" })
-  }
-  const toggleBlueTheme = () => {
+  }, [dispatch])
+
+  const toggleBlueTheme = useCallback(() => {
     dispatch({ type: "TOGGLE_THEME", theme: "blue" })
-  }
+  }, [dispatch])
 
   useEffect(() => {
     function onScroll() {
@@ -74,7 +75,7 @@ const HomeIndex = ({ data }) => {
     }
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
-  })
+  }, [toggleLightTheme, toggleBlueTheme])
 
   // ----------framer motion animation variants----------
   const line = {
