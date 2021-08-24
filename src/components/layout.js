@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
   const lightNavTheme = {
     color: "var(--color-white)",
   }
+
   const {currentTheme} = useGlobalStateContext()
 
   return (

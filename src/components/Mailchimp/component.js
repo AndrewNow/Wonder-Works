@@ -8,9 +8,6 @@ const MailchimpComponent = () => {
   return (
     <Background>
       <Brief>
-        <WordsofWonder>
-          <h3>Words of wonder</h3>
-        </WordsofWonder>
         <Headline>
           <h4>Stay Up To Date</h4>
           <svg
@@ -60,18 +57,6 @@ const Background = styled.div`
   z-index: 3;
 `
 
-const WordsofWonder = styled.div`
-  position: absolute;
-  transform: rotate(90deg);
-  transform-origin: top right;
-  right: 1%;
-  top: 25%;
-
-  h3 {
-    text-transform: uppercase;
-    font-family: "calibre-medium" !important;
-  }
-`
 const SvgWrapper = styled.div`
   position: absolute;
   top: 0;
