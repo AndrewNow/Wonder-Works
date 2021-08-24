@@ -19,13 +19,15 @@ module.exports = {
         // Add any options here
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
+    //THIS IS COMMENTED OUT BECAUSE THERE ARE NO BLOG POSTS YET -
+    //UNCOMMENT IF YOU WISH TO ADD POSTS 
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/content/blog`,
+    //     name: `blog`,
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
