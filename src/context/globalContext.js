@@ -22,9 +22,11 @@ const globalReducer = (state, action) => {
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, {
     currentTheme:
-      window.localStorage.getItem("theme") == null
-        ? "blue"
-        : window.localStorage.getItem("theme"),
+      typeof window !== "undefined"
+        ? window.localStorage.getItem("theme") === null
+          ? "blue"
+          : window.localStorage.getItem("theme")
+        : "blue",
   })
 
   return (

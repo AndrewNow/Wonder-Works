@@ -197,23 +197,50 @@ const Right = styled.div`
 const Contact = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 1rem 0;
-  
-  p, strong, a {
+  margin: 1rem 0;
+
+  p,
+  strong,
+  a {
     font-size: 18px;
     line-height: 22px;
   }
 
   p {
-    font-family: 'calibre-regular'
+    font-family: "calibre-regular";
   }
-  
+
   strong {
-    font-family: 'calibre-semibold';
+    font-family: "calibre-semibold";
   }
-  
+
+  :last-of-type a {
+    width: 100%;
+  }
+
   a {
     text-decoration: none;
-    font-family: 'calibre-regular';
+    font-family: "calibre-regular";
+    text-decoration: none;
+    position: relative;
+    width: 80%;
+
+    ::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: 15px;
+      left: 0;
+      background-color: var(--color-black);
+      transform-origin: bottom right;
+      transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+
+    :hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   }
 `

@@ -8,4 +8,4 @@ export const wrapRootElement = ({ element }) => {
       {element}
     </GlobalProvider>
   )
-} 
+}
