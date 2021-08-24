@@ -35,4 +35,4 @@ export const GlobalProvider = ({ children }) => {
 
 //custom hooks to use dispatch and state
 export const useGlobalStateContext = () => useContext(GlobalStateContext)
-export const useGlobalDispatchContext = () => useContext(GlobalDispatchContext)
+export const useGlobalDispatchContext = () => useContext(GlobalDispatchContext) 

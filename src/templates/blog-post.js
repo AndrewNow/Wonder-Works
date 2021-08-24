@@ -10,7 +10,8 @@ const BlogPostTemplate = ({ data }) => {
   const { previous, next } = data
 
   return (
-    <Layout title={siteTitle}>
+    // <Layout title={siteTitle}>
+    <>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -58,7 +59,8 @@ const BlogPostTemplate = ({ data }) => {
           </li>
         </ul>
       </nav>
-    </Layout>
+    </>
+    // </Layout>
   )
 }
 
