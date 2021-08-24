@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import styled, { ThemeProvider } from "styled-components"
 import Footer from "../components/footer"
 import Navbar from "../components/navbar"
@@ -15,6 +15,11 @@ const Layout = ({ children }) => {
   }
 
   const {currentTheme} = useGlobalStateContext()
+
+
+  useEffect(() => {
+    window.localStorage.setItem('theme', currentTheme)
+  }, [currentTheme])
 
   return (
     <ThemeProvider theme={currentTheme === 'blue' ? darkNavTheme : lightNavTheme}>

@@ -1,13 +1,13 @@
-import React, { createContext, useReducer, useContext } from 'react'
+import React, { createContext, useReducer, useContext } from "react"
 
-//define the context 
+//define the context
 const GlobalStateContext = createContext()
 const GlobalDispatchContext = createContext()
 
 //reducer
 const globalReducer = (state, action) => {
   switch (action.type) {
-    case 'TOGGLE_THEME': {
+    case "TOGGLE_THEME": {
       return {
         ...state,
         currentTheme: action.theme,
@@ -21,7 +21,10 @@ const globalReducer = (state, action) => {
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, {
-    currentTheme: 'blue'
+    currentTheme:
+      window.localStorage.getItem("theme") == null
+        ? "blue"
+        : window.localStorage.getItem("theme"),
   })
 
   return (
@@ -35,4 +38,4 @@ export const GlobalProvider = ({ children }) => {
 
 //custom hooks to use dispatch and state
 export const useGlobalStateContext = () => useContext(GlobalStateContext)
-export const useGlobalDispatchContext = () => useContext(GlobalDispatchContext) 
+export const useGlobalDispatchContext = () => useContext(GlobalDispatchContext)
