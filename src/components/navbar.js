@@ -107,7 +107,7 @@ const Dropdown = styled(motion.div)`
 
   a {
     color: ${props => props.theme.color}!important;
-    transition: color .4s cubic-bezier(0, 0, 0, 1);
+    transition: color .4s cubic-bezier(0, .2, .7, 1);
     transition-delay: 0.2s;
   }
 

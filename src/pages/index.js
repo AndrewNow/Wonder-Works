@@ -4,11 +4,15 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
-// import TypeWriterEffect from "react-typewriter-effect"
+import Typewriter from "typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as svg from "../svg/homepage"
 import { useGlobalDispatchContext } from "../context/globalContext"
+import CountUp from "react-countup"
+import CareerFlip from "../components/CareerFlip/CareerFlip"
+import MailchimpComponent from "../components/Mailchimp/component"
+import ContactUs from "../components/contactUs"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -17,17 +21,17 @@ const HomeIndex = ({ data }) => {
   const ref = useRef()
   const [sectionRef1, sectionInView1] = useInView({
     root: null,
-    threshold: 0.85,
-    triggerOnce: true,
-  })
-  const [typeWriterRef] = useInView({
-    root: null,
-    threshold: 0.85,
+    threshold: 0.6,
     triggerOnce: true,
   })
   const [logosRef, logosInView] = useInView({
     root: null,
     threshold: 0.85,
+    triggerOnce: true,
+  })
+  const [countUpRef, countUpInView] = useInView({
+    root: null,
+    threshold: 0.65,
     triggerOnce: true,
   })
 
@@ -36,15 +40,14 @@ const HomeIndex = ({ data }) => {
     node => {
       ref.current = node
       sectionRef1(node)
-      typeWriterRef(node)
       logosRef(node)
+      countUpRef(node)
     },
-    [sectionRef1, typeWriterRef, logosRef]
+    [sectionRef1, logosRef, countUpRef]
   )
 
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
-
   const blueSectionRef = useRef()
   const blueSectionRef2 = useRef()
   const dispatch = useGlobalDispatchContext()
@@ -149,6 +152,43 @@ const HomeIndex = ({ data }) => {
       opacity: 0,
     },
   }
+  const subtitle = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 1.2,
+        type: "spring",
+        stiffness: 100,
+        damping: 13,
+        // ...transition
+      },
+    },
+    hidden: {
+      y: 100,
+      opacity: 0,
+    },
+  }
+
+  const button = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 1.4,
+        type: "spring",
+        stiffness: 100,
+        damping: 13,
+        // ...transition
+      },
+    },
+    hidden: {
+      y: 100,
+      opacity: 0,
+    },
+  }
 
   const pillarVariants = {
     visible: {
@@ -179,6 +219,43 @@ const HomeIndex = ({ data }) => {
     },
     hidden: {
       height: 0,
+    },
+  }
+
+  const circleAnimation = {
+    inView: {
+      transition: {
+        duration: 0.5,
+        delay: 1,
+      },
+      scale: 1,
+    },
+    notInView: {
+      scale: 0,
+    },
+  }
+  const circleAnimation2 = {
+    inView: {
+      transition: {
+        duration: 0.5,
+        delay: 1.15,
+      },
+      scale: 1,
+    },
+    notInView: {
+      scale: 0,
+    },
+  }
+  const circleAnimation3 = {
+    inView: {
+      transition: {
+        duration: 0.5,
+        delay: 1.3,
+      },
+      scale: 1,
+    },
+    notInView: {
+      scale: 0,
     },
   }
 
@@ -238,8 +315,12 @@ const HomeIndex = ({ data }) => {
             <Span variants={word}>metaverse</Span>
           </Third>
         </h1>
-        <h4>The latest in Roblox gaming lives here.</h4>
-        <DiscoverMore to="/">DISCOVER MORE</DiscoverMore>
+        <motion.h4 variants={subtitle} initial="hidden" animate="visible">
+          The latest in Roblox gaming lives here.
+        </motion.h4>
+        <motion.div variants={button} initial="hidden" animate="visible">
+          <DiscoverMore to="/">DISCOVER MORE</DiscoverMore>
+        </motion.div>
       </LandingText>
       <ImaginationSection ref={sectionRef1}>
         <h2>
@@ -296,7 +377,6 @@ const HomeIndex = ({ data }) => {
           </BlueTriangleWrapper>
         </ImaginationBG>
       </ImaginationSection>
-
       <Pillars>
         <TopLeft
           onMouseEnter={() => setHover({ topLeftHover: true })}
@@ -406,25 +486,21 @@ const HomeIndex = ({ data }) => {
           </PillarHover>
           <svg.TopRightPillar />
         </TopRight>
-        <BottomLeft ref={typeWriterRef}>
-          {/* <TypeWriterEffect
-            scrollArea={typeWriterRef}
-            textStyle={{ fontFamily: "balgin-bold" }}
-            startDelay={500}
-            cursorColor="var(--color-purple)"
-            multiText={[
-              "Wonder at work.",
-              "Wonder at work.",
-              "Wonder at work.",
-              "Wonder at work.",
-              "Wonder at work.",
-              "Wonder at work.",
-              "Wonder at work.",
-              "Wonder at work.",
-            ]}
-            multiTextDelay={3000}
-            typeSpeed={150}
-          /> */}
+        <BottomLeft>
+          <TypewriterWrapper>
+            <Typewriter
+              options={{
+                loop: true,
+              }}
+              onInit={typewriter => {
+                typewriter
+                  .typeString("Wonder at work.")
+                  .pauseFor(2500)
+                  .deleteAll()
+                  .start()
+              }}
+            />
+          </TypewriterWrapper>
           <svg.BottomLeftPillar />
         </BottomLeft>
         <BottomRight
@@ -460,7 +536,6 @@ const HomeIndex = ({ data }) => {
           <svg.BottomRightPillar />
         </BottomRight>
       </Pillars>
-
       <Press>
         <h4>As Seen On...</h4>
         <Logos
@@ -521,14 +596,152 @@ const HomeIndex = ({ data }) => {
       </Press>
       <LatestProjects ref={blueSectionRef}>
         <div>
-          {/* {menuIsWhite ? <h2>Menu is white</h2> : <h2>Menu is blue</h2>} */}
+          <h1>Latest projects</h1>
         </div>
       </LatestProjects>
       <InvestmentCenter>
-        <div>
-          {/* {menuIsWhite ? <h2>Menu is white</h2> : <h2>Menu is blue</h2>} */}
-        </div>
+        <InvestmentWrapper ref={countUpRef}>
+          <Brief
+            variants={fadeIn}
+            initial="hidden"
+            animate={countUpInView ? "visible" : "hidden"}
+            exit="hidden"
+          >
+            <Headline>
+              <h4>Investment Center</h4>
+              <svg
+                width="160"
+                height="3"
+                viewBox="0 0 160 3"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 1.84424H159.385"
+                  stroke="#1A1748"
+                  strokeWidth="2"
+                  strokeMiterlimit="10"
+                />
+              </svg>
+            </Headline>
+            <motion.h2 variants={word}>Let’s talk numbers</motion.h2>
+            <motion.h4 variants={word}>
+              INSIDER INFO FOR OUR INVESTORS
+            </motion.h4>
+            <motion.p variants={word}>
+              See where we’re headed and how we’re growing from <br />
+              navigating platform trends to uncovering user desires.
+            </motion.p>
+          </Brief>
+          <Stats>
+            <Columns>
+              <Column>
+                <motion.h5
+                  variants={circleAnimation}
+                  animate={countUpInView ? "inView" : "notInView"}
+                >
+                  Roblox
+                </motion.h5>
+                <Circle
+                  variants={circleAnimation}
+                  animate={countUpInView ? "inView" : "notInView"}
+                >
+                  {countUpInView && (
+                    <h6>
+                      <CountUp
+                        start={0}
+                        end={37}
+                        duration={1}
+                        delay={1.15}
+                        suffix="M"
+                      />
+                    </h6>
+                  )}
+                  <p>DAU</p>
+                </Circle>
+              </Column>
+              <Column>
+                <motion.h5
+                  variants={circleAnimation2}
+                  animate={countUpInView ? "inView" : "notInView"}
+                >
+                  Overlook Bay
+                </motion.h5>
+                <Circle
+                  variants={circleAnimation2}
+                  animate={countUpInView ? "inView" : "notInView"}
+                >
+                  {countUpInView && (
+                    <h6>
+                      <CountUp
+                        start={0}
+                        end={1.5}
+                        delay={1.25}
+                        decimals={1}
+                        duration={1}
+                        suffix="M"
+                      />
+                    </h6>
+                  )}
+                  <p>DAU</p>
+                </Circle>
+                <Desc>4% of Roblox DAU</Desc>
+                <p>
+                  2.2M+ Total Playing hrs/mo <br />
+                  MAU 2.74M <br />
+                  DAU/MAU Ratio 7.79%
+                </p>
+              </Column>
+              <Column>
+                <motion.h5
+                  variants={circleAnimation3}
+                  animate={countUpInView ? "inView" : "notInView"}
+                >
+                  Timmeh
+                </motion.h5>
+                <Circle
+                  variants={circleAnimation3}
+                  animate={countUpInView ? "inView" : "notInView"}
+                >
+                  <h6>0.0M</h6>
+                  <p>DAU</p>
+                </Circle>
+                <Desc>0.0% of Roblox DAU</Desc>
+                <p>
+                  0.0M+ Total Playing hrs/mo <br />
+                  MAU 0.0M <br />
+                  DAU/MAU Ratio 0.00%
+                </p>
+              </Column>
+            </Columns>
+          </Stats>
+        </InvestmentWrapper>
       </InvestmentCenter>
+      <CareerFlip />
+      <Newsletter>
+        <PurpleStrokeStarWrapper
+          animate={{
+            rotate: 360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <svg.PurpleStrokeStar />
+        </PurpleStrokeStarWrapper>
+        <MailchimpComponent />
+        <OrangeBackground>
+          <svg.BigOrangeBackground />
+        </OrangeBackground>
+      </Newsletter>
+      <ContactUsWrapper>
+        <PinkStarsWrapper>
+          <svg.PinkStars />
+        </PinkStarsWrapper>
+        <ContactUs />
+      </ContactUsWrapper>
     </Layout>
   )
 }
@@ -815,20 +1028,25 @@ const BottomLeft = styled.div`
     top: -1px;
     right: 0;
   }
+`
 
-  h1 {
+const TypewriterWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  span {
     color: var(--color-purple);
-    position: absolute;
-    z-index: 5;
-    margin: 0 auto;
+    font-family: "balgin-bold";
     font-size: 76px;
-    text-align: center;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 `
+
 const BottomRight = styled.div`
   background-color: var(--color-black);
   width: 50%;
@@ -908,9 +1126,155 @@ const LatestProjects = styled.section`
   }
 `
 const InvestmentCenter = styled.section`
-  height: 100vh;
+  /* height: 100vh; */
+  padding-bottom: 5.5rem;
   background-color: var(--color-white);
+`
+
+const InvestmentWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 10rem;
+`
+
+const Brief = styled(motion.div)`
+  align-self: flex-start;
+  flex-basis: 45%;
+
+  h2 {
+    padding-bottom: 1rem;
+    white-space: nowrap;
+  }
+  h4 {
+    padding-bottom: 2.5rem;
+    font-family: "calibre-medium";
+  }
+`
+
+const Headline = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.5rem;
+
+  h4 {
+    margin-right: 1rem;
+    font-family: "calibre-semibold";
+    padding: 0;
+  }
+`
+
+const Stats = styled.div`
+  flex-basis: 55%;
+  align-self: center;
+  margin-top: 17.5rem;
+`
+
+const Columns = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+
+  div:nth-child(1) {
+    h5 {
+      font-family: "calibre-semibold";
+    }
+  }
+  div:nth-child(2) {
+    div {
+      background-color: var(--color-green);
+    }
+  }
+
+  div:nth-child(3) {
+    div {
+      background-color: var(--color-lightpink);
+    }
+  }
+`
+
+const Column = styled(motion.div)`
+  flex-basis: 33%;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+
+  h5 {
+    text-transform: uppercase;
+    font-family: "calibre-medium";
+    padding-bottom: 2rem;
+  }
+  p {
+    color: var(--color-purple);
+    font-family: "calibre-medium";
+    white-space: nowrap;
+  }
+`
+
+const Circle = styled(motion.div)`
+  border-radius: 50%;
+  background-color: var(--color-lightblue);
+  height: 255px;
+  width: 255px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  h6 {
+    line-height: 84px;
+    font-size: 84px;
+    font-family: "calibre-medium";
+  }
+  p {
+    color: var(--color-black);
+  }
+`
+
+const Desc = styled.p`
+  padding-top: 2.5rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid black;
+`
+
+const Newsletter = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`
+
+const OrangeBackground = styled.div`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  svg {
+    overflow-x: hidden;
+    width: 100%;
+  }
+`
+
+const ContactUsWrapper = styled.div`
+  background-color: var(--color-orange);
+  position: relative;
+`
+const PurpleStrokeStarWrapper = styled(motion.div)`
+  position: absolute;
+  z-index: 1;
+  top: -12.5%;
+  left: -3%;
+`
+const PinkStarsWrapper = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: -12.5%;
+  right: 15%;
 `

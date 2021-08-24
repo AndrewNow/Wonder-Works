@@ -55,6 +55,11 @@
   src: url(../src/fonts/ppwoodland-bold.woff2) format("woff2");
   font-display: fallback;
 } 
+@font-face {
+  font-family: "ppwoodland-light";
+  src: url(../src/fonts/ppwoodland-light.woff2) format("woff2");
+  font-display: fallback;
+} 
 
 
 /* HTML elements */
