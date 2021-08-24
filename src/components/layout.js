@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   const lightNavTheme = {
     color: "var(--color-white)",
   }
-  const {currentTheme} = useGlobalStateContext()
+  const currentTheme = useGlobalStateContext()
 
   return (
     <ThemeProvider theme={currentTheme === 'blue' ? darkNavTheme : lightNavTheme}>
