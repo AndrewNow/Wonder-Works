@@ -8,7 +8,10 @@ import Typewriter from "typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as svg from "../svg/homepage"
-import { useGlobalDispatchContext } from "../context/globalContext"
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "../context/globalContext"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
@@ -51,6 +54,7 @@ const HomeIndex = ({ data }) => {
   const blueSectionRef = useRef()
   const blueSectionRef2 = useRef()
   const dispatch = useGlobalDispatchContext()
+  const { currentTheme } = useGlobalStateContext()
 
   const toggleLightTheme = useCallback(() => {
     dispatch({ type: "TOGGLE_THEME", theme: "light" })
@@ -76,6 +80,10 @@ const HomeIndex = ({ data }) => {
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [toggleLightTheme, toggleBlueTheme])
+
+  useEffect(() => {
+    window.localStorage.setItem("theme", currentTheme)
+  }, [currentTheme])
 
   // ----------framer motion animation variants----------
   const line = {

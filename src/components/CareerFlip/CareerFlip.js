@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import { motion } from "framer-motion"
 import * as svg from "./SVGs"
 
 const CareerFlip = () => {
@@ -85,8 +85,7 @@ const CareerFlip = () => {
         <h1>{data[dataIndex].title}</h1>
       </div>
     )
-  }, [dataIndex])
-
+  })
 
   return (
     <Wrapper>
@@ -211,7 +210,6 @@ const RobloxWrapper = styled.div`
 const UsWrapper = styled.div`
   transform: translate3d(0, 60%, 0);
 `
-
 
 const PositionsLink = styled(Link)`
   color: var(--color-black);

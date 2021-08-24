@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import breakpoints from "../breakpoints"
 import { motion } from "framer-motion"
-import { red } from "chalk"
 
 const MailchimpInputField = props => {
   //Checks if all the fields are filled and if an @ sign is used in the email field
