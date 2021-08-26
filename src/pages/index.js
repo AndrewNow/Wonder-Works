@@ -416,7 +416,6 @@ const HomeIndex = ({ data }) => {
             </PillarHoverInner>
           </PillarHover>
         </TopLeft>
-
         <TopRight
           onMouseEnter={() => setHover({ topRightHover: true })}
           onMouseLeave={() => setHover({ topRightHover: false })}

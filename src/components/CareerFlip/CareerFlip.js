@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useRef } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
@@ -72,57 +72,51 @@ const CareerFlip = () => {
     },
   ]
 
-  const [dataIndex, setDataIndex] = useState(0)
-
-  useEffect(() => {
-    if (dataIndex < data.length - 1) {
-      setTimeout(() => setDataIndex(dataIndex + 1), 4000)
-    } else {
-      setTimeout(() => setDataIndex(0), 4000)
-    }
-    return (
-      <div>
-        <h1>{data[dataIndex].title}</h1>
-      </div>
-    )
-  })
+  const text = {
+    visible: i => ({
+      opacity: [0, 1, 0],
+      y: [-50, 0, 150],
+      rotateX: [90, 0, -90],
+      transition: {
+        delay: i * 2,
+        repeatDelay: 10,
+        duration: 4,
+        repeat: Infinity,
+        repeatType: "loop",
+        ease: [0.5, 0.0, 0.2, 1.0],
+      },
+    }),
+  }
+  // const icons = {
+  //   visible: i => ({
+  //     opacity: [0, 1, 0],
+  //     y: [-50, 0, 150],
+  //     rotateX: [90, 0, -90],
+  //     transition: {
+  //       delay: i * 2,
+  //       repeatDelay: 10,
+  //       duration: 4,
+  //       repeat: Infinity,
+  //       repeatType: "loop",
+  //       ease: [0.5, 0.0, 0.4, 1.0],
+  //     },
+  //   }),
+  // }
 
   return (
     <Wrapper>
       <Left>
         <h1>Love</h1>
-        <HideText
-          animate={{
-            opacity: [0, 1],
-            y: [20, 0],
-            transition: {
-              delay: 1,
-              duration: 1,
-              repeatDelay: 1,
-              repeat: Infinity,
-              repeatType: "mirror",
-            },
-          }}
-        >
-          <motion.h1 style={{ color: `${data[dataIndex].color}` }}>
-            {data[dataIndex].title}
-            <SvgWrapper
-              animate={{
-                opacity: [0, 1],
-                y: [20, 0],
-                transition: {
-                  delay: 1,
-                  duration: 1,
-                  repeatDelay: 1,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                },
-              }}
-            >
-              {data[dataIndex].icon}
-            </SvgWrapper>
-          </motion.h1>
-        </HideText>
+        <Container>
+          {data.map((item, i) => (
+            <HideText variants={text} animate="visible" custom={i}>
+              <motion.h1 style={{ color: `${item.color}` }}>
+                {item.title}
+                <SvgWrapper>{item.icon}</SvgWrapper>
+              </motion.h1>
+            </HideText>
+          ))}
+        </Container>
       </Left>
       <Right>
         <p>
@@ -157,20 +151,25 @@ const Right = styled.div`
   strong {
     display: block;
     font-family: "calibre-medium";
-    margin-bottom: 2rem;
+    margin-top: 5rem;
   }
   p {
     margin-bottom: 2rem;
   }
 `
 
-const HideText = styled(motion.div)`
-  width: auto;
-  transform-origin: 0% 0%;
+const Container = styled.div`
+  position: relative;
+  white-space: nowrap;
   padding-bottom: 2rem;
   position: relative;
   z-index: 5;
+  perspective: 500;
+`
 
+const HideText = styled(motion.div)`
+  position: absolute;
+  top: 0%;
   h1 {
     position: relative;
     z-index: 5;
