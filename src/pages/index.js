@@ -22,7 +22,7 @@ const HomeIndex = ({ data }) => {
 
   // ---------- intersection observer logic, Refs ----------
   const ref = useRef()
-  const [sectionRef1, sectionInView1] = useInView({
+  const [sectionRef, sectionInView1] = useInView({
     root: null,
     threshold: 0.6,
     triggerOnce: true,
@@ -42,11 +42,11 @@ const HomeIndex = ({ data }) => {
     //assign multiple refs with useInView
     node => {
       ref.current = node
-      sectionRef1(node)
+      sectionRef(node)
       logosRef(node)
       countUpRef(node)
     },
-    [sectionRef1, logosRef, countUpRef]
+    [sectionRef, logosRef, countUpRef]
   )
 
   // ---------- determine if a blue background section is in view ----------
@@ -153,7 +153,6 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 13,
-        // ...transition
       },
     },
     hidden: {
@@ -171,7 +170,6 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 13,
-        // ...transition
       },
     },
     hidden: {
@@ -331,7 +329,7 @@ const HomeIndex = ({ data }) => {
           <DiscoverMore to="/">DISCOVER MORE</DiscoverMore>
         </motion.div>
       </LandingText>
-      <ImaginationSection ref={sectionRef1}>
+      <ImaginationSection ref={sectionRef}>
         <h2>
           <FirstLine
             variants={line2}
@@ -746,9 +744,30 @@ const HomeIndex = ({ data }) => {
         </OrangeBackground>
       </Newsletter>
       <ContactUsWrapper>
-        <PinkStarsWrapper>
-          <svg.PinkStars />
-        </PinkStarsWrapper>
+        <PinkStarFillWrapper
+          animate={{
+            rotate: 360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <svg.PinkStarFill />
+        </PinkStarFillWrapper>
+        <PinkStarStrokeWrapper
+          animate={{
+            rotate: -360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <svg.PinkStarStroke />
+        </PinkStarStrokeWrapper>
         <ContactUs />
       </ContactUsWrapper>
     </Layout>
@@ -1281,9 +1300,15 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
   top: -12.5%;
   left: -3%;
 `
-const PinkStarsWrapper = styled.div`
+const PinkStarStrokeWrapper = styled(motion.div)`
   position: absolute;
   z-index: 1;
-  top: -12.5%;
+  top: -15%;
   right: 15%;
+`
+const PinkStarFillWrapper = styled(motion.div)`
+  position: absolute;
+  z-index: 1;
+  top: 5%;
+  right: 25%;
 `

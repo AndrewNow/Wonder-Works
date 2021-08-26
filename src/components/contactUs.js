@@ -99,7 +99,7 @@ const ContactUs = () => {
             <strong>press</strong>
           </p>
           <p>
-            for general <br />
+            for press <br />
             press
           </p>
           <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
@@ -196,8 +196,8 @@ const Right = styled.div`
 
 const Contact = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin: 1rem 0;
+  grid-template-columns: 1.75fr 2fr 2fr;
+  margin-top: 2rem;
 
   p,
   strong,

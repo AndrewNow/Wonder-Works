@@ -59,19 +59,19 @@ const Navbar = () => {
             variants={navAnimation}
           >
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link>About</Link>
+              <Link to="/about">About</Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link>Projects</Link>
+              <Link to="/projects">Projects</Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link>Investors</Link>
+              <Link to="/investors">Investors</Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link>Careers</Link>
+              <Link to="/careers">Careers</Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link>Contact</Link>
+              <Link to="/contact">Contact</Link>
             </motion.div>
           </Dropdown>
         )}
@@ -109,6 +109,7 @@ const Dropdown = styled(motion.div)`
     color: ${props => props.theme.color}!important;
     transition: color .4s cubic-bezier(0, .2, .7, 1);
     transition-delay: 0.2s;
+    text-decoration: none;
   }
 
   div {
