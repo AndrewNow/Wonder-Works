@@ -1,8 +1,9 @@
-import React, { useRef } from "react"
+import React, { useRef, useEffect, useCallback } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import * as svg from "./SVGs"
+import { useInView, InView } from "react-intersection-observer"
 
 const CareerFlip = () => {
   const data = [
@@ -72,10 +73,11 @@ const CareerFlip = () => {
     },
   ]
 
-  const text = {
+  const textAnim = {
     visible: i => ({
+      visibility: "visible",
       opacity: [0, 1, 0],
-      y: [-50, 0, 150],
+      y: [-50, 0, 125],
       rotateX: [90, 0, -90],
       transition: {
         delay: i * 2,
@@ -83,36 +85,52 @@ const CareerFlip = () => {
         duration: 4,
         repeat: Infinity,
         repeatType: "loop",
-        ease: [0.5, 0.0, 0.2, 1.0],
+        // ease: [0.5, 0.1, 0.1, 1.0],
       },
     }),
+    hidden: {
+      opacity: 0,
+      visibility: "none"
+    }
   }
-  // const icons = {
-  //   visible: i => ({
-  //     opacity: [0, 1, 0],
-  //     y: [-50, 0, 150],
-  //     rotateX: [90, 0, -90],
-  //     transition: {
-  //       delay: i * 2,
-  //       repeatDelay: 10,
-  //       duration: 4,
-  //       repeat: Infinity,
-  //       repeatType: "loop",
-  //       ease: [0.5, 0.0, 0.4, 1.0],
-  //     },
-  //   }),
-  // }
 
+  const ref = useRef()
+  const [careerRef, careerInView] = useInView({
+    root: null,
+    threshold: 0,
+    triggerOnce: false,
+  })
+
+  const setRefs = useCallback(
+    //assign multiple refs with useInView
+    node => {
+      ref.current = node
+      careerRef(node)
+    },
+    [careerRef]
+  )
+
+  {
+    console.log(careerInView)
+  }
   return (
-    <Wrapper>
+    <Wrapper ref={careerRef}>
       <Left>
         <h1>Love</h1>
         <Container>
           {data.map((item, i) => (
-            <HideText variants={text} animate="visible" custom={i}>
+            <HideText
+              variants={textAnim}
+              animate={careerInView ? "visible" : "hidden"}
+              custom={i}
+            >
               <motion.h1 style={{ color: `${item.color}` }}>
                 {item.title}
-                <SvgWrapper>{item.icon}</SvgWrapper>
+                <SvgWrapper
+                // variants={iconAnim} animate="visible" custom={i}
+                >
+                  {item.icon}
+                </SvgWrapper>
               </motion.h1>
             </HideText>
           ))}
@@ -164,7 +182,7 @@ const Container = styled.div`
   padding-bottom: 2rem;
   position: relative;
   z-index: 5;
-  perspective: 500;
+  perspective: 1000px;
 `
 
 const HideText = styled(motion.div)`

@@ -270,19 +270,17 @@ const HomeIndex = ({ data }) => {
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const homeBackground = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * 200
+    scrollYProgress => scrollYProgress * 450
   )
+
   const circleStroke = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * -50
+    scrollYProgress => scrollYProgress * -150
   )
-  const orangeTriangle = useTransform(
-    scrollYProgress,
-    scrollYProgress => scrollYProgress * -20
-  )
+
   const blueTriangle = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * -165
+    scrollYProgress => scrollYProgress * -265
   )
 
   // ---------- Hover state for Pillars ----------
@@ -373,7 +371,7 @@ const HomeIndex = ({ data }) => {
           <PurpleTriangleWrapper style={{ y: blueTriangle }}>
             <svg.PurpleTriangle />
           </PurpleTriangleWrapper>
-          <OrangeTriangleWrapper style={{ y: orangeTriangle }}>
+          <OrangeTriangleWrapper style={{ y: circleStroke }}>
             <svg.OrangeTriangle />
           </OrangeTriangleWrapper>
           <GreenTriangleWrapper style={{ y: circleStroke }}>
