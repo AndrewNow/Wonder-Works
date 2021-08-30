@@ -324,7 +324,7 @@ const HomeIndex = ({ data }) => {
           The latest in Roblox gaming lives here.
         </motion.h4>
         <motion.div variants={button} initial="hidden" animate="visible">
-          <DiscoverMore to="/">DISCOVER MORE</DiscoverMore>
+          <DiscoverMore to="/about">DISCOVER MORE</DiscoverMore>
         </motion.div>
       </LandingText>
       <ImaginationSection ref={sectionRef}>

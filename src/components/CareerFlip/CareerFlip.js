@@ -110,9 +110,6 @@ const CareerFlip = () => {
     [careerRef]
   )
 
-  {
-    console.log(careerInView)
-  }
   return (
     <Wrapper ref={careerRef}>
       <Left>
@@ -120,6 +117,7 @@ const CareerFlip = () => {
         <Container>
           {data.map((item, i) => (
             <HideText
+              key={i}
               variants={textAnim}
               animate={careerInView ? "visible" : "hidden"}
               custom={i}

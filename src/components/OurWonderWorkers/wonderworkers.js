@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
-import WonderWorkersComponent from "./wonderworkersComponent"
 import { WonderWorkersData } from "./wonderworkersData"
 
 const WonderWorkers = () => {
+
   return (
     <>
       <Title>
@@ -29,11 +29,12 @@ const Title = styled.div`
 `
 
 const Wrapper = styled.div`
-  padding: 5rem 0;
+  padding-top: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin: 0 auto;
   width: 90%;
+  
 `
