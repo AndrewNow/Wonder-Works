@@ -11,6 +11,7 @@ const PressCarousel = () => {
     // containScroll: "trimSnaps",
   })
 
+  // ---------- Set up embla pagination buttons ----------
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
 
@@ -22,7 +23,7 @@ const PressCarousel = () => {
     setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 
-  // ---------- Run configurations ----------
+  // ---------- Run embla configurations ----------
   useEffect(() => {
     if (!embla) return
     embla.on("select", onSelect)
@@ -68,46 +69,78 @@ const PressCarousel = () => {
   ]
 
   return (
-    <Embla>
-      <EmblaViewport ref={emblaRef}>
-        <EmblaContainer>
-          {slides.map((slide, index) => (
-            <EmblaSlide key={index}>
-              <Entry>
-                <div>
-                  <p>{slide.date}</p>
-                  <ImageWrapper>
-                    <StaticImage
-                      src={"../../images/Press/Forbes.jpg"}
-                      alt="Forbes logo"
-                      layout="constrained"
-                      height={370}
-                      quality={100}
-                    />
-                  </ImageWrapper>
-                  <h4>{slide.title}</h4>
-                </div>
-                <Flex>
-                  <p>{slide.author}</p>
-                  <a href={slide.link} target="_blank" alt="Link to article">
-                    Read More
-                  </a>
-                </Flex>
-              </Entry>
-            </EmblaSlide>
-          ))}
-        </EmblaContainer>
-      </EmblaViewport>
-      <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-      <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-    </Embla>
+    <Wrapper>
+      <h2>Press</h2>
+      <Embla>
+        <EmblaViewport ref={emblaRef}>
+          <EmblaContainer>
+            {slides.map((slide, index) => (
+              <EmblaSlide key={index}>
+                <Entry>
+                  <Top>
+                    <p>{slide.date}</p>
+                    <ImageWrapper>
+                      <StaticImage
+                        src={"../../images/Press/Forbes.jpg"}
+                        alt="Forbes logo"
+                        layout="constrained"
+                        height={370}
+                        quality={100}
+                        transformOptions={{ cropFocus: "center" }}
+                        imgStyle={{ objectFit: "cover" }}
+                        style={{
+                          minHeight: "100%",
+                          // border: "2px solid var(--color-purple)",
+                          // boxSizing: "border-box",
+                          // borderRadius: "10px"
+                        }}
+                      />
+                    </ImageWrapper>
+                    <h4>{slide.title}</h4>
+                  </Top>
+                  <Flex>
+                    <p>{slide.author}</p>
+                    <a href={slide.link} target="_blank" alt="Link to article">
+                      Read More
+                      <svg
+                        width="20"
+                        height="17"
+                        viewBox="0 0 20 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0.490234 16.5632L19.4902 9.56323L0.490234 0.563232V16.5632Z"
+                          fill="#6653A3"
+                        />
+                      </svg>
+                    </a>
+                  </Flex>
+                </Entry>
+              </EmblaSlide>
+            ))}
+          </EmblaContainer>
+        </EmblaViewport>
+        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+      </Embla>
+    </Wrapper>
   )
 }
 
 export default PressCarousel
 
-const Embla = styled.div`
+const Wrapper = styled.div`
+  padding: 5rem 0;
   width: 90%;
+  margin: 0 auto;
+  h2 {
+    padding: 20px;
+  }
+`
+
+const Embla = styled.div`
+  width: 100%;
   position: relative;
   background-color: #f7f7f7;
   padding: 20px;
@@ -142,34 +175,62 @@ const EmblaSlide = styled.div`
 
 const Entry = styled.div`
   width: 27vw;
-  height: 650px;
+  height: 720px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border: 1px solid red;
+`
 
+const Top = styled.div`
   h4 {
     padding-bottom: 2rem;
   }
-  div > p {
+  p {
     padding-bottom: 1rem;
     float: right;
   }
 `
 
 const ImageWrapper = styled.div`
-  border: 2px solid var(--color-purple);
+  position: relative;
+  z-index: 10;
   margin: 1rem 0;
-  border-radius: 10px;
+  height: 370px;
   width: 100%;
+  border: 2px solid var(--color-purple);
   overflow: hidden;
+  border-radius: 10px;
+  box-sizing: border-box;
 `
 const Flex = styled.div`
   display: flex;
+  align-items: flex-start;
+  width: 100%;
   justify-content: space-between;
+  height: 65px;
 
   & p {
     font-family: "calibre-medium";
-    width: 60%;
+    width: 50%;
+  }
+
+  svg {
+    margin-left: 0.5rem;
+    padding-top: 0.1rem;
+    transition: var(--hover-transition);
+  }
+
+  a {
+    transition: var(--hover-transition);
+    align-self: flex-start;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: "calibre-regular";
+    color: var(--color-purple);
+    font-size: 25px;
+    filter: opacity(0.5);
+    :hover {
+      filter: opacity(1);
+    }
   }
 `

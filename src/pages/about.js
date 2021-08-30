@@ -9,6 +9,8 @@ import { motion, useViewportScroll, useTransform } from "framer-motion"
 import * as svg from "../svg/aboutpage"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
+import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
+
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
 
@@ -421,6 +423,9 @@ const About = ({ data }) => {
         </BlueSquigglyWrapper>
       </MeganZach>
       <PressCarousel />
+      <WonderWorkersWrapper>
+        <WonderWorkers />
+      </WonderWorkersWrapper>
       <CareerFlip />
     </Layout>
   )
@@ -735,4 +740,11 @@ const BlueSquigglyWrapper = styled(motion.div)`
   z-index: 5;
   top: 21%;
   left: 10%;
+`
+
+const WonderWorkersWrapper = styled.section`
+  background-color: var(--color-lightpink);
+  width: 100%;
+  position: relative;
+  padding: 5rem 0;
 `
