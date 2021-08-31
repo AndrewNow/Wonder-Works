@@ -152,7 +152,7 @@ const Embla = styled.div`
   }
 
   & button:last-of-type {
-    right: -1%;
+    right: -3%;
   }
 `
 const EmblaViewport = styled.div`
@@ -231,6 +231,9 @@ const Flex = styled.div`
     filter: opacity(0.5);
     :hover {
       filter: opacity(1);
+      svg {
+        transform: translate3d(5px, 0, 0);
+      }
     }
   }
 `

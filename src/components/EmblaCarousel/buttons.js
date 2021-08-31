@@ -1,9 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+import {motion} from 'framer-motion'
 
 export const PrevButton = ({ enabled, onClick }) => {
   return (
-    <EmblaButton onClick={onClick} disabled={!enabled}>
+    <EmblaButton
+      onClick={onClick}
+      disabled={!enabled}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
       <svg
         width="51"
         height="58"
@@ -23,7 +29,12 @@ export const PrevButton = ({ enabled, onClick }) => {
 
 export const NextButton = ({ enabled, onClick }) => {
   return (
-    <EmblaButton onClick={onClick} disabled={!enabled}>
+    <EmblaButton
+      onClick={onClick}
+      disabled={!enabled}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
       <svg
         width="51"
         height="58"
@@ -41,18 +52,18 @@ export const NextButton = ({ enabled, onClick }) => {
   )
 }
 
-const EmblaButton = styled.button`
+const EmblaButton = styled(motion.button)`
   outline: 0;
   cursor: pointer;
   background-color: transparent;
   touch-action: manipulation;
   position: absolute;
   z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%;
+  /* transform: translateY(-50%); */
   border: 0;
-  width: 30px;
-  height: 30px;
+  width: 51px;
+  height: 58px;
   justify-content: center;
   align-items: center;
   fill: #1bcacd;
@@ -60,6 +71,6 @@ const EmblaButton = styled.button`
 
   &:disabled {
     cursor: default;
-    opacity: 0.5;
+    opacity: 0.3;
   }
 `

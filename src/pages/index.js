@@ -5,17 +5,22 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import Typewriter from "typewriter-effect"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as svg from "../svg/homepage"
-import {
-  useGlobalDispatchContext,
-  useGlobalStateContext,
-} from "../context/globalContext"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
 import ContactUs from "../components/contactUs"
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "../context/globalContext"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -65,7 +70,7 @@ const HomeIndex = ({ data }) => {
   }, [dispatch])
 
   useEffect(() => {
-    function onScroll() {
+    const onScroll = () => {
       const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
       const blueBackgroundDiv2 = blueSectionRef2.current.getBoundingClientRect()
       if (
@@ -267,20 +272,21 @@ const HomeIndex = ({ data }) => {
   }
 
   // ---------- Parrallax scroll logic using Framer  ----------
+  let _ = require("lodash")
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const homeBackground = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * 450
+    scrollYProgress => scrollYProgress * 750
   )
 
   const circleStroke = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * -150
+    _.throttle(scrollYProgress => scrollYProgress * -350, 100)
   )
 
-  const blueTriangle = useTransform(
+  const mediumParallax = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * -265
+    _.throttle(scrollYProgress => scrollYProgress * -700, 100)
   )
 
   // ---------- Hover state for Pillars ----------
@@ -368,7 +374,7 @@ const HomeIndex = ({ data }) => {
           <BlueTrianglesWrapper>
             <svg.BlueTriangles />
           </BlueTrianglesWrapper>
-          <PurpleTriangleWrapper style={{ y: blueTriangle }}>
+          <PurpleTriangleWrapper style={{ y: mediumParallax }}>
             <svg.PurpleTriangle />
           </PurpleTriangleWrapper>
           <OrangeTriangleWrapper style={{ y: circleStroke }}>
@@ -377,7 +383,7 @@ const HomeIndex = ({ data }) => {
           <GreenTriangleWrapper style={{ y: circleStroke }}>
             <svg.GreenTriangle />
           </GreenTriangleWrapper>
-          <BlueTriangleWrapper style={{ y: blueTriangle }}>
+          <BlueTriangleWrapper style={{ y: mediumParallax }}>
             <svg.BlueTriangle />
           </BlueTriangleWrapper>
         </ImaginationBG>

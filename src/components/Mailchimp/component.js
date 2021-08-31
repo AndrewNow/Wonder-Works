@@ -20,8 +20,8 @@ const MailchimpComponent = () => {
             <path
               d="M0 1.6709H215.766"
               stroke="#1A1748"
-              stroke-width="2.5"
-              stroke-miterlimit="10"
+              strokeWidth="2.5"
+              strokeMiterlimit="10"
             />
           </svg>
         </Headline>

@@ -48,13 +48,50 @@ export const TeamCarousel = ({ index }) => {
     setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 
+  // ---------- scale on scroll ----------
+
+  const SCALE_FACTOR = 3
+
+  const numberWithinRange = (number, min, max) =>
+    Math.min(Math.max(number, min), max)
+
+  const [parallaxValues, setParallaxValues] = useState([])
+
+  const onScroll = useCallback(() => {
+    if (!embla) return
+
+    const engine = embla.dangerouslyGetEngine()
+    const scrollProgress = embla.scrollProgress()
+
+    const styles = embla.scrollSnapList().map((scrollSnap, index) => {
+      if (!embla.slidesInView().includes(index)) return 0
+      let diffToTarget = scrollSnap - scrollProgress
+
+      if (engine.options.loop) {
+        engine.slideLooper.loopPoints.forEach(loopItem => {
+          const target = loopItem.getTarget()
+          if (index === loopItem.index && target !== 0) {
+            const sign = Math.sign(target)
+            if (sign === -1) diffToTarget = scrollSnap - (1 + scrollProgress)
+            if (sign === 1) diffToTarget = scrollSnap + (1 - scrollProgress)
+          }
+        })
+      }
+      const scale = 1 - Math.abs(diffToTarget * SCALE_FACTOR)
+      return numberWithinRange(scale, 0, 1)
+    })
+    setParallaxValues(styles)
+  }, [embla, setParallaxValues])
+
   // ---------- Run embla configurations ----------
   useEffect(() => {
     if (!embla) return
     embla.on("select", onSelect)
+    embla.on("scroll", onScroll)
+    embla.on("resize", onScroll)
     onSelect()
     setIndex(index)
-  }, [embla, onSelect, index])
+  }, [embla, onSelect, onScroll, index])
 
   return (
     <Embla>
@@ -62,16 +99,22 @@ export const TeamCarousel = ({ index }) => {
         <EmblaContainer>
           {workerData.map((slide, dataIndex) => {
             return (
-              <EmblaSlide key={dataIndex}>
-                <ImageWrapper>
-                  <GatsbyImage
-                    image={
-                      data.wwImageCarousel.nodes[dataIndex].childImageSharp
-                        .gatsbyImageData
-                    }
-                    alt={`Roblox avatar portrait of ${slide.name}`}
-                  />
-                </ImageWrapper>
+              <EmblaSlide
+                key={dataIndex}
+                style={{ transform: `scale(${parallaxValues[dataIndex]})` }}
+              >
+                <PortalWrapper>
+                  <AvatarWrapper>
+                    <GatsbyImage
+                      image={
+                        data.wwImageCarousel.nodes[dataIndex].childImageSharp
+                          .gatsbyImageData
+                      }
+                      alt={`Roblox avatar portrait of ${workerData[dataIndex].name}`}
+                    />
+                  </AvatarWrapper>
+                  {workerData[dataIndex].portal}
+                </PortalWrapper>
                 <Text>
                   <h1>{slide.name}</h1>
                   <h4>{slide.title}</h4>
@@ -104,7 +147,6 @@ const Embla = styled.div`
   }
 `
 const EmblaViewport = styled.div`
-  overflow: hidden;
   width: 100%;
 `
 
@@ -116,7 +158,6 @@ const EmblaContainer = styled.div`
   -webkit-tap-highlight-color: transparent;
 `
 const EmblaSlide = styled.div`
-  position: relative;
   width: 100%;
   margin-right: 50px;
   //
@@ -148,10 +189,23 @@ const Text = styled.div`
   }
 `
 
-const ImageWrapper = styled.div`
-  flex-basis: 50%;
+const AvatarWrapper = styled.div`
+  position: absolute;
+  z-index: 2;
+  transform: translateY(6.5%);
+`
+
+const PortalWrapper = styled.div`
+  z-index: 0;
+  position: relative;
+  transform: translate3d(5%, 100%, 0);
   width: 50vw;
   margin: 0 auto;
   display: flex;
+  align-items: flex-end;
   justify-content: center;
+
+  svg {
+    transform: scale(1.5);
+  }
 `

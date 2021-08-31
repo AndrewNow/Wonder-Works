@@ -90,8 +90,8 @@ const CareerFlip = () => {
     }),
     hidden: {
       opacity: 0,
-      visibility: "none"
-    }
+      visibility: "none",
+    },
   }
 
   const ref = useRef()
@@ -124,11 +124,7 @@ const CareerFlip = () => {
             >
               <motion.h1 style={{ color: `${item.color}` }}>
                 {item.title}
-                <SvgWrapper
-                // variants={iconAnim} animate="visible" custom={i}
-                >
-                  {item.icon}
-                </SvgWrapper>
+                <SvgWrapper>{item.icon}</SvgWrapper>
               </motion.h1>
             </HideText>
           ))}
@@ -154,7 +150,8 @@ const Wrapper = styled.div`
   width: 70%;
   height: 80vh;
   margin: 0 auto;
-  padding-bottom: 15rem;
+  padding-top: 15rem;
+  margin-bottom: 20rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

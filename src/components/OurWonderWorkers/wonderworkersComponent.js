@@ -1,5 +1,5 @@
 import { GatsbyImage } from "gatsby-plugin-image"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { CloseSVG } from "../../svg/miscellaneous"
 import { AnimatePresence, motion } from "framer-motion"
@@ -10,12 +10,11 @@ export const WonderWorkersComponent = ({
   name,
   index,
   title,
-  bio,
   avatar,
   portal,
   style,
 }) => {
-  // configure animations
+  // Configure animations
   const ModalAnimation = {
     visible: {
       transition: {
@@ -38,21 +37,24 @@ export const WonderWorkersComponent = ({
   }
 
   const [click, setClick] = useState(false)
-  const handleKeyDown = e => {
-    console.log(e.keyCode)
-    if (e.keyCode === 27) {
-      setClick(!click)
+
+  // Close modal with Esc key
+  useEffect(() => {
+    const onKeyDown = e => {
+      if (e.keyCode === 27) {
+        console.log(e)
+        setClick(false)
+      } else {
+        return
+      }
     }
-  }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [])
 
   return (
     <>
-      <Worker
-        key={index}
-        onClick={() => setClick(!click)}
-        onKeyDown={e => handleKeyDown(e)}
-        style={style}
-      >
+      <Worker key={index} onClick={() => setClick(!click)} style={style}>
         <Avatar>
           <PortalWrapper>
             <AvatarWrapper>
@@ -87,8 +89,6 @@ export const WonderWorkersComponent = ({
     </>
   )
 }
-
-export const TeamModal = () => {}
 
 const Worker = styled.div`
   padding: 5rem 0;
@@ -138,7 +138,7 @@ const Modal = styled(motion.span)`
   width: 95%;
   height: 95vh;
   background-color: #1a174899;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(6px);
   border-radius: 12px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   p {
@@ -178,31 +178,4 @@ const Close = styled.button`
   &:hover {
     color: #f7f7fc;
   }
-`
-
-const Text = styled.div`
-  flex-basis: 50%;
-  p {
-    width: 70%;
-  }
-  h1,
-  h4 {
-    color: var(--color-white);
-  }
-  h1 {
-    font-size: 75px;
-    line-height: 80px;
-    font-family: "ppwoodland-bold";
-    padding-bottom: 1rem;
-  }
-  h4 {
-    padding-bottom: 2rem;
-  }
-`
-
-const ImageWrapper = styled.div`
-  flex-basis: 50%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
 `

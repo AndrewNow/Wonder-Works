@@ -1,15 +1,22 @@
 import React, { useRef, useCallback } from "react"
 import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
-import { useInView, InView } from "react-intersection-observer"
-import { graphql, Link } from "gatsby"
+import { useInView } from "react-intersection-observer"
+import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import styled from "styled-components"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import {
+  motion,
+  useSpring,
+  useViewportScroll,
+  useTransform,
+} from "framer-motion"
 import * as svg from "../svg/aboutpage"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
+import LetsWork from "../components/letsWork"
+import MailchimpComponent from "../components/Mailchimp/component"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -179,16 +186,18 @@ const About = ({ data }) => {
   )
 
   // ---------- Parrallax scroll logic using Framer  ----------
+  let _ = require("lodash")
+
   const { scrollYProgress } = useViewportScroll({ passive: true })
-  const homeBackground = useTransform(
+  const mediumParallax = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * 200
+    _.throttle(scrollYProgress => scrollYProgress * 600, 100)
   )
 
   return (
     <Layout title={siteTitle}>
       <Seo title="About" />
-      <Background style={{ y: homeBackground }}>
+      <Background style={{ y: mediumParallax }}>
         <SkateboardWrapper
           variants={skateboardAnimation}
           initial="hidden"
@@ -412,7 +421,7 @@ const About = ({ data }) => {
             Overlook Bay on Roblox. Together, this pair works wonders.
           </motion.p>
         </TextContent>
-        <CirclesWrapper>
+        <CirclesWrapper style={{ y: mediumParallax }}>
           <svg.Circles />
         </CirclesWrapper>
         <PinkShapesWrapper>
@@ -426,7 +435,27 @@ const About = ({ data }) => {
       <WonderWorkersWrapper>
         <WonderWorkers />
       </WonderWorkersWrapper>
+      <LetsWork svg={<svg.PinkGears />} />
       <CareerFlip />
+
+      <Newsletter>
+        {/* <PurpleStrokeStarWrapper
+          animate={{
+            rotate: 360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <svg.PurpleStrokeStar />
+        </PurpleStrokeStarWrapper> */}
+        <MailchimpComponent />
+        <BlueBackground>
+          <svg.BigBlueBackground />
+        </BlueBackground>
+      </Newsletter>
     </Layout>
   )
 }
@@ -445,7 +474,7 @@ export const pageQuery = graphql`
 
 const Background = styled(motion.div)`
   z-index: 0;
-  height: 100vh;
+  height: 106vh;
   margin: 0 auto;
   overflow: hidden;
   position: absolute;
@@ -747,4 +776,24 @@ const WonderWorkersWrapper = styled.section`
   width: 100%;
   position: relative;
   padding: 5rem 0;
+`
+
+const Newsletter = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`
+
+const BlueBackground = styled.div`
+  position: absolute;
+  z-index: 0;
+  top: -5%;
+  left: -15%;
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  svg {
+    overflow-x: hidden;
+    width: 100%;
+  }
 `
