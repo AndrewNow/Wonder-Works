@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from "styled-components"
 import Footer from "../components/footer"
 import Navbar from "../components/navbar"
 import { useGlobalStateContext } from "../context/globalContext"
-
+import ScrollToTop from "./scrollToTop"
 
 const Layout = ({ children }) => {
   const darkNavTheme = {
@@ -14,13 +14,16 @@ const Layout = ({ children }) => {
     color: "var(--color-white)",
   }
 
-  const {currentTheme} = useGlobalStateContext()
+  const { currentTheme } = useGlobalStateContext()
 
   return (
-    <ThemeProvider theme={currentTheme === 'blue' ? darkNavTheme : lightNavTheme}>
+    <ThemeProvider
+      theme={currentTheme === "blue" ? darkNavTheme : lightNavTheme}
+    >
       <GlobalWrapper>
         <Navbar />
         <main>{children}</main>
+        <ScrollToTop />
         <Footer />
       </GlobalWrapper>
     </ThemeProvider>

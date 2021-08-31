@@ -12,7 +12,7 @@ export const TeamCarousel = ({ index }) => {
     query WonderWorkersCarousel {
       wwImageCarousel: allFile(
         filter: { relativeDirectory: { eq: "Team" } }
-        sort: { fields: childrenImageSharp___fixed___originalName, order: ASC }
+        sort: { fields: name, order: ASC }
       ) {
         nodes {
           childImageSharp {
@@ -21,6 +21,7 @@ export const TeamCarousel = ({ index }) => {
               placeholder: TRACED_SVG
               quality: 80
               blurredOptions: { width: 80 }
+              formats: WEBP
             )
           }
         }
@@ -48,9 +49,9 @@ export const TeamCarousel = ({ index }) => {
     setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 
-  // ---------- scale on scroll ----------
 
-  const SCALE_FACTOR = 3
+  // ---------- Scale slides on scroll effect ----------
+  const SCALE_FACTOR = 5
 
   const numberWithinRange = (number, min, max) =>
     Math.min(Math.max(number, min), max)
@@ -159,8 +160,6 @@ const EmblaContainer = styled.div`
 `
 const EmblaSlide = styled.div`
   width: 100%;
-  margin-right: 50px;
-  //
   height: 100%;
   position: relative;
   display: flex;

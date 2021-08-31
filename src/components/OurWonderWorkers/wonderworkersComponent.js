@@ -134,7 +134,7 @@ const PortalWrapper = styled.div`
 const Modal = styled(motion.span)`
   position: fixed;
   top: 50%;
-  z-index: 2001;
+  z-index: 5001;
   width: 95%;
   height: 95vh;
   background-color: #1a174899;

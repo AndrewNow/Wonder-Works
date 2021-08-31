@@ -2,13 +2,36 @@ import React, { useState, useCallback, useEffect } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import { NextButton, PrevButton } from "./buttons"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { graphql, useStaticQuery } from "gatsby"
 
 const PressCarousel = () => {
+  const data = useStaticQuery(graphql`
+    query pressCarousel {
+      press: allFile(
+        filter: { relativeDirectory: { eq: "Press" } }
+        sort: { fields: name, order: ASC }
+      ) {
+        nodes {
+          childImageSharp {
+            gatsbyImageData(
+              width: 570
+              placeholder: BLURRED
+              quality: 100
+              blurredOptions: { width: 80 }
+              formats: WEBP
+              layout: CONSTRAINED
+              transformOptions: { cropFocus: CENTER }
+            )
+          }
+        }
+      }
+    }
+  `)
+
   // ---------- Initialize Embla Carousel ----------
   const [emblaRef, embla] = useEmblaCarousel({
     slidesToScroll: 3,
-    // containScroll: "trimSnaps",
   })
 
   // ---------- Set up embla pagination buttons ----------
@@ -33,38 +56,41 @@ const PressCarousel = () => {
   const slides = [
     {
       date: "29.04.21",
-      imageSrc: "../../images/Press/Forbes.jpg",
-      title:
-        "Exclusive: How YouTuber MeganPlays turned Roblox videos into a million-dollar business",
-      author: "Danny Konstantinovic, Ivan De Luce — B2",
-      link: "https://www.forbes.com/sites/mikestubbs/2021/01/27/how-roblox-star-meganplays-diversified-her-business-to-bring-in-millions/",
-      alt: "",
-    },
-    {
-      date: "27.04.21",
-      imageSrc: "../../../images/Press/Forbes.jpg",
-      title:
-        "Roblox Queen MeganPlays Is Making Millions With a Blocky Digital Empire",
-      author: "Jennifer Zabasajja, Olga Kharif — Bloomberg",
-      link: "https://www.bloomberg.com/news/articles/2021-04-27/how-meganplays-built-a-multimillion-dollar-roblox-rblx-gaming-empire",
-      alt: "",
-    },
-    {
-      date: "10.03.21",
-      imageSrc: "../../../images/Press/Forbes.jpg",
-      title: "Roblox content creator MeganPlays on the platform’s popularity",
-      author: "Squawk Alley — CNBC",
-      link: "https://www.cnbc.com/video/2021/03/10/roblox-content-creator-meganplays-on-the-platforms-popularity.html",
-      alt: "",
-    },
-    {
-      date: "4.29.21",
-      imageSrc: "../../../images/Press/Forbes.jpg",
+      imageSrc: data.press.nodes[0].childImageSharp.gatsbyImageData,
       title:
         "Exclusive: How YouTuber MeganPlays turned Roblox videos into a million-dollar business",
       author: "Danny Konstantinovic, Ivan De Luce — B2",
       link: "https://www.businessofbusiness.com/videos/meganplays-interview-megan-letter-roblox-youtube/",
-      alt: "",
+    },
+    {
+      date: "27.04.21",
+      imageSrc: data.press.nodes[1].childImageSharp.gatsbyImageData,
+      title:
+        "Roblox Queen MeganPlays Is Making Millions With a Blocky Digital Empire",
+      author: "Jennifer Zabasajja, Olga Kharif — Bloomberg",
+      link: "https://www.bloomberg.com/news/articles/2021-04-27/how-meganplays-built-a-multimillion-dollar-roblox-rblx-gaming-empire",
+    },
+    {
+      date: "10.03.21",
+      imageSrc: data.press.nodes[2].childImageSharp.gatsbyImageData,
+      title: "Roblox content creator MeganPlays on the platform’s popularity",
+      author: "Squawk Alley — CNBC",
+      link: "https://www.cnbc.com/video/2021/03/10/roblox-content-creator-meganplays-on-the-platforms-popularity.html",
+    },
+    {
+      date: "09.03.21",
+      imageSrc: data.press.nodes[4].childImageSharp.gatsbyImageData,
+      title: "Roblox Goes Public — What's Roblox? Ask Anyone With Kids.",
+      author: "Mandalita Del Barco — NPR",
+      link: "https://www.npr.org/2021/03/09/974893374/roblox-goes-public-whats-roblox-ask-anyone-with-kids",
+    },
+    {
+      date: "27.01.21",
+      imageSrc: data.press.nodes[3].childImageSharp.gatsbyImageData,
+      title:
+        "How 'Roblox' Star MeganPlays Diversified Her Business To Bring In Millions",
+      author: "Mike Stubbs — Forbes",
+      link: "https://www.forbes.com/sites/mikestubbs/2021/01/27/how-roblox-star-meganplays-diversified-her-business-to-bring-in-millions/",
     },
   ]
 
@@ -74,51 +100,43 @@ const PressCarousel = () => {
       <Embla>
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer>
-            {slides.map((slide, index) => (
-              <EmblaSlide key={index}>
-                <Entry>
-                  <Top>
-                    <p>{slide.date}</p>
-                    <ImageWrapper>
-                      <StaticImage
-                        src={"../../images/Press/Forbes.jpg"}
-                        alt="Forbes logo"
-                        layout="constrained"
-                        height={370}
-                        quality={100}
-                        transformOptions={{ cropFocus: "center" }}
-                        imgStyle={{ objectFit: "cover" }}
-                        style={{
-                          minHeight: "100%",
-                          // border: "2px solid var(--color-purple)",
-                          // boxSizing: "border-box",
-                          // borderRadius: "10px"
-                        }}
-                      />
-                    </ImageWrapper>
-                    <h4>{slide.title}</h4>
-                  </Top>
-                  <Flex>
-                    <p>{slide.author}</p>
-                    <a href={slide.link} target="_blank" alt="Link to article">
-                      Read More
-                      <svg
-                        width="20"
-                        height="17"
-                        viewBox="0 0 20 17"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+            {slides.map((slide, index) => {
+              return (
+                <EmblaSlide key={index}>
+                  <Entry>
+                    <Top>
+                      <p>{slide.date}</p>
+                      <ImageWrapper>
+                        <GatsbyImage image={slide.imageSrc} alt={slide.title} />
+                      </ImageWrapper>
+                      <h4>{slide.title}</h4>
+                    </Top>
+                    <Flex>
+                      <p>{slide.author}</p>
+                      <a
+                        href={slide.link}
+                        target="_blank"
+                        alt="Link to article"
                       >
-                        <path
-                          d="M0.490234 16.5632L19.4902 9.56323L0.490234 0.563232V16.5632Z"
-                          fill="#6653A3"
-                        />
-                      </svg>
-                    </a>
-                  </Flex>
-                </Entry>
-              </EmblaSlide>
-            ))}
+                        Read More
+                        <svg
+                          width="20"
+                          height="17"
+                          viewBox="0 0 20 17"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0.490234 16.5632L19.4902 9.56323L0.490234 0.563232V16.5632Z"
+                            fill="#6653A3"
+                          />
+                        </svg>
+                      </a>
+                    </Flex>
+                  </Entry>
+                </EmblaSlide>
+              )
+            })}
           </EmblaContainer>
         </EmblaViewport>
         <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
@@ -136,6 +154,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   h2 {
     padding: 20px;
+    padding-bottom: 5rem;
   }
 `
 

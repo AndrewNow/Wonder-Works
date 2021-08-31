@@ -150,8 +150,8 @@ const Wrapper = styled.div`
   width: 70%;
   height: 80vh;
   margin: 0 auto;
-  padding-top: 15rem;
-  margin-bottom: 20rem;
+  padding-top: 5rem;
+  margin-bottom: 15rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -191,7 +191,7 @@ const About = ({ data }) => {
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const mediumParallax = useTransform(
     scrollYProgress,
-    _.throttle(scrollYProgress => scrollYProgress * 600, 100)
+    _.throttle(scrollYProgress => scrollYProgress * 600, 50)
   )
 
   return (
@@ -238,7 +238,7 @@ const About = ({ data }) => {
             </Second>
           </h1>
           <motion.p variants={subtitle} initial="hidden" animate="visible">
-            At Wonder Works Studio we are ushering in the new era of immersive
+            At Wonder Works Studio, we are ushering in the new era of immersive
             gaming, where players can express, explore, and expand their
             creativity. We build video games that spark imagination, encourage
             collaboration, and push innovation so gamers grow alongside the
@@ -474,7 +474,7 @@ export const pageQuery = graphql`
 
 const Background = styled(motion.div)`
   z-index: 0;
-  height: 106vh;
+  height: 107vh;
   margin: 0 auto;
   overflow: hidden;
   position: absolute;
@@ -495,7 +495,7 @@ const BigCircleWrapper = styled(motion.div)`
 `
 const SmallCircleWrapper = styled(motion.div)`
   position: absolute;
-  bottom: 2.5%;
+  bottom: 3.5%;
   left: 60%;
 `
 

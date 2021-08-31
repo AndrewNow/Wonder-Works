@@ -5,12 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import Typewriter from "typewriter-effect"
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-  useSpring,
-} from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as svg from "../svg/homepage"
 import CountUp from "react-countup"
