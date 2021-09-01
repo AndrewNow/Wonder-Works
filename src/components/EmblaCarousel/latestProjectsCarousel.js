@@ -57,13 +57,16 @@ const LatestProjectsCarousel = () => {
 
   const videoLinks = [
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/__JACINTH.mp4",
+      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      light: "https://i.imgur.com/yNmhs4y.png",
     },
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/__JACINTH.mp4",
+      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      light: false,
     },
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/__JACINTH.mp4",
+      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      light: false,
     },
   ]
 
@@ -85,7 +88,7 @@ const LatestProjectsCarousel = () => {
                     height="100%"
                     playing={slidesInView === `video[${index}]` && !paused}
                     onEnded={() => setTimeout(scrollNext(), 5000)}
-                    // light="https://i.imgur.com/yNmhs4y.png"
+                    light={video.light}
                   />
                 </EmblaSlide>
               )
