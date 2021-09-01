@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { ScrollToTopText, ScrollToTopArrow } from "../svg/miscellaneous"
-import { AnimatePresence, motion, controls } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -16,6 +16,7 @@ const ScrollToTop = () => {
     setHovered(false)
   }
 
+  let debounce = require("lodash/debounce")
   useEffect(() => {
     // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
@@ -27,8 +28,9 @@ const ScrollToTop = () => {
         }
       }
     }
-    window.addEventListener("scroll", toggleVisibility)
-    return () => window.removeEventListener("scroll", toggleVisibility)
+    window.addEventListener("scroll", debounce(toggleVisibility, 300))
+    return () =>
+      window.removeEventListener("scroll", debounce(toggleVisibility, 300))
   }, [])
 
   const button = {
@@ -82,7 +84,7 @@ const ScrollToTop = () => {
           animate={isVisible ? "visible" : "hidden"}
           exit="hidden"
           aria-label="Press this button to scroll to top."
-          whileTap={{scale: .9}}
+          whileTap={{ scale: 0.9 }}
         >
           <TextWrapper
             variants={rotation}

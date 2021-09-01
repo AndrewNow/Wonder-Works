@@ -116,6 +116,7 @@ const PressCarousel = () => {
                       <a
                         href={slide.link}
                         target="_blank"
+                        rel="noreferrer"
                         alt="Link to article"
                       >
                         Read More

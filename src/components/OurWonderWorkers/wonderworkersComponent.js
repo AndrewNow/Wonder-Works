@@ -4,7 +4,6 @@ import styled from "styled-components"
 import { CloseSVG } from "../../svg/miscellaneous"
 import { AnimatePresence, motion } from "framer-motion"
 import { TeamCarousel } from "./carousel"
-import { workerData } from "./wonderworkersData"
 
 export const WonderWorkersComponent = ({
   name,
@@ -57,7 +56,7 @@ export const WonderWorkersComponent = ({
       <Worker key={index} onClick={() => setClick(!click)} style={style}>
         <Avatar>
           <PortalWrapper>
-            <AvatarWrapper>
+            <AvatarWrapper whileHover={{ scale: 1.02, y: -5 }}>
               <GatsbyImage
                 image={avatar}
                 alt={`Roblox avatar portrait of ${name}`}
@@ -116,12 +115,11 @@ const Avatar = styled.div`
   cursor: pointer;
 `
 
-const AvatarWrapper = styled.div`
+const AvatarWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
   bottom: 2%;
-  transform: translateX(-1rem);
-`
+  `
 
 const PortalWrapper = styled.div`
   z-index: 0;

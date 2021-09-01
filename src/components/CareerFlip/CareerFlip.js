@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useCallback } from "react"
+import React, { useRef, useCallback } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 import * as svg from "./SVGs"
-import { useInView, InView } from "react-intersection-observer"
+import { useInView } from "react-intersection-observer"
 
 const CareerFlip = () => {
   const data = [
@@ -85,7 +85,6 @@ const CareerFlip = () => {
         duration: 4,
         repeat: Infinity,
         repeatType: "loop",
-        // ease: [0.5, 0.1, 0.1, 1.0],
       },
     }),
     hidden: {
@@ -111,7 +110,7 @@ const CareerFlip = () => {
   )
 
   return (
-    <Wrapper ref={careerRef}>
+    <Wrapper ref={setRefs}>
       <Left>
         <h1>Love</h1>
         <Container>

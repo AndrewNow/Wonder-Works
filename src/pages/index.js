@@ -16,20 +16,22 @@ import {
   useGlobalDispatchContext,
   useGlobalStateContext,
 } from "../context/globalContext"
+import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCarousel"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
-
   // ---------- intersection observer logic, Refs ----------
+  let throttle = require("lodash/throttle")
+
   const ref = useRef()
-  const [sectionRef, sectionInView1] = useInView({
+  const [sectionRef, sectionInView] = useInView({
     root: null,
-    threshold: 0.6,
+    threshold: 0.5,
     triggerOnce: true,
   })
   const [logosRef, logosInView] = useInView({
     root: null,
-    threshold: 0.85,
+    threshold: 1,
     triggerOnce: true,
   })
   const [countUpRef, countUpInView] = useInView({
@@ -267,21 +269,20 @@ const HomeIndex = ({ data }) => {
   }
 
   // ---------- Parrallax scroll logic using Framer  ----------
-  let _ = require("lodash")
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const homeBackground = useTransform(
     scrollYProgress,
     scrollYProgress => scrollYProgress * 750
   )
 
-  const circleStroke = useTransform(
+  const smallParallax = useTransform(
     scrollYProgress,
-    _.throttle(scrollYProgress => scrollYProgress * -350, 100)
+    throttle(scrollYProgress => scrollYProgress * -350, 100)
   )
 
   const mediumParallax = useTransform(
     scrollYProgress,
-    _.throttle(scrollYProgress => scrollYProgress * -700, 100)
+    throttle(scrollYProgress => scrollYProgress * -700, 100)
   )
 
   // ---------- Hover state for Pillars ----------
@@ -324,7 +325,12 @@ const HomeIndex = ({ data }) => {
         <motion.h4 variants={subtitle} initial="hidden" animate="visible">
           The latest in Roblox gaming lives here.
         </motion.h4>
-        <motion.div variants={button} initial="hidden" animate="visible">
+        <motion.div
+          variants={button}
+          initial="hidden"
+          animate="visible"
+          whileTap={{ scale: 0.9 }}
+        >
           <DiscoverMore to="/about">DISCOVER MORE</DiscoverMore>
         </motion.div>
       </LandingText>
@@ -333,7 +339,7 @@ const HomeIndex = ({ data }) => {
           <FirstLine
             variants={line2}
             initial="hidden"
-            animate={sectionInView1 ? "visible" : "hidden"}
+            animate={sectionInView ? "visible" : "hidden"}
           >
             <WordSpan variants={word2}>Where </WordSpan>
             <WordSpan variants={word2}>Imagination</WordSpan>
@@ -341,7 +347,7 @@ const HomeIndex = ({ data }) => {
           <SecondLine
             variants={line2}
             initial="hidden"
-            animate={sectionInView1 ? "visible" : "hidden"}
+            animate={sectionInView ? "visible" : "hidden"}
           >
             <WordSpan variants={word2}>Comes</WordSpan>
             <WordSpan variants={word2}>to</WordSpan>
@@ -351,7 +357,7 @@ const HomeIndex = ({ data }) => {
         <motion.p
           variants={fadeIn}
           initial="hidden"
-          animate={sectionInView1 ? "visible" : "hidden"}
+          animate={sectionInView ? "visible" : "hidden"}
         >
           At Wonder Works Studio we are ushering in the new era of immersive
           gaming, where players can express, explore, and expand their
@@ -363,7 +369,7 @@ const HomeIndex = ({ data }) => {
           <CircleWrapper>
             <svg.Circle />
           </CircleWrapper>
-          <CircleStrokeWrapper style={{ y: circleStroke }}>
+          <CircleStrokeWrapper style={{ y: smallParallax }}>
             <svg.CircleStroke />
           </CircleStrokeWrapper>
           <BlueTrianglesWrapper>
@@ -372,10 +378,10 @@ const HomeIndex = ({ data }) => {
           <PurpleTriangleWrapper style={{ y: mediumParallax }}>
             <svg.PurpleTriangle />
           </PurpleTriangleWrapper>
-          <OrangeTriangleWrapper style={{ y: circleStroke }}>
+          <OrangeTriangleWrapper style={{ y: smallParallax }}>
             <svg.OrangeTriangle />
           </OrangeTriangleWrapper>
-          <GreenTriangleWrapper style={{ y: circleStroke }}>
+          <GreenTriangleWrapper style={{ y: smallParallax }}>
             <svg.GreenTriangle />
           </GreenTriangleWrapper>
           <BlueTriangleWrapper style={{ y: mediumParallax }}>
@@ -496,6 +502,7 @@ const HomeIndex = ({ data }) => {
             <Typewriter
               options={{
                 loop: true,
+                autoStart: false,
               }}
               onInit={typewriter => {
                 typewriter
@@ -600,9 +607,7 @@ const HomeIndex = ({ data }) => {
         </Logos>
       </Press>
       <LatestProjects ref={blueSectionRef}>
-        <div>
-          <h1>Latest projects</h1>
-        </div>
+        <LatestProjectsCarousel />
       </LatestProjects>
       <InvestmentCenter>
         <InvestmentWrapper ref={countUpRef}>
@@ -1135,13 +1140,13 @@ const Logos = styled(motion.div)`
 
   div {
     background-color: var(--color-green);
-    /* border: 1px solid black; */
     overflow: hidden;
   }
 `
 
 const LatestProjects = styled.section`
-  height: 100vh;
+  /* height: 100vh; */
+  padding-bottom: 3rem;
   background-color: var(--color-black);
 
   display: flex;

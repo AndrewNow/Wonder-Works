@@ -34,6 +34,7 @@ export const TeamCarousel = ({ index }) => {
   const [emblaRef, embla] = useEmblaCarousel({
     slidesToScroll: 1,
     startIndex: Index,
+    align: "start",
     //here is where we pass in
   })
 

@@ -7,7 +7,6 @@ import Seo from "../components/seo"
 import styled from "styled-components"
 import {
   motion,
-  useSpring,
   useViewportScroll,
   useTransform,
 } from "framer-motion"
@@ -20,7 +19,6 @@ import MailchimpComponent from "../components/Mailchimp/component"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
-
   // ----------framer motion animation variants----------
   const line = {
     visible: {
@@ -186,12 +184,12 @@ const About = ({ data }) => {
   )
 
   // ---------- Parrallax scroll logic using Framer  ----------
-  let _ = require("lodash")
+  let throttle = require("lodash/throttle")
 
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const mediumParallax = useTransform(
     scrollYProgress,
-    _.throttle(scrollYProgress => scrollYProgress * 600, 50)
+    throttle(scrollYProgress => scrollYProgress * 600, 50)
   )
 
   return (

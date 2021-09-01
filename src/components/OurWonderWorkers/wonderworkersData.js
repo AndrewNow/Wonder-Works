@@ -14,14 +14,14 @@ export const workerData = [
   {
     name: "Zach Letter",
     title: "CEO",
-    style: {zIndex: "10", transform: "translate3d(0, 3rem, 0)"},
+    style: { zIndex: "10", transform: "translate3d(0, 3rem, 0)" },
     portal: <PinkPortal />,
     bio: "Most of the time, Megan can be spotted with a Starbucks drink in her hand, fueling her creative mind power to be at 150%. With this energy, she has launched her own brand, Stay Peachy, and a game called Overlook Bay on Roblox. Shortly after, Wonder Works Studio was born and now, she and her husband Zach will run this studio right out of the ballpark by creating more games for players of all ages. When Megan is not playing video games, you can find her taking part in her new podcast channel, Party of Two, where she will discuss everyday topics with special guests or hanging out with her fur babies and Zach.",
   },
   {
     name: "Joshua Mixon",
     title: "Director of Operations",
-    style: {zIndex: "10", transform: "translate3d(0, 3rem, 0)"},
+    style: { zIndex: "10", transform: "translate3d(0, 3rem, 0)" },
     portal: <PinkPortal />,
     bio: "Most of the time, Megan can be spotted with a Starbucks drink in her hand, fueling her creative mind power to be at 150%. With this energy, she has launched her own brand, Stay Peachy, and a game called Overlook Bay on Roblox. Shortly after, Wonder Works Studio was born and now, she and her husband Zach will run this studio right out of the ballpark by creating more games for players of all ages. When Megan is not playing video games, you can find her taking part in her new podcast channel, Party of Two, where she will discuss everyday topics with special guests or hanging out with her fur babies and Zach.",
   },
@@ -42,7 +42,7 @@ export const workerData = [
   {
     name: "Benjy Kaplan",
     title: "Game Designer",
-    style: { zIndex: "10", transform: "translate3d(0, 3rem, 0)"},
+    style: { zIndex: "10", transform: "translate3d(0, 3rem, 0)" },
     portal: <BluePortal />,
     bio: "Most of the time, Megan can be spotted with a Starbucks drink in her hand, fueling her creative mind power to be at 150%. With this energy, she has launched her own brand, Stay Peachy, and a game called Overlook Bay on Roblox. Shortly after, Wonder Works Studio was born and now, she and her husband Zach will run this studio right out of the ballpark by creating more games for players of all ages. When Megan is not playing video games, you can find her taking part in her new podcast channel, Party of Two, where she will discuss everyday topics with special guests or hanging out with her fur babies and Zach.",
   },
@@ -60,7 +60,7 @@ export const WonderWorkersData = () => {
     query WonderWorkers {
       wwImage: allFile(
         filter: { relativeDirectory: { eq: "Team" } }
-        sort: { fields: childrenImageSharp___fixed___originalName, order: ASC }
+        sort: { fields: name, order: ASC }
       ) {
         nodes {
           childImageSharp {
@@ -97,4 +97,3 @@ export const WonderWorkersData = () => {
     </>
   )
 }
-

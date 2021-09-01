@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { WonderWorkersData } from "./wonderworkersData"
 
 const WonderWorkers = () => {
-
   return (
     <>
       <Title>
@@ -36,5 +35,4 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   margin: 0 auto;
   width: 90%;
-  
 `
