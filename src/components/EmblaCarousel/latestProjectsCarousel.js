@@ -95,7 +95,6 @@ const LatestProjectsCarousel = () => {
             })}
           </EmblaContainer>
         </EmblaViewport>
-
         <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
         <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
         <EmblaProgress>

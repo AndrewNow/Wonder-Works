@@ -5,17 +5,14 @@ import { useInView } from "react-intersection-observer"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import styled from "styled-components"
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-} from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
 import * as svg from "../svg/aboutpage"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import LetsWork from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
+import { AsSeenOn } from "../components/asSeenOn"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -81,22 +78,6 @@ const About = ({ data }) => {
     hidden: {
       y: 100,
       opacity: 0,
-    },
-  }
-  const logoParent = {
-    visible: {
-      transition: {
-        staggerChildren: 0.125,
-      },
-    },
-    hidden: {},
-  }
-  const logoMask = {
-    visible: {
-      height: "auto",
-    },
-    hidden: {
-      height: 0,
     },
   }
   const skateboardAnimation = {
@@ -245,67 +226,7 @@ const About = ({ data }) => {
         </LandingText>
         <Press>
           <h4>As Seen On...</h4>
-          <Logos
-            ref={logosRef}
-            variants={logoParent}
-            initial="hidden"
-            animate={logosInView && "visible"}
-          >
-            <motion.div variants={logoMask}>
-              <StaticImage
-                src="../images/Home/asSeenOn/Forbes.png"
-                alt="Forbes logo"
-                placeholder="none"
-                quality={100}
-                height={35}
-              />
-            </motion.div>
-            <motion.div variants={logoMask}>
-              <StaticImage
-                src="../images/Home/asSeenOn/CNBC.png"
-                alt="CNBC logo"
-                placeholder="none"
-                quality={100}
-                height={35}
-              />
-            </motion.div>
-            <motion.div variants={logoMask}>
-              <StaticImage
-                src="../images/Home/asSeenOn/npr.png"
-                alt="n p r logo"
-                placeholder="none"
-                quality={100}
-                height={35}
-              />
-            </motion.div>
-            <motion.div variants={logoMask}>
-              <StaticImage
-                src="../images/Home/asSeenOn/edc.png"
-                alt="e d c logo"
-                placeholder="none"
-                quality={100}
-                height={35}
-              />
-            </motion.div>
-            <motion.div variants={logoMask}>
-              <StaticImage
-                src="../images/Home/asSeenOn/Bloomberg.png"
-                alt="Forbes logo"
-                placeholder="none"
-                quality={100}
-                height={35}
-              />
-            </motion.div>
-            <motion.div variants={logoMask}>
-              <StaticImage
-                src="../images/Home/asSeenOn/B2.png"
-                alt="B2 logo"
-                placeholder="none"
-                quality={100}
-                height={35}
-              />
-            </motion.div>
-          </Logos>
+          <AsSeenOn />
         </Press>
       </OrangeBg>
       <StudioCollab ref={pillarsRef}>
@@ -563,25 +484,13 @@ const Press = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 5rem;
 
   h4 {
     padding-top: 5rem;
     padding-bottom: 2rem;
     font-size: 30px;
     font-family: "calibre-semibold";
-  }
-`
-
-const Logos = styled(motion.div)`
-  min-width: 40%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 5rem;
-
-  div {
-    overflow: hidden;
-    max-height: 50px;
   }
 `
 

@@ -11,6 +11,7 @@ import * as svg from "../svg/homepage"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
+import {HomePageAsSeenOn} from "../components/asSeenOn"
 import ContactUs from "../components/contactUs"
 import {
   useGlobalDispatchContext,
@@ -20,8 +21,8 @@ import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCa
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
+  
   // ---------- intersection observer logic, Refs ----------
-  let throttle = require("lodash/throttle")
 
   const ref = useRef()
   const [sectionRef, sectionInView] = useInView({
@@ -155,6 +156,8 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 13,
+        staggerChildren: .25,
+        delayChildren: .15,
       },
     },
     hidden: {
@@ -214,23 +217,6 @@ const HomeIndex = ({ data }) => {
     },
   }
 
-  const logoParent = {
-    visible: {
-      transition: {
-        staggerChildren: 0.125,
-      },
-    },
-    hidden: {},
-  }
-  const logoMask = {
-    visible: {
-      height: "auto",
-    },
-    hidden: {
-      height: 0,
-    },
-  }
-
   const circleAnimation = {
     inView: {
       transition: {
@@ -275,6 +261,7 @@ const HomeIndex = ({ data }) => {
     scrollYProgress => scrollYProgress * 750
   )
 
+  let throttle = require("lodash/throttle")
   const smallParallax = useTransform(
     scrollYProgress,
     throttle(scrollYProgress => scrollYProgress * -350, 100)
@@ -550,61 +537,7 @@ const HomeIndex = ({ data }) => {
       </Pillars>
       <Press>
         <h4>As Seen On...</h4>
-        <Logos
-          ref={logosRef}
-          variants={logoParent}
-          initial="hidden"
-          animate={logosInView && "visible"}
-        >
-          <motion.div variants={logoMask}>
-            <StaticImage
-              src="../images/Home/asSeenOn/Forbes.png"
-              alt="Forbes logo"
-              placeholder="none"
-              quality={100}
-            />
-          </motion.div>
-          <motion.div variants={logoMask}>
-            <StaticImage
-              src="../images/Home/asSeenOn/CNBC.png"
-              alt="CNBC logo"
-              placeholder="none"
-              quality={100}
-            />
-          </motion.div>
-          <motion.div variants={logoMask}>
-            <StaticImage
-              src="../images/Home/asSeenOn/npr.png"
-              alt="n p r logo"
-              placeholder="none"
-              quality={100}
-            />
-          </motion.div>
-          <motion.div variants={logoMask}>
-            <StaticImage
-              src="../images/Home/asSeenOn/edc.png"
-              alt="e d c logo"
-              placeholder="none"
-              quality={100}
-            />
-          </motion.div>
-          <motion.div variants={logoMask}>
-            <StaticImage
-              src="../images/Home/asSeenOn/Bloomberg.png"
-              alt="Forbes logo"
-              placeholder="none"
-              quality={100}
-            />
-          </motion.div>
-          <motion.div variants={logoMask}>
-            <StaticImage
-              src="../images/Home/asSeenOn/B2.png"
-              alt="B2 logo"
-              placeholder="none"
-              quality={100}
-            />
-          </motion.div>
-        </Logos>
+        <HomePageAsSeenOn />
       </Press>
       <LatestProjects ref={blueSectionRef}>
         <LatestProjectsCarousel />
@@ -642,6 +575,9 @@ const HomeIndex = ({ data }) => {
               See where we’re headed and how we’re growing from <br />
               navigating platform trends to uncovering user desires.
             </motion.p>
+            <motion.div variants={word} whileTap={{ scale: 0.9 }}>
+              <DiscoverMore to="/investors">LEARN MORE</DiscoverMore>
+            </motion.div>
           </Brief>
           <Stats>
             <Columns>
@@ -1116,6 +1052,7 @@ const PillarHoverInner = styled(motion.div)`
 `
 
 const Press = styled.div`
+  padding-bottom: 5rem;
   background-color: var(--color-green);
   width: 100%;
   display: flex;
@@ -1127,20 +1064,6 @@ const Press = styled.div`
     padding-top: 10rem;
     padding-bottom: 5rem;
     font-family: "calibre-semibold";
-  }
-`
-
-const Logos = styled(motion.div)`
-  min-width: 70%;
-  height: 200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10rem;
-
-  div {
-    background-color: var(--color-green);
-    overflow: hidden;
   }
 `
 
@@ -1182,6 +1105,9 @@ const Brief = styled(motion.div)`
   h4 {
     padding-bottom: 2.5rem;
     font-family: "calibre-medium";
+  }
+  p {
+    padding-bottom: 4rem;
   }
 `
 
@@ -1231,6 +1157,7 @@ const Column = styled(motion.div)`
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
   text-align: center;
 

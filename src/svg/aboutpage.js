@@ -578,12 +578,12 @@ export const PinkGears = () => {
   const degrees = useSpring(yRange, {
     stiffness: 105,
     damping: 50,
-    mass: 10
+    mass: 25
   })
   const degrees2 = useSpring(yRange2, {
     stiffness: 105,
     damping: 50,
-    mass: 10
+    mass: 25
   })
 
   return (
