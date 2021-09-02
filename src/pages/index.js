@@ -84,9 +84,9 @@ const HomeIndex = ({ data }) => {
     return () => window.removeEventListener("scroll", onScroll)
   }, [toggleLightTheme, toggleBlueTheme])
 
-  useEffect(() => {
-    window.localStorage.setItem("theme", currentTheme)
-  }, [currentTheme])
+  // useEffect(() => {
+  //   window.localStorage.setItem("theme", currentTheme)
+  // }, [currentTheme])
 
   // ----------framer motion animation variants----------
   const line = {
