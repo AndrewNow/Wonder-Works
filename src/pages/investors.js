@@ -25,22 +25,88 @@ const Investors = ({ data }) => {
     triggerOnce: true,
   })
 
+  const [paragraphRef, paragraphInView] = useInView({
+    root: null,
+    threshold: 0.5,
+    triggerOnce: true,
+  })
+
   const setRefs = useCallback(
     //assign multiple refs with useInView
     node => {
       ref.current = node
       countUpRef(node)
+      paragraphRef(node)
     },
-    [countUpRef]
+    [countUpRef, paragraphRef]
   )
 
   // ---------- Animation logic ----------
+
+  const headerAnimation = {
+    visible: {
+      transition: {
+        duration: 2,
+        delay: 1,
+        delayChildren: 0.6,
+        staggerChildren: 0.2,
+        staggerDirection: 1,
+      },
+    },
+  }
+
+  const headerChildren = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+    hidden: {
+      y: 200,
+      opacity: 0,
+    },
+  }
+
+  const paragraphAnimation = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: 1,
+        ease: "easeOut",
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 60,
+    },
+  }
+  const paragraphAnimation2 = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: .85,
+        ease: "easeOut",
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 60,
+    },
+  }
 
   const circleAnimation = {
     inView: {
       transition: {
         duration: 0.5,
-        delay: 1,
+        delay: .5,
       },
       scale: 1,
     },
@@ -52,7 +118,7 @@ const Investors = ({ data }) => {
     inView: {
       transition: {
         duration: 0.5,
-        delay: 1.15,
+        delay: .65,
       },
       scale: 1,
     },
@@ -64,7 +130,7 @@ const Investors = ({ data }) => {
     inView: {
       transition: {
         duration: 0.5,
-        delay: 1.3,
+        delay: .8,
       },
       scale: 1,
     },
@@ -135,18 +201,34 @@ const Investors = ({ data }) => {
       </Header>
       <HeaderFlex>
         <Left>
-          <h1>
-            <span>Why</span> <br />
-            Wonder <br />
-            Works
-          </h1>
+          <motion.h1
+            variants={headerAnimation}
+            initial="hidden"
+            animate="visible"
+          >
+            <Mask>
+              <Span variants={headerChildren}>Why</Span>
+              <br />
+            </Mask>
+            <Mask>
+              <Span variants={headerChildren}>Wonder</Span>
+              <br />
+            </Mask>
+            <Mask>
+              <Span variants={headerChildren}>Works</Span>
+            </Mask>
+          </motion.h1>
         </Left>
         <Right>
-          <h3>
+          <motion.h3
+            variants={paragraphAnimation}
+            initial="hidden"
+            animate="visible"
+          >
             At Wonder Works Studio, we are ushering in the new era of immersive
             gaming, where players can express, explore, and expand their
             creativity.
-          </h3>
+          </motion.h3>
         </Right>
       </HeaderFlex>
       <StatsWrapper ref={countUpRef}>
@@ -231,11 +313,15 @@ const Investors = ({ data }) => {
           </Column>
         </Columns>
       </StatsWrapper>
-      <ConnectWithUs>
-        <h3>
+      <ConnectWithUs ref={paragraphRef}>
+        <motion.h3
+          variants={paragraphAnimation2}
+          intial="hidden"
+          animate={paragraphInView ? "visible" : "hidden"}
+        >
           We build video games that spark imagination, encourage collaboration,
           and push innovation so gamers grow alongside the stories they create.
-        </h3>
+        </motion.h3>
         <DiscoverMore whileTap={{ scale: 0.9 }}>
           <a
             href="mailto: info@wonderworks.gg"
@@ -317,7 +403,7 @@ const Investors = ({ data }) => {
         <PastEvents>
           <h2>Past Events</h2>
           <AnimateSharedLayout>
-          {/* <AnimatePresence exitBeforeEnter> */}
+            {/* <AnimatePresence exitBeforeEnter> */}
             <EventsList layout>
               {/* we use .slice() to only render the declared number of events at once */}
               {/* otherwise, .map() would load all posts on the DOM at once */}
@@ -353,7 +439,7 @@ const Investors = ({ data }) => {
                 </EventsButton>
               )}
             </EventsList>
-          {/* </AnimatePresence> */}
+            {/* </AnimatePresence> */}
           </AnimateSharedLayout>
         </PastEvents>
       </EventsWrapper>
@@ -392,15 +478,23 @@ const HeaderFlex = styled.div`
 
 const Left = styled.div`
   align-self: flex-start;
-
   h1 {
     font-family: "ppwoodland-bold";
-    span {
+    div:nth-of-type(1) {
       font-size: 50px;
       line-height: 60px;
     }
   }
 `
+const Mask = styled.div`
+  overflow: hidden;
+  /* padding-top: .5rem; */
+`
+const Span = styled(motion.span)`
+  display: inline-block;
+  position: relative;
+`
+
 const Right = styled.div`
   align-self: flex-end;
   margin-top: 20rem;

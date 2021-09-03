@@ -1,11 +1,51 @@
-import React, { useState, useCallback, useEffect } from "react"
+import React, { useState, useCallback, useEffect, useRef } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import { NextButton, PrevButton } from "./buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 const PressCarousel = () => {
+  const ref = useRef()
+  const [pressRef, pressInView] = useInView({
+    root: null,
+    threshold: 0.5,
+    triggerOnce: true,
+  })
+
+  const setRefs = useCallback(
+    //assign multiple refs with useInView
+    node => {
+      ref.current = node
+      pressRef(node)
+    },
+    [pressRef]
+  )
+
+  const parentAnimation = {
+    visible: {
+      transition: {
+        staggerChildren: 0.25,
+      },
+    },
+    hidden: {},
+  }
+  const childAnimation = {
+    visible: {
+      // y: 0,
+      opacity: 1,
+      transition: {
+        duration: .75
+      },
+    },
+    hidden: {
+      // y: 20,
+      opacity: 0,
+    },
+  }
+
   const data = useStaticQuery(graphql`
     query pressCarousel {
       press: allFile(
@@ -97,12 +137,16 @@ const PressCarousel = () => {
   return (
     <Wrapper>
       <h2>Press</h2>
-      <Embla>
+      <Embla ref={pressRef}>
         <EmblaViewport ref={emblaRef}>
-          <EmblaContainer>
+          <EmblaContainer
+            variants={parentAnimation}
+            initial="hidden"
+            animate={pressInView ? "visible" : "hidden"}
+          >
             {slides.map((slide, index) => {
               return (
-                <EmblaSlide key={index}>
+                <EmblaSlide key={index} variants={childAnimation}>
                   <Entry>
                     <Top>
                       <p>{slide.date}</p>
@@ -180,14 +224,14 @@ const EmblaViewport = styled.div`
   width: 100%;
 `
 
-const EmblaContainer = styled.div`
+const EmblaContainer = styled(motion.div)`
   display: flex;
   user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
 `
-const EmblaSlide = styled.div`
+const EmblaSlide = styled(motion.div)`
   position: relative;
   width: 100%;
   margin-right: 50px;
