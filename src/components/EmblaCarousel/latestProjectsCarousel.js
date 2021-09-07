@@ -42,8 +42,6 @@ const LatestProjectsCarousel = () => {
     setPaused(false)
   }, [embla])
 
-  console.log(slidesInView, paused)
-
   // ---------- Run embla configurations ----------
   useEffect(() => {
     if (!embla) return

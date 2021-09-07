@@ -80,18 +80,16 @@ export const WonderWorkersData = () => {
       {workerData.map((worker, index) => {
         const avatar = data.wwImage.nodes[index].childImageSharp.gatsbyImageData
         return (
-          <>
-            <WonderWorkersComponent
-              key={index}
-              name={worker.name}
-              index={index}
-              title={worker.title}
-              portal={worker.portal}
-              bio={worker.bio}
-              avatar={avatar}
-              style={worker.style}
-            />
-          </>
+          <WonderWorkersComponent
+            key={worker.name + "'s key"}
+            name={worker.name}
+            index={index}
+            title={worker.title}
+            portal={worker.portal}
+            bio={worker.bio}
+            avatar={avatar}
+            style={worker.style}
+          />
         )
       })}
     </>

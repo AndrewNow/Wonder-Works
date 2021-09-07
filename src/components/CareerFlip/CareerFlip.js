@@ -137,7 +137,7 @@ const CareerFlip = () => {
           Interested in joining a team of imaginative, innovative creatives?
           Click below to see what we’re searching for—maybe it’s you!
         </p>
-        <PositionsLink to="/">See available positions</PositionsLink>
+        <PositionsLink to="/careers">See available positions</PositionsLink>
       </Right>
     </Wrapper>
   )

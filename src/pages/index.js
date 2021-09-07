@@ -400,10 +400,10 @@ const HomeIndex = ({ data }) => {
           >
             <PillarHoverInner>
               <p>
-                Growing our community is important to us and collaborating with
-                optimistic, adventurous individuals pushes our own creativity to
-                new heights. We’re always on the lookout for YouTubers and
-                influencers to help tell our story—let us know if that’s you!{" "}
+                Discover what’s in the works at Wonder Works Studio. We’re
+                always dreaming up new adventures in exciting roleplay games for
+                immersive, imaginative fun for everyone. Check out our ambitious
+                new projects or our latest launches—they all live here.
               </p>
             </PillarHoverInner>
           </PillarHover>
