@@ -285,13 +285,13 @@ const Flex = styled.div`
   }
 
   a {
-    transition: var(--hover-transition);
     align-self: flex-start;
     text-decoration: none;
     white-space: nowrap;
     font-family: "calibre-regular";
     color: var(--color-purple);
     font-size: 25px;
+    transition: var(--hover-transition);
     filter: opacity(0.5);
     :hover {
       filter: opacity(1);

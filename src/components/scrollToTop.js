@@ -54,7 +54,6 @@ const ScrollToTop = () => {
 
   const rotation = {
     hovered: {
-      scale: 1.1,
       rotate: 360,
       transition: {
         duration: 3,
@@ -63,11 +62,10 @@ const ScrollToTop = () => {
       },
     },
     nothovered: {
-      scale: 1,
       rotate: 0,
       transition: {
         duration: 1,
-        ease: "easeOut",
+        ease: "linear",
       },
     },
   }
@@ -118,8 +116,9 @@ const ScrollToTopButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.25));
+  
+  border: 2px solid var(--color-white);
+  /* filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.25)); */
 `
 
 const ArrowWrapper = styled.div`

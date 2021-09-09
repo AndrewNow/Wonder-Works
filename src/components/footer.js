@@ -8,10 +8,7 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <Inner>
-        <p>
-          © Wonder Works Studio, Inc. {new Date().getFullYear()}. <br />
-          Website by Blanck Studio
-        </p>
+        <WOShortLogo />
         <IconWrapper>
           <Icons>
             <motion.a
@@ -64,7 +61,10 @@ const Footer = () => {
               <Roblox />
             </motion.a>
           </Icons>
-          <WOShortLogo />
+          <p>
+            © Wonder Works Studio, Inc. {new Date().getFullYear()}. <br />
+            Website by Blanck Studio
+          </p>
         </IconWrapper>
       </Inner>
     </FooterWrapper>
@@ -95,6 +95,7 @@ const Inner = styled.div`
     font-family: "calibre-regular";
     font-size: 19px;
     line-height: 23px;
+    padding-right: 5rem;
   }
 `
 

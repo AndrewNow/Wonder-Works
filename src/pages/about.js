@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react"
+import React, { useRef, useCallback, useEffect } from "react"
 import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 import { useInView } from "react-intersection-observer"
@@ -10,9 +10,13 @@ import * as svg from "../svg/aboutpage"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
-import LetsWork from "../components/letsWork"
+import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
 import { AsSeenOn } from "../components/asSeenOn"
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "../context/globalContext"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -172,6 +176,23 @@ const About = ({ data }) => {
     scrollYProgress,
     throttle(scrollYProgress => scrollYProgress * 600, 50)
   )
+
+  // ---------- Set navbar color back to blue on page change  ----------
+  // If the navbar theme is currently "light" (white) and the user clicks to a different page, without this code, the navbar would stay white until the user refreshes. This code resets the theme to blue, our default state.
+  const { currentTheme } = useGlobalStateContext()
+  const dispatch = useGlobalDispatchContext()
+
+  const toggleBlueTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  }, [dispatch])
+
+  useEffect(() => {
+    toggleBlueTheme()
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem("theme", currentTheme)
+  }, [currentTheme])
 
   return (
     <Layout title={siteTitle}>

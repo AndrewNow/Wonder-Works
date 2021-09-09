@@ -1,9 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
-import { motion } from "framer-motion"
 
-const ContactUs = () => {
+export const ContactUsHomePage = () => {
   return (
     <Wrapper>
       <Left>
@@ -29,59 +27,6 @@ const ContactUs = () => {
           wonders <br />
           together.
         </h1>
-        <IconWrapper>
-          <Icons>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https:/twitter.com/WonderWorksRB"
-              rel="noreferrer"
-              target="_blank"
-              alt="Twitter social media link"
-            >
-              <Twitter />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.instagram.com/wonderworksstudio/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <Instagram />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
-              rel="noreferrer"
-              target="_blank"
-              alt="Instagram social media link"
-            >
-              <TikTok />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
-              rel="noreferrer"
-              target="_blank"
-              alt="Tik Tok social media link"
-            >
-              <YouTube />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.roblox.com/groups/6258143/Wonder-Works-Studio#!/about"
-              rel="noreferrer"
-              target="_blank"
-              alt="YouTube social media link"
-            >
-              <Roblox />
-            </motion.a>
-          </Icons>
-        </IconWrapper>
       </Left>
       <Right>
         <Contact>
@@ -141,7 +86,90 @@ const ContactUs = () => {
   )
 }
 
-export default ContactUs
+export const ContactUs = () => {
+  return (
+    <Wrapper>
+      <Left>
+        <Headline>
+          <h4>Contact Us</h4>
+          <svg
+            width="160"
+            height="3"
+            viewBox="0 0 160 3"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 1.84424H159.385"
+              stroke="#1A1748"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+            />
+          </svg>
+        </Headline>
+        <h2>
+          Let’s work <br />
+          wonders <br />
+          together.
+        </h2>
+      </Left>
+      <Right>
+        <Contact>
+          <p>
+            <strong>inquiries</strong>
+          </p>
+          <p>
+            for general <br />
+            inquiries
+          </p>
+          <a href="mailto:info@wonderworks.gg">info@wonderworks.gg</a>
+        </Contact>
+        <Contact>
+          <p>
+            <strong>press</strong>
+          </p>
+          <p>
+            for press <br />
+            press
+          </p>
+          <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
+        </Contact>
+        <Contact>
+          <p>
+            <strong>collabs</strong>
+          </p>
+          <p>
+            influencer <br />
+            collaborations
+          </p>
+          <a href="mailto:collab@wonderworks.gg">collab@wonderworks.gg</a>
+        </Contact>
+        <Contact>
+          <p>
+            <strong>careers</strong>
+          </p>
+          <p>
+            applications <br />
+            and inquiries
+          </p>
+          <a href="mailto:careers@wonderworks.gg">careers@wonderworks.gg</a>
+        </Contact>
+        <Contact>
+          <p>
+            <strong>partnerships</strong>
+          </p>
+          <p>
+            brand <br />
+            partnerships
+          </p>
+          <a href="mailto:partnerships@wonderworks.gg">
+            partnerships@wonderworks.gg
+          </a>
+        </Contact>
+      </Right>
+    </Wrapper>
+  )
+}
 
 const Headline = styled.div`
   display: flex;
@@ -170,26 +198,16 @@ const Left = styled.div`
     font-size: 126px;
     line-height: 130px;
     white-space: nowrap;
+    padding-bottom: 15rem;
+  }
+
+  h2 {
+    width: 60%;
+    font-family: "ppwoodland-light";
+    white-space: nowrap;
+    padding-bottom: 5rem;
   }
 `
-
-const IconWrapper = styled.div`
-  padding-top: 10rem;
-  width: 80%;
-`
-
-const Icons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  svg {
-    &:hover {
-      fill: #b16eac;
-    }
-  }
-`
-
 const Right = styled.div`
   align-self: flex-end;
 `

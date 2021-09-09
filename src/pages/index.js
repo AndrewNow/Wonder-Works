@@ -11,8 +11,8 @@ import * as svg from "../svg/homepage"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
-import {HomePageAsSeenOn} from "../components/asSeenOn"
-import ContactUs from "../components/contactUs"
+import { HomePageAsSeenOn } from "../components/asSeenOn"
+import { ContactUsHomePage } from "../components/contactUs"
 import {
   useGlobalDispatchContext,
   useGlobalStateContext,
@@ -21,7 +21,7 @@ import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCa
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
-  
+
   // ---------- intersection observer logic, Refs ----------
 
   const ref = useRef()
@@ -56,8 +56,8 @@ const HomeIndex = ({ data }) => {
   // ---------- if in view, update navigation menu text color to white ----------
   const blueSectionRef = useRef()
   const blueSectionRef2 = useRef()
-  const dispatch = useGlobalDispatchContext()
   const { currentTheme } = useGlobalStateContext()
+  const dispatch = useGlobalDispatchContext()
 
   const toggleLightTheme = useCallback(() => {
     dispatch({ type: "TOGGLE_THEME", theme: "light" })
@@ -84,9 +84,9 @@ const HomeIndex = ({ data }) => {
     return () => window.removeEventListener("scroll", onScroll)
   }, [toggleLightTheme, toggleBlueTheme])
 
-  // useEffect(() => {
-  //   window.localStorage.setItem("theme", currentTheme)
-  // }, [currentTheme])
+  useEffect(() => {
+    window.localStorage.setItem("theme", currentTheme)
+  }, [currentTheme])
 
   // ----------framer motion animation variants----------
   const line = {
@@ -156,8 +156,8 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 13,
-        staggerChildren: .25,
-        delayChildren: .15,
+        staggerChildren: 0.25,
+        delayChildren: 0.15,
       },
     },
     hidden: {
@@ -707,7 +707,7 @@ const HomeIndex = ({ data }) => {
         >
           <svg.PinkStarStroke />
         </PinkStarStrokeWrapper>
-        <ContactUs />
+        <ContactUsHomePage />
       </ContactUsWrapper>
     </Layout>
   )

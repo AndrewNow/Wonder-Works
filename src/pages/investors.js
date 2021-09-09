@@ -9,7 +9,7 @@ import CountUp from "react-countup"
 import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
-import ContactUs from "../components/contactUs"
+import {ContactUs} from "../components/contactUs"
 import { AsSeenOn } from "../components/asSeenOn"
 
 const Investors = ({ data }) => {
