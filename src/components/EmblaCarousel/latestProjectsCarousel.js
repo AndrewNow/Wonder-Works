@@ -146,7 +146,7 @@ const LatestProjectsCarousel = () => {
         // animate="visible"
         variants={button}
         initial="visible"
-        animate={hover && "visible"}
+        animate="visible"
         exit="hidden"
         aria-label="Play video"
         whileTap={{ scale: 0.9 }}
@@ -204,7 +204,7 @@ const LatestProjectsCarousel = () => {
                 <EmblaSlide
                   key={index}
                   onHoverStart={setHoverTrue}
-                  onHoverEnd={setHoverFalse}
+                  // onHoverEnd={setHoverFalse}
                 >
                   {/* {console.log("hover " + hover, "rotating " + rotatingButton)} */}
                   {/* {index >= 1 && (
@@ -232,13 +232,15 @@ const LatestProjectsCarousel = () => {
             })}
           </EmblaContainer>
         </EmblaViewport>
-        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
-        <EmblaProgress>
-          <EmblaProgressBar
-            style={{ transform: `translateX(calc(${scrollProgress}% * 2))` }}
-          />
-        </EmblaProgress>
+        <ProgressContainer>
+          {/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} /> */}
+          {/* <NextButton onClick={scrollNext} enabled={nextBtnEnabled} /> */}
+          <EmblaProgress>
+            <EmblaProgressBar
+              style={{ transform: `translateX(calc(${scrollProgress}% * 2))` }}
+            />
+          </EmblaProgress>
+        </ProgressContainer>
       </Embla>
     </Wrapper>
   )
@@ -272,7 +274,6 @@ const Wrapper = styled.div`
         transform: translate3d(5px, 0, 0);
       }
     }
-
     svg {
       margin-left: 0.2rem;
       padding-top: 0.1rem;
@@ -330,8 +331,35 @@ const EmblaProgress = styled.div`
   border-radius: 50px;
   margin-left: auto;
   margin-right: auto;
-  top: 75px;
+  /* top: 75px; */
 `
+
+const ProgressContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding-top: 3rem;
+
+  ::after {
+    cursor: pointer;
+    content: "Swipe right to view more videos!";
+    font-family: "calibre-regular-italic";
+    /* display: none; */
+    text-align: center;
+    color: var(--color-white);
+    padding-top: 1rem;
+    width: 100%;
+    height: 100px;
+    opacity: 0;
+    transform: translateY(.5rem);
+    position: absolute;
+    transition: all .75s;
+  }
+  :hover::after {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+`
+
 const EmblaProgressBar = styled.div`
   position: absolute;
   background-color: #6753a0;

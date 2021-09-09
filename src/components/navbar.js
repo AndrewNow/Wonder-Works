@@ -83,8 +83,8 @@ const Navbar = () => {
 export default Navbar
 
 const Nav = styled.nav`
-  z-index: 2000;
   position: fixed;
+  z-index: 2000;
   width: 92.5%;
   left: 50%;
   transform: translateX(-50%);

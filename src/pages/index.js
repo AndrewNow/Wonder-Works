@@ -1068,10 +1068,7 @@ const Press = styled.div`
 `
 
 const LatestProjects = styled.section`
-  /* height: 100vh; */
-  padding-bottom: 3rem;
   background-color: var(--color-black);
-
   display: flex;
   justify-content: center;
   align-items: center;
