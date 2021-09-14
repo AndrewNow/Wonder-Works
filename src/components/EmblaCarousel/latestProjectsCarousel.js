@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react"
+import React, { useState, useCallback, useEffect, useRef } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import { Link } from "gatsby"
@@ -15,8 +15,6 @@ const LatestProjectsCarousel = () => {
     speed: 10,
   })
 
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [slidesInView, setSlidesInView] = useState(0)
   const [paused, setPaused] = useState(true)
@@ -27,8 +25,6 @@ const LatestProjectsCarousel = () => {
 
   const onSelect = useCallback(() => {
     if (!embla) return
-    setPrevBtnEnabled(embla.canScrollPrev())
-    setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 
   // logic for scrollbar
@@ -76,11 +72,19 @@ const LatestProjectsCarousel = () => {
 
   const [videoRef, videoInView] = useInView({
     root: null,
-    threshold: 0.9,
+    threshold: 0.6,
     triggerOnce: false,
   })
 
-  console.log(videoInView)
+  const ref = useRef()
+  const setRefs = useCallback(
+    //assign multiple refs with useInView
+    node => {
+      ref.current = node
+      videoRef(node)
+    },
+    [videoRef]
+  )
 
   // ---------- animation logic ----------
 
@@ -125,9 +129,9 @@ const LatestProjectsCarousel = () => {
   const [hover, setHover] = useState(true)
   const [rotatingButton, setRotatingButton] = useState(true)
 
-  const setHoverFalse = useCallback(() => {
-    setHover(false)
-  }, [])
+  // const setHoverFalse = useCallback(() => {
+  //   setHover(false)
+  // }, [])
   const setHoverTrue = useCallback(() => {
     setHover(true)
   }, [])
@@ -143,7 +147,7 @@ const LatestProjectsCarousel = () => {
         // onMouseLeave={startRotate}
         // onHoverEnd={() => startRotate()}
         // onHoverStart={() => stopRotate()}
-        // animate="visible"
+        // animate={hover ? "visible" : "hidden"}
         variants={button}
         initial="visible"
         animate="visible"
@@ -177,7 +181,7 @@ const LatestProjectsCarousel = () => {
   }
 
   return (
-    <Wrapper ref={videoRef}>
+    <Wrapper ref={setRefs}>
       <h2>
         Latest <br />
         Projects
@@ -206,7 +210,6 @@ const LatestProjectsCarousel = () => {
                   onHoverStart={setHoverTrue}
                   // onHoverEnd={setHoverFalse}
                 >
-                  {/* {console.log("hover " + hover, "rotating " + rotatingButton)} */}
                   {/* {index >= 1 && (
                     <AnimatePresence>
                       {hover && <PlayIconReactPlayer key={`key${index}1`} />}
@@ -350,9 +353,9 @@ const ProgressContainer = styled.div`
     width: 100%;
     height: 100px;
     opacity: 0;
-    transform: translateY(.5rem);
+    transform: translateY(0.5rem);
     position: absolute;
-    transition: all .75s;
+    transition: all 0.75s;
   }
   :hover::after {
     opacity: 1;

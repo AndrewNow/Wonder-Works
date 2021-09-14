@@ -457,7 +457,7 @@ const LandingText = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 
   h1 {
@@ -466,11 +466,13 @@ const LandingText = styled.div`
     font-size: 140px;
     line-height: 100%;
     color: var(--color-black);
+    text-transform: lowercase;
+    padding-left: 8vw;
   }
 
   p {
     z-index: 2;
-    padding-left: 15vw;
+    padding-left: 8vw;
     align-self: flex-start;
     width: 72.5%;
     margin-top: 2.5rem;

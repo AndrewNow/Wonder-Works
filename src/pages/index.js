@@ -386,7 +386,7 @@ const HomeIndex = ({ data }) => {
               onMouseEnter={() => setHover({ topLeftHover: true })}
               onMouseLeave={() => setHover({ topLeftHover: false })}
               src="../images/Home/topleft.png"
-              alt="Playful text which reads 'Wonder Works Studio'"
+              alt="Playful text which reads 'Wonder Works Studio"
               placeholder="none"
               quality={100}
             />
