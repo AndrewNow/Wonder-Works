@@ -289,10 +289,10 @@ export const LetsWorkHomepage = ({ svg }) => {
   )
 }
 
-
 const BgSection = styled.section`
   padding: 15rem 0;
   background-color: var(--color-green);
+  position: relative;
   h1 {
     font-family: "ppwoodland-light";
   }
@@ -316,8 +316,9 @@ const Top = styled.div`
 const Flex = styled.div`
   width: 100%;
   margin: 0 auto;
+  position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 `
 

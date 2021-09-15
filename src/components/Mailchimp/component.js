@@ -1,10 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import MailchimpFormContainer from "./mailchimpFormContainer"
-import * as svg from "../../svg/miscellaneous"
+import * as SVG from "../../svg/miscellaneous"
 import { motion } from 'framer-motion'
 
-const MailchimpComponent = () => {
+const MailchimpComponent = ({smallStarSvg, bigStarSvg}) => {
   return (
     <Background>
       <Brief>
@@ -29,7 +29,7 @@ const MailchimpComponent = () => {
         <h3>(we won’t be annoying, promise)</h3>
         <MailchimpFormContainer />
         <SvgWrapper>
-          <svg.GreenStars />
+          {smallStarSvg}
         </SvgWrapper>
         <SvgStarWrapper
           animate={{
@@ -41,7 +41,7 @@ const MailchimpComponent = () => {
             },
           }}
         >
-          <svg.PurpleStar />
+          {bigStarSvg}
         </SvgStarWrapper>
       </Brief>
     </Background>

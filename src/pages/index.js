@@ -8,6 +8,7 @@ import Typewriter from "typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as svg from "../svg/homepage"
+import { GreenStars, PurpleStar } from "../svg/miscellaneous"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
@@ -678,7 +679,10 @@ const HomeIndex = ({ data }) => {
         >
           <svg.PurpleStrokeStar />
         </PurpleStrokeStarWrapper>
-        <MailchimpComponent />
+        <MailchimpComponent
+          smallStarSvg={<GreenStars />}
+          bigStarSvg={<PurpleStar />}
+        />
         <OrangeBackground>
           <svg.BigOrangeBackground />
         </OrangeBackground>

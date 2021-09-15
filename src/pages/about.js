@@ -7,6 +7,7 @@ import Seo from "../components/seo"
 import styled from "styled-components"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import * as svg from "../svg/aboutpage"
+import { GreenStars, PinkStar } from "../svg/miscellaneous"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
@@ -391,7 +392,10 @@ const About = ({ data }) => {
         >
           <svg.PurpleStrokeStar />
         </PurpleStrokeStarWrapper> */}
-        <MailchimpComponent />
+        <MailchimpComponent
+          smallStarSvg={<GreenStars />}
+          bigStarSvg={<PinkStar />}
+        />
         <BlueBackground>
           <svg.BigBlueBackground />
         </BlueBackground>
@@ -713,6 +717,12 @@ const Newsletter = styled.div`
   width: 100%;
   height: 100%;
 `
+// const PurpleStrokeStarWrapper = styled(motion.div)`
+//   position: absolute;
+//   z-index: 1;
+//   top: -12.5%;
+//   left: -3%;
+// `
 
 const BlueBackground = styled.div`
   position: absolute;

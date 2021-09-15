@@ -126,33 +126,33 @@ const ProjectsPageCarousel = () => {
     [videoRef]
   )
 
-  const overlayParent = {
-    visible: {
-      transition: {
-        duration: 2,
-        delay: 2.2,
-        delayChildren: 0.2,
-        staggerChildren: 0.2,
-        staggerDirection: 1,
-      },
-    },
-  }
-  const overlayChildren = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.75,
-        type: "spring",
-        stiffness: 100,
-        damping: 11,
-      },
-    },
-    hidden: {
-      y: 200,
-      opacity: 0,
-    },
-  }
+  // const overlayParent = {
+  //   visible: {
+  //     transition: {
+  //       duration: 2,
+  //       delay: 2.2,
+  //       delayChildren: 0.2,
+  //       staggerChildren: 0.2,
+  //       staggerDirection: 1,
+  //     },
+  //   },
+  // }
+  // const overlayChildren = {
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.75,
+  //       type: "spring",
+  //       stiffness: 100,
+  //       damping: 11,
+  //     },
+  //   },
+  //   hidden: {
+  //     y: 200,
+  //     opacity: 0,
+  //   },
+  // }
 
   const thumbnailBlink = {
     visible: {
@@ -192,7 +192,7 @@ const ProjectsPageCarousel = () => {
       <Embla
         initial={{opacity: 0}}
         animate={{opacity: 1}}
-        transition={{ duration: 1}}
+        transition={{ duration: .75}}
       >
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer>
