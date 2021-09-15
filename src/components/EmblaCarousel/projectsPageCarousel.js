@@ -23,21 +23,24 @@ const ProjectsPageCarousel = () => {
   //   dragFree: true,
   // })
 
-
   // ---------- Set up embla navigation buttons ----------
   const onThumbClick = useCallback(
     index => {
-      if (!embla
+      if (
+        !embla
         // || !emblaThumbs
-      ) return
+      )
+        return
       // if (emblaThumbs.clickAllowed()) embla.scrollTo(index)
       if (embla.clickAllowed()) embla.scrollTo(index)
       setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
       setPaused(false)
       setHover(false)
+      setThumbnailClick(true)
     },
 
-    [embla,
+    [
+      embla,
       // emblaThumbs
     ]
   )
@@ -46,8 +49,6 @@ const ProjectsPageCarousel = () => {
   //   if (!embla || !emblaThumbs) return
   //   setSlidesInView(embla.selectedScrollSnap())
   // }, [embla, emblaThumbs, setSlidesInView])
-
-
 
   // ---------- Set up embla pagination buttons ----------
   // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
@@ -68,9 +69,11 @@ const ProjectsPageCarousel = () => {
     onInView()
     // embla.on("select", onSelect)
     embla.on("settle", onInView)
-  }, [embla,
+  }, [
+    embla,
     // onSelect,
-    onInView])
+    onInView,
+  ])
 
   const videoLinks = [
     {
@@ -99,12 +102,13 @@ const ProjectsPageCarousel = () => {
     },
   ]
 
-  // ---------- intersection observer to pause video when not in view ----------
   const [hover, setHover] = useState(true)
 
   const setHoverTrue = useCallback(() => {
     setHover(true)
   }, [])
+
+  // ---------- intersection observer to pause video when not in view ----------
 
   const [videoRef, videoInView] = useInView({
     root: null,
@@ -122,10 +126,54 @@ const ProjectsPageCarousel = () => {
     [videoRef]
   )
 
+  const overlayParent = {
+    visible: {
+      transition: {
+        duration: 2,
+        delay: 2.2,
+        delayChildren: 0.2,
+        staggerChildren: 0.2,
+        staggerDirection: 1,
+      },
+    },
+  }
+  const overlayChildren = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.75,
+        type: "spring",
+        stiffness: 100,
+        damping: 11,
+      },
+    },
+    hidden: {
+      y: 200,
+      opacity: 0,
+    },
+  }
+
+  const thumbnailBlink = {
+    visible: {
+      opacity: 1,
+      transition: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 0.5,
+      },
+    },
+    hidden: {
+      opacity: 0,
+    },
+  }
+
+  const [thumbnailClick, setThumbnailClick] = useState(false)
+
   const InitialVideoOverlay = () => {
     return (
       <AnimatePresence>
-        <Background initial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <Background>
           <BackgroundText>
             <h2>Discover what’s in the works at Wonder Works Studio.</h2>
             <p>
@@ -141,7 +189,11 @@ const ProjectsPageCarousel = () => {
 
   return (
     <Wrapper ref={setRefs}>
-      <Embla>
+      <Embla
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{ duration: 1}}
+      >
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer>
             {videoLinks.map((video, index) => {
@@ -171,7 +223,7 @@ const ProjectsPageCarousel = () => {
           <h5>Watch Trailers</h5>
         </WatchTrailers>
         <EmblaThumbnails
-          // ref={thumbViewportRef}
+        // ref={thumbViewportRef}
         >
           {videoLinks.map((video, index) => (
             <Thumb
@@ -184,9 +236,34 @@ const ProjectsPageCarousel = () => {
                 border: `2px solid ${video.trailerbuttoncolor}`,
               }}
             >
-              <p style={{ color: `${video.trailerbuttoncolor}` }}>
-                {video.trailerbuttontext}
-              </p>
+              <motion.p style={{ color: `${video.trailerbuttoncolor}` }}>
+                <span>
+                  {slidesInView === `video[${index}]` && videoInView && (
+                    <motion.div
+                      variants={thumbnailBlink}
+                      initial="hidden"
+                      animate={thumbnailClick ? "visible" : "hidden"}
+                      exit="hidden"
+                    >
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="5"
+                          cy="5"
+                          r="5"
+                          fill={`${video.trailerbuttoncolor}`}
+                        />
+                      </svg>
+                    </motion.div>
+                  )}
+                  {video.trailerbuttontext}
+                </span>
+              </motion.p>
             </Thumb>
           ))}
         </EmblaThumbnails>
@@ -214,7 +291,7 @@ const ProjectsPageCarousel = () => {
 
 export default ProjectsPageCarousel
 
-const Background = styled(motion.div)`
+const Background = styled.div`
   width: 100%;
   height: 100%;
   background-color: #1a174899;
@@ -251,7 +328,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Embla = styled.div`
+const Embla = styled(motion.div)`
   width: 80%;
   position: relative;
   /* background-color: #f7f7f710; */
@@ -289,32 +366,6 @@ const EmblaSlide = styled(motion.div)`
   aspect-ratio: 16 / 9;
 `
 
-// const ProgressContainer = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   padding-top: 3rem;
-
-//   ::after {
-//     cursor: pointer;
-//     content: "Swipe right to view more videos!";
-//     font-family: "calibre-regular-italic";
-//     /* display: none; */
-//     text-align: center;
-//     color: var(--color-white);
-//     padding-top: 1rem;
-//     width: 100%;
-//     height: 100px;
-//     opacity: 0;
-//     transform: translateY(0.5rem);
-//     position: absolute;
-//     transition: all 0.75s;
-//   }
-//   :hover::after {
-//     opacity: 1;
-//     transform: translateY(0rem);
-//   }
-// `
-
 const WatchTrailers = styled.div`
   text-align: center;
   margin-top: 4rem;
@@ -325,27 +376,45 @@ const WatchTrailers = styled.div`
 `
 
 const EmblaThumbnails = styled.div`
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 0 1rem;
 `
 
-const Thumb = styled.button`
+const Thumb = styled(motion.button)`
   background: none;
   text-transform: uppercase;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem;
   margin: 0 0.5rem;
   border-radius: 40px;
   box-sizing: border-box;
   cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  /* position: relative; */
+
+  span {
+    display: flex;
+    position: relative;
+
+    div {
+      left: -20px;
+      top: -10%;
+      position: absolute;
+    }
+  }
 `
 
 const KeepGoing = styled.div`
   right: 2.5%;
   bottom: 6%;
-  width: 70px;
-  height: 70px;
+  width: 71px;
+  height: 71px;
   position: absolute;
   border-radius: 100%;
   display: flex;
@@ -358,8 +427,11 @@ const ArrowWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  transform: translateY(-3px);
+  svg {
+    margin: 0;
+  }
 `
+
 const TextWrapper = styled(motion.div)`
   display: inline-flex;
   justify-content: center;
@@ -367,7 +439,8 @@ const TextWrapper = styled(motion.div)`
   position: absolute;
 
   svg {
-    width: 70px;
-    height: 70px;
+    width: 71px;
+    height: 71px;
+    margin: 0;
   }
 `

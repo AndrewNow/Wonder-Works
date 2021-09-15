@@ -271,6 +271,7 @@ const HomeIndex = ({ data }) => {
     scrollYProgress,
     throttle(scrollYProgress => scrollYProgress * -700, 100)
   )
+  
 
   // ---------- Hover state for Pillars ----------
   const [hover, setHover] = useState({

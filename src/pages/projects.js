@@ -4,7 +4,12 @@ import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
-import { motion } from "framer-motion"
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion"
 import ProjectsPageCarousel from "../components/EmblaCarousel/projectsPageCarousel"
 import { StaticImage } from "gatsby-plugin-image"
 import * as SVG from "../svg/projectspage"
@@ -51,6 +56,21 @@ const Projects = ({ data }) => {
   // ----------------- intersection observer logic -----------------
 
   const ref = useRef()
+  const [overlookBayRef, overlookBayInView] = useInView({
+    root: null,
+    threshold: 0.65,
+    triggerOnce: true,
+  })
+  const [timmehRef, timmehInView] = useInView({
+    root: null,
+    threshold: 0.65,
+    triggerOnce: true,
+  })
+  const [traitorRef, traitorInView] = useInView({
+    root: null,
+    threshold: 0.65,
+    triggerOnce: true,
+  })
   const [shopRef, shopInView] = useInView({
     root: null,
     threshold: 0.65,
@@ -61,10 +81,85 @@ const Projects = ({ data }) => {
     //assign multiple refs with useInView
     node => {
       ref.current = node
+      overlookBayRef(node)
+      timmehRef(node)
       shopRef(node)
     },
-    [shopRef]
+    [overlookBayRef, timmehRef, traitorRef, shopRef]
   )
+
+  // ---------- Parrallax scroll logic using Framer  ----------
+  const { scrollYProgress } = useViewportScroll({ passive: true })
+
+  let throttle = require("lodash/throttle")
+  const smallerParallax = useTransform(
+    scrollYProgress,
+    throttle(scrollYProgress => scrollYProgress * -150, 100)
+  )
+
+  const smallParallax = useTransform(
+    scrollYProgress,
+    scrollYProgress => scrollYProgress * -500
+  )
+
+  const smallParallaxSpring = useSpring(smallParallax, {
+    stiffness: 125,
+    damping: 50,
+  })
+
+  const mediumParallax = useTransform(
+    scrollYProgress,
+    throttle(scrollYProgress => scrollYProgress * -700, 100)
+  )
+
+  // ----------------- animation variants -----------------
+
+  const parent = {
+    visible: {
+      transition: {
+        duration: 2,
+        delay: 0.2,
+        delayChildren: 0.2,
+        staggerChildren: 0.2,
+        staggerDirection: 1,
+      },
+    },
+  }
+
+  const title = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.75,
+        type: "spring",
+        stiffness: 100,
+        damping: 11,
+      },
+    },
+    hidden: {
+      y: 200,
+      opacity: 0,
+    },
+  }
+
+  const body = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.75,
+        duration: 0.75,
+        type: "spring",
+        stiffness: 100,
+        damping: 11,
+      },
+    },
+    hidden: {
+      y: 50,
+      opacity: 0,
+    },
+  }
 
   return (
     <Layout title={siteTitle}>
@@ -72,20 +167,32 @@ const Projects = ({ data }) => {
       <CarouselWrapper ref={blueSectionRef}>
         <ProjectsPageCarousel />
       </CarouselWrapper>
-      <OverlookBay>
-        <OverlookBayTitle>
+      <OverlookBay ref={overlookBayRef}>
+        <OverlookBayTitle
+          variants={parent}
+          initial="hidden"
+          animate={overlookBayInView ? "visible" : "hidden"}
+        >
           <h1>
-            Overlook <br /> Bay
+            <motion.div variants={title}>
+              Overlook <br />
+            </motion.div>
+            <motion.div variants={title}>Bay</motion.div>
           </h1>
         </OverlookBayTitle>
-        <OverlookBayBody>
-          <p>
+        <OverlookBayBody
+          variants={parent}
+          initial="hidden"
+          animate={overlookBayInView ? "visible" : "hidden"}
+        >
+          <motion.p variants={body}>
             Are you ready to jump into Overlook Bay with your friends? Home to
             many land and sea creatures, explore the island with your friends in
             this Massively multiplayer online role-playing game. Collect pets,
             rent out your own cottage, and participate daily activities!
-          </p>
+          </motion.p>
           <OverlookRobloxLink
+            variants={body}
             href=""
             target="_blank"
             rel="noreferrer"
@@ -102,7 +209,7 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </LighthouseImageWrapper>
-        <MothImageWrapper>
+        <MothImageWrapper style={{ y: smallParallax }}>
           <StaticImage
             src="../images/Projects/moth.png"
             alt="Image of one of Overlook Bay's characters"
@@ -110,7 +217,7 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </MothImageWrapper>
-        <MermaidImageWrapper>
+        <MermaidImageWrapper style={{ y: smallParallax }}>
           <StaticImage
             src="../images/Projects/mermaid.png"
             alt="Image of one of Overlook Bay's characters"
@@ -130,23 +237,34 @@ const Projects = ({ data }) => {
           <BigCirclesWrapper>
             <SVG.OverlookBayBigCircles />
           </BigCirclesWrapper>
-          <SmallCirclesWrapper>
+          <SmallCirclesWrapper style={{ y: smallerParallax }}>
             <SVG.OverlookBaySmallCircles />
           </SmallCirclesWrapper>
         </SVGWrapper>
       </OverlookBay>
-      <Timmeh>
-        <TimmehTitle>
-          <h1>Timmeh</h1>
+      <Timmeh ref={timmehRef}>
+        <TimmehTitle
+          variants={parent}
+          initial="hidden"
+          animate={timmehInView ? "visible" : "hidden"}
+        >
+          <h1>
+            <motion.div variants={title}>Timmeh</motion.div>
+          </h1>
         </TimmehTitle>
-        <TimmehBody>
-          <p>
+        <TimmehBody
+          variants={parent}
+          initial="hidden"
+          animate={timmehInView ? "visible" : "hidden"}
+        >
+          <motion.p variants={body}>
             Are you ready to jump into Overlook Bay with your friends? Home to
             many land and sea creatures, explore the island with your friends in
             this Massively multiplayer online role-playing game. Collect pets,
             rent out your own cottage, and participate daily activities!
-          </p>
+          </motion.p>
           <TimmehRobloxLink
+            variants={body}
             href=""
             target="_blank"
             rel="noreferrer"
@@ -163,7 +281,16 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TextLogoWrapper>
-        <TimmehTopWrapper>
+        <TimmehTopWrapper
+          initial={{ scale: 0 }}
+          animate={{
+            scale: timmehInView ? 1 : 0,
+            transition: {
+              delay: 0.5,
+              duration: 1,
+            },
+          }}
+        >
           <StaticImage
             src="../images/Projects/timmehTop.png"
             alt="Roblox characters laid on the page"
@@ -171,7 +298,16 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TimmehTopWrapper>
-        <TimmehMiddleWrapper>
+        <TimmehMiddleWrapper
+          initial={{ scale: 0 }}
+          animate={{
+            scale: timmehInView ? 1 : 0,
+            transition: {
+              delay: 0.35,
+              duration: 1,
+            },
+          }}
+        >
           <StaticImage
             src="../images/Projects/timmehMiddle.png"
             alt="Roblox characters laid on the page"
@@ -179,7 +315,17 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TimmehMiddleWrapper>
-        <TimmehBottomWrapper>
+        <TimmehBottomWrapper
+          initial={{ scale: 0 }}
+          animate={{
+            scale: timmehInView ? 1 : 0,
+            transition: {
+              delay: 0.15,
+              duration: 1,
+            },
+          }}
+          style={{ y: smallParallax }}
+        >
           <StaticImage
             src="../images/Projects/timmehBottom.png"
             alt="Roblox characters laid on the page"
@@ -188,24 +334,35 @@ const Projects = ({ data }) => {
           />
         </TimmehBottomWrapper>
         <SVGWrapper>
-          <BigGearsWrapper>
+          <BigGearsWrapper style={{ y: smallerParallax }}>
             <SVG.TimmehBigGears />
           </BigGearsWrapper>
-          <SmallGearsWrapper>
+          <SmallGearsWrapper style={{ y: smallParallax }}>
             <SVG.TimmehSmallGears />
           </SmallGearsWrapper>
         </SVGWrapper>
       </Timmeh>
-      <Traitor>
-        <TraitorTitle>
-          <h1>Traitor</h1>
+      <Traitor ref={traitorRef}>
+        <TraitorTitle
+          variants={parent}
+          initial="hidden"
+          animate={traitorInView ? "visible" : "hidden"}
+        >
+          <h1>
+            <motion.div variants={title}>Traitor</motion.div>
+          </h1>
         </TraitorTitle>
-        <TraitorBody>
-          <p>
+        <TraitorBody
+          variants={parent}
+          initial="hidden"
+          animate={traitorInView ? "visible" : "hidden"}
+        >
+          <motion.p variants={body}>
             Test out your intuition in this game of social deduction. Can you
             figure who the traitor is among your friends?
-          </p>
+          </motion.p>
           <TraitorRobloxLink
+            variants={body}
             href=""
             target="_blank"
             rel="noreferrer"
@@ -220,7 +377,7 @@ const Projects = ({ data }) => {
             <SVG.TraitorStars />
           </TraitorStarsWrapper>
         </SVGWrapper>
-        <TraitorLeftImageWrapper>
+        <TraitorLeftImageWrapper style={{ y: smallerParallax }}>
           <StaticImage
             src="../images/Projects/traitorleft.png"
             alt="Image of a Roblox character with a knife sneaking up on another character, who is preoccupied with an electrical task"
@@ -228,7 +385,7 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TraitorLeftImageWrapper>
-        <TraitorMiddleImageWrapper>
+        <TraitorMiddleImageWrapper >
           <StaticImage
             src="../images/Projects/traitormiddle.png"
             alt="Character with a gun pointed at them"
@@ -236,7 +393,7 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TraitorMiddleImageWrapper>
-        <TraitorRightImageWrapper>
+        <TraitorRightImageWrapper style={{ y: smallParallax }}>
           <StaticImage
             src="../images/Projects/traitorright.png"
             alt="Image of a Roblox character, back facing the viewer, with a gun pointed at another character."
@@ -326,19 +483,129 @@ const Projects = ({ data }) => {
         <Collabs>
           <h2>Collabs</h2>
           <Tiles>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              ></Image>
+              <p>KREEKCRAFT</p>
+            </Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              ></Image>
+              <p>TBA</p>
+            </Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              ></Image>
+              <p>TBA</p>
+            </Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              ></Image>
+              <p>TBA</p>
+            </Tile>
           </Tiles>
         </Collabs>
         <Collabs>
           <h2>Partnerships</h2>
           <Tiles>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              >
+                <StaticImage
+                  src="../images/Projects/logo-juniper.png"
+                  alt="Juniper Play's logo"
+                  placeholder="tracedSVG"
+                  quality={80}
+                />
+              </Image>
+              <p>Juniper Play</p>
+            </Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              >
+                <StaticImage
+                  src="../images/Projects/logo-phatmojo.png"
+                  alt="Phat Mojo's logo."
+                  placeholder="tracedSVG"
+                  quality={80}
+                />
+              </Image>
+              <p>Phat Mojo</p>
+            </Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              ></Image>
+              <p>TBA</p>
+            </Tile>
+            <Tile>
+              <Image
+                initial={{
+                  boxShadow: "6px 6px 0px #1a1748",
+                }}
+                whileHover={{
+                  boxShadow: "16px 16px 0px #1a1748",
+                  y: -10,
+                  x: -10,
+                }}
+              ></Image>
+              <p>TBA</p>
+            </Tile>
           </Tiles>
         </Collabs>
       </CollabSection>
@@ -370,7 +637,7 @@ const OverlookBay = styled.section`
   height: 110vh;
 `
 
-const OverlookBayTitle = styled.div`
+const OverlookBayTitle = styled(motion.div)`
   width: 95%;
   margin: 0 auto;
   padding: 5rem;
@@ -383,12 +650,13 @@ const OverlookBayTitle = styled.div`
     text-transform: uppercase;
     text-align: right;
     color: var(--color-white);
+    overflow: hidden;
   }
 `
 
 // ----------------------- Overlook Bay -----------------------
 
-const OverlookBayBody = styled.div`
+const OverlookBayBody = styled(motion.div)`
   width: 32.5%;
   padding-left: 3rem;
   margin: 0 auto;
@@ -428,7 +696,7 @@ const SVGWrapper = styled.div`
   height: 100%;
 `
 
-const SmallCirclesWrapper = styled.div`
+const SmallCirclesWrapper = styled(motion.div)`
   position: absolute;
   top: 10%;
   right: 0;
@@ -439,21 +707,21 @@ const BigCirclesWrapper = styled.div`
   left: -2.5%;
 `
 
-const LighthouseImageWrapper = styled.div`
+const LighthouseImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 3;
   top: 0;
 `
-const MothImageWrapper = styled.div`
+const MothImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 4;
   top: 50%;
   left: 13%;
 `
-const MermaidImageWrapper = styled.div`
+const MermaidImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 5;
-  top: 37%;
+  top: 40%;
   right: 3%;
 `
 const TextLogoWrapper = styled.div`
@@ -472,7 +740,7 @@ const Timmeh = styled.section`
   height: 110vh;
 `
 
-const TimmehTitle = styled.div`
+const TimmehTitle = styled(motion.div)`
   width: 85%;
   margin: 0 auto;
   padding-left: 5rem;
@@ -489,7 +757,7 @@ const TimmehTitle = styled.div`
     color: var(--color-white);
   }
 `
-const TimmehBody = styled.div`
+const TimmehBody = styled(motion.div)`
   width: 85%;
   margin: 0 auto;
   padding-left: 5rem;
@@ -520,34 +788,34 @@ const TimmehRobloxLink = styled(motion.a)`
     color: var(--color-darkblue);
   }
 `
-const TimmehTopWrapper = styled.div`
+const TimmehTopWrapper = styled(motion.div)`
   position: absolute;
   z-index: 3;
   top: 5%;
   right: 15%;
 `
-const TimmehMiddleWrapper = styled.div`
+const TimmehMiddleWrapper = styled(motion.div)`
   position: absolute;
   z-index: 4;
   top: 10%;
   right: 0;
 `
 
-const TimmehBottomWrapper = styled.div`
+const TimmehBottomWrapper = styled(motion.div)`
   position: absolute;
   z-index: 5;
-  top: 28%;
+  top: 50%;
   right: 10%;
 `
 
-const BigGearsWrapper = styled.div`
+const BigGearsWrapper = styled(motion.div)`
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: -10%;
 `
-const SmallGearsWrapper = styled.div`
+const SmallGearsWrapper = styled(motion.div)`
   position: absolute;
-  top: 10%;
+  top: 20%;
   left: 5%;
 `
 
@@ -560,11 +828,11 @@ const Traitor = styled.section`
   height: 110vh;
 `
 
-const TraitorTitle = styled.div`
+const TraitorTitle = styled(motion.div)`
   width: 85%;
   margin: 0 auto;
   padding-left: 5rem;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
   padding-top: 5%;
   position: relative;
   z-index: 2;
@@ -577,7 +845,7 @@ const TraitorTitle = styled.div`
     color: var(--color-white);
   }
 `
-const TraitorBody = styled.div`
+const TraitorBody = styled(motion.div)`
   width: 85%;
   margin: 0 auto;
   padding-left: 5rem;
@@ -626,22 +894,22 @@ const TraitorStarsWrapper = styled.div`
   top: 50%;
 `
 
-const TraitorLeftImageWrapper = styled.div`
+const TraitorLeftImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
   left: 0;
-  bottom: -25%;
+  bottom: -30%;
 `
-const TraitorMiddleImageWrapper = styled.div`
+const TraitorMiddleImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
   left: 35%;
   bottom: 20%;
 `
-const TraitorRightImageWrapper = styled.div`
+const TraitorRightImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 3;
-  bottom: -5%;
+  bottom: -35%;
   right: 0;
 `
 
@@ -771,16 +1039,28 @@ const Collabs = styled.div`
 `
 const Tiles = styled.div`
   padding-top: 10rem;
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 `
 const Tile = styled.div`
-  width: 200px;
-  height: 200px;
-  border: 2px solid var(--color-black);
-  border-radius: 10px;
-  box-shadow: 6px 6px 0px #1a1748;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    padding-top: 1rem;
+    text-align: center;
+    font-family: "calibre-medium";
+  }
 `
 
+const Image = styled(motion.div)`
+  width: 250px;
+  height: 250px;
+  border: 2px solid var(--color-black);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
