@@ -177,7 +177,6 @@ const About = ({ data }) => {
       logosRef(node)
       pillarsRef(node)
       meganzachRef(node)
-      horizontalScroll(node)
       StudioRef(node)
       JamsRef(node)
       CollabRef(node)
@@ -186,7 +185,6 @@ const About = ({ data }) => {
       pillarsRef,
       logosRef,
       meganzachRef,
-      horizontalScroll,
       StudioRef,
       JamsRef,
       CollabRef,
