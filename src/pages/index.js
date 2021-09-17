@@ -745,16 +745,53 @@ const StaircaseWrapper = styled.div`
   position: absolute;
   top: 23%;
   left: 8%;
+
+  @media (max-width: ${breakpoints.m}px) {
+    left: -6%;
+    top: 15%;
+    svg {
+      scale: 0.75;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    left: -34%;
+    top: 10%;
+    svg {
+      scale: 0.5;
+    }
+  }
 `
 const CogWrapper = styled.div`
   position: absolute;
   top: 53%;
   right: 40%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    top: 40%;
+    svg {
+      scale: 0.5;
+    }
+  }
 `
 const PortalWrapper = styled.div`
   position: absolute;
   top: 35%;
   right: 0%;
+
+  @media (max-width: ${breakpoints.m}px) {
+    right: -25%;
+    top: 40%;
+    svg {
+      scale: 0.65;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    right: -55%;
+    top: 30%;
+    svg {
+      scale: 0.5;
+    }
+  }
 `
 
 const LandingText = styled.div`
@@ -783,7 +820,11 @@ const LandingText = styled.div`
     text-transform: uppercase;
     color: var(--color-black);
   }
-
+  @media (max-width: ${breakpoints.m}px) {
+    h1 {
+      font-size: 8vw;
+    }
+  }
 `
 
 const Span = styled(motion.span)`

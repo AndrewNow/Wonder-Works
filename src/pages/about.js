@@ -243,26 +243,29 @@ const About = ({ data }) => {
 
   // ------------------- Calculate viewport width & height -------------------
   const getWindowDimensions = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const { innerWidth: width, innerHeight: height } = window
       return { width, height }
     }
   }
 
   const useWindowDimensions = () => {
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    )
-    useEffect(() => {
-      const handleResize = () => {
-        setWindowDimensions(getWindowDimensions())
-      }
-      window.addEventListener("resize", handleResize)
-      return () => window.removeEventListener("resize", handleResize)
-    }, [])
+    if (typeof window !== "undefined") {
+      const [windowDimensions, setWindowDimensions] = useState(
+        getWindowDimensions()
+      )
+      useEffect(() => {
+        const handleResize = () => {
+          setWindowDimensions(getWindowDimensions())
+        }
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+      }, [])
 
-    return windowDimensions
+      return windowDimensions
+    }
   }
+
   const { width } = useWindowDimensions()
 
   // ------------------- Framer horizontal scroll logic  -------------------
