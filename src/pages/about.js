@@ -162,7 +162,7 @@ const About = ({ data }) => {
     threshold: 0.5,
     triggerOnce: true,
   })
-  
+
   const [StudioRef, StudioRefInView] = useInView({
     root: null,
     threshold: 0.6,
@@ -243,8 +243,10 @@ const About = ({ data }) => {
 
   // ------------------- Calculate viewport width & height -------------------
   const getWindowDimensions = () => {
-    const { innerWidth: width, innerHeight: height } = window
-    return { width, height }
+    if (typeof window !== 'undefined') {
+      const { innerWidth: width, innerHeight: height } = window
+      return { width, height }
+    }
   }
 
   const useWindowDimensions = () => {

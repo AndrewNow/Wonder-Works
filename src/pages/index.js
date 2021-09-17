@@ -19,6 +19,7 @@ import {
   useGlobalStateContext,
 } from "../context/globalContext"
 import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCarousel"
+import breakpoints from "../components/breakpoints"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -770,7 +771,7 @@ const LandingText = styled.div`
   h1 {
     z-index: 2;
     font-family: "balgin-medium";
-    font-size: 140px;
+    font-size: 7.3vw;
     line-height: 100%;
     color: var(--color-black);
   }
@@ -782,6 +783,7 @@ const LandingText = styled.div`
     text-transform: uppercase;
     color: var(--color-black);
   }
+
 `
 
 const Span = styled(motion.span)`
@@ -789,6 +791,16 @@ const Span = styled(motion.span)`
   display: inline-block;
   position: relative;
   vertical-align: text-top;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-right: 2rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin-right: 1.5rem;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin-right: 1rem;
+  }
 `
 const First = styled(motion.div)`
   position: relative;
