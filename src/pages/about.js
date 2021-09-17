@@ -250,20 +250,20 @@ const About = ({ data }) => {
   }
 
   const useWindowDimensions = () => {
-    if (typeof window !== "undefined") {
-      const [windowDimensions, setWindowDimensions] = useState(
-        getWindowDimensions()
-      )
-      useEffect(() => {
+    const [windowDimensions, setWindowDimensions] = useState(
+      getWindowDimensions()
+    )
+    useEffect(() => {
+      if (typeof window !== "undefined") {
         const handleResize = () => {
           setWindowDimensions(getWindowDimensions())
         }
         window.addEventListener("resize", handleResize)
         return () => window.removeEventListener("resize", handleResize)
-      }, [])
+      }
+    }, [])
 
-      return windowDimensions
-    }
+    return windowDimensions
   }
 
   const { width } = useWindowDimensions()
