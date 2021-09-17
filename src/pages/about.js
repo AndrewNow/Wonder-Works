@@ -154,36 +154,58 @@ const About = ({ data }) => {
   // ---------- Intersection Observer logic ----------
 
   const ref = useRef()
-  const [logosRef, logosInView] = useInView({
-    root: null,
-    threshold: 0.85,
-    triggerOnce: true,
-  })
-  const [pillarsRef, pillarsInView] = useInView({
-    root: null,
-    threshold: 0.65,
-    triggerOnce: true,
-  })
+
+  const horizontalScroll = useRef()
+
   const [meganzachRef, meganzachInView] = useInView({
     root: null,
     threshold: 0.5,
     triggerOnce: true,
   })
+  
+  const [StudioRef, StudioRefInView] = useInView({
+    root: null,
+    threshold: 0.6,
+    triggerOnce: false,
+  })
+
+  const [JamsRef, JamsRefInView] = useInView({
+    root: null,
+    threshold: 0.8,
+    triggerOnce: false,
+  })
+
+  const [CollabRef, CollabRefInView] = useInView({
+    root: null,
+    threshold: 0.8,
+    triggerOnce: false,
+  })
+
+  // const [logosRef, logosInView] = useInView({
+  //   root: null,
+  //   threshold: 0.85,
+  //   triggerOnce: true,
+  // })
+  // const [pillarsRef, pillarsInView] = useInView({
+  //   root: null,
+  //   threshold: 0.65,
+  //   triggerOnce: true,
+  // })
 
   const setRefs = useCallback(
     //assign multiple refs with useInView
     node => {
       ref.current = node
-      logosRef(node)
-      pillarsRef(node)
+      // logosRef(node)
+      // pillarsRef(node)
       meganzachRef(node)
       StudioRef(node)
       JamsRef(node)
       CollabRef(node)
     },
     [
-      pillarsRef,
-      logosRef,
+      // pillarsRef,
+      // logosRef,
       meganzachRef,
       StudioRef,
       JamsRef,
@@ -197,7 +219,7 @@ const About = ({ data }) => {
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const mediumParallax = useTransform(
     scrollYProgress,
-    throttle(scrollYProgress => scrollYProgress * 600, 50)
+    throttle(scrollYProgress => scrollYProgress * 1750, 50)
   )
 
   // ---------- Set navbar color back to blue on page change  ----------
@@ -241,24 +263,7 @@ const About = ({ data }) => {
   }
   const { width } = useWindowDimensions()
 
-  // ------------------- Framer horizontal scroll logic & refs -------------------
-  const horizontalScroll = useRef()
-
-  const [StudioRef, StudioRefInView] = useInView({
-    root: null,
-    threshold: 0.6,
-    triggerOnce: false,
-  })
-  const [JamsRef, JamsRefInView] = useInView({
-    root: null,
-    threshold: 0.8,
-    triggerOnce: false,
-  })
-  const [CollabRef, CollabRefInView] = useInView({
-    root: null,
-    threshold: 0.8,
-    triggerOnce: false,
-  })
+  // ------------------- Framer horizontal scroll logic  -------------------
 
   const SideScrollData = [
     {
@@ -347,7 +352,7 @@ const About = ({ data }) => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: .25,
+        delay: 0.25,
         duration: 0.5,
       },
     },
@@ -456,7 +461,7 @@ const About = ({ data }) => {
             style={{ x: usexRightRange }}
             initial={{ opacity: 0 }}
             animate={{ opacity: sideScrollInView ? 1 : 0 }}
-            transition={{duration: .5, staggerChildren: .5}}
+            transition={{ duration: 0.5, staggerChildren: 0.5 }}
           >
             {SideScrollData.map((frame, i) => {
               return (
