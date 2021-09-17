@@ -2,9 +2,9 @@ import React, { useState, useCallback, useEffect, useRef } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { NextButton, PrevButton, PressPlaySVG } from "./buttons"
+import { PressPlaySVG } from "./buttons"
 import ReactPlayer from "react-player/file"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
 const LatestProjectsCarousel = () => {
@@ -20,7 +20,7 @@ const LatestProjectsCarousel = () => {
   const [paused, setPaused] = useState(true)
 
   // ---------- Set up embla pagination buttons ----------
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+  // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
 
   const onSelect = useCallback(() => {
@@ -39,7 +39,7 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
     setPaused(false)
-    setHover(false)
+    // setHover(false)
   }, [embla])
 
   // ---------- Run embla configurations ----------
@@ -126,15 +126,15 @@ const LatestProjectsCarousel = () => {
     },
   }
 
-  const [hover, setHover] = useState(true)
-  const [rotatingButton, setRotatingButton] = useState(true)
+  // const [hover, setHover] = useState(true)
+  // const [rotatingButton, setRotatingButton] = useState(true)
 
   // const setHoverFalse = useCallback(() => {
   //   setHover(false)
   // }, [])
-  const setHoverTrue = useCallback(() => {
-    setHover(true)
-  }, [])
+  // const setHoverTrue = useCallback(() => {
+  //   setHover(true)
+  // }, [])
 
   const PlayIconReactPlayer = () => {
     return (
@@ -157,7 +157,7 @@ const LatestProjectsCarousel = () => {
       >
         <TextWrapper
           variants={rotation}
-          animate={rotatingButton ? "rotate" : "noRotate"}
+          // animate={rotatingButton ? "rotate" : "noRotate"}
         >
           <PressPlaySVG />
         </TextWrapper>
@@ -207,7 +207,7 @@ const LatestProjectsCarousel = () => {
               return (
                 <EmblaSlide
                   key={index}
-                  onHoverStart={setHoverTrue}
+                  // onHoverStart={setHoverTrue}
                   // onHoverEnd={setHoverFalse}
                 >
                   {/* {index >= 1 && (
@@ -225,8 +225,8 @@ const LatestProjectsCarousel = () => {
                       videoInView
                     }
                     onEnded={() => setTimeout(() => scrollNext(), 5000)}
-                    onPlay={() => setTimeout(() => setHover(false), 1000)}
-                    onPause={() => setTimeout(() => setHover(true), 1000)}
+                    // onPlay={() => setTimeout(() => setHover(false), 1000)}
+                    // onPause={() => setTimeout(() => setHover(true), 1000)}
                     light={video.light}
                     playIcon={<PlayIconReactPlayer />}
                   />

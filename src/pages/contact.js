@@ -5,33 +5,34 @@ import Seo from "../components/seo"
 import styled from "styled-components"
 import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
-import * as SVG from "../svg/contactpage"
+import * as Svg from "../svg/contactpage"
 import { BlueStars, PurpleStar } from "../svg/miscellaneous"
 import { motion } from "framer-motion"
 
 const Contact = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Contact`
 
-  const [expandButton, setExpandButton] = useState(false)
+  const [expandProjectsButton, setExpandProjectsButton] = useState(false)
+  const [expandCareersButton, setExpandCareersButton] = useState(false)
 
   const handleProjectsPageTransition = () => {
-    setExpandButton(true)
-    // navigate to projects page after 1500 seconds, the time it takes for the animation to finish
-    setTimeout(() => navigate("/projects"), 500)
+    setExpandProjectsButton(true)
+    // navigate to projects page after 1.5 seconds (to let the button animation finish)
+    setTimeout(() => navigate("/projects"), 1500)
   }
   const handleCareersPageTransition = () => {
-    setExpandButton(true)
-    // navigate to projects page after 1500 seconds, the time it takes for the animation to finish
-    setTimeout(() => navigate("/careers"), 1000)
+    setExpandCareersButton(true)
+    // navigate to careers page after 1.5 seconds
+    setTimeout(() => navigate("/careers"), 1500)
   }
 
   const currentProjectsButton = {
     expand: {
-      scale: 15,
+      scale: 10,
       backgroundColor: "#1A1748",
       transition: {
         duration: 1,
-        ease: "easeInOut",
+        ease: "easeIn",
       },
     },
     normal: {
@@ -51,13 +52,13 @@ const Contact = ({ data }) => {
   return (
     <Layout title={siteTitle}>
       <Seo title="Contact" />
-      <LetsWork svg={<SVG.BlueGear />} />
+      <LetsWork svg={<Svg.BlueGear />} />
 
       <CurrentProjects
         onClick={handleProjectsPageTransition}
         variants={currentProjectsButton}
         initial="normal"
-        animate={expandButton ? "expand" : "normal"}
+        animate={expandProjectsButton ? "expand" : "normal"}
       >
         <CurrentProjectsText variants={buttonText}>
           <p>Current</p>
@@ -70,7 +71,7 @@ const Contact = ({ data }) => {
           onClick={handleCareersPageTransition}
           variants={currentProjectsButton}
           initial="normal"
-          animate={expandButton ? "expand" : "normal"}
+          animate={expandCareersButton ? "expand" : "normal"}
         >
           <OpenPositionsText variants={buttonText}>
             <p>Open</p>
@@ -92,14 +93,14 @@ const Contact = ({ data }) => {
             },
           }}
         >
-          <SVG.PurpleStrokeStar />
+          <Svg.PurpleStrokeStar />
         </PurpleStrokeStarWrapper>
         <MailchimpComponent
           smallStarSvg={<BlueStars />}
           bigStarSvg={<PurpleStar />}
         />
         <MailchimpSVG>
-          <SVG.PinkMailchimpBg />
+          <Svg.PinkMailchimpBg />
         </MailchimpSVG>
       </MailchimpWrapper>
     </Layout>

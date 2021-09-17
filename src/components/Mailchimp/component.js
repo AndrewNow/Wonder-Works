@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import MailchimpFormContainer from "./mailchimpFormContainer"
-import * as SVG from "../../svg/miscellaneous"
 import { motion } from 'framer-motion'
 
 const MailchimpComponent = ({smallStarSvg, bigStarSvg}) => {

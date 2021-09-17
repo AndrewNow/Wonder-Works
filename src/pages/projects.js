@@ -12,7 +12,7 @@ import {
 } from "framer-motion"
 import ProjectsPageCarousel from "../components/EmblaCarousel/projectsPageCarousel"
 import { StaticImage } from "gatsby-plugin-image"
-import * as SVG from "../svg/projectspage"
+import * as Svg from "../svg/projectspage"
 import {
   useGlobalDispatchContext,
   useGlobalStateContext,
@@ -102,15 +102,15 @@ const Projects = ({ data }) => {
     scrollYProgress => scrollYProgress * -500
   )
 
-  const smallParallaxSpring = useSpring(smallParallax, {
-    stiffness: 125,
-    damping: 50,
-  })
+  // const smallParallaxSpring = useSpring(smallParallax, {
+  //   stiffness: 125,
+  //   damping: 50,
+  // })
 
-  const mediumParallax = useTransform(
-    scrollYProgress,
-    throttle(scrollYProgress => scrollYProgress * -700, 100)
-  )
+  // const mediumParallax = useTransform(
+  //   scrollYProgress,
+  //   throttle(scrollYProgress => scrollYProgress * -700, 100)
+  // )
 
   // ----------------- animation variants -----------------
 
@@ -235,10 +235,10 @@ const Projects = ({ data }) => {
         </TextLogoWrapper>
         <SVGWrapper>
           <BigCirclesWrapper>
-            <SVG.OverlookBayBigCircles />
+            <Svg.OverlookBayBigCircles />
           </BigCirclesWrapper>
           <SmallCirclesWrapper style={{ y: smallerParallax }}>
-            <SVG.OverlookBaySmallCircles />
+            <Svg.OverlookBaySmallCircles />
           </SmallCirclesWrapper>
         </SVGWrapper>
       </OverlookBay>
@@ -335,10 +335,10 @@ const Projects = ({ data }) => {
         </TimmehBottomWrapper>
         <SVGWrapper>
           <BigGearsWrapper style={{ y: smallerParallax }}>
-            <SVG.TimmehBigGears />
+            <Svg.TimmehBigGears />
           </BigGearsWrapper>
           <SmallGearsWrapper style={{ y: smallParallax }}>
-            <SVG.TimmehSmallGears />
+            <Svg.TimmehSmallGears />
           </SmallGearsWrapper>
         </SVGWrapper>
       </Timmeh>
@@ -374,7 +374,7 @@ const Projects = ({ data }) => {
         <SVGWrapper>
           <TriangleWrapper />
           <TraitorStarsWrapper>
-            <SVG.TraitorStars />
+            <Svg.TraitorStars />
           </TraitorStarsWrapper>
         </SVGWrapper>
         <TraitorLeftImageWrapper style={{ y: smallerParallax }}>
@@ -439,7 +439,7 @@ const Projects = ({ data }) => {
                 },
               }}
             >
-              <SVG.PinkStar />
+              <Svg.PinkStar />
             </PinkStarWrapper>
           </ShopText>
           <ShopVideo>
@@ -464,12 +464,12 @@ const Projects = ({ data }) => {
                 },
               }}
             >
-              <SVG.OrangeStar />
+              <Svg.OrangeStar />
             </OrangeStarWrapper>
           </ShopVideo>
         </ShopFlex>
         <StayPeachyLink>
-          <SVG.LinkStar />
+          <Svg.LinkStar />
           <UnderlinedLink
             href="https://www.staypeachy.shop/"
             target="_blank"

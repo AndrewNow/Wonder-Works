@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { ScrollToTopText, ScrollToTopArrow } from "../svg/miscellaneous"
 import { AnimatePresence, motion } from "framer-motion"
@@ -17,7 +17,7 @@ const ScrollToTop = () => {
   }
 
   let debounce = require("lodash/debounce")
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
       if (typeof window !== "undefined") {
@@ -30,7 +30,7 @@ const ScrollToTop = () => {
     }
     window.addEventListener("scroll", debounce(toggleVisibility, 300))
     return () =>
-      window.removeEventListener("scroll", debounce(toggleVisibility, 300))
+      window.removeEventListener("scroll", toggleVisibility)
   }, [])
 
   const button = {

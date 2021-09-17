@@ -194,9 +194,12 @@ const PressCarousel = () => {
 export default PressCarousel
 
 const Wrapper = styled.div`
+background-color: var(--color-white);
   padding: 5rem 0;
   width: 90%;
   margin: 0 auto;
+  position: relative;
+  z-index: 10;
   h2 {
     padding: 20px;
     padding-bottom: 5rem;

@@ -7,7 +7,7 @@ import styled from "styled-components"
 import Typewriter from "typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import * as svg from "../svg/homepage"
+import * as Svg from "../svg/homepage"
 import { GreenStars, PurpleStar } from "../svg/miscellaneous"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
@@ -286,13 +286,13 @@ const HomeIndex = ({ data }) => {
       <Seo title="Home" />
       <Background style={{ y: homeBackground }}>
         <StaircaseWrapper>
-          <svg.Staircase />
+          <Svg.Staircase />
         </StaircaseWrapper>
         <CogWrapper>
-          <svg.Cog />
+          <Svg.Cog />
         </CogWrapper>
         <PortalWrapper>
-          <svg.Portal />
+          <Svg.Portal />
         </PortalWrapper>
       </Background>
       <LandingText>
@@ -356,25 +356,25 @@ const HomeIndex = ({ data }) => {
         </motion.p>
         <ImaginationBG>
           <CircleWrapper>
-            <svg.Circle />
+            <Svg.Circle />
           </CircleWrapper>
           <CircleStrokeWrapper style={{ y: smallParallax }}>
-            <svg.CircleStroke />
+            <Svg.CircleStroke />
           </CircleStrokeWrapper>
           <BlueTrianglesWrapper>
-            <svg.BlueTriangles />
+            <Svg.BlueTriangles />
           </BlueTrianglesWrapper>
           <PurpleTriangleWrapper style={{ y: mediumParallax }}>
-            <svg.PurpleTriangle />
+            <Svg.PurpleTriangle />
           </PurpleTriangleWrapper>
           <OrangeTriangleWrapper style={{ y: smallParallax }}>
-            <svg.OrangeTriangle />
+            <Svg.OrangeTriangle />
           </OrangeTriangleWrapper>
           <GreenTriangleWrapper style={{ y: smallParallax }}>
-            <svg.GreenTriangle />
+            <Svg.GreenTriangle />
           </GreenTriangleWrapper>
           <BlueTriangleWrapper style={{ y: mediumParallax }}>
-            <svg.BlueTriangle />
+            <Svg.BlueTriangle />
           </BlueTriangleWrapper>
         </ImaginationBG>
       </ImaginationSection>
@@ -393,7 +393,7 @@ const HomeIndex = ({ data }) => {
               quality={100}
             />
           </ImageWrapper>
-          <svg.TopLeftPillar />
+          <Svg.TopLeftPillar />
           <PillarHover
             variants={pillarVariants}
             initial="hidden"
@@ -484,7 +484,7 @@ const HomeIndex = ({ data }) => {
               </p>
             </PillarHoverInner>
           </PillarHover>
-          <svg.TopRightPillar />
+          <Svg.TopRightPillar />
         </TopRight>
         <BottomLeft>
           <TypewriterWrapper>
@@ -502,7 +502,7 @@ const HomeIndex = ({ data }) => {
               }}
             />
           </TypewriterWrapper>
-          <svg.BottomLeftPillar />
+          <Svg.BottomLeftPillar />
         </BottomLeft>
         <BottomRight
           ref={blueSectionRef2}
@@ -534,7 +534,7 @@ const HomeIndex = ({ data }) => {
               </p>
             </PillarHoverInner>
           </PillarHover>
-          <svg.BottomRightPillar />
+          <Svg.BottomRightPillar />
         </BottomRight>
       </Pillars>
       <Press>
@@ -677,14 +677,14 @@ const HomeIndex = ({ data }) => {
             },
           }}
         >
-          <svg.PurpleStrokeStar />
+          <Svg.PurpleStrokeStar />
         </PurpleStrokeStarWrapper>
         <MailchimpComponent
           smallStarSvg={<GreenStars />}
           bigStarSvg={<PurpleStar />}
         />
         <OrangeBackground>
-          <svg.BigOrangeBackground />
+          <Svg.BigOrangeBackground />
         </OrangeBackground>
       </Newsletter>
       <ContactUsWrapper>
@@ -698,7 +698,7 @@ const HomeIndex = ({ data }) => {
             },
           }}
         >
-          <svg.PinkStarFill />
+          <Svg.PinkStarFill />
         </PinkStarFillWrapper>
         <PinkStarStrokeWrapper
           animate={{
@@ -710,7 +710,7 @@ const HomeIndex = ({ data }) => {
             },
           }}
         >
-          <svg.PinkStarStroke />
+          <Svg.PinkStarStroke />
         </PinkStarStrokeWrapper>
         <ContactUsHomePage />
       </ContactUsWrapper>
