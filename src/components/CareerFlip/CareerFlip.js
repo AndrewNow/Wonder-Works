@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import { motion } from "framer-motion"
 import * as svg from "./SVGs"
 import { useInView } from "react-intersection-observer"
+import breakpoints from "../breakpoints"
+
 
 const CareerFlip = () => {
   const data = [
@@ -154,8 +156,21 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: ${breakpoints.l}px) {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
 `
-const Left = styled.div``
+const Left = styled.div`
+  @media (max-width: 1600px) {
+    width: 80%;
+    h1 {
+      font-size: 7vw;
+    }
+  }
+`
 
 const Right = styled.div`
   width: 35%;
@@ -167,6 +182,14 @@ const Right = styled.div`
   }
   p {
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 50%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 100%;
+    padding-top: 5rem;
   }
 `
 

@@ -247,6 +247,9 @@ const About = ({ data }) => {
       const { innerWidth: width, innerHeight: height } = window
       return { width, height }
     }
+    else {
+      return {}
+    }
   }
 
   const useWindowDimensions = () => {
@@ -266,7 +269,7 @@ const About = ({ data }) => {
     return windowDimensions
   }
 
-  const { width } = useWindowDimensions()
+    const { width } = useWindowDimensions()
 
   // ------------------- Framer horizontal scroll logic  -------------------
 

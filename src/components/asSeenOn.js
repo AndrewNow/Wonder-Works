@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { StaticImage } from "gatsby-plugin-image"
+import breakpoints from "./breakpoints"
 
 // We have a separate component for the home page (HomePageAsSeenOn) because the logos are larger on only the homepage
 // Since we're using gatsby-image, it's easier to just create another component for these rather than dynamically passing a size value to the image
@@ -50,61 +51,118 @@ export const HomePageAsSeenOn = () => {
   }
 
   return (
-    <LogosHomepage
-      ref={logosRef}
-      variants={logoParent}
-      initial="hidden"
-      animate={logosInView && "visible"}
-    >
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/Forbes.png"
-          alt="Forbes logo"
-          placeholder="none"
-          quality={100}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/CNBC.png"
-          alt="CNBC logo"
-          placeholder="none"
-          quality={100}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/npr.png"
-          alt="n p r logo"
-          placeholder="none"
-          quality={100}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/edc.png"
-          alt="e d c logo"
-          placeholder="none"
-          quality={100}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/Bloomberg.png"
-          alt="Forbes logo"
-          placeholder="none"
-          quality={100}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/B2.png"
-          alt="B2 logo"
-          placeholder="none"
-          quality={100}
-        />
-      </motion.div>
-    </LogosHomepage>
+    <>
+      <LogosHomepage
+        ref={logosRef}
+        variants={logoParent}
+        initial="hidden"
+        animate={logosInView && "visible"}
+      >
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/Forbes.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/CNBC.png"
+            alt="CNBC logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/npr.png"
+            alt="n p r logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/edc.png"
+            alt="e d c logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/Bloomberg.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/B2.png"
+            alt="B2 logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+      </LogosHomepage>
+      <LogosHomepageMobile
+        ref={logosRef}
+        variants={logoParent}
+        initial="hidden"
+        animate={logosInView && "visible"}
+      >
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/Forbes.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/CNBC.png"
+            alt="CNBC logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/npr.png"
+            alt="n p r logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/edc.png"
+            alt="e d c logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/Bloomberg.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../images/Home/asSeenOn/B2.png"
+            alt="B2 logo"
+            placeholder="none"
+            quality={100}
+          />
+        </motion.div>
+      </LogosHomepageMobile>
+    </>
   )
 }
 
@@ -216,17 +274,46 @@ export const AsSeenOn = () => {
 }
 
 const LogosHomepage = styled(motion.div)`
-  min-width: 70%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  max-width: 70%;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   padding-bottom: 5rem;
   height: 200px;
 
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
   div {
+    align-self: center;
+    margin: 0 auto;
     transform-origin: bottom;
     overflow: hidden;
     /* max-height: 50px; */
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    max-width: 80%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    gap: 4rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    display: none;
+  }
+
+`
+const LogosHomepageMobile = styled(motion.div)`
+  display: none;
+
+  @media (max-width: ${breakpoints.l}px) {
+    display: flex;
+    
   }
 `
 

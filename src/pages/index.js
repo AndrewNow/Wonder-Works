@@ -273,7 +273,6 @@ const HomeIndex = ({ data }) => {
     scrollYProgress,
     throttle(scrollYProgress => scrollYProgress * -700, 100)
   )
-  
 
   // ---------- Hover state for Pillars ----------
   const [hover, setHover] = useState({
@@ -734,6 +733,7 @@ export const pageQuery = graphql`
 const Background = styled(motion.div)`
   z-index: 0;
   height: 100vh;
+  max-width: 100%;
   margin: 0 auto;
   position: absolute;
   top: -2.5rem;
@@ -754,7 +754,7 @@ const StaircaseWrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    left: -34%;
+    left: -25%;
     top: 10%;
     svg {
       scale: 0.5;
@@ -777,16 +777,26 @@ const PortalWrapper = styled.div`
   position: absolute;
   top: 35%;
   right: 0%;
+  overflow-x: hidden;
 
-  @media (max-width: ${breakpoints.m}px) {
-    right: -25%;
+  @media (max-width: ${breakpoints.xxl}px) {
+    /* right: -10%; */
+    svg {
+      scale: 0.85;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
     top: 40%;
+    /* right: -5%; */
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    /* right: -25%; */
     svg {
       scale: 0.65;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    right: -55%;
+    /* right: -55%; */
     top: 30%;
     svg {
       scale: 0.5;
@@ -820,9 +830,19 @@ const LandingText = styled.div`
     text-transform: uppercase;
     color: var(--color-black);
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    h1 {
+      font-size: 7.8vw;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h1 {
+      font-size: 9vw;
+    }
+  }
   @media (max-width: ${breakpoints.m}px) {
     h1 {
-      font-size: 8vw;
+      font-size: 8.5vw;
     }
   }
 `
@@ -879,6 +899,11 @@ const DiscoverMore = styled(Link)`
     background-color: var(--color-black);
     color: var(--color-white);
   }
+
+  @media (max-width: ${breakpoints.m}px) {
+    font-size: 16px;
+    line-height: 17px;
+  }
 `
 
 const ImaginationSection = styled.section`
@@ -929,12 +954,34 @@ const ImaginationBG = styled(motion.div)`
   top: 0;
   left: 0;
   right: 0;
+  /* overflow: hidden; */
 `
 
 const CircleWrapper = styled(motion.div)`
   position: absolute;
   top: 32%;
   right: 15.5%;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    right: 10%;
+    svg {
+      scale: .9;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 2%;
+    svg {
+      scale: .7;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    right: -5%;
+    top: 35%;
+
+    svg {
+      scale: .6;
+    }
+  }
 `
 
 const CircleStrokeWrapper = styled(motion.div)`
@@ -947,7 +994,9 @@ const BlueTrianglesWrapper = styled(motion.div)`
   position: absolute;
   bottom: 1%;
   left: 0;
-  width: 100%;
+  margin: 0 auto;
+  max-width: 90%;
+  overflow: hidden;
 `
 
 const BlueTriangleWrapper = styled(motion.div)`
@@ -1123,6 +1172,8 @@ const Press = styled.div`
     padding-bottom: 5rem;
     font-family: "calibre-semibold";
   }
+
+
 `
 
 const LatestProjects = styled.section`
@@ -1136,6 +1187,8 @@ const LatestProjects = styled.section`
 `
 const InvestmentCenter = styled.section`
   /* height: 100vh; */
+  width: 100%;
+  position: relative;
   padding-bottom: 5.5rem;
   background-color: var(--color-white);
 `
@@ -1144,14 +1197,23 @@ const InvestmentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
-  margin: 0 auto;
+  width: 100%;
+  /* margin: 0 auto; */
   margin-top: 10rem;
+
+  @media (max-width: 1655px) {
+    flex-direction: column;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    flex-direction: column;
+  }
 `
 
 const Brief = styled(motion.div)`
   align-self: flex-start;
-  flex-basis: 45%;
+  /* flex-basis: 30%; */
+  width: 30%;
+  margin-left: 10vw;
 
   h2 {
     padding-bottom: 1rem;
@@ -1160,9 +1222,15 @@ const Brief = styled(motion.div)`
   h4 {
     padding-bottom: 2.5rem;
     font-family: "calibre-medium";
+    white-space: nowrap;
   }
   p {
     padding-bottom: 4rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 70%;
   }
 `
 
@@ -1182,6 +1250,10 @@ const Stats = styled.div`
   flex-basis: 55%;
   align-self: center;
   margin-top: 17.5rem;
+
+  @media (max-width: 1655px) {
+    margin-top: 7.5rem;
+  }
 `
 
 const Columns = styled.div`
@@ -1226,6 +1298,7 @@ const Column = styled(motion.div)`
     font-family: "calibre-medium";
     white-space: nowrap;
   }
+
 `
 
 const Circle = styled(motion.div)`
@@ -1245,6 +1318,20 @@ const Circle = styled(motion.div)`
   }
   p {
     color: var(--color-black);
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 225px;
+    height: 225px;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 200px;
+    height: 200px;
+    h6 {
+      line-height: 60px;
+      font-size: 60px;
+      font-family: "calibre-medium";
+    }
   }
 `
 

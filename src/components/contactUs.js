@@ -195,8 +195,9 @@ const Wrapper = styled.div`
 const Left = styled.div`
   h1 {
     width: 60%;
-    font-size: 126px;
-    line-height: 130px;
+    font-size: 6.5625vw;
+    line-height: 105%;
+    /* line-height: 130px; */
     white-space: nowrap;
     padding-bottom: 15rem;
   }
