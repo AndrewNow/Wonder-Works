@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import breakpoints from "./breakpoints"
 
 export const ContactUsHomePage = () => {
   return (
@@ -190,6 +191,10 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding-bottom: 10rem;
   padding-top: 5rem;
+
+  @media (max-width: ${breakpoints.m}px) {
+    flex-direction: column;
+  }
 `
 
 const Left = styled.div`

@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { ScrollToTopText, ScrollToTopArrow } from "../svg/miscellaneous"
 import { AnimatePresence, motion } from "framer-motion"
+import breakpoints from "./breakpoints"
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -116,8 +117,13 @@ const ScrollToTopButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   border: 2px solid var(--color-white);
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 70px;
+    height: 70px;
+  }
   /* filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.25)); */
 `
 
@@ -127,10 +133,18 @@ const ArrowWrapper = styled.div`
   align-items: center;
   position: absolute;
   transform: translateY(-3px);
+    @media (max-width: ${breakpoints.l}px) {
+    /* width: 70px; */
+    /* height: 70px; */
+  }
 `
 const TextWrapper = styled(motion.div)`
   display: inline-flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+  @media (max-width: ${breakpoints.l}px) {
+    width: 43px;
+    height: 43px;
+  }
 `

@@ -6,7 +6,6 @@ import * as svg from "./SVGs"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../breakpoints"
 
-
 const CareerFlip = () => {
   const data = [
     {
@@ -162,19 +161,35 @@ const Wrapper = styled.div`
     justify-content: space-evenly;
     align-items: flex-start;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 80%;
+    overflow-x: hidden;
+  }
 `
 const Left = styled.div`
   @media (max-width: 1600px) {
     width: 80%;
     h1 {
+      position: relative;
       font-size: 7vw;
+      line-height: 100%;
+      z-index: 6;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 90%;
+    h1 {
+      font-size: 50px;
+      line-height: 50px;
     }
   }
 `
 
 const Right = styled.div`
   width: 35%;
-
+  z-index: 100;
+  position: relative;
   strong {
     display: block;
     font-family: "calibre-medium";
@@ -190,6 +205,13 @@ const Right = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
     padding-top: 5rem;
+    background: var(--color-white);
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: .5rem;
+    strong {
+      margin-top: 0rem;
+    }
   }
 `
 
@@ -221,28 +243,61 @@ const SvgWrapper = styled(motion.div)`
   z-index: -2;
   right: -15%;
   top: -70%;
+
+  svg {
+    width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    svg {
+      scale: 0.5;
+    }
+  }
 `
 
 const AdventuresWrapper = styled.div`
   transform: translate3d(-30%, -15%, 0);
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(5%, -40%, 0);
+  }
 `
 const GamesWrapper = styled.div`
   transform: translate3d(15%, 0rem, 0);
+  
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(25%, -40%, 0);
+  }
 `
 const PingPongWrapper = styled.div`
   transform: translate3d(-25%, 35%, 0);
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(15%, -15%, 0);
+  }
 `
 const TechnologyWrapper = styled.div`
   transform: translate3d(-40%, 10%, 0);
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(15%, -25%, 0);
+  }
 `
 const AnimalsWrapper = styled.div`
   transform: translate3d(-10%, 10%, 0);
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(40%, -15%, 0);
+  }
 `
 const RobloxWrapper = styled.div`
   transform: translate3d(15%, -10%, 0);
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(50%, -20%, 0);
+  }
 `
 const UsWrapper = styled.div`
   transform: translate3d(0, 60%, 0);
+
+  @media (max-width: ${breakpoints.s}px) {
+    transform: translate3d(0, -5%, 0);
+  }
 `
 
 const PositionsLink = styled(Link)`

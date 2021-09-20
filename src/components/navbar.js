@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { Squash as Hamburger } from "hamburger-react"
 import { motion, AnimatePresence } from "framer-motion"
+import breakpoints from "./breakpoints"
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false)
@@ -38,9 +39,12 @@ const Navbar = () => {
         <StaticImage
           src="../images/wwLogo.png"
           quality={100}
-          width={185}
+          // width={185}
+          height={70}
           placeholder="none"
           alt="Wonder Works logo"
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </Link>
       <Hamburger
@@ -91,9 +95,21 @@ const Nav = styled.nav`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding-top: 2.5rem;
+  align-items: center;
+  margin-top: 2.5rem;
+  height: 70px;
   div {
     color: ${props => props.theme.color}!important;
+  }
+  a {
+    height: 100%;
+    display: flex;
+  }
+  
+  @media (max-width: ${breakpoints.m}px) {
+    a {
+      width: 120px;
+    }
   }
 `
 
@@ -101,13 +117,14 @@ const Dropdown = styled(motion.div)`
   display: flex;
   flex-direction: column;
   position: absolute;
+  align-items: flex-end;
   z-index: 2000;
   right: 0.5%;
-  transform: translateY(30%);
+  transform: translateY(60%);
 
   a {
     color: ${props => props.theme.color}!important;
-    transition: color .4s cubic-bezier(0, .2, .7, 1);
+    transition: color 0.4s cubic-bezier(0, 0.2, 0.7, 1);
     transition-delay: 0.2s;
     text-decoration: none;
   }
@@ -122,6 +139,12 @@ const Dropdown = styled(motion.div)`
   & div:hover {
     a {
       font-weight: 900;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    a {
+      width: auto!important;
     }
   }
 `

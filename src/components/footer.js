@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { WOShortLogo } from "../svg/logos"
 import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
 import { motion } from "framer-motion"
-
+import breakpoints from "./breakpoints"
 const Footer = () => {
   return (
     <FooterWrapper>
@@ -97,6 +97,20 @@ const Inner = styled.div`
     line-height: 23px;
     padding-right: 5rem;
   }
+
+  @media (max-width: ${breakpoints.l}px) {
+    flex-direction: column-reverse;
+    padding: 2rem 0;
+
+    p {
+      text-align: center;
+      padding: 2rem 0;
+      padding-bottom: 1rem;
+    }
+    svg:nth-child(1) {
+      width: 50px;
+    }
+  }
 `
 
 const Icons = styled.div`
@@ -111,8 +125,22 @@ const Icons = styled.div`
       fill: #b16eac;
     }
   }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-right: 0;
+    width: 100%;
+    margin: 0 auto;
+
+    svg {
+      margin: 0 1rem;
+      max-width: 40px!important;
+    }
+  }
 `
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: ${breakpoints.l}px) {
+    flex-direction: column;
+  }
 `

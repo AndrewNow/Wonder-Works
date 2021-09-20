@@ -6,6 +6,7 @@ import { PressPlaySVG } from "./buttons"
 import ReactPlayer from "react-player/file"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import breakpoints from "../breakpoints"
 
 const LatestProjectsCarousel = () => {
   // ---------- Initialize Embla Carousel & state ----------
@@ -170,7 +171,7 @@ const LatestProjectsCarousel = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              opacity="0.85"
+              opacity="0.95"
               d="M4.88815 97.5635L112.083 58.0707C112.709 57.8398 113.253 57.4287 113.648 56.8896C114.042 56.3505 114.268 55.7072 114.298 55.0401C114.328 54.3729 114.16 53.7119 113.816 53.1397C113.472 52.5676 112.966 52.1097 112.362 51.8238L5.16764 1.04777C4.65078 0.802894 4.07992 0.692506 3.50904 0.727272C2.93817 0.762038 2.38557 0.940539 1.90225 1.24632C1.41892 1.55211 1.02028 1.97554 0.74436 2.47651C0.468442 2.97749 0.324674 3.53997 0.324585 4.11191V94.3812C0.324288 94.9277 0.456103 95.4663 0.708749 95.9508C0.961396 96.4353 1.3267 96.8512 1.77491 97.1637C2.22312 97.4763 2.74046 97.6763 3.28243 97.7459C3.8244 97.8155 4.37551 97.7527 4.88815 97.5635Z"
               fill="white"
             />
@@ -299,6 +300,13 @@ const Embla = styled.div`
   & button:last-of-type {
     right: -5%;
   }
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 90%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+  }
 `
 const EmblaViewport = styled.div`
   overflow: hidden;
@@ -335,6 +343,16 @@ const EmblaProgress = styled.div`
   margin-left: auto;
   margin-right: auto;
   /* top: 75px; */
+
+  @media (max-width: ${breakpoints.l}px) {
+    height: 10px;
+    max-width: 90%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    height: 8px;
+    max-width: 90%;
+  }
 `
 
 const ProgressContainer = styled.div`
@@ -390,6 +408,15 @@ const Playbutton = styled(motion.button)`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 200px;
+    height: 200px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 150px;
+    height: 150px;
+  }
 `
 
 const TextWrapper = styled(motion.div)`
@@ -397,8 +424,38 @@ const TextWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   position: absolute;
+
+  @media (max-width: ${breakpoints.l}px) {
+    svg {
+      width: 220px;
+      height: 220px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    svg {
+      width: 150px;
+      height: 150px;
+    }
+  }
 `
 
 const PlaySVG = styled.div`
   margin-left: 2rem;
+
+  @media (max-width: ${breakpoints.l}px) {
+    margin-left: 0rem;
+
+    svg {
+      width: 75px;
+      height: 75px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-left: 0rem;
+
+    svg {
+      width: 55px;
+      height: 55px;
+    }
+  }
 `

@@ -64,6 +64,8 @@ export const HomePageAsSeenOn = () => {
             alt="Forbes logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -72,6 +74,8 @@ export const HomePageAsSeenOn = () => {
             alt="CNBC logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -80,6 +84,8 @@ export const HomePageAsSeenOn = () => {
             alt="n p r logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -88,6 +94,8 @@ export const HomePageAsSeenOn = () => {
             alt="e d c logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -96,6 +104,8 @@ export const HomePageAsSeenOn = () => {
             alt="Forbes logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -104,6 +114,8 @@ export const HomePageAsSeenOn = () => {
             alt="B2 logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
       </LogosHomepage>
@@ -113,12 +125,15 @@ export const HomePageAsSeenOn = () => {
         initial="hidden"
         animate={logosInView && "visible"}
       >
+        {/* <div> */}
         <motion.div variants={logoMask}>
           <StaticImage
             src="../images/Home/asSeenOn/Forbes.png"
             alt="Forbes logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -127,6 +142,8 @@ export const HomePageAsSeenOn = () => {
             alt="CNBC logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -135,14 +152,20 @@ export const HomePageAsSeenOn = () => {
             alt="n p r logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
+        {/* </div> */}
+        {/* <div> */}
         <motion.div variants={logoMask}>
           <StaticImage
             src="../images/Home/asSeenOn/edc.png"
             alt="e d c logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -151,6 +174,8 @@ export const HomePageAsSeenOn = () => {
             alt="Forbes logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
         <motion.div variants={logoMask}>
@@ -159,8 +184,11 @@ export const HomePageAsSeenOn = () => {
             alt="B2 logo"
             placeholder="none"
             quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
+        {/* </div> */}
       </LogosHomepageMobile>
     </>
   )
@@ -290,7 +318,6 @@ const LogosHomepage = styled(motion.div)`
     margin: 0 auto;
     transform-origin: bottom;
     overflow: hidden;
-    /* max-height: 50px; */
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
@@ -301,22 +328,30 @@ const LogosHomepage = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
+    max-width: 90%;
     gap: 4rem;
   }
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: ${breakpoints.m}px) {
     display: none;
+    gap: 1rem;
   }
-
 `
 const LogosHomepageMobile = styled(motion.div)`
   display: none;
-
-  @media (max-width: ${breakpoints.l}px) {
-    display: flex;
-    
+  @media (max-width: ${breakpoints.m}px) {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    min-height: 100px;
+    img {
+      max-height: 40px;
+      min-width: 50px;
+    }
   }
 `
-
 const Logos = styled(motion.div)`
   min-width: 40%;
   display: flex;

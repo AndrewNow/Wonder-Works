@@ -29,7 +29,7 @@ const HomeIndex = ({ data }) => {
   const ref = useRef()
   const [sectionRef, sectionInView] = useInView({
     root: null,
-    threshold: 0.5,
+    threshold: 0.95,
     triggerOnce: true,
   })
   const [logosRef, logosInView] = useInView({
@@ -39,7 +39,7 @@ const HomeIndex = ({ data }) => {
   })
   const [countUpRef, countUpInView] = useInView({
     root: null,
-    threshold: 0.65,
+    threshold: 0.25,
     triggerOnce: true,
   })
 
@@ -116,6 +116,22 @@ const HomeIndex = ({ data }) => {
     },
     hidden: {
       y: 200,
+      opacity: 0,
+    },
+  }
+  const wordMobile = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        type: "spring",
+        stiffness: 100,
+        damping: 11,
+      },
+    },
+    hidden: {
+      y: 100,
       opacity: 0,
     },
   }
@@ -323,6 +339,39 @@ const HomeIndex = ({ data }) => {
           <DiscoverMore to="/about">DISCOVER MORE</DiscoverMore>
         </motion.div>
       </LandingText>
+
+      {/* start mobile text animation layout */}
+      <LandingTextMobile>
+        <h1>
+          <First variants={line} initial="hidden" animate="visible">
+            <Span variants={wordMobile}>dreaming</Span>
+            <Span variants={wordMobile}>up</Span>
+          </First>
+          <Second variants={line} initial="hidden" animate="visible">
+            <Span variants={wordMobile}>wonderful</Span>
+          </Second>
+          <Third variants={line} initial="hidden" animate="visible">
+            <Span variants={wordMobile}>works</Span>
+            <Span variants={wordMobile}>in</Span>
+            <Span variants={wordMobile}>the</Span>
+          </Third>
+          <Fourth variants={line} initial="hidden" animate="visible">
+            <Span variants={wordMobile}>metaverse</Span>
+          </Fourth>
+        </h1>
+        <motion.h4 variants={subtitle} initial="hidden" animate="visible">
+          The latest in Roblox gaming lives here.
+        </motion.h4>
+        <motion.div
+          variants={button}
+          initial="hidden"
+          animate="visible"
+          whileTap={{ scale: 0.9 }}
+        >
+          <DiscoverMore to="/about">DISCOVER MORE</DiscoverMore>
+        </motion.div>
+      </LandingTextMobile>
+      {/* end mobile text animation layout */}
       <ImaginationSection ref={sectionRef}>
         <h2>
           <FirstLine
@@ -633,12 +682,15 @@ const HomeIndex = ({ data }) => {
                   )}
                   <p>DAU</p>
                 </Circle>
-                <Desc>4% of Roblox DAU</Desc>
-                <p>
-                  2.2M+ Total Playing hrs/mo <br />
-                  MAU 2.74M <br />
-                  DAU/MAU Ratio 7.79%
-                </p>
+                <Desc>
+                  <h5>Overlook Bay</h5>
+                  <p>4% of Roblox DAU</p>
+                  <p>
+                    2.2M+ Total Playing hrs/mo <br />
+                    MAU 2.74M <br />
+                    DAU/MAU Ratio 7.79%
+                  </p>
+                </Desc>
               </Column>
               <Column>
                 <motion.h5
@@ -654,12 +706,15 @@ const HomeIndex = ({ data }) => {
                   <h6>0.0M</h6>
                   <p>DAU</p>
                 </Circle>
-                <Desc>0.0% of Roblox DAU</Desc>
-                <p>
-                  0.0M+ Total Playing hrs/mo <br />
-                  MAU 0.0M <br />
-                  DAU/MAU Ratio 0.00%
-                </p>
+                <Desc>
+                  <h5>Timmeh</h5>
+                  <p>0.0% of Roblox DAU</p>
+                  <p>
+                    0.0M+ Total Playing hrs/mo <br />
+                    MAU 0.0M <br />
+                    DAU/MAU Ratio 0.00%
+                  </p>
+                </Desc>
               </Column>
             </Columns>
           </Stats>
@@ -732,15 +787,16 @@ export const pageQuery = graphql`
 
 const Background = styled(motion.div)`
   z-index: 0;
-  height: 100vh;
+  height: 120vh;
   max-width: 100%;
   margin: 0 auto;
   position: absolute;
   top: -2.5rem;
   left: 0;
   right: 0;
-`
 
+  overflow-x: hidden;
+`
 const StaircaseWrapper = styled.div`
   position: absolute;
   top: 23%;
@@ -754,7 +810,7 @@ const StaircaseWrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    left: -25%;
+    left: -30%;
     top: 10%;
     svg {
       scale: 0.5;
@@ -766,8 +822,14 @@ const CogWrapper = styled.div`
   top: 53%;
   right: 40%;
 
+  @media (max-width: ${breakpoints.l}px) {
+    top: 55%;
+    svg {
+      scale: 0.75;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
-    top: 40%;
+    top: 43%;
     svg {
       scale: 0.5;
     }
@@ -780,26 +842,38 @@ const PortalWrapper = styled.div`
   overflow-x: hidden;
 
   @media (max-width: ${breakpoints.xxl}px) {
-    /* right: -10%; */
+    right: -10%;
     svg {
-      scale: 0.85;
+      width: 750px;
+      height: 715px;
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
     top: 40%;
-    /* right: -5%; */
+    right: -15%;
+    svg {
+      width: 650px;
+      height: 615px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    svg {
+      width: 550px;
+      height: 515px;
+    }
   }
   @media (max-width: ${breakpoints.m}px) {
-    /* right: -25%; */
     svg {
-      scale: 0.65;
+      width: 450px;
+      height: 415px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    /* right: -55%; */
-    top: 30%;
+    top: 45%;
+    right: -25%;
     svg {
-      scale: 0.5;
+      width: 350px;
+      height: 315px;
     }
   }
 `
@@ -841,8 +915,42 @@ const LandingText = styled.div`
     }
   }
   @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+`
+
+const LandingTextMobile = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.m}px) {
+    z-index: 2;
+    position: relative;
+    padding-top: 14rem;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     h1 {
-      font-size: 8.5vw;
+      z-index: 2;
+      font-family: "balgin-medium";
+      font-size: 100px;
+      line-height: 100%;
+      color: var(--color-black);
+    }
+
+    h4 {
+      z-index: 2;
+      margin-top: 4.5rem;
+      margin-bottom: 4rem;
+      text-transform: uppercase;
+      color: var(--color-black);
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    h1 {
+      font-size: 12vw;
     }
   }
 `
@@ -881,6 +989,10 @@ const Third = styled(motion.div)`
   overflow: hidden;
   padding-bottom: 0.25rem;
 `
+const Fourth = styled(motion.div)`
+  overflow: hidden;
+  padding-bottom: 0.25rem;
+`
 
 const DiscoverMore = styled(Link)`
   border: 2px solid var(--color-black);
@@ -907,12 +1019,10 @@ const DiscoverMore = styled(Link)`
 `
 
 const ImaginationSection = styled.section`
-  height: 100vh;
+  height: 100%;
   padding-top: 28rem;
-  /* margin: 0 auto; */
   text-align: center;
   position: relative;
-
   h2,
   p {
     z-index: 2;
@@ -925,6 +1035,17 @@ const ImaginationSection = styled.section`
     padding-top: 5rem;
     margin: 0 auto;
     width: 45%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 10rem;
+    h2 {
+      font-size: 55px;
+      line-height: 45px;
+    }
+    p {
+      width: 80%;
+    }
   }
 `
 const FirstLine = styled(motion.div)`
@@ -943,6 +1064,10 @@ const WordSpan = styled(motion.span)`
   display: inline-block;
   position: relative;
   vertical-align: text-top;
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin-right: 0.75rem;
+  }
 `
 
 const ImaginationBG = styled(motion.div)`
@@ -965,21 +1090,33 @@ const CircleWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.xxl}px) {
     right: 10%;
     svg {
-      scale: .9;
-    }
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    right: 2%;
-    svg {
-      scale: .7;
+      width: 330px;
+      height: auto;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
-    right: -5%;
-    top: 35%;
-
+    right: 2%;
+    top: 30%;
     svg {
-      scale: .6;
+      width: 260px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    right: 2%;
+    top: 20%;
+    svg {
+      width: 160px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    right: 5%;
+    top: 15%;
+    svg {
+      scale: 1;
+      width: 160px;
+      height: auto;
     }
   }
 `
@@ -988,6 +1125,14 @@ const CircleStrokeWrapper = styled(motion.div)`
   position: absolute;
   top: 75%;
   left: 12.5%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    left: -15%;
+    svg {
+      width: 200px;
+      height: 200px;
+    }
+  }
 `
 
 const BlueTrianglesWrapper = styled(motion.div)`
@@ -995,32 +1140,58 @@ const BlueTrianglesWrapper = styled(motion.div)`
   bottom: 1%;
   left: 0;
   margin: 0 auto;
-  max-width: 90%;
+  width: 90%;
   overflow: hidden;
+
+  @media (max-width: ${breakpoints.s}px) {
+    scale: 0.5;
+    top: -5%;
+    left: -10%;
+  }
 `
 
 const BlueTriangleWrapper = styled(motion.div)`
   position: absolute;
   top: 60%;
   left: 20%;
+  @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
 `
 
 const PurpleTriangleWrapper = styled(motion.div)`
   position: absolute;
   bottom: -10%;
   right: 25%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: -25%;
+    right: 10%;
+    scale: 0.5;
+  }
 `
 
 const GreenTriangleWrapper = styled(motion.div)`
   position: absolute;
   top: 30%;
   right: 25%;
+  @media (max-width: ${breakpoints.s}px) {
+    right: 0%;
+    top: 66%;
+    scale: 0.5;
+  }
 `
 
 const OrangeTriangleWrapper = styled(motion.div)`
   position: absolute;
   top: 34%;
   left: 25%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    left: 0%;
+    top: 66%;
+    scale: 0.5;
+  }
 `
 
 const Pillars = styled.section`
@@ -1119,6 +1290,12 @@ const TypewriterWrapper = styled.div`
     font-family: "balgin-bold";
     font-size: 76px;
   }
+
+  @media (max-width: ${breakpoints.l}px) {
+    span {
+      font-size: 3.9vw;
+    }
+  }
 `
 
 const BottomRight = styled.div`
@@ -1172,8 +1349,13 @@ const Press = styled.div`
     padding-bottom: 5rem;
     font-family: "calibre-semibold";
   }
-
-
+  @media (max-width: ${breakpoints.s}px) {
+    background-color: var(--color-white);
+    h4 {
+      padding-top: 5rem;
+      padding-bottom: 2.5rem;
+    }
+  }
 `
 
 const LatestProjects = styled.section`
@@ -1207,6 +1389,9 @@ const InvestmentWrapper = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     flex-direction: column;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 5rem;
+  }
 `
 
 const Brief = styled(motion.div)`
@@ -1232,6 +1417,21 @@ const Brief = styled(motion.div)`
   @media (max-width: ${breakpoints.xl}px) {
     width: 70%;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    h2,
+    p {
+      white-space: normal;
+    }
+
+    h2 {
+      font-size: 40px;
+      line-height: 45px;
+    }
+
+    br {
+      display: none;
+    }
+  }
 `
 
 const Headline = styled.div`
@@ -1253,6 +1453,9 @@ const Stats = styled.div`
 
   @media (max-width: 1655px) {
     margin-top: 7.5rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    flex-basis: 100%;
   }
 `
 
@@ -1277,6 +1480,11 @@ const Columns = styled.div`
       background-color: var(--color-lightpink);
     }
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const Column = styled(motion.div)`
@@ -1299,11 +1507,37 @@ const Column = styled(motion.div)`
     white-space: nowrap;
   }
 
+  @media (max-width: ${breakpoints.s}px) {
+    flex-basis: 100%;
+    width: 100%;
+    padding: 0rem;
+    flex-direction: row;
+    justify-content: space-between;
+    p {
+      white-space: normal;
+    }
+    h5 {
+      margin: 0 auto;
+    }
+    
+    :nth-child(2) h5 {
+      order: 3;
+      display: none;
+    }
+    :nth-child(3) h5 {
+      order: 3;
+      display: none;
+    }
+    :nth-child(3)  {
+      flex-direction: row-reverse;
+    }
+  }
 `
 
 const Circle = styled(motion.div)`
   border-radius: 50%;
   background-color: var(--color-lightblue);
+  aspect-ratio: 1/1;
   height: 255px;
   width: 255px;
   display: flex;
@@ -1333,13 +1567,39 @@ const Circle = styled(motion.div)`
       font-family: "calibre-medium";
     }
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 150px;
+    height: 150px;
+  }
 `
 
 const Desc = styled.p`
   padding-top: 2.5rem;
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  p {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    :nth-child(2) {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  h5 {
+    display: none;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin: 0 .5rem;
+    h5 {
+      margin: 0 auto;
+      white-space: nowrap;
+      text-align: center;
+      order: 0 !important;
+      display: block !important;
+    }
+  }
 `
 
 const Newsletter = styled.div`
@@ -1371,12 +1631,19 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
   z-index: 1;
   top: -12.5%;
   left: -3%;
+
+  @media (max-width: ${breakpoints.l}px) {
+    display: none;
+  }
 `
 const PinkStarStrokeWrapper = styled(motion.div)`
   position: absolute;
   z-index: 1;
   top: -15%;
   right: 15%;
+  @media (max-width: ${breakpoints.l}px) {
+    display: none;
+  }
 `
 const PinkStarFillWrapper = styled(motion.div)`
   position: absolute;

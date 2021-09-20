@@ -272,7 +272,6 @@ const About = ({ data }) => {
     const { width } = useWindowDimensions()
 
   // ------------------- Framer horizontal scroll logic  -------------------
-
   const SideScrollData = [
     {
       ref: StudioRef,
