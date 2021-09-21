@@ -1113,7 +1113,7 @@ const ImaginationSection = styled.section`
     position: relative;
   }
   h2 {
-    line-height: 95%;
+    line-height: 100%;
   }
   p {
     padding-top: 5rem;

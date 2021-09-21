@@ -115,6 +115,7 @@ const GlobalWrapper = styled.div`
       line-height: 24px;
     }
   }
+  
   @media (max-width: ${breakpoints.m}px) {
     h1 {
       font-size: 52px;
@@ -193,6 +194,7 @@ const GlobalWrapper = styled.div`
       letter-spacing: 0.01rem;
     }
   }
+
   @media (max-width: ${breakpoints.xs}px) {
     h1 {
       font-size: 28px;

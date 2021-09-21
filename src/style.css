@@ -59,9 +59,6 @@
   font-display: fallback;
 } 
 
-
-/* HTML elements */
-
 *,
 :after,
 :before {
@@ -72,13 +69,9 @@ body {
   margin: 0;
   overscroll-behavior: none;
 }
-/* Heading */
 
-/* html {
-  overflow-y: scroll;
-} */
 
-/* See layout.js for font @media breakpoints */
+/* --------------------- See layout.js for all typography breakpoints! --------------------- */
 
 h1 {
   font-family: "ppwoodland-light";
@@ -152,7 +145,6 @@ blockquote > ol {
 }
 
 
-/* Link */
 a:hover,
 a:focus {
   text-decoration: none;
