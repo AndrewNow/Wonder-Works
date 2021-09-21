@@ -830,6 +830,11 @@ const StaircaseWrapper = styled.div`
       width: 300px;
     }
   }
+  @media (max-width: ${breakpoints.xs}px) {
+    svg {
+      width: 250px;
+    }
+  }
 `
 const CogWrapper = styled(motion.div)`
   position: absolute;
@@ -869,7 +874,7 @@ const CogWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 47%;
+    top: 44%;
     right: 42%;
     svg {
       width: 50px;
@@ -884,35 +889,51 @@ const PortalWrapper = styled.div`
   right: 0%;
   overflow-x: hidden;
 
+  @media (max-width: 1700px) {
+    right: -5%;
+    svg {
+      width: 550px;
+      height: auto;
+      
+    }
+  }
   @media (max-width: ${breakpoints.xxl}px) {
     right: -10%;
     svg {
-      width: 750px;
+      width: 550px;
       height: auto;
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
     top: 40%;
-    right: -15%;
+    right: -10%;
     svg {
-      width: 650px;
+      width: 450px;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
     svg {
-      width: 550px;
+      width: 350px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
+    right: -5%;
     svg {
-      width: 450px;
+      width: 300px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
     top: 45%;
     right: -25%;
     svg {
-      width: 350px;
+      width: 290px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 45%;
+    right: -25%;
+    svg {
+      width: 230px;
     }
   }
 `
@@ -952,6 +973,9 @@ const LandingText = styled.div`
     h1 {
       font-size: 9vw;
     }
+    h4 {
+      font-size: 32px;
+    }
   }
   @media (max-width: ${breakpoints.m}px) {
     display: none;
@@ -982,6 +1006,8 @@ const LandingTextMobile = styled.div`
     h4 {
       z-index: 2;
       margin-top: 4.5rem;
+      font-size: 22px;
+      line-height: 110%;
       margin-bottom: 4rem;
       text-transform: uppercase;
       color: var(--color-black);
@@ -990,6 +1016,22 @@ const LandingTextMobile = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     h1 {
       font-size: 12vw;
+    }
+    h4 {
+      font-size: inherit;
+      width: 90%;
+      font-size: 16px;
+      line-height: 120%;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    padding-top: 10.5rem;
+    h4 {
+      margin-top: 2.5rem;
+      width: 85%;
+      white-space: normal;
     }
   }
 `
@@ -1078,15 +1120,29 @@ const ImaginationSection = styled.section`
     margin: 0 auto;
     width: 45%;
   }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 20rem;
+  }
 
   @media (max-width: ${breakpoints.s}px) {
-    padding-top: 10rem;
+    padding-top: 12.5rem;
     h2 {
-      font-size: 55px;
+      font-size: 45px;
       line-height: 45px;
     }
     p {
-      width: 80%;
+      width: 85%;
+      padding-top: 2.5rem;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h2 {
+      font-size: 35px;
+      line-height: 45px;
+    }
+    p {
+      width: 85%;
+      padding-top: 2.5rem;
     }
   }
 `
@@ -1122,6 +1178,10 @@ const ImaginationBG = styled(motion.div)`
   left: 0;
   right: 0;
   /* overflow: hidden; */
+
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 15%;
+  }
 `
 
 const CircleWrapper = styled(motion.div)`
@@ -1129,18 +1189,24 @@ const CircleWrapper = styled(motion.div)`
   top: 32%;
   right: 15.5%;
 
-  @media (max-width: ${breakpoints.xxl}px) {
-    right: 10%;
+  @media (max-width: 1600px) {
     svg {
       width: 330px;
       height: auto;
     }
   }
-  @media (max-width: ${breakpoints.l}px) {
-    right: 2%;
-    top: 30%;
+  @media (max-width: ${breakpoints.xxl}px) {
+    right: 10%;
     svg {
-      width: 260px;
+      width: 300px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    right: 5%;
+    top: 18%;
+    svg {
+      width: 250px;
       height: auto;
     }
   }
@@ -1170,6 +1236,7 @@ const CircleStrokeWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.s}px) {
     left: -15%;
+    top: 90%;
     svg {
       width: 200px;
       height: 200px;
@@ -1182,8 +1249,20 @@ const BlueTrianglesWrapper = styled(motion.div)`
   bottom: 1%;
   left: 0;
   margin: 0 auto;
-  width: 90%;
+  width: 90vw;
   overflow: hidden;
+  @media (max-width: 1700px) {
+    left: 5%;
+    top: 40%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    scale: .7;
+    top: 10%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    left: -5%;
+    top: 20%;
+  }
 
   @media (max-width: ${breakpoints.s}px) {
     scale: 0.5;
@@ -1196,20 +1275,40 @@ const BlueTriangleWrapper = styled(motion.div)`
   position: absolute;
   top: 60%;
   left: 20%;
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
+    left: 10%;
+    top: auto;
+    bottom: 5%;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    scale: .7;
+    bottom: 10%;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
     display: none;
   }
 `
 
 const PurpleTriangleWrapper = styled(motion.div)`
   position: absolute;
-  bottom: -10%;
-  right: 25%;
+  bottom: -7%;
+  right: 22%;
 
-  @media (max-width: ${breakpoints.s}px) {
-    bottom: -25%;
-    right: 10%;
+  @media (max-width: ${breakpoints.xl}px) {
+    bottom: 5%;
+    right: 5%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: 5%;
+    right: 15%;
     scale: 0.5;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: -10%;
+    right: 10%;
+    scale: 0.3;
   }
 `
 
@@ -1217,8 +1316,14 @@ const GreenTriangleWrapper = styled(motion.div)`
   position: absolute;
   top: 30%;
   right: 25%;
+
+  @media (max-width: ${breakpoints.l}px) {
+    scale: .8;
+    top: 15%;
+  }
+
   @media (max-width: ${breakpoints.s}px) {
-    right: 0%;
+    right: -2.5%;
     top: 66%;
     scale: 0.5;
   }
@@ -1229,9 +1334,14 @@ const OrangeTriangleWrapper = styled(motion.div)`
   top: 34%;
   left: 25%;
 
+  @media (max-width: ${breakpoints.l}px) {
+    scale: 0.5;
+    top: 10%;
+  }
+
   @media (max-width: ${breakpoints.s}px) {
-    left: 0%;
-    top: 66%;
+    left: -3%;
+    top: 85%;
     scale: 0.5;
   }
 `

@@ -137,6 +137,8 @@ const LatestProjectsCarousel = () => {
   //   setHover(true)
   // }, [])
 
+  const [muted, setMuted] = useState(false)
+
   const PlayIconReactPlayer = () => {
     return (
       <Playbutton
@@ -185,9 +187,23 @@ const LatestProjectsCarousel = () => {
     <Wrapper ref={setRefs}>
       <h2>
         Latest <br />
-        Projects
+        Projects{" "}
+        <svg
+          width="134"
+          height="2"
+          viewBox="0 0 134 2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 1H134"
+            stroke="#F7F7FC"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+          />
+        </svg>
       </h2>
-      <Link to="/projects">
+      <ViewAll to="/projects">
         <p>
           View all{" "}
           <svg
@@ -200,7 +216,7 @@ const LatestProjectsCarousel = () => {
             <path d="M0 16.3901L19 9.39014L0 0.390137V16.3901Z" fill="white" />
           </svg>
         </p>
-      </Link>
+      </ViewAll>
       <Embla>
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer>
@@ -230,6 +246,7 @@ const LatestProjectsCarousel = () => {
                     // onPause={() => setTimeout(() => setHover(true), 1000)}
                     light={video.light}
                     playIcon={<PlayIconReactPlayer />}
+                    muted={muted}
                   />
                 </EmblaSlide>
               )
@@ -237,13 +254,69 @@ const LatestProjectsCarousel = () => {
           </EmblaContainer>
         </EmblaViewport>
         <ProgressContainer>
-          {/* <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} /> */}
-          {/* <NextButton onClick={scrollNext} enabled={nextBtnEnabled} /> */}
           <EmblaProgress>
             <EmblaProgressBar
               style={{ transform: `translateX(calc(${scrollProgress}% * 2))` }}
             />
           </EmblaProgress>
+          <ButtonWrapper>
+            <GroupButtons>
+              {console.log(slidesInView, paused, videoInView)}
+              <Play onClick={() => setPaused(!paused)} aria-label="Play button">
+                <svg
+                  width="12"
+                  height="11"
+                  viewBox="0 0 12 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.471324 10.899L11.5651 6.41654C11.63 6.39033 11.6864 6.34402 11.7275 6.28348C11.7685 6.22295 11.7924 6.15085 11.7959 6.07622C11.7994 6.00159 11.7825 5.92775 11.7474 5.86397C11.7122 5.80019 11.6603 5.74929 11.5982 5.71767L0.565105 0.103908C0.511907 0.076835 0.453043 0.0648364 0.39408 0.0690727C0.335117 0.073309 0.277945 0.0936103 0.227839 0.128106C0.177733 0.162601 0.13629 0.210202 0.107466 0.266402C0.0786421 0.322602 0.0634205 0.385602 0.0630266 0.44957L0.00230304 10.5458C0.00190474 10.6069 0.0151515 10.6671 0.0409099 10.7211C0.0666682 10.7752 0.104104 10.8214 0.150169 10.8561C0.196234 10.8908 0.249511 10.9129 0.30542 10.9203C0.361329 10.9278 0.418269 10.9204 0.471324 10.899V10.899Z"
+                    fill="white"
+                  />
+                </svg>
+              </Play>
+              <Mute onClick={() => setMuted(!muted)} aria-label="Mute button">
+                <svg
+                  width="15"
+                  height="14"
+                  viewBox="0 0 15 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.6447 8.50781C11.1814 8.48966 11.69 8.271 12.063 7.89791C12.4361 7.52482 12.6447 7.02644 12.6447 6.50781C12.6447 5.98918 12.4361 5.49081 12.063 5.11772C11.69 4.74463 11.1814 4.52597 10.6447 4.50781V8.50781Z"
+                    fill="#F7F7FC"
+                  />
+                  <path
+                    d="M10.6447 10.5078V9.44742C11.0307 9.44742 11.4129 9.37138 11.7696 9.22366C12.1262 9.07593 12.4503 8.8594 12.7233 8.58643C12.9962 8.31346 13.2128 7.9894 13.3605 7.63275C13.5082 7.2761 13.5843 6.89385 13.5843 6.50781C13.5843 6.12178 13.5082 5.73952 13.3605 5.38287C13.2128 5.02622 12.9962 4.70216 12.7233 4.4292C12.4503 4.15623 12.1262 3.9397 11.7696 3.79197C11.4129 3.64424 11.0307 3.56821 10.6447 3.56821V2.50781C11.7055 2.50781 12.7229 2.92924 13.4731 3.67939C14.2232 4.42953 14.6447 5.44695 14.6447 6.50781C14.6447 7.56868 14.2232 8.58609 13.4731 9.33624C12.7229 10.0864 11.7055 10.5078 10.6447 10.5078Z"
+                    fill="#F7F7FC"
+                  />
+                  <path
+                    d="M9.6743 0.376613C9.67693 0.303307 9.6568 0.230937 9.61654 0.168994C9.57627 0.10705 9.51777 0.0584251 9.44869 0.029496C9.37961 0.000566805 9.30318 -0.00731603 9.22943 0.00688132C9.15568 0.0210787 9.08804 0.0566934 9.0354 0.109055L4.96342 4.093H1.01758C0.91867 4.093 0.823816 4.13134 0.75388 4.19958C0.683943 4.26782 0.644653 4.36037 0.644653 4.45688V8.75654C0.644653 8.85305 0.683943 8.94561 0.75388 9.01385C0.823816 9.08209 0.91867 9.12042 1.01758 9.12042H4.80986C4.86069 9.11862 4.91134 9.12721 4.95857 9.14564C5.00579 9.16407 5.04854 9.19194 5.08407 9.22745L9.0354 13.0963C9.08804 13.1487 9.15568 13.1843 9.22943 13.1985C9.30318 13.2127 9.37961 13.2048 9.44869 13.1759C9.51777 13.147 9.57627 13.0983 9.61654 13.0364C9.6568 12.9745 9.67693 12.9021 9.6743 12.8288V0.376613Z"
+                    fill="#F7F7FC"
+                  />
+                </svg>
+              </Mute>
+            </GroupButtons>
+            <ViewAllBottom to="/projects">
+              <p>
+                View all{" "}
+                <svg
+                  width="19"
+                  height="17"
+                  viewBox="0 0 19 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 16.3901L19 9.39014L0 0.390137V16.3901Z"
+                    fill="white"
+                  />
+                </svg>
+              </p>
+            </ViewAllBottom>
+          </ButtonWrapper>
         </ProgressContainer>
       </Embla>
     </Wrapper>
@@ -263,6 +336,10 @@ const Wrapper = styled.div`
     left: -2%;
     z-index: 2;
     color: var(--color-white);
+
+    svg {
+      display: none;
+    }
   }
   p {
     position: absolute;
@@ -284,8 +361,45 @@ const Wrapper = styled.div`
       transition: var(--hover-transition);
     }
   }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 10rem;
+    h2 {
+      top: 5%;
+      left: 1%;
+      font-size: 40px;
+      line-height: 100%;
+      svg {
+        display: inline;
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+`
+const ViewAll = styled(Link)`
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
 `
 
+const ViewAllBottom = styled(Link)`
+  display: none;
+  @media (max-width: ${breakpoints.m}px) {
+    display: block;
+
+    p {
+      position: relative;
+      :hover {
+        filter: opacity(1);
+        svg {
+          transform: translate3d(5px, .1rem, 0);
+        }
+      }
+      svg {
+        transform: translateY(0.1rem);
+      }
+    }
+  }
+`
 const Embla = styled.div`
   width: 80%;
   position: relative;
@@ -389,6 +503,62 @@ const EmblaProgressBar = styled.div`
   width: calc(100% / 3);
   /* left: -100%; */
   border-radius: 50px;
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 4rem;
+
+  @media (max-width: ${breakpoints.l}px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    max-width: 90%;
+  }
+`
+
+const GroupButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const Play = styled.button`
+  cursor: pointer;
+  width: 40px;
+  height: auto;
+  aspect-ratio: 1/1;
+  border: 1px solid var(--color-white);
+  background: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    transform: translateX(0.05rem);
+  }
+`
+
+const Mute = styled.button`
+  margin-left: 2rem;
+  cursor: pointer;
+  width: 40px;
+  height: auto;
+  aspect-ratio: 1/1;
+  border: 1px solid var(--color-white);
+  background: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    transform: translateX(-.05rem);
+  }
 `
 
 const Playbutton = styled(motion.button)`

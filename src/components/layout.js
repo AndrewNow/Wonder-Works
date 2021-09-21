@@ -40,47 +40,40 @@ const GlobalWrapper = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     h1 {
-      font-family: "ppwoodland-light";
-      font-size: 126px;
-      line-height: 130.5px;
+      font-size: 100px;
+      line-height: 110px;
     }
 
     h2 {
-      font-family: "ppwoodland-bold";
-      font-size: 75px;
-      line-height: 80px;
+      font-size: 65px;
+      line-height: 72px;
     }
 
     h3 {
-      font-family: "ppwoodland-light";
-      font-size: 50px;
-      line-height: 60px;
+      font-size: 40px;
+      line-height: 45px;
     }
 
     h4 {
-      font-family: "calibre-medium";
-      font-size: 40px;
-      line-height: 48px;
+      font-size: 32px;
+      line-height: 40px;
     }
 
     h5 {
-      font-family: "calibre-regular";
-      font-size: 34px;
-      line-height: 38px;
+      font-size: 28px;
+      line-height: 32px;
     }
 
     h6 {
-      font-family: "calibre-regular";
-      font-size: 32px;
-      line-height: 35px;
+      font-size: 26px;
+      line-height: 30px;
     }
 
     p,
     ul,
     li {
-      font-family: "calibre-regular";
-      font-size: 25px;
-      line-height: 30px;
+      font-size: 20px;
+      line-height: 26px;
     }
   }
 
@@ -101,7 +94,7 @@ const GlobalWrapper = styled.div`
     }
 
     h4 {
-      font-size: 26px;
+      font-size: 28px;
       line-height: 26px;
     }
 
@@ -124,6 +117,45 @@ const GlobalWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.m}px) {
     h1 {
+      font-size: 52px;
+      line-height: 46px;
+    }
+    
+    h2 {
+      font-size: 42px;
+      line-height: 40px;
+    }
+    
+    h3 {
+      font-size: 28px;
+      line-height: 32px;
+    }
+    
+    h4 {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    h5 {
+      font-size: 22px;
+      line-height: 26px;
+    }
+    
+    h6 {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    p,
+    ul,
+    li {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h1 {
       font-size: 30px;
       line-height: 32px;
     }
@@ -139,7 +171,7 @@ const GlobalWrapper = styled.div`
     }
     
     h4 {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 20px;
     }
 
@@ -156,8 +188,48 @@ const GlobalWrapper = styled.div`
     p,
     ul,
     li {
-      font-size: 16px;
-      line-height: 17px;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.01rem;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      font-size: 28px;
+      line-height: 31px;
+    }
+    
+    h2 {
+      font-size: 20px;
+      line-height: 22px;
+    }
+    
+    h3 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+    
+    h4 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    h5 {
+      font-size: 30px;
+      line-height: 33px;
+    }
+    
+    h6 {
+      font-size: 28px;
+      line-height: 35px;
+    }
+
+    p,
+    ul,
+    li {
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.01rem;
     }
   }
   `
