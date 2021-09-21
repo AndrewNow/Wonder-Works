@@ -111,6 +111,9 @@ const Nav = styled.nav`
       width: 120px;
     }
   }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 0rem;
+  }
 `
 
 const Dropdown = styled(motion.div)`

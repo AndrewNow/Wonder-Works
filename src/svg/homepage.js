@@ -119,20 +119,10 @@ export const Cog = () => {
   }
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-      <motion.svg
-        animate={{
-          rotate: 360,
-          transition: {
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "linear",
-            duration: 10,
-          },
-        }}
-        width="102"
-        height="102"
-        viewBox="0 0 102 102"
+    <motion.svg initial="hidden" animate="visible" variants={fadeIn}
+        width="100"
+        height="100"
+        viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -169,7 +159,6 @@ export const Cog = () => {
           fill="#F9DB1E"
         />
       </motion.svg>
-    </motion.div>
   )
 }
 

@@ -173,6 +173,8 @@ export const ContactUs = () => {
 }
 
 const Headline = styled.div`
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   margin-bottom: 3.5rem;
@@ -181,19 +183,32 @@ const Headline = styled.div`
     margin-right: 1rem;
     font-family: "calibre-semibold";
     padding: 0;
+    white-space: nowrap;
   }
 `
 
 const Wrapper = styled.div`
-  width: 77.5%;
+  position: relative;
+  z-index: 10;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding-bottom: 10rem;
   padding-top: 5rem;
 
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 85%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
     flex-direction: column;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 6rem;
+  }
+    @media (max-width: ${breakpoints.xs}px) {
+    width: 90%;
+    padding-bottom: 5rem;
   }
 `
 
@@ -202,7 +217,6 @@ const Left = styled.div`
     width: 60%;
     font-size: 6.5625vw;
     line-height: 105%;
-    /* line-height: 130px; */
     white-space: nowrap;
     padding-bottom: 15rem;
   }
@@ -213,14 +227,57 @@ const Left = styled.div`
     white-space: nowrap;
     padding-bottom: 5rem;
   }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 50%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 100%;
+    h1 {
+      padding-bottom: 5rem;
+      font-size: 9vw;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    h1 {
+      font-size: 10vw;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    h1 {
+      font-size: 45px;
+    }
+  }
 `
 const Right = styled.div`
   align-self: flex-end;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-top: 20rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin-top: 0rem;
+    width: 100%;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const Contact = styled.div`
   display: grid;
-  grid-template-columns: 1.75fr 2fr 2fr;
+  grid-template-columns: 150px 2fr 2fr;
   margin-top: 2rem;
 
   p,
@@ -265,6 +322,43 @@ const Contact = styled.div`
     :hover::after {
       transform: scaleX(1);
       transform-origin: bottom left;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+
+    br {
+      display: none;
+    }
+
+    a {
+      width: 100%;
+      text-decoration: underline;
+
+      ::after {
+        content: none; 
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    a, p {
+      font-size: 15px;
+    }
+    p {
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    a, p {
+      font-size: 18px;
+    }
+    p {
+      margin-top: .25rem;
+    }
+    strong {
+      font-size: 20px;
     }
   }
 `

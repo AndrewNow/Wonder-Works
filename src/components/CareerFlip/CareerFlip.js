@@ -163,6 +163,7 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
+    margin-bottom: 0rem;
     width: 80%;
     overflow-x: hidden;
   }

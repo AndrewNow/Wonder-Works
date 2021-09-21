@@ -95,14 +95,22 @@ const Inner = styled.div`
     font-family: "calibre-regular";
     font-size: 19px;
     line-height: 23px;
-    padding-right: 5rem;
+    padding-right: 6rem;
   }
-
+  @media (max-width: ${breakpoints.xl}px) {
+    p {
+      padding-right: 7rem;
+    }
+    svg:nth-child(1) {
+      width: 70px;
+    }
+  }
   @media (max-width: ${breakpoints.l}px) {
     flex-direction: column-reverse;
     padding: 2rem 0;
 
     p {
+      font-family: "calibre-medium";
       text-align: center;
       padding: 2rem 0;
       padding-bottom: 1rem;
@@ -125,6 +133,15 @@ const Icons = styled.div`
       fill: #b16eac;
     }
   }
+  
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-right: 5rem;
+
+    svg {
+      max-height: 25px;
+    }
+  }
+
   @media (max-width: ${breakpoints.l}px) {
     padding-right: 0;
     width: 100%;
@@ -135,12 +152,21 @@ const Icons = styled.div`
       max-width: 40px!important;
     }
   }
-`
+
+  @media (max-width: ${breakpoints.xs}px) {
+    a {
+      width: 60px;
+    }
+  }
+  `
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
-
+  
   @media (max-width: ${breakpoints.l}px) {
     flex-direction: column;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    max-width: 90vw;
   }
 `

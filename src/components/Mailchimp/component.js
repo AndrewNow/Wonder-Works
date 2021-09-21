@@ -2,8 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import MailchimpFormContainer from "./mailchimpFormContainer"
 import { motion } from 'framer-motion'
+import breakpoints from "../breakpoints"
 
-const MailchimpComponent = ({smallStarSvg, bigStarSvg}) => {
+const MailchimpComponent = ({ smallStarSvg, bigStarSvg }) => {
   return (
     <Background>
       <Brief>
@@ -54,6 +55,11 @@ const Background = styled.div`
   padding-bottom: 10rem;
   position: relative;
   z-index: 3;
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 5rem 0;
+    background-color: var(--color-orange);
+  }
 `
 
 const SvgWrapper = styled.div`
@@ -80,6 +86,19 @@ const Brief = styled.div`
   h3 {
     padding-bottom: 10rem;
     font-family: "ppwoodland-light";
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 85%;
+    h2 {
+      width: 85%;
+      font-size: 34px;
+      line-height: 38px;
+    }
+    h3 {
+      font-size: 20px;
+      padding-bottom: 5rem;
+    }
   }
 `
 

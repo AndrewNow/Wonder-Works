@@ -65,13 +65,13 @@ const GlobalWrapper = styled.div`
 
     h5 {
       font-family: "calibre-regular";
-      font-size: 30px;
-      line-height: 33px;
+      font-size: 34px;
+      line-height: 38px;
     }
 
     h6 {
       font-family: "calibre-regular";
-      font-size: 28px;
+      font-size: 32px;
       line-height: 35px;
     }
 
@@ -84,25 +84,25 @@ const GlobalWrapper = styled.div`
     }
   }
 
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.l}px) {
     h1 {
-      font-size: 30px;
-      line-height: 32px;
+      font-size: 60px;
+      line-height: 65px;
     }
 
     h2 {
-      font-size: 22px;
-      line-height: 24px;
+      font-size: 50px;
+      line-height: 54px;
     }
 
     h3 {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 30px;
+      line-height: 34px;
     }
 
     h4 {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 26px;
+      line-height: 26px;
     }
 
     h5 {
@@ -118,8 +118,46 @@ const GlobalWrapper = styled.div`
     p,
     ul,
     li {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    h1 {
+      font-size: 30px;
+      line-height: 32px;
+    }
+    
+    h2 {
+      font-size: 22px;
+      line-height: 24px;
+    }
+    
+    h3 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+    
+    h4 {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    h5 {
+      font-size: 30px;
+      line-height: 33px;
+    }
+    
+    h6 {
+      font-size: 28px;
+      line-height: 35px;
+    }
+
+    p,
+    ul,
+    li {
       font-size: 16px;
       line-height: 17px;
     }
   }
-`
+  `

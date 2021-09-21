@@ -304,7 +304,16 @@ const HomeIndex = ({ data }) => {
         <StaircaseWrapper>
           <Svg.Staircase />
         </StaircaseWrapper>
-        <CogWrapper>
+        <CogWrapper
+        animate={{
+          rotate: 360,
+          transition: {
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear",
+            duration: 10,
+          },
+        }}>
           <Svg.Cog />
         </CogWrapper>
         <PortalWrapper>
@@ -802,36 +811,70 @@ const StaircaseWrapper = styled.div`
   top: 23%;
   left: 8%;
 
-  @media (max-width: ${breakpoints.m}px) {
-    left: -6%;
+  @media (max-width: ${breakpoints.xl}px) {
+    left: 5%;
     top: 15%;
     svg {
-      scale: 0.75;
+      width: 450px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    svg {
+      width: 400px;
+      height: auto;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    left: -30%;
-    top: 10%;
     svg {
-      scale: 0.5;
+      width: 300px;
     }
   }
 `
-const CogWrapper = styled.div`
+const CogWrapper = styled(motion.div)`
   position: absolute;
-  top: 53%;
+  top: 45%;
   right: 40%;
-
-  @media (max-width: ${breakpoints.l}px) {
-    top: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: ${breakpoints.xxl}px) {
+    top: 40%;
     svg {
-      scale: 0.75;
+      width: 90px;
+      height: 90px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 40%;
+    svg {
+      width: 85px;
+      height: 85px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 35%;
+    width: 80px;
+    height: 80px;
+    svg {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 45%;
+    svg {
+      width: 85px;
+      height: 85px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 43%;
+    top: 47%;
+    right: 42%;
     svg {
-      scale: 0.5;
+      width: 50px;
+      height: 50px;
+      transform-origin: center;
     }
   }
 `
@@ -845,7 +888,7 @@ const PortalWrapper = styled.div`
     right: -10%;
     svg {
       width: 750px;
-      height: 715px;
+      height: auto;
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
@@ -853,19 +896,16 @@ const PortalWrapper = styled.div`
     right: -15%;
     svg {
       width: 650px;
-      height: 615px;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
     svg {
       width: 550px;
-      height: 515px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
     svg {
       width: 450px;
-      height: 415px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -873,7 +913,6 @@ const PortalWrapper = styled.div`
     right: -25%;
     svg {
       width: 350px;
-      height: 315px;
     }
   }
 `
@@ -925,7 +964,7 @@ const LandingTextMobile = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     z-index: 2;
     position: relative;
-    padding-top: 14rem;
+    padding-top: 13rem;
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -935,7 +974,7 @@ const LandingTextMobile = styled.div`
     h1 {
       z-index: 2;
       font-family: "balgin-medium";
-      font-size: 100px;
+      font-size: 12vw;
       line-height: 100%;
       color: var(--color-black);
     }
@@ -969,6 +1008,9 @@ const Span = styled(motion.span)`
   }
   @media (max-width: ${breakpoints.m}px) {
     margin-right: 1rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-right: .75rem;
   }
 `
 const First = styled(motion.div)`
@@ -1519,7 +1561,7 @@ const Column = styled(motion.div)`
     h5 {
       margin: 0 auto;
     }
-    
+
     :nth-child(2) h5 {
       order: 3;
       display: none;
@@ -1528,7 +1570,7 @@ const Column = styled(motion.div)`
       order: 3;
       display: none;
     }
-    :nth-child(3)  {
+    :nth-child(3) {
       flex-direction: row-reverse;
     }
   }
@@ -1591,7 +1633,7 @@ const Desc = styled.p`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
     h5 {
       margin: 0 auto;
       white-space: nowrap;
@@ -1641,8 +1683,37 @@ const PinkStarStrokeWrapper = styled(motion.div)`
   z-index: 1;
   top: -15%;
   right: 15%;
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 20%;
+    top: 5%;
+    svg {
+      width: 250px;
+      height: auto;
+    }
+  }
   @media (max-width: ${breakpoints.l}px) {
-    display: none;
+    right: 20%;
+    top: 15%;
+    svg {
+      width: 200px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    right: 10%;
+    top: 25%;
+    svg {
+      width: 150px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    right: 10%;
+    top: 27%;
+    svg {
+      width: 130px;
+      height: auto;
+    }
   }
 `
 const PinkStarFillWrapper = styled(motion.div)`
@@ -1650,4 +1721,39 @@ const PinkStarFillWrapper = styled(motion.div)`
   z-index: 1;
   top: 5%;
   right: 25%;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 30%;
+    top: 17%;
+    svg {
+      width: 200px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 25%;
+    svg {
+      width: 150px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 35%;
+    right: 20%;
+    svg {
+      width: 100px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 35%;
+    right: 25%;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 33%;
+    svg {
+      width: 80px;
+      height: auto;
+    }
+  }
 `
