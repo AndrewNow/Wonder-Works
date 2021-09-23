@@ -77,25 +77,25 @@ const ProjectsPageCarousel = () => {
 
   const videoLinks = [
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: "https://i.imgur.com/yNmhs4y.png",
       trailerbuttontext: "Traitor",
       trailerbuttoncolor: "var(--color-pink)",
     },
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: false,
       trailerbuttontext: "Overlook bay",
       trailerbuttoncolor: "var(--color-green)",
     },
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: false,
       trailerbuttontext: "Timmeh",
       trailerbuttoncolor: "var(--color-lightblue)",
     },
     {
-      Src: "https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4",
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: false,
       trailerbuttontext: "World of havoc",
       trailerbuttoncolor: "var(--color-orange)",

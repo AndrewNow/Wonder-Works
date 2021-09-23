@@ -233,18 +233,25 @@ const Left = styled.div`
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
-    h1 {
+    h1, h2 {
       padding-bottom: 5rem;
       font-size: 9vw;
+    }
+    h2 {
+      line-height: 90%;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
     h1 {
       font-size: 10vw;
     }
+
+    h2 {
+      font-size: 70px;
+    }
   }
   @media (max-width: ${breakpoints.s}px) {
-    h1 {
+    h1, h2 {
       font-size: 45px;
     }
   }
