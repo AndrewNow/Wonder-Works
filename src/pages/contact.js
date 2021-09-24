@@ -18,25 +18,40 @@ const Contact = ({ data }) => {
   const handleProjectsPageTransition = () => {
     setExpandProjectsButton(true)
     // navigate to projects page after 1.5 seconds (to let the button animation finish)
-    setTimeout(() => navigate("/projects"), 1500)
+    setTimeout(() => navigate("/projects"), 1000)
   }
   const handleCareersPageTransition = () => {
     setExpandCareersButton(true)
     // navigate to careers page after 1.5 seconds
-    setTimeout(() => navigate("/careers"), 1500)
+    setTimeout(() => navigate("/careers"), 1000)
   }
 
   const currentProjectsButton = {
     expand: {
-      scale: 10,
+      scale: 11,
+      color: "#F7F7FC",
       backgroundColor: "#1A1748",
       transition: {
         duration: 1,
         ease: "easeIn",
       },
     },
+    hover: {
+      color: "#F7F7FC",
+      backgroundColor: "#1A1748",
+      transition: {
+        duration: 0.25,
+        ease: "easeInOut"
+      },
+    },
     normal: {
       scale: 1,
+      backgroundColor: "#F7F7FC",
+      color: "#1A1748",
+      transition: {
+        duration: 0.25,
+        ease: "easeInOut"
+      },
     },
   }
 
@@ -59,6 +74,7 @@ const Contact = ({ data }) => {
         variants={currentProjectsButton}
         initial="normal"
         animate={expandProjectsButton ? "expand" : "normal"}
+        whileHover="hover"
       >
         <CurrentProjectsText variants={buttonText}>
           <p>Current</p>
@@ -72,6 +88,7 @@ const Contact = ({ data }) => {
           variants={currentProjectsButton}
           initial="normal"
           animate={expandCareersButton ? "expand" : "normal"}
+          whileHover="hover"
         >
           <OpenPositionsText variants={buttonText}>
             <p>Open</p>
@@ -148,14 +165,14 @@ const CurrentProjects = styled(motion.div)`
   justify-content: center;
   align-content: center;
 
-  background-color: var(--color-white);
-  color: var(--color-black);
-  transition: var(--hover-transition);
+  /* background-color: var(--color-white); */
+  /* color: var(--color-black); */
+  /* transition: var(--hover-transition); */
 
-  &:hover {
+  /* &:hover {
     background-color: var(--color-black);
     color: var(--color-white);
-  }
+  } */
 `
 
 const CurrentProjectsText = styled(motion.div)`
@@ -170,6 +187,7 @@ const CurrentProjectsText = styled(motion.div)`
     color: inherit;
     font-size: 18px;
     line-height: 20px;
+    padding-bottom: .35rem;
   }
 
   p:nth-of-type(1) {
@@ -215,14 +233,14 @@ const OpenPositons = styled(motion.div)`
   justify-content: center;
   align-content: center;
 
-  background-color: var(--color-white);
-  color: var(--color-black);
-  transition: var(--hover-transition);
+  /* background-color: var(--color-white); */
+  /* color: var(--color-black); */
+  /* transition: var(--hover-transition); */
 
-  &:hover {
+  /* &:hover {
     background-color: var(--color-black);
     color: var(--color-white);
-  }
+  } */
 `
 
 const OpenPositionsText = styled(motion.div)`
@@ -237,6 +255,7 @@ const OpenPositionsText = styled(motion.div)`
     color: inherit;
     font-size: 18px;
     line-height: 20px;
+    padding-bottom: 0.35rem;
   }
 
   p:nth-of-type(1) {

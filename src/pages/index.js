@@ -8,6 +8,7 @@ import Typewriter from "typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as Svg from "../svg/homepage"
+import { Arrow } from "../svg/miscellaneous"
 import { GreenStars, PurpleStar } from "../svg/miscellaneous"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
@@ -305,15 +306,16 @@ const HomeIndex = ({ data }) => {
           <Svg.Staircase />
         </StaircaseWrapper>
         <CogWrapper
-        animate={{
-          rotate: 360,
-          transition: {
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "linear",
-            duration: 10,
-          },
-        }}>
+          animate={{
+            rotate: 360,
+            transition: {
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "linear",
+              duration: 10,
+            },
+          }}
+        >
           <Svg.Cog />
         </CogWrapper>
         <PortalWrapper>
@@ -345,7 +347,9 @@ const HomeIndex = ({ data }) => {
           animate="visible"
           whileTap={{ scale: 0.9 }}
         >
-          <DiscoverMore to="/about">DISCOVER MORE</DiscoverMore>
+          <DiscoverMore to="/about">
+            DISCOVER MORE <Arrow />
+          </DiscoverMore>
         </motion.div>
       </LandingText>
 
@@ -538,7 +542,7 @@ const HomeIndex = ({ data }) => {
                 Wonder Works Jams is a space for our junior talent to QA various
                 game genres. It’s a creative hub of mentorship that fosters a
                 lifelong love for exploration and innovation and promotes
-                success on individual andcollaborative levels.{" "}
+                success on individual and collaborative levels.{" "}
               </p>
             </PillarHoverInner>
           </PillarHover>
@@ -636,7 +640,9 @@ const HomeIndex = ({ data }) => {
               navigating platform trends to uncovering user desires.
             </motion.p>
             <motion.div variants={word} whileTap={{ scale: 0.9 }}>
-              <DiscoverMore to="/investors">LEARN MORE</DiscoverMore>
+              <DiscoverMore to="/investors">
+                LEARN MORE <Arrow />
+              </DiscoverMore>
             </motion.div>
           </Brief>
           <Stats>
@@ -804,7 +810,10 @@ const Background = styled(motion.div)`
   left: 0;
   right: 0;
 
-  overflow-x: hidden;
+  
+  @media (max-width: 1700px) {
+    overflow-x: hidden;
+  }
 `
 const StaircaseWrapper = styled.div`
   position: absolute;
@@ -887,14 +896,12 @@ const PortalWrapper = styled.div`
   position: absolute;
   top: 35%;
   right: 0%;
-  overflow-x: hidden;
 
   @media (max-width: 1700px) {
     right: -5%;
     svg {
       width: 550px;
       height: auto;
-      
     }
   }
   @media (max-width: ${breakpoints.xxl}px) {
@@ -1052,7 +1059,7 @@ const Span = styled(motion.span)`
     margin-right: 1rem;
   }
   @media (max-width: ${breakpoints.s}px) {
-    margin-right: .75rem;
+    margin-right: 0.75rem;
   }
 `
 const First = styled(motion.div)`
@@ -1091,9 +1098,16 @@ const DiscoverMore = styled(Link)`
   font-size: 28px;
   line-height: 35px;
 
-  &:hover {
+  :hover {
     background-color: var(--color-black);
     color: var(--color-white);
+    svg {
+      fill: var(--color-white);
+    }
+  }
+  svg {
+    
+    transition: var(--hover-transition);
   }
 
   @media (max-width: ${breakpoints.m}px) {
@@ -1256,7 +1270,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
     top: 40%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    scale: .7;
+    scale: 0.7;
     top: 10%;
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1282,7 +1296,7 @@ const BlueTriangleWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    scale: .7;
+    scale: 0.7;
     bottom: 10%;
   }
 
@@ -1318,7 +1332,7 @@ const GreenTriangleWrapper = styled(motion.div)`
   right: 25%;
 
   @media (max-width: ${breakpoints.l}px) {
-    scale: .8;
+    scale: 0.8;
     top: 15%;
   }
 

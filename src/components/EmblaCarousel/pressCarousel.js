@@ -6,7 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-
+import { PurpleArrow } from "../../svg/miscellaneous"
 const PressCarousel = () => {
   const ref = useRef()
   const [pressRef, pressInView] = useInView({
@@ -37,7 +37,7 @@ const PressCarousel = () => {
       // y: 0,
       opacity: 1,
       transition: {
-        duration: .75
+        duration: 0.75,
       },
     },
     hidden: {
@@ -151,7 +151,14 @@ const PressCarousel = () => {
                     <Top>
                       <p>{slide.date}</p>
                       <ImageWrapper>
-                        <GatsbyImage image={slide.imageSrc} alt={slide.title} />
+                        <GatsbyImage
+                          image={slide.imageSrc}
+                          alt={slide.title}
+                          imgStyle={{
+                            border: "2px solid #6653A3",
+                            borderRadius: "10px",
+                          }}
+                        />
                       </ImageWrapper>
                       <h4>{slide.title}</h4>
                     </Top>
@@ -164,18 +171,7 @@ const PressCarousel = () => {
                         alt="Link to article"
                       >
                         Read More
-                        <svg
-                          width="20"
-                          height="17"
-                          viewBox="0 0 20 17"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M0.490234 16.5632L19.4902 9.56323L0.490234 0.563232V16.5632Z"
-                            fill="#6653A3"
-                          />
-                        </svg>
+                        <PurpleArrow />
                       </a>
                     </Flex>
                   </Entry>
@@ -194,7 +190,7 @@ const PressCarousel = () => {
 export default PressCarousel
 
 const Wrapper = styled.div`
-background-color: var(--color-white);
+  background-color: var(--color-white);
   padding: 5rem 0;
   width: 90%;
   margin: 0 auto;
@@ -262,11 +258,8 @@ const ImageWrapper = styled.div`
   position: relative;
   z-index: 10;
   margin: 1rem 0;
-  height: 370px;
   width: 100%;
-  border: 2px solid var(--color-purple);
   overflow: hidden;
-  border-radius: 10px;
   box-sizing: border-box;
 `
 const Flex = styled.div`

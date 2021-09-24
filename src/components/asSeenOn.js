@@ -10,9 +10,14 @@ import breakpoints from "./breakpoints"
 
 export const HomePageAsSeenOn = () => {
   const ref = useRef()
-  const [logosRef, logosInView] = useInView({
+  const [homepagelogoRef, homepagelogoInView] = useInView({
     root: null,
-    threshold: 0.85,
+    threshold: 0.75,
+    triggerOnce: true,
+  })
+  const [homepagelogoRefMobile, homepagelogoMobileInView] = useInView({
+    root: null,
+    threshold: 0.75,
     triggerOnce: true,
   })
 
@@ -20,9 +25,10 @@ export const HomePageAsSeenOn = () => {
     //assign multiple refs with useInView
     node => {
       ref.current = node
-      logosRef(node)
+      homepagelogoRef(node)
+      homepagelogoRefMobile(node)
     },
-    [logosRef]
+    [homepagelogoRef, homepagelogoRefMobile]
   )
 
   const logoParent = {
@@ -53,10 +59,10 @@ export const HomePageAsSeenOn = () => {
   return (
     <>
       <LogosHomepage
-        ref={logosRef}
+        ref={homepagelogoRef}
         variants={logoParent}
         initial="hidden"
-        animate={logosInView && "visible"}
+        animate={homepagelogoInView && "visible"}
       >
         <motion.div variants={logoMask}>
           <StaticImage
@@ -120,10 +126,10 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
       </LogosHomepage>
       <LogosHomepageMobile
-        ref={logosRef}
+        ref={homepagelogoRefMobile}
         variants={logoParent}
         initial="hidden"
-        animate={logosInView && "visible"}
+        animate={homepagelogoMobileInView && "visible"}
       >
         {/* <div> */}
         <motion.div variants={logoMask}>

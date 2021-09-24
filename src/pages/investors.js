@@ -9,8 +9,9 @@ import CountUp from "react-countup"
 import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
-import {ContactUs} from "../components/contactUs"
+import { ContactUs } from "../components/contactUs"
 import { AsSeenOn } from "../components/asSeenOn"
+import { Arrow } from "../svg/miscellaneous"
 
 const Investors = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Investment Centre`
@@ -92,7 +93,7 @@ const Investors = ({ data }) => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: .85,
+        duration: 0.85,
         ease: "easeOut",
       },
     },
@@ -106,7 +107,7 @@ const Investors = ({ data }) => {
     inView: {
       transition: {
         duration: 0.5,
-        delay: .5,
+        delay: 0.5,
       },
       scale: 1,
     },
@@ -118,7 +119,7 @@ const Investors = ({ data }) => {
     inView: {
       transition: {
         duration: 0.5,
-        delay: .65,
+        delay: 0.65,
       },
       scale: 1,
     },
@@ -130,7 +131,7 @@ const Investors = ({ data }) => {
     inView: {
       transition: {
         duration: 0.5,
-        delay: .8,
+        delay: 0.8,
       },
       scale: 1,
     },
@@ -186,7 +187,7 @@ const Investors = ({ data }) => {
   // Only display 2 posts from PastEventsData[] at first
   const [visiblePosts, setVisiblePosts] = useState(2)
 
-  // When user clicks on the load more button, load 2 more posts (see: MORE_POSTS)
+  // When user clicks on the  button, load 2 more posts (see: MORE_POSTS)
   const MORE_POSTS = 2
   const handleLoadNewPosts = () =>
     setVisiblePosts(visiblePosts => visiblePosts + MORE_POSTS)
@@ -328,7 +329,7 @@ const Investors = ({ data }) => {
             target="_blank"
             rel="noreferrer"
           >
-            Request a pitchdeck
+            Request a pitchdeck <Arrow />
           </a>
         </DiscoverMore>
         <IconWrapper>
@@ -435,7 +436,7 @@ const Investors = ({ data }) => {
               ) : (
                 // Button to open more posts
                 <EventsButton layout onClick={handleLoadNewPosts}>
-                  More past events
+                  More past events <Arrow />
                 </EventsButton>
               )}
             </EventsList>
@@ -596,11 +597,13 @@ const DiscoverMore = styled(motion.div)`
   margin: 0 auto;
   border: 2px solid var(--color-black);
   border-radius: 50px;
-  transition: var(--hover-transition);
   cursor: pointer;
   background-color: var(--color-white);
-  width: 350px;
+  transition: var(--hover-transition);
+  /* width: 350px; */
+  width: 380px;
   a {
+    transition: var(--hover-transition);
     padding: 0.75rem 2.75rem;
     padding-bottom: 0.9rem;
     display: flex;
@@ -620,6 +623,15 @@ const DiscoverMore = styled(motion.div)`
     a {
       color: var(--color-white);
     }
+    svg {
+      fill: var(--color-white);
+    }
+  }
+  svg {
+    margin-left: 0.25rem;
+    transform: translateY(0.15rem);
+    fill: var(--color-black);
+    transition: var(--hover-transition);
   }
 `
 const IconWrapper = styled.div`
@@ -714,7 +726,7 @@ const EventText = styled.div``
 
 const EventsButton = styled(motion.button)`
   cursor: pointer;
-  width: 320px;
+  width: 370px;
   border-radius: 50px;
   border: 2px solid var(--color-black);
   background-color: var(--color-white);
@@ -731,5 +743,14 @@ const EventsButton = styled(motion.button)`
   :hover {
     background-color: var(--color-black);
     color: var(--color-white);
+    svg {
+      fill: var(--color-white);
+    }
+  }
+  svg {
+    margin-left: 0.25rem;
+    transform: translateY(0.15rem);
+    fill: var(--color-black);
+    transition: var(--hover-transition);
   }
 `

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { WonderWorkersData } from "./wonderworkersData"
+import breakpoints from "../breakpoints"
 
 const WonderWorkers = () => {
   return (
@@ -25,6 +26,13 @@ const Title = styled.div`
   h2 {
     color: var(--color-white);
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h2 {
+      font-size: 45px;
+      line-height: 50px;
+    }
+  }
 `
 
 const Wrapper = styled.div`
@@ -35,4 +43,55 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   margin: 0 auto;
   width: 90%;
+
+  div:nth-of-type(2) {
+    transform: translate3d(0, 3rem, 0);
+    z-index: 10;
+  }
+  div:nth-of-type(3) {
+    transform: translate3d(0, 3rem, 0);
+    z-index: 11;
+  }
+  div:nth-of-type(6) {
+    transform: translate3d(0, 3rem, 0);
+    z-index: 10;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-top: 5rem;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 7rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+
+    div:nth-of-type(2) {
+      transform: none;
+      z-index: 10;
+      transform: translate3d(0, 6rem, 0);
+    }
+    div:nth-of-type(3) {
+      transform: none;
+      z-index: 11;
+    }
+    div:nth-of-type(4) {
+      transform: none;
+      z-index: 10;
+      transform: translate3d(0, 6rem, 0);
+    }
+    div:nth-of-type(5) {
+      transform: none;
+      z-index: 10;
+    }
+    div:nth-of-type(6) {
+      transform: translate3d(0, 6rem, 0);
+      z-index: 10;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 5rem;
+  }
 `

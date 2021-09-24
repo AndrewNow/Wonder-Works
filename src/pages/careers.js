@@ -14,6 +14,7 @@ import {
 } from "../context/globalContext"
 import emailjs from "emailjs-com"
 import breakpoints from "../components/breakpoints"
+import { Arrow } from '../svg/miscellaneous'
 
 const Careers = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Careers`
@@ -23,7 +24,7 @@ const Careers = ({ data }) => {
       zIndex: 6000,
     },
     hidden: {
-      zIndex: 1,
+      zIndex: 0,
       transition: {
         delay: 1.5,
         staggerChildren: 0.15,
@@ -395,7 +396,7 @@ const Careers = ({ data }) => {
                     <textarea ref={textAreaRef} value="This is a test link!" />
                   </form>
                   <SharePosting onClick={copyToClipboard}>
-                    Share Posting
+                    Share Posting <Arrow />
                   </SharePosting>
                   <LinkCopiedAlert
                     // animate the alert in and out according to the timeout
@@ -580,7 +581,7 @@ const Cascade = styled(motion.div)`
   overflow: hidden;
   width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 6000;
   top: 0;
   left: 0;
@@ -590,7 +591,7 @@ const Yellow = styled(motion.div)`
   background-color: var(--color-orange);
   width: 99vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 6004;
   top: 0;
   left: 0;
@@ -599,7 +600,7 @@ const Pink = styled(motion.div)`
   background-color: var(--color-lightpink);
   width: 97vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 6003;
   top: 0;
   left: 0;
@@ -608,7 +609,7 @@ const Green = styled(motion.div)`
   background-color: var(--color-green);
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 6002;
   top: 0;
   left: 0;
@@ -617,7 +618,7 @@ const Purple = styled(motion.div)`
   background-color: var(--color-purple);
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 6001;
   top: 0;
   left: 0;
@@ -647,6 +648,7 @@ const Span = styled(motion.span)`
 
 const Mask = styled(motion.div)`
   overflow: hidden;
+  height: 100%;
 `
 
 const LandingSection = styled.section`
@@ -671,7 +673,13 @@ const Flex = styled.div`
     flex-direction: column;
     padding-top: 10rem;
   }
-`
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 10rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 5rem;
+  }  
+  `
 const Left = styled.div`
   width: 50%;
   h1,
@@ -733,7 +741,7 @@ const Right = styled.div`
     white-space: nowrap;
     font-family: "balgin-bold";
     font-size: 3.9vw;
-    line-height: 3.9vw;
+    line-height: 100%;
     text-transform: uppercase;
     text-align: center;
     color: var(--color-lightpink);
@@ -744,9 +752,42 @@ const Right = styled.div`
     transform: rotate(-17deg);
   }
 
-  @media (max-width: ${breakpoints.l}px) {
-    width: 80%;
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 75%;
     margin: 0 auto;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-top: 7rem;
+    h6 {
+      padding: 2  rem 1rem;
+    } 
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 5rem;
+    margin: 0 auto;
+    h6 {
+      padding: 2rem;
+      font-size: 50px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    width: 80%;
+    padding-top: 3rem;
+    align-self: flex-start;
+    h6 {
+      padding: 3rem 1rem;
+      font-size: 40px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+    padding-top: 2rem;
+    align-self: flex-start;
+    h6 {
+      padding: 2rem;
+      font-size: 28px;
+    }
   }
 `
 
@@ -774,8 +815,8 @@ const BigPlusWrapper = styled(motion.div)`
     left: 3%;
   }
   @media (max-width: ${breakpoints.m}px) {
-    top: 10%;
-    left: 3%;
+    top: 15%;
+    left: 5%;
     svg {
       width: 65px;
       height: auto;
@@ -783,6 +824,8 @@ const BigPlusWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.s}px) {
+    top: 10%;
+    left: 3%;
     svg {
       width: 65px;
     }
@@ -806,16 +849,25 @@ const TwoPlusWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    bottom: 20%;
+    bottom: 15%;
+    right: 10%;
     svg {
-      width: 400px;
+      width: 500px;
     }
   }
 
-  @media (max-width: ${breakpoints.s}px) {
-    bottom: 25%;
+  @media (max-width: ${breakpoints.x}px) {
+    bottom: 10%;
+    right: 7%;
     svg {
-      width: 350px;
+      width: 270px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: 5%;
+    right: 4%;
+    svg {
+      width: 270px;
     }
   }
 `
@@ -966,7 +1018,7 @@ const ShareSection = styled.div`
 
 const LinkCopiedAlert = styled(motion.p)`
   position: absolute;
-  font-family: "calibre-regular-italic";
+  font-family: "calibre-regular";
   font-size: 18px;
   bottom: 5rem;
   margin: 0 auto;
@@ -989,10 +1041,20 @@ const SharePosting = styled.button`
   line-height: 35px;
   width: 100%;
   text-transform: uppercase;
-
+  white-space: nowrap;
   &:hover {
     background-color: var(--color-black);
     color: var(--color-white);
+    svg {
+      fill: var(--color-white);
+    }
+  }
+  svg {
+    width: 30px;
+    margin-left: 0.25rem;
+    transform: translateY(0.15rem);
+    fill: var(--color-black);
+    transition: var(--hover-transition);
   }
 `
 
@@ -1158,6 +1220,7 @@ const Submit = styled(motion.input)`
   cursor: pointer;
   background: none;
   border: 2px solid var(--color-black);
+  color: var(--color-black);
   border-radius: 50px;
   padding: 1rem 2rem;
   font-size: 25px;
@@ -1169,6 +1232,7 @@ const Submit = styled(motion.input)`
     background-color: var(--color-black);
     color: var(--color-white);
   }
+
 `
 
 const Bottom = styled.div`

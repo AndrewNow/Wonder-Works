@@ -4,12 +4,7 @@ import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-  useSpring,
-} from "framer-motion"
+import { motion, useViewportScroll, useTransform } from "framer-motion"
 import ProjectsPageCarousel from "../components/EmblaCarousel/projectsPageCarousel"
 import { StaticImage } from "gatsby-plugin-image"
 import * as Svg from "../svg/projectspage"
@@ -18,6 +13,7 @@ import {
   useGlobalStateContext,
 } from "../context/globalContext"
 import ReactPlayer from "react-player/file"
+import { Arrow } from "../svg/miscellaneous"
 
 const Projects = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Projects`
@@ -198,7 +194,7 @@ const Projects = ({ data }) => {
             rel="noreferrer"
             whileTap={{ scale: 0.9 }}
           >
-            Play now on Roblox
+            Play now on Roblox <Arrow />
           </OverlookRobloxLink>
         </OverlookBayBody>
         <LighthouseImageWrapper>
@@ -270,7 +266,7 @@ const Projects = ({ data }) => {
             rel="noreferrer"
             whileTap={{ scale: 0.9 }}
           >
-            Play now on Roblox
+            Play now on Roblox <Arrow />
           </TimmehRobloxLink>
         </TimmehBody>
         <TextLogoWrapper>
@@ -368,7 +364,7 @@ const Projects = ({ data }) => {
             rel="noreferrer"
             whileTap={{ scale: 0.9 }}
           >
-            Play now on Roblox
+            Play now on Roblox <Arrow />
           </TraitorRobloxLink>
         </TraitorBody>
         <SVGWrapper>
@@ -385,7 +381,7 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TraitorLeftImageWrapper>
-        <TraitorMiddleImageWrapper >
+        <TraitorMiddleImageWrapper>
           <StaticImage
             src="../images/Projects/traitormiddle.png"
             alt="Character with a gun pointed at them"
@@ -443,15 +439,18 @@ const Projects = ({ data }) => {
             </PinkStarWrapper>
           </ShopText>
           <ShopVideo>
-            <VideoWrapper>
+            <VideoWrapper
+              href="https://www.staypeachy.shop"
+              target="_blank"
+              rel="noreferrer"
+            >
               <ReactPlayer
-                url="https://touchdesigner.s3.ca-central-1.amazonaws.com/timelapse.mp4"
-                width="100%"
-                height="100%"
+                url="https://ww-peachy.s3.us-west-1.amazonaws.com/Stay-Peachy-Recording-Site-Desktop.mp4"
                 playing={shopInView}
-                // light={true}
                 loop={true}
                 muted={true}
+                width="100%"
+                height="100%"
               />
             </VideoWrapper>
             <OrangeStarWrapper
@@ -632,7 +631,7 @@ const CarouselWrapper = styled.section`
 const OverlookBay = styled.section`
   position: relative;
   overflow: hidden;
-  background-color: var(--color-lightblue);
+  background-color: var(--color-darkblue);
   padding-bottom: 10rem;
   height: 110vh;
 `
@@ -683,7 +682,15 @@ const OverlookRobloxLink = styled(motion.a)`
   line-height: 30px;
   &:hover {
     background-color: var(--color-white);
-    color: var(--color-lightblue);
+    color: var(--color-darkblue);
+    svg {
+      fill: var(--color-darkblue);
+    }
+  }
+  svg {
+    transform: translateY(.15rem);
+    fill: var(--color-white);
+    transition: var(--hover-transition);
   }
 `
 
@@ -735,7 +742,7 @@ const TextLogoWrapper = styled.div`
 const Timmeh = styled.section`
   position: relative;
   overflow: hidden;
-  background-color: var(--color-darkblue);
+  background-color: var(--color-purple);
   padding-bottom: 10rem;
   height: 110vh;
 `
@@ -764,7 +771,7 @@ const TimmehBody = styled(motion.div)`
   position: relative;
   z-index: 2;
   p {
-    width: 35%;
+    width: 45%;
     color: var(--color-white);
     padding-bottom: 5rem;
   }
@@ -785,7 +792,15 @@ const TimmehRobloxLink = styled(motion.a)`
   line-height: 30px;
   &:hover {
     background-color: var(--color-white);
-    color: var(--color-darkblue);
+    color: var(--color-purple);
+    svg {
+      fill: var(--color-purple);
+    }
+  }
+  svg {
+    transform: translateY(0.15rem);
+    fill: var(--color-white);
+    transition: var(--hover-transition);
   }
 `
 const TimmehTopWrapper = styled(motion.div)`
@@ -874,6 +889,14 @@ const TraitorRobloxLink = styled(motion.a)`
   &:hover {
     background-color: var(--color-white);
     color: var(--color-black);
+    svg {
+      fill: var(--color-black);
+    }
+  }
+  svg {
+    transform: translateY(0.15rem);
+    fill: var(--color-white);
+    transition: var(--hover-transition);
   }
 `
 
@@ -972,15 +995,25 @@ const ShopVideo = styled.div`
   height: 475px;
 `
 
-const VideoWrapper = styled.div`
-  border: 2px solid var(--color-black);
-  filter: drop-shadow(12px 12px 0px #e795bf);
-  /* width: 900px; */
-  overflow: hidden;
+const VideoWrapper = styled.a`
+  aspect-ratio: 1440/740;
   width: 100%;
-  height: 100%;
-  object-fit: fill;
-  border-radius: 10px;
+  height: auto;
+
+  transition: var(--hover-transition);
+  :hover {
+    filter: brightness(0.9);
+  }
+
+  div {
+    box-sizing: content-box;
+    aspect-ratio: 1440/740;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--color-black);
+    border-radius: 10px;
+    filter: drop-shadow(12px 12px 0px #e795bf);
+  }
 `
 
 const StayPeachyLink = styled.div`
