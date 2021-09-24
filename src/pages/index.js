@@ -698,7 +698,6 @@ const HomeIndex = ({ data }) => {
                   <p>DAU</p>
                 </Circle>
                 <Desc>
-                  <h5>Overlook Bay</h5>
                   <p>4% of Roblox DAU</p>
                   <p>
                     2.2M+ Total Playing hrs/mo <br />
@@ -722,7 +721,6 @@ const HomeIndex = ({ data }) => {
                   <p>DAU</p>
                 </Circle>
                 <Desc>
-                  <h5>Timmeh</h5>
                   <p>0.0% of Roblox DAU</p>
                   <p>
                     0.0M+ Total Playing hrs/mo <br />
@@ -810,7 +808,6 @@ const Background = styled(motion.div)`
   left: 0;
   right: 0;
 
-  
   @media (max-width: 1700px) {
     overflow-x: hidden;
   }
@@ -1106,13 +1103,17 @@ const DiscoverMore = styled(Link)`
     }
   }
   svg {
-    
     transition: var(--hover-transition);
   }
 
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.l}px) {
     font-size: 16px;
     line-height: 17px;
+
+    svg {
+      width: 25px;
+      transform: translate3d(0.2rem, 0.3rem, 0);
+    }
   }
 `
 
@@ -1515,7 +1516,7 @@ const Press = styled.div`
     padding-bottom: 5rem;
     font-family: "calibre-semibold";
   }
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.m}px) {
     background-color: var(--color-white);
     h4 {
       padding-top: 5rem;
@@ -1539,6 +1540,10 @@ const InvestmentCenter = styled.section`
   position: relative;
   padding-bottom: 5.5rem;
   background-color: var(--color-white);
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 0rem;
+  }
 `
 
 const InvestmentWrapper = styled.div`
@@ -1546,15 +1551,12 @@ const InvestmentWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* margin: 0 auto; */
   margin-top: 10rem;
 
   @media (max-width: 1655px) {
     flex-direction: column;
   }
-  @media (max-width: ${breakpoints.xl}px) {
-    flex-direction: column;
-  }
+
   @media (max-width: ${breakpoints.s}px) {
     margin-top: 5rem;
   }
@@ -1582,6 +1584,11 @@ const Brief = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 70%;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    width: 90%;
+    margin: 0 auto;
   }
   @media (max-width: ${breakpoints.s}px) {
     h2,
@@ -1620,8 +1627,11 @@ const Stats = styled.div`
   @media (max-width: 1655px) {
     margin-top: 7.5rem;
   }
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.m}px) {
     flex-basis: 100%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 5rem;
   }
 `
 
@@ -1646,7 +1656,10 @@ const Columns = styled.div`
       background-color: var(--color-lightpink);
     }
   }
-
+  @media (max-width: ${breakpoints.m}px) {
+    justify-content: space-between;
+    width: 85vw;
+  }
   @media (max-width: ${breakpoints.s}px) {
     flex-direction: column;
     align-items: center;
@@ -1672,30 +1685,18 @@ const Column = styled(motion.div)`
     font-family: "calibre-medium";
     white-space: nowrap;
   }
-
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 0rem;
+    padding-bottom: 5rem;
+  }
   @media (max-width: ${breakpoints.s}px) {
     flex-basis: 100%;
     width: 100%;
-    padding: 0rem;
-    flex-direction: row;
-    justify-content: space-between;
     p {
       white-space: normal;
     }
     h5 {
       margin: 0 auto;
-    }
-
-    :nth-child(2) h5 {
-      order: 3;
-      display: none;
-    }
-    :nth-child(3) h5 {
-      order: 3;
-      display: none;
-    }
-    :nth-child(3) {
-      flex-direction: row-reverse;
     }
   }
 `
@@ -1724,6 +1725,7 @@ const Circle = styled(motion.div)`
     width: 225px;
     height: 225px;
   }
+
   @media (max-width: ${breakpoints.l}px) {
     width: 200px;
     height: 200px;
@@ -1732,6 +1734,10 @@ const Circle = styled(motion.div)`
       font-size: 60px;
       font-family: "calibre-medium";
     }
+  }
+  @media (max-width: 800px) {
+    width: 150px;
+    height: 150px;
   }
 
   @media (max-width: ${breakpoints.s}px) {
@@ -1744,27 +1750,32 @@ const Desc = styled.p`
   padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  p {
+  p:nth-of-type(1) {
     padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
-    :nth-child(2) {
-      border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  @media (max-width: 800px) {
+    padding-top: 1.5rem;
+
+    p:nth-of-type(1) {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
     }
   }
-
-  h5 {
-    display: none;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    margin: 0 0.5rem;
-    h5 {
+  @media (max-width: ${breakpoints.m}px) {
+    margin: 0 auto;
+    width: 90%;
+    p {
       margin: 0 auto;
-      white-space: nowrap;
-      text-align: center;
-      order: 0 !important;
-      display: block !important;
+      font-size: 16px;
+      width: 40%;
     }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+    margin: 0 0.5rem;
   }
 `
 
@@ -1772,19 +1783,29 @@ const Newsletter = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  /* overflow: hidden; */
 `
 
 const OrangeBackground = styled.div`
   position: absolute;
   z-index: 0;
-  top: 0;
+  bottom: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  overflow-y: hidden;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
   svg {
     overflow-x: hidden;
     width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    border: 1px solid red;
+    svg {
+      /* width: 100vw; */
+    }
   }
 `
 
@@ -1797,6 +1818,21 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
   z-index: 1;
   top: -12.5%;
   left: -3%;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 15%;
+    left: 5%;
+    transform-origin: center;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
 
   @media (max-width: ${breakpoints.l}px) {
     display: none;

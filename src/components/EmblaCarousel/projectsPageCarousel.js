@@ -309,10 +309,14 @@ const BackgroundText = styled.span`
   h2,
   p {
     color: var(--color-white);
-    width: 61%;
+    width: 66%;
   }
   p {
     padding-top: 2rem;
+  }
+  h2 {
+    font-size: 3.9vw;
+    line-height: 102%;
   }
 `
 

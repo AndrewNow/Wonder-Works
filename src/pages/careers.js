@@ -756,7 +756,7 @@ const Span = styled(motion.span)`
 
 const Mask = styled(motion.div)`
   overflow: hidden;
-  height: 100%;
+  height: 110%;
 `
 
 const LandingSection = styled.section`

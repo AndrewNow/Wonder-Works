@@ -445,7 +445,7 @@ const Projects = ({ data }) => {
               rel="noreferrer"
             >
               <ReactPlayer
-                url="https://ww-peachy.s3.us-west-1.amazonaws.com/Stay-Peachy-Recording-Site-Desktop.mp4"
+                url="https://ww-peachy.s3.us-west-1.amazonaws.com/StayPeachy+-+Final.mov"
                 playing={shopInView}
                 loop={true}
                 muted={true}
@@ -996,7 +996,8 @@ const ShopVideo = styled.div`
 `
 
 const VideoWrapper = styled.a`
-  aspect-ratio: 1440/740;
+  // aspect ratio corresponds to the pixel width/height of the video 
+  aspect-ratio: 1918/942;
   width: 100%;
   height: auto;
 
@@ -1007,7 +1008,7 @@ const VideoWrapper = styled.a`
 
   div {
     box-sizing: content-box;
-    aspect-ratio: 1440/740;
+    aspect-ratio: 1918/942;
     border-radius: 10px;
     overflow: hidden;
     border: 2px solid var(--color-black);

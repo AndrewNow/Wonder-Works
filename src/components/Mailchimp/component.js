@@ -56,9 +56,8 @@ const Background = styled.div`
   position: relative;
   z-index: 3;
 
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     padding: 5rem 0;
-    background-color: var(--color-orange);
   }
 `
 
@@ -66,6 +65,22 @@ const SvgWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 5%;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 10%;
+    display: flex;
+    justify-content: flex-end;
+    svg {
+      width: 60%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    top: -5%;
+    svg {
+      width: 40%;
+    }
+  }
 `
 const SvgStarWrapper = styled(motion.div)`
   position: absolute;
@@ -86,6 +101,15 @@ const Brief = styled.div`
   h3 {
     padding-bottom: 10rem;
     font-family: "ppwoodland-light";
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    h3 {
+      padding-bottom: 3.5rem;
+    }
+    h2 {
+      width: 90%;
+    }
   }
 
   @media (max-width: ${breakpoints.s}px) {

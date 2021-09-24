@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect, useRef } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { PressPlaySVG } from "./buttons"
 import ReactPlayer from "react-player/file"
 import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../breakpoints"
 import { Arrow } from "../../svg/miscellaneous"
+import { PlayIconReactPlayer, PlayButtonFirstSlide } from "./playButtons"
 
 const LatestProjectsCarousel = () => {
   // ---------- Initialize Embla Carousel & state ----------
@@ -18,6 +18,8 @@ const LatestProjectsCarousel = () => {
   })
 
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [videoProgress, setVideoProgress] = useState(0)
+
   const [slidesInView, setSlidesInView] = useState(0)
   const [paused, setPaused] = useState(true)
 
@@ -88,153 +90,17 @@ const LatestProjectsCarousel = () => {
     [videoRef]
   )
 
-  // ---------- animation logic ----------
-
-  const button = {
-    visible: {
-      opacity: 1,
-      translateY: "-50%",
-      translateX: "-50%",
-      transition: {
-        duration: 0.5,
-        ease: "easeIn",
-        staggerChildren: 0.1,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      translateY: "-50%",
-      translateX: "-50%",
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  }
-
-  const rotation = {
-    visible: {
-      rotate: 360,
-      transition: {
-        duration: 15,
-        repeat: Infinity,
-        ease: "linear",
-      },
-    },
-    hidden: {
-      rotate: 0,
-      transition: {
-        duration: 1,
-        ease: "linear",
-      },
-    },
-  }
-
-  const [hover, setHover] = useState(true)
-
-  const setHoverFalse = useCallback(() => {
-    setHover(false)
-  }, [])
-  const setHoverTrue = useCallback(() => {
-    setHover(true)
-  }, [])
-
-  const PlayIconReactPlayer = () => {
-    return (
-      <Playbutton
-        onClick={() => {
-          setPaused(!paused)
-          setHover(false)
-        }}
-        aria-label="Play video"
-        whileTap={{ scale: 0.9 }}
-        variants={button}
-        initial="hidden"
-        // animate={hover ? "visible" : "hidden"}
-        animate="visible"
-        exit="hidden"
-      >
-        <TextWrapper variants={rotation}>
-          <PressPlaySVG />
-        </TextWrapper>
-        {!paused ? (
-          <PlaySVG>
-            <svg
-              width="76"
-              height="88"
-              viewBox="0 0 76 88"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M24.7468 0H4.22895C2.29678 0 0.640625 1.56414 0.640625 3.58833V83.9117C0.640625 85.8438 2.20477 87.5 4.22895 87.5H24.6548C26.587 87.5 28.2432 85.9359 28.2432 83.9117V3.58833C28.2432 1.56414 26.679 0 24.7468 0Z"
-                fill="#F7F7FC"
-              />
-              <path
-                d="M71.7631 0H51.2452C49.313 0 47.6569 1.56414 47.6569 3.58833V83.9117C47.6569 85.8438 49.221 87.5 51.2452 87.5H71.6711C73.6032 87.5 75.2594 85.9359 75.2594 83.9117V3.58833C75.2594 1.56414 73.6952 0 71.7631 0Z"
-                fill="#F7F7FC"
-              />
-            </svg>
-          </PlaySVG>
-        ) : (
-          <PauseSVG>
-            <svg
-              width="78"
-              height="89"
-              viewBox="0 0 78 89"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0 8.70153C0 3.89553 3.86997 0 8.64554 0C10.1286 0 11.0687 0.38982 12.7225 1.05198L73.3695 36.563C76.1897 38.2451 77.4959 40.948 78 44.0639V44.9379C77.4959 48.052 76.1897 50.7558 73.3695 52.4388L12.7233 87.9489C11.0687 88.612 10.1286 89 8.64643 89C3.87086 89 0.0008843 85.1045 0.0008843 80.2985L0 8.70153Z"
-                fill="#F7F7FC"
-              />
-            </svg>
-          </PauseSVG>
-        )}
-      </Playbutton>
-    )
-  }
-
   const [firstPlayClick, setFirstPlayClick] = useState(false)
-
-  const PlayButtonFirstSlide = () => {
-    return (
-      <Playbutton
-        onClick={() => {
-          setPaused(false)
-          setHover(false)
-          setFirstPlayClick(true)
-        }}
-        aria-label="Play video"
-        whileTap={{ scale: 0.9 }}
-        variants={button}
-        initial="visible"
-        // animate="visible"
-        // exit="hidden"
-      >
-        <TextWrapper variants={rotation} animate="visible">
-          <PressPlaySVG />
-        </TextWrapper>
-        <PlaySVG>
-          <svg
-            width="78"
-            height="89"
-            viewBox="0 0 78 89"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 8.70153C0 3.89553 3.86997 0 8.64554 0C10.1286 0 11.0687 0.38982 12.7225 1.05198L73.3695 36.563C76.1897 38.2451 77.4959 40.948 78 44.0639V44.9379C77.4959 48.052 76.1897 50.7558 73.3695 52.4388L12.7233 87.9489C11.0687 88.612 10.1286 89 8.64643 89C3.87086 89 0.0008843 85.1045 0.0008843 80.2985L0 8.70153Z"
-              fill="#F7F7FC"
-            />
-          </svg>
-        </PlaySVG>
-      </Playbutton>
-    )
+  
+  const [hover, setHover] = useState(true)
+  const setHoverFalse = () => {
+    setHover(false)
   }
-  // console.log(slidesInView, paused, videoInView)
-  console.log(hover)
+
+  const setHoverTrue = () => {
+    setHover(true)
+  }
+
 
   return (
     <Wrapper ref={setRefs}>
@@ -277,7 +143,14 @@ const LatestProjectsCarousel = () => {
                   {/* {index == !0 && ( */}
                   {firstPlayClick && (
                     <AnimatePresence>
-                      {hover && <PlayIconReactPlayer key={`key${index}1`} />}
+                      {hover && (
+                        <PlayIconReactPlayer
+                          key={`key${index}1`}
+                          paused={paused}
+                          setPaused={setPaused}
+                          setHover={setHover}
+                        />
+                      )}
                     </AnimatePresence>
                   )}
                   <ReactPlayer
@@ -289,10 +162,24 @@ const LatestProjectsCarousel = () => {
                       !paused &&
                       videoInView
                     }
-                    onEnded={() => setTimeout(() => scrollNext(), 5000)}
+                    onEnded={() => setTimeout(() => scrollNext(), 1500)}
                     light={video.light}
-                    playIcon={<PlayButtonFirstSlide />}
+                    playIcon={
+                      <PlayButtonFirstSlide
+                        setPaused={setPaused}
+                        setHover={setHover}
+                        setFirstPlayClick={setFirstPlayClick}
+                      />
+                    }
+                    onProgress={({ played }) => setVideoProgress(played * 100)}
+                    progressInterval={500}
                   />
+                  <VidProgressContainer>
+                    <VideoProgress
+                      animate={{ x: `${videoProgress}%` }}
+                      transition={{ ease: "linear", duration: 0.5 }}
+                    />
+                  </VidProgressContainer>
                 </EmblaSlide>
               )
             })}
@@ -305,6 +192,12 @@ const LatestProjectsCarousel = () => {
             />
           </EmblaProgress>
         </ProgressContainer>
+        <ViewAllBottom to='/projects'>
+          <p>
+            View all
+            <Arrow />
+          </p>
+        </ViewAllBottom>
       </Embla>
     </Wrapper>
   )
@@ -372,7 +265,10 @@ const ViewAllBottom = styled(Link)`
   display: none;
   @media (max-width: ${breakpoints.m}px) {
     display: block;
-
+    float: right;
+    position: absolute;
+    right: 0%;
+    bottom: -20%;
     p {
       position: relative;
       :hover {
@@ -383,6 +279,28 @@ const ViewAllBottom = styled(Link)`
       }
       svg {
         transform: translateY(0.1rem);
+      }
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    display: block;
+    float: right;
+    position: absolute;
+    right: 0%;
+    bottom: -30%;
+    p {
+      filter: opacity(1)!important;
+      color: var(--color-white);
+      position: relative;
+      :hover {
+        svg {
+          transform: translate3d(5px, 0.4rem, 0);
+        }
+      }
+      svg {
+        scale: 0.6;
+        transform: translateY(0.4rem);
       }
     }
   }
@@ -490,6 +408,36 @@ const EmblaProgressBar = styled.div`
   width: calc(100% / 3);
   /* left: -100%; */
   border-radius: 50px;
+`
+
+const VideoProgress = styled(motion.div)`
+  position: absolute;
+  background-color: var(--color-white);
+  opacity: 0.7;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: -100%;
+`
+
+const VidProgressContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  margin-top: 20px;
+  max-width: 100%;
+  width: calc(100% - 40px);
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  /* top: 75px; */
+
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+
 `
 
 const Playbutton = styled(motion.button)`
