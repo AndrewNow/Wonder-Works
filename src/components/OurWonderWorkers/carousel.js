@@ -184,7 +184,6 @@ const EmblaSlide = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     justify-content: center;
   }
-  }
   @media (max-width: ${breakpoints.s}px) {
     justify-content: flex-start;
   }

@@ -429,6 +429,7 @@ const ArrowWrapper = styled.div`
   position: absolute;
   svg {
     margin: 0;
+    transform: translate3d(-1, -2px, 0);
   }
 `
 
