@@ -5,7 +5,12 @@ import Seo from "../components/seo"
 import styled from "styled-components"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { BigPlus, TwoPlus, PlusButton } from "../svg/careerspage"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion"
 import { ContactUs } from "../components/contactUs"
 import { WOShortLogo } from "../svg/logos"
 import {
@@ -14,7 +19,7 @@ import {
 } from "../context/globalContext"
 import emailjs from "emailjs-com"
 import breakpoints from "../components/breakpoints"
-import { Arrow } from '../svg/miscellaneous'
+import { Arrow } from "../svg/miscellaneous"
 
 const Careers = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Careers`
@@ -24,7 +29,7 @@ const Careers = ({ data }) => {
       zIndex: 6000,
     },
     hidden: {
-      zIndex: 0,
+      zIndex: -1,
       transition: {
         delay: 1.5,
         staggerChildren: 0.15,
@@ -93,6 +98,21 @@ const Careers = ({ data }) => {
       y: 100,
       opacity: 0,
     },
+  }
+
+  const bottomMessage = {
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+    hidden: {
+      y: 20,
+      opacity: 0,
+    },
+    exit: {
+      y: -20,
+      opacity: 0
+    }
   }
 
   // ---------- Parrallax scroll logic using Framer  ----------
@@ -542,16 +562,99 @@ const Careers = ({ data }) => {
               <Bottom>
                 {!completedFields && <p></p>}
 
-                {completedFields === 1 && <p>Nice to meet you!</p>}
-                {completedFields === 2 && <p>Almost there...</p>}
-                {completedFields === 3 && <p>Nice to meet you!</p>}
-                {completedFields === 4 && <p>Nice to meet you!</p>}
-                {completedFields === 5 && (
-                  <p>
-                    Thank you for your interest! <br /> We'll reach out to you
-                    if it's a good fit.
-                  </p>
-                )}
+                {/* {completedFields === 1 ? (
+                  formdata.firstName ? (
+                    <p>Nice to meet you, {formdata.firstName}!</p>
+                  ) : (
+                    <p>Nice to meet you!</p>
+                  )
+                ) : null} */}
+
+                <AnimatePresence>
+                  {completedFields === 1 && formdata.firstName ? (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      Nice to meet you, {formdata.firstName}!
+                    </motion.p>
+                  ) : null}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields === 1 && !formdata.firstName ? (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      Nice to meet you!
+                    </motion.p>
+                  ) : null}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields === 2 && formdata.firstName ? (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      Nice to meet you, {formdata.firstName}!
+                    </motion.p>
+                  ) : null}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields === 2 && !formdata.firstName ? (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      Nice to meet you!
+                    </motion.p>
+                  ) : null}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields === 3 && (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      Almost there...
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields === 4 && (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      It looks like you're ready, are you?
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields === 5 && (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      Thank you for your interest! <br /> We'll reach out to you
+                      if it's a good fit.
+                    </motion.p>
+                  )}
+                </AnimatePresence>
                 <Submit type="submit" value="Apply" whileTap={{ scale: 0.9 }} />
               </Bottom>
             </FillOut>
@@ -627,9 +730,11 @@ const Purple = styled(motion.div)`
 
 const Span = styled(motion.span)`
   margin-right: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
   display: inline-block;
   position: relative;
-  vertical-align: text-top;
+  vertical-align: baseline;
 
   @media (max-width: 1600px) {
     margin-right: 2rem;
@@ -637,9 +742,12 @@ const Span = styled(motion.span)`
 
   @media (max-width: ${breakpoints.l}px) {
     margin-right: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   @media (max-width: ${breakpoints.m}px) {
     margin-right: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
   }
   @media (max-width: ${breakpoints.s}px) {
     margin-right: 0.75rem;
@@ -678,8 +786,8 @@ const Flex = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 5rem;
-  }  
-  `
+  }
+`
 const Left = styled.div`
   width: 50%;
   h1,
@@ -759,8 +867,8 @@ const Right = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     padding-top: 7rem;
     h6 {
-      padding: 2  rem 1rem;
-    } 
+      padding: 2 rem 1rem;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     padding-top: 5rem;
@@ -1216,6 +1324,8 @@ const FileLabel = styled.label`
 `
 
 const Submit = styled(motion.input)`
+  position: absolute;
+  right: 0;
   align-self: flex-end;
   cursor: pointer;
   background: none;
@@ -1232,18 +1342,21 @@ const Submit = styled(motion.input)`
     background-color: var(--color-black);
     color: var(--color-white);
   }
-
 `
 
 const Bottom = styled.div`
   display: flex;
   padding-top: 2rem;
   width: 90%;
+  height: 90px;
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   p {
+    position: absolute;
+    left: 0;
     font-size: 20px;
     font-family: "calibre-medium";
     text-transform: uppercase;
