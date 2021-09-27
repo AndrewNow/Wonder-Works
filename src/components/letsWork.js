@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
 import { motion } from "framer-motion"
+import breakpoints from "./breakpoints"
 
 export const LetsWork = ({ svg }) => {
   return (
@@ -148,7 +149,7 @@ export const LetsWork = ({ svg }) => {
 
 export const LetsWorkHomepage = ({ svg }) => {
   return (
-    <BgSection>
+    <BgSectionHomePage>
       <Top>
         <Flex>
           <h1>
@@ -285,7 +286,7 @@ export const LetsWorkHomepage = ({ svg }) => {
           </Contact>
         </div>
       </Bottom>
-    </BgSection>
+    </BgSectionHomePage>
   )
 }
 
@@ -295,12 +296,20 @@ const BgSection = styled.section`
   position: relative;
   h1 {
     font-family: "ppwoodland-light";
+    font-size: 6.56vw;
+    line-height: 100%;
+    white-space: nowrap;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding: 10rem 0;
   }
 `
 
 const BgSectionHomePage = styled.section`
   padding: 15rem 0;
   background-color: var(--color-green);
+
   h1 {
     font-family: "ppwoodland-light";
   }
@@ -311,6 +320,10 @@ const Top = styled.div`
   margin: 0 auto;
   padding-bottom: 10rem;
   border-bottom: 1px solid var(--color-black);
+
+  @media (max-width: 1600px) {
+    padding-bottom: 5rem;
+  }
 `
 
 const Flex = styled.div`
@@ -328,6 +341,10 @@ const IconWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 1600px) {
+    padding-top: 5rem;
+  }
 `
 
 const Icons = styled.div`
@@ -335,6 +352,10 @@ const Icons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1600px) {
+    width: 50%;
+  }
 `
 
 const Bottom = styled.div`

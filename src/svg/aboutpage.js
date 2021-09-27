@@ -722,20 +722,43 @@ export const PinkGears = () => {
 const PinkGearWrapper = styled.div`
   position: relative;
   width: 515px;
-  height: 515px;
+  height: auto;
+  aspect-ratio: 1/1;
   margin-left: 15%;
-`
+  border: 1px solid red;
+
+  @media (max-width: 1600px) {
+    width: 480px;
+  }
+  `
 
 const PinkGearStroke = styled(motion.svg)`
+  border: 1px solid red;
   position: absolute;
   right: 0;
   top: 0;
-`
+  width: 100%;
+  aspect-ratio: 1/1;
+  @media (max-width: ${breakpoints.xxl}px) {
+    /* width: 417px; */
+    /* height: auto; */
+    aspect-ratio: 1/1;
+  }
+  `
 
 const PinkGearFill = styled(motion.svg)`
+  border: 1px solid red;
   position: absolute;
   right: -25%;
   bottom: -10%;
+  aspect-ratio: 1/1;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    right: -5%;
+    bottom: -5%;
+    /* width: 260px; */
+    /* height: auto; */
+  }
 `
 
 export const BigBlueBackground = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
-import { NextButton, PrevButton } from "./buttons"
+import { NextButtonPress, PrevButtonPress } from "./buttons"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
 import { motion } from "framer-motion"
@@ -177,8 +177,8 @@ const PressCarousel = () => {
             })}
           </EmblaContainer>
         </EmblaViewport>
-        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+        <PrevButtonPress onClick={scrollPrev} enabled={prevBtnEnabled} />
+        <NextButtonPress onClick={scrollNext} enabled={nextBtnEnabled} />
       </Embla>
     </Wrapper>
   )
@@ -201,6 +201,12 @@ const Wrapper = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 100%; 
+    padding-bottom: 7rem;
+    padding-top: 3rem;
+    h2 {
+      font-size: 45px;
+      padding-bottom: 2rem;
+    }
   }
 `
 
@@ -212,12 +218,28 @@ const Embla = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  & button:first-of-type {
+  button:first-of-type {
     left: -3%;
   }
 
-  & button:last-of-type {
+  button:last-of-type {
     right: -3%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    button:first-of-type {
+      padding-top: 1rem;
+      top: auto;
+      bottom: -15%;
+      left: 3%;
+    }
+    
+    button:last-of-type {
+      padding-top: 1rem;
+      top: auto;
+      bottom: -15%;
+      right: 3%;
+    }
   }
 `
 const EmblaViewport = styled.div`
@@ -243,18 +265,18 @@ const EmblaSlide = styled(motion.div)`
 `
 
 const Entry = styled.div`
-  /* width: 27vw; */
+  width: 27vw;
   height: 720px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 
   @media (max-width: ${breakpoints.xxl}px) {
-    /* width: 33vw; */
+    width: 33vw;
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    /* width: 60vw; */
+    width: 60vw;
     height: auto;
   }
 `
