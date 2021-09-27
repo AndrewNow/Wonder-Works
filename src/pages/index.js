@@ -30,12 +30,7 @@ const HomeIndex = ({ data }) => {
   const ref = useRef()
   const [sectionRef, sectionInView] = useInView({
     root: null,
-    threshold: 0.95,
-    triggerOnce: true,
-  })
-  const [logosRef, logosInView] = useInView({
-    root: null,
-    threshold: 1,
+    threshold: 0.75,
     triggerOnce: true,
   })
   const [countUpRef, countUpInView] = useInView({
@@ -49,10 +44,9 @@ const HomeIndex = ({ data }) => {
     node => {
       ref.current = node
       sectionRef(node)
-      logosRef(node)
       countUpRef(node)
     },
-    [sectionRef, logosRef, countUpRef]
+    [sectionRef, countUpRef]
   )
 
   // ---------- determine if a blue background section is in view ----------
@@ -1768,14 +1762,17 @@ const Desc = styled.p`
     margin: 0 auto;
     width: 90%;
     p {
-      margin: 0 auto;
+      text-align: center;
       font-size: 16px;
-      width: 40%;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 100%;
     margin: 0 0.5rem;
+    p {
+      width: 40%;
+      margin: 0 auto;
+    }
   }
 `
 
@@ -1789,7 +1786,7 @@ const Newsletter = styled.div`
 const OrangeBackground = styled.div`
   position: absolute;
   z-index: 0;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   display: flex;
   justify-content: flex-end;

@@ -7,22 +7,14 @@ import { graphql, useStaticQuery } from "gatsby"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { PurpleArrow } from "../../svg/miscellaneous"
+import breakpoints from "../breakpoints"
+
 const PressCarousel = () => {
-  const ref = useRef()
   const [pressRef, pressInView] = useInView({
     root: null,
     threshold: 0.5,
     triggerOnce: true,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      pressRef(node)
-    },
-    [pressRef]
-  )
 
   const parentAnimation = {
     visible: {
@@ -60,7 +52,7 @@ const PressCarousel = () => {
               quality: 100
               blurredOptions: { width: 80 }
               formats: WEBP
-              layout: CONSTRAINED
+              layout: FIXED
               transformOptions: { cropFocus: CENTER }
             )
           }
@@ -72,6 +64,7 @@ const PressCarousel = () => {
   // ---------- Initialize Embla Carousel ----------
   const [emblaRef, embla] = useEmblaCarousel({
     slidesToScroll: 3,
+    align: "start",
   })
 
   // ---------- Set up embla pagination buttons ----------
@@ -157,7 +150,11 @@ const PressCarousel = () => {
                           imgStyle={{
                             border: "2px solid #6653A3",
                             borderRadius: "10px",
+                            objectFit: "cover",
+                            minHeight: "100%",
+                            aspectRatio: "5/4"
                           }}
+                          style={{ height: "100%", width: "100%" }}
                         />
                       </ImageWrapper>
                       <h4>{slide.title}</h4>
@@ -191,14 +188,19 @@ export default PressCarousel
 
 const Wrapper = styled.div`
   background-color: var(--color-white);
-  padding: 5rem 0;
   width: 90%;
+  padding: 5rem 0;
   margin: 0 auto;
   position: relative;
-  z-index: 10;
+  z-index: 200;
   h2 {
     padding: 20px;
     padding-bottom: 5rem;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%; 
   }
 `
 
@@ -221,6 +223,10 @@ const Embla = styled.div`
 const EmblaViewport = styled.div`
   overflow: hidden;
   width: 100%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    /* overflow: visible; */
+  }
 `
 
 const EmblaContainer = styled(motion.div)`
@@ -237,11 +243,20 @@ const EmblaSlide = styled(motion.div)`
 `
 
 const Entry = styled.div`
-  width: 27vw;
+  /* width: 27vw; */
   height: 720px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    /* width: 33vw; */
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    /* width: 60vw; */
+    height: auto;
+  }
 `
 
 const Top = styled.div`
@@ -252,6 +267,12 @@ const Top = styled.div`
     padding-bottom: 1rem;
     float: right;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h4 {
+      padding-bottom: 1rem;
+    }
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -261,6 +282,32 @@ const ImageWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
+  /* aspect-ratio: 5/4; */
+  height: 375px;
+  div {
+    height: 375px;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    aspect-ratio: 1/1;
+    max-height: 320px;
+    div {
+      max-height: 320px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    max-height: 300px;
+    div {
+      max-height: 300px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    height: 245px;
+    width: 245px;
+    div {
+      max-height: 245px;
+    }
+  }
 `
 const Flex = styled.div`
   display: flex;
@@ -269,7 +316,7 @@ const Flex = styled.div`
   justify-content: space-between;
   height: 65px;
 
-  & p {
+  p {
     font-family: "calibre-medium";
     width: 50%;
   }
@@ -293,6 +340,23 @@ const Flex = styled.div`
       filter: opacity(1);
       svg {
         transform: translate3d(5px, 0, 0);
+      }
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    flex-direction: column;
+    
+    p {
+      width: 100%;
+      font-size: 16px;
+      font-family: "calibre-regular";
+    }
+    a {
+      margin-top: .25rem;
+      font-size: 16px;
+      svg {
+        display: none;
       }
     }
   }

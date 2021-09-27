@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import * as svg from "./SVGs"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../breakpoints"
@@ -88,46 +88,40 @@ const CareerFlip = () => {
         repeatType: "loop",
       },
     }),
+
     hidden: {
       opacity: 0,
       visibility: "none",
     },
   }
 
-  const ref = useRef()
   const [careerRef, careerInView] = useInView({
     root: null,
-    threshold: 0,
+    threshold: 0.1,
     triggerOnce: false,
   })
 
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      careerRef(node)
-    },
-    [careerRef]
-  )
-
   return (
-    <Wrapper ref={setRefs}>
+    <Wrapper ref={careerRef}>
       <Left>
         <h1>Love</h1>
         <Container>
-          {data.map((item, i) => (
-            <HideText
-              key={i}
-              variants={textAnim}
-              animate={careerInView ? "visible" : "hidden"}
-              custom={i}
-            >
-              <motion.h1 style={{ color: `${item.color}` }}>
-                {item.title}
-                <SvgWrapper>{item.icon}</SvgWrapper>
-              </motion.h1>
-            </HideText>
-          ))}
+          <AnimatePresence>
+            {careerInView &&
+              data.map((item, i) => (
+                <HideText
+                  key={i}
+                  variants={textAnim}
+                  animate={careerInView ? "visible" : "hidden"}
+                  custom={i}
+                >
+                  <motion.h1 style={{ color: `${item.color}` }}>
+                    {item.title}
+                    <SvgWrapper>{item.icon}</SvgWrapper>
+                  </motion.h1>
+                </HideText>
+              ))}
+          </AnimatePresence>
         </Container>
       </Left>
       <Right>
@@ -156,10 +150,15 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 75%;
+  }
+
   @media (max-width: ${breakpoints.l}px) {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    margin-bottom: 5rem;
   }
 
   @media (max-width: ${breakpoints.s}px) {
@@ -204,12 +203,19 @@ const Right = styled.div`
     width: 50%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    width: 100%;
-    padding-top: 5rem;
+    width: 55%;
+    margin-top: 5rem;
     background: var(--color-white);
+    -webkit-box-shadow: 0px -15px 13px 5px #f7f7fc;
+    box-shadow: 0px -15px 13px 5px #f7f7fc;
+    strong {
+      margin-top: 0rem;
+    }
   }
-  @media (max-width: ${breakpoints.s}px) {
-    padding-top: .5rem;
+  @media (max-width: ${breakpoints.m}px) {
+    padding-top: 0.5rem;
+    margin-top: 2.5rem;
+    width: 100%;
     strong {
       margin-top: 0rem;
     }
@@ -222,7 +228,7 @@ const Container = styled.div`
   padding-bottom: 2rem;
   position: relative;
   z-index: 5;
-  perspective: 1000px;
+  /* perspective: 1000px; */
 `
 
 const HideText = styled(motion.div)`
@@ -249,6 +255,11 @@ const SvgWrapper = styled(motion.div)`
     width: 100%;
   }
 
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      scale: 0.65;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     svg {
       scale: 0.5;
@@ -258,37 +269,55 @@ const SvgWrapper = styled(motion.div)`
 
 const AdventuresWrapper = styled.div`
   transform: translate3d(-30%, -15%, 0);
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(-15%, -25%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(5%, -40%, 0);
   }
 `
 const GamesWrapper = styled.div`
   transform: translate3d(15%, 0rem, 0);
-  
+
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(25%, -20%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(25%, -40%, 0);
   }
 `
 const PingPongWrapper = styled.div`
   transform: translate3d(-25%, 35%, 0);
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(10%, -15%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(15%, -15%, 0);
   }
 `
 const TechnologyWrapper = styled.div`
   transform: translate3d(-40%, 10%, 0);
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(5%, -5%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(15%, -25%, 0);
   }
 `
 const AnimalsWrapper = styled.div`
   transform: translate3d(-10%, 10%, 0);
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(20%, 0%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(40%, -15%, 0);
   }
 `
 const RobloxWrapper = styled.div`
   transform: translate3d(15%, -10%, 0);
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(20%, -20%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(50%, -20%, 0);
   }
@@ -296,6 +325,9 @@ const RobloxWrapper = styled.div`
 const UsWrapper = styled.div`
   transform: translate3d(0, 60%, 0);
 
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(60%, 10%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(0, -5%, 0);
   }
@@ -309,7 +341,7 @@ const PositionsLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
-
+  white-space: nowrap;
   ::after {
     content: "";
     position: absolute;
@@ -326,5 +358,9 @@ const PositionsLink = styled(Link)`
   :hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    font-size: 20px;
   }
 `

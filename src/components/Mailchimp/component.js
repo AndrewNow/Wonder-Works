@@ -56,6 +56,10 @@ const Background = styled.div`
   position: relative;
   z-index: 3;
 
+  @media (max-width: 1600px) {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+  }
   @media (max-width: ${breakpoints.xl}px) {
     padding: 5rem 0;
   }
@@ -94,13 +98,23 @@ const Brief = styled.div`
   color: var(--color-black);
 
   h2 {
+    font-size: 3.9vw;
+    line-height: 100%;
     padding-bottom: 1rem;
     font-family: "ppwoodland-light";
     width: 70%;
   }
   h3 {
+    font-size: 2.6vw;
+    line-height: 100%;
     padding-bottom: 10rem;
     font-family: "ppwoodland-light";
+  }
+
+  @media (max-width: 1600px) {
+    h3 {
+      padding-bottom: 7rem;
+    }
   }
 
   @media (max-width: ${breakpoints.l}px) {

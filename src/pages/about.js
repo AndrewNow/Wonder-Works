@@ -30,6 +30,7 @@ import {
   useGlobalDispatchContext,
   useGlobalStateContext,
 } from "../context/globalContext"
+import breakpoints from "../components/breakpoints"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -113,7 +114,7 @@ const About = ({ data }) => {
   }
   const skateboardAnimationBottom = {
     visible: {
-      x: "-15vw",
+      x: "-25vw",
       transition: {
         duration: 3,
         delay: 3.25,
@@ -170,6 +171,15 @@ const About = ({ data }) => {
     },
   }
 
+  const meganZachSvg = {
+    visible: {
+      opacity: 1,
+    },
+    hidden: {
+      opacity: 0,
+    },
+  }
+
   // ---------- Intersection Observer logic ----------
 
   const ref = useRef()
@@ -200,11 +210,6 @@ const About = ({ data }) => {
     triggerOnce: false,
   })
 
-  // const [logosRef, logosInView] = useInView({
-  //   root: null,
-  //   threshold: 0.85,
-  //   triggerOnce: true,
-  // })
   // const [pillarsRef, pillarsInView] = useInView({
   //   root: null,
   //   threshold: 0.65,
@@ -215,7 +220,6 @@ const About = ({ data }) => {
     //assign multiple refs with useInView
     node => {
       ref.current = node
-      // logosRef(node)
       // pillarsRef(node)
       meganzachRef(node)
       StudioRef(node)
@@ -224,7 +228,6 @@ const About = ({ data }) => {
     },
     [
       // pillarsRef,
-      // logosRef,
       meganzachRef,
       StudioRef,
       JamsRef,
@@ -236,6 +239,10 @@ const About = ({ data }) => {
   let throttle = require("lodash/throttle")
 
   const { scrollYProgress } = useViewportScroll({ passive: true })
+  const smallParallax = useTransform(
+    scrollYProgress,
+    throttle(scrollYProgress => scrollYProgress * 1050, 50)
+  )
   const mediumParallax = useTransform(
     scrollYProgress,
     throttle(scrollYProgress => scrollYProgress * 1750, 50)
@@ -258,38 +265,14 @@ const About = ({ data }) => {
     window.localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
 
-  //***********************Horizontal Scroll Logic****************************** */
+  //+++++++++++++++++++++ Horizontal Scroll Logic +++++++++++++++++++++ */
 
-  // ------------------- Calculate viewport width & height -------------------
-  const getWindowDimensions = () => {
-    if (typeof window !== "undefined") {
-      const { innerWidth: width, innerHeight: height } = window
-      return { width, height }
-    } else {
-      return {}
-    }
-  }
+  // This component handles the side scrolling "Pillars" section.
+  // The component must be as tall as it is wide, because as the user scrolls down this same progress interval
+  // is used to scroll the fixed component sideways. These dimensions must absolutely be respected, otherwise
+  // the component will not function as intended.
 
-  const useWindowDimensions = () => {
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    )
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        const handleResize = () => {
-          setWindowDimensions(getWindowDimensions())
-        }
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-      }
-    }, [])
-
-    return windowDimensions
-  }
-
-  const { width } = useWindowDimensions()
-
-  // ------------------- Framer horizontal scroll logic  -------------------
+  // Data for the slides' markup
   const SideScrollData = [
     {
       ref: StudioRef,
@@ -326,35 +309,75 @@ const About = ({ data }) => {
     },
   ]
 
+  // ------------------- 1. Calculate viewport width & height -------------------
+  const getWindowDimensions = () => {
+    if (typeof window !== "undefined") {
+      const { innerWidth: width, innerHeight: height } = window
+      return { width, height }
+    } else {
+      return {}
+    }
+  }
+
+  const useWindowDimensions = () => {
+    const [windowDimensions, setWindowDimensions] = useState(
+      getWindowDimensions()
+    )
+    useEffect(() => {
+      if (typeof window !== "undefined") {
+        const handleResize = () => {
+          setWindowDimensions(getWindowDimensions())
+        }
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+      }
+    }, [])
+
+    return windowDimensions
+  }
+
+  // {width} is the user's maximum viewport width.
+  const { width } = useWindowDimensions()
+
+  // ------------------- 2. "Assign" vertical scroll to horizontal scroll -------------------
+
   // Take viewport width * 3 because there are 3 slides 100vw wide
   const maxWidth = width * 3
+  // create a Framer MotionValue to give the component an x-transform
   const xRightRange = useMotionValue(0)
+  // state for when a slide is in view. if so, animate it in
   const [sideScrollInView, setSideScrollInView] = useState(false)
 
   useLayoutEffect(() => {
     const onScroll = () => {
+      // get the component's coordinates (only when horizontalScroll Ref is in view)
       const horizontalScrollDiv =
-        horizontalScroll.current.getBoundingClientRect()
-      const scrollProgress = horizontalScrollDiv.bottom / maxWidth
+        horizontalScroll.current?.getBoundingClientRect()
+      const scrollProgress = horizontalScrollDiv?.bottom / maxWidth
       // use MotionValue to move the component sideways on vertical scroll without re-rendering
       xRightRange.set(scrollProgress)
 
-      // check if horizontalScroll is in view to fade the entire component in
+      // If horizontalScroll is in view, fade the entire component in (using variants in 4.)
       if (
-        horizontalScrollDiv.bottom < maxWidth &&
-        horizontalScrollDiv.bottom > 0
+        // maxWidth in this case is also the height of the component (300vh), which is what we're targeting here.
+        horizontalScrollDiv?.bottom < maxWidth &&
+        horizontalScrollDiv?.bottom > 0
       ) {
         setSideScrollInView(true)
       } else setSideScrollInView(false)
     }
-
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // normalize scrollProgress to a range between 0 and the slides' width to translate the div horizontally
+  // ------------------- 3. Framer animation variants -------------------
+  // Normalize scrollProgress to translate the component horizontally.
+  // xRightRange returns a value between 1 and 0 (distance between bottom of Ref and the top of the viewport),
+  // but we need a value between 0 and 300vw to move the slides accurately.
   const usexRightRange = useTransform(xRightRange, [1, 0], [0, -maxWidth])
+  // more info here on the useTransform hook: https://www.framer.com/docs/motionvalue/##usetransform
 
+  // ------------------- 4. Framer animation variants -------------------
   const sideScrollHeader = {
     visible: {
       opacity: 1,
@@ -386,6 +409,26 @@ const About = ({ data }) => {
       opacity: 0,
       transition: {
         duration: 0.5,
+      },
+    },
+  }
+
+  const sideSrollAnim = {
+    visible: {
+      opacity: 1,
+      // zIndex: 10,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.5,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      // zIndex: 0,
+
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.5,
       },
     },
   }
@@ -422,7 +465,7 @@ const About = ({ data }) => {
     },
   }
 
-  //****************************************************** */
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
   return (
     <Layout title={siteTitle}>
@@ -463,6 +506,7 @@ const About = ({ data }) => {
             </First>
             <Second variants={line} initial="hidden" animate="visible">
               <Span variants={word}>Comes</Span>
+              <br />
               <Span variants={word}>to</Span>
               <Span variants={word}>Play.</Span>
             </Second>
@@ -508,82 +552,85 @@ const About = ({ data }) => {
             />
           </motion.svg>
         </KeepScrolling>
-        <Press>
+        <Logos>
           <h4>As Seen On...</h4>
           <AsSeenOn />
-        </Press>
+        </Logos>
       </OrangeBg>
       <Container>
         <OurPillars ref={horizontalScroll}>
-          <SideScrollInner
-            style={{ x: usexRightRange }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: sideScrollInView ? 1 : 0 }}
-            transition={{ duration: 0.5, staggerChildren: 0.5 }}
-          >
-            {SideScrollData.map((frame, i) => {
-              return (
-                <Frame ref={frame.ref} key={i}>
-                  <AnimatePresence>
-                    {frame.inView && (
-                      <FrameWrapper
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <FrameHeader
-                          variants={sideScrollHeader}
-                          initial="hidden"
-                          animate={frame.inView ? "visible" : "hidden"}
-                          exit="hidden"
+          {sideScrollInView && (
+            <SideScrollInner
+              style={{ x: usexRightRange }}
+              variants={sideSrollAnim}
+              initial="hidden"
+              animate={sideScrollInView ? "visible" : "hidden"}
+              exit="hidden"
+            >
+              {SideScrollData.map((frame, i) => {
+                return (
+                  <Frame ref={frame.ref} key={i}>
+                    <AnimatePresence>
+                      {frame.inView && (
+                        <FrameWrapper
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
                         >
-                          {frame.headerSVG}
-                          <h4>Our Pillars</h4>
-                          <Svg.HorizontalLine />
-                        </FrameHeader>
-                        <FrameContainer>
-                          <FrameLeft>
-                            <motion.div
+                          <FrameHeader
+                            variants={sideScrollHeader}
+                            initial="hidden"
+                            animate={frame.inView ? "visible" : "hidden"}
+                            exit="hidden"
+                          >
+                            {frame.headerSVG}
+                            <h4>Our Pillars</h4>
+                            <Svg.HorizontalLine />
+                          </FrameHeader>
+                          <FrameContainer>
+                            <FrameLeft>
+                              <LeftSVG
+                                variants={sideScrollSVG}
+                                initial="hidden"
+                                animate={frame.inView ? "visible" : "hidden"}
+                                exit="hidden"
+                              >
+                                {frame.mainSVG}
+                              </LeftSVG>
+                              <motion.div
+                                variants={sideScrollBody}
+                                initial="hidden"
+                                animate={frame.inView ? "visible" : "hidden"}
+                                exit="hidden"
+                              >
+                                <motion.h4
+                                  style={{ color: `${frame.titleColor}` }}
+                                  variants={bodyChild}
+                                >
+                                  {frame.title}
+                                </motion.h4>
+                                <motion.p variants={bodyChild}>
+                                  {frame.bodyText}
+                                </motion.p>
+                              </motion.div>
+                            </FrameLeft>
+                            <FrameRight
                               variants={sideScrollSVG}
                               initial="hidden"
                               animate={frame.inView ? "visible" : "hidden"}
                               exit="hidden"
                             >
-                              {frame.mainSVG}
-                            </motion.div>
-                            <motion.div
-                              variants={sideScrollBody}
-                              initial="hidden"
-                              animate={frame.inView ? "visible" : "hidden"}
-                              exit="hidden"
-                            >
-                              <motion.h4
-                                style={{ color: `${frame.titleColor}` }}
-                                variants={bodyChild}
-                              >
-                                {frame.title}
-                              </motion.h4>
-                              <motion.p variants={bodyChild}>
-                                {frame.bodyText}
-                              </motion.p>
-                            </motion.div>
-                          </FrameLeft>
-                          <FrameRight
-                            variants={sideScrollSVG}
-                            initial="hidden"
-                            animate={frame.inView ? "visible" : "hidden"}
-                            exit="hidden"
-                          >
-                            {frame.rightSVG}
-                          </FrameRight>
-                        </FrameContainer>
-                      </FrameWrapper>
-                    )}
-                  </AnimatePresence>
-                </Frame>
-              )
-            })}
-          </SideScrollInner>
+                              {frame.rightSVG}
+                            </FrameRight>
+                          </FrameContainer>
+                        </FrameWrapper>
+                      )}
+                    </AnimatePresence>
+                  </Frame>
+                )
+              })}
+            </SideScrollInner>
+          )}
         </OurPillars>
       </Container>
 
@@ -698,12 +745,30 @@ const About = ({ data }) => {
             Overlook Bay on Roblox. Together, this pair works wonders.
           </motion.p>
         </TextContent>
-        <CirclesWrapper style={{ y: mediumParallax }}>
-          <Svg.Circles />
-        </CirclesWrapper>
-        <PinkShapesWrapper>
-          <Svg.PinkShapes />
-        </PinkShapesWrapper>
+        <AnimatePresence>
+          {meganzachInView && (
+            <>
+              <CirclesWrapper
+                style={{ y: mediumParallax }}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={meganZachSvg}
+              >
+                <Svg.Circles />
+              </CirclesWrapper>
+              <PinkShapesWrapper
+                style={{ y: smallParallax }}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={meganZachSvg}
+              >
+                <Svg.PinkShapes />
+              </PinkShapesWrapper>
+            </>
+          )}
+        </AnimatePresence>
         <BlueSquigglyWrapper>
           <Svg.BlueSquiggly />
         </BlueSquigglyWrapper>
@@ -796,12 +861,27 @@ const FrameHeader = styled(motion.div)`
   h4 {
     margin: 0 1rem;
   }
+
+  @media (max-width: 1600px) {
+    padding-top: 10%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    /* padding-top: 20%; */
+  }
 `
 const FrameContainer = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 auto;
   display: flex;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    align-items: center;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    flex-direction: column;
+  }
 `
 const FrameLeft = styled.div`
   margin-top: 3rem;
@@ -812,7 +892,6 @@ const FrameLeft = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
-
   svg {
     max-height: 350px;
   }
@@ -825,16 +904,77 @@ const FrameLeft = styled.div`
     width: 85%;
     color: var(--color-white);
   }
+
+  @media (max-width: 1600px) {
+    h4 {
+      margin-top: 2rem;
+    }
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 80%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-left: 0rem;
+    h4 {
+      margin-top: 1rem;
+    }
+  }
 `
+
+const LeftSVG = styled(motion.div)`
+  height: 100%;
+  width: max-content;
+  svg {
+    max-height: 350px;
+  }
+
+  @media (max-width: 1600px) {
+    max-height: 260px;
+    svg {
+      height: max-content;
+      max-width: 500px;
+    }
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    max-height: 260px;
+    svg {
+      max-width: 500px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    max-height: 200px;
+  }
+`
+
 const FrameRight = styled(motion.div)`
   margin-top: 5rem;
   height: 60%;
-  width: 35%;
+  /* width: 35%; */
   align-self: center;
   margin: 0 auto;
 
   display: flex;
   justify-content: center;
+
+  @media (max-width: 1600px) {
+    svg {
+      max-width: 200px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    svg {
+      max-width: 180px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      max-width: 170px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `
 
 const Background = styled(motion.div)`
@@ -846,32 +986,176 @@ const Background = styled(motion.div)`
   top: -2.5rem;
   left: 0;
   right: 0;
+
+  @media (max-width: ${breakpoints.m}px) {
+    height: 100vh;
+  }
 `
 
 const SkateboardWrapper = styled(motion.div)`
   position: absolute;
-  top: 13rem;
-  /* left: 10%; */
+  top: 21.5%;
+
+  svg {
+    width: 140px;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 30%;
+    svg {
+      width: 125px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 20%;
+    svg {
+      width: 125px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 22%;
+    svg {
+      width: 100px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 25%;
+    svg {
+      width: 80px;
+    }
+  }
 `
 const SkateboardWrapperBottom = styled(motion.div)`
   position: relative;
+
+  svg {
+    width: 140px;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      width: 125px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    svg {
+      width: 125px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    svg {
+      width: 100px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    svg {
+      margin-top: 1rem;
+      width: 80px;
+    }
+  }
 `
 const BigCircleWrapper = styled(motion.div)`
   position: absolute;
-  top: 13rem;
+  top: 21.5%;
   right: -12.5%;
+
+  svg {
+    max-width: 590px;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    svg {
+      max-width: 500px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      max-width: 450px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 15%;
+    svg {
+      max-width: 400px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    svg {
+      max-width: 370px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    right: -25%;
+    top: 10%;
+    svg {
+      max-width: 275px;
+    }
+  }
 `
 const SmallCircleWrapper = styled(motion.div)`
   position: absolute;
   bottom: 1%;
   left: 5%;
   overflow: visible;
+
+  svg {
+    width: 315px;
+    height: auto;
+  }
+
+  @media (max-width: 1600px) {
+    left: 2%;
+    svg {
+      width: 250px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    left: 3%;
+    bottom: 2%;
+    svg {
+      width: 220px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: 25%;
+    left: -15%;
+    svg {
+      width: 150px;
+    }
+  }
 `
 
 const SmallCirclesWrapper = styled(motion.div)`
   position: absolute;
   bottom: 2.5%;
   right: 12.5%;
+
+  svg {
+    width: 280px;
+    height: auto;
+  }
+
+  @media (max-width: 1600px) {
+    bottom: 0%;
+    right: 20%;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 10%;
+    bottom: 5%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    svg {
+      width: 230px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
 `
 
 const OrangeBg = styled.div`
@@ -894,13 +1178,15 @@ const LandingText = styled.div`
   h1 {
     z-index: 2;
     font-family: "balgin-medium";
-    font-size: 140px;
+    font-size: 7.29vw;
     line-height: 100%;
     color: var(--color-black);
     text-transform: lowercase;
     padding-left: 12vw;
+    br {
+      display: none;
+    }
   }
-
   p {
     z-index: 2;
     padding-left: 12vw;
@@ -910,6 +1196,58 @@ const LandingText = styled.div`
     margin-bottom: 2.5rem;
     color: var(--color-black);
   }
+
+  @media (max-width: 1600px) {
+    p {
+      width: 75%;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-top: 5rem;
+    h1 {
+      font-size: 7.8vw;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 10rem;
+    h1 {
+      font-size: 9vw;
+    }
+    h4 {
+      font-size: 32px;
+    }
+    p {
+      width: 90%;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    height: 117.5vh;
+    overflow: hidden;
+    h1 {
+      font-size: 45px;
+      line-height: 48px;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      br {
+        display: block;
+      }
+    }
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      padding-top: 2rem;
+      font-size: 36px;
+      line-height: 100%;
+    }
+  }
 `
 
 const Span = styled(motion.span)`
@@ -917,6 +1255,19 @@ const Span = styled(motion.span)`
   display: inline-block;
   position: relative;
   vertical-align: text-top;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-right: 2rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin-right: 1.5rem;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin-right: 1rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-right: 0.75rem;
+  }
 `
 const First = styled(motion.div)`
   position: relative;
@@ -950,7 +1301,7 @@ const KeepScrolling = styled.div`
   }
 `
 
-const Press = styled.div`
+const Logos = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1078,6 +1429,27 @@ const MeganZach = styled.section`
     text-align: center;
     width: 41%;
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    p {
+      width: 55%;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    p {
+      width: 60%;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    p {
+      width: 70%;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    p {
+      padding-top: 4rem;
+      width: 85%;
+    }
+  }
 `
 
 const TextContent = styled(motion.div)`
@@ -1098,6 +1470,8 @@ const TextContent = styled(motion.div)`
 
   h1 {
     font-family: "ppwoodland-bold";
+    font-size: 6.5625vw;
+    line-height: 100%;
   }
   h4 {
     left: 20%;
@@ -1115,6 +1489,80 @@ const TextContent = styled(motion.div)`
       transform: translate3d(-15px, 10px, 0);
     }
   }
+
+  @media (max-width: 1600px) {
+    h4 {
+      left: 15%;
+      top: 5%;
+    }
+
+    h1:first-of-type {
+      left: 15%;
+      top: 10%;
+    }
+    h1:last-of-type {
+      right: 15%;
+      top: 55%;
+      svg {
+        transform: translate3d(-15px, 10px, 0);
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h1:last-of-type {
+      svg {
+        scale: .8;
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h4 {
+      left: 15%;
+      top: 2%;
+    }
+    h1 {
+      font-size: 74px;
+    }
+
+    h1:first-of-type {
+      left: 15%;
+      top: 5%;
+    }
+    h1:last-of-type {
+      right: 15%;
+      top: 60%;
+      svg {
+        scale: 0.6;
+        transform: translate3d(-15px, 10px, 0);
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    h1 {
+      font-size: 55px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    h1 {
+      font-size: 45px;
+    }
+    h4 {
+      left: 10%;
+      top: -5%;
+    }
+    h1:first-of-type {
+      left: 10%;
+      top: -3%;
+    }
+    h1:last-of-type {
+      right: 5%;
+      top: 45%;
+      svg {
+        scale: 0.5;
+        transform: translate3d(15px, 5px, 0);
+      }
+    }
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -1122,7 +1570,8 @@ const ImageWrapper = styled.div`
   border-radius: 100%;
   border: 2px solid var(--color-black);
   width: 615px;
-  height: 615px;
+  height: auto;
+  aspect-ratio: 1/1;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -1130,18 +1579,89 @@ const ImageWrapper = styled.div`
 
   position: relative;
   z-index: 3;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 500px;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 375px;
+    filter: drop-shadow(15px 1px 0px var(--color-purple));
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 275px;
+    filter: drop-shadow(10px 1px 0px var(--color-purple));
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    width: 225px;
+  }
 `
 
 const CirclesWrapper = styled(motion.div)`
+  z-index: 2;
   position: absolute;
-  top: 10%;
+  top: -15%;
   left: 15%;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    left: 5%;
+    top: -50%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    left: -3%;
+    top: -50%;
+    width: 100%;
+    height: 100%;
+    svg {
+      width: 95vw;
+      height: auto;
+    }
+  }
+  @media (max-width: 400px) {
+    top: -45%;
+  }
 `
 const PinkShapesWrapper = styled(motion.div)`
+  z-index: 2;
   position: absolute;
   z-index: 5;
-  top: 14%;
+  top: -35%;
   left: 13%;
+
+  @media (max-width: 1700px) {
+    margin: 0 auto;
+    top: -30%;
+    width: 80%;
+    svg {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    top: -25%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: -30%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: -30%;
+    left: 5%;
+    width: 95%;
+    svg {
+      width: 95%;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: -40%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: -25%;
+    left: 0;
+    svg {
+      scale: 1;
+      width: 95vw;
+    }
+  }
 `
 
 const BlueSquigglyWrapper = styled(motion.div)`
@@ -1149,6 +1669,15 @@ const BlueSquigglyWrapper = styled(motion.div)`
   z-index: 5;
   top: 21%;
   left: 10%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    left: 0%;
+    top: 10%;
+    svg {
+      width: 95vw;
+      height: auto;
+    }
+  }
 `
 
 const WonderWorkersWrapper = styled.section`

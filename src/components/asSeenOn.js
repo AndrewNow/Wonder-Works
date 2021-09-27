@@ -201,21 +201,11 @@ export const HomePageAsSeenOn = () => {
 }
 
 export const AsSeenOn = () => {
-  const ref = useRef()
   const [logosRef, logosInView] = useInView({
     root: null,
-    threshold: 0.85,
+    threshold: 0.9,
     triggerOnce: true,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      logosRef(node)
-    },
-    [logosRef]
-  )
 
   const logoParent = {
     visible: {
@@ -241,7 +231,7 @@ export const AsSeenOn = () => {
       scaleY: 0,
     },
   }
-
+  console.log(logosInView)
   return (
     <Logos
       ref={logosRef}
@@ -255,7 +245,8 @@ export const AsSeenOn = () => {
           alt="Forbes logo"
           placeholder="none"
           quality={100}
-          height={35}
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </motion.div>
       <motion.div variants={logoMask}>
@@ -264,7 +255,8 @@ export const AsSeenOn = () => {
           alt="CNBC logo"
           placeholder="none"
           quality={100}
-          height={35}
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </motion.div>
       <motion.div variants={logoMask}>
@@ -273,7 +265,8 @@ export const AsSeenOn = () => {
           alt="n p r logo"
           placeholder="none"
           quality={100}
-          height={35}
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </motion.div>
       <motion.div variants={logoMask}>
@@ -282,7 +275,8 @@ export const AsSeenOn = () => {
           alt="e d c logo"
           placeholder="none"
           quality={100}
-          height={35}
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </motion.div>
       <motion.div variants={logoMask}>
@@ -291,7 +285,8 @@ export const AsSeenOn = () => {
           alt="Forbes logo"
           placeholder="none"
           quality={100}
-          height={35}
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </motion.div>
       <motion.div variants={logoMask}>
@@ -300,7 +295,8 @@ export const AsSeenOn = () => {
           alt="B2 logo"
           placeholder="none"
           quality={100}
-          height={35}
+          style={{ height: "100%", width: "100%" }}
+          imgStyle={{ objectFit: "contain" }}
         />
       </motion.div>
     </Logos>
@@ -370,5 +366,26 @@ const Logos = styled(motion.div)`
     transform-origin: bottom;
     overflow: hidden;
     max-height: 50px;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    min-width: 80%;
+    img {
+      max-height: 45px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    min-height: 100px;
+    img {
+      max-height: 40px;
+      min-width: 50px;
+    }
   }
 `

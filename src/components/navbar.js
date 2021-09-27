@@ -39,7 +39,6 @@ const Navbar = () => {
         <StaticImage
           src="../images/wwLogo.png"
           quality={100}
-          // width={185}
           height={70}
           placeholder="none"
           alt="Wonder Works logo"
@@ -96,7 +95,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2.5rem;
+  padding-top: 2.5rem;
   height: 70px;
   div {
     color: ${props => props.theme.color}!important;
@@ -112,7 +111,7 @@ const Nav = styled.nav`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    margin-top: 0rem;
+    padding-top: 0rem;
   }
 `
 
