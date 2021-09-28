@@ -38,7 +38,6 @@ const MobileNavAnimation = () => {
                 stiffness: 200,
                 bounce: 1,
                 mass: 50,
-                // ease: "easeIn"
               },
             }}
           >

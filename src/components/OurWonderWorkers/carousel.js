@@ -170,7 +170,7 @@ const EmblaContainer = styled.div`
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
 `
-const EmblaSlide = styled.div`
+const EmblaSlide = styled.article`
   width: 100%;
   height: 80vh;
   position: relative;
@@ -186,6 +186,7 @@ const EmblaSlide = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     justify-content: flex-start;
+    margin-right: 3rem;
   }
   @media (max-width: ${breakpoints.xs}px) {
     justify-content: space-between;
@@ -313,7 +314,7 @@ const ImageInner = styled.div`
     width: 200px;
     max-height: 230px;
     top: -3%;
-    transform: none!important;
+    transform: none !important;
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 150px;
@@ -398,25 +399,8 @@ const Text = styled.div`
         font-size: 16px;
         line-height: 115%;
         letter-spacing: 0.03rem;
-        max-height: auto;
+        max-height: 60%;
       }
-
-      /* :after {
-        position: absolute;
-        pointer-events: none;
-        bottom: 0!important;
-        left: 0;
-        height: 30%;
-        width: 100%;
-        content: "";
-        background: rgb(26, 23, 72);
-        background: linear-gradient(
-          0deg,
-          rgba(26, 23, 72, 1) 0%,
-          rgba(26, 23, 72, 1) 50%,
-          rgba(255, 255, 255, 0) 100%
-        );
-      } */
     }
     @media (max-width: 376px) {
       p {

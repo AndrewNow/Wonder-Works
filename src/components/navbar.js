@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import styled, {keyframes} from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { Squash as Hamburger } from "hamburger-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -40,7 +40,7 @@ const Navbar = () => {
     visible: {
       x: 0,
       translateX: "-50%",
-      translateY: "-50%",
+      translateY: "-10%",
       opacity: 1,
       transition: {
         duration: 0.75,
@@ -50,7 +50,7 @@ const Navbar = () => {
     hidden: {
       x: 300,
       translateX: "-50%",
-      translateY: "-50%",
+      translateY: "-10%",
       opacity: 0,
       transition: {
         ease: "easeOut",
@@ -342,8 +342,8 @@ const DropdownMobile = styled(motion.div)`
     /* align-items: flex-end; */
     background-color: var(--color-white);
     width: 90%;
-    height: 95vh;
-    top: 50%;
+    height: calc(90vh - 70px);
+    top: 10%;
     left: 50%;
     border-radius: 20px;
     border: 1px solid black;
@@ -352,7 +352,7 @@ const DropdownMobile = styled(motion.div)`
 `
 
 const MobileAnimation = styled(motion.div)`
-  height: 10%;
+  height: 20%;
   margin-top: 5rem;
   width: 90%;
   width: 100%;
@@ -366,7 +366,8 @@ const MobileNav = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  height: 90%;
+  justify-content: flex-start;
+  height: 80%;
   width: 90%;
   margin: 0 auto;
 `
@@ -390,7 +391,7 @@ const MobileNavElement = styled(motion.div)`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  
+
   a {
     text-align: right;
     width: 100%;
@@ -399,7 +400,7 @@ const MobileNavElement = styled(motion.div)`
     text-decoration: none;
     display: flex;
     justify-content: flex-end;
-    
+    transition: 0.3s ease-out all;
     svg {
       display: none;
     }
@@ -416,4 +417,15 @@ const MobileNavElement = styled(motion.div)`
       }
     }
   }
-  `
+
+  :hover {
+    a {
+      margin-right: 1rem;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    font-size: 26px;
+    line-height: 105%;
+  }
+`
