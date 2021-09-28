@@ -63,7 +63,7 @@ const PressCarousel = () => {
 
   // ---------- Initialize Embla Carousel ----------
   const [emblaRef, embla] = useEmblaCarousel({
-    slidesToScroll: 3,
+    // slidesToScroll: 3,
     align: "start",
   })
 
@@ -152,7 +152,7 @@ const PressCarousel = () => {
                             borderRadius: "10px",
                             objectFit: "cover",
                             minHeight: "100%",
-                            aspectRatio: "5/4"
+                            aspectRatio: "5/4",
                           }}
                           style={{ height: "100%", width: "100%" }}
                         />
@@ -200,7 +200,7 @@ const Wrapper = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
   }
   @media (max-width: ${breakpoints.s}px) {
-    width: 100%; 
+    width: 100%;
     padding-bottom: 7rem;
     padding-top: 3rem;
     h2 {
@@ -233,7 +233,7 @@ const Embla = styled.div`
       bottom: -15%;
       left: 3%;
     }
-    
+
     button:last-of-type {
       padding-top: 1rem;
       top: auto;
@@ -245,10 +245,6 @@ const Embla = styled.div`
 const EmblaViewport = styled.div`
   overflow: hidden;
   width: 100%;
-
-  @media (max-width: ${breakpoints.s}px) {
-    /* overflow: visible; */
-  }
 `
 
 const EmblaContainer = styled(motion.div)`
@@ -261,22 +257,40 @@ const EmblaContainer = styled(motion.div)`
 const EmblaSlide = styled(motion.div)`
   position: relative;
   width: 100%;
-  margin-right: 50px;
+  margin-right: 5%;
+  flex: 0 0 30%;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    flex: 0 0 40%;
+    margin-right: 4%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    flex: 0 0 25%;
+    margin-right: 5%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    flex: 0 0 50%;
+    margin-right: 5%;
+  }
 `
 
 const Entry = styled.div`
-  width: 27vw;
+  /* width: 25vw; */
   height: 720px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 
+  @media (max-width: 1600px) {
+    height: auto;
+  }
   @media (max-width: ${breakpoints.xxl}px) {
-    width: 33vw;
+    /* width: 33vw; */
+    /* justify-content: flex-start; */
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    width: 60vw;
+    /* width: 60vw; */
     height: auto;
   }
 `
@@ -289,10 +303,44 @@ const Top = styled.div`
     padding-bottom: 1rem;
     float: right;
   }
+  @media (max-width: 1600px) {
+    h4 {
+      height: 180px;
+      font-size: 36px;
+      line-height: 40px;
+    }
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    h4 {
+      font-size: 32px;
+      height: 200px;
+    }
+  }
 
+  @media (max-width: ${breakpoints.l}px) {
+    h4 {
+      font-size: 26px;
+      line-height: 26px;
+      height: 120px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    h4 {
+      height: 130px;
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     h4 {
-      padding-bottom: 1rem;
+      height: 80px;
+      padding-bottom: 0.5rem;
+      font-size: 18px;
+      line-height: 20px;
+    }
+    p {
+      padding-bottom: 0.5rem;
     }
   }
 `
@@ -365,17 +413,38 @@ const Flex = styled.div`
       }
     }
   }
-
+  @media (max-width: ${breakpoints.l}px) {
+    height: 80px;
+    a {
+      font-size: 18px;
+      svg {
+        scale: 0.7;
+        transform: translate3d(0, 5px, 0);
+      }
+      :hover {
+        filter: opacity(1);
+        svg {
+          transform: translate3d(5px, 5px, 0);
+        }
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    height: 65px;
+    p {
+      width: 70%;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     flex-direction: column;
-    
+
     p {
-      width: 100%;
+      width: 95%;
       font-size: 16px;
       font-family: "calibre-regular";
     }
     a {
-      margin-top: .25rem;
+      margin-top: 0.25rem;
       font-size: 16px;
       svg {
         display: none;

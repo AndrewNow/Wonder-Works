@@ -109,7 +109,7 @@ const About = ({ data }) => {
       },
     },
     hidden: {
-      x: "-10vw",
+      x: "-25vw",
     },
   }
   const skateboardAnimationBottom = {
@@ -132,7 +132,7 @@ const About = ({ data }) => {
     visible: {
       rotate: 360,
       transition: {
-        delay: 2.8,
+        delay: 1.75,
         repeat: Infinity,
         duration: 7,
         ease: "easeInOut",
@@ -994,6 +994,7 @@ const Background = styled(motion.div)`
 
 const SkateboardWrapper = styled(motion.div)`
   position: absolute;
+  z-index: 200;
   top: 21.5%;
 
   svg {
@@ -1548,7 +1549,7 @@ const TextContent = styled(motion.div)`
     }
     h4 {
       left: 10%;
-      top: -5%;
+      top: -6%;
     }
     h1:first-of-type {
       left: 10%;
@@ -1618,7 +1619,7 @@ const CirclesWrapper = styled(motion.div)`
     }
   }
   @media (max-width: 400px) {
-    top: -45%;
+    top: -60%;
   }
 `
 const PinkShapesWrapper = styled(motion.div)`
@@ -1627,7 +1628,7 @@ const PinkShapesWrapper = styled(motion.div)`
   z-index: 5;
   top: -35%;
   left: 13%;
-
+  aspect-ratio: 1/1;
   @media (max-width: 1700px) {
     margin: 0 auto;
     top: -30%;
@@ -1655,7 +1656,7 @@ const PinkShapesWrapper = styled(motion.div)`
     top: -40%;
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: -25%;
+    top: -35%;
     left: 0;
     svg {
       scale: 1;

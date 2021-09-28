@@ -8,13 +8,30 @@ export const LetsWork = ({ svg }) => {
   return (
     <BgSection>
       <Top>
+        <HeadlineMobile>
+          <h4>Contact Us</h4>
+          <svg
+            width="160"
+            height="3"
+            viewBox="0 0 160 3"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 1.84424H159.385"
+              stroke="#1A1748"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+            />
+          </svg>
+        </HeadlineMobile>
         <Flex>
           <h1>
             Let’s work <br />
             wonders <br />
             together.
           </h1>
-          {svg}
+          <SVGWrapper>{svg}</SVGWrapper>
         </Flex>
         <IconWrapper>
           <Icons>
@@ -88,7 +105,7 @@ export const LetsWork = ({ svg }) => {
             />
           </svg>
         </Headline>
-        <div>
+        <Right>
           <Contact>
             <p>
               <strong>inquiries</strong>
@@ -141,7 +158,7 @@ export const LetsWork = ({ svg }) => {
               partnerships@wonderworks.gg
             </a>
           </Contact>
-        </div>
+        </Right>
       </Bottom>
     </BgSection>
   )
@@ -294,15 +311,12 @@ const BgSection = styled.section`
   padding: 15rem 0;
   background-color: var(--color-green);
   position: relative;
-  h1 {
-    font-family: "ppwoodland-light";
-    font-size: 6.56vw;
-    line-height: 100%;
-    white-space: nowrap;
-  }
 
   @media (max-width: ${breakpoints.xxl}px) {
     padding: 10rem 0;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 5rem 0;
   }
 `
 
@@ -324,6 +338,13 @@ const Top = styled.div`
   @media (max-width: 1600px) {
     padding-bottom: 5rem;
   }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 85%;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 3rem;
+  }
 `
 
 const Flex = styled.div`
@@ -333,6 +354,63 @@ const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  h1 {
+    font-family: "ppwoodland-light";
+    font-size: 6.56vw;
+    line-height: 100%;
+    white-space: nowrap;
+    position: relative;
+    z-index: 5;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    h1 {
+      font-size: 75px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    display: block;
+    h1 {
+      font-size: 55px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    display: block;
+    h1 {
+      font-size: 45px;
+    }
+  }
+`
+
+const SVGWrapper = styled.div`
+  width: 600px;
+  height: auto;
+  aspect-ratio: 1/1;
+  position: relative;
+  svg {
+    aspect-ratio: 1/1;
+  }
+  @media (max-width: 1600px) {
+    width: 500px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 400px;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 300px;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 250px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 150px;
+    top: 30%;
+    transform: rotate(90deg);
+  }
 `
 
 const IconWrapper = styled.div`
@@ -345,6 +423,10 @@ const IconWrapper = styled.div`
   @media (max-width: 1600px) {
     padding-top: 5rem;
   }
+
+  @media (max-width: ${breakpoints.m}px) {
+    justify-content: flex-start;
+  }
 `
 
 const Icons = styled.div`
@@ -356,6 +438,12 @@ const Icons = styled.div`
   @media (max-width: 1600px) {
     width: 50%;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 70%;
+    svg {
+      max-height: 25px;
+    }
+  }
 `
 
 const Bottom = styled.div`
@@ -365,7 +453,41 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 3rem;
+    width: 85%;
+  }
 `
+
+const Right = styled.div`
+  align-self: flex-end;
+  @media (max-width: ${breakpoints.xxl}px) {
+    margin-top: 5rem;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-top: 5rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin-top: 0rem;
+    width: 100%;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    grid-template-columns: 1fr;
+  }
+`
+
 const Headline = styled.div`
   display: flex;
   align-items: center;
@@ -375,13 +497,50 @@ const Headline = styled.div`
     margin-right: 1rem;
     font-family: "calibre-semibold";
     padding: 0;
+    white-space: nowrap;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    h4 {
+      margin-right: 0;
+    }
+    svg {
+      transform: scaleX(0.7);
+
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    display: none;
+  }
+`
+
+const HeadlineMobile = styled.div`
+  display: none;
+    
+  @media (max-width: ${breakpoints.l}px) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3.5rem;  
+    h4 {
+      margin-right: 1rem;
+      font-family: "calibre-semibold";
+      padding: 0;
+      white-space: nowrap;
+    }
+    h4 {
+      margin-right: 0;
+    }
+    svg {
+      transform: scaleX(0.7);
+    }
   }
 `
 
 const Contact = styled.div`
   display: grid;
-  grid-template-columns: 1.75fr 2fr 2fr;
-  margin-top: 2rem;
+  grid-template-columns: 150px 2fr 2fr;
+  margin-bottom: 2rem;
+
   p,
   strong,
   a {
@@ -424,6 +583,45 @@ const Contact = styled.div`
     :hover::after {
       transform: scaleX(1);
       transform-origin: bottom left;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+
+    br {
+      display: none;
+    }
+
+    a {
+      width: 100%;
+      text-decoration: underline;
+
+      ::after {
+        content: none;
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    a,
+    p {
+      font-size: 15px;
+    }
+    p {
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    a,
+    p {
+      font-size: 18px;
+    }
+    p {
+      margin-top: 0.25rem;
+    }
+    strong {
+      font-size: 20px;
     }
   }
 `

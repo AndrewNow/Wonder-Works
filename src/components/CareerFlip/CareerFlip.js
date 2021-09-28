@@ -150,7 +150,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     width: 75%;
   }
 
@@ -200,10 +200,12 @@ const Right = styled.div`
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    width: 50%;
+    width: 60%;
+    transform: translateX(2rem);
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 55%;
+    transform: none;
     margin-top: 5rem;
     background: var(--color-white);
     -webkit-box-shadow: 0px -15px 13px 5px #f7f7fc;

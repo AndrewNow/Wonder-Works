@@ -805,6 +805,10 @@ const Background = styled(motion.div)`
   @media (max-width: 1700px) {
     overflow-x: hidden;
   }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    height: 135vh;
+  }
 `
 const StaircaseWrapper = styled.div`
   position: absolute;
@@ -897,6 +901,7 @@ const PortalWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.xxl}px) {
     right: -10%;
+    top: 25%;
     svg {
       width: 550px;
       height: auto;

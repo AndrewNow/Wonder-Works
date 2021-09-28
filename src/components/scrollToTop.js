@@ -104,7 +104,7 @@ export default ScrollToTop
 
 const ScrollToTopButton = styled(motion.button)`
   cursor: pointer;
-  z-index: 3000;
+  z-index: 1900;
   position: fixed;
   bottom: 2.5rem;
   right: 2.5rem;

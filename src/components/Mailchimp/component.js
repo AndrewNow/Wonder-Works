@@ -122,7 +122,7 @@ const Brief = styled.div`
       padding-bottom: 3.5rem;
     }
     h2 {
-      width: 90%;
+      width: 70%;
     }
   }
 
