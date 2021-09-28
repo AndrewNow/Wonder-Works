@@ -342,7 +342,7 @@ const DropdownMobile = styled(motion.div)`
     /* align-items: flex-end; */
     background-color: var(--color-white);
     width: 90%;
-    height: calc(90vh - 70px);
+    height: calc(95vh - 70px);
     top: 10%;
     left: 50%;
     border-radius: 20px;
@@ -353,9 +353,10 @@ const DropdownMobile = styled(motion.div)`
 
 const MobileAnimation = styled(motion.div)`
   height: 20%;
-  margin-top: 5rem;
   width: 90%;
-  width: 100%;
+  height: 10%;
+  margin: 0 auto;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
