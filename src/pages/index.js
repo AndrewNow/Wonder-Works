@@ -1775,7 +1775,7 @@ const Desc = styled.p`
     width: 100%;
     margin: 0 0.5rem;
     p {
-      width: 40%;
+      width: 60%;
       margin: 0 auto;
     }
   }

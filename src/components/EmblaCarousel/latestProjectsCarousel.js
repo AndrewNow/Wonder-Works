@@ -24,12 +24,14 @@ const LatestProjectsCarousel = () => {
   const [paused, setPaused] = useState(true)
   const [hover, setHover] = useState(true)
 
-  // event handlers for pause button
-  const setHoverFalse = () => {
-    setHover(false)
-  }
+  // event handlers for displaying pause/play button
   const setHoverTrue = () => {
-    setHover(true)
+    // only execute if first play button has been clicked
+    firstPlayClick && setHover(true)
+  }
+  const setHoverFalse = () => {
+    // only execute if first play button has been clicked
+    firstPlayClick && setHover(false)
   }
 
   // ---------- 2. Intersection observer to pause video when not in view ----------
@@ -61,6 +63,10 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     const progress = Math.max(0, Math.min(1, embla.scrollProgress()))
     setScrollProgress(progress * 100)
+    // setFirstPlayClick to true if user scrolls past first slide without clicking the intial "light" play button
+    if (embla.canScrollPrev()) {
+      setFirstPlayClick(true)
+    }
   }, [embla, setScrollProgress])
 
   // ----------------------- 4. Run embla configurations -----------------------
@@ -126,10 +132,10 @@ const LatestProjectsCarousel = () => {
               return (
                 <EmblaSlide
                   key={index}
-                  onHoverStart={firstPlayClick && setHoverTrue}
-                  onHoverEnd={firstPlayClick && setHoverFalse}
+                  onHoverStart={setHoverTrue}
+                  onHoverEnd={setHoverFalse}
                 >
-                  {/* Only render this button after the first slide's button has been pressed  */}
+                  {/* Only render this button after the first slide's button has been pressed or if user slides to second/third slide  */}
                   {firstPlayClick && (
                     <AnimatePresence>
                       {hover && (
@@ -142,19 +148,19 @@ const LatestProjectsCarousel = () => {
                       )}
                     </AnimatePresence>
                   )}
-                  {console.log(slidesInView, paused, videoInView)}
                   <ReactPlayer
                     light={video.light}
                     url={video.Src}
                     width="100%"
                     height="100%"
                     onEnded={() => setTimeout(() => scrollNext(), 1500)}
-                    onProgress={({ played }) => setVideoProgress(played * 100)}
+                    onProgress={({ played }) =>
+                      !paused && setVideoProgress(played * 100)
+                    }
                     progressInterval={500}
                     playIcon={
                       <PlayButtonFirstSlide
                         setPaused={setPaused}
-                        setHover={setHover}
                         setFirstPlayClick={setFirstPlayClick}
                       />
                     }
@@ -170,7 +176,6 @@ const LatestProjectsCarousel = () => {
                       transition={{ ease: "linear", duration: 0.5 }}
                     />
                   </VidProgressContainer>
-                  {console.log(videoProgress)}
                 </EmblaSlide>
               )
             })}
@@ -241,6 +246,7 @@ const Wrapper = styled.div`
       line-height: 100%;
       svg {
         display: inline;
+        margin-left: 1rem;
         margin-bottom: 0.75rem;
       }
     }
@@ -256,6 +262,19 @@ const Wrapper = styled.div`
   }
 `
 const ViewAll = styled(Link)`
+  @media (max-width: ${breakpoints.xl}px) {
+    p {
+      :hover {
+        filter: opacity(1);
+        svg {
+          transform: translate3d(5px, 0.2rem, 0);
+        }
+      }
+      svg {
+        transform: translateY(0.2rem);
+      }
+    }
+  }
   @media (max-width: ${breakpoints.m}px) {
     display: none;
   }
@@ -274,11 +293,12 @@ const ViewAllBottom = styled(Link)`
       :hover {
         filter: opacity(1);
         svg {
-          transform: translate3d(5px, 0.1rem, 0);
+          transform: translate3d(5px, 0.25rem, 0);
         }
       }
       svg {
-        transform: translateY(0.1rem);
+        scale: 0.8;
+        transform: translateY(0.25rem);
       }
     }
   }

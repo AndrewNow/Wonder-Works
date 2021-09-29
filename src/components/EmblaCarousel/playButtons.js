@@ -6,7 +6,6 @@ import { PressPlaySVG } from "./buttons"
 
 export const PlayButtonFirstSlide = ({
   setPaused,
-  setHover,
   setFirstPlayClick,
 }) => {
   const button = {
@@ -52,7 +51,6 @@ export const PlayButtonFirstSlide = ({
     <Playbutton
       onClick={() => {
         setPaused(false)
-        setHover(false)
         setFirstPlayClick(true)
       }}
       aria-label="Play video"
@@ -139,7 +137,7 @@ export const PlayIconReactPlayer = ({ paused, setPaused, setHover }) => {
         <PressPlaySVG />
       </TextWrapper>
       {!paused ? (
-        <PlaySVG>
+        <PauseSVG>
           <svg
             width="76"
             height="88"
@@ -156,9 +154,9 @@ export const PlayIconReactPlayer = ({ paused, setPaused, setHover }) => {
               fill="#F7F7FC"
             />
           </svg>
-        </PlaySVG>
+        </PauseSVG>
       ) : (
-        <PauseSVG>
+        <PlaySVG>
           <svg
             width="78"
             height="89"
@@ -171,7 +169,7 @@ export const PlayIconReactPlayer = ({ paused, setPaused, setHover }) => {
               fill="#F7F7FC"
             />
           </svg>
-        </PauseSVG>
+        </PlaySVG>
       )}
     </Playbutton>
   )
@@ -225,6 +223,7 @@ const TextWrapper = styled(motion.div)`
 `
 
 const PlaySVG = styled.div`
+  margin-left: 0.5rem;
   @media (max-width: ${breakpoints.l}px) {
     svg {
       width: 75px;
@@ -239,8 +238,6 @@ const PlaySVG = styled.div`
   }
 `
 const PauseSVG = styled.div`
-  margin-left: 1rem;
-
   @media (max-width: ${breakpoints.l}px) {
     svg {
       width: 75px;

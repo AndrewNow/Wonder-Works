@@ -178,7 +178,7 @@ const Left = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    width: 90%;
+    width: 95%;
     h1 {
       font-size: 50px;
       line-height: 50px;
@@ -220,6 +220,12 @@ const Right = styled.div`
     width: 100%;
     strong {
       margin-top: 0rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    p {
+      margin-bottom: 1rem;
+      letter-spacing: 0rem;
     }
   }
 `
