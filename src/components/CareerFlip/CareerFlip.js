@@ -153,8 +153,9 @@ const Wrapper = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     width: 75%;
     height: auto;
+    padding-top: 15rem;
   }
-
+  
   @media (max-width: ${breakpoints.xl}px) {
     padding-top: 10rem;
     margin-bottom: 35rem;
@@ -229,6 +230,7 @@ const Right = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    margin-top: 5rem;
     p {
       margin-bottom: 1rem;
       letter-spacing: 0rem;
@@ -306,7 +308,7 @@ const PingPongWrapper = styled.div`
     transform: translate3d(10%, -15%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(15%, -15%, 0);
+    transform: translate3d(25%, -35%, 0);
   }
 `
 const TechnologyWrapper = styled.div`
@@ -315,7 +317,7 @@ const TechnologyWrapper = styled.div`
     transform: translate3d(5%, -5%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(15%, -25%, 0);
+    transform: translate3d(10%, -25%, 0);
   }
 `
 const AnimalsWrapper = styled.div`
@@ -376,5 +378,9 @@ const PositionsLink = styled(Link)`
 
   @media (max-width: ${breakpoints.l}px) {
     font-size: 20px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 18px;
+    text-decoration: underline;
   }
 `

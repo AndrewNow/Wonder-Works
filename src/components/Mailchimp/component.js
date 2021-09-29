@@ -170,13 +170,21 @@ const Brief = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 85%;
     h2 {
-      width: 85%;
-      font-size: 30px;
+      width: 95%;
+      font-size: 34px;
       line-height: 38px;
     }
     h3 {
       font-size: 20px;
       padding-bottom: 5rem;
+    }
+  }
+  
+  
+  @media (max-width: 374px) {
+    h2 {
+      font-size: 30px;
+      line-height: 105%;
     }
   }
 `

@@ -395,7 +395,7 @@ const Text = styled.div`
         padding-bottom: 1rem;
       }
       p {
-        max-height: 80%;
+        max-height: 90%;
         font-size: 16px;
         line-height: 115%;
         letter-spacing: 0.03rem;
@@ -404,12 +404,12 @@ const Text = styled.div`
     }
     @media (max-width: 376px) {
       p {
-        max-height: 60%;
+        max-height: 50%;
       }
     }
     @media (max-width: ${breakpoints.xs}px) {
       p {
-        max-height: 45%;
+        max-height: 40%;
       }
     }
   }

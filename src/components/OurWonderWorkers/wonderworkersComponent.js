@@ -272,6 +272,8 @@ const Close = styled.button`
   font-family: "calibre-regular";
   display: flex;
   transition: var(--hover-transition);
+  display: flex;
+  align-items: center;
   svg {
     margin-left: 1rem;
   }

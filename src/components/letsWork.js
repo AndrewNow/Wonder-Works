@@ -1,8 +1,10 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
 import { motion } from "framer-motion"
 import breakpoints from "./breakpoints"
+import { Arrow } from "../svg/miscellaneous"
 
 export const LetsWork = ({ svg }) => {
   return (
@@ -158,152 +160,14 @@ export const LetsWork = ({ svg }) => {
               partnerships@wonderworks.gg
             </a>
           </Contact>
+          <MobileContact>
+            <Link to="/contact">
+              <Arrow />
+            </Link>
+          </MobileContact>
         </Right>
       </Bottom>
     </BgSection>
-  )
-}
-
-export const LetsWorkHomepage = ({ svg }) => {
-  return (
-    <BgSectionHomePage>
-      <Top>
-        <Flex>
-          <h1>
-            Let’s work <br />
-            wonders <br />
-            together.
-          </h1>
-          {svg}
-        </Flex>
-        <IconWrapper>
-          <Icons>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https:/twitter.com/WonderWorksRB"
-              rel="noreferrer"
-              target="_blank"
-              alt="Twitter social media link"
-            >
-              <Twitter />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.instagram.com/wonderworksstudio/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <Instagram />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
-              rel="noreferrer"
-              target="_blank"
-              alt="Instagram social media link"
-            >
-              <TikTok />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
-              rel="noreferrer"
-              target="_blank"
-              alt="Tik Tok social media link"
-            >
-              <YouTube />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.roblox.com/groups/6258143/Wonder-Works-Studio#!/about"
-              rel="noreferrer"
-              target="_blank"
-              alt="YouTube social media link"
-            >
-              <Roblox />
-            </motion.a>
-          </Icons>
-        </IconWrapper>
-      </Top>
-      <Bottom>
-        <Headline>
-          <h4>Contact Us</h4>
-          <svg
-            width="160"
-            height="3"
-            viewBox="0 0 160 3"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 1.84424H159.385"
-              stroke="#1A1748"
-              strokeWidth="2"
-              strokeMiterlimit="10"
-            />
-          </svg>
-        </Headline>
-        <div>
-          <Contact>
-            <p>
-              <strong>inquiries</strong>
-            </p>
-            <p>
-              for general <br />
-              inquiries
-            </p>
-            <a href="mailto:info@wonderworks.gg">info@wonderworks.gg</a>
-          </Contact>
-          <Contact>
-            <p>
-              <strong>press</strong>
-            </p>
-            <p>
-              for press <br />
-              press
-            </p>
-            <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
-          </Contact>
-          <Contact>
-            <p>
-              <strong>collabs</strong>
-            </p>
-            <p>
-              influencer <br />
-              collaborations
-            </p>
-            <a href="mailto:collab@wonderworks.gg">collab@wonderworks.gg</a>
-          </Contact>
-          <Contact>
-            <p>
-              <strong>careers</strong>
-            </p>
-            <p>
-              applications <br />
-              and inquiries
-            </p>
-            <a href="mailto:careers@wonderworks.gg">careers@wonderworks.gg</a>
-          </Contact>
-          <Contact>
-            <p>
-              <strong>partnerships</strong>
-            </p>
-            <p>
-              brand <br />
-              partnerships
-            </p>
-            <a href="mailto:partnerships@wonderworks.gg">
-              partnerships@wonderworks.gg
-            </a>
-          </Contact>
-        </div>
-      </Bottom>
-    </BgSectionHomePage>
   )
 }
 
@@ -317,15 +181,6 @@ const BgSection = styled.section`
   }
   @media (max-width: ${breakpoints.s}px) {
     padding: 5rem 0;
-  }
-`
-
-const BgSectionHomePage = styled.section`
-  padding: 15rem 0;
-  background-color: var(--color-green);
-
-  h1 {
-    font-family: "ppwoodland-light";
   }
 `
 
@@ -506,7 +361,6 @@ const Headline = styled.div`
     }
     svg {
       transform: scaleX(0.7);
-
     }
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -516,11 +370,11 @@ const Headline = styled.div`
 
 const HeadlineMobile = styled.div`
   display: none;
-    
+
   @media (max-width: ${breakpoints.l}px) {
     display: flex;
     align-items: center;
-    margin-bottom: 3.5rem;  
+    margin-bottom: 3.5rem;
     h4 {
       margin-right: 1rem;
       font-family: "calibre-semibold";
@@ -622,6 +476,33 @@ const Contact = styled.div`
     }
     strong {
       font-size: 20px;
+    }
+  }
+`
+
+const MobileContact = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.l}px) {
+    display: block;
+    margin-bottom: 2rem;
+    margin-right: 4rem;
+    position: relative;
+    a {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin-right: .5rem;
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    margin-top: 2rem;
+    a {
+      left: 0;
     }
   }
 `

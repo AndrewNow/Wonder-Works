@@ -715,9 +715,6 @@ const PinkFillWrapper = styled(motion.div)`
   aspect-ratio: 1/1;
   width: 60%;
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   position: absolute;
   right: 0;
@@ -733,9 +730,6 @@ const PinkStrokeWrapper = styled(motion.div)`
   aspect-ratio: 1/1;
   width: 80%;
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   position: absolute;
   left: 0%;
@@ -747,13 +741,9 @@ const PinkStrokeWrapper = styled(motion.div)`
   }
 `
 
-const PinkGearStroke = styled.svg`
-  aspect-ratio: 1/1;
-`
+const PinkGearStroke = styled.svg``
 
-const PinkGearFill = styled.svg`
-  aspect-ratio: 1/1;
-`
+const PinkGearFill = styled.svg``
 
 export const BigBlueBackground = () => {
   return (

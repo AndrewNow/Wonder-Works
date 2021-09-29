@@ -280,12 +280,17 @@ const HomeLink = styled(Link)`
     display: flex;
   }
 
+  @media (max-width: ${breakpoints.l}px) {
+    width: 150px;
+  }
   @media (max-width: ${breakpoints.m}px) {
     margin-top: 1rem;
     width: 120px;
   }
   @media (max-width: ${breakpoints.s}px) {
     left: 6%;
+    width: 100px;
+    margin-top: .5rem;
   }
 `
 

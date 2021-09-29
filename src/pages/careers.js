@@ -77,7 +77,7 @@ const Careers = ({ data }) => {
       },
     },
     hidden: {
-      y: 200,
+      y: 100,
       opacity: 0,
     },
   }
@@ -95,7 +95,7 @@ const Careers = ({ data }) => {
       },
     },
     hidden: {
-      y: 100,
+      y: 70,
       opacity: 0,
     },
   }
@@ -111,8 +111,8 @@ const Careers = ({ data }) => {
     },
     exit: {
       y: -20,
-      opacity: 0
-    }
+      opacity: 0,
+    },
   }
 
   // ---------- Parrallax scroll logic using Framer  ----------
@@ -406,27 +406,27 @@ const Careers = ({ data }) => {
                   value of cultivating a diverse team.
                 </h5>
               </div>
-              <FormTopShare>
+              <WOLogo>
                 <WOShortLogo />
-                <ShareSection>
-                  {/* this form element below is necessary for the copy to clipboard function */}
-                  {/* we hide it in CSS with opacity instead of "visibility: hidden" or "display: none" (these prevent it from functioning for some reason) */}
-                  <form>
-                    {/* the value prop is where the copied link resides */}
-                    <textarea ref={textAreaRef} value="This is a test link!" />
-                  </form>
-                  <SharePosting onClick={copyToClipboard}>
-                    Share Posting <Arrow />
-                  </SharePosting>
-                  <LinkCopiedAlert
-                    // animate the alert in and out according to the timeout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: animateSuccess ? 1 : 0 }}
-                  >
-                    {copySuccess}
-                  </LinkCopiedAlert>
-                </ShareSection>
-              </FormTopShare>
+              </WOLogo>
+              <SharePostingWrapper>
+                {/* this form element below is necessary for the copy to clipboard function */}
+                {/* we hide it in CSS with opacity instead of "visibility: hidden" or "display: none" (these prevent it from functioning for some reason) */}
+                <form>
+                  {/* the value prop is where the copied link resides */}
+                  <textarea ref={textAreaRef} value="This is a test link!" />
+                </form>
+                <SharePostingButton onClick={copyToClipboard}>
+                  Share Posting <Arrow />
+                </SharePostingButton>
+                <LinkCopiedAlert
+                  // animate the alert in and out according to the timeout
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: animateSuccess ? 1 : 0 }}
+                >
+                  {copySuccess}
+                </LinkCopiedAlert>
+              </SharePostingWrapper>
             </FormTop>
             <FormContentSection>
               {/* <h5>{CareerData[`${selectedCareer}`].title}</h5> */}
@@ -991,6 +991,13 @@ const CareerWrapper = styled.div`
   width: 80%;
   margin: 0 auto;
   padding: 10rem 0;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 85%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    flex-direction: column;
+  }
 `
 const CareerLeft = styled.div`
   position: sticky;
@@ -1020,17 +1027,43 @@ const CareerLeft = styled.div`
   div > h5 strong {
     font-family: "calibre-medium";
   }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    margin-right: 5rem;
+    div {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    margin-right: 0rem;
+    div {
+      width: 75%;
+    }
+  }
 `
 
 const CareerRight = styled.div`
   width: 50%;
   display: relative;
-  z-index: 5000;
+  z-index: 1000;
+
+  @media (max-width: ${breakpoints.m}px) {
+    width: 100%;
+    margin-top: 4rem;
+  }
 `
 
 const CareerEntry = styled.div`
   width: 80%;
   margin-bottom: 4rem;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 100%;
+  }
 `
 
 const Title = styled.div`
@@ -1072,6 +1105,14 @@ const FormContent = styled.div`
   h3 {
     padding-left: 14rem;
   }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 90%;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 95%;
+  }
 `
 
 const FormTop = styled.div`
@@ -1080,17 +1121,40 @@ const FormTop = styled.div`
   justify-content: space-between;
   padding: 5rem;
   padding-top: 7rem;
+  position: relative;
+  z-index: 5;
   h5 {
     font-family: "ppwoodland-light";
     font-size: 33px;
     line-height: 42px;
+    width: 60%;
   }
   h3 {
     font-family: "ppwoodland-bold";
     padding-left: 0rem;
     height: 8rem;
-    width: 150%;
+    width: 100%;
     // height is 8rem, same dimensions as padding-top for the left and right elements.
+  }
+
+
+  @media (max-width: 1700px) {
+    h5 {
+      width: 83%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding-bottom: 0rem;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-bottom: 5rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h3 {
+      height: 4rem;
+    }
   }
 `
 
@@ -1099,29 +1163,53 @@ const FormTopPositionDetails = styled.div`
   padding-right: 6rem;
   padding-left: 3rem;
   padding-top: 8rem;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-right: 4rem;
+    padding-left: 1.5rem;
+    padding-top: 5rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-right: 3rem;
+    padding-top: 3rem;
+    svg {
+      scale: .7;
+    }
+  }
 `
 
-const FormTopShare = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 5rem;
-  padding-top: 8rem;
-  position: relative;
+const WOLogo = styled.div`
+  position: absolute;
+  z-index: 1;
+  right: 5%;
+  top: 33%;
+
   svg {
     width: 100px;
     height: auto;
-    align-self: flex-end;
   }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 5%;
+  }
+`
+
+const SharePostingWrapper = styled.div`
+  position: absolute;
+  right: 7%;
+  bottom: 10%;
   form {
     filter: opacity(0);
     display: inline;
   }
-`
-const ShareSection = styled.div`
-  align-self: flex-end;
-  position: relative;
-  width: 300px;
+  @media (max-width: 1750px) {
+    bottom: 3%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 5%;
+    bottom: -5%;
+  }
+  
 `
 
 const LinkCopiedAlert = styled(motion.p)`
@@ -1134,8 +1222,8 @@ const LinkCopiedAlert = styled(motion.p)`
   width: 100%;
 `
 
-const SharePosting = styled.button`
-  align-self: flex-start;
+const SharePostingButton = styled.button`
+  min-width: 320px;
   border: 2px solid var(--color-black);
   border-radius: 50px;
   padding: 0.75rem 2.75rem;
@@ -1147,22 +1235,36 @@ const SharePosting = styled.button`
   font-family: "calibre-medium";
   font-size: 25px;
   line-height: 35px;
-  width: 100%;
   text-transform: uppercase;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     background-color: var(--color-black);
     color: var(--color-white);
     svg {
+      transform: translate3d(5px, 0.1rem, 0);
       fill: var(--color-white);
     }
   }
   svg {
-    width: 30px;
-    margin-left: 0.25rem;
-    transform: translateY(0.15rem);
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    width: 30px !important;
+    margin-left: 0.4rem;
+    transform: translateY(0.1rem);
     fill: var(--color-black);
     transition: var(--hover-transition);
+  }
+
+  @media (max-width: 1750px) {
+    min-width: 280px;
+    font-size: 20px;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
   }
 `
 
@@ -1182,6 +1284,10 @@ const FormContentSection = styled.div`
   p {
     font-size: 30px;
     line-height: 33px;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    
   }
 `
 
