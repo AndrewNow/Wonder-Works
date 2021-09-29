@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import { Link } from "gatsby"
 import styled, { keyframes } from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
@@ -7,9 +7,35 @@ import { motion, AnimatePresence } from "framer-motion"
 import breakpoints from "./breakpoints"
 import MobileNavAnimation from "./mobileNavAnimation"
 import { ActiveLinkSVG } from "../svg/miscellaneous"
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "../context/globalContext"
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false)
+  const [isOpenMobile, setOpenMobile] = useState(false)
+
+  // Use global state context so that when a mobile users' nav state is 'light' and they open the menu,
+  // the hamburger icon turns 'blue' (to not blend against the white nav modal)
+  const dispatch = useGlobalDispatchContext()
+  const { currentTheme } = useGlobalStateContext()
+
+  const toggleLightTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "light" })
+  }, [dispatch])
+
+  const toggleBlueTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  }, [dispatch])
+
+  useEffect(() => {
+    if (isOpenMobile && currentTheme === "light") {
+      toggleBlueTheme()
+    } else if (!isOpenMobile && currentTheme === "light") {
+      toggleLightTheme()
+    }
+  }, [toggleLightTheme, toggleBlueTheme, isOpenMobile])
 
   const navAnimation = {
     visible: {
@@ -87,11 +113,18 @@ const Navbar = () => {
         <Hamburger
           toggled={isOpen}
           toggle={setOpen}
-          label="Show menu"
+          label="Toggle navigation menu."
           rounded
-          // color={theme}
         />
       </HamburgerIcon>
+      <HamburgerIconMobile>
+        <Hamburger
+          toggled={isOpenMobile}
+          toggle={setOpenMobile}
+          label="Toggle navigation menu."
+          rounded
+        />
+      </HamburgerIconMobile>
       <AnimatePresence exitBeforeEnter>
         {isOpen && (
           <Dropdown
@@ -123,27 +156,26 @@ const Navbar = () => {
       </AnimatePresence>
       {/* Mobile nav below here */}
       <AnimatePresence>
-        {isOpen && (
+        {isOpenMobile && (
           <>
             <BackgroundBlur
               initial="hidden"
-              animate={isOpen ? "visible" : "hidden"}
+              animate={isOpenMobile ? "visible" : "hidden"}
               exit="hidden"
               variants={navAnimation}
             >
               <DropdownMobile
                 initial="hidden"
-                animate={isOpen ? "visible" : "hidden"}
+                animate={isOpenMobile ? "visible" : "hidden"}
                 exit="hidden"
                 variants={navAnimationMobileBody}
               >
                 <MobileAnimation>
                   <MobileNavAnimation />
                 </MobileAnimation>
-
                 <MobileNav
                   initial="hidden"
-                  animate={isOpen ? "visible" : "hidden"}
+                  animate={isOpenMobile ? "visible" : "hidden"}
                   exit="hidden"
                   variants={navAnimationMobile}
                 >
@@ -195,42 +227,6 @@ const Navbar = () => {
 
 export default Navbar
 
-const Nav = styled.nav`
-  position: fixed;
-  z-index: 1998;
-  width: 92.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2.5rem;
-  height: 70px;
-  div {
-    color: ${props => props.theme.color}!important;
-  }
-  a {
-    height: 100%;
-    display: flex;
-  }
-
-  @media (max-width: ${breakpoints.xl}px) {
-    padding-top: 1rem;
-    margin-top: 1rem;
-  }
-
-  @media (max-width: ${breakpoints.m}px) {
-    a {
-      width: 120px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    margin-top: 0rem;
-    width: 88%;
-    z-index: 2002;
-  }
-`
 const HamburgerIcon = styled.div`
   z-index: 2002 !important;
   position: fixed;
@@ -247,6 +243,24 @@ const HamburgerIcon = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
+`
+const HamburgerIconMobile = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.s}px) {
+    display: block;
+    z-index: 2002 !important;
+    position: fixed;
+    right: 3.5%;
+    top: 0;
+    margin-top: 2.5rem;
+    height: 70px;
+    div {
+      color: ${props => props.theme.color}!important;
+    }
+    margin-top: 1rem;
     right: 6%;
     div {
       color: ${props => props.theme.color};

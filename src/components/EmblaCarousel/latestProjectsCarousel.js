@@ -153,6 +153,7 @@ const LatestProjectsCarousel = () => {
                     url={video.Src}
                     width="100%"
                     height="100%"
+                    playsinline={true}
                     onEnded={() => setTimeout(() => scrollNext(), 1500)}
                     onProgress={({ played }) =>
                       !paused && setVideoProgress(played * 100)
