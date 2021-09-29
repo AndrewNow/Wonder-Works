@@ -729,6 +729,9 @@ const HomeIndex = ({ data }) => {
       </InvestmentCenter>
       <CareerFlip />
       <Newsletter>
+        <OrangeBackgroundMobileTablet>
+          <Svg.BigOrangeBackgroundMobileTablet />
+        </OrangeBackgroundMobileTablet>
         <PurpleStrokeStarWrapper
           animate={{
             rotate: 360,
@@ -1786,6 +1789,17 @@ const Newsletter = styled.div`
   width: 100%;
   height: 100%;
   /* overflow: hidden; */
+
+  @media (max-width: ${breakpoints.xl}px) {
+    background-color: var(--color-orange);
+    margin-top: 25rem;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin-top: 20rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 15rem;
+  }
 `
 
 const OrangeBackground = styled.div`
@@ -1802,13 +1816,31 @@ const OrangeBackground = styled.div`
     width: 100%;
     height: auto;
   }
-
-  @media (max-width: ${breakpoints.m}px) {
-    border: 1px solid red;
-    svg {
-      /* width: 100vw; */
-    }
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
   }
+`
+const OrangeBackgroundMobileTablet = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    right: 1px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+
+    svg {
+      transform: translateY(-99%);
+      overflow-x: hidden;
+      width: calc(100% + 1px);
+      height: auto;
+  }
+}
 `
 
 const ContactUsWrapper = styled.div`
@@ -1822,7 +1854,8 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
   left: -3%;
 
   @media (max-width: ${breakpoints.xl}px) {
-    top: 15%;
+    display: none;
+    /* top: 15%;
     left: 5%;
     transform-origin: center;
     width: 150px;
@@ -1833,11 +1866,7 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
     svg {
       width: 100%;
       height: auto;
-    }
-  }
-
-  @media (max-width: ${breakpoints.l}px) {
-    display: none;
+    } */
   }
 `
 const PinkStarStrokeWrapper = styled(motion.div)`

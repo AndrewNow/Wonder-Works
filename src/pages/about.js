@@ -780,6 +780,9 @@ const About = ({ data }) => {
       <LetsWork svg={<Svg.PinkGears />} />
       <CareerFlip />
       <Newsletter>
+        <BlueBackgroundMobileTablet>
+          <Svg.BigBlueBackgroundMobileTablet />
+        </BlueBackgroundMobileTablet>
         <MailchimpComponent
           smallStarSvg={<GreenStars />}
           bigStarSvg={<PinkStar />}
@@ -1512,7 +1515,7 @@ const TextContent = styled(motion.div)`
   @media (max-width: ${breakpoints.xl}px) {
     h1:last-of-type {
       svg {
-        scale: .8;
+        scale: 0.8;
       }
     }
   }
@@ -1536,6 +1539,10 @@ const TextContent = styled(motion.div)`
         scale: 0.6;
         transform: translate3d(-15px, 10px, 0);
       }
+    }
+    p {
+      position: relative;
+      z-index: 10;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1600,17 +1607,25 @@ const ImageWrapper = styled.div`
 const CirclesWrapper = styled(motion.div)`
   z-index: 2;
   position: absolute;
-  top: -15%;
-  left: 15%;
+  top: -65%;
+  right: 20%;
 
   @media (max-width: ${breakpoints.xxl}px) {
-    left: 5%;
-    top: -50%;
+    right: 5%;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    top: -70%;
+    right: 10%;
+    width: 80%;
+    svg {
+      width: 100%;
+    }
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    left: -3%;
-    top: -50%;
+    right: 3%;
+    top: -40%;
     width: 100%;
     height: 100%;
     svg {
@@ -1667,12 +1682,15 @@ const PinkShapesWrapper = styled(motion.div)`
 
 const BlueSquigglyWrapper = styled(motion.div)`
   position: absolute;
-  z-index: 5;
+  z-index: 3;
   top: 21%;
-  left: 10%;
+  right: 20%;
+
+  @media (max-width: ${breakpoints.xl}px) {
+  }
 
   @media (max-width: ${breakpoints.s}px) {
-    left: 0%;
+    right: 0%;
     top: 10%;
     svg {
       width: 95vw;
@@ -1693,8 +1711,15 @@ const Newsletter = styled.div`
   width: 100%;
   height: 100%;
 
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     background-color: var(--color-lightblue);
+    margin-top: 25rem;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin-top: 20rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 15rem;
   }
 `
 // const PurpleStrokeStarWrapper = styled(motion.div)`
@@ -1703,6 +1728,35 @@ const Newsletter = styled.div`
 //   top: -12.5%;
 //   left: -3%;
 // `
+
+const BlueBackgroundMobileTablet = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    right: 1px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+    svg {
+      transform: translateY(-99%);
+      overflow-x: hidden;
+      width: calc(100% + 1px);
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: -1px;
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 1px;
+  }
+`
 
 const BlueBackground = styled.div`
   position: absolute;
@@ -1717,7 +1771,16 @@ const BlueBackground = styled.div`
     width: 100%;
   }
 
-  @media (max-width: ${breakpoints.s}px) {
-    
+  @media (max-width: 1600px) {
+    top: -35%;
+    left: -15%;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    top: -35%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
   }
 `

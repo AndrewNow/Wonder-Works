@@ -152,6 +152,12 @@ const Wrapper = styled.div`
 
   @media (max-width: ${breakpoints.xxl}px) {
     width: 75%;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-top: 10rem;
+    margin-bottom: 35rem;
   }
 
   @media (max-width: ${breakpoints.l}px) {

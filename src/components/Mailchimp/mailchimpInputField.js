@@ -97,6 +97,10 @@ const EmailInput = styled.input`
     color: whitesmoke;
     opacity: 0.9 !important;
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    font-size: 24px;
+    width: 70%;
+  }
 
   @media (max-width: ${breakpoints.s}px) {
     width: 80%;

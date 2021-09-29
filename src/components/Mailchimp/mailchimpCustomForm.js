@@ -93,6 +93,10 @@ const EmailForm = styled.form`
   justify-content: space-between;
   border-bottom: 2px solid var(--color-black);
   padding-bottom: 1rem;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 90%;
+  }
   @media (max-width: ${breakpoints.m}px) {
     width: 100%;
   }

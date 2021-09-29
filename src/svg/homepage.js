@@ -563,36 +563,51 @@ export const BigOrangeBackground = () => {
           />
         </g>
       </Desktop>
-      <Mobile
-        width="745"
-        height="344"
-        viewBox="0 0 745 344"
+    </>
+  )
+}
+export const BigOrangeBackgroundMobileTablet = () => {
+  return (
+    <>
+      <Tablet
+        width="1280"
+        height="241"
+        viewBox="0 0 1280 241"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <mask
-          id="mask0"
-          style={{maskType: "alpha"}}
-          maskUnits="userSpaceOnUse"
-          x="0"
-          y="0"
-          width="745"
-          height="344"
-        >
-          <path
-            d="M372.5 0C239.144 0 112.83 27.7382 0 77.2859V343.5H745V77.2859C632.17 27.7382 505.856 0 372.5 0Z"
-            fill="#FABB17"
-          />
-        </mask>
-        <g mask="url(#mask0)">
-          <path d="M0 -30.9258H745V348.019H0V-30.9258Z" fill="#FABB17" />
-        </g>
+        <path
+          d="M1280 154.364V240.124H0V155.005C197.907 53.2517 417.294 0.110824 639.923 0.000173155C862.552 -0.110478 1081.99 52.8122 1280 154.369V154.364Z"
+          fill="#FABB17"
+        />
+      </Tablet>
+
+      <Mobile
+        width="768"
+        height="230"
+        viewBox="0 0 768 230"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M388.301 0.328554C254.404 0.200647 122.021 28.6531 0 83.7846V229.623H768V79.9341C648.335 27.3184 519.022 0.207518 388.301 0.328554Z"
+          fill="#FABB17"
+        />
       </Mobile>
     </>
   )
 }
 
 const Desktop = styled.svg`
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+`
+const Tablet = styled.svg`
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+  }
   @media (max-width: ${breakpoints.m}px) {
     display: none;
   }

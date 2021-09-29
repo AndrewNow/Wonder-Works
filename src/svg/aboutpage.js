@@ -594,18 +594,6 @@ export const PinkShapes = () => {
   )
 }
 
-const Desktop = styled.svg`
-  @media (max-width: ${breakpoints.s}px) {
-    display: none;
-  }
-`
-const Mobile = styled.svg`
-  display: none;
-  @media (max-width: ${breakpoints.s}px) {
-    display: block;
-  }
-`
-
 export const BlueSquiggly = () => {
   return (
     <>
@@ -723,8 +711,6 @@ export const PinkGears = () => {
   )
 }
 
-
-
 const PinkFillWrapper = styled(motion.div)`
   aspect-ratio: 1/1;
   width: 60%;
@@ -741,7 +727,6 @@ const PinkFillWrapper = styled(motion.div)`
     width: 100%;
     height: 100%;
   }
-
 `
 
 const PinkStrokeWrapper = styled(motion.div)`
@@ -772,7 +757,7 @@ const PinkGearFill = styled.svg`
 
 export const BigBlueBackground = () => {
   return (
-    <svg
+    <Desktop
       width="2007"
       height="1996"
       viewBox="0 0 2007 1996"
@@ -783,9 +768,61 @@ export const BigBlueBackground = () => {
         d="M1282.33 0L278.946 257.208L0 1254.77L724.443 1995.13L1727.83 1737.92L2006.78 740.355L1282.33 0Z"
         fill="#59C9F3"
       />
-    </svg>
+    </Desktop>
   )
 }
+
+export const BigBlueBackgroundMobileTablet = () => {
+  return (
+    <>
+      <Tablet
+        width="1280"
+        height="417"
+        viewBox="0 0 1280 417"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1280 415.95V417H0V216.252L863.425 0L1280 415.95Z"
+          fill="#59C9F3"
+        />
+      </Tablet>
+      <Mobile
+        width="769"
+        height="255"
+        viewBox="0 0 769 255"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M768.061 247.972V254.546H0.060791V130.068L519.638 0L768.061 247.972Z"
+          fill="#5BC8F3"
+        />
+      </Mobile>
+    </>
+  )
+}
+
+const Desktop = styled.svg`
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+`
+const Tablet = styled.svg`
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+`
+const Mobile = styled.svg`
+  display: none;
+  @media (max-width: ${breakpoints.m}px) {
+    display: block;
+  }
+`
 
 export const HorizontalLine = () => (
   <svg
