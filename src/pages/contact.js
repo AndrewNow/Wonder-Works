@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import Layout from "../components/layout"
 import { graphql, navigate } from "gatsby"
 import Seo from "../components/seo"
@@ -8,8 +8,21 @@ import MailchimpComponent from "../components/Mailchimp/component"
 import * as Svg from "../svg/contactpage"
 import { BlueStars, PurpleStar } from "../svg/miscellaneous"
 import { motion } from "framer-motion"
+import { useGlobalDispatchContext } from "../context/globalContext"
 
 const Contact = ({ data }) => {
+
+  // Make sure navbar starts in blue on page load
+  const dispatch = useGlobalDispatchContext()
+
+  const toggleBlueTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  }, [dispatch])
+
+  useEffect(() => {
+    toggleBlueTheme()
+  }, [])
+
   const siteTitle = data.site.siteMetadata?.title || `Contact`
 
   const [expandProjectsButton, setExpandProjectsButton] = useState(false)
@@ -41,7 +54,7 @@ const Contact = ({ data }) => {
       backgroundColor: "#1A1748",
       transition: {
         duration: 0.25,
-        ease: "easeInOut"
+        ease: "easeInOut",
       },
     },
     normal: {
@@ -50,7 +63,7 @@ const Contact = ({ data }) => {
       color: "#1A1748",
       transition: {
         duration: 0.25,
-        ease: "easeInOut"
+        ease: "easeInOut",
       },
     },
   }

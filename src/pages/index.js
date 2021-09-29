@@ -375,7 +375,9 @@ const HomeIndex = ({ data }) => {
           animate="visible"
           whileTap={{ scale: 0.9 }}
         >
-          <DiscoverMore to="/about">DISCOVER MORE</DiscoverMore>
+          <DiscoverMore to="/about">
+            DISCOVER MORE <Arrow />
+          </DiscoverMore>
         </motion.div>
       </LandingTextMobile>
       {/* end mobile text animation layout */}
@@ -1117,6 +1119,9 @@ const DiscoverMore = styled(Link)`
       transform: translate3d(0.2rem, 0.3rem, 0);
     }
   }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 250px;
+  }
 `
 
 const ImaginationSection = styled.section`
@@ -1839,8 +1844,8 @@ const OrangeBackgroundMobileTablet = styled.div`
       overflow-x: hidden;
       width: calc(100% + 1px);
       height: auto;
+    }
   }
-}
 `
 
 const ContactUsWrapper = styled.div`

@@ -134,22 +134,34 @@ const Navbar = () => {
             variants={navAnimation}
           >
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/">Home</Link>
+              <Link to="/" activeClassName="active">
+                Home
+              </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/about">About</Link>
+              <Link to="/about" activeClassName="active">
+                About
+              </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/projects">Projects</Link>
+              <Link to="/projects" activeClassName="active">
+                Projects
+              </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/investors">Investors</Link>
+              <Link to="/investors" activeClassName="active">
+                Investors
+              </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/careers">Careers</Link>
+              <Link to="/careers" activeClassName="active">
+                Careers
+              </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact" activeClassName="active">
+                Contact
+              </Link>
             </motion.div>
           </Dropdown>
         )}
@@ -262,9 +274,6 @@ const HamburgerIconMobile = styled.div`
     }
     margin-top: 1rem;
     right: 6%;
-    div {
-      color: ${props => props.theme.color};
-    }
   }
 `
 
@@ -290,7 +299,7 @@ const HomeLink = styled(Link)`
   @media (max-width: ${breakpoints.s}px) {
     left: 6%;
     width: 100px;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 `
 
@@ -309,6 +318,10 @@ const Dropdown = styled(motion.div)`
     transition: color 0.4s cubic-bezier(0, 0.2, 0.7, 1);
     transition-delay: 0.2s;
     text-decoration: none;
+
+    &.active {
+      font-weight: 900;
+    }
   }
 
   div {

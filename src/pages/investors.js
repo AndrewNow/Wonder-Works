@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react"
+import React, { useState, useRef, useCallback, useEffect } from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
@@ -12,12 +12,23 @@ import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { ContactUs } from "../components/contactUs"
 import { AsSeenOn } from "../components/asSeenOn"
 import { Arrow } from "../svg/miscellaneous"
+import { useGlobalDispatchContext } from "../context/globalContext"
 
 const Investors = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Investment Centre`
 
-  // ---------- intersection observer logic, Refs ----------
+  // Make sure navbar starts in blue on page load
+  const dispatch = useGlobalDispatchContext()
 
+  const toggleBlueTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  }, [dispatch])
+
+  useEffect(() => {
+    toggleBlueTheme()
+  }, [])
+
+  // ---------- intersection observer logic, Refs ----------
   const ref = useRef()
 
   const [countUpRef, countUpInView] = useInView({
@@ -480,7 +491,7 @@ const HeaderFlex = styled.div`
 const Left = styled.div`
   align-self: flex-start;
   h1 {
-    font-family: "ppwoodland-bold";
+    font-family: "ppwoodland-light";
     div:nth-of-type(1) {
       font-size: 50px;
       line-height: 60px;

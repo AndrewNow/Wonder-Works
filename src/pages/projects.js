@@ -1021,7 +1021,7 @@ const StayPeachyLink = styled.div`
   position: absolute;
   right: 0;
   z-index: 10;
-  padding-top: 2rem;
+  padding-top: 0rem;
 
   svg {
     margin-right: 1rem;

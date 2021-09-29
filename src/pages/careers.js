@@ -263,7 +263,7 @@ const Careers = ({ data }) => {
           <Left>
             <h1>
               <Mask variants={line1} initial="hidden" animate="visible">
-                <Span variants={word}>let’s </Span>
+                <Span variants={word}>Let’s </Span>
                 <Span variants={word}>grow</Span>
               </Mask>
               <Mask variants={line2} initial="hidden" animate="visible">
@@ -796,7 +796,7 @@ const Left = styled.div`
   }
   h1 {
     padding-bottom: 2rem;
-    font-family: "ppwoodland-bold";
+    font-family: "ppwoodland-light";
     white-space: nowrap;
     font-size: 6.5vw;
     line-height: 80%;

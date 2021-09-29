@@ -102,7 +102,7 @@ const About = ({ data }) => {
     visible: {
       x: "105vw",
       transition: {
-        duration: 3,
+        duration: 4,
         repeat: "Infinity",
         repeatType: "loop",
         repeatDelay: 5,
@@ -116,7 +116,7 @@ const About = ({ data }) => {
     visible: {
       x: "-25vw",
       transition: {
-        duration: 3,
+        duration: 4,
         delay: 3.25,
         repeat: "Infinity",
         repeatType: "loop",
