@@ -97,26 +97,35 @@ const EmailInput = styled.input`
     color: whitesmoke;
     opacity: 0.9 !important;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 80%;
+    font-size: 18px;
+    font-family: "calibre-medium";
+    letter-spacing: 0.01rem;
+  }
 `
 
 const SubmitLabel = styled(motion.label)`
   position: relative;
   /* border: 1px solid grey; */
-  & svg {
+  svg {
     position: absolute;
     color: #00000050;
     transform: translate(-2rem, 0rem);
     transition: var(--hover-transition);
-    &:hover {
+    :hover {
       color: var(--color-orange) !important;
       cursor: pointer;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
-    & svg {
-      transform: translate(-3rem, -0.25rem);
-      /* position: relative; */
+    svg {
+      transform: translate(-3rem, -1rem);
     }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+
   }
 `
 

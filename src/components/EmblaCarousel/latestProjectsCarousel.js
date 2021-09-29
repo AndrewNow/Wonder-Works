@@ -10,43 +10,60 @@ import { Arrow } from "../../svg/miscellaneous"
 import { PlayIconReactPlayer, PlayButtonFirstSlide } from "./playButtons"
 
 const LatestProjectsCarousel = () => {
-  // ---------- Initialize Embla Carousel & state ----------
+  // -------------------- 1. Initialize Embla Carousel & State --------------------
   const [emblaRef, embla] = useEmblaCarousel({
     slidesToScroll: 1,
     inViewThreshold: 1,
     speed: 10,
   })
 
+  const [firstPlayClick, setFirstPlayClick] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [videoProgress, setVideoProgress] = useState(0)
-
   const [slidesInView, setSlidesInView] = useState(0)
   const [paused, setPaused] = useState(true)
+  const [hover, setHover] = useState(true)
 
-  // ---------- Set up embla pagination buttons ----------
-  // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
+  // event handlers for pause button
+  const setHoverFalse = () => {
+    setHover(false)
+  }
+  const setHoverTrue = () => {
+    setHover(true)
+  }
 
+  // ---------- 2. Intersection observer to pause video when not in view ----------
+  const [videoRef, videoInView] = useInView({
+    root: null,
+    threshold: 0.6,
+    triggerOnce: false,
+  })
+
+  // ----------------------- 3. Set up embla configurations -----------------------
+
+  // Run embla when the scroll snap changes
   const onSelect = useCallback(() => {
     if (!embla) return
   }, [embla])
 
-  // logic for scrollbar
+  // Start playing the video if user scrolls to next slide
+  const onInView = useCallback(() => {
+    if (!embla) return
+    setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
+    setPaused(false)
+  }, [embla])
+
+  // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
+
+  // Logic for bottom progress bar (pagination)
   const onScroll = useCallback(() => {
     if (!embla) return
     const progress = Math.max(0, Math.min(1, embla.scrollProgress()))
     setScrollProgress(progress * 100)
   }, [embla, setScrollProgress])
 
-  // start playing the video if user scrolls to next slide
-  const onInView = useCallback(() => {
-    if (!embla) return
-    setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
-    setPaused(false)
-    // setHover(false)
-  }, [embla])
-
-  // ---------- Run embla configurations ----------
+  // ----------------------- 4. Run embla configurations -----------------------
   useEffect(() => {
     if (!embla) return
     onSelect()
@@ -56,6 +73,9 @@ const LatestProjectsCarousel = () => {
     embla.on("scroll", onScroll)
     embla.on("settle", onInView)
   }, [embla, onScroll, onSelect, onInView])
+
+  // ---------------------------- 5. Video data ----------------------------
+  // Light: is the first video's thumbnail, loading react-player in "light mode"
 
   const videoLinks = [
     {
@@ -72,41 +92,11 @@ const LatestProjectsCarousel = () => {
     },
   ]
 
-  // ---------- intersection observer to pause video when not in view ----------
-
-  const [videoRef, videoInView] = useInView({
-    root: null,
-    threshold: 0.6,
-    triggerOnce: false,
-  })
-
-  const ref = useRef()
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      videoRef(node)
-    },
-    [videoRef]
-  )
-
-  const [firstPlayClick, setFirstPlayClick] = useState(false)
-  
-  const [hover, setHover] = useState(true)
-  const setHoverFalse = () => {
-    setHover(false)
-  }
-
-  const setHoverTrue = () => {
-    setHover(true)
-  }
-
-
   return (
-    <Wrapper ref={setRefs}>
+    <Wrapper ref={videoRef}>
       <h2>
         Latest <br />
-        Projects{" "}
+        Projects
         <svg
           width="134"
           height="2"
@@ -119,6 +109,7 @@ const LatestProjectsCarousel = () => {
             stroke="#F7F7FC"
             strokeWidth="2"
             strokeMiterlimit="10"
+            vectorEffect="non-scaling-stroke"
           />
         </svg>
       </h2>
@@ -138,9 +129,7 @@ const LatestProjectsCarousel = () => {
                   onHoverStart={firstPlayClick && setHoverTrue}
                   onHoverEnd={firstPlayClick && setHoverFalse}
                 >
-                  {/* Only render this button on the first slide, since we have the
-                  playIcon prop button which handles the initial lazy-loaded video  */}
-                  {/* {index == !0 && ( */}
+                  {/* Only render this button after the first slide's button has been pressed  */}
                   {firstPlayClick && (
                     <AnimatePresence>
                       {hover && (
@@ -153,17 +142,15 @@ const LatestProjectsCarousel = () => {
                       )}
                     </AnimatePresence>
                   )}
+                  {console.log(slidesInView, paused, videoInView)}
                   <ReactPlayer
+                    light={video.light}
                     url={video.Src}
                     width="100%"
                     height="100%"
-                    playing={
-                      slidesInView === `video[${index}]` &&
-                      !paused &&
-                      videoInView
-                    }
                     onEnded={() => setTimeout(() => scrollNext(), 1500)}
-                    light={video.light}
+                    onProgress={({ played }) => setVideoProgress(played * 100)}
+                    progressInterval={500}
                     playIcon={
                       <PlayButtonFirstSlide
                         setPaused={setPaused}
@@ -171,8 +158,11 @@ const LatestProjectsCarousel = () => {
                         setFirstPlayClick={setFirstPlayClick}
                       />
                     }
-                    onProgress={({ played }) => setVideoProgress(played * 100)}
-                    progressInterval={500}
+                    playing={
+                      slidesInView === `video[${index}]` &&
+                      !paused &&
+                      videoInView
+                    }
                   />
                   <VidProgressContainer>
                     <VideoProgress
@@ -180,6 +170,7 @@ const LatestProjectsCarousel = () => {
                       transition={{ ease: "linear", duration: 0.5 }}
                     />
                   </VidProgressContainer>
+                  {console.log(videoProgress)}
                 </EmblaSlide>
               )
             })}
@@ -192,7 +183,7 @@ const LatestProjectsCarousel = () => {
             />
           </EmblaProgress>
         </ProgressContainer>
-        <ViewAllBottom to='/projects'>
+        <ViewAllBottom to="/projects">
           <p>
             View all
             <Arrow />
@@ -254,6 +245,15 @@ const Wrapper = styled.div`
       }
     }
   }
+  @media (max-width: ${breakpoints.xs}px) {
+    h2 {
+      font-size: 32px;
+      svg {
+        width: 40%;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
 `
 const ViewAll = styled(Link)`
   @media (max-width: ${breakpoints.m}px) {
@@ -290,7 +290,7 @@ const ViewAllBottom = styled(Link)`
     right: 0%;
     bottom: -30%;
     p {
-      filter: opacity(1)!important;
+      filter: opacity(1) !important;
       color: var(--color-white);
       position: relative;
       :hover {
@@ -437,7 +437,6 @@ const VidProgressContainer = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     display: none;
   }
-
 `
 
 const Playbutton = styled(motion.button)`

@@ -1692,6 +1692,10 @@ const Newsletter = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+
+  @media (max-width: ${breakpoints.s}px) {
+    background-color: var(--color-lightblue);
+  }
 `
 // const PurpleStrokeStarWrapper = styled(motion.div)`
 //   position: absolute;
@@ -1711,5 +1715,9 @@ const BlueBackground = styled.div`
   svg {
     overflow-x: hidden;
     width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    
   }
 `

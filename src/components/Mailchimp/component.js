@@ -22,6 +22,7 @@ const MailchimpComponent = ({ smallStarSvg, bigStarSvg }) => {
               stroke="#1A1748"
               strokeWidth="2.5"
               strokeMiterlimit="10"
+              vectorEffect="non-scaling-stroke"
             />
           </svg>
         </Headline>
@@ -90,6 +91,9 @@ const SvgStarWrapper = styled(motion.div)`
   position: absolute;
   top: 50%;
   right: 10%;
+  @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
 `
 
 const Brief = styled.div`
@@ -130,7 +134,7 @@ const Brief = styled.div`
     width: 85%;
     h2 {
       width: 85%;
-      font-size: 34px;
+      font-size: 30px;
       line-height: 38px;
     }
     h3 {
@@ -147,8 +151,12 @@ const Headline = styled.div`
   padding-top: 2rem;
 
   h4 {
+    white-space: nowrap;
     margin-right: 1rem;
     font-family: "calibre-semibold";
     padding: 0;
+  }
+  svg {
+    width: 30%;
   }
 `
