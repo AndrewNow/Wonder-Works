@@ -320,10 +320,10 @@ const Dropdown = styled(motion.div)`
     text-decoration: none;
 
     &.active {
-      font-weight: 900;
+      font-family: 'calibre-semibold';
     }
   }
-
+  
   div {
     cursor: pointer;
     text-align: right;

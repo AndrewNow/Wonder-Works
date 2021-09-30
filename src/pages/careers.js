@@ -875,7 +875,7 @@ const Left = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 80%;
     h1 {
-      padding-top: 2rem;
+      padding-top: 3rem;
       font-size: 45px;
     }
   }
@@ -1099,7 +1099,7 @@ const CareerLeft = styled.div`
       line-height: 42.5px;
     }
     div {
-      width: 90%;
+      width: 92.5%;
       padding-top: 3rem;
     }
     h5 {
@@ -1169,6 +1169,7 @@ const Button = styled(motion.div)`
 
   @media (max-width: ${breakpoints.s}px) {
     width: 31px;
+    height: 31px;
   }
 `
 
@@ -1298,7 +1299,7 @@ const FormTopPositionDetails = styled.div`
     max-width: 110px;
     min-width: 110px;
     svg {
-      scale: 0.7;
+      transform: scale(0.7);
     }
   }
 
@@ -1316,8 +1317,7 @@ const FormTopPositionDetails = styled.div`
     padding: 0;
     max-height: 350px;
     svg {
-      transform: translateY(-5rem);
-      scale: 0.5;
+      transform: translateY(-5rem) scale(.7);
     }
   }
 `
@@ -1601,7 +1601,7 @@ const Input = styled.input`
 
   font-family: "calibre-regular";
   font-size: 20px;
-
+  border-radius: 0px;
   ::placeholder {
     font-family: "calibre-regular";
     font-size: 20px;
