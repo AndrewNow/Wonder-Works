@@ -364,7 +364,9 @@ const Logos = styled(motion.div)`
   div {
     transform-origin: bottom;
     overflow: hidden;
-    max-height: 50px;
+    /* max-height: 50px; */
+    height: 50px;
+    margin: 0 .25rem;
   }
 
   @media (max-width: ${breakpoints.xl}px) {
