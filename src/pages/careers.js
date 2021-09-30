@@ -5,21 +5,22 @@ import Seo from "../components/seo"
 import styled from "styled-components"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { BigPlus, TwoPlus, PlusButton } from "../svg/careerspage"
+import { ContactUs } from "../components/contactUs"
+import { WOShortLogo } from "../svg/logos"
+import emailjs from "emailjs-com"
+import breakpoints from "../components/breakpoints"
+import { Arrow } from "../svg/miscellaneous"
+import * as Svg from "../svg/careerspage"
 import {
   motion,
   useViewportScroll,
   useTransform,
   AnimatePresence,
 } from "framer-motion"
-import { ContactUs } from "../components/contactUs"
-import { WOShortLogo } from "../svg/logos"
 import {
   useGlobalDispatchContext,
   useGlobalStateContext,
 } from "../context/globalContext"
-import emailjs from "emailjs-com"
-import breakpoints from "../components/breakpoints"
-import { Arrow } from "../svg/miscellaneous"
 
 const Careers = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Careers`
@@ -697,13 +698,45 @@ const Careers = ({ data }) => {
                     </motion.p>
                   )}
                 </AnimatePresence>
-                <Submit type="submit" value="Apply" whileTap={{ scale: 0.9 }} />
+                <SubmitLabel htmlFor="applyNow">
+                  Apply <Arrow />
+                </SubmitLabel>
+                <Submit
+                  type="submit"
+                  id="applyNow"
+                  value="Apply"
+                  whileTap={{ scale: 0.9 }}
+                />
               </Bottom>
             </FillOut>
           </FormContent>
         </FormBg>
       )}
       <ContactUsWrapper>
+        <WhiteStarFillWrapper
+          animate={{
+            rotate: 360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <Svg.WhiteStarFill />
+        </WhiteStarFillWrapper>
+        <WhiteStarStrokeWrapper
+          animate={{
+            rotate: -360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <Svg.WhiteStarStroke />
+        </WhiteStarStrokeWrapper>
         <ContactUs />
       </ContactUsWrapper>
     </Layout>
@@ -825,7 +858,7 @@ const Flex = styled.div`
   }
   @media (max-width: ${breakpoints.m}px) {
     padding-bottom: 10rem;
-    padding-top: 5rem;
+    padding-top: 7rem;
   }
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 5rem;
@@ -991,6 +1024,10 @@ const TwoPlusWrapper = styled(motion.div)`
   right: 12%;
 
   @media (max-width: ${breakpoints.xl}px) {
+    bottom: 18%;
+    right: 10%;
+  }
+    @media (max-width: ${breakpoints.xl}px) {
     bottom: 12%;
     right: 5%;
 
@@ -1081,6 +1118,15 @@ const CareerLeft = styled.div`
     div {
       width: 100%;
     }
+    h5 {
+      font-size: 25px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    h5 {
+      font-size: 22px;
+    }
   }
 
   @media (max-width: ${breakpoints.m}px) {
@@ -1099,10 +1145,13 @@ const CareerLeft = styled.div`
       line-height: 42.5px;
     }
     div {
-      width: 92.5%;
+      width: 90%;
       padding-top: 3rem;
     }
     h5 {
+      strong {
+        white-space: nowrap;
+      }
       font-size: 18px;
       line-height: 110%;
     }
@@ -1128,7 +1177,14 @@ const CareerEntry = styled.div`
     width: 100%;
   }
 
+  @media (max-width: ${breakpoints.m}px) {
+    /* width: 70%; */
+    p {
+      width: 70%;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
     p {
       width: 80%;
     }
@@ -1317,7 +1373,7 @@ const FormTopPositionDetails = styled.div`
     padding: 0;
     max-height: 350px;
     svg {
-      transform: translateY(-5rem) scale(.7);
+      transform: translateY(-5rem) scale(0.7);
     }
   }
 `
@@ -1422,7 +1478,7 @@ const SharePostingButton = styled.button`
     background-color: var(--color-black);
     color: var(--color-white);
     svg {
-      transform: translate3d(5px, 0.1rem, 0);
+      transform: translate3d(5px, 0rem, 0);
       fill: var(--color-white);
     }
   }
@@ -1432,7 +1488,7 @@ const SharePostingButton = styled.button`
     top: auto !important;
     width: 30px !important;
     margin-left: 0.4rem;
-    transform: translateY(0.1rem);
+    transform: translateY(0rem);
     fill: var(--color-black);
     transition: var(--hover-transition);
   }
@@ -1467,6 +1523,7 @@ const SharePostingButton = styled.button`
 
 const ContactUsWrapper = styled.div`
   background-color: var(--color-orange);
+  position: relative;
 `
 
 const FormContentSection = styled.div`
@@ -1492,8 +1549,11 @@ const FormContentSection = styled.div`
     padding-right: calc(2rem + 110px);
   }
   @media (max-width: ${breakpoints.m}px) {
-    padding-left: calc(1.5rem + 60px);
-    padding-right: calc(1.5rem + 60px);
+    padding: 1.75rem calc(1.5rem + 60px);
+    p {
+      font-size: 18px;
+      line-height: 115%;
+    }
   }
 
   @media (max-width: ${breakpoints.s}px) {
@@ -1551,7 +1611,7 @@ const Line = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    padding: .75rem 0;
+    padding: 0.75rem 0;
   }
 `
 
@@ -1771,8 +1831,89 @@ const FileLabel = styled.label`
   }
 `
 
-const Submit = styled(motion.input)`
+const SubmitLabel = styled.label`
   position: absolute;
+  right: 0;
+  align-self: flex-end;
+  cursor: pointer;
+  background: none;
+  border: 2px solid var(--color-black);
+  color: var(--color-black);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 25px;
+  font-family: "calibre-medium";
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: var(--hover-transition);
+  :hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    svg {
+      fill: var(--color-white);
+      transform: translate3d(5px, 0rem, 0);
+    }
+  }
+  svg {
+    transition: var(--hover-transition);
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 0.75rem 1.5rem;
+    font-size: 22px;
+    :hover {
+      svg {
+        fill: var(--color-white);
+        transform: translate3d(5px, 0.1rem, 0);
+      }
+    }
+    svg {
+      transform: translate3d(0, 0.1rem, 0);
+      transition: var(--hover-transition);
+      width: 30px;
+      scale: 0.8;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 0.5rem 1.25rem;
+    font-size: 20px;
+
+    :hover {
+      svg {
+        fill: var(--color-white);
+        transform: translate3d(5px, 0.2rem, 0);
+      }
+    }
+    svg {
+      transform: translate3d(0, 0.2rem, 0);
+      transition: var(--hover-transition);
+      width: 30px;
+      scale: 0.75;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: 0;
+    left: 0;
+    min-width: 130px;
+    padding: 0.5rem 0.5rem;
+    font-size: 16px;
+    border: 1px solid var(--color-black);
+  }
+`
+
+const Submit = styled(motion.input)`
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+
+  /* position: absolute;
   right: 0;
   align-self: flex-end;
   cursor: pointer;
@@ -1795,10 +1936,10 @@ const Submit = styled(motion.input)`
     bottom: 0;
     left: 0;
     min-width: 130px;
-    padding: 0.25rem .35rem;
+    padding: 0.5rem 0.5rem;
     font-size: 16px;
     border: 1px solid var(--color-black);
-  }
+  } */
 `
 
 const Bottom = styled.div`
@@ -1825,6 +1966,114 @@ const Bottom = styled.div`
       position: absolute;
       top: 1rem;
       font-size: 14px;
+    }
+  }
+`
+
+const WhiteStarStrokeWrapper = styled(motion.div)`
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    right: 15%;
+    top: 10%;
+    svg {
+      width: 300px;
+      height: auto;
+    }
+  }
+  @media (max-width: 1050px) {
+    top: 13%;
+    
+    svg {
+      width: 250px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    right: 20%;
+    top: 15%;
+    svg {
+      width: 200px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    right: 10%;
+    top: 18%;
+    svg {
+      width: 175px;
+      height: auto;
+    }
+  }
+
+
+  @media (max-width: ${breakpoints.s}px) {
+    top: 26%;
+    right: 10%;
+    svg {
+      width: 140px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 25%;
+    right: 10%;
+    svg {
+      width: 130px;
+      height: auto;
+    }
+  }
+`
+const WhiteStarFillWrapper = styled(motion.div)`
+  display: none;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    right: 30%;
+    top: 25%;
+    svg {
+      width: 225px;
+      height: auto;
+    }
+  }
+  @media (max-width: 1050px) {
+    svg {
+      width: 180px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    top: 25%;
+    svg {
+      width: 150px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 30%;
+    right: 22%;
+    svg {
+      width: 125px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 36%;
+    right: 29%;
+    svg {
+      width: 85px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 32%;
+    right: 30%;
+    svg {
+      width: 80px;
+      height: auto;
     }
   }
 `

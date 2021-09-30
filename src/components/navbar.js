@@ -135,31 +135,37 @@ const Navbar = () => {
           >
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/" activeClassName="active">
+                <ActiveLinkSVG />
                 Home
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/about" activeClassName="active">
+                <ActiveLinkSVG />
                 About
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/projects" activeClassName="active">
+                <ActiveLinkSVG />
                 Projects
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/investors" activeClassName="active">
+                <ActiveLinkSVG />
                 Investors
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/careers" activeClassName="active">
+                <ActiveLinkSVG />
                 Careers
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/contact" activeClassName="active">
+                <ActiveLinkSVG />
                 Contact
               </Link>
             </motion.div>
@@ -238,6 +244,15 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
 
 const HamburgerIcon = styled.div`
   z-index: 2002 !important;
@@ -319,11 +334,25 @@ const Dropdown = styled(motion.div)`
     transition-delay: 0.2s;
     text-decoration: none;
 
+    svg {
+      display: none;
+    }
     &.active {
-      font-family: 'calibre-semibold';
+      svg {
+        display: inline;
+        position: relative;
+        left: -0.5rem;
+        height: 10px;
+        width: 10px;
+        animation: ${rotate} 10s linear infinite;
+        fill: ${props => props.theme.color}!important;
+      }
+    }
+    &.active {
+      font-family: "calibre-semibold";
     }
   }
-  
+
   div {
     cursor: pointer;
     text-align: right;
@@ -405,14 +434,6 @@ const MobileNav = styled(motion.div)`
   margin: 0 auto;
 `
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`
 
 const MobileNavElement = styled(motion.div)`
   font-size: 34px;
@@ -439,6 +460,7 @@ const MobileNavElement = styled(motion.div)`
     }
     &.active {
       svg {
+        fill: var(--color-black);
         display: block;
         position: absolute;
         left: 1rem;

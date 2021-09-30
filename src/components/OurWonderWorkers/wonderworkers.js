@@ -59,6 +59,19 @@ const Wrapper = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     padding-top: 5rem;
+
+    div:nth-of-type(2) {
+      transform: translate3d(0, 3rem, 0);
+      z-index: 10;
+    }
+    div:nth-of-type(3) {
+      transform: translate3d(0, 3rem, 0);
+      z-index: 11;
+    }
+    div:nth-of-type(6) {
+      transform: translate3d(0, 3rem, 0);
+      z-index: 10;
+    }
   }
 
   @media (max-width: ${breakpoints.l}px) {

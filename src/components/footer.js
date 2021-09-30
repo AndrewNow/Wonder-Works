@@ -8,7 +8,9 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <Inner>
-        <WOShortLogo />
+        <WWLogoWrapper>
+          <WOShortLogo />
+        </WWLogoWrapper>
         <IconWrapper>
           <Icons>
             <motion.a
@@ -87,10 +89,6 @@ const Inner = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  svg:nth-of-type(1) {
-    width: 80px;
-    margin-right: .5rem;
-  }
 
   p {
     font-family: "calibre-regular";
@@ -101,10 +99,6 @@ const Inner = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     p {
       padding-right: 7rem;
-    }
-    svg:nth-child(1) {
-      width: 70px;
-      margin-right: 0;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -117,7 +111,21 @@ const Inner = styled.div`
       padding: 2rem 0;
       padding-bottom: 1rem;
     }
-    svg:nth-child(1) {
+  }
+`
+const WWLogoWrapper = styled.div`
+  svg {
+    width: 80px;
+    margin-right: 0.5rem;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      width: 70px;
+      margin-right: 0;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    svg {
       width: 50px;
     }
   }
@@ -135,9 +143,19 @@ const Icons = styled.div`
       fill: #b16eac;
     }
   }
-  
+
+  a {
+    margin: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   @media (max-width: ${breakpoints.xl}px) {
     padding-right: 5rem;
+    a {
+      margin: 0 1.25rem;
+    }
 
     svg {
       max-height: 25px;
@@ -149,22 +167,33 @@ const Icons = styled.div`
     width: 100%;
     margin: 0 auto;
 
-    svg {
-      margin: 0 1rem;
-      max-width: 40px!important;
+    a {
+      margin: 0 1.5rem;
+      max-width: 40px !important;
     }
   }
-
+  
+  @media (max-width: ${breakpoints.s}px) {
+    a {
+      margin: 0 .5rem;
+      width: 40px;
+      height: 40px;
+      svg {
+        width: 100%;
+      }
+    }
+  }
   @media (max-width: ${breakpoints.xs}px) {
     a {
+      margin: 0 .15rem;
       width: 60px;
     }
   }
-  `
+`
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
-  
+
   @media (max-width: ${breakpoints.l}px) {
     flex-direction: column;
   }

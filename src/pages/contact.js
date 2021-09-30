@@ -9,9 +9,9 @@ import * as Svg from "../svg/contactpage"
 import { BlueStars, PurpleStar } from "../svg/miscellaneous"
 import { motion } from "framer-motion"
 import { useGlobalDispatchContext } from "../context/globalContext"
+import breakpoints from "../components/breakpoints"
 
 const Contact = ({ data }) => {
-
   // Make sure navbar starts in blue on page load
   const dispatch = useGlobalDispatchContext()
 
@@ -81,7 +81,6 @@ const Contact = ({ data }) => {
     <Layout title={siteTitle}>
       <Seo title="Contact" />
       <LetsWork svg={<Svg.BlueGear />} />
-
       <CurrentProjects
         onClick={handleProjectsPageTransition}
         variants={currentProjectsButton}
@@ -167,25 +166,40 @@ const CurrentProjects = styled(motion.div)`
 
   padding: 2rem;
   width: 265px;
-  height: 265px;
+  height: auto;
+  aspect-ratio: 1/1;
   text-align: center;
   position: absolute;
   z-index: 10;
-  left: 45%;
-  top: 55%;
+  right: 35%;
+  top: 50%;
 
   display: flex;
   justify-content: center;
   align-content: center;
 
-  /* background-color: var(--color-white); */
-  /* color: var(--color-black); */
-  /* transition: var(--hover-transition); */
-
-  /* &:hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
-  } */
+  @media (max-width: 1600px) {
+    width: 230px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 200px;
+    top: 40%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 160px;
+    top: 30%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 35%;
+    right: 30%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 130px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+  }
 `
 
 const CurrentProjectsText = styled(motion.div)`
@@ -195,12 +209,11 @@ const CurrentProjectsText = styled(motion.div)`
   flex-direction: column;
 
   transform: rotate(20deg);
-
   p {
     color: inherit;
     font-size: 18px;
     line-height: 20px;
-    padding-bottom: .35rem;
+    padding-bottom: 0.35rem;
   }
 
   p:nth-of-type(1) {
@@ -217,7 +230,31 @@ const CurrentProjectsText = styled(motion.div)`
     color: inherit;
     font-family: "balgin-bold";
     line-height: 28px;
+    font-size: 2.08333vw;
     margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    h4 {
+      margin-bottom: 1rem;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h4 {
+      font-size: 2.5vw;
+    }
+    p:nth-of-type(1) {
+      padding-bottom: 0;
+    }
+    p:nth-of-type(2) {
+      display: none;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    h4 {
+      font-size: 2.7vw;
+    }
   }
 `
 
@@ -245,15 +282,6 @@ const OpenPositons = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-content: center;
-
-  /* background-color: var(--color-white); */
-  /* color: var(--color-black); */
-  /* transition: var(--hover-transition); */
-
-  /* &:hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
-  } */
 `
 
 const OpenPositionsText = styled(motion.div)`

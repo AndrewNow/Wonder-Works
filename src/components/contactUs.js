@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import breakpoints from "./breakpoints"
+import { Link } from "gatsby"
+import { Arrow } from "../svg/miscellaneous"
 
 export const ContactUsHomePage = () => {
   return (
@@ -82,6 +84,11 @@ export const ContactUsHomePage = () => {
             partnerships@wonderworks.gg
           </a>
         </Contact>
+        <MobileContact>
+          <Link to="/contact">
+            <Arrow />
+          </Link>
+        </MobileContact>
       </Right>
     </Wrapper>
   )
@@ -167,6 +174,11 @@ export const ContactUs = () => {
             partnerships@wonderworks.gg
           </a>
         </Contact>
+        <MobileContact>
+          <Link to="/contact">
+            <Arrow />
+          </Link>
+        </MobileContact>
       </Right>
     </Wrapper>
   )
@@ -199,14 +211,12 @@ const Wrapper = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 85%;
-  }
-  @media (max-width: ${breakpoints.l}px) {
     flex-direction: column;
   }
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 6rem;
   }
-    @media (max-width: ${breakpoints.xs}px) {
+  @media (max-width: ${breakpoints.xs}px) {
     width: 90%;
     padding-bottom: 5rem;
   }
@@ -228,12 +238,19 @@ const Left = styled.div`
     padding-bottom: 5rem;
   }
 
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     width: 50%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h2 {
+      font-size: 76px;
+      line-height: 70px;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
-    h1, h2 {
+    h1,
+    h2 {
       padding-bottom: 5rem;
       font-size: 9vw;
     }
@@ -251,7 +268,8 @@ const Left = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    h1, h2 {
+    h1,
+    h2 {
       font-size: 45px;
     }
   }
@@ -260,7 +278,8 @@ const Right = styled.div`
   align-self: flex-end;
 
   @media (max-width: ${breakpoints.xl}px) {
-    margin-top: 20rem;
+    margin-top: 5rem;
+    /* align-self: center; */
   }
   @media (max-width: ${breakpoints.l}px) {
     margin-top: 0rem;
@@ -345,12 +364,16 @@ const Contact = styled.div`
       text-decoration: underline;
 
       ::after {
-        content: none; 
+        content: none;
       }
     }
   }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 100%;
+  }
   @media (max-width: ${breakpoints.s}px) {
-    a, p {
+    a,
+    p {
       font-size: 15px;
     }
     p {
@@ -358,14 +381,64 @@ const Contact = styled.div`
     }
   }
   @media (max-width: ${breakpoints.xs}px) {
-    a, p {
+    a,
+    p {
       font-size: 18px;
     }
     p {
-      margin-top: .25rem;
+      margin-top: 0.25rem;
     }
     strong {
       font-size: 20px;
+    }
+  }
+`
+const MobileContact = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.l}px) {
+    display: block;
+    margin-right: 4rem;
+    position: relative;
+    a {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin-right: 0rem;
+
+    a {
+      right: 45%;
+    }
+  }
+  @media (max-width: 700px) {
+    a {
+      right: 33%;
+    }
+  }
+  @media (max-width: 600px) {
+    a {
+      right: 28%;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-right: 0.5rem;
+    a {
+      right: 30%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    a {
+      right: 0%;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    margin-top: 4rem;
+    a {
+      left: 0;
     }
   }
 `

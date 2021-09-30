@@ -172,12 +172,12 @@ export const LetsWork = ({ svg }) => {
 }
 
 const BgSection = styled.section`
-  padding: 15rem 0;
+  padding: 8rem 0;
   background-color: var(--color-green);
   position: relative;
 
   @media (max-width: ${breakpoints.xxl}px) {
-    padding: 10rem 0;
+    padding: 6rem 0;
   }
   @media (max-width: ${breakpoints.s}px) {
     padding: 5rem 0;
