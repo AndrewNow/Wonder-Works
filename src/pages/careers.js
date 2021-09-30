@@ -405,6 +405,20 @@ const Careers = ({ data }) => {
                   prioritize progression, growth and strongly believe in the
                   value of cultivating a diverse team.
                 </h5>
+                <SharePostingWrapperMobile>
+                  <form>
+                    <textarea ref={textAreaRef} value="This is a test link!" />
+                  </form>
+                  <SharePostingButton onClick={copyToClipboard}>
+                    Share Posting <Arrow />
+                  </SharePostingButton>
+                  <LinkCopiedAlertMobile
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: animateSuccess ? 1 : 0 }}
+                  >
+                    {copySuccess}
+                  </LinkCopiedAlertMobile>
+                </SharePostingWrapperMobile>
               </div>
               <WOLogo>
                 <WOShortLogo />
@@ -459,7 +473,9 @@ const Careers = ({ data }) => {
               </p>
             </FormContentSection>
             <FillOut onSubmit={sendEmail}>
-              <h3>Ok, I’m sold. I’m ready to join.</h3>
+              <h3>
+                Ok, I’m sold. <br /> I’m ready to join.
+              </h3>
               <input type="hidden" name="contact_number" />
               <Line>
                 <Input
@@ -486,7 +502,8 @@ const Careers = ({ data }) => {
                   required
                 />
               </Line>
-              <Line>
+
+              <LineHalfWidthDesktop>
                 <Select
                   name="position"
                   required
@@ -505,7 +522,32 @@ const Careers = ({ data }) => {
                   })}
                 </Select>
                 <Input type="text" placeholder="City" name="city" />
-              </Line>
+              </LineHalfWidthDesktop>
+
+              <LineFullWidthMobile>
+                <FullWidthSelect
+                  name="position"
+                  required
+                  onChange={handleChange("position")}
+                  defaultValue=""
+                >
+                  <option value="" disabled selected>
+                    Position applying for *{" "}
+                  </option>
+                  {CareerData.map((job, i) => {
+                    return (
+                      <option key={i} value={job.title}>
+                        {job.title}
+                      </option>
+                    )
+                  })}
+                </FullWidthSelect>
+              </LineFullWidthMobile>
+
+              <LineFullWidthMobile>
+                <FullWidthInput type="text" placeholder="City" name="city" />
+              </LineFullWidthMobile>
+
               <Line>
                 <FullWidthInput
                   type="url"
@@ -783,6 +825,7 @@ const Flex = styled.div`
   }
   @media (max-width: ${breakpoints.m}px) {
     padding-bottom: 10rem;
+    padding-top: 5rem;
   }
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 5rem;
@@ -832,6 +875,7 @@ const Left = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 80%;
     h1 {
+      padding-top: 2rem;
       font-size: 45px;
     }
   }
@@ -998,6 +1042,10 @@ const CareerWrapper = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     flex-direction: column;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 5rem 0;
+  }
 `
 const CareerLeft = styled.div`
   position: sticky;
@@ -1044,6 +1092,21 @@ const CareerLeft = styled.div`
       width: 75%;
     }
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h2 {
+      font-size: 40px;
+      line-height: 42.5px;
+    }
+    div {
+      width: 90%;
+      padding-top: 3rem;
+    }
+    h5 {
+      font-size: 18px;
+      line-height: 110%;
+    }
+  }
 `
 
 const CareerRight = styled.div`
@@ -1064,6 +1127,12 @@ const CareerEntry = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     width: 100%;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    p {
+      width: 80%;
+    }
+  }
 `
 
 const Title = styled.div`
@@ -1074,13 +1143,21 @@ const Title = styled.div`
   h4 {
     text-transform: uppercase;
   }
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 1rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 0.5rem;
+  }
 `
 
 const Button = styled(motion.div)`
   background-color: var(--color-white);
   border-radius: 100%;
   width: 35px;
-  height: 35px;
+  height: auto;
+  aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1089,11 +1166,22 @@ const Button = styled(motion.div)`
   svg {
     margin: 0 auto;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 31px;
+  }
 `
 
 const FormBg = styled.div`
   background-color: var(--color-green);
   padding: 15rem 0;
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 10rem 0;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 5rem 0;
+  }
 `
 
 const FormContent = styled.div`
@@ -1110,8 +1198,8 @@ const FormContent = styled.div`
     width: 90%;
   }
 
-  @media (max-width: ${breakpoints.l}px) {
-    width: 95%;
+  @media (max-width: ${breakpoints.m}px) {
+    border-radius: 20px;
   }
 `
 
@@ -1127,6 +1215,7 @@ const FormTop = styled.div`
     font-family: "ppwoodland-light";
     font-size: 33px;
     line-height: 42px;
+    /* line-height: 125%; */
     width: 60%;
   }
   h3 {
@@ -1136,7 +1225,6 @@ const FormTop = styled.div`
     width: 100%;
     // height is 8rem, same dimensions as padding-top for the left and right elements.
   }
-
 
   @media (max-width: 1700px) {
     h5 {
@@ -1149,11 +1237,46 @@ const FormTop = styled.div`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
   }
   @media (max-width: ${breakpoints.l}px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
     h3 {
+      width: 90%;
       height: 4rem;
+    }
+    h5 {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    h3 {
+      line-height: 100%;
+      font-size: 30px;
+    }
+    h5 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 5rem;
+    padding-bottom: 0rem;
+    h3 {
+      font-size: 20px;
+      line-height: 22px;
+      width: 85%;
+    }
+    h5 {
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0.01rem;
+      width: 85%;
     }
   }
 `
@@ -1172,8 +1295,29 @@ const FormTopPositionDetails = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     padding-right: 3rem;
     padding-top: 3rem;
+    max-width: 110px;
+    min-width: 110px;
     svg {
-      scale: .7;
+      scale: 0.7;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    padding-top: 0rem;
+    padding-left: 0.25rem;
+    padding-right: 1rem;
+    max-width: 60px;
+    min-width: 60px;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    max-width: 45px;
+    min-width: 45px;
+    padding: 0;
+    max-height: 350px;
+    svg {
+      transform: translateY(-5rem);
+      scale: 0.5;
     }
   }
 `
@@ -1190,7 +1334,7 @@ const WOLogo = styled.div`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    right: 5%;
+    display: none;
   }
 `
 
@@ -1206,10 +1350,26 @@ const SharePostingWrapper = styled.div`
     bottom: 3%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    right: 5%;
-    bottom: -5%;
+    display: none;
   }
-  
+`
+const SharePostingWrapperMobile = styled.div`
+  display: none;
+  padding-bottom: 2rem;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: relative;
+    margin-top: 1rem;
+    form {
+      filter: opacity(0);
+      /* display: block; */
+      display: inline;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 0rem;
+  }
 `
 
 const LinkCopiedAlert = styled(motion.p)`
@@ -1220,6 +1380,24 @@ const LinkCopiedAlert = styled(motion.p)`
   margin: 0 auto;
   text-align: center;
   width: 100%;
+`
+const LinkCopiedAlertMobile = styled(motion.p)`
+  position: absolute;
+  font-family: "calibre-regular";
+  font-size: 18px;
+  bottom: 5rem;
+  text-align: center;
+  width: 280px;
+
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: 4rem;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 180px;
+    bottom: 5rem;
+    font-size: 16px !important;
+  }
 `
 
 const SharePostingButton = styled.button`
@@ -1264,7 +1442,26 @@ const SharePostingButton = styled.button`
     font-size: 20px;
   }
 
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      svg {
+        transform: translate3d(5px, 0rem, 0);
+      }
+    }
+    svg {
+      transform: translateY(0rem);
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    border: 1px solid var(--color-black);
+    min-width: 180px;
+    padding: 0.15rem 1rem;
+    font-size: 16px;
+    svg {
+      scale: 0.8;
+    }
   }
 `
 
@@ -1287,7 +1484,29 @@ const FormContentSection = styled.div`
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    
+    width: 100%;
+
+    // same rem width as FormTop and same px width as the positiondetails svg.
+    // This should eventually be converted to grid/columns instead.
+    padding-left: calc(2rem + 110px);
+    padding-right: calc(2rem + 110px);
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding-left: calc(1.5rem + 60px);
+    padding-right: calc(1.5rem + 60px);
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 0.75rem calc(1.5rem + 45px);
+
+    h5,
+    p {
+      font-size: 14px;
+      line-height: 115%;
+    }
+    h5 {
+      padding-bottom: 0.75rem;
+    }
   }
 `
 
@@ -1298,6 +1517,24 @@ const FillOut = styled.form`
   h3 {
     padding: 5rem 0;
     font-family: "ppwoodland-bold";
+  }
+  br {
+    display: none;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 80%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    br {
+      display: block;
+    }
+    h3 {
+      padding: 2rem 0;
+      font-size: 20px;
+      line-height: 22px;
+    }
   }
 `
 const Line = styled.div`
@@ -1311,6 +1548,46 @@ const Line = styled.div`
     font-size: 20px;
     font-family: "calibre-medium";
     text-transform: uppercase;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: .75rem 0;
+  }
+`
+
+const LineHalfWidthDesktop = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+
+  p {
+    font-size: 20px;
+    font-family: "calibre-medium";
+    text-transform: uppercase;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
+`
+
+const LineFullWidthMobile = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.s}px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+
+    p {
+      font-size: 14px;
+      font-family: "calibre-medium";
+      text-transform: uppercase;
+    }
   }
 `
 
@@ -1340,6 +1617,13 @@ const Input = styled.input`
   :hover {
     border-bottom: 2px solid #b06eab;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
 `
 
 const FullWidthInput = styled.input`
@@ -1364,6 +1648,13 @@ const FullWidthInput = styled.input`
   transition: var(--hover-transition);
   :hover {
     border-bottom: 2px solid #b06eab;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
   }
 `
 
@@ -1393,6 +1684,47 @@ const Select = styled.select`
   :hover {
     border-bottom: 2px solid #b06eab;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
+`
+const FullWidthSelect = styled.select`
+  width: 100%;
+  background: none;
+  border: none;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-black);
+  box-sizing: border-box;
+  font-family: "calibre-regular";
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #42423e;
+
+  ::placeholder {
+    font-family: "calibre-regular";
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #42423e;
+  }
+  :focus {
+    outline: none !important;
+    border-bottom: 2px solid #b06eab;
+  }
+  transition: var(--hover-transition);
+  :hover {
+    border-bottom: 2px solid #b06eab;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
 `
 
 const FileUpload = styled.input`
@@ -1419,6 +1751,9 @@ const FileLabel = styled.label`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  svg {
+    min-width: 20px;
+  }
   :focus {
     outline: none !important;
     border-bottom: 2px solid #b06eab;
@@ -1426,6 +1761,13 @@ const FileLabel = styled.label`
   transition: var(--hover-transition);
   :hover {
     border-bottom: 2px solid #b06eab;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
   }
 `
 
@@ -1448,6 +1790,15 @@ const Submit = styled(motion.input)`
     background-color: var(--color-black);
     color: var(--color-white);
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: 0;
+    left: 0;
+    min-width: 130px;
+    padding: 0.25rem .35rem;
+    font-size: 16px;
+    border: 1px solid var(--color-black);
+  }
 `
 
 const Bottom = styled.div`
@@ -1466,5 +1817,14 @@ const Bottom = styled.div`
     font-size: 20px;
     font-family: "calibre-medium";
     text-transform: uppercase;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+    height: 100px;
+    p {
+      position: absolute;
+      top: 1rem;
+      font-size: 14px;
+    }
   }
 `

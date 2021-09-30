@@ -53,7 +53,7 @@ const Wrapper = styled.div`
     z-index: 11;
   }
   div:nth-of-type(6) {
-    transform: translate3d(0, 3rem, 0);
+    transform: translate3d(0, 5rem, 0);
     z-index: 10;
   }
 

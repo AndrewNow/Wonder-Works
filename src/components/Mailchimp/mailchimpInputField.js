@@ -95,7 +95,7 @@ const EmailInput = styled.input`
   }
   ::placeholder {
     color: whitesmoke;
-    opacity: 0.9 !important;
+    opacity: 0.6 !important;
   }
   @media (max-width: ${breakpoints.xl}px) {
     font-size: 24px;

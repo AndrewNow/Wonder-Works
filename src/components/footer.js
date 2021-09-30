@@ -87,8 +87,9 @@ const Inner = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  svg:last-of-type {
-    width: 100px;
+  svg:nth-of-type(1) {
+    width: 80px;
+    margin-right: .5rem;
   }
 
   p {
@@ -103,6 +104,7 @@ const Inner = styled.div`
     }
     svg:nth-child(1) {
       width: 70px;
+      margin-right: 0;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
