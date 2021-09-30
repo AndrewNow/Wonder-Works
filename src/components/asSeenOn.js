@@ -231,7 +231,6 @@ export const AsSeenOn = () => {
       scaleY: 0,
     },
   }
-  console.log(logosInView)
   return (
     <Logos
       ref={logosRef}
@@ -360,7 +359,7 @@ const Logos = styled(motion.div)`
   justify-content: space-between;
   align-items: center;
   /* padding-bottom: 5rem; */
-  /* height: 200px; */
+  height: 200px;
 
   div {
     transform-origin: bottom;
