@@ -168,11 +168,11 @@ const OurPillars = () => {
 
   // Create rules for when the slides should change according to the returned value from scrollProgress
   useEffect(() => {
-    if (scrollProgress > 0.8 && scrollProgress < 1) {
+    if (scrollProgress > 0.88 && scrollProgress < 1) {
       scrollToFirstSlide()
-    } else if (scrollProgress < 0.8 && scrollProgress > 0.4) {
+    } else if (scrollProgress < 0.88 && scrollProgress > 0.45) {
       scrollToSecondSlide()
-    } else if (scrollProgress < 0.4 && scrollProgress > 0) {
+    } else if (scrollProgress < 0.45 && scrollProgress > 0) {
       scrollToThirdSlide()
     }
   }, [scrollProgress])
