@@ -149,7 +149,7 @@ const OurPillars = () => {
     skipSnaps: false,
     draggable: false,
     align: "start",
-    speed: 2.5,
+    speed: 5,
   })
 
   // Create callback hooks for scrolling each slide into view according to its index
