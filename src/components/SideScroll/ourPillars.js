@@ -12,34 +12,14 @@ import * as Svg from "../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
 
-const getWindowDimensions = () => {
-  if (typeof window !== "undefined") {
-    const { innerWidth: width, innerHeight: height } = window
-    return { width, height }
-  } else {
-    return {}
-  }
-}
-
-const useWindowDimensions = () => {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  )
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleResize = () => {
-        setWindowDimensions(getWindowDimensions())
-      }
-      window.addEventListener("resize", handleResize)
-      return () => window.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  return windowDimensions
-}
-
 const OurPillars = () => {
-  // ------------------------- Refs -------------------------
+
+
+  //+++++++++++++++++++++ Horizontal Scroll Logic +++++++++++++++++++++ */
+// This component handles the side scrolling "Pillars" section.
+  // The height of the container (StickyContainer) defines how long the user must scroll to get to the next slide
+
+  // ------------------------- 1. Establish refs -------------------------
   const ref = useRef()
   const horizontalScroll = useRef()
 
@@ -72,14 +52,7 @@ const OurPillars = () => {
     [StudioRef, JamsRef, CollabRef]
   )
 
-  //+++++++++++++++++++++ Horizontal Scroll Logic +++++++++++++++++++++ */
-
-  // This component handles the side scrolling "Pillars" section.
-  // The component must be as tall as it is wide, because as the user scrolls down this same progress interval
-  // is used to scroll the fixed component sideways. These dimensions must absolutely be respected, otherwise
-  // the component will not function as intended.
-
-  // Data for the slides' markup
+  // ------------------- 2. Data for slide markup -------------------
   const SideScrollData = [
     {
       ref: StudioRef,
@@ -116,37 +89,20 @@ const OurPillars = () => {
     },
   ]
 
-  // ------------------- 1. Calculate viewport width & height -------------------
-  // invoke useWindowDimensions
-  const { height, width } = useWindowDimensions()
-
-  // use height/width to dynamically setMaxHeight
-  const useMaxHeight = () => {
-    const [maxHeight, setMaxHeight] = useState(height * 4)
-    useEffect(() => {
-      if (width < 577) {
-        setMaxHeight(height * 15)
-      } else {
-        setMaxHeight(height * 4)
-      }
-    }, [])
-    return maxHeight
-  }
-  const maxHeight = useMaxHeight()
-
-  console.log(maxHeight)
-
-  // ------------------- 2. Track component scroll progress -------------------
+  // ------------------- 3. Track component scroll progress -------------------
 
   // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
   const useScrollProgress = () => {
     const [scrollProgress, setScrollProgress] = useState()
     useLayoutEffect(() => {
       const onScroll = () => {
-        // get the component's coordinates (only when horizontalScroll Ref is in view)
+        // get the component's coordinates
         const horizontalScrollDiv =
           horizontalScroll.current.getBoundingClientRect()
-        setScrollProgress(horizontalScrollDiv.bottom / maxHeight)
+          // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
+        setScrollProgress(
+          horizontalScrollDiv.bottom / horizontalScrollDiv.height
+        )
       }
       window.addEventListener("scroll", onScroll)
       return () => window.removeEventListener("scroll", onScroll)
@@ -155,8 +111,7 @@ const OurPillars = () => {
   }
   const scrollProgress = useScrollProgress()
 
-  // ============================ Embla Carousel Logic ============================
-
+  // ------------------- 4. Embla Carousel Logic -------------------
   // Configure Embla settings (notably: disabled user touch/click interaction)
   const [viewportRef, embla] = useEmblaCarousel({
     skipSnaps: false,
@@ -189,22 +144,13 @@ const OurPillars = () => {
       scrollToThirdSlide()
     }
   }, [scrollProgress])
-  // useEffect(() => {
-  //   if (scrollProgress > 0.6667 && scrollProgress < 1) {
-  //     scrollToFirstSlide()
-  //   } else if (scrollProgress < 0.6666 && scrollProgress > 0.3333) {
-  //     scrollToSecondSlide()
-  //   } else if (scrollProgress < 0.3333 && scrollProgress > 0) {
-  //     scrollToThirdSlide()
-  //   }
-  // }, [scrollProgress])
 
   // Run Embla
   useEffect(() => {
     if (!embla) return
   }, [embla])
 
-  // ------------------- 3. Framer animation variants -------------------
+  // ------------------- 5. Framer animation variants -------------------
   const sideScrollHeader = {
     visible: {
       opacity: 1,
@@ -352,6 +298,8 @@ const OurPillars = () => {
 
 export default OurPillars
 
+// the height value here determines the "length" of the horizontal scroll carousel
+// higher values = longer distance to initiate slide change
 const StickyContainer = styled.div`
   height: 400vh;
   position: relative;
