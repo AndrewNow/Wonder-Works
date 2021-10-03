@@ -324,8 +324,8 @@ const Careers = ({ data }) => {
               <h5>
                 <strong>We’ve been looking for someone like you. </strong>
                 <br />
-                Want to join a team of dynamic dreamers? Click on the right to
-                find something that fits.
+                Want to join a team of dynamic dreamers? Click the available
+                positions to find something that fits.
               </h5>
             </div>
           </CareerLeft>
@@ -1105,6 +1105,7 @@ const CareerLeft = styled.div`
     width: 70%;
 
     h5 {
+      font-size: 31px;
       padding-top: 3rem;
     }
   }

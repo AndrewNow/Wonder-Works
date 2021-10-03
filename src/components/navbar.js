@@ -362,7 +362,7 @@ const Dropdown = styled(motion.div)`
   }
   & div:hover {
     a {
-      font-weight: 900;
+      font-family: "calibre-semibold";
     }
   }
 

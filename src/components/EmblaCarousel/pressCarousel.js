@@ -197,10 +197,19 @@ const Wrapper = styled.div`
     padding: 20px;
     padding-bottom: 5rem;
   }
+
   @media (max-width: ${breakpoints.xxl}px) {
+    padding-bottom: 10rem;
+    width: 100%;
+    padding-left: 5vw;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-left: 0;
+    h2 {
+      padding-left: 5vw;
+    }
   }
   @media (max-width: ${breakpoints.s}px) {
-    width: 100%;
     padding-bottom: 7rem;
     padding-top: 3rem;
     h2 {
@@ -217,7 +226,7 @@ const Embla = styled.div`
   padding: 20px;
   margin-left: auto;
   margin-right: auto;
-
+  padding-right: 0%;
   button:first-of-type {
     left: -3%;
   }
@@ -225,18 +234,45 @@ const Embla = styled.div`
   button:last-of-type {
     right: -3%;
   }
-
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     button:first-of-type {
       padding-top: 1rem;
       top: auto;
-      bottom: -15%;
+      bottom: -12%;
+      left: 0%;
+    }
+  
+    button:last-of-type {
+      padding-top: 1rem;
+      top: auto;
+      bottom: -12%;
+      right: 3%;
+    }
+  }
+  
+  @media (max-width: ${breakpoints.xl}px) {
+    button:first-of-type {
+      padding-top: 1rem;
+      top: auto;
+      bottom: -10%;
       left: 3%;
     }
 
     button:last-of-type {
       padding-top: 1rem;
       top: auto;
+      bottom: -10%;
+      right: 3%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    button:first-of-type {
+      bottom: -15%;
+      left: 3%;
+    }
+
+    button:last-of-type {
       bottom: -15%;
       right: 3%;
     }
@@ -275,22 +311,12 @@ const EmblaSlide = styled(motion.div)`
 `
 
 const Entry = styled.div`
-  /* width: 25vw; */
   height: 720px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 
   @media (max-width: 1600px) {
-    height: auto;
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    /* width: 33vw; */
-    /* justify-content: flex-start; */
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    /* width: 60vw; */
     height: auto;
   }
 `
@@ -313,6 +339,11 @@ const Top = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     h4 {
       font-size: 32px;
+      height: 150px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h4 {
       height: 200px;
     }
   }

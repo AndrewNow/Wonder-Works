@@ -31,7 +31,7 @@ const Contact = ({ data }) => {
   const handleProjectsPageTransition = () => {
     setExpandProjectsButton(true)
     // navigate to projects page after 1.5 seconds (to let the button animation finish)
-    setTimeout(() => navigate("/projects"), 1000)
+    setTimeout(() => navigate("/projects"), 500)
   }
   const handleCareersPageTransition = () => {
     setExpandCareersButton(true)
@@ -45,7 +45,7 @@ const Contact = ({ data }) => {
       color: "#F7F7FC",
       backgroundColor: "#1A1748",
       transition: {
-        duration: 1,
+        duration: .5,
         ease: "easeIn",
       },
     },

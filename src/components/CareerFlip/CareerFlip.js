@@ -88,7 +88,6 @@ const CareerFlip = () => {
         repeatType: "loop",
       },
     }),
-
     hidden: {
       opacity: 0,
       visibility: "none",

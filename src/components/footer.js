@@ -16,7 +16,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="https:/twitter.com/WonderWorksRB"
+              href="https://twitter.com/WonderWorksRB"
               rel="noreferrer"
               target="_blank"
               alt="Twitter social media link"

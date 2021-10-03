@@ -31,6 +31,7 @@ import {
   useGlobalStateContext,
 } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
+import OurPillars from "../components/SideScroll/ourPillars"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -265,207 +266,6 @@ const About = ({ data }) => {
     window.localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
 
-  //+++++++++++++++++++++ Horizontal Scroll Logic +++++++++++++++++++++ */
-
-  // This component handles the side scrolling "Pillars" section.
-  // The component must be as tall as it is wide, because as the user scrolls down this same progress interval
-  // is used to scroll the fixed component sideways. These dimensions must absolutely be respected, otherwise
-  // the component will not function as intended.
-
-  // Data for the slides' markup
-  const SideScrollData = [
-    {
-      ref: StudioRef,
-      inView: StudioRefInView,
-      title: "Wonder Works Studio",
-      titleColor: "#D9E141",
-      bodyText:
-        "Discover what’s in the works at Wonder Works Studio. We’re always dreaming up new adventures in exciting roleplay games for immersive, imaginative fun for everyone. Check out our ambitious new projects or our latest launches—they all live here. ",
-      headerSVG: <Svg.WWStudioHeader />,
-      mainSVG: <Svg.WWStudioMain />,
-      rightSVG: <Svg.WWStudioRight />,
-    },
-    {
-      ref: JamsRef,
-      inView: JamsRefInView,
-      title: "Wonder Works Jams",
-      titleColor: "#F9DB1E",
-      bodyText:
-        "Wonder Works Jams is a space for our junior talent to QA various game genres. It’s a creative hub of mentorship that fosters a lifelong love for exploration and innovation and promotes success on individual and collaborative levels. ",
-      headerSVG: <Svg.WWJamsHeader />,
-      mainSVG: <Svg.WWJamsMain />,
-      rightSVG: <Svg.WWJamsRight />,
-    },
-    {
-      ref: CollabRef,
-      inView: CollabRefInView,
-      title: "Wonder Works Collab",
-      titleColor: "#1A1749",
-      bodyText:
-        "Discover what’s in the works at Wonder Works Studio. We’re always dreaming up new adventures in exciting roleplay games for immersive, imaginative fun for everyone. Check out our ambitious new projects or our latest launches—they all live here. ",
-      headerSVG: <Svg.WWCollabHeader />,
-      mainSVG: <Svg.WWCollabMain />,
-      rightSVG: <Svg.WWCollabRight />,
-    },
-  ]
-
-  // ------------------- 1. Calculate viewport width & height -------------------
-  const getWindowDimensions = () => {
-    if (typeof window !== "undefined") {
-      const { innerWidth: width, innerHeight: height } = window
-      return { width, height }
-    } else {
-      return {}
-    }
-  }
-
-  const useWindowDimensions = () => {
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    )
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        const handleResize = () => {
-          setWindowDimensions(getWindowDimensions())
-        }
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-      }
-    }, [])
-
-    return windowDimensions
-  }
-
-  // {width} is the user's maximum viewport width.
-  const { width } = useWindowDimensions()
-
-  // ------------------- 2. "Assign" vertical scroll to horizontal scroll -------------------
-
-  // Take viewport width * 3 because there are 3 slides 100vw wide
-  const maxWidth = width * 3
-  // create a Framer MotionValue to give the component an x-transform
-  const xRightRange = useMotionValue(0)
-  // state for when a slide is in view. if so, animate it in
-  const [sideScrollInView, setSideScrollInView] = useState(false)
-
-  useLayoutEffect(() => {
-    const onScroll = () => {
-      // get the component's coordinates (only when horizontalScroll Ref is in view)
-      const horizontalScrollDiv =
-        horizontalScroll.current?.getBoundingClientRect()
-      const scrollProgress = horizontalScrollDiv?.bottom / maxWidth
-      // use MotionValue to move the component sideways on vertical scroll without re-rendering
-      xRightRange.set(scrollProgress)
-
-      // If horizontalScroll is in view, fade the entire component in (using variants in 4.)
-      if (
-        // maxWidth in this case is also the height of the component (300vh), which is what we're targeting here.
-        horizontalScrollDiv?.bottom < maxWidth &&
-        horizontalScrollDiv?.bottom > 0
-      ) {
-        setSideScrollInView(true)
-      } else setSideScrollInView(false)
-    }
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  // ------------------- 3. Framer animation variants -------------------
-  // Normalize scrollProgress to translate the component horizontally.
-  // xRightRange returns a value between 1 and 0 (distance between bottom of Ref and the top of the viewport),
-  // but we need a value between 0 and 300vw to move the slides accurately.
-  const usexRightRange = useTransform(xRightRange, [1, 0], [0, -maxWidth])
-  // more info here on the useTransform hook: https://www.framer.com/docs/motionvalue/##usetransform
-
-  // ------------------- 4. Framer animation variants -------------------
-  const sideScrollHeader = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  const sideScrollSVG = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.25,
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  const sideSrollAnim = {
-    visible: {
-      opacity: 1,
-      // zIndex: 10,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.5,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      // zIndex: 0,
-
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.5,
-      },
-    },
-  }
-
-  const sideScrollBody = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.5,
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  const bodyChild = {
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      x: -100,
-      opacity: 0,
-    },
-  }
-
-  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
   return (
     <Layout title={siteTitle}>
@@ -557,7 +357,8 @@ const About = ({ data }) => {
           <AsSeenOn />
         </Logos>
       </OrangeBg>
-      <Container>
+      <OurPillars />
+      {/* <Container>
         <OurPillars ref={horizontalScroll}>
           {sideScrollInView && (
             <SideScrollInner
@@ -632,7 +433,10 @@ const About = ({ data }) => {
             </SideScrollInner>
           )}
         </OurPillars>
-      </Container>
+      </Container> */}
+
+      
+
 
       {/* <StudioCollab ref={pillarsRef}>
         <Inner>
@@ -807,178 +611,6 @@ export const pageQuery = graphql`
   }
 `
 
-const Container = styled(motion.div)`
-  /* overflow: hidden; */
-`
-
-const OurPillars = styled(motion.div)`
-  height: 300vw;
-  position: relative;
-  top: 0;
-  background-color: var(--color-purple);
-
-  ::-webkit-scrollbar {
-    width: 0;
-    display: none;
-    height: 0;
-  }
-`
-
-const SideScrollInner = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  // width must be same as height for OurPillars
-  width: 300vw;
-  height: 100vh;
-  z-index: 0;
-  background-color: var(--color-purple);
-  display: flex;
-
-  ::-webkit-scrollbar {
-    width: 0;
-    display: none;
-    height: 0;
-  }
-`
-
-const Frame = styled(motion.div)`
-  width: 100vw;
-  height: 100%;
-
-  h1 {
-    margin: 0 auto;
-  }
-`
-
-const FrameWrapper = styled(motion.div)`
-  width: 100vw;
-`
-
-const FrameHeader = styled(motion.div)`
-  width: 80%;
-  margin: 0 auto;
-  padding-top: 7.5%;
-  display: flex;
-  align-items: center;
-
-  h4 {
-    margin: 0 1rem;
-  }
-
-  @media (max-width: 1600px) {
-    padding-top: 10%;
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    /* padding-top: 20%; */
-  }
-`
-const FrameContainer = styled.div`
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    align-items: center;
-  }
-
-  @media (max-width: ${breakpoints.m}px) {
-    flex-direction: column;
-  }
-`
-const FrameLeft = styled.div`
-  margin-top: 3rem;
-  height: 60%;
-  width: 65%;
-  padding-left: 5rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-direction: column;
-  svg {
-    max-height: 350px;
-  }
-  h4 {
-    margin-top: 5rem;
-    font-family: "balgin-bold";
-  }
-  p {
-    margin-top: 1rem;
-    width: 85%;
-    color: var(--color-white);
-  }
-
-  @media (max-width: 1600px) {
-    h4 {
-      margin-top: 2rem;
-    }
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    width: 80%;
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    padding-left: 0rem;
-    h4 {
-      margin-top: 1rem;
-    }
-  }
-`
-
-const LeftSVG = styled(motion.div)`
-  height: 100%;
-  width: max-content;
-  svg {
-    max-height: 350px;
-  }
-
-  @media (max-width: 1600px) {
-    max-height: 260px;
-    svg {
-      height: max-content;
-      max-width: 500px;
-    }
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    max-height: 260px;
-    svg {
-      max-width: 500px;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    max-height: 200px;
-  }
-`
-
-const FrameRight = styled(motion.div)`
-  margin-top: 5rem;
-  height: 60%;
-  /* width: 35%; */
-  align-self: center;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: center;
-
-  @media (max-width: 1600px) {
-    svg {
-      max-width: 200px;
-      height: auto;
-    }
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    svg {
-      max-width: 180px;
-    }
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    svg {
-      max-width: 170px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-`
 
 const Background = styled(motion.div)`
   z-index: 0;
@@ -995,71 +627,6 @@ const Background = styled(motion.div)`
   }
 `
 
-const SkateboardWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 200;
-  top: 21.5%;
-
-  svg {
-    width: 140px;
-    height: auto;
-  }
-
-  @media (max-width: ${breakpoints.xl}px) {
-    top: 30%;
-    svg {
-      width: 125px;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    top: 20%;
-    svg {
-      width: 125px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    top: 22%;
-    svg {
-      width: 100px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    top: 25%;
-    svg {
-      width: 80px;
-    }
-  }
-`
-const SkateboardWrapperBottom = styled(motion.div)`
-  position: relative;
-
-  svg {
-    width: 140px;
-    height: auto;
-  }
-
-  @media (max-width: ${breakpoints.xl}px) {
-    svg {
-      width: 125px;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    svg {
-      width: 125px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    svg {
-      width: 100px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    svg {
-      margin-top: 1rem;
-      width: 80px;
-    }
-  }
-`
 const BigCircleWrapper = styled(motion.div)`
   position: absolute;
   top: 21.5%;
@@ -1165,19 +732,91 @@ const SmallCirclesWrapper = styled(motion.div)`
 const OrangeBg = styled.div`
   background-color: var(--color-orange);
 `
+const SkateboardWrapper = styled(motion.div)`
+  position: absolute;
+  z-index: 200;
+  /* top: 21.5%; */
+  top: calc(35vh - 55px);
+  svg {
+    height: 150px;
+    width: auto;
+  }
+  @media (max-width: 1600px) {
+    top: calc(37.5vh - 75px);
+    svg {
+      height: 125px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: calc(37.5vh - 75px);
+  }
+  @media (max-width: 1025px) {
+    top: calc(30vh - 50px);
+    svg {
+      height: 110px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 20%;
+    top: calc(30vh - 50px);
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: calc(30vh - 35px);
+    svg {
+      height: 100px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: calc(27.5vh - 30px);
+    svg {
+      height: 80px;
+    }
+  }
+`
+const SkateboardWrapperBottom = styled(motion.div)`
+  position: relative;
+
+  svg {
+    height: 140px;
+    width: auto;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      height: 125px;
+    }
+  }
+  @media (max-width: 1025px) {
+    svg {
+      height: 110px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    svg {
+      height: 125px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    svg {
+      height: 100px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    svg {
+      margin-top: 1rem;
+      height: 80px;
+    }
+  }
+`
 
 const LandingText = styled.div`
   z-index: 2;
   position: relative;
-  padding-top: 10rem;
+  top: 35vh;
   width: 100%;
   height: 110vh;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
   overflow-x: hidden;
-  /* align-items: center; */
-  justify-content: center;
 
   h1 {
     z-index: 2;
@@ -1202,18 +841,22 @@ const LandingText = styled.div`
   }
 
   @media (max-width: 1600px) {
+    top: 37.5vh;
     p {
       width: 75%;
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
-    padding-top: 5rem;
     h1 {
       font-size: 7.8vw;
     }
   }
+  
+  @media (max-width: 1025px) {
+    top: 30vh;
+  }
   @media (max-width: ${breakpoints.l}px) {
-    padding-top: 10rem;
+    top: 30vh;
     h1 {
       font-size: 9vw;
     }
@@ -1224,14 +867,19 @@ const LandingText = styled.div`
       width: 90%;
     }
   }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 30vh;
+  }
   @media (max-width: ${breakpoints.s}px) {
-    height: 117.5vh;
     overflow: hidden;
+    top: 27.5vh;
     h1 {
+      padding-left: 10vw;
       font-size: 45px;
       line-height: 48px;
     }
     p {
+      padding-left: 10vw;
       margin-top: 0;
       margin-bottom: 0;
     }
@@ -1247,7 +895,6 @@ const LandingText = styled.div`
 
   @media (max-width: ${breakpoints.xs}px) {
     h1 {
-      padding-top: 2rem;
       font-size: 36px;
       line-height: 100%;
     }

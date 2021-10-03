@@ -4,7 +4,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
-import Typewriter from "typewriter-effect"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as Svg from "../svg/homepage"
@@ -545,21 +544,6 @@ const HomeIndex = ({ data }) => {
           <Svg.TopRightPillar />
         </TopRight>
         <BottomLeft>
-          <TypewriterWrapper>
-            <Typewriter
-              options={{
-                loop: true,
-                autoStart: false,
-              }}
-              onInit={typewriter => {
-                typewriter
-                  .typeString("Wonder at work.")
-                  .pauseFor(2500)
-                  .deleteAll()
-                  .start()
-              }}
-            />
-          </TypewriterWrapper>
           <Svg.BottomLeftPillar />
         </BottomLeft>
         <BottomRight
@@ -883,13 +867,16 @@ const CogWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 44%;
+    top: 41vh;
     right: 42%;
     svg {
       width: 50px;
       height: 50px;
       transform-origin: center;
     }
+  }
+  @media (max-width: 375px) {
+    top: 50vh;
   }
 `
 const PortalWrapper = styled.div`
@@ -931,11 +918,14 @@ const PortalWrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 45%;
+    top: 45vh;
     right: -25%;
     svg {
       width: 290px;
     }
+  }
+  @media (max-width: 375px) {
+    top: 50vh;
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: 45%;
@@ -1369,19 +1359,18 @@ const OrangeTriangleWrapper = styled(motion.div)`
 `
 
 const Pillars = styled.section`
-  padding-top: 10rem;
+  margin-top: 10rem;
   width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  overflow-x: hidden;
 `
 
 const TopLeft = styled.div`
   background-color: var(--color-green);
   width: 50%;
-  height: 50%;
+  height: 50vh;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -1407,7 +1396,7 @@ const ImageWrapper = styled.div`
 const TopRight = styled.div`
   background-color: var(--color-white);
   width: 50%;
-  height: 50%;
+  height: 50vh;
   position: relative;
   overflow: hidden;
   svg {
@@ -1438,7 +1427,7 @@ const StarWrapper = styled.div`
 const BottomLeft = styled.div`
   background-color: var(--color-white);
   width: 50%;
-  height: 50%;
+  height: 50vh;
   position: relative;
   overflow: hidden;
   svg {
@@ -1449,34 +1438,12 @@ const BottomLeft = styled.div`
   }
 `
 
-const TypewriterWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 5;
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-
-  span {
-    color: var(--color-purple);
-    font-family: "balgin-bold";
-    font-size: 76px;
-  }
-
-  @media (max-width: ${breakpoints.l}px) {
-    span {
-      font-size: 3.9vw;
-    }
-  }
-`
-
 const BottomRight = styled.div`
   background-color: var(--color-black);
   width: 50%;
-  height: 50%;
+  height: 50vh;
   position: relative;
+  z-index: 2;
   overflow: hidden;
   svg {
     position: absolute;
