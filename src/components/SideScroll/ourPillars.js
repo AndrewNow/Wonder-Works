@@ -1,18 +1,20 @@
-import React, { useCallback, useRef, useState, useEffect, useLayoutEffect } from "react"
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+} from "react"
 import styled from "styled-components"
-import {
-  motion,
-  useTransform,
-  useMotionValue,
-  AnimatePresence,
-} from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import breakpoints from "../breakpoints"
 import * as Svg from "../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
+import { useEmblaCarousel } from "embla-carousel/react"
 
 const OurPillars = () => {
-
-  const ref = useRef()  
+  // ------------------------- Refs -------------------------
+  const ref = useRef()
   const horizontalScroll = useRef()
 
   const [StudioRef, StudioRefInView] = useInView({
@@ -33,28 +35,17 @@ const OurPillars = () => {
     triggerOnce: false,
   })
 
-  // const [pillarsRef, pillarsInView] = useInView({
-  //   root: null,
-  //   threshold: 0.65,
-  //   triggerOnce: true,
-  // })
-
   const setRefs = useCallback(
     //assign multiple refs with useInView
     node => {
       ref.current = node
-      // pillarsRef(node)
       StudioRef(node)
       JamsRef(node)
       CollabRef(node)
     },
-    [
-      // pillarsRef,
-      StudioRef,
-      JamsRef,
-      CollabRef,
-    ]
+    [StudioRef, JamsRef, CollabRef]
   )
+
   //+++++++++++++++++++++ Horizontal Scroll Logic +++++++++++++++++++++ */
 
   // This component handles the side scrolling "Pillars" section.
@@ -127,45 +118,79 @@ const OurPillars = () => {
   }
 
   // {width} is the user's maximum viewport width.
-  const { width } = useWindowDimensions()
+  const { height } = useWindowDimensions()
 
   // ------------------- 2. "Assign" vertical scroll to horizontal scroll -------------------
 
-  // Take viewport width * 3 because there are 3 slides 100vw wide
-  const maxWidth = width * 3
-  // create a Framer MotionValue to give the component an x-transform
-  const xRightRange = useMotionValue(0)
-  // state for when a slide is in view. if so, animate it in
-  const [sideScrollInView, setSideScrollInView] = useState(false)
+  // Take viewport Height * 3 because there are 3 slides 100vw wide
+  const maxHeight = height * 4
 
-  useLayoutEffect(() => {
-    const onScroll = () => {
-      // get the component's coordinates (only when horizontalScroll Ref is in view)
-      const horizontalScrollDiv =
-        horizontalScroll.current?.getBoundingClientRect()
-      const scrollProgress = horizontalScrollDiv?.bottom / maxWidth
-      // use MotionValue to move the component sideways on vertical scroll without re-rendering
-      xRightRange.set(scrollProgress)
+  // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
+  const useScrollProgress = () => {
+    const [scrollProgress, setScrollProgress] = useState()
+    useLayoutEffect(() => {
+      const onScroll = () => {
+        // get the component's coordinates (only when horizontalScroll Ref is in view)
+        const horizontalScrollDiv =
+          horizontalScroll.current?.getBoundingClientRect()
+        setScrollProgress(horizontalScrollDiv?.bottom / maxHeight)
+      }
+      window.addEventListener("scroll", onScroll)
+      return () => window.removeEventListener("scroll", onScroll)
+    }, [])
+    return scrollProgress
+  }
 
-      // If horizontalScroll is in view, fade the entire component in (using variants in 4.)
-      if (
-        // maxWidth in this case is also the height of the component (300vh), which is what we're targeting here.
-        horizontalScrollDiv?.bottom < maxWidth &&
-        horizontalScrollDiv?.bottom > 0
-      ) {
-        setSideScrollInView(true)
-      } else setSideScrollInView(false)
-    }
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  const scrollProgress = useScrollProgress()
+  console.log(scrollProgress)
+  // ============================ Embla Carousel Logic ============================
 
-  // ------------------- 3. Framer animation variants -------------------
-  // Normalize scrollProgress to translate the component horizontally.
-  // xRightRange returns a value between 1 and 0 (distance between bottom of Ref and the top of the viewport),
-  // but we need a value between 0 and 300vw to move the slides accurately.
-  const usexRightRange = useTransform(xRightRange, [1, 0], [0, -maxWidth])
-  // more info here on the useTransform hook: https://www.framer.com/docs/motionvalue/##usetransform
+  // Configure Embla settings (notably: disabled user touch/click interaction)
+  const [viewportRef, embla] = useEmblaCarousel({
+    skipSnaps: false,
+    draggable: false,
+    align: "start",
+    speed: 2.5,
+  })
+
+  // Create callback hooks for scrolling each slide into view according to its index
+  const scrollToFirstSlide = useCallback(
+    () => embla && embla.scrollTo(0),
+    [embla]
+  )
+  const scrollToSecondSlide = useCallback(
+    () => embla && embla.scrollTo(1),
+    [embla]
+  )
+  const scrollToThirdSlide = useCallback(
+    () => embla && embla.scrollTo(2),
+    [embla]
+  )
+
+  // Create rules for when the slides should change according to the returned value from scrollProgress
+  useEffect(() => {
+    if (scrollProgress > 0.8 && scrollProgress < 1) {
+      scrollToFirstSlide()
+    } else if (scrollProgress < 0.8 && scrollProgress > 0.5) {
+      scrollToSecondSlide()
+    } else if (scrollProgress < 0.5 && scrollProgress > 0) {
+      scrollToThirdSlide()
+    } 
+  }, [scrollProgress])
+  // useEffect(() => {
+  //   if (scrollProgress > 0.6667 && scrollProgress < 1) {
+  //     scrollToFirstSlide()
+  //   } else if (scrollProgress < 0.6666 && scrollProgress > 0.3333) {
+  //     scrollToSecondSlide()
+  //   } else if (scrollProgress < 0.3333 && scrollProgress > 0) {
+  //     scrollToThirdSlide()
+  //   } 
+  // }, [scrollProgress])
+
+  // Run Embla
+  useEffect(() => {
+    if (!embla) return
+  }, [embla])
 
   // ------------------- 4. Framer animation variants -------------------
   const sideScrollHeader = {
@@ -188,37 +213,21 @@ const OurPillars = () => {
   const sideScrollSVG = {
     visible: {
       opacity: 1,
-      y: 0,
+      // y: 0,
+      // scale: 1,
+      // rotate: 0,
       transition: {
-        delay: 0.25,
+        // delay: 0.25,
         duration: 0.5,
       },
     },
     hidden: {
-      y: -100,
+      // scale: .7,
+      // rotate: 10,
+      // y: -50,
       opacity: 0,
       transition: {
         duration: 0.5,
-      },
-    },
-  }
-
-  const sideSrollAnim = {
-    visible: {
-      opacity: 1,
-      // zIndex: 10,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.5,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      // zIndex: 0,
-
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.5,
       },
     },
   }
@@ -228,7 +237,7 @@ const OurPillars = () => {
       opacity: 1,
       y: 0,
       transition: {
-        staggerChildren: 0.5,
+        staggerChildren: 0.25,
         duration: 0.5,
       },
     },
@@ -258,135 +267,122 @@ const OurPillars = () => {
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
   return (
-    <Container>
-      <OurPillarsDiv ref={horizontalScroll}>
-        {sideScrollInView && (
-          <SideScrollInner
-            style={{ x: usexRightRange }}
-            variants={sideSrollAnim}
-            initial="hidden"
-            animate={sideScrollInView ? "visible" : "hidden"}
-            exit="hidden"
-          >
+    <StickyContainer ref={horizontalScroll}>
+      <Embla>
+        <EmblaViewport ref={viewportRef}>
+          <EmblaContainer>
             {SideScrollData.map((frame, i) => {
               return (
-                <Frame ref={frame.ref} key={i}>
+                <EmblaSlide ref={frame.ref} key={i}>
                   <AnimatePresence>
-                    {frame.inView && (
-                      <FrameWrapper
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                    <SlideWrapper
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <OurPillarsHeader
+                        variants={sideScrollHeader}
+                        initial="hidden"
+                        animate={frame.inView ? "visible" : "hidden"}
+                        exit="hidden"
                       >
-                        <FrameHeader
-                          variants={sideScrollHeader}
-                          initial="hidden"
-                          animate={frame.inView ? "visible" : "hidden"}
-                          exit="hidden"
-                        >
-                          {frame.headerSVG}
-                          <h4>Our Pillars</h4>
-                          <Svg.HorizontalLine />
-                        </FrameHeader>
-                        <FrameContainer>
-                          <FrameLeft>
-                            <LeftSVG
-                              variants={sideScrollSVG}
-                              initial="hidden"
-                              animate={frame.inView ? "visible" : "hidden"}
-                              exit="hidden"
-                            >
-                              {frame.mainSVG}
-                            </LeftSVG>
-                            <motion.div
-                              variants={sideScrollBody}
-                              initial="hidden"
-                              animate={frame.inView ? "visible" : "hidden"}
-                              exit="hidden"
-                            >
-                              <motion.h4
-                                style={{ color: `${frame.titleColor}` }}
-                                variants={bodyChild}
-                              >
-                                {frame.title}
-                              </motion.h4>
-                              <motion.p variants={bodyChild}>
-                                {frame.bodyText}
-                              </motion.p>
-                            </motion.div>
-                          </FrameLeft>
-                          <FrameRight
+                        {frame.headerSVG}
+                        <h4>Our Pillars</h4>
+                        <Svg.HorizontalLine />
+                      </OurPillarsHeader>
+                      <SlideContainer>
+                        <LeftInner>
+                          <LeftSVG
                             variants={sideScrollSVG}
                             initial="hidden"
                             animate={frame.inView ? "visible" : "hidden"}
                             exit="hidden"
                           >
-                            {frame.rightSVG}
-                          </FrameRight>
-                        </FrameContainer>
-                      </FrameWrapper>
-                    )}
+                            {frame.mainSVG}
+                          </LeftSVG>
+                          <motion.div
+                            variants={sideScrollBody}
+                            initial="hidden"
+                            animate={frame.inView ? "visible" : "hidden"}
+                            exit="hidden"
+                          >
+                            <motion.h4
+                              style={{ color: `${frame.titleColor}` }}
+                              variants={bodyChild}
+                            >
+                              {frame.title}
+                            </motion.h4>
+                            <motion.p variants={bodyChild}>
+                              {frame.bodyText}
+                            </motion.p>
+                          </motion.div>
+                        </LeftInner>
+                        <RightInner
+                          variants={sideScrollSVG}
+                          initial="hidden"
+                          animate={frame.inView ? "visible" : "hidden"}
+                          exit="hidden"
+                        >
+                          {frame.rightSVG}
+                        </RightInner>
+                      </SlideContainer>
+                    </SlideWrapper>
                   </AnimatePresence>
-                </Frame>
+                </EmblaSlide>
               )
             })}
-          </SideScrollInner>
-        )}
-      </OurPillarsDiv>
-    </Container>
+          </EmblaContainer>
+        </EmblaViewport>
+      </Embla>
+    </StickyContainer>
   )
 }
 
 export default OurPillars
 
-const Container = styled(motion.div)`
-  /* overflow: hidden; */
-`
-
-const OurPillarsDiv = styled(motion.div)`
-  height: 300vw;
+const StickyContainer = styled.div`
+  height: 400vh;
   position: relative;
-  top: 0;
-  background-color: var(--color-purple);
-
-  ::-webkit-scrollbar {
-    width: 0;
-    display: none;
-    height: 0;
-  }
 `
 
-const SideScrollInner = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  // width must be same as height for OurPillars
-  width: 300vw;
+const Embla = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+
   height: 100vh;
-  z-index: 0;
-  background-color: var(--color-purple);
-  display: flex;
-
-  ::-webkit-scrollbar {
-    width: 0;
-    display: none;
-    height: 0;
-  }
+  position: sticky;
+  top: 0;
 `
 
-const Frame = styled(motion.div)`
-  width: 100vw;
+const EmblaViewport = styled(motion.div)`
+  overflow: hidden;
+  width: 100%;
   height: 100%;
+  background-color: var(--color-purple);
+`
 
+const EmblaContainer = styled(motion.div)`
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+`
+
+const EmblaSlide = styled(motion.div)`
+  width: 100vw;
+  height: 100vh;
   h1 {
     margin: 0 auto;
   }
 `
 
-const FrameWrapper = styled(motion.div)`
+const SlideWrapper = styled(motion.div)`
   width: 100vw;
 `
 
-const FrameHeader = styled(motion.div)`
+const OurPillarsHeader = styled(motion.div)`
   width: 80%;
   margin: 0 auto;
   padding-top: 7.5%;
@@ -395,6 +391,7 @@ const FrameHeader = styled(motion.div)`
 
   h4 {
     margin: 0 1rem;
+    white-space: nowrap;
   }
 
   @media (max-width: 1600px) {
@@ -403,8 +400,16 @@ const FrameHeader = styled(motion.div)`
   @media (max-width: ${breakpoints.xl}px) {
     /* padding-top: 20%; */
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 25%;
+
+    svg:first-of-type {
+      max-width: 30px;
+    }
+  }
 `
-const FrameContainer = styled.div`
+const SlideContainer = styled.div`
   width: 80%;
   height: 100%;
   margin: 0 auto;
@@ -418,11 +423,11 @@ const FrameContainer = styled.div`
     flex-direction: column;
   }
 `
-const FrameLeft = styled.div`
+const LeftInner = styled.div`
   margin-top: 3rem;
-  height: 60%;
+  height: 55vh;
   width: 65%;
-  padding-left: 5rem;
+  padding-left: 3rem;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -431,7 +436,6 @@ const FrameLeft = styled.div`
     max-height: 350px;
   }
   h4 {
-    margin-top: 5rem;
     font-family: "balgin-bold";
   }
   p {
@@ -454,13 +458,27 @@ const FrameLeft = styled.div`
       margin-top: 1rem;
     }
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-left: 0;
+    margin-top: 0;
+    width: 100%;
+    p {
+      width: 100%;
+    }
+    h4 {
+      margin-top: 0;
+    }
+  }
 `
 
 const LeftSVG = styled(motion.div)`
   height: 100%;
   width: max-content;
+  display: flex;
   svg {
-    max-height: 350px;
+    max-height: 340px;
+    align-self: center;
   }
 
   @media (max-width: 1600px) {
@@ -479,12 +497,23 @@ const LeftSVG = styled(motion.div)`
   @media (max-width: ${breakpoints.l}px) {
     max-height: 200px;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    svg {
+      max-width: 70vw;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    /* max-height: 100px; */
+    align-self: flex-start;
+    svg {
+      max-height: 150px;
+    } 
+  }
 `
 
-const FrameRight = styled(motion.div)`
+const RightInner = styled(motion.div)`
   margin-top: 5rem;
   height: 60%;
-  /* width: 35%; */
   align-self: center;
   margin: 0 auto;
 
@@ -508,6 +537,13 @@ const FrameRight = styled(motion.div)`
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin: 0;
+    align-self: flex-end;
+    svg {
+      max-width: 100px;
     }
   }
 `
