@@ -12,6 +12,32 @@ import * as Svg from "../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
 
+const getWindowDimensions = () => {
+  if (typeof window !== "undefined") {
+    const { innerWidth: width, innerHeight: height } = window
+    return { width, height }
+  } else {
+    return {}
+  }
+}
+
+const useWindowDimensions = () => {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  )
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        setWindowDimensions(getWindowDimensions())
+      }
+      window.addEventListener("resize", handleResize)
+      return () => window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return windowDimensions
+}
+
 const OurPillars = () => {
   // ------------------------- Refs -------------------------
   const ref = useRef()
@@ -91,39 +117,26 @@ const OurPillars = () => {
   ]
 
   // ------------------- 1. Calculate viewport width & height -------------------
-  const getWindowDimensions = () => {
-    if (typeof window !== "undefined") {
-      const { innerWidth: width, innerHeight: height } = window
-      return { width, height }
-    } else {
-      return {}
-    }
-  }
+  // invoke useWindowDimensions
+  const { height, width } = useWindowDimensions()
 
-  const useWindowDimensions = () => {
-    const [windowDimensions, setWindowDimensions] = useState(
-      getWindowDimensions()
-    )
+  // use height/width to dynamically setMaxHeight
+  const useMaxHeight = () => {
+    const [maxHeight, setMaxHeight] = useState(height * 4)
     useEffect(() => {
-      if (typeof window !== "undefined") {
-        const handleResize = () => {
-          setWindowDimensions(getWindowDimensions())
-        }
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
+      if (width < 577) {
+        setMaxHeight(height * 15)
+      } else {
+        setMaxHeight(height * 4)
       }
     }, [])
-
-    return windowDimensions
+    return maxHeight
   }
+  const maxHeight = useMaxHeight()
 
-  // {width} is the user's maximum viewport width.
-  const { height } = useWindowDimensions()
+  console.log(maxHeight)
 
-  // ------------------- 2. "Assign" vertical scroll to horizontal scroll -------------------
-
-  // Take viewport Height * 3 because there are 3 slides 100vw wide
-  const maxHeight = height * 4
+  // ------------------- 2. Track component scroll progress -------------------
 
   // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
   const useScrollProgress = () => {
@@ -132,17 +145,16 @@ const OurPillars = () => {
       const onScroll = () => {
         // get the component's coordinates (only when horizontalScroll Ref is in view)
         const horizontalScrollDiv =
-          horizontalScroll.current?.getBoundingClientRect()
-        setScrollProgress(horizontalScrollDiv?.bottom / maxHeight)
+          horizontalScroll.current.getBoundingClientRect()
+        setScrollProgress(horizontalScrollDiv.bottom / maxHeight)
       }
       window.addEventListener("scroll", onScroll)
       return () => window.removeEventListener("scroll", onScroll)
     }, [])
     return scrollProgress
   }
-
   const scrollProgress = useScrollProgress()
-  console.log(scrollProgress)
+
   // ============================ Embla Carousel Logic ============================
 
   // Configure Embla settings (notably: disabled user touch/click interaction)
@@ -175,7 +187,7 @@ const OurPillars = () => {
       scrollToSecondSlide()
     } else if (scrollProgress < 0.5 && scrollProgress > 0) {
       scrollToThirdSlide()
-    } 
+    }
   }, [scrollProgress])
   // useEffect(() => {
   //   if (scrollProgress > 0.6667 && scrollProgress < 1) {
@@ -184,7 +196,7 @@ const OurPillars = () => {
   //     scrollToSecondSlide()
   //   } else if (scrollProgress < 0.3333 && scrollProgress > 0) {
   //     scrollToThirdSlide()
-  //   } 
+  //   }
   // }, [scrollProgress])
 
   // Run Embla
@@ -192,7 +204,7 @@ const OurPillars = () => {
     if (!embla) return
   }, [embla])
 
-  // ------------------- 4. Framer animation variants -------------------
+  // ------------------- 3. Framer animation variants -------------------
   const sideScrollHeader = {
     visible: {
       opacity: 1,
@@ -343,6 +355,10 @@ export default OurPillars
 const StickyContainer = styled.div`
   height: 400vh;
   position: relative;
+
+  @media (max-width: ${breakpoints.s}px) {
+    height: 1500vh;
+  }
 `
 
 const Embla = styled.div`
@@ -507,7 +523,7 @@ const LeftSVG = styled(motion.div)`
     align-self: flex-start;
     svg {
       max-height: 150px;
-    } 
+    }
   }
 `
 
