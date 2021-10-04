@@ -702,7 +702,7 @@ const SmallCircleWrapper = styled(motion.div)`
 
 const SmallCirclesWrapper = styled(motion.div)`
   position: absolute;
-  bottom: 2.5%;
+  bottom: 6.5%;
   right: 12.5%;
 
   svg {

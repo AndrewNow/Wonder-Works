@@ -78,14 +78,38 @@ const CareerFlip = () => {
     visible: i => ({
       visibility: "visible",
       opacity: [0, 1, 0],
-      y: [-50, 0, 125],
+      y: [-50, 0, 100],
       rotateX: [90, 0, -90],
+      transformPerspective: [5000, 1000, 5000],
       transition: {
-        delay: i * 2,
-        repeatDelay: 10,
-        duration: 4,
+        delay: i * 1.75,
+        repeatDelay: 11,
+        duration: 2.75,
         repeat: Infinity,
         repeatType: "loop",
+        type: "spring",
+        bounce: 1,
+        // ease: "easeInOut"
+      },
+    }),
+    hidden: {
+      opacity: 0,
+      visibility: "none",
+    },
+  }
+  const svgAnim = {
+    visible: i => ({
+      visibility: "visible",
+      opacity: [0, 1, 0],
+      y: [-50, 0, 100],
+      transition: {
+        delay: i * 1.75,
+        repeatDelay: 11,
+        duration: 2.75,
+        repeat: Infinity,
+        repeatType: "loop",
+        type: "spring",
+        // ease: "easeInOut"
       },
     }),
     hidden: {
@@ -116,7 +140,13 @@ const CareerFlip = () => {
                 >
                   <motion.h1 style={{ color: `${item.color}` }}>
                     {item.title}
-                    <SvgWrapper>{item.icon}</SvgWrapper>
+                    <SvgWrapper
+                      variants={svgAnim}
+                      animate={careerInView ? "visible" : "hidden"}
+                      custom={i}
+                    >
+                      {item.icon}
+                    </SvgWrapper>
                   </motion.h1>
                 </HideText>
               ))}
@@ -154,7 +184,7 @@ const Wrapper = styled.div`
     height: auto;
     padding-top: 15rem;
   }
-  
+
   @media (max-width: ${breakpoints.xl}px) {
     padding-top: 10rem;
     margin-bottom: 35rem;
@@ -244,6 +274,7 @@ const Container = styled.div`
   position: relative;
   z-index: 5;
   /* perspective: 1000px; */
+  perspective-origin: center;
 `
 
 const HideText = styled(motion.div)`
