@@ -36,12 +36,12 @@ const Contact = ({ data }) => {
   const handleCareersPageTransition = () => {
     setExpandCareersButton(true)
     // navigate to careers page after 1.5 seconds
-    setTimeout(() => navigate("/careers"), 1000)
+    setTimeout(() => navigate("/careers"), 500)
   }
 
-  const currentProjectsButton = {
+  const Button = {
     expand: {
-      scale: 11,
+      scale: 12,
       color: "#F7F7FC",
       backgroundColor: "#1A1748",
       transition: {
@@ -83,25 +83,25 @@ const Contact = ({ data }) => {
       <LetsWork
         svg={<Svg.BlueGear />}
         currentProjects={
-          <CurrentProjects
-            onClick={handleProjectsPageTransition}
-            variants={currentProjectsButton}
-            initial="normal"
-            animate={expandProjectsButton ? "expand" : "normal"}
-            whileHover="hover"
-          >
-            <CurrentProjectsText variants={buttonText}>
-              <p>Current</p>
-              <h4>Projects</h4>
-              <p>Check out what we’re up to on the Wonder Works Web! </p>
-            </CurrentProjectsText>
-          </CurrentProjects>
+            <CurrentProjects
+              onClick={handleProjectsPageTransition}
+              variants={Button}
+              initial="normal"
+              animate={expandProjectsButton ? "expand" : "normal"}
+              whileHover="hover"
+            >
+              <CurrentProjectsText variants={buttonText}>
+                <p>Current</p>
+                <h4>Projects</h4>
+                <p>Check out what we’re up to on the Wonder Works Web! </p>
+              </CurrentProjectsText>
+            </CurrentProjects>
         }
       />
       <OpenPositonsSection>
         <OpenPositons
           onClick={handleCareersPageTransition}
-          variants={currentProjectsButton}
+          variants={Button}
           initial="normal"
           animate={expandCareersButton ? "expand" : "normal"}
           whileHover="hover"
@@ -211,7 +211,6 @@ const PinkBackgroundMobileTablet = styled.div`
   }
 `
 
-
 const CurrentProjects = styled(motion.div)`
   overflow: hidden;
   cursor: pointer;
@@ -219,7 +218,7 @@ const CurrentProjects = styled(motion.div)`
 
   padding: 2rem;
   width: 265px;
-  height: auto;
+  height: 265px;
   aspect-ratio: 1/1;
   text-align: center;
   position: absolute;
@@ -233,16 +232,19 @@ const CurrentProjects = styled(motion.div)`
 
   @media (max-width: 1600px) {
     width: 230px;
+    height: 230px;
     top: 30%;
     right: 35%;
   }
   @media (max-width: ${breakpoints.xxl}px) {
     width: 200px;
+    height: 200px;
     top: 30%;
     right: 38%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 160px;
+    height: 160px;
     top: 26%;
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -251,11 +253,13 @@ const CurrentProjects = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.m}px) {
     width: 130px;
+    height: 130px;
     right: 35%;
     top: 32%;
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 86px;
+    height: 86px;
     right: 30%;
   }
   @media (max-width: ${breakpoints.xs}px) {
@@ -362,7 +366,7 @@ const OpenPositons = styled(motion.div)`
 
   padding: 2rem;
   width: 265px;
-  height: auto;
+  height: 265px;
   aspect-ratio: 1/1;
   text-align: center;
   position: absolute;
@@ -374,13 +378,16 @@ const OpenPositons = styled(motion.div)`
 
   @media (max-width: 1600px) {
     width: 230px;
+    height: 230px;
   }
   @media (max-width: ${breakpoints.xxl}px) {
     width: 200px;
+    height: 200px;
     left: 10%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 160px;
+    height: 160px;
     top: -175%;
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -388,12 +395,14 @@ const OpenPositons = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.m}px) {
     width: 130px;
+    height: 130px;
     top: 10%;
   }
   @media (max-width: ${breakpoints.s}px) {
     top: 20%;
     left: 5%;
     width: 86px;
+    height: 86px;
   }
 `
 

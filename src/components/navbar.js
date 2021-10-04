@@ -429,7 +429,6 @@ const MobileNav = styled(motion.div)`
   height: 80%;
   margin-top: 2rem;
   width: 90%;
-
   `
 
 
@@ -437,17 +436,17 @@ const MobileNavElement = styled(motion.div)`
   font-size: 34px;
   line-height: 37px;
   font-family: "calibre-medium";
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
+  padding-bottom: 0.85rem;
+  padding-top: 0.85rem;
   border-bottom: 1px solid var(--color-black);
   width: 100%;
   display: flex;
   justify-content: flex-end;
 
   &:last-child {
-      border: none;
+    border: none;
   }
-  
+
   a {
     text-align: right;
     width: 100%;
@@ -479,6 +478,11 @@ const MobileNavElement = styled(motion.div)`
     a {
       margin-right: 1rem;
     }
+  }
+
+  @media (max-width: 383px) {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
   }
 
   @media (max-width: ${breakpoints.xs}px) {
