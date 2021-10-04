@@ -1827,18 +1827,6 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xl}px) {
     display: none;
-    /* top: 15%;
-    left: 5%;
-    transform-origin: center;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    svg {
-      width: 100%;
-      height: auto;
-    } */
   }
 `
 const PinkStarStrokeWrapper = styled(motion.div)`

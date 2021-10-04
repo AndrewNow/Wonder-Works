@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import breakpoints from "../components/breakpoints"
+
 export const BlueGear = () => {
   return (
     <BlueGearWrapper
@@ -33,7 +34,6 @@ export const BlueGear = () => {
 
 const BlueGearWrapper = styled(motion.div)`
   align-self: flex-end;
-  /* padding-right: 15%; */
   aspect-ratio: 1/1;
   width: 515px;
   height: auto;
@@ -41,7 +41,11 @@ const BlueGearWrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
   transform-origin: center;
-  
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
   svg {
     aspect-ratio: 1/1;
     width: 100%;
@@ -49,20 +53,39 @@ const BlueGearWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    width: 460px;
+    width: 400px;
+    top: 20%;
+    right: 20%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    width: 350px;
+    width: 300px;
+    right: 25%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    width: 320px;
+    width: 280px;
+    top: 15%;
+    right: 15%;
   }
   @media (max-width: ${breakpoints.m}px) {
     width: 220px;
+    right: 22.5%;
+    top: 10%;
   }
   @media (max-width: ${breakpoints.s}px) {
+    width: 170px;
+    top: -10%;
+    right: 15%;
   }
+  @media (max-width: 470px) {
+    width: 125px;
+    top: 10%;
+    right: 5%;
+  }
+
   @media (max-width: ${breakpoints.xs}px) {
+    width: 110px;
+    right: -5%;
+    top: 5%;
   }
 `
 
@@ -85,19 +108,72 @@ export const PurpleStrokeStar = () => {
   )
 }
 
-export const PinkMailchimpBg = () => {
+export const PinkBackground = () => {
   return (
-    <svg
-      width="1254"
-      height="967"
-      viewBox="0 0 1254 967"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M1.09619 0.989906L0.128906 1.2028C57.7559 -6.1722 101.849 26.2141 147.778 52.2301C221.603 94.0501 297.81 109.745 383.26 92.5661C458.285 77.4831 536.332 65.551 606.14 115.654C639.906 139.89 665.826 172.246 690.812 204.283C746.461 275.633 822.505 307.656 906.717 329.247C968.676 345.134 1029.5 366.347 1061.96 429.306C1077.78 459.994 1091.47 492.843 1092.86 526.772C1097.7 644.987 1144.23 745.531 1214.25 838.083C1242.54 875.483 1256.03 919.183 1253.53 966.866C873.754 967.129 0.904297 966.866 0.904297 966.866"
-        fill="#E92C8E"
-      />
-    </svg>
+    <>
+      <Desktop
+        width="1254"
+        height="967"
+        viewBox="0 0 1254 967"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1.09619 0.989906L0.128906 1.2028C57.7559 -6.1722 101.849 26.2141 147.778 52.2301C221.603 94.0501 297.81 109.745 383.26 92.5661C458.285 77.4831 536.332 65.551 606.14 115.654C639.906 139.89 665.826 172.246 690.812 204.283C746.461 275.633 822.505 307.656 906.717 329.247C968.676 345.134 1029.5 366.347 1061.96 429.306C1077.78 459.994 1091.47 492.843 1092.86 526.772C1097.7 644.987 1144.23 745.531 1214.25 838.083C1242.54 875.483 1256.03 919.183 1253.53 966.866C873.754 967.129 0.904297 966.866 0.904297 966.866"
+          fill="#EB2C90"
+        />
+      </Desktop>
+    </>
   )
 }
+export const PinkBgMobileTablet = () => {
+  return (
+    <>
+      <Tablet
+        width="1280"
+        height="409"
+        viewBox="0 0 1280 409"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1280 408.669H0L0.0803334 1.70554C103.23 -10.7192 182.371 47.2586 264.791 93.891C398.028 169.269 535.556 197.553 689.76 166.584C825.155 139.405 965.998 117.898 1091.98 208.201C1152.92 251.885 1199.7 310.205 1244.79 367.946C1255.84 382.102 1267.59 395.693 1280 408.669V408.669Z"
+          fill="#EB2C90"
+        />
+      </Tablet>
+      <Mobile
+        width="769"
+        height="280"
+        viewBox="0 0 769 280"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M768.061 258.007V279.532H0.060791V0C46.5709 6.92224 86.0156 34.345 126.73 57.385C210.554 104.776 297.062 122.553 394.075 103.097C479.252 85.9957 567.869 72.4789 647.126 129.25C685.465 156.713 714.895 193.392 743.259 229.683C750.987 239.583 759.268 249.04 768.061 258.007Z"
+          fill="#EB2C90"
+        />
+      </Mobile>
+    </>
+  )
+}
+
+const Desktop = styled.svg`
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+`
+const Tablet = styled.svg`
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
+`
+const Mobile = styled.svg`
+  display: none;
+  @media (max-width: ${breakpoints.m}px) {
+    display: block;
+  }
+`

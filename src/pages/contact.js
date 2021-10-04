@@ -45,7 +45,7 @@ const Contact = ({ data }) => {
       color: "#F7F7FC",
       backgroundColor: "#1A1748",
       transition: {
-        duration: .5,
+        duration: 0.5,
         ease: "easeIn",
       },
     },
@@ -80,20 +80,24 @@ const Contact = ({ data }) => {
   return (
     <Layout title={siteTitle}>
       <Seo title="Contact" />
-      <LetsWork svg={<Svg.BlueGear />} />
-      <CurrentProjects
-        onClick={handleProjectsPageTransition}
-        variants={currentProjectsButton}
-        initial="normal"
-        animate={expandProjectsButton ? "expand" : "normal"}
-        whileHover="hover"
-      >
-        <CurrentProjectsText variants={buttonText}>
-          <p>Current</p>
-          <h4>Projects</h4>
-          <p>Check out what we’re up to on the Wonder Works Web! </p>
-        </CurrentProjectsText>
-      </CurrentProjects>
+      <LetsWork
+        svg={<Svg.BlueGear />}
+        currentProjects={
+          <CurrentProjects
+            onClick={handleProjectsPageTransition}
+            variants={currentProjectsButton}
+            initial="normal"
+            animate={expandProjectsButton ? "expand" : "normal"}
+            whileHover="hover"
+          >
+            <CurrentProjectsText variants={buttonText}>
+              <p>Current</p>
+              <h4>Projects</h4>
+              <p>Check out what we’re up to on the Wonder Works Web! </p>
+            </CurrentProjectsText>
+          </CurrentProjects>
+        }
+      />
       <OpenPositonsSection>
         <OpenPositons
           onClick={handleCareersPageTransition}
@@ -124,13 +128,18 @@ const Contact = ({ data }) => {
         >
           <Svg.PurpleStrokeStar />
         </PurpleStrokeStarWrapper>
+
         <MailchimpComponent
           smallStarSvg={<BlueStars />}
           bigStarSvg={<PurpleStar />}
         />
-        <MailchimpSVG>
-          <Svg.PinkMailchimpBg />
-        </MailchimpSVG>
+
+        <PinkBackground>
+          <Svg.PinkBackground />
+        </PinkBackground>
+        <PinkBackgroundMobileTablet>
+          <Svg.PinkBgMobileTablet />
+        </PinkBackgroundMobileTablet>
       </MailchimpWrapper>
     </Layout>
   )
@@ -151,13 +160,57 @@ export const pageQuery = graphql`
 const MailchimpWrapper = styled.div`
   background-color: var(--color-green);
   position: relative;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    background-color: var(--color-pink);
+  }
 `
 
-const MailchimpSVG = styled.div`
+const PinkBackground = styled.div`
   position: absolute;
-  bottom: -3%;
+  z-index: 0;
+  bottom: -1px;
   left: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  svg {
+    overflow-x: hidden;
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
+  }
 `
+
+const PinkBackgroundMobileTablet = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: -2px;
+    right: 1px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+
+    svg {
+      transform: translateY(-99%);
+      overflow-x: hidden;
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 1px;
+  }
+`
+
 
 const CurrentProjects = styled(motion.div)`
   overflow: hidden;
@@ -171,8 +224,8 @@ const CurrentProjects = styled(motion.div)`
   text-align: center;
   position: absolute;
   z-index: 10;
-  right: 35%;
-  top: 50%;
+  right: 30%;
+  top: 25%;
 
   display: flex;
   justify-content: center;
@@ -180,14 +233,17 @@ const CurrentProjects = styled(motion.div)`
 
   @media (max-width: 1600px) {
     width: 230px;
+    top: 30%;
+    right: 35%;
   }
   @media (max-width: ${breakpoints.xxl}px) {
     width: 200px;
-    top: 40%;
+    top: 30%;
+    right: 38%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 160px;
-    top: 30%;
+    top: 26%;
   }
   @media (max-width: ${breakpoints.l}px) {
     top: 35%;
@@ -195,10 +251,16 @@ const CurrentProjects = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.m}px) {
     width: 130px;
+    right: 35%;
+    top: 32%;
   }
   @media (max-width: ${breakpoints.s}px) {
+    width: 86px;
+    right: 30%;
   }
   @media (max-width: ${breakpoints.xs}px) {
+    top: 25%;
+    right: 28%;
   }
 `
 
@@ -256,6 +318,17 @@ const CurrentProjectsText = styled(motion.div)`
       font-size: 2.7vw;
     }
   }
+  @media (max-width: ${breakpoints.s}px) {
+    p:nth-of-type(1) {
+      font-size: 14px;
+      text-align: center;
+      padding-right: 0;
+    }
+    h4 {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
 `
 
 const OpenPositonsSection = styled.div`
@@ -263,6 +336,20 @@ const OpenPositonsSection = styled.div`
   height: 100px;
   position: relative;
   background-color: var(--color-green);
+
+  @media (max-width: ${breakpoints.xl}px) {
+    height: 200px;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 20rem;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding-top: 10rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 0rem;
+  }
 `
 
 const OpenPositons = styled(motion.div)`
@@ -270,18 +357,44 @@ const OpenPositons = styled(motion.div)`
   cursor: pointer;
   border-radius: 100%;
 
-  padding: 2rem;
-  width: 265px;
-  height: 265px;
-  text-align: center;
-  position: absolute;
-  z-index: 10;
   left: 25%;
   top: -350%;
+
+  padding: 2rem;
+  width: 265px;
+  height: auto;
+  aspect-ratio: 1/1;
+  text-align: center;
+  position: absolute;
+  z-index: 100;
 
   display: flex;
   justify-content: center;
   align-content: center;
+
+  @media (max-width: 1600px) {
+    width: 230px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 200px;
+    left: 10%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 160px;
+    top: -175%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 20%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 130px;
+    top: 10%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 20%;
+    left: 5%;
+    width: 86px;
+  }
 `
 
 const OpenPositionsText = styled(motion.div)`
@@ -313,7 +426,45 @@ const OpenPositionsText = styled(motion.div)`
     color: inherit;
     font-family: "balgin-bold";
     line-height: 28px;
+    font-size: 2.08333vw;
     margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    h4 {
+      margin-bottom: 1rem;
+    }
+    p:nth-of-type(2) {
+      font-size: 14px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h4 {
+      font-size: 2.5vw;
+    }
+    p:nth-of-type(1) {
+      padding-bottom: 0;
+    }
+    p:nth-of-type(2) {
+      display: none;
+    }
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    h4 {
+      font-size: 2.7vw;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    p:nth-of-type(1) {
+      font-size: 14px;
+      text-align: center;
+      padding-right: 0;
+    }
+    h4 {
+      font-size: 14px;
+      line-height: 14px;
+    }
   }
 `
 
@@ -322,4 +473,8 @@ const PurpleStrokeStarWrapper = styled(motion.div)`
   z-index: 1;
   top: -12.5%;
   left: -3%;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
+  }
 `

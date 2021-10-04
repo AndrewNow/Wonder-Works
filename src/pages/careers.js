@@ -1390,7 +1390,7 @@ const FormTopPositionDetails = styled.div`
 const WOLogo = styled.div`
   position: absolute;
   z-index: 1;
-  right: 5%;
+  right: 7%;
   top: 33%;
 
   svg {

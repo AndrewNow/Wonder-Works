@@ -429,7 +429,8 @@ const MobileNav = styled(motion.div)`
   height: 80%;
   margin-top: 2rem;
   width: 90%;
-`
+
+  `
 
 
 const MobileNavElement = styled(motion.div)`
@@ -443,6 +444,10 @@ const MobileNavElement = styled(motion.div)`
   display: flex;
   justify-content: flex-end;
 
+  &:last-child {
+      border: none;
+  }
+  
   a {
     text-align: right;
     width: 100%;

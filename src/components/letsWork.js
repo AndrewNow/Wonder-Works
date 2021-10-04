@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import breakpoints from "./breakpoints"
 import { Arrow } from "../svg/miscellaneous"
 
-export const LetsWork = ({ svg }) => {
+export const LetsWork = ({ svg, currentProjects }) => {
   return (
     <BgSection>
       <Top>
@@ -35,6 +35,7 @@ export const LetsWork = ({ svg }) => {
           </h1>
           <SVGWrapper>{svg}</SVGWrapper>
         </Flex>
+        <CurrentProjectsWrapper>{currentProjects}</CurrentProjectsWrapper>
         <IconWrapper>
           <Icons>
             <motion.a
@@ -237,6 +238,11 @@ const Flex = styled.div`
     }
   }
 `
+const CurrentProjectsWrapper = styled.div`
+  float: right;
+  display: inline;
+`
+
 
 const SVGWrapper = styled.div`
   width: 600px;
@@ -264,7 +270,7 @@ const SVGWrapper = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 150px;
     top: 30%;
-    transform: rotate(90deg);
+    /* transform: rotate(90deg); */
   }
 `
 
@@ -281,6 +287,7 @@ const IconWrapper = styled.div`
 
   @media (max-width: ${breakpoints.m}px) {
     justify-content: flex-start;
+    padding-top: 7rem;
   }
 `
 

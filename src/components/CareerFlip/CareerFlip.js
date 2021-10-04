@@ -77,13 +77,13 @@ const CareerFlip = () => {
   const textAnim = {
     visible: i => ({
       visibility: "visible",
-      opacity: [0, 1, 0],
-      y: [-50, 0, 100],
-      rotateX: [90, 0, -90],
+      opacity: [0, 1, 1, 0],
+      y: [-50, 1, 1, 100],
+      rotateX: [90, 0, 0, -90],
       transformPerspective: [5000, 1000, 5000],
       transition: {
         delay: i * 1.75,
-        repeatDelay: 11,
+        repeatDelay: 9.75,
         duration: 2.75,
         repeat: Infinity,
         repeatType: "loop",
@@ -100,11 +100,11 @@ const CareerFlip = () => {
   const svgAnim = {
     visible: i => ({
       visibility: "visible",
-      opacity: [0, 1, 0],
-      y: [-50, 0, 100],
+      opacity: [0, 1, 1, 0],
+      y: [-50, 0, 0, 30],
       transition: {
         delay: i * 1.75,
-        repeatDelay: 11,
+        repeatDelay: 9.75,
         duration: 2.75,
         repeat: Infinity,
         repeatType: "loop",
