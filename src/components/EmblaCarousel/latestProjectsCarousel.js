@@ -90,11 +90,11 @@ const LatestProjectsCarousel = () => {
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: false,
+      light: "https://i.imgur.com/yNmhs4y.png",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: false,
+      light: "https://i.imgur.com/yNmhs4y.png",
     },
   ]
 

@@ -168,9 +168,9 @@ const OurPillars = () => {
 
   // Create rules for when the slides should change according to the returned value from scrollProgress
   useEffect(() => {
-    if (scrollProgress > 0.88 && scrollProgress < 1) {
+    if (scrollProgress > 0.8 && scrollProgress < 1) {
       scrollToFirstSlide()
-    } else if (scrollProgress < 0.88 && scrollProgress > 0.45) {
+    } else if (scrollProgress < 0.8 && scrollProgress > 0.45) {
       scrollToSecondSlide()
     } else if (scrollProgress < 0.45 && scrollProgress > 0) {
       scrollToThirdSlide()
@@ -220,9 +220,6 @@ const OurPillars = () => {
   ]
   return (
     <StickyContainer ref={horizontalScroll}>
-      <Fixed>
-        <h2>{scrollProgress}</h2>
-      </Fixed>
       <Embla>
         <EmblaViewport ref={viewportRef}>
           <EmblaContainer>
@@ -295,20 +292,10 @@ const OurPillars = () => {
 
 export default OurPillars
 
-const Fixed = styled.div`
-  position: fixed;
-  z-index: 9999;
-  top: 20%;
-  left: 20%;
-  h2 {
-    color: red;
-  }
-`
-
 // the height value here determines the "length" of the horizontal scroll carousel
 // higher values = longer distance to initiate slide change
 const StickyContainer = styled.div`
-  height: 400vh;
+  height: 800vh;
   position: relative;
 
   @media (max-width: ${breakpoints.s}px) {
@@ -434,6 +421,7 @@ const LeftInner = styled.div`
     padding-left: 0;
     margin-top: 0;
     width: 100%;
+    height: auto;
     p {
       width: 100%;
     }
@@ -469,6 +457,7 @@ const LeftSVG = styled(motion.div)`
     max-height: 200px;
   }
   @media (max-width: ${breakpoints.s}px) {
+    min-height: 150px;
     svg {
       max-width: 70vw;
     }

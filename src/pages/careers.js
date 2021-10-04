@@ -1027,7 +1027,7 @@ const TwoPlusWrapper = styled(motion.div)`
     bottom: 18%;
     right: 10%;
   }
-    @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     bottom: 12%;
     right: 5%;
 
@@ -1095,6 +1095,7 @@ const CareerLeft = styled.div`
     color: var(--color-black);
     display: flex;
     align-items: center;
+    white-space: nowrap;
     svg {
       padding-left: 1rem;
     }
@@ -1106,6 +1107,7 @@ const CareerLeft = styled.div`
 
     h5 {
       font-size: 31px;
+      line-height: 100%;
       padding-top: 3rem;
     }
   }
@@ -1118,15 +1120,20 @@ const CareerLeft = styled.div`
     margin-right: 5rem;
     div {
       width: 100%;
-    }
-    h5 {
-      font-size: 25px;
+      h5 {
+        font-size: 30px;
+        line-height: 36px;
+      }
     }
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    h5 {
-      font-size: 22px;
+    width: 55%;
+    div {
+      h5 {
+        font-size: 25px;
+        line-height: 30px;
+      }
     }
   }
 
@@ -1136,7 +1143,10 @@ const CareerLeft = styled.div`
     width: 100%;
     margin-right: 0rem;
     div {
-      width: 75%;
+      width: 100%;
+      h5 {
+        font-size: 25px;
+      }
     }
   }
 
@@ -1146,15 +1156,13 @@ const CareerLeft = styled.div`
       line-height: 42.5px;
     }
     div {
-      width: 90%;
+      width: 95%;
       padding-top: 3rem;
-    }
-    h5 {
-      strong {
-        white-space: nowrap;
+      h5 {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: 0.01rem;
       }
-      font-size: 18px;
-      line-height: 110%;
     }
   }
 `
@@ -1374,7 +1382,7 @@ const FormTopPositionDetails = styled.div`
     padding: 0;
     max-height: 350px;
     svg {
-      transform: translateY(-5rem) scale(0.7);
+      transform: translateY(-3rem) scale(0.5);
     }
   }
 `
@@ -1588,6 +1596,7 @@ const FillOut = styled.form`
   }
 
   @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 2.5rem;
     br {
       display: block;
     }
@@ -1897,10 +1906,24 @@ const SubmitLabel = styled.label`
   @media (max-width: ${breakpoints.s}px) {
     bottom: 0;
     left: 0;
-    min-width: 130px;
+    min-width: 100px;
+    max-width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0.5rem 0.5rem;
     font-size: 16px;
     border: 1px solid var(--color-black);
+
+    :hover {
+      svg {
+        transform: translate3d(5px, 0rem, 0);
+      }
+    }
+    svg {
+      margin-left: 5px;
+      transform: translate3d(0, 0rem, 0);
+    }
   }
 `
 
@@ -1962,11 +1985,12 @@ const Bottom = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 100%;
-    height: 100px;
+    height: 150px;
     p {
       position: absolute;
       top: 1rem;
       font-size: 14px;
+      line-height: 16px;
     }
   }
 `
@@ -1986,7 +2010,7 @@ const WhiteStarStrokeWrapper = styled(motion.div)`
   }
   @media (max-width: 1050px) {
     top: 13%;
-    
+
     svg {
       width: 250px;
     }
@@ -2008,7 +2032,6 @@ const WhiteStarStrokeWrapper = styled(motion.div)`
       height: auto;
     }
   }
-
 
   @media (max-width: ${breakpoints.s}px) {
     top: 26%;

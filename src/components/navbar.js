@@ -398,9 +398,6 @@ const DropdownMobile = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     z-index: 2001;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    /* align-items: flex-end; */
     background-color: var(--color-white);
     width: 90%;
     height: calc(95vh - 70px);
@@ -408,30 +405,30 @@ const DropdownMobile = styled(motion.div)`
     left: 50%;
     border-radius: 20px;
     border: 1px solid black;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
   }
 `
 
 const MobileAnimation = styled(motion.div)`
-  height: 20%;
   width: 90%;
   height: 10%;
   margin: 0 auto;
   margin-top: 5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
   position: relative;
 `
 
 const MobileNav = styled(motion.div)`
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  justify-content: center;
   justify-content: flex-start;
   height: 80%;
+  margin-top: 2rem;
   width: 90%;
-  margin: 0 auto;
 `
 
 

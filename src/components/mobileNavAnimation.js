@@ -23,14 +23,16 @@ const MobileNavAnimation = () => {
   return (
     <>
       {SVGs.map((color, index) => {
+        const offset = index * 3
+        console.log(offset)
         return (
           <Wrapper
             key={index}
             animate={{
-              y: [0, -35, 35, 0],
-              x: [0, -15, 0],
+              y: [0 + offset, -20 + offset, 20 + offset, 0 + offset],
+              x: [0 + offset, -15 + offset, 0 + offset],
               transition: {
-                duration: 3,
+                duration: 2,
                 repeatDelay: 1,
                 delay: 0.1 * index,
                 repeat: "Infinity",
