@@ -135,37 +135,31 @@ const Navbar = () => {
           >
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/" activeClassName="active">
-                <ActiveLinkSVG />
                 Home
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/about" activeClassName="active">
-                <ActiveLinkSVG />
                 About
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/projects" activeClassName="active">
-                <ActiveLinkSVG />
                 Projects
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/investors" activeClassName="active">
-                <ActiveLinkSVG />
                 Investors
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/careers" activeClassName="active">
-                <ActiveLinkSVG />
                 Careers
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/contact" activeClassName="active">
-                <ActiveLinkSVG />
                 Contact
               </Link>
             </motion.div>
@@ -334,20 +328,6 @@ const Dropdown = styled(motion.div)`
     transition-delay: 0.2s;
     text-decoration: none;
 
-    svg {
-      display: none;
-    }
-    &.active {
-      svg {
-        display: inline;
-        position: relative;
-        left: -0.5rem;
-        height: 10px;
-        width: 10px;
-        animation: ${rotate} 10s linear infinite;
-        fill: ${props => props.theme.color}!important;
-      }
-    }
     &.active {
       font-family: "calibre-semibold";
     }
@@ -433,8 +413,6 @@ const MobileNav = styled(motion.div)`
 
 
 const MobileNavElement = styled(motion.div)`
-  font-size: 34px;
-  line-height: 37px;
   font-family: "calibre-medium";
   padding-bottom: 0.85rem;
   padding-top: 0.85rem;
@@ -456,6 +434,8 @@ const MobileNavElement = styled(motion.div)`
     display: flex;
     justify-content: flex-end;
     transition: 0.3s ease-out all;
+    font-size: 34px!important;
+    line-height: 100%;
     svg {
       display: none;
     }
@@ -486,7 +466,9 @@ const MobileNavElement = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.xs}px) {
-    font-size: 26px;
-    line-height: 105%;
+    a {
+      font-size: 26px!important;
+      line-height: 105%;
+    }
   }
 `

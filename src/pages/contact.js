@@ -128,12 +128,11 @@ const Contact = ({ data }) => {
         >
           <Svg.PurpleStrokeStar />
         </PurpleStrokeStarWrapper>
-
         <MailchimpComponent
           smallStarSvg={<BlueStars />}
           bigStarSvg={<PurpleStar />}
+          color={"#F7F7FC"}
         />
-
         <PinkBackground>
           <Svg.PinkBackground />
         </PinkBackground>

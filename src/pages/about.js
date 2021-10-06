@@ -25,7 +25,7 @@ import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
-import { AsSeenOn } from "../components/asSeenOn"
+import {AsSeenOnLogosAbout} from "../components/AsSeenOn/AsSeenOnLogos"
 import {
   useGlobalDispatchContext,
   useGlobalStateContext,
@@ -354,7 +354,7 @@ const About = ({ data }) => {
         </KeepScrolling>
         <Logos>
           <h4>As Seen On...</h4>
-          <AsSeenOn />
+          <AsSeenOnLogosAbout />
         </Logos>
       </OrangeBg>
       <OurPillars />
@@ -962,10 +962,11 @@ const Logos = styled.div`
   position: relative;
   background-color: var(--color-white);
   h4 {
-    padding-top: 5rem;
+    padding-top: 3rem;
     padding-bottom: 2rem;
     font-size: 30px;
     font-family: "calibre-semibold";
+    color: black;
   }
 `
 

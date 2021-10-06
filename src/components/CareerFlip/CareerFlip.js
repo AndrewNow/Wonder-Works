@@ -84,7 +84,7 @@ const CareerFlip = () => {
       transition: {
         delay: i * 1.75,
         repeatDelay: 9.75,
-        duration: 2.75,
+        duration: 2,
         repeat: Infinity,
         repeatType: "loop",
         type: "spring",
@@ -105,7 +105,7 @@ const CareerFlip = () => {
       transition: {
         delay: i * 1.75,
         repeatDelay: 9.75,
-        duration: 2.75,
+        duration: 2,
         repeat: Infinity,
         repeatType: "loop",
         type: "spring",
@@ -183,11 +183,11 @@ const Wrapper = styled.div`
     width: 75%;
     height: auto;
     padding-top: 15rem;
+    margin-bottom: 35rem;
   }
 
   @media (max-width: ${breakpoints.xl}px) {
     padding-top: 10rem;
-    margin-bottom: 35rem;
   }
 
   @media (max-width: ${breakpoints.l}px) {
@@ -301,6 +301,11 @@ const SvgWrapper = styled(motion.div)`
     width: 100%;
   }
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    svg {
+      scale: 0.75;
+    }
+  }
   @media (max-width: ${breakpoints.xl}px) {
     svg {
       scale: 0.65;
@@ -315,62 +320,68 @@ const SvgWrapper = styled(motion.div)`
 
 const AdventuresWrapper = styled.div`
   transform: translate3d(-30%, -15%, 0);
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(-15%, -25%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(5%, -40%, 0);
+    transform: translate3d(5%, -42%, 0);
   }
 `
 const GamesWrapper = styled.div`
   transform: translate3d(15%, 0rem, 0);
 
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(25%, -20%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(25%, -40%, 0);
+    transform: translate3d(25%, -42%, 0);
   }
 `
 const PingPongWrapper = styled.div`
   transform: translate3d(-25%, 35%, 0);
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(10%, -15%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(25%, -35%, 0);
+    transform: translate3d(25%, -37%, 0);
   }
 `
 const TechnologyWrapper = styled.div`
   transform: translate3d(-40%, 10%, 0);
+  @media (max-width: ${breakpoints.xxl}px) {
+    transform: translate3d(-20%, -5%, 0);
+  }
   @media (max-width: ${breakpoints.xl}px) {
     transform: translate3d(5%, -5%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(10%, -25%, 0);
+    transform: translate3d(10%, -27%, 0);
   }
 `
 const AnimalsWrapper = styled.div`
   transform: translate3d(-10%, 10%, 0);
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(20%, 0%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(40%, -15%, 0);
+    transform: translate3d(40%, -12%, 0);
   }
 `
 const RobloxWrapper = styled.div`
   transform: translate3d(15%, -10%, 0);
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(20%, -20%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
-    transform: translate3d(50%, -20%, 0);
+    transform: translate3d(40%, -30%, 0);
   }
 `
 const UsWrapper = styled.div`
   transform: translate3d(0, 60%, 0);
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    transform: translate3d(5%, 40%, 0);
+  }
   @media (max-width: ${breakpoints.xl}px) {
     transform: translate3d(60%, 10%, 0);
   }

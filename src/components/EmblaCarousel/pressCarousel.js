@@ -9,7 +9,7 @@ import { useInView } from "react-intersection-observer"
 import { PurpleArrow } from "../../svg/miscellaneous"
 import breakpoints from "../breakpoints"
 
-const PressCarousel = () => {
+const PressCarousel = ({logos}) => {
   const [pressRef, pressInView] = useInView({
     root: null,
     threshold: 0.5,
@@ -26,14 +26,14 @@ const PressCarousel = () => {
   }
   const childAnimation = {
     visible: {
-      // y: 0,
+      y: 0,
       opacity: 1,
       transition: {
         duration: 0.75,
       },
     },
     hidden: {
-      // y: 20,
+      y: -50,
       opacity: 0,
     },
   }
@@ -48,9 +48,9 @@ const PressCarousel = () => {
           childImageSharp {
             gatsbyImageData(
               width: 570
-              placeholder: BLURRED
+              placeholder: NONE
               quality: 100
-              blurredOptions: { width: 80 }
+              # blurredOptions: { width: 4 }
               formats: WEBP
               layout: FIXED
               transformOptions: { cropFocus: CENTER }
@@ -129,7 +129,10 @@ const PressCarousel = () => {
 
   return (
     <Wrapper>
+      <Header>
       <h2>Press</h2>
+      {logos}
+      </Header>
       <Embla ref={pressRef}>
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer
@@ -216,6 +219,19 @@ const Wrapper = styled.div`
       font-size: 45px;
       padding-bottom: 2rem;
     }
+  }
+`
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 95%;
+    margin: 0 auto;
+    /* justify-content: flex-start; */
   }
 `
 

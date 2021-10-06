@@ -1114,9 +1114,10 @@ const CareerLeft = styled.div`
 
   div > h5 strong {
     font-family: "calibre-medium";
+    white-space: nowrap;
   }
 
-  @media (max-width: ${breakpoints.xxl}px) {
+  @media (max-width: 1440px) {
     margin-right: 5rem;
     div {
       width: 100%;
@@ -1133,6 +1134,15 @@ const CareerLeft = styled.div`
       h5 {
         font-size: 25px;
         line-height: 30px;
+      }
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    div {
+      h5 {
+        font-size: 21px;
+        line-height: 25px;
       }
     }
   }
@@ -1162,6 +1172,9 @@ const CareerLeft = styled.div`
         font-size: 18px;
         line-height: 22px;
         letter-spacing: 0.01rem;
+        strong {
+          white-space: normal;
+        }
       }
     }
   }

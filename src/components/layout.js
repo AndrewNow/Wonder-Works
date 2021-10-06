@@ -38,10 +38,48 @@ const GlobalWrapper = styled.div`
   background-color: var(--color-white);
   width: 100%;
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    h1 {
+      font-size: 110px;
+      line-height: 126px;
+    }
+
+    h2 {
+      font-size: 70px;
+      line-height: 76px;
+    }
+
+    h3 {
+      font-size: 45px;
+      line-height: 50px;
+    }
+
+    h4 {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    h5 {
+      font-size: 30px;
+      line-height: 34px;
+    }
+
+    h6 {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    p,
+    ul,
+    li {
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
   @media (max-width: ${breakpoints.xl}px) {
     h1 {
       font-size: 100px;
-      line-height: 110px;
+      line-height: 90px;
     }
 
     h2 {
@@ -50,8 +88,8 @@ const GlobalWrapper = styled.div`
     }
 
     h3 {
-      font-size: 40px;
-      line-height: 45px;
+      font-size: 35px;
+      line-height: 42px;
     }
 
     h4 {
@@ -79,8 +117,8 @@ const GlobalWrapper = styled.div`
 
   @media (max-width: ${breakpoints.l}px) {
     h1 {
-      font-size: 60px;
-      line-height: 65px;
+      font-size: 75px;
+      line-height: 82px;
     }
 
     h2 {
@@ -115,23 +153,23 @@ const GlobalWrapper = styled.div`
       line-height: 24px;
     }
   }
-  
+
   @media (max-width: ${breakpoints.m}px) {
     h1 {
       font-size: 52px;
       line-height: 46px;
     }
-    
+
     h2 {
       font-size: 42px;
       line-height: 40px;
     }
-    
+
     h3 {
       font-size: 28px;
       line-height: 32px;
     }
-    
+
     h4 {
       font-size: 24px;
       line-height: 28px;
@@ -141,7 +179,7 @@ const GlobalWrapper = styled.div`
       font-size: 22px;
       line-height: 26px;
     }
-    
+
     h6 {
       font-size: 20px;
       line-height: 26px;
@@ -157,30 +195,30 @@ const GlobalWrapper = styled.div`
 
   @media (max-width: ${breakpoints.s}px) {
     h1 {
-      font-size: 30px;
-      line-height: 32px;
+      font-size: 45px;
+      line-height: 48px;
     }
-    
+
     h2 {
-      font-size: 22px;
-      line-height: 24px;
+      font-size: 45px;
+      line-height: 48px;
     }
-    
+
     h3 {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 16px;
+      line-height: 19px;
     }
-    
+
     h4 {
       font-size: 18px;
       line-height: 20px;
     }
 
     h5 {
-      font-size: 30px;
-      line-height: 33px;
+      font-size: 20px;
+      line-height: 22px;
     }
-    
+
     h6 {
       font-size: 28px;
       line-height: 35px;
@@ -188,9 +226,10 @@ const GlobalWrapper = styled.div`
 
     p,
     ul,
-    li {
-      font-size: 18px;
-      line-height: 22px;
+    li,
+    a {
+      font-size: 16px;
+      line-height: 19px;
       letter-spacing: 0.01rem;
     }
   }
@@ -200,17 +239,17 @@ const GlobalWrapper = styled.div`
       font-size: 28px;
       line-height: 31px;
     }
-    
+
     h2 {
       font-size: 20px;
       line-height: 22px;
     }
-    
+
     h3 {
       font-size: 18px;
       line-height: 20px;
     }
-    
+
     h4 {
       font-size: 18px;
       line-height: 20px;
@@ -220,7 +259,7 @@ const GlobalWrapper = styled.div`
       font-size: 30px;
       line-height: 33px;
     }
-    
+
     h6 {
       font-size: 28px;
       line-height: 35px;
@@ -234,4 +273,4 @@ const GlobalWrapper = styled.div`
       letter-spacing: 0.01rem;
     }
   }
-  `
+`

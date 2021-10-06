@@ -84,8 +84,8 @@ const BlueGearWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xs}px) {
     width: 110px;
-    right: -5%;
-    top: 5%;
+    right: 5%;
+    top: 30%;
   }
 `
 

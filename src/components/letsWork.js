@@ -125,7 +125,7 @@ export const LetsWork = ({ svg, currentProjects }) => {
             </p>
             <p>
               for press <br />
-              press
+              inquiries
             </p>
             <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
           </Contact>
@@ -467,10 +467,13 @@ const Contact = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     a,
     p {
-      font-size: 15px;
+      font-size: 14px;
     }
     p {
       white-space: nowrap;
+    }
+    a {
+      padding-top: .25rem;
     }
   }
   @media (max-width: ${breakpoints.xs}px) {

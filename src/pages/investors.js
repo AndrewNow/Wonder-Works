@@ -10,9 +10,10 @@ import { Twitter, Instagram, TikTok, YouTube, Roblox } from "../svg/socialmedia"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { ContactUs } from "../components/contactUs"
-import { AsSeenOn } from "../components/asSeenOn"
+import PressCarouselLogos from "../components/AsSeenOn/PressCarouselLogos"
 import { Arrow } from "../svg/miscellaneous"
 import { useGlobalDispatchContext } from "../context/globalContext"
+import breakpoints from "../components/breakpoints"
 
 const Investors = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Investment Centre`
@@ -295,12 +296,14 @@ const Investors = ({ data }) => {
               )}
               <p>DAU</p>
             </Circle>
-            <Desc>4% of Roblox DAU</Desc>
-            <p>
-              2.2M+ Total Playing hrs/mo <br />
-              MAU 2.74M <br />
-              DAU/MAU Ratio 7.79%
-            </p>
+            <Desc>
+              <p>4% of Roblox DAU</p>
+              <p>
+                2.2M+ Total Playing hrs/mo <br />
+                MAU 2.74M <br />
+                DAU/MAU Ratio 7.79%
+              </p>
+            </Desc>
           </Column>
           <Column>
             <motion.h5
@@ -316,12 +319,14 @@ const Investors = ({ data }) => {
               <h6>0.0M</h6>
               <p>DAU</p>
             </Circle>
-            <Desc>0.0% of Roblox DAU</Desc>
-            <p>
-              0.0M+ Total Playing hrs/mo <br />
-              MAU 0.0M <br />
-              DAU/MAU Ratio 0.00%
-            </p>
+            <Desc>
+              <p>0.0% of Roblox DAU</p>
+              <p>
+                0.0M+ Total Playing hrs/mo <br />
+                MAU 0.0M <br />
+                DAU/MAU Ratio 0.00%
+              </p>
+            </Desc>
           </Column>
         </Columns>
       </StatsWrapper>
@@ -398,11 +403,14 @@ const Investors = ({ data }) => {
           </Icons>
         </IconWrapper>
       </ConnectWithUs>
-      <LogoWrapper>
-        <p>As Seen On...</p>
-        <AsSeenOn />
-      </LogoWrapper>
-      <PressCarousel />
+      <PressCarousel
+        logos={
+          <LogoWrapper>
+            <p>As Seen On...</p>
+            <PressCarouselLogos />
+          </LogoWrapper>
+        }
+      />
       <WonderWorkersWrapper>
         <WonderWorkers />
       </WonderWorkersWrapper>
@@ -478,6 +486,17 @@ const Header = styled.header`
   text-align: center;
   text-transform: uppercase;
   padding-top: 12.5rem;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding-top: 10rem;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 6rem;
+    p {
+      font-size: 16px;
+    }
+  }
 `
 
 const HeaderFlex = styled.div`
@@ -486,6 +505,29 @@ const HeaderFlex = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 80%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 85%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 4rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    flex-direction: column;
+    padding-top: 2.5rem;
+  }
+`
+
+const Mask = styled.div`
+  overflow: hidden;
+  /* padding-top: .5rem; */
+`
+const Span = styled(motion.span)`
+  display: inline-block;
+  position: relative;
 `
 
 const Left = styled.div`
@@ -497,22 +539,39 @@ const Left = styled.div`
       line-height: 60px;
     }
   }
-`
-const Mask = styled.div`
-  overflow: hidden;
-  /* padding-top: .5rem; */
-`
-const Span = styled(motion.span)`
-  display: inline-block;
-  position: relative;
+  @media (max-width: ${breakpoints.xxl}px) {
+    h1 {
+      div:nth-of-type(1) {
+        font-size: 45px;
+        line-height: 55px;
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    h1 {
+      div:nth-of-type(1) {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+  }
 `
 
 const Right = styled.div`
   align-self: flex-end;
-  margin-top: 20rem;
-  margin-left: 15rem;
+  margin-top: 23%;
+  margin-left: 17%;
   h3 {
     font-family: "calibre-regular";
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-left: 15%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    align-self: flex-start;
+    width: 80%;
+    margin-left: 0%;
+    margin-top: 15%;
   }
 `
 
@@ -520,6 +579,15 @@ const StatsWrapper = styled.div`
   width: 50%;
   padding-top: 15rem;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 100%;
+    padding-top: 12.5rem;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 5rem;
+  }
 `
 
 const Columns = styled.div`
@@ -533,15 +601,23 @@ const Columns = styled.div`
     }
   }
   div:nth-child(2) {
-    div {
+    span {
       background-color: var(--color-green);
     }
   }
 
   div:nth-child(3) {
-    div {
+    span {
       background-color: var(--color-lightpink);
     }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    /* justify-content: space-between;
+    width: 85vw; */
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    flex-direction: column;
+    align-items: center;
   }
 `
 
@@ -550,8 +626,8 @@ const Column = styled(motion.div)`
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   text-align: center;
 
   h5 {
@@ -564,11 +640,29 @@ const Column = styled(motion.div)`
     font-family: "calibre-medium";
     white-space: nowrap;
   }
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 0rem;
+    padding-bottom: 5rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    flex-basis: 100%;
+    width: 100%;
+    padding-bottom: 3rem;
+    p {
+      white-space: normal;
+    }
+    h5 {
+      padding-bottom: 1rem;
+      font-size: 20px;
+      margin: 0 auto;
+    }
+  }
 `
 
-const Circle = styled(motion.div)`
+const Circle = styled(motion.span)`
   border-radius: 50%;
   background-color: var(--color-lightblue);
+  aspect-ratio: 1/1;
   height: 255px;
   width: 255px;
   display: flex;
@@ -584,13 +678,74 @@ const Circle = styled(motion.div)`
   p {
     color: var(--color-black);
   }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 225px;
+    height: 225px;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 200px;
+    height: 200px;
+    h6 {
+      line-height: 60px;
+      font-size: 60px;
+      font-family: "calibre-medium";
+    }
+  }
+  @media (max-width: 800px) {
+    width: 150px;
+    height: 150px;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 150px;
+    height: 150px;
+    h6 {
+      font-size: 50px;
+    }
+  }
 `
 
-const Desc = styled.p`
+const Desc = styled.div`
   padding-top: 2.5rem;
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  p:nth-of-type(1) {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid black;
+  }
+
+  @media (max-width: 800px) {
+    padding-top: 1.5rem;
+
+    p:nth-of-type(1) {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin: 0 auto;
+    width: 90%;
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+    margin: 0 0.5rem;
+    p {
+      width: 40%;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 420px) {
+    p {
+      width: 55%;
+    }
+  }
 `
 
 const ConnectWithUs = styled.section`
@@ -601,6 +756,25 @@ const ConnectWithUs = styled.section`
   h3 {
     font-family: "calibre-regular";
     padding-bottom: 10rem;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 65%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 70%;
+    h3 {
+      padding-bottom: 7rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 4rem 0;
+    width: 80%;
+    h3 {
+      padding-bottom: 4rem;
+      font-size: 16px;
+      line-height: 19px;
+    }
   }
 `
 
@@ -636,13 +810,41 @@ const DiscoverMore = styled(motion.div)`
     }
     svg {
       fill: var(--color-white);
+      transform: translatex(0.3rem);
     }
   }
   svg {
-    margin-left: 0.25rem;
-    transform: translateY(0.15rem);
+    margin-left: 10px;
     fill: var(--color-black);
     transition: var(--hover-transition);
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 350px;
+    a {
+      padding: 0.6rem 0.1rem;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 300px;
+    a {
+      padding: 0.6rem 0.1rem;
+      font-size: 20px;
+      line-height: 100%;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    border: 1px solid var(--color-black);
+    width: 225px;
+    a {
+      padding: 0.5rem 0.1rem;
+      font-size: 16px;
+      line-height: 19px;
+      svg {
+        scale: 0.7;
+        margin-left: 5px;
+      }
+    }
   }
 `
 const IconWrapper = styled.div`
@@ -654,7 +856,22 @@ const IconWrapper = styled.div`
     padding-top: 10rem;
     padding-bottom: 4rem;
     text-align: center;
-    font-family: "calibre-regular-italic";
+    font-family: "calibre-regular";
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h5 {
+      padding-top: 7rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h5 {
+      padding-top: 4rem;
+      padding-bottom: 1.5rem;
+      font-family: "calibre-medium";
+      font-size: 16px;
+    }
   }
 `
 
@@ -670,6 +887,15 @@ const Icons = styled.div`
       fill: #b16eac;
     }
   }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 65%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 85%;
+    svg {
+      height: 25px;
+    }
+  }
 `
 
 const WonderWorkersWrapper = styled.section`
@@ -679,37 +905,80 @@ const WonderWorkersWrapper = styled.section`
 
 const LogoWrapper = styled.div`
   position: relative;
+  z-index: 10;
   width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: flex-end;
-  transform: translateY(10rem);
+  align-items: center;
+  padding-bottom: 4rem;
 
   p {
-    align-self: flex-end;
+    align-self: center;
     padding-right: 2rem;
     font-size: 20px;
     line-height: 20px;
     font-family: "calibre-regular";
+    color: black;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+
+    p {
+      align-self: flex-start;
+      font-size: 35px;
+      line-height: 42px;
+      padding-bottom: 2rem;
+      font-family: "calibre-medium";
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    max-width: 80%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    p {
+      align-self: center;
+      text-align: center;
+      padding-right: 0;
+      padding-bottom: 1rem;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: "calibre-medium";
+    }
   }
 `
 
 const EventsWrapper = styled.section`
   display: flex;
-  margin: 0 auto;
   width: 80%;
-  margin-top: 10rem;
+  margin: 10rem auto;
+  margin-bottom: 10rem;
   h2 {
     padding-bottom: 5rem;
   }
-`
+  @media (max-width: ${breakpoints.xl}px) {
+    flex-direction: column;
+    border: 1px solid red;
+  }
+  `
 
 const FutureEvents = styled.div`
   width: 50%;
-`
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 100%;
+  }
+  `
 
 const PastEvents = styled.div`
   width: 50%;
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 100%;
+}
 `
 
 const EventsList = styled(motion.div)``
@@ -725,6 +994,8 @@ const Event = styled(motion.div)`
 `
 
 const EventImage = styled.div`
+  width: 240px;
+  height: 240px;
   min-width: 240px;
   min-height: 240px;
   border-radius: 10px;
@@ -732,6 +1003,14 @@ const EventImage = styled.div`
   background-color: var(--color-green);
   border: 2px solid var(--color-black);
   box-shadow: 6px 6px 0px #1a1748;
+
+
+  @media (max-width: ${breakpoints.m}px) {
+    width: 180px;
+    height: 180px;
+    min-width: none;
+    min-height: none;
+  }
 `
 const EventText = styled.div``
 

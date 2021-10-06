@@ -26,12 +26,10 @@ const LatestProjectsCarousel = () => {
 
   // event handlers for displaying pause/play button
   const setHoverTrue = () => {
-    // only execute if first play button has been clicked
-    firstPlayClick && setHover(true)
+    setHover(true)
   }
   const setHoverFalse = () => {
-    // only execute if first play button has been clicked
-    firstPlayClick && setHover(false)
+    setHover(false)
   }
 
   // ---------- 2. Intersection observer to pause video when not in view ----------
@@ -132,8 +130,8 @@ const LatestProjectsCarousel = () => {
               return (
                 <EmblaSlide
                   key={index}
-                  onHoverStart={setHoverTrue}
-                  onHoverEnd={setHoverFalse}
+                  onHoverStart={firstPlayClick && setHoverTrue}
+                  onHoverEnd={firstPlayClick && setHoverFalse}
                 >
                   {/* Only render this button after the first slide's button has been pressed or if user slides to second/third slide  */}
                   {firstPlayClick && (

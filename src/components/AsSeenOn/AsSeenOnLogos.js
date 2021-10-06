@@ -3,12 +3,12 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { StaticImage } from "gatsby-plugin-image"
-import breakpoints from "./breakpoints"
+import breakpoints from "../breakpoints"
 
-// We have a separate component for the home page (HomePageAsSeenOn) because the logos are larger on only the homepage
+// We have a separate component for the home page (AsSeenOnHomepage) because the logos are larger on only the homepage
 // Since we're using gatsby-image, it's easier to just create another component for these rather than dynamically passing a size value to the image
 
-export const HomePageAsSeenOn = () => {
+export const AsSeenOnLogosHome = () => {
   const ref = useRef()
   const [homepagelogoRef, homepagelogoInView] = useInView({
     root: null,
@@ -35,7 +35,6 @@ export const HomePageAsSeenOn = () => {
     visible: {
       transition: {
         staggerChildren: 0.125,
-        // delayChildren: .2,
       },
     },
     hidden: {},
@@ -66,7 +65,7 @@ export const HomePageAsSeenOn = () => {
       >
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/Forbes.png"
+            src="../../images/Home/asSeenOn/Forbes.png"
             alt="Forbes logo"
             placeholder="none"
             quality={100}
@@ -76,7 +75,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/CNBC.png"
+            src="../../images/Home/asSeenOn/CNBC.png"
             alt="CNBC logo"
             placeholder="none"
             quality={100}
@@ -86,7 +85,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/npr.png"
+            src="../../images/Home/asSeenOn/npr.png"
             alt="n p r logo"
             placeholder="none"
             quality={100}
@@ -96,7 +95,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/edc.png"
+            src="../../images/Home/asSeenOn/edc.png"
             alt="e d c logo"
             placeholder="none"
             quality={100}
@@ -106,7 +105,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/Bloomberg.png"
+            src="../../images/Home/asSeenOn/Bloomberg.png"
             alt="Forbes logo"
             placeholder="none"
             quality={100}
@@ -116,7 +115,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/B2.png"
+            src="../../images/Home/asSeenOn/B2.png"
             alt="B2 logo"
             placeholder="none"
             quality={100}
@@ -131,10 +130,9 @@ export const HomePageAsSeenOn = () => {
         initial="hidden"
         animate={homepagelogoMobileInView && "visible"}
       >
-        {/* <div> */}
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/Forbes.png"
+            src="../../images/Home/asSeenOn/Forbes.png"
             alt="Forbes logo"
             placeholder="none"
             quality={100}
@@ -144,7 +142,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/CNBC.png"
+            src="../../images/Home/asSeenOn/CNBC.png"
             alt="CNBC logo"
             placeholder="none"
             quality={100}
@@ -154,7 +152,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/npr.png"
+            src="../../images/Home/asSeenOn/npr.png"
             alt="n p r logo"
             placeholder="none"
             quality={100}
@@ -162,11 +160,9 @@ export const HomePageAsSeenOn = () => {
             imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
-        {/* </div> */}
-        {/* <div> */}
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/edc.png"
+            src="../../images/Home/asSeenOn/edc.png"
             alt="e d c logo"
             placeholder="none"
             quality={100}
@@ -176,7 +172,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/Bloomberg.png"
+            src="../../images/Home/asSeenOn/Bloomberg.png"
             alt="Forbes logo"
             placeholder="none"
             quality={100}
@@ -186,7 +182,7 @@ export const HomePageAsSeenOn = () => {
         </motion.div>
         <motion.div variants={logoMask}>
           <StaticImage
-            src="../images/Home/asSeenOn/B2.png"
+            src="../../images/Home/asSeenOn/B2.png"
             alt="B2 logo"
             placeholder="none"
             quality={100}
@@ -194,24 +190,38 @@ export const HomePageAsSeenOn = () => {
             imgStyle={{ objectFit: "contain" }}
           />
         </motion.div>
-        {/* </div> */}
       </LogosHomepageMobile>
     </>
   )
 }
 
-export const AsSeenOn = () => {
-  const [logosRef, logosInView] = useInView({
+export const AsSeenOnLogosAbout = () => {
+  const ref = useRef()
+  const [aboutpagelogoRef, aboutpagelogoInView] = useInView({
     root: null,
-    threshold: 0.9,
+    threshold: 0.75,
     triggerOnce: true,
   })
+  const [aboutpagelogoRefMobile, aboutpagelogoMobileInView] = useInView({
+    root: null,
+    threshold: 0.75,
+    triggerOnce: true,
+  })
+
+  const setRefs = useCallback(
+    //assign multiple refs with useInView
+    node => {
+      ref.current = node
+      aboutpagelogoRef(node)
+      aboutpagelogoRefMobile(node)
+    },
+    [aboutpagelogoRef, aboutpagelogoRefMobile]
+  )
 
   const logoParent = {
     visible: {
       transition: {
         staggerChildren: 0.125,
-        // delayChildren: .2,
       },
     },
     hidden: {},
@@ -231,87 +241,158 @@ export const AsSeenOn = () => {
       scaleY: 0,
     },
   }
+
   return (
-    <Logos
-      ref={logosRef}
-      variants={logoParent}
-      initial="hidden"
-      animate={logosInView && "visible"}
-    >
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/Forbes.png"
-          alt="Forbes logo"
-          placeholder="none"
-          quality={100}
-          style={{ height: "100%", width: "100%" }}
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/CNBC.png"
-          alt="CNBC logo"
-          placeholder="none"
-          quality={100}
-          style={{ height: "100%", width: "100%" }}
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/npr.png"
-          alt="n p r logo"
-          placeholder="none"
-          quality={100}
-          style={{ height: "100%", width: "100%" }}
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/edc.png"
-          alt="e d c logo"
-          placeholder="none"
-          quality={100}
-          style={{ height: "100%", width: "100%" }}
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/Bloomberg.png"
-          alt="Forbes logo"
-          placeholder="none"
-          quality={100}
-          style={{ height: "100%", width: "100%" }}
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </motion.div>
-      <motion.div variants={logoMask}>
-        <StaticImage
-          src="../images/Home/asSeenOn/B2.png"
-          alt="B2 logo"
-          placeholder="none"
-          quality={100}
-          style={{ height: "100%", width: "100%" }}
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </motion.div>
-    </Logos>
+    <>
+      <LogosAboutpage
+        ref={aboutpagelogoRef}
+        variants={logoParent}
+        initial="hidden"
+        animate={aboutpagelogoInView && "visible"}
+      >
+        <motion.div variants={logoMask}>
+          <StaticImage
+            height={40}
+            src="../../images/Home/asSeenOn/Forbes.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            height={40}
+            src="../../images/Home/asSeenOn/CNBC.png"
+            alt="CNBC logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            height={40}
+            src="../../images/Home/asSeenOn/npr.png"
+            alt="n p r logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            height={40}
+            src="../../images/Home/asSeenOn/edc.png"
+            alt="e d c logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            height={40}
+            src="../../images/Home/asSeenOn/Bloomberg.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            height={40}
+            src="../../images/Home/asSeenOn/B2.png"
+            alt="B2 logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+      </LogosAboutpage>
+      <LogosAboutpageMobile
+        ref={aboutpagelogoRefMobile}
+        variants={logoParent}
+        initial="hidden"
+        animate={aboutpagelogoMobileInView && "visible"}
+      >
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../../images/Home/asSeenOn/Forbes.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../../images/Home/asSeenOn/CNBC.png"
+            alt="CNBC logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../../images/Home/asSeenOn/npr.png"
+            alt="n p r logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../../images/Home/asSeenOn/edc.png"
+            alt="e d c logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../../images/Home/asSeenOn/Bloomberg.png"
+            alt="Forbes logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+        <motion.div variants={logoMask}>
+          <StaticImage
+            src="../../images/Home/asSeenOn/B2.png"
+            alt="B2 logo"
+            placeholder="none"
+            quality={100}
+            style={{ height: "100%", width: "100%" }}
+            imgStyle={{ objectFit: "contain" }}
+          />
+        </motion.div>
+      </LogosAboutpageMobile>
+    </>
   )
 }
 
 const LogosHomepage = styled(motion.div)`
   max-width: 70%;
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
   padding-bottom: 5rem;
   height: 200px;
-
   display: grid;
-
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 
   div {
@@ -349,44 +430,50 @@ const LogosHomepageMobile = styled(motion.div)`
     min-height: 100px;
     img {
       max-height: 40px;
-      min-width: 50px;
+      /* min-width: 50px; */
     }
   }
 `
-const Logos = styled(motion.div)`
-  min-width: 40%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* padding-bottom: 5rem; */
-  height: 200px;
 
+const LogosAboutpage = styled(motion.div)`
+  max-width: 50%;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   div {
+    align-self: center;
+    margin: 0 auto;
     transform-origin: bottom;
-    overflow: hidden;
-    /* max-height: 50px; */
-    height: 50px;
-    margin: 0 .25rem;
   }
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    max-width: 60%;
+  }
   @media (max-width: ${breakpoints.xl}px) {
-    min-width: 80%;
-    img {
-      max-height: 45px;
-    }
+    max-width: 70%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    max-width: 80%;
   }
 
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+    gap: 1rem;
+  }
+`
+const LogosAboutpageMobile = styled(motion.div)`
+  display: none;
+  @media (max-width: ${breakpoints.m}px) {
     width: 90%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto;
     grid-template-rows: 1fr 1fr;
     justify-items: center;
     align-items: center;
-    min-height: 100px;
+    row-gap: 1rem;
     img {
       max-height: 40px;
-      min-width: 50px;
+      /* min-width: 50px; */
     }
   }
 `
