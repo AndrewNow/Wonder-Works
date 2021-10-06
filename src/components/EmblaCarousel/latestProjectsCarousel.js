@@ -88,11 +88,11 @@ const LatestProjectsCarousel = () => {
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: "https://i.imgur.com/yNmhs4y.png",
+      light: "false",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: "https://i.imgur.com/yNmhs4y.png",
+      light: "false",
     },
   ]
 
@@ -151,7 +151,7 @@ const LatestProjectsCarousel = () => {
                     url={video.Src}
                     width="100%"
                     height="100%"
-                    playsinline={true}
+                    // playsinline={true}
                     onEnded={() => setTimeout(() => scrollNext(), 1500)}
                     onProgress={({ played }) =>
                       !paused && setVideoProgress(played * 100)
