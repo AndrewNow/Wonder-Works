@@ -268,8 +268,8 @@ const GlobalWrapper = styled.div`
     p,
     ul,
     li {
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 16px;
+      line-height: 19px;
       letter-spacing: 0.01rem;
     }
   }

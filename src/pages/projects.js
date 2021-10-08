@@ -14,6 +14,7 @@ import {
 } from "../context/globalContext"
 import ReactPlayer from "react-player/file"
 import { Arrow } from "../svg/miscellaneous"
+import breakpoints from "../components/breakpoints"
 
 const Projects = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Projects`
@@ -238,6 +239,74 @@ const Projects = ({ data }) => {
           </SmallCirclesWrapper>
         </SVGWrapper>
       </OverlookBay>
+      <Traitor ref={traitorRef}>
+        <TraitorTitle
+          variants={parent}
+          initial="hidden"
+          animate={traitorInView ? "visible" : "hidden"}
+        >
+          <h1>
+            <motion.div variants={title}>Traitor</motion.div>
+          </h1>
+        </TraitorTitle>
+        <TraitorBody
+          variants={parent}
+          initial="hidden"
+          animate={traitorInView ? "visible" : "hidden"}
+        >
+          <motion.p variants={body}>
+            Test out your intuition in this game of social deduction. Can you
+            figure who the traitor is among your friends?
+          </motion.p>
+          <TraitorRobloxLink
+            variants={body}
+            href=""
+            target="_blank"
+            rel="noreferrer"
+            whileTap={{ scale: 0.9 }}
+          >
+            Play now on Roblox <Arrow />
+          </TraitorRobloxLink>
+        </TraitorBody>
+        <SVGWrapper>
+          <TriangleWrapper />
+          <TraitorStarsWrapper>
+            <Svg.TraitorStars />
+          </TraitorStarsWrapper>
+        </SVGWrapper>
+        <TraitorLeftImageWrapper style={{ y: smallerParallax }}>
+          <StaticImage
+            src="../images/Projects/traitorleft.png"
+            alt="Image of a Roblox character with a knife sneaking up on another character, who is preoccupied with an electrical task"
+            placeholder="none"
+            quality={100}
+          />
+        </TraitorLeftImageWrapper>
+        <TraitorMiddleImageWrapper>
+          <StaticImage
+            src="../images/Projects/traitormiddle.png"
+            alt="Character with a gun pointed at them"
+            placeholder="none"
+            quality={100}
+          />
+        </TraitorMiddleImageWrapper>
+        <TraitorRightImageWrapper style={{ y: smallParallax }}>
+          <StaticImage
+            src="../images/Projects/traitorright.png"
+            alt="Image of a Roblox character, back facing the viewer, with a gun pointed at another character."
+            placeholder="none"
+            quality={100}
+          />
+        </TraitorRightImageWrapper>
+        <TextLogoWrapper>
+          <StaticImage
+            src="../images/Projects/traitorTextLogo.png"
+            alt="Traitor logo in a metallic styled font."
+            placeholder="none"
+            quality={100}
+          />
+        </TextLogoWrapper>
+      </Traitor>
       <Timmeh ref={timmehRef}>
         <TimmehTitle
           variants={parent}
@@ -329,6 +398,24 @@ const Projects = ({ data }) => {
             quality={100}
           />
         </TimmehBottomWrapper>
+        <TimmehMobileWrapper
+          initial={{ scale: 0 }}
+          animate={{
+            scale: timmehInView ? 1 : 0,
+            transition: {
+              delay: 0.15,
+              duration: 1,
+            },
+          }}
+          style={{ y: smallParallax }}
+        >
+          <StaticImage
+            src="../images/Projects/timmehmobile.png"
+            alt="Roblox characters laid on the page"
+            placeholder="none"
+            quality={100}
+          />
+        </TimmehMobileWrapper>
         <SVGWrapper>
           <BigGearsWrapper style={{ y: smallerParallax }}>
             <Svg.TimmehBigGears />
@@ -338,74 +425,6 @@ const Projects = ({ data }) => {
           </SmallGearsWrapper>
         </SVGWrapper>
       </Timmeh>
-      <Traitor ref={traitorRef}>
-        <TraitorTitle
-          variants={parent}
-          initial="hidden"
-          animate={traitorInView ? "visible" : "hidden"}
-        >
-          <h1>
-            <motion.div variants={title}>Traitor</motion.div>
-          </h1>
-        </TraitorTitle>
-        <TraitorBody
-          variants={parent}
-          initial="hidden"
-          animate={traitorInView ? "visible" : "hidden"}
-        >
-          <motion.p variants={body}>
-            Test out your intuition in this game of social deduction. Can you
-            figure who the traitor is among your friends?
-          </motion.p>
-          <TraitorRobloxLink
-            variants={body}
-            href=""
-            target="_blank"
-            rel="noreferrer"
-            whileTap={{ scale: 0.9 }}
-          >
-            Play now on Roblox <Arrow />
-          </TraitorRobloxLink>
-        </TraitorBody>
-        <SVGWrapper>
-          <TriangleWrapper />
-          <TraitorStarsWrapper>
-            <Svg.TraitorStars />
-          </TraitorStarsWrapper>
-        </SVGWrapper>
-        <TraitorLeftImageWrapper style={{ y: smallerParallax }}>
-          <StaticImage
-            src="../images/Projects/traitorleft.png"
-            alt="Image of a Roblox character with a knife sneaking up on another character, who is preoccupied with an electrical task"
-            placeholder="none"
-            quality={100}
-          />
-        </TraitorLeftImageWrapper>
-        <TraitorMiddleImageWrapper>
-          <StaticImage
-            src="../images/Projects/traitormiddle.png"
-            alt="Character with a gun pointed at them"
-            placeholder="none"
-            quality={100}
-          />
-        </TraitorMiddleImageWrapper>
-        <TraitorRightImageWrapper style={{ y: smallParallax }}>
-          <StaticImage
-            src="../images/Projects/traitorright.png"
-            alt="Image of a Roblox character, back facing the viewer, with a gun pointed at another character."
-            placeholder="none"
-            quality={100}
-          />
-        </TraitorRightImageWrapper>
-        <TextLogoWrapper>
-          <StaticImage
-            src="../images/Projects/traitorTextLogo.png"
-            alt="Traitor logo in a metallic styled font."
-            placeholder="none"
-            quality={100}
-          />
-        </TextLogoWrapper>
-      </Traitor>
 
       <ShopSection ref={shopRef}>
         <ShopFlex>
@@ -628,12 +647,17 @@ const CarouselWrapper = styled.section`
   background-color: var(--color-black);
 `
 
+// ----------------------- Overlook Bay -----------------------
 const OverlookBay = styled.section`
   position: relative;
   overflow: hidden;
   background-color: var(--color-darkblue);
   padding-bottom: 10rem;
   height: 110vh;
+
+  @media (max-width: ${breakpoints.xs}px) {
+    height: 130vh;
+  }
 `
 
 const OverlookBayTitle = styled(motion.div)`
@@ -651,19 +675,79 @@ const OverlookBayTitle = styled(motion.div)`
     color: var(--color-white);
     overflow: hidden;
   }
-`
+  @media (max-width: ${breakpoints.xl}px) {
+    padding: 15rem 0;
+    padding-bottom: 5rem;
+    h1 {
+      text-align: center;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 3rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    z-index: 20;
+    padding: 0;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+    h1 {
+      font-size: 70px;
+      line-height: 65px;
+    }
+  }
+  @media (max-width: 375px) {
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
+  }
 
-// ----------------------- Overlook Bay -----------------------
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
+`
 
 const OverlookBayBody = styled(motion.div)`
   width: 32.5%;
   padding-left: 3rem;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 20;
   p {
     color: var(--color-white);
     padding-bottom: 5rem;
+  }
+  @media (max-width: 1650px) {
+    width: 38%;
+    padding-left: 2rem;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    text-align: center;
+    width: 55%;
+    padding-left: 0rem;
+  }
+  @media (max-width: 1080px) {
+    width: 40%;
+  }
+  @media (max-width: 1024px) {
+    width: 55%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 50%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 70%;
+    p {
+      padding-bottom: 4rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 80%;
+    padding-left: 0rem;
+    p {
+      padding-bottom: 3rem;
+    }
   }
 `
 
@@ -688,9 +772,25 @@ const OverlookRobloxLink = styled(motion.a)`
     }
   }
   svg {
-    transform: translateY(.15rem);
+    transform: translateY(0.15rem);
     fill: var(--color-white);
     transition: var(--hover-transition);
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    border: 1px solid var(--color-white);
+    padding: 0.5rem 1.5rem;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    border: 1px solid var(--color-white);
+    font-size: 16px;
+    line-height: 19px;
+    padding: 0.5rem 1.5rem;
+    svg {
+      transform: translateY(0.4rem);
+      scale: 0.7;
+    }
   }
 `
 
@@ -706,132 +806,308 @@ const SVGWrapper = styled.div`
 const SmallCirclesWrapper = styled(motion.div)`
   position: absolute;
   top: 10%;
-  right: 0;
+  right: -5%;
+  @media (max-width: 1800px) {
+    width: 70%;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 60%;
+    right: 0%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 50%;
+    height: 50%;
+    right: 10%;
+    bottom: 0%;
+    top: auto;
+    transform: rotate(90deg);
+  }
+  @media (max-width: 1080px) {
+    width: 90%;
+    height: 90%;
+    right: -55%;
+    bottom: 5%;
+    transform: none;
+  }
+  @media (max-width: 1024px) {
+    width: 50%;
+    height: 50%;
+    right: 10%;
+    bottom: 0%;
+    transform: rotate(90deg);
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    right: -5%;
+    height: auto;
+    transform: none !important;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 40%;
+    right: -15%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: auto;
+    height: auto;
+    bottom: 4%;
+    right: 4%;
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    right: -15%;
+  }
 `
 const BigCirclesWrapper = styled.div`
   position: absolute;
   top: 12.5%;
   left: -2.5%;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      width: 120%;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    svg {
+      width: 150%;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    svg {
+      width: 200%;
+    }
+  }
 `
 
 const LighthouseImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 3;
   top: 0;
+  @media (max-width: 1850px) {
+    div {
+      transform: scale(0.9);
+    }
+  }
+  @media (max-width: 1650px) {
+    left: -5%;
+    div {
+      transform: scale(0.8);
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    left: -12%;
+    top: auto;
+    bottom: 9%;
+    div {
+      transform: scale(0.7);
+    }
+  }
+  @media (max-width: 1080px) {
+    left: -15%;
+    bottom: 0%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: 1024px) {
+    left: -12%;
+    top: auto;
+    bottom: 9%;
+    div {
+      transform: scale(0.7);
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    left: -20%;
+    div {
+      transform: scale(0.65);
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    left: -25%;
+    bottom: -5%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    left: -50%;
+    bottom: -10%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: 375px) {
+    bottom: -17%;
+    left: -55%;
+    div {
+      transform: scale(0.4);
+    }
+  }
 `
 const MothImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 4;
   top: 50%;
   left: 13%;
+
+  @media (max-width: 1850px) {
+    div {
+      transform: scale(0.9);
+    }
+  }
+  @media (max-width: 1650px) {
+    left: 8%;
+    div {
+      transform: scale(0.8);
+    }
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    top: 55%;
+    div {
+      transform: scale(0.75);
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    left: 5%;
+    top: auto;
+    bottom: -5%;
+    div {
+      transform: scale(0.7);
+    }
+  }
+  @media (max-width: 1080px) {
+    left: 0%;
+    top: auto;
+    bottom: -15%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: 1024px) {
+    left: 5%;
+    top: auto;
+    bottom: -5%;
+    div {
+      transform: scale(0.7);
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    left: -2%;
+    bottom: -12%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    left: -15%;
+    bottom: -20%;
+    div {
+      transform: scale(0.4);
+    }
+  }
+  @media (max-width: 375px) {
+    bottom: -25%;
+  }
 `
 const MermaidImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 5;
   top: 40%;
   right: 3%;
+
+  @media (max-width: 1850px) {
+    right: 0%;
+    div {
+      transform: scale(0.9);
+    }
+  }
+  @media (max-width: 1600px) {
+    right: 0%;
+    div {
+      transform: scale(0.65);
+    }
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    right: -5%;
+    div {
+      transform: scale(0.6);
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    right: -10%;
+    top: 45%;
+    div {
+      transform: scale(0.7);
+    }
+  }
+  @media (max-width: 1080px) {
+    right: -15%;
+    top: 35%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: 1024px) {
+    right: -10%;
+    top: 45%;
+    div {
+      transform: scale(0.7);
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    right: -15%;
+    div {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    right: -25%;
+    top: 45%;
+    div {
+      transform: scale(0.4);
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    right: -55%;
+    top: -10%;
+    div {
+      transform: scale(0.3);
+    }
+  }
+  @media (max-width: 375px) {
+    top: -20%;
+    div {
+      transform: scale(0.25);
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: -10%;
+  }
 `
 const TextLogoWrapper = styled.div`
   z-index: 10;
   position: absolute;
   bottom: 5%;
   right: 3%;
-`
 
-// ----------------------- Timmeh -----------------------
-const Timmeh = styled.section`
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-purple);
-  padding-bottom: 10rem;
-  height: 110vh;
-`
-
-const TimmehTitle = styled(motion.div)`
-  width: 85%;
-  margin: 0 auto;
-  padding-left: 5rem;
-  padding-bottom: 5rem;
-  padding-top: 15%;
-  position: relative;
-  z-index: 2;
-  h1 {
-    font-family: "calibre-semibold";
-    font-size: 10.93vw;
-    line-height: 8.85vw;
-    text-transform: uppercase;
-    text-align: left;
-    color: var(--color-white);
+  @media (max-width: ${breakpoints.l}px) {
+    transform: scale(0.7);
+    bottom: 3%;
   }
-`
-const TimmehBody = styled(motion.div)`
-  width: 85%;
-  margin: 0 auto;
-  padding-left: 5rem;
-  position: relative;
-  z-index: 2;
-  p {
-    width: 45%;
-    color: var(--color-white);
-    padding-bottom: 5rem;
+  @media (max-width: ${breakpoints.s}px) {
+    transform: scale(0.3);
+    bottom: 2.5%;
+    right: -16%;
   }
-`
-
-const TimmehRobloxLink = styled(motion.a)`
-  border: 2px solid var(--color-white);
-  width: 50%;
-  color: var(--color-white);
-  border-radius: 50px;
-  padding: 0.75rem 2.75rem;
-  transition: var(--hover-transition);
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: "calibre-regular";
-  font-size: 25px;
-  line-height: 30px;
-  &:hover {
-    background-color: var(--color-white);
-    color: var(--color-purple);
-    svg {
-      fill: var(--color-purple);
-    }
+  @media (max-width: ${breakpoints.xs}px) {
+    right: -28%;
+    bottom: 0;
   }
-  svg {
-    transform: translateY(0.15rem);
-    fill: var(--color-white);
-    transition: var(--hover-transition);
-  }
-`
-const TimmehTopWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 3;
-  top: 5%;
-  right: 15%;
-`
-const TimmehMiddleWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 4;
-  top: 10%;
-  right: 0;
-`
-
-const TimmehBottomWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 5;
-  top: 50%;
-  right: 10%;
-`
-
-const BigGearsWrapper = styled(motion.div)`
-  position: absolute;
-  top: 35%;
-  left: -10%;
-`
-const SmallGearsWrapper = styled(motion.div)`
-  position: absolute;
-  top: 20%;
-  left: 5%;
 `
 
 // ----------------------- Traitor -----------------------
@@ -841,6 +1117,10 @@ const Traitor = styled.section`
   background-color: var(--color-black);
   padding-bottom: 10rem;
   height: 110vh;
+
+  @media (max-width: ${breakpoints.xs}px) {
+    height: 130vh;
+  }
 `
 
 const TraitorTitle = styled(motion.div)`
@@ -859,6 +1139,36 @@ const TraitorTitle = styled(motion.div)`
     text-align: left;
     color: var(--color-white);
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding: 15rem 0;
+    padding-bottom: 5rem;
+    h1 {
+      text-align: center;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 3rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    z-index: 20;
+    padding: 0;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+    h1 {
+      font-size: 70px;
+      line-height: 65px;
+    }
+  }
+  @media (max-width: 375px) {
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
 `
 const TraitorBody = styled(motion.div)`
   width: 85%;
@@ -870,6 +1180,37 @@ const TraitorBody = styled(motion.div)`
     width: 35%;
     color: var(--color-white);
     padding-bottom: 5rem;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    text-align: center;
+    width: 48%;
+    padding-left: 0rem;
+    p {
+      width: 100%;
+    }
+  }
+  @media (max-width: 1080px) {
+    width: 40%;
+  }
+  @media (max-width: 1024px) {
+    width: 48%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 50%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 70%;
+    p {
+      padding-bottom: 4rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 80%;
+    padding-left: 0rem;
+    p {
+      padding-bottom: 3rem;
+    }
   }
 `
 
@@ -898,6 +1239,21 @@ const TraitorRobloxLink = styled(motion.a)`
     fill: var(--color-white);
     transition: var(--hover-transition);
   }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    border: 1px solid var(--color-white);
+    padding: 0.5rem 1.5rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    border: 1px solid var(--color-white);
+    font-size: 16px;
+    line-height: 19px;
+    padding: 0.5rem 1.5rem;
+    svg {
+      transform: translateY(0.4rem);
+      scale: 0.7;
+    }
+  }
 `
 
 const TriangleWrapper = styled.div`
@@ -908,6 +1264,9 @@ const TriangleWrapper = styled.div`
   z-index: 0;
   background-color: var(--color-purple);
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  @media (max-width: 1800px) {
+    top: 1px;
+  }
 `
 
 const TraitorStarsWrapper = styled.div`
@@ -915,6 +1274,46 @@ const TraitorStarsWrapper = styled.div`
   z-index: 1;
   right: 0;
   top: 50%;
+  @media (max-width: ${breakpoints.xxl}px) {
+    top: 52%;
+    right: -22.5%;
+    svg {
+      width: 70%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 40%;
+    right: 18%;
+    svg {
+      width: auto;
+    }
+  }
+  @media (max-width: 1080px) {
+    left: 78%;
+    top: 44%;
+  }
+  @media (max-width: 1024px) {
+    top: 43%;
+    left: 21%;
+    svg {
+      width: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 46%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 55%;
+    left: 22%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 13%;
+    left: 5%;
+  }
+  @media (max-width: 375px) {
+    top: 10%;
+  }
 `
 
 const TraitorLeftImageWrapper = styled(motion.div)`
@@ -922,18 +1321,460 @@ const TraitorLeftImageWrapper = styled(motion.div)`
   z-index: 2;
   left: 0;
   bottom: -30%;
+
+  @media (max-width: 1800px) {
+    max-width: 700px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    max-width: 500px;
+    bottom: -15%;
+  }
+  @media (max-width: 1080px) {
+    max-width: 470px;
+    bottom: -20%;
+  }
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `
 const TraitorMiddleImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
   left: 35%;
   bottom: 20%;
+
+  @media (max-width: 1800px) {
+    max-width: 500px;
+    left: 40%;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    left: 55%;
+    bottom: 15%;
+    max-width: 400px;
+  }
+
+  @media (max-width: 1080px) {
+    max-width: 400px;
+    left: 54%;
+    bottom: 8%;
+  }
+  @media (max-width: 1024px) {
+    left: -3%;
+    max-width: 550px;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    max-width: 450px;
+    left: -5%;
+    bottom: 10%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    max-width: 350px;
+    left: 0;
+
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    left: -5%;
+    max-width: 225px;
+    bottom: 25%;
+  }
 `
 const TraitorRightImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 3;
   bottom: -35%;
   right: 0;
+
+  @media (max-width: 1800px) {
+    max-width: 800px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    right: -5%;
+    bottom: -25%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    max-width: 600px;
+    right: -15%;
+    bottom: -20%;
+  }
+  @media (max-width: 1080px) {
+    max-width: 400px;
+    bottom: -20%;
+    right: -10%;
+  }
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    bottom: -18%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    max-width: 630px;
+    right: -15%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    right: -20%;
+    bottom: -15%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    max-width: 400px;
+    right: -40%;
+    bottom: -18%;
+  }
+  @media (max-width: 375px) {
+    bottom: -25%;
+  }
+`
+
+// ----------------------- Timmeh -----------------------
+const Timmeh = styled.section`
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-purple);
+  padding-bottom: 10rem;
+  height: 110vh;
+
+  @media (max-width: ${breakpoints.xs}px) {
+    height: 130vh;
+  }
+`
+
+const TimmehTitle = styled(motion.div)`
+  width: 85%;
+  margin: 0 auto;
+  padding-left: 5rem;
+  padding-bottom: 5rem;
+  padding-top: 15%;
+  position: relative;
+  z-index: 2;
+  h1 {
+    font-family: "calibre-semibold";
+    font-size: 10.93vw;
+    line-height: 8.85vw;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--color-white);
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding: 15rem 0;
+    padding-bottom: 5rem;
+    h1 {
+      text-align: center;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding-bottom: 3rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    z-index: 20;
+    padding: 0;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
+    h1 {
+      font-size: 70px;
+      line-height: 65px;
+    }
+  }
+  @media (max-width: 375px) {
+    padding-top: 6.5rem;
+    padding-bottom: 2rem;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
+`
+const TimmehBody = styled(motion.div)`
+  width: 85%;
+  margin: 0 auto;
+  padding-left: 5rem;
+  position: relative;
+  z-index: 20;
+  p {
+    width: 45%;
+    color: var(--color-white);
+    padding-bottom: 5rem;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    text-align: center;
+    width: 48%;
+    padding-left: 0rem;
+    p {
+      width: 100%;
+    }
+  }
+  @media (max-width: 1080px) {
+    width: 40%;
+  }
+  @media (max-width: 1024px) {
+    width: 48%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 50%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 70%;
+    p {
+      padding-bottom: 4rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 80%;
+    padding-left: 0rem;
+    p {
+      padding-bottom: 3rem;
+    }
+  }
+`
+
+const TimmehRobloxLink = styled(motion.a)`
+  border: 2px solid var(--color-white);
+  width: 50%;
+  color: var(--color-white);
+  border-radius: 50px;
+  padding: 0.75rem 2.75rem;
+  transition: var(--hover-transition);
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "calibre-regular";
+  font-size: 25px;
+  line-height: 30px;
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-purple);
+    svg {
+      fill: var(--color-purple);
+    }
+  }
+  svg {
+    transform: translateY(0.15rem);
+    fill: var(--color-white);
+    transition: var(--hover-transition);
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    border: 1px solid var(--color-white);
+    padding: 0.5rem 1.5rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    border: 1px solid var(--color-white);
+    font-size: 16px;
+    line-height: 19px;
+    padding: 0.5rem 1.5rem;
+    svg {
+      transform: translateY(0.4rem);
+      scale: 0.7;
+    }
+  }
+`
+const TimmehTopWrapper = styled(motion.div)`
+  position: absolute;
+  z-index: 3;
+  top: 5%;
+  right: 15%;
+  @media (max-width: 1800px) {
+    right: 15%;
+    top: 10%;
+    max-width: 525px;
+  }
+  @media (max-width: 1400px) {
+    right: 10%;
+    top: 10%;
+    max-width: 500px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
+  }
+`
+
+const TimmehMiddleWrapper = styled(motion.div)`
+  position: absolute;
+  z-index: 4;
+  top: 10%;
+  right: 0;
+  @media (max-width: 1800px) {
+    right: 4%;
+    top: 20%;
+    max-width: 600px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
+  }
+`
+
+const TimmehBottomWrapper = styled(motion.div)`
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  right: 10%;
+
+  @media (max-width: 1800px) {
+    top: 55%;
+    max-width: 600px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    display: none;
+  }
+`
+
+const TimmehMobileWrapper = styled(motion.div)`
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    bottom: 0%;
+    left: 5%;
+  }
+  @media (max-width: 1080px) {
+    bottom: -37%;
+    left: 6%;
+    width: 86%;
+  }
+  @media (max-width: 1024px) {
+    bottom: 0%;
+    left: 5%;
+    width: auto;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: -15%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    bottom: 0%;
+  }
+  @media (max-width: 390px) {
+    bottom: -5%;
+  }
+  @media (max-width: 375px) {
+    bottom: -15%;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    bottom: -15%;
+  }
+`
+
+const SmallGearsWrapper = styled(motion.div)`
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  svg {
+    width: 100%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 25%;
+    left: 2%;
+    svg {
+      width: auto;
+      height: auto;
+    }
+  }
+  @media (max-width: 1080px) {
+    top: 25%;
+    left: 2%;
+  }
+  @media (max-width: 1024px) {
+    top: 25%;
+    left: 2%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 35%;
+    left: -10%;
+    svg {
+      transform: scale(0.8);
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    left: -30%;
+    svg {
+      transform: scale(0.6);
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 24%;
+    left: auto;
+    right: 1%;
+    svg {
+      transform: scale(1);
+    }
+  }
+  @media (max-width: 414px) {
+    top: 25%;
+    right: -1%;
+  }
+  @media (max-width: 390px) {
+    top: 25%;
+    right: -1%;
+  }
+  @media (max-width: 375px) {
+    top: 28%;
+    right: -3%;
+  }
+`
+
+const BigGearsWrapper = styled(motion.div)`
+  position: absolute;
+  top: 35%;
+  left: -10%;
+  svg {
+    width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    left: -5%;
+    top: 40%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: auto;
+    bottom: 5%;
+    left: 0;
+    svg {
+      height: auto;
+      width: auto;
+    }
+  }
+  @media (max-width: 1080px) {
+    top: auto;
+    bottom: -25%;
+    left: -5%;
+  }
+  @media (max-width: 1024px) {
+    top: auto;
+    bottom: 5%;
+    left: 0;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: -15%;
+    left: -20%;
+    svg {
+      transform: scale(.6);
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    bottom: -10%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    left: -8%;
+    bottom: 5%;
+    svg {
+      transform: scale(1);
+    }
+  }
+  @media (max-width: 414px) {
+    left: -5%;
+    bottom: 12%;
+  }
+  @media (max-width: 410px) {
+    left: -8%;
+    bottom: 5%;
+  }
+  @media (max-width: 375px) {
+    left: -10%;
+    bottom: 0%;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    bottom: 0%;
+  }
 `
 
 const ShopSection = styled.div`
@@ -942,6 +1783,10 @@ const ShopSection = styled.div`
   margin: 0 auto;
   margin-bottom: 15rem;
   position: relative;
+
+  @media (max-width: 1700px) {
+    width: 80%;
+  }
 `
 
 const ShopFlex = styled.div`
@@ -950,6 +1795,12 @@ const ShopFlex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  border: 1px solid red;
+  
+  @media (max-width: ${breakpoints.xl}px) {
+    flex-direction: column;
+  }
 `
 
 const ShopText = styled.div`
@@ -971,6 +1822,59 @@ const ShopBubble = styled.div`
   align-items: center;
   text-align: center;
   padding: 3rem;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 400px;
+    aspect-ratio: 1/1;
+    height: auto;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 600px;
+    height: 600px;
+    transform: translateY(20%);
+    z-index: 3;
+    h1 {
+      font-size: 150px;
+      padding-bottom: 4rem;
+    }
+    p {
+      width: 80%;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+  @media (max-width: 1080px) {
+    width: 550px;
+    height: 550px;
+    transform: translateY(20%);
+    z-index: 3;
+    h1 {
+      font-size: 126px;
+      padding-bottom: 3rem;
+    }
+    p {
+      width: 90%;
+      font-size: 24px;
+      line-height: 32px;
+      padding-bottom: 2rem;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+      width: 470px;
+    height: 470px;
+    transform: translateY(25%);
+    z-index: 3;
+    h1 {
+      font-size: 100px;
+      padding-bottom: 2rem;
+    }
+    p {
+      width: 90%;
+      font-size: 24px;
+      line-height: 32px;
+      padding-bottom: 0rem;
+    }
+  }
 `
 
 const PinkStarWrapper = styled(motion.div)`
@@ -996,7 +1900,7 @@ const ShopVideo = styled.div`
 `
 
 const VideoWrapper = styled.a`
-  // aspect ratio corresponds to the pixel width/height of the video 
+  // aspect ratio corresponds to the pixel width/height of the video
   aspect-ratio: 1918/942;
   width: 100%;
   height: auto;
@@ -1027,6 +1931,16 @@ const StayPeachyLink = styled.div`
     margin-right: 1rem;
     min-width: 16px;
     min-height: 16px;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    transform: translate3d(1rem, -120%, 0);
+  }
+  @media (max-width: 1430px) {
+    transform: translate3d(1rem, -150%, 0);
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    transform: translate3d(1rem, -70%, 0);
   }
 `
 
@@ -1077,6 +1991,11 @@ const Tiles = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    flex-direction: column;
+    width: 90%;
+  }
 `
 const Tile = styled.div`
   display: flex;

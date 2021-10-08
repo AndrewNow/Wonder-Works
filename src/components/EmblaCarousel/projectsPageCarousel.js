@@ -5,6 +5,9 @@ import ReactPlayer from "react-player/file"
 import { useInView } from "react-intersection-observer"
 import { AnimatePresence, motion } from "framer-motion"
 import * as SVG from "../../svg/projectspage"
+import { Arrow } from "../../svg/miscellaneous"
+import breakpoints from "../breakpoints"
+
 const ProjectsPageCarousel = () => {
   // ---------- Initialize Embla Carousel & state ----------
   const [emblaRef, embla] = useEmblaCarousel({
@@ -79,14 +82,14 @@ const ProjectsPageCarousel = () => {
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: "https://i.imgur.com/yNmhs4y.png",
-      trailerbuttontext: "Traitor",
-      trailerbuttoncolor: "var(--color-pink)",
+      trailerbuttontext: "Overlook bay",
+      trailerbuttoncolor: "var(--color-green)",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: false,
-      trailerbuttontext: "Overlook bay",
-      trailerbuttoncolor: "var(--color-green)",
+      trailerbuttontext: "Traitor",
+      trailerbuttoncolor: "var(--color-pink)",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
@@ -94,12 +97,12 @@ const ProjectsPageCarousel = () => {
       trailerbuttontext: "Timmeh",
       trailerbuttoncolor: "var(--color-lightblue)",
     },
-    {
-      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: false,
-      trailerbuttontext: "World of havoc",
-      trailerbuttoncolor: "var(--color-orange)",
-    },
+    // {
+    //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
+    //   light: false,
+    //   trailerbuttontext: "World of havoc",
+    //   trailerbuttoncolor: "var(--color-orange)",
+    // },
   ]
 
   const [hover, setHover] = useState(true)
@@ -126,33 +129,7 @@ const ProjectsPageCarousel = () => {
     [videoRef]
   )
 
-  // const overlayParent = {
-  //   visible: {
-  //     transition: {
-  //       duration: 2,
-  //       delay: 2.2,
-  //       delayChildren: 0.2,
-  //       staggerChildren: 0.2,
-  //       staggerDirection: 1,
-  //     },
-  //   },
-  // }
-  // const overlayChildren = {
-  //   visible: {
-  //     y: 0,
-  //     opacity: 1,
-  //     transition: {
-  //       duration: 0.75,
-  //       type: "spring",
-  //       stiffness: 100,
-  //       damping: 11,
-  //     },
-  //   },
-  //   hidden: {
-  //     y: 200,
-  //     opacity: 0,
-  //   },
-  // }
+
 
   const thumbnailBlink = {
     visible: {
@@ -190,9 +167,9 @@ const ProjectsPageCarousel = () => {
   return (
     <Wrapper ref={setRefs}>
       <Embla
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{ duration: .75}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.75 }}
       >
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer>
@@ -222,9 +199,7 @@ const ProjectsPageCarousel = () => {
         <WatchTrailers>
           <h5>Watch Trailers</h5>
         </WatchTrailers>
-        <EmblaThumbnails
-        // ref={thumbViewportRef}
-        >
+        <EmblaThumbnails>
           {videoLinks.map((video, index) => (
             <Thumb
               whileHover={{ scale: 1.1 }}
@@ -236,7 +211,7 @@ const ProjectsPageCarousel = () => {
                 border: `2px solid ${video.trailerbuttoncolor}`,
               }}
             >
-              <motion.p style={{ color: `${video.trailerbuttoncolor}` }}>
+              <motion.div>
                 <span>
                   {slidesInView === `video[${index}]` && videoInView && (
                     <motion.div
@@ -261,9 +236,12 @@ const ProjectsPageCarousel = () => {
                       </svg>
                     </motion.div>
                   )}
+                  <p style={{ color: `${video.trailerbuttoncolor}` }}>
                   {video.trailerbuttontext}
+                    </p>
                 </span>
-              </motion.p>
+              </motion.div>
+              <Arrow style={{ fill: `${video.trailerbuttoncolor}` }} />
             </Thumb>
           ))}
         </EmblaThumbnails>
@@ -330,6 +308,12 @@ const Wrapper = styled.div`
     padding-top: 0.1rem;
     transition: var(--hover-transition);
   }
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding-top: 7rem;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding: 10rem 0;
+  }
 `
 
 const Embla = styled(motion.div)`
@@ -345,6 +329,13 @@ const Embla = styled(motion.div)`
 
   & button:last-of-type {
     right: -5%;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 95%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 99%;
   }
 `
 const EmblaViewport = styled.div`
@@ -380,17 +371,40 @@ const WatchTrailers = styled.div`
 `
 
 const EmblaThumbnails = styled.div`
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 65%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 75%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 90%;
+    padding: 0;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 95%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 99%;
+    gap: .5rem;
+    row-gap: 1rem;
+  }
 `
 
 const Thumb = styled(motion.button)`
   background: none;
   text-transform: uppercase;
-  padding: 1rem 2rem;
+  padding: .5rem 2rem;
   margin: 0 0.5rem;
   border-radius: 40px;
   box-sizing: border-box;
@@ -400,7 +414,6 @@ const Thumb = styled(motion.button)`
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  /* position: relative; */
 
   span {
     display: flex;
@@ -410,6 +423,45 @@ const Thumb = styled(motion.button)`
       left: -20px;
       top: -10%;
       position: absolute;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    justify-content: space-between;
+    max-width: 280px;
+    p {
+      font-size: 22px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    p {
+      font-size: 20px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 0.5rem 1rem;
+    p {
+      font-size: 18px;
+    }
+    span {
+      div {
+        display: none;
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin: 0;
+    padding: .5rem .5rem;
+    padding-left: .7rem;
+    max-width: 160px;
+    p {
+      white-space: nowrap;
+      font-size: 16px;
+      line-height: 15px;
+      font-family: "calibre-medium";
+    }
+    svg {
+      padding-top: 0;
+      scale: 0.7;
     }
   }
 `
@@ -424,6 +476,17 @@ const KeepGoing = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${breakpoints.m}px) {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    svg {
+      scale: .8;
+      padding: 0;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: 10%;
+  }
 `
 
 const ArrowWrapper = styled.div`
