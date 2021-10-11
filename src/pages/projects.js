@@ -140,16 +140,6 @@ const Projects = ({ data }) => {
     },
   }
 
-  // ------ stay peachy video state -------
-
-  const videoState = {
-    loop: true,
-    playsinline: true,
-    autoplay: true,
-    muted: true,
-    playing: shopInView ? true : false
-  }
-
   return (
     <Layout title={siteTitle}>
       <Seo title="Projects" />
@@ -460,12 +450,13 @@ const Projects = ({ data }) => {
               <VideoInner>
                 <ReactPlayer
                   url="https://ww-peachy.s3.us-west-1.amazonaws.com/StayPeachy+-+Final.mov"
-                  playing={videoState.playing}
-                  loop={videoState.loop}
-                  muted={videoState.muted}
+                  playing={shopInView ? true : false}
+                  volume={0}
+                  loop={true}
+                  muted={true}
                   width="100%"
                   height="100%"
-                  playsinline={videoState.playsinline}
+                  playsinline={true}
                   style={{ borderRadius: "10px", overflow: "hidden" }}
                 />
               </VideoInner>

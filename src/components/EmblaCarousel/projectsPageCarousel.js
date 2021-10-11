@@ -141,7 +141,11 @@ const ProjectsPageCarousel = () => {
 
   return (
     <Wrapper ref={videoRef}>
-      <MobileText>
+      <MobileText
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.75 }}
+      >
         <h2>
           Discover <br /> what’s in the works at Wonder Works Studio.
         </h2>
@@ -280,12 +284,13 @@ const Wrapper = styled.div`
   }
 `
 
-const MobileText = styled.div`
+const MobileText = styled(motion.div)`
   display: none;
 
   @media (max-width: ${breakpoints.s}px) {
     display: block;
-    h2, p {
+    h2,
+    p {
       color: var(--color-white);
     }
     h2 {
@@ -333,9 +338,11 @@ const EmblaContainer = styled.div`
 `
 const EmblaSlide = styled(motion.div)`
   position: relative;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100px;
+  min-height: 100px;
   aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100%;
 `
 
 const WatchTrailers = styled.div`
@@ -398,7 +405,7 @@ const Thumb = styled(motion.button)`
 
     div {
       left: -20px;
-      top: -10%;
+      top: 5px;
       position: absolute;
     }
   }
