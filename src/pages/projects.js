@@ -73,7 +73,7 @@ const Projects = ({ data }) => {
   })
   const [shopRef, shopInView] = useInView({
     root: null,
-    threshold: 0.65,
+    threshold: 0.5,
     triggerOnce: false,
   })
 
@@ -447,15 +447,18 @@ const Projects = ({ data }) => {
               target="_blank"
               rel="noreferrer"
             >
-              <ReactPlayer
-                url="https://ww-peachy.s3.us-west-1.amazonaws.com/StayPeachy+-+Final.mov"
-                playing={shopInView}
-                loop={true}
-                muted={true}
-                width="100%"
-                height="100%"
-                playsinline={true}
-              />
+              <VideoInner>
+                <ReactPlayer
+                  url="https://ww-peachy.s3.us-west-1.amazonaws.com/StayPeachy+-+Final.mov"
+                  playing={shopInView}
+                  loop={true}
+                  muted={true}
+                  width="100%"
+                  height="100%"
+                  playsinline={true}
+                  style={{borderRadius: "10px", overflow: "hidden"}}
+                />
+              </VideoInner>
             </VideoWrapper>
             <OrangeStarWrapper
               animate={{
@@ -1988,27 +1991,42 @@ const ShopVideo = styled.div`
 const VideoWrapper = styled.a`
   // aspect ratio corresponds to the pixel width/height of the video
   aspect-ratio: 1918/942;
+  position: relative;
+  /* padding-top: 49.1136600626%; */
   width: 100%;
   height: auto;
-
   transition: var(--hover-transition);
   :hover {
     filter: brightness(0.9);
   }
+`
 
-  div {
-    box-sizing: content-box;
-    aspect-ratio: 1918/942;
+const VideoInner = styled.div`
+  /* box-sizing: content-box; */
+  aspect-ratio: 1918/942;
+  height: auto;
+  border-radius: 10px;
+  box-sizing: content-box;
+  border: 2px solid var(--color-black);
+  z-index: 5;
+
+  :after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: -1;
+    background-color: #e795bf;
     border-radius: 10px;
-    overflow: hidden;
-    border: 2px solid var(--color-black);
-    filter: drop-shadow(12px 12px 0px #e795bf);
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    div {
-      filter: drop-shadow(6px 6px 0px #e795bf);
-    }
+  :after {
+    top: 6px;
+    left: 6px;
+  }
   }
 `
 
