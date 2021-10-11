@@ -450,7 +450,7 @@ const Projects = ({ data }) => {
               <VideoInner>
                 <ReactPlayer
                   url="https://ww-peachy.s3.us-west-1.amazonaws.com/StayPeachy+-+Final.mov"
-                  playing={shopInView}
+                  playing={shopInView ? true : false}
                   loop={true}
                   muted={true}
                   width="100%"
