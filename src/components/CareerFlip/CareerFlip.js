@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react"
+import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { AnimatePresence, motion } from "framer-motion"

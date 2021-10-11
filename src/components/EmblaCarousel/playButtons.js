@@ -48,9 +48,11 @@ export const PlayButtonProjectsPageMobile = ({ setPaused }) => {
   return (
     <AnimatePresence>
       {/* Desktop layout starts here */}
-      <Background>
-        <BackgroundText key={"desktop"}>
-          <h2>Discover <br/> what’s in the works at Wonder Works Studio.</h2>
+      <Background key={"desktop"}>
+        <BackgroundText>
+          <h2>
+            Discover <br /> what’s in the works at Wonder Works Studio.
+          </h2>
           <p>
             We’re always dreaming up new adventures in exciting roleplay games
             for immersive, imaginative fun for everyone. Check out our ambitious

@@ -16,7 +16,6 @@ import { WWJamsStars } from "../../../svg/miscellaneous"
 
 const OurPillars = () => {
   // ------------------------- 1. Establish refs -------------------------
-  const ref = useRef()
   const horizontalScroll = useRef()
 
   // refs for each slide to animate when inView
@@ -43,91 +42,8 @@ const OurPillars = () => {
     triggerOnce: false,
   })
 
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      StudioRef(node)
-      PartnershipRef(node)
-      JamsRef(node)
-      CollabRef(node)
-    },
-    [StudioRef, JamsRef, PartnershipRef, CollabRef]
-  )
 
-  // ------------------- 2. Framer animation variants -------------------
-  const sideScrollHeader = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  const sideScrollSVG = {
-    visible: {
-      opacity: 1,
-      // y: 0,
-      // scale: 1,
-      // rotate: 0,
-      transition: {
-        // delay: 0.25,
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      // scale: .7,
-      // rotate: 10,
-      // y: -50,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  const sideScrollBody = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.25,
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      y: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
-  const bodyChild = {
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      x: -100,
-      opacity: 0,
-    },
-  }
-
-  // ------------------- 3. Track component scroll progress -------------------
+  // ------------------- 2. Track component scroll progress -------------------
   // This section handles the side scrolling "Pillars" section.
   // The height of the container (StickyContainer) defines how long the user must scroll to get to the next slide
 
@@ -151,7 +67,7 @@ const OurPillars = () => {
   }
   const scrollProgress = useScrollProgress()
 
-  // ------------------- 4. Embla Carousel Logic -------------------
+  // ------------------- 3. Embla Carousel Logic -------------------
   // Configure Embla settings (notably: disabled user touch/click interaction)
   const [viewportRef, embla] = useEmblaCarousel({
     skipSnaps: false,
@@ -191,7 +107,13 @@ const OurPillars = () => {
     } else if (scrollProgress < 0.25 && scrollProgress > 0) {
       scrollToFourthSlide()
     }
-  }, [scrollProgress])
+  }, [
+    scrollProgress,
+    scrollToFirstSlide,
+    scrollToSecondSlide,
+    scrollToThirdSlide,
+    scrollToFourthSlide,
+  ])
 
   // prevent excessive scrolling
   const preventEdgeScrolling = embla => {
@@ -217,7 +139,7 @@ const OurPillars = () => {
     embla.on("scroll", preventEdgeScrolling(embla))
   }, [embla])
 
-  // ------------------- 5. Data for slide markup -------------------
+  // ------------------- 4. Data for slide markup -------------------
   const SideScrollData = [
     {
       ref: StudioRef,
@@ -433,5 +355,5 @@ const StarWrapper = styled.div`
   svg {
     height: auto;
     width: 100%;
-}
+  }
 `

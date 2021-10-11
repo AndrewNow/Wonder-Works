@@ -1,9 +1,6 @@
 import React, {
-  useState,
-  useRef,
   useCallback,
   useEffect,
-  useLayoutEffect,
 } from "react"
 import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
@@ -15,7 +12,6 @@ import {
   motion,
   useViewportScroll,
   useTransform,
-  useMotionValue,
   AnimatePresence,
 } from "framer-motion"
 import * as Svg from "../svg/aboutpage"
@@ -53,24 +49,6 @@ const About = ({ data }) => {
       opacity: 1,
       transition: {
         duration: 1,
-        type: "spring",
-        stiffness: 100,
-        damping: 11,
-      },
-    },
-    hidden: {
-      y: 200,
-      opacity: 0,
-    },
-  }
-
-  const word2 = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay: 0.35,
         type: "spring",
         stiffness: 100,
         damping: 11,
@@ -183,33 +161,29 @@ const About = ({ data }) => {
 
   // ---------- Intersection Observer logic ----------
 
-  const ref = useRef()
-
-  const horizontalScroll = useRef()
-
   const [meganzachRef, meganzachInView] = useInView({
     root: null,
     threshold: 0.5,
     triggerOnce: true,
   })
 
-  const [StudioRef, StudioRefInView] = useInView({
-    root: null,
-    threshold: 0.6,
-    triggerOnce: false,
-  })
+  // const [StudioRef, StudioRefInView] = useInView({
+  //   root: null,
+  //   threshold: 0.6,
+  //   triggerOnce: false,
+  // })
 
-  const [JamsRef, JamsRefInView] = useInView({
-    root: null,
-    threshold: 0.8,
-    triggerOnce: false,
-  })
+  // const [JamsRef, JamsRefInView] = useInView({
+  //   root: null,
+  //   threshold: 0.8,
+  //   triggerOnce: false,
+  // })
 
-  const [CollabRef, CollabRefInView] = useInView({
-    root: null,
-    threshold: 0.8,
-    triggerOnce: false,
-  })
+  // const [CollabRef, CollabRefInView] = useInView({
+  //   root: null,
+  //   threshold: 0.8,
+  //   triggerOnce: false,
+  // })
 
   // const [pillarsRef, pillarsInView] = useInView({
   //   root: null,
@@ -217,24 +191,6 @@ const About = ({ data }) => {
   //   triggerOnce: true,
   // })
 
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      // pillarsRef(node)
-      meganzachRef(node)
-      StudioRef(node)
-      JamsRef(node)
-      CollabRef(node)
-    },
-    [
-      // pillarsRef,
-      meganzachRef,
-      StudioRef,
-      JamsRef,
-      CollabRef,
-    ]
-  )
 
   // ---------- Parrallax scroll logic using Framer  ----------
   let throttle = require("lodash/throttle")
@@ -260,7 +216,7 @@ const About = ({ data }) => {
 
   useEffect(() => {
     toggleBlueTheme()
-  }, [])
+  }, [toggleBlueTheme])
 
   useEffect(() => {
     window.localStorage.setItem("theme", currentTheme)

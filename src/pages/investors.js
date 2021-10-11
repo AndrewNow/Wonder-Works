@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
@@ -27,11 +27,9 @@ const Investors = ({ data }) => {
 
   useEffect(() => {
     toggleBlueTheme()
-  }, [])
+  }, [toggleBlueTheme])
 
-  // ---------- intersection observer logic, Refs ----------
-  const ref = useRef()
-
+  // ---------- Refs ----------
   const [countUpRef, countUpInView] = useInView({
     root: null,
     threshold: 0.2,
@@ -43,16 +41,6 @@ const Investors = ({ data }) => {
     threshold: 0.5,
     triggerOnce: true,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      countUpRef(node)
-      paragraphRef(node)
-    },
-    [countUpRef, paragraphRef]
-  )
 
   // ---------- Animation logic ----------
 

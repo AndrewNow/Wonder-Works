@@ -14,7 +14,6 @@ import { useEmblaCarousel } from "embla-carousel/react"
 
 const OurPillars = () => {
   // ------------------------- 1. Establish refs -------------------------
-  const ref = useRef()
   const horizontalScroll = useRef()
 
   // refs for each slide to animate when inView
@@ -36,16 +35,6 @@ const OurPillars = () => {
     triggerOnce: false,
   })
 
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      StudioRef(node)
-      JamsRef(node)
-      CollabRef(node)
-    },
-    [StudioRef, JamsRef, CollabRef]
-  )
 
   // ------------------- 2. Framer animation variants -------------------
   const sideScrollHeader = {
@@ -148,7 +137,7 @@ const OurPillars = () => {
   const [viewportRef, embla] = useEmblaCarousel({
     skipSnaps: false,
     draggable: false,
-    containScroll: 'trimSnaps',
+    containScroll: "trimSnaps",
     loop: false,
     align: "start",
     speed: 5,
@@ -177,7 +166,12 @@ const OurPillars = () => {
     } else if (scrollProgress < 0.45 && scrollProgress > 0) {
       scrollToThirdSlide()
     }
-  }, [scrollProgress])
+  }, [
+    scrollProgress,
+    scrollToFirstSlide,
+    scrollToSecondSlide,
+    scrollToThirdSlide,
+  ])
 
   // prevent excessive scrolling
   const preventEdgeScrolling = embla => {
@@ -197,7 +191,6 @@ const OurPillars = () => {
     }
   }
 
-  
   // Run Embla
   useEffect(() => {
     if (!embla) return

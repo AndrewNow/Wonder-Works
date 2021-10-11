@@ -56,8 +56,6 @@ const Projects = ({ data }) => {
   }, [currentTheme])
 
   // ----------------- intersection observer logic -----------------
-
-  const ref = useRef()
   const [overlookBayRef, overlookBayInView] = useInView({
     root: null,
     threshold: 0.65,
@@ -78,17 +76,6 @@ const Projects = ({ data }) => {
     threshold: 0.65,
     triggerOnce: false,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      overlookBayRef(node)
-      timmehRef(node)
-      shopRef(node)
-    },
-    [overlookBayRef, timmehRef, traitorRef, shopRef]
-  )
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })

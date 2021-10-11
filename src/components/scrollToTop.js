@@ -32,7 +32,7 @@ const ScrollToTop = () => {
     window.addEventListener("scroll", debounce(toggleVisibility, 300))
     return () =>
       window.removeEventListener("scroll", toggleVisibility)
-  }, [])
+  }, [debounce])
 
   const button = {
     visible: {

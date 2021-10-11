@@ -35,7 +35,7 @@ const Navbar = () => {
     } else if (!isOpenMobile && currentTheme === "light") {
       toggleLightTheme()
     }
-  }, [toggleLightTheme, toggleBlueTheme, isOpenMobile])
+  }, [toggleLightTheme, toggleBlueTheme, isOpenMobile, currentTheme])
 
   const navAnimation = {
     visible: {

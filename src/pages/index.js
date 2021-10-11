@@ -25,8 +25,6 @@ const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
 
   // ---------- intersection observer logic, Refs ----------
-
-  const ref = useRef()
   const [sectionRef, sectionInView] = useInView({
     root: null,
     threshold: 0.75,
@@ -37,16 +35,6 @@ const HomeIndex = ({ data }) => {
     threshold: 0.25,
     triggerOnce: true,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      sectionRef(node)
-      countUpRef(node)
-    },
-    [sectionRef, countUpRef]
-  )
 
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------

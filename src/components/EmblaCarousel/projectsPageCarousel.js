@@ -3,11 +3,10 @@ import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import ReactPlayer from "react-player/file"
 import { useInView } from "react-intersection-observer"
-import { AnimatePresence, motion } from "framer-motion"
-import * as SVG from "../../svg/projectspage"
+import { motion } from "framer-motion"
+import * as Svg from "../../svg/projectspage"
 import { Arrow } from "../../svg/miscellaneous"
 import breakpoints from "../breakpoints"
-import { StaticImage } from "gatsby-plugin-image"
 import { PlayButtonProjectsPageMobile } from "./playButtons"
 
 const ProjectsPageCarousel = () => {
@@ -251,10 +250,10 @@ const ProjectsPageCarousel = () => {
             },
           }}
         >
-          <SVG.KeepGoingSVG />
+          <Svg.KeepGoingSVG />
         </TextWrapper>
         <ArrowWrapper>
-          <SVG.KeepGoingArrow />
+          <Svg.KeepGoingArrow />
         </ArrowWrapper>
       </KeepGoing>
       <MobileText>

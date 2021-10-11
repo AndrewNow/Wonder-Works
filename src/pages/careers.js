@@ -243,11 +243,11 @@ const Careers = ({ data }) => {
 
   useEffect(() => {
     toggleBlueTheme()
-  }, [])
+  }, [toggleBlueTheme])
 
   useEffect(() => {
     window.localStorage.setItem("theme", currentTheme)
-  }, [currentTheme])
+  }, [currentTheme, toggleBlueTheme])
 
   return (
     <Layout title={siteTitle}>

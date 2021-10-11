@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react"
+import React from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -9,7 +9,6 @@ import breakpoints from "../breakpoints"
 // Since we're using gatsby-image, it's easier to just create another component for these rather than dynamically passing a size value to the image
 
 export const AsSeenOnLogosHome = () => {
-  const ref = useRef()
   const [homepagelogoRef, homepagelogoInView] = useInView({
     root: null,
     threshold: 0.75,
@@ -20,16 +19,6 @@ export const AsSeenOnLogosHome = () => {
     threshold: 0.75,
     triggerOnce: true,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      homepagelogoRef(node)
-      homepagelogoRefMobile(node)
-    },
-    [homepagelogoRef, homepagelogoRefMobile]
-  )
 
   const logoParent = {
     visible: {
@@ -196,7 +185,6 @@ export const AsSeenOnLogosHome = () => {
 }
 
 export const AsSeenOnLogosAbout = () => {
-  const ref = useRef()
   const [aboutpagelogoRef, aboutpagelogoInView] = useInView({
     root: null,
     threshold: 0.75,
@@ -207,16 +195,6 @@ export const AsSeenOnLogosAbout = () => {
     threshold: 0.75,
     triggerOnce: true,
   })
-
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      aboutpagelogoRef(node)
-      aboutpagelogoRefMobile(node)
-    },
-    [aboutpagelogoRef, aboutpagelogoRefMobile]
-  )
 
   const logoParent = {
     visible: {

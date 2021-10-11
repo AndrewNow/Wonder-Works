@@ -21,7 +21,7 @@ const Contact = ({ data }) => {
 
   useEffect(() => {
     toggleBlueTheme()
-  }, [])
+  }, [toggleBlueTheme])
 
   const siteTitle = data.site.siteMetadata?.title || `Contact`
 
