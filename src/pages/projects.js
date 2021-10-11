@@ -410,7 +410,7 @@ const Projects = ({ data }) => {
         </Timmeh>
       </div>
 
-      <ShopSection ref={shopRef}>
+      <ShopSection>
         <ShopFlex>
           <ShopText>
             <ShopBubble>
@@ -441,7 +441,7 @@ const Projects = ({ data }) => {
               <Svg.PinkStar />
             </PinkStarWrapper>
           </ShopText>
-          <ShopVideo>
+          <ShopVideo ref={shopRef}>
             <VideoWrapper
               href="https://www.staypeachy.shop"
               target="_blank"
