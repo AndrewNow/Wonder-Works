@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import ReactPlayer from "react-player/file"
@@ -123,16 +123,6 @@ const ProjectsPageCarousel = () => {
     triggerOnce: false,
   })
 
-  const ref = useRef()
-  const setRefs = useCallback(
-    //assign multiple refs with useInView
-    node => {
-      ref.current = node
-      videoRef(node)
-    },
-    [videoRef]
-  )
-
   const thumbnailBlink = {
     visible: {
       opacity: 1,
@@ -150,7 +140,7 @@ const ProjectsPageCarousel = () => {
   const [thumbnailClick, setThumbnailClick] = useState(false)
 
   return (
-    <Wrapper ref={setRefs}>
+    <Wrapper ref={videoRef}>
       <MobileText>
         <h2>
           Discover <br /> what’s in the works at Wonder Works Studio.

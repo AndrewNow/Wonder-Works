@@ -454,6 +454,7 @@ const Projects = ({ data }) => {
                 muted={true}
                 width="100%"
                 height="100%"
+                playsinline={true}
               />
             </VideoWrapper>
             <OrangeStarWrapper
@@ -1424,12 +1425,12 @@ const TraitorRightImageWrapper = styled(motion.div)`
     bottom: -15%;
   }
   @media (max-width: ${breakpoints.s}px) {
-    max-width: 400px;
+    max-width: 440px;
     right: -40%;
-    bottom: -18%;
+    bottom: -27%;
   }
   @media (max-width: 375px) {
-    bottom: -25%;
+    bottom: -35%;
   }
 `
 
@@ -1835,6 +1836,7 @@ const ShopBubble = styled.div`
   border-radius: 100%;
   width: 460px;
   height: 460px;
+  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1844,7 +1846,7 @@ const ShopBubble = styled.div`
 
   @media (max-width: ${breakpoints.xxl}px) {
     width: 400px;
-    aspect-ratio: 1/1;
+    height: 400px;
     height: auto;
   }
   @media (max-width: ${breakpoints.xl}px) {
@@ -2129,7 +2131,7 @@ const Tiles = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     padding-top: 5rem;
   }
-  
+
   @media (max-width: ${breakpoints.s}px) {
     width: 90%;
     padding-top: 2.5rem;
