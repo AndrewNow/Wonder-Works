@@ -380,7 +380,7 @@ const DropdownMobile = styled(motion.div)`
     position: absolute;
     background-color: var(--color-white);
     width: 90%;
-    height: calc(95vh - 70px);
+    height: calc(96vh - 70px);
     top: 10%;
     left: 50%;
     border-radius: 20px;
@@ -409,8 +409,7 @@ const MobileNav = styled(motion.div)`
   height: 80%;
   margin-top: 2rem;
   width: 90%;
-  `
-
+`
 
 const MobileNavElement = styled(motion.div)`
   font-family: "calibre-medium";
@@ -423,6 +422,7 @@ const MobileNavElement = styled(motion.div)`
 
   &:last-child {
     border: none;
+    margin-bottom: 1rem;
   }
 
   a {
@@ -434,8 +434,8 @@ const MobileNavElement = styled(motion.div)`
     display: flex;
     justify-content: flex-end;
     transition: 0.3s ease-out all;
-    font-size: 34px!important;
-    line-height: 40px!important;
+    font-size: 34px !important;
+    line-height: 40px !important;
     svg {
       display: none;
     }
@@ -467,8 +467,8 @@ const MobileNavElement = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xs}px) {
     a {
-      font-size: 26px!important;
-      line-height: 105%!important;
+      font-size: 26px !important;
+      line-height: 105% !important;
     }
   }
 `

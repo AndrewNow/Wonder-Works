@@ -22,6 +22,7 @@ const Projects = ({ data }) => {
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
   const blueSectionRef = useRef()
+  const blueSectionRef2 = useRef()
   const { currentTheme } = useGlobalStateContext()
   const dispatch = useGlobalDispatchContext()
 
@@ -36,7 +37,11 @@ const Projects = ({ data }) => {
   useEffect(() => {
     const onScroll = () => {
       const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
-      if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
+      const blueBackgroundDiv2 = blueSectionRef2.current.getBoundingClientRect()
+      if (
+        (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) ||
+        (blueBackgroundDiv2.y <= 150 && blueBackgroundDiv2.bottom >= 150)
+      ) {
         toggleLightTheme()
       } else {
         toggleBlueTheme()
@@ -307,124 +312,126 @@ const Projects = ({ data }) => {
           />
         </TextLogoWrapper>
       </Traitor>
-      <Timmeh ref={timmehRef}>
-        <TimmehTitle
-          variants={parent}
-          initial="hidden"
-          animate={timmehInView ? "visible" : "hidden"}
-        >
-          <h1>
-            <motion.div variants={title}>Timmeh</motion.div>
-          </h1>
-        </TimmehTitle>
-        <TimmehBody
-          variants={parent}
-          initial="hidden"
-          animate={timmehInView ? "visible" : "hidden"}
-        >
-          <motion.p variants={body}>
-            Are you ready to jump into Overlook Bay with your friends? Home to
-            many land and sea creatures, explore the island with your friends in
-            this Massively multiplayer online role-playing game. Collect pets,
-            rent out your own cottage, and participate daily activities!
-          </motion.p>
-          <TimmehRobloxLink
-            variants={body}
-            href=""
-            target="_blank"
-            rel="noreferrer"
-            whileTap={{ scale: 0.9 }}
+      <div ref={blueSectionRef2}>
+        <Timmeh ref={timmehRef}>
+          <TimmehTitle
+            variants={parent}
+            initial="hidden"
+            animate={timmehInView ? "visible" : "hidden"}
           >
-            Play now on Roblox <Arrow />
-          </TimmehRobloxLink>
-        </TimmehBody>
-        <TextLogoWrapper>
-          <StaticImage
-            src="../images/Projects/TimmehText.png"
-            alt="Timmeh's text logo, with horror-style typography."
-            placeholder="none"
-            quality={100}
-          />
-        </TextLogoWrapper>
-        <TimmehTopWrapper
-          initial={{ scale: 0 }}
-          animate={{
-            scale: timmehInView ? 1 : 0,
-            transition: {
-              delay: 0.5,
-              duration: 1,
-            },
-          }}
-        >
-          <StaticImage
-            src="../images/Projects/timmehTop.png"
-            alt="Roblox characters laid on the page"
-            placeholder="none"
-            quality={100}
-          />
-        </TimmehTopWrapper>
-        <TimmehMiddleWrapper
-          initial={{ scale: 0 }}
-          animate={{
-            scale: timmehInView ? 1 : 0,
-            transition: {
-              delay: 0.35,
-              duration: 1,
-            },
-          }}
-        >
-          <StaticImage
-            src="../images/Projects/timmehMiddle.png"
-            alt="Roblox characters laid on the page"
-            placeholder="none"
-            quality={100}
-          />
-        </TimmehMiddleWrapper>
-        <TimmehBottomWrapper
-          initial={{ scale: 0 }}
-          animate={{
-            scale: timmehInView ? 1 : 0,
-            transition: {
-              delay: 0.15,
-              duration: 1,
-            },
-          }}
-          style={{ y: smallParallax }}
-        >
-          <StaticImage
-            src="../images/Projects/timmehBottom.png"
-            alt="Roblox characters laid on the page"
-            placeholder="none"
-            quality={100}
-          />
-        </TimmehBottomWrapper>
-        <TimmehMobileWrapper
-          initial={{ scale: 0 }}
-          animate={{
-            scale: timmehInView ? 1 : 0,
-            transition: {
-              delay: 0.15,
-              duration: 1,
-            },
-          }}
-          style={{ y: smallParallax }}
-        >
-          <StaticImage
-            src="../images/Projects/timmehmobile.png"
-            alt="Roblox characters laid on the page"
-            placeholder="none"
-            quality={100}
-          />
-        </TimmehMobileWrapper>
-        <SVGWrapper>
-          <BigGearsWrapper style={{ y: smallerParallax }}>
-            <Svg.TimmehBigGears />
-          </BigGearsWrapper>
-          <SmallGearsWrapper style={{ y: smallParallax }}>
-            <Svg.TimmehSmallGears />
-          </SmallGearsWrapper>
-        </SVGWrapper>
-      </Timmeh>
+            <h1>
+              <motion.div variants={title}>Timmeh</motion.div>
+            </h1>
+          </TimmehTitle>
+          <TimmehBody
+            variants={parent}
+            initial="hidden"
+            animate={timmehInView ? "visible" : "hidden"}
+          >
+            <motion.p variants={body}>
+              Are you ready to jump into Overlook Bay with your friends? Home to
+              many land and sea creatures, explore the island with your friends
+              in this Massively multiplayer online role-playing game. Collect
+              pets, rent out your own cottage, and participate daily activities!
+            </motion.p>
+            <TimmehRobloxLink
+              variants={body}
+              href=""
+              target="_blank"
+              rel="noreferrer"
+              whileTap={{ scale: 0.9 }}
+            >
+              Play now on Roblox <Arrow />
+            </TimmehRobloxLink>
+          </TimmehBody>
+          <TextLogoWrapper>
+            <StaticImage
+              src="../images/Projects/TimmehText.png"
+              alt="Timmeh's text logo, with horror-style typography."
+              placeholder="none"
+              quality={100}
+            />
+          </TextLogoWrapper>
+          <TimmehTopWrapper
+            initial={{ scale: 0 }}
+            animate={{
+              scale: timmehInView ? 1 : 0,
+              transition: {
+                delay: 0.5,
+                duration: 1,
+              },
+            }}
+          >
+            <StaticImage
+              src="../images/Projects/timmehTop.png"
+              alt="Roblox characters laid on the page"
+              placeholder="none"
+              quality={100}
+            />
+          </TimmehTopWrapper>
+          <TimmehMiddleWrapper
+            initial={{ scale: 0 }}
+            animate={{
+              scale: timmehInView ? 1 : 0,
+              transition: {
+                delay: 0.35,
+                duration: 1,
+              },
+            }}
+          >
+            <StaticImage
+              src="../images/Projects/timmehMiddle.png"
+              alt="Roblox characters laid on the page"
+              placeholder="none"
+              quality={100}
+            />
+          </TimmehMiddleWrapper>
+          <TimmehBottomWrapper
+            initial={{ scale: 0 }}
+            animate={{
+              scale: timmehInView ? 1 : 0,
+              transition: {
+                delay: 0.15,
+                duration: 1,
+              },
+            }}
+            style={{ y: smallParallax }}
+          >
+            <StaticImage
+              src="../images/Projects/timmehBottom.png"
+              alt="Roblox characters laid on the page"
+              placeholder="none"
+              quality={100}
+            />
+          </TimmehBottomWrapper>
+          <TimmehMobileWrapper
+            initial={{ scale: 0 }}
+            animate={{
+              scale: timmehInView ? 1 : 0,
+              transition: {
+                delay: 0.15,
+                duration: 1,
+              },
+            }}
+            style={{ y: smallParallax }}
+          >
+            <StaticImage
+              src="../images/Projects/timmehmobile.png"
+              alt="Roblox characters laid on the page"
+              placeholder="none"
+              quality={100}
+            />
+          </TimmehMobileWrapper>
+          <SVGWrapper>
+            <BigGearsWrapper style={{ y: smallerParallax }}>
+              <Svg.TimmehBigGears />
+            </BigGearsWrapper>
+            <SmallGearsWrapper style={{ y: smallParallax }}>
+              <Svg.TimmehSmallGears />
+            </SmallGearsWrapper>
+          </SVGWrapper>
+        </Timmeh>
+      </div>
 
       <ShopSection ref={shopRef}>
         <ShopFlex>
@@ -574,6 +581,8 @@ const Projects = ({ data }) => {
                   alt="Juniper Play's logo"
                   placeholder="tracedSVG"
                   quality={80}
+                  imgStyle={{ objectFit: "scale-down" }}
+                  style={{ height: "100%", width: "100%" }}
                 />
               </Image>
               <p>Juniper Play</p>
@@ -594,6 +603,8 @@ const Projects = ({ data }) => {
                   alt="Phat Mojo's logo."
                   placeholder="tracedSVG"
                   quality={80}
+                  imgStyle={{ objectFit: "scale-down" }}
+                  style={{ height: "100%", width: "100%" }}
                 />
               </Image>
               <p>Phat Mojo</p>
@@ -787,7 +798,11 @@ const OverlookRobloxLink = styled(motion.a)`
     font-size: 16px;
     line-height: 19px;
     padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-darkblue);
+
     svg {
+      fill: var(--color-darkblue);
       transform: translateY(0.4rem);
       scale: 0.7;
     }
@@ -1249,9 +1264,12 @@ const TraitorRobloxLink = styled(motion.a)`
     font-size: 16px;
     line-height: 19px;
     padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
     svg {
       transform: translateY(0.4rem);
       scale: 0.7;
+      fill: var(--color-black);
     }
   }
 `
@@ -1283,36 +1301,43 @@ const TraitorStarsWrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    top: 40%;
-    right: 18%;
+    top: 14%;
+    right: 12%;
     svg {
       width: auto;
     }
   }
   @media (max-width: 1080px) {
-    left: 78%;
-    top: 44%;
+    top: 10%;
+    right: 9%;
   }
   @media (max-width: 1024px) {
-    top: 43%;
-    left: 21%;
-    svg {
-      width: auto;
-    }
+    top: 13%;
+    right: 10%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    top: 46%;
+    top: 15%;
+    right: -9%;
+    svg {
+      height: 80%;
+      width: 80%;
+    }
   }
   @media (max-width: ${breakpoints.m}px) {
     top: 55%;
     left: 22%;
+    svg {
+      height: auto;
+      width: auto;
+    }
   }
   @media (max-width: ${breakpoints.s}px) {
     top: 13%;
     left: 5%;
   }
   @media (max-width: 375px) {
-    top: 10%;
+    top: 3%;
+    left: 3%;
   }
 `
 
@@ -1361,6 +1386,7 @@ const TraitorMiddleImageWrapper = styled(motion.div)`
   }
   @media (max-width: 1024px) {
     left: -3%;
+    bottom: 15%;
     max-width: 550px;
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -1371,12 +1397,15 @@ const TraitorMiddleImageWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.m}px) {
     max-width: 350px;
     left: 0;
-
   }
   @media (max-width: ${breakpoints.s}px) {
     left: -5%;
     max-width: 225px;
     bottom: 25%;
+  }
+  @media (max-width: 375px) {
+    left: -9%;
+    bottom: 20%;
   }
 `
 const TraitorRightImageWrapper = styled(motion.div)`
@@ -1391,6 +1420,9 @@ const TraitorRightImageWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.xxl}px) {
     right: -5%;
     bottom: -25%;
+  }
+  @media (max-width: 1300px) {
+    right: -15%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     max-width: 600px;
@@ -1428,7 +1460,7 @@ const TraitorRightImageWrapper = styled(motion.div)`
 const Timmeh = styled.section`
   position: relative;
   overflow: hidden;
-  background-color: var(--color-purple);
+  background-color: #000421;
   padding-bottom: 10rem;
   height: 110vh;
 
@@ -1542,9 +1574,9 @@ const TimmehRobloxLink = styled(motion.a)`
   line-height: 30px;
   &:hover {
     background-color: var(--color-white);
-    color: var(--color-purple);
+    color: #000421;
     svg {
-      fill: var(--color-purple);
+      fill: #000421;
     }
   }
   svg {
@@ -1562,7 +1594,10 @@ const TimmehRobloxLink = styled(motion.a)`
     font-size: 16px;
     line-height: 19px;
     padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: #000421;
     svg {
+      fill: #000421;
       transform: translateY(0.4rem);
       scale: 0.7;
     }
@@ -1747,7 +1782,7 @@ const BigGearsWrapper = styled(motion.div)`
     bottom: -15%;
     left: -20%;
     svg {
-      transform: scale(.6);
+      transform: scale(0.6);
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1787,6 +1822,12 @@ const ShopSection = styled.div`
   @media (max-width: 1700px) {
     width: 80%;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 90%;
+    padding-top: 5rem;
+    margin-bottom: 10rem;
+  }
 `
 
 const ShopFlex = styled.div`
@@ -1796,10 +1837,11 @@ const ShopFlex = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  border: 1px solid red;
-  
   @media (max-width: ${breakpoints.xl}px) {
     flex-direction: column;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    /* height: 80vh; */
   }
 `
 
@@ -1860,9 +1902,9 @@ const ShopBubble = styled.div`
     }
   }
   @media (max-width: ${breakpoints.l}px) {
-      width: 470px;
+    width: 470px;
     height: 470px;
-    transform: translateY(25%);
+    transform: translateY(12.5%);
     z-index: 3;
     h1 {
       font-size: 100px;
@@ -1875,18 +1917,73 @@ const ShopBubble = styled.div`
       padding-bottom: 0rem;
     }
   }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 80vw;
+    height: auto;
+    aspect-ratio: 1/1;
+    transform: translateY(25%);
+    h1 {
+      font-size: 45px;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      width: 100%;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    padding: 2rem;
+  }
 `
 
 const PinkStarWrapper = styled(motion.div)`
   position: absolute;
   top: -7%;
   left: -8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: ${breakpoints.l}px) {
+    top: 4%;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 110px;
+    height: 110px;
+    left: 0%;
+    top: 10%;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `
 
 const OrangeStarWrapper = styled(motion.div)`
   position: absolute;
   bottom: -5%;
   left: -5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: -10%;
+    left: -10%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    left: auto;
+    bottom: auto;
+    right: 10%;
+    top: -25%;
+    width: 50px;
+    height: 50px;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `
 
 const ShopVideo = styled.div`
@@ -1895,8 +1992,18 @@ const ShopVideo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* aspect-ratio: 16/9; */
   height: 475px;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    justify-content: flex-start;
+    align-self: flex-start;
+    flex-direction: column;
+    margin-top: 3rem;
+  }
 `
 
 const VideoWrapper = styled.a`
@@ -1916,8 +2023,13 @@ const VideoWrapper = styled.a`
     border-radius: 10px;
     overflow: hidden;
     border: 2px solid var(--color-black);
-    border-radius: 10px;
     filter: drop-shadow(12px 12px 0px #e795bf);
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    div {
+      filter: drop-shadow(6px 6px 0px #e795bf);
+    }
   }
 `
 
@@ -1926,21 +2038,32 @@ const StayPeachyLink = styled.div`
   right: 0;
   z-index: 10;
   padding-top: 0rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
   svg {
-    margin-right: 1rem;
     min-width: 16px;
     min-height: 16px;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    transform: translate3d(1rem, -120%, 0);
+    transform: translate3d(-1rem, -120%, 0);
   }
-  @media (max-width: 1430px) {
-    transform: translate3d(1rem, -150%, 0);
-  }
+  /* @media (max-width: 1430px) { */
+  /* transform: translateY(-50%); */
+  /* } */
   @media (max-width: ${breakpoints.xl}px) {
-    transform: translate3d(1rem, -70%, 0);
+    transform: translateY(50%);
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translateY(30%);
+    svg {
+      margin-right: 0.25rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 0.5rem;
   }
 `
 
@@ -1981,26 +2104,66 @@ const CollabSection = styled.section`
     text-transform: uppercase;
     text-align: center;
   }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding: 5rem 0;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 2.5rem 0;
+  }
 `
 const Collabs = styled.div`
   padding: 10rem 0;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding-bottom: 5rem;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 5rem 0;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 2.5rem 0;
+  }
 `
 const Tiles = styled.div`
   padding-top: 10rem;
   width: 65%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  @media (max-width: 1800px) {
+    width: 80%;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 85%;
+    padding-top: 6rem;
+  }
 
   @media (max-width: ${breakpoints.xl}px) {
-    flex-direction: column;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 5rem;
+  }
+  
+  @media (max-width: ${breakpoints.s}px) {
     width: 90%;
+    padding-top: 2.5rem;
   }
 `
 const Tile = styled.div`
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
   p {
     padding-top: 1rem;
     text-align: center;
@@ -2016,4 +2179,18 @@ const Image = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${breakpoints.l}px) {
+    width: 225px;
+    height: 225px;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    width: 200px;
+    height: 200px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+  }
 `
