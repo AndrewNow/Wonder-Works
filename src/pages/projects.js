@@ -104,16 +104,6 @@ const Projects = ({ data }) => {
     scrollYProgress => scrollYProgress * -500
   )
 
-  // const smallParallaxSpring = useSpring(smallParallax, {
-  //   stiffness: 125,
-  //   damping: 50,
-  // })
-
-  // const mediumParallax = useTransform(
-  //   scrollYProgress,
-  //   throttle(scrollYProgress => scrollYProgress * -700, 100)
-  // )
-
   // ----------------- animation variants -----------------
 
   const parent = {

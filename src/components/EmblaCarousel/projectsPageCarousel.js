@@ -7,6 +7,8 @@ import { AnimatePresence, motion } from "framer-motion"
 import * as SVG from "../../svg/projectspage"
 import { Arrow } from "../../svg/miscellaneous"
 import breakpoints from "../breakpoints"
+import { StaticImage } from "gatsby-plugin-image"
+import { PlayButtonProjectsPageMobile } from "./playButtons"
 
 const ProjectsPageCarousel = () => {
   // ---------- Initialize Embla Carousel & state ----------
@@ -81,19 +83,22 @@ const ProjectsPageCarousel = () => {
   const videoLinks = [
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: "https://i.imgur.com/yNmhs4y.png",
+      // light: "https://i.imgur.com/yNmhs4y.png",
+      light: true,
       trailerbuttontext: "Overlook bay",
       trailerbuttoncolor: "var(--color-green)",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: false,
+      // light: false,
+      light: true,
       trailerbuttontext: "Traitor",
       trailerbuttoncolor: "var(--color-pink)",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: false,
+      // light: false,
+      light: true,
       trailerbuttontext: "Timmeh",
       trailerbuttoncolor: "var(--color-lightblue)",
     },
@@ -129,8 +134,6 @@ const ProjectsPageCarousel = () => {
     [videoRef]
   )
 
-
-
   const thumbnailBlink = {
     visible: {
       opacity: 1,
@@ -147,25 +150,14 @@ const ProjectsPageCarousel = () => {
 
   const [thumbnailClick, setThumbnailClick] = useState(false)
 
-  const InitialVideoOverlay = () => {
-    return (
-      <AnimatePresence>
-        <Background>
-          <BackgroundText>
-            <h2>Discover what’s in the works at Wonder Works Studio.</h2>
-            <p>
-              We’re always dreaming up new adventures in exciting roleplay games
-              for immersive, imaginative fun for everyone. Check out our
-              ambitious new projects or our latest launches—they all live here.{" "}
-            </p>
-          </BackgroundText>
-        </Background>
-      </AnimatePresence>
-    )
-  }
-
   return (
     <Wrapper ref={setRefs}>
+      <MobileText>
+        <h2>
+          Discover <br /> what’s in the works at Wonder Works Studio.
+        </h2>
+      </MobileText>
+
       <Embla
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -186,10 +178,12 @@ const ProjectsPageCarousel = () => {
                       videoInView
                     }
                     onEnded={() => setTimeout(() => scrollNext(), 5000)}
-                    // onPlay={() => setTimeout(() => setHover(false), 1000)}
+                    // onPlay={() =>d setTimeout(() => setHover(false), 1000)}
                     // onPause={() => setTimeout(() => setHover(true), 1000)}
                     light={video.light}
-                    playIcon={<InitialVideoOverlay />}
+                    playIcon={
+                      <PlayButtonProjectsPageMobile setPaused={setPaused} />
+                    }
                   />
                 </EmblaSlide>
               )
@@ -237,8 +231,8 @@ const ProjectsPageCarousel = () => {
                     </motion.div>
                   )}
                   <p style={{ color: `${video.trailerbuttoncolor}` }}>
-                  {video.trailerbuttontext}
-                    </p>
+                    {video.trailerbuttontext}
+                  </p>
                 </span>
               </motion.div>
               <Arrow style={{ fill: `${video.trailerbuttoncolor}` }} />
@@ -263,40 +257,18 @@ const ProjectsPageCarousel = () => {
           <SVG.KeepGoingArrow />
         </ArrowWrapper>
       </KeepGoing>
+      <MobileText>
+        <p>
+          We’re always dreaming up new adventures in exciting roleplay games for
+          immersive, imaginative fun for everyone. Check out our ambitious new
+          projects or our latest launches—they all live here.
+        </p>
+      </MobileText>
     </Wrapper>
   )
 }
 
 export default ProjectsPageCarousel
-
-const Background = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #1a174899;
-  backdrop-filter: blur(2px);
-`
-
-const BackgroundText = styled.span`
-  position: absolute;
-  top: 40%;
-  left: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  h2,
-  p {
-    color: var(--color-white);
-    width: 66%;
-  }
-  p {
-    padding-top: 2rem;
-  }
-  h2 {
-    font-size: 3.9vw;
-    line-height: 102%;
-  }
-`
 
 const Wrapper = styled.div`
   padding: 5rem 0;
@@ -314,22 +286,38 @@ const Wrapper = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     padding: 10rem 0;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 0;
+  }
+`
+
+const MobileText = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.s}px) {
+    display: block;
+    h2, p {
+      color: var(--color-white);
+    }
+    h2 {
+      font-size: 29px;
+      line-height: 32px;
+      padding-top: 6rem;
+      padding-bottom: 2rem;
+    }
+
+    p {
+      margin-top: 8rem;
+      padding-bottom: 3rem;
+    }
+  }
 `
 
 const Embla = styled(motion.div)`
   width: 80%;
   position: relative;
-  /* background-color: #f7f7f710; */
   margin-left: auto;
   margin-right: auto;
-
-  & button:first-of-type {
-    left: -5%;
-  }
-
-  & button:last-of-type {
-    right: -5%;
-  }
 
   @media (max-width: ${breakpoints.xxl}px) {
     width: 95%;
@@ -396,7 +384,7 @@ const EmblaThumbnails = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 99%;
-    gap: .5rem;
+    gap: 0.5rem;
     row-gap: 1rem;
   }
 `
@@ -404,7 +392,7 @@ const EmblaThumbnails = styled.div`
 const Thumb = styled(motion.button)`
   background: none;
   text-transform: uppercase;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   margin: 0 0.5rem;
   border-radius: 40px;
   box-sizing: border-box;
@@ -450,8 +438,8 @@ const Thumb = styled(motion.button)`
   }
   @media (max-width: ${breakpoints.s}px) {
     margin: 0;
-    padding: .5rem .5rem;
-    padding-left: .7rem;
+    padding: 0.5rem 0.5rem;
+    padding-left: 0.7rem;
     max-width: 160px;
     p {
       white-space: nowrap;
@@ -480,12 +468,12 @@ const KeepGoing = styled.div`
     left: 50%;
     transform: translate3d(-50%, 0, 0);
     svg {
-      scale: .8;
+      scale: 0.8;
       padding: 0;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    bottom: 10%;
+    bottom: 160px;
   }
 `
 
