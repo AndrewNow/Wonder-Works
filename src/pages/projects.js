@@ -73,7 +73,7 @@ const Projects = ({ data }) => {
   })
   const [shopRef, shopInView] = useInView({
     root: null,
-    threshold: 0.5,
+    threshold: 0.65,
     triggerOnce: false,
   })
 
@@ -88,7 +88,7 @@ const Projects = ({ data }) => {
 
   const smallParallax = useTransform(
     scrollYProgress,
-    scrollYProgress => scrollYProgress * -500
+    scrollYProgress => scrollYProgress * -450
   )
 
   // ----------------- animation variants -----------------
@@ -138,6 +138,16 @@ const Projects = ({ data }) => {
       y: 50,
       opacity: 0,
     },
+  }
+
+  // ------ stay peachy video state -------
+
+  const videoState = {
+    loop: true,
+    playsinline: true,
+    autoplay: true,
+    muted: true,
+    playing: shopInView ? true : false
   }
 
   return (
@@ -450,12 +460,12 @@ const Projects = ({ data }) => {
               <VideoInner>
                 <ReactPlayer
                   url="https://ww-peachy.s3.us-west-1.amazonaws.com/StayPeachy+-+Final.mov"
-                  playing={shopInView ? true : false}
-                  loop={true}
-                  muted={true}
+                  playing={videoState.playing}
+                  loop={videoState.loop}
+                  muted={videoState.muted}
                   width="100%"
                   height="100%"
-                  playsinline={true}
+                  playsinline={videoState.playsinline}
                   style={{ borderRadius: "10px", overflow: "hidden" }}
                 />
               </VideoInner>
@@ -1002,13 +1012,13 @@ const MothImageWrapper = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.s}px) {
     left: -15%;
-    bottom: -20%;
+    bottom: -24%;
     div {
       transform: scale(0.4);
     }
   }
   @media (max-width: 375px) {
-    bottom: -25%;
+    bottom: -30%;
   }
 `
 const MermaidImageWrapper = styled(motion.div)`
@@ -1383,9 +1393,14 @@ const TraitorMiddleImageWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     left: -5%;
     max-width: 225px;
-    bottom: 25%;
+    bottom: 30%;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 375px) and (max-height: 850px) {
+    left: -9%;
+    bottom: 34%;
+  }
+
+  @media (max-width: 375px) and (max-height: 700px) {
     left: -9%;
     bottom: 20%;
   }
@@ -1431,10 +1446,15 @@ const TraitorRightImageWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     max-width: 440px;
     right: -40%;
-    bottom: -27%;
+    bottom: -28%;
   }
-  @media (max-width: 375px) {
-    bottom: -35%;
+  @media (max-width: 375px) and (max-height: 850px) {
+    bottom: -28%;
+    max-width: 460px;
+  }
+  @media (max-width: 375px) and (max-height: 700px) {
+    bottom: -32%;
+    max-width: 460px;
   }
 `
 
@@ -1660,14 +1680,11 @@ const TimmehMobileWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.m}px) {
     bottom: 0%;
   }
-  @media (max-width: 390px) {
-    bottom: -5%;
+  @media (max-width: ${breakpoints.s}px) {
+    bottom: -18%;
   }
   @media (max-width: 375px) {
-    bottom: -15%;
-  }
-  @media (max-width: ${breakpoints.xs}px) {
-    bottom: -15%;
+    bottom: -23%;
   }
 `
 
@@ -1998,6 +2015,10 @@ const VideoWrapper = styled.a`
   transition: var(--hover-transition);
   :hover {
     filter: brightness(0.9);
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    min-width: 335px;
   }
 `
 
