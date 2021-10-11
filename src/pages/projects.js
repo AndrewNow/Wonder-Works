@@ -456,7 +456,7 @@ const Projects = ({ data }) => {
                   width="100%"
                   height="100%"
                   playsinline={true}
-                  style={{borderRadius: "10px", overflow: "hidden"}}
+                  style={{ borderRadius: "10px", overflow: "hidden" }}
                 />
               </VideoInner>
             </VideoWrapper>
@@ -474,6 +474,7 @@ const Projects = ({ data }) => {
             </OrangeStarWrapper>
           </ShopVideo>
         </ShopFlex>
+        <h1>{shopInView ? "true" : "false"}</h1>
         <StayPeachyLink>
           <Svg.LinkStar />
           <UnderlinedLink
@@ -1900,9 +1901,8 @@ const ShopBubble = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    width: 80vw;
-    height: auto;
-    aspect-ratio: 1/1;
+    width: 300px;
+    height: 300px;
     transform: translateY(25%);
     h1 {
       font-size: 45px;
@@ -2023,10 +2023,10 @@ const VideoInner = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-  :after {
-    top: 6px;
-    left: 6px;
-  }
+    :after {
+      top: 6px;
+      left: 6px;
+    }
   }
 `
 
@@ -2189,5 +2189,6 @@ const Image = styled(motion.div)`
     width: 120px;
     height: 120px;
     border-radius: 5px;
+    padding: 5px;
   }
 `
