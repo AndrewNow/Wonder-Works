@@ -1,15 +1,15 @@
 :root {
   /* Wonder Works color variables */
-  --color-green: #D9E141;
-  --color-darkblue: #1764AF;
-  --color-orange: #FABB17;
-  --color-purple: #6653A3;
-  --color-lightpink: #E795BF;
-  --color-lightpurple: #B16EAC;
-  --color-lightblue: #59C9F3;
-  --color-pink: #EB2C90;
-  --color-white: #F7F7FC;
-  --color-black: #1A1748;
+  --color-green: #d9e141;
+  --color-darkblue: #1764af;
+  --color-orange: #fabb17;
+  --color-purple: #6653a3;
+  --color-lightpink: #e795bf;
+  --color-lightpurple: #b16eac;
+  --color-lightblue: #59c9f3;
+  --color-pink: #eb2c90;
+  --color-white: #f7f7fc;
+  --color-black: #1a1748;
   --hover-transition: all ease-in-out 0.25s;
 }
 
@@ -19,19 +19,19 @@
   font-family: "balgin-bold";
   src: url(../src/fonts/balgin-bold.woff2) format("woff2");
   font-display: fallback;
-} 
+}
 
 @font-face {
   font-family: "balgin-medium";
   src: url(../src/fonts/balgin-medium.woff2) format("woff2");
   font-display: fallback;
-} 
+}
 
 @font-face {
   font-family: "calibre-medium";
   src: url(../src/fonts/calibre-medium.woff2) format("woff2");
   font-display: fallback;
-} 
+}
 
 @font-face {
   font-family: "calibre-regular";
@@ -43,17 +43,17 @@
   font-family: "calibre-semibold";
   src: url(../src/fonts/calibre-semibold.woff2) format("woff2");
   font-display: fallback;
-} 
+}
 @font-face {
   font-family: "ppwoodland-bold";
   src: url(../src/fonts/ppwoodland-bold.woff2) format("woff2");
   font-display: fallback;
-} 
+}
 @font-face {
   font-family: "ppwoodland-light";
   src: url(../src/fonts/ppwoodland-light.woff2) format("woff2");
   font-display: fallback;
-} 
+}
 
 *,
 :after,
@@ -61,11 +61,14 @@
   box-sizing: border-box;
 }
 
+* {
+  will-change: unset !important;
+}
+
 body {
   margin: 0;
   overscroll-behavior: none;
 }
-
 
 /* --------------------- See layout.js for all typography breakpoints! --------------------- */
 
@@ -105,14 +108,15 @@ h6 {
   line-height: 35px;
 }
 
-p, ul, li {
+p,
+ul,
+li {
   font-family: "calibre-regular";
   font-size: 25px;
   line-height: 30px;
 }
 
-h1 > a
-h2 > a,
+h1 > a h2 > a,
 h3 > a,
 h4 > a,
 h5 > a,
@@ -126,7 +130,7 @@ h2,
 h3,
 h4,
 h5,
-h6, 
+h6,
 p,
 a {
   color: var(--color-black);
@@ -134,12 +138,10 @@ a {
   margin: 0;
 }
 
-
 blockquote > ul,
 blockquote > ol {
   list-style-position: inside;
 }
-
 
 a:hover,
 a:focus {

@@ -24,7 +24,6 @@ const MobileNavAnimation = () => {
     <>
       {SVGs.map((color, index) => {
         const offset = index * 3
-        console.log(offset)
         return (
           <Wrapper
             key={index}
