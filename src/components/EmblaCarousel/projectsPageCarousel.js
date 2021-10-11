@@ -50,7 +50,6 @@ const ProjectsPageCarousel = () => {
     setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
     setPaused(false)
     setHover(false)
-    console.log(slidesInView)
     if (slidesInView > 0) {
       setThumbnailClicked(true)
     }

@@ -906,7 +906,11 @@ const Left = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    width: 80%;
+    width: 85%;
+    p {
+      font-size: 16px;
+      line-height: 19px;
+    }
     h1 {
       padding-top: 3rem;
       font-size: 45px;
@@ -1171,7 +1175,6 @@ const CareerLeft = styled.div`
       h5 {
         font-size: 18px;
         line-height: 22px;
-        letter-spacing: 0.01rem;
         strong {
           white-space: normal;
         }
@@ -1423,6 +1426,7 @@ const SharePostingWrapper = styled.div`
   form {
     filter: opacity(0);
     display: inline;
+    pointer-events: none;
   }
   @media (max-width: 1750px) {
     bottom: 3%;
@@ -1442,6 +1446,7 @@ const SharePostingWrapperMobile = styled.div`
     form {
       filter: opacity(0);
       /* display: block; */
+      pointer-events: none;
       display: inline;
     }
   }
@@ -1535,10 +1540,11 @@ const SharePostingButton = styled.button`
   @media (max-width: ${breakpoints.s}px) {
     border: 1px solid var(--color-black);
     min-width: 180px;
-    padding: 0.15rem 1rem;
+    padding: 0.35rem .5rem;
     font-size: 16px;
+    line-height: 19px;
     svg {
-      scale: 0.8;
+      scale: 0.7;
     }
   }
 `
@@ -1681,10 +1687,11 @@ const Input = styled.input`
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--color-black);
   box-sizing: border-box;
-
+  transition: var(--hover-transition);
   font-family: "calibre-regular";
   font-size: 20px;
-  border-radius: 0px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
   ::placeholder {
     font-family: "calibre-regular";
     font-size: 20px;
@@ -1696,7 +1703,7 @@ const Input = styled.input`
     outline: none !important;
     border-bottom: 2px solid #b06eab;
   }
-  transition: var(--hover-transition);
+
   :hover {
     border-bottom: 2px solid #b06eab;
   }
@@ -1717,7 +1724,8 @@ const FullWidthInput = styled.input`
   border-bottom: 2px solid var(--color-black);
   font-family: "calibre-regular";
   font-size: 20px;
-
+  border-radius: 0;
+  -webkit-border-radius: 0;
   ::placeholder {
     font-family: "calibre-regular";
     font-size: 20px;
@@ -1819,6 +1827,8 @@ const FileUpload = styled.input`
   position: absolute !important;
   white-space: nowrap;
   width: 1px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
 `
 
 const FileLabel = styled.label`
@@ -1924,7 +1934,7 @@ const SubmitLabel = styled.label`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0.5rem;
+    padding: 0.35rem 0.5rem;
     font-size: 16px;
     border: 1px solid var(--color-black);
 

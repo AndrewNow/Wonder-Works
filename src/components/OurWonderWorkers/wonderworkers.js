@@ -105,6 +105,6 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    padding-top: 5rem;
+    padding-top: 3rem;
   }
 `

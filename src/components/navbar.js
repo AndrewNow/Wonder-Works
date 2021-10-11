@@ -422,7 +422,7 @@ const MobileNavElement = styled(motion.div)`
 
   &:last-child {
     border: none;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   a {
