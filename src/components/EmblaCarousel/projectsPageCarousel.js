@@ -3,11 +3,14 @@ import { useEmblaCarousel } from "embla-carousel/react"
 import styled from "styled-components"
 import ReactPlayer from "react-player/file"
 import { useInView } from "react-intersection-observer"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import * as Svg from "../../svg/projectspage"
 import { Arrow } from "../../svg/miscellaneous"
 import breakpoints from "../breakpoints"
-import { PlayButtonProjectsPageMobile } from "./playButtons"
+import {
+  PlayButtonProjectsPageMobile,
+  PlayIconReactPlayer,
+} from "./playButtons"
 
 const ProjectsPageCarousel = () => {
   // ---------- Initialize Embla Carousel & state ----------
@@ -18,44 +21,27 @@ const ProjectsPageCarousel = () => {
   })
 
   const [paused, setPaused] = useState(true)
-
-  // const [selectedIndex, setSelectedIndex] = useState(0)
   const [slidesInView, setSlidesInView] = useState(0)
-  // const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
-  //   containScroll: "keepSnaps",
-  //   selectedClass: "",
-  //   dragFree: true,
-  // })
+  const [videoProgress, setVideoProgress] = useState(0)
+  const [thumbnailClicked, setThumbnailClicked] = useState(false)
 
   // ---------- Set up embla navigation buttons ----------
   const onThumbClick = useCallback(
     index => {
-      if (
-        !embla
-        // || !emblaThumbs
-      )
-        return
-      // if (emblaThumbs.clickAllowed()) embla.scrollTo(index)
+      if (!embla) return
       if (embla.clickAllowed()) embla.scrollTo(index)
       setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
+      setThumbnailClicked(true)
       setPaused(false)
       setHover(false)
-      setThumbnailClick(true)
+      onInView()
     },
 
-    [
-      embla,
-      // emblaThumbs
-    ]
+    [embla]
   )
 
-  // const onSelect = useCallback(() => {
-  //   if (!embla || !emblaThumbs) return
-  //   setSlidesInView(embla.selectedScrollSnap())
-  // }, [embla, emblaThumbs, setSlidesInView])
-
   // ---------- Set up embla pagination buttons ----------
-  // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+  // scroll to next slide when video ends
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
 
   // start playing the video if user scrolls to next slide
@@ -64,20 +50,18 @@ const ProjectsPageCarousel = () => {
     setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
     setPaused(false)
     setHover(false)
+    console.log(slidesInView)
+    if (slidesInView > 0) {
+      setThumbnailClicked(true)
+    }
   }, [embla])
 
   // ---------- Run embla configurations ----------
   useEffect(() => {
     if (!embla) return
-    // onSelect()
     onInView()
-    // embla.on("select", onSelect)
     embla.on("settle", onInView)
-  }, [
-    embla,
-    // onSelect,
-    onInView,
-  ])
+  }, [embla, onInView])
 
   const videoLinks = [
     {
@@ -111,10 +95,13 @@ const ProjectsPageCarousel = () => {
 
   const [hover, setHover] = useState(true)
 
-  const setHoverTrue = useCallback(() => {
+  // event handlers for displaying pause/play button
+  const setHoverTrue = () => {
     setHover(true)
-  }, [])
-
+  }
+  const setHoverFalse = () => {
+    setHover(false)
+  }
   // ---------- intersection observer to pause video when not in view ----------
 
   const [videoRef, videoInView] = useInView({
@@ -137,8 +124,6 @@ const ProjectsPageCarousel = () => {
     },
   }
 
-  const [thumbnailClick, setThumbnailClick] = useState(false)
-
   return (
     <Wrapper ref={videoRef}>
       <MobileText
@@ -160,7 +145,24 @@ const ProjectsPageCarousel = () => {
           <EmblaContainer>
             {videoLinks.map((video, index) => {
               return (
-                <EmblaSlide key={index} onHoverStart={setHoverTrue}>
+                <EmblaSlide
+                  key={index}
+                  onHoverStart={thumbnailClicked && setHoverTrue}
+                  onHoverEnd={thumbnailClicked && setHoverFalse}
+                >
+                  {/* Only render this button after the first slide's button has been pressed or if user slides to second/third slide  */}
+                  {thumbnailClicked && (
+                    <AnimatePresence>
+                      {hover && (
+                        <PlayIconReactPlayer
+                          key={`key${index}1`}
+                          paused={paused}
+                          setPaused={setPaused}
+                          setHover={setHover}
+                        />
+                      )}
+                    </AnimatePresence>
+                  )}
                   <ReactPlayer
                     url={video.Src}
                     width="100%"
@@ -169,15 +171,27 @@ const ProjectsPageCarousel = () => {
                       slidesInView === `video[${index}]` &&
                       !paused &&
                       videoInView
+                      // && thumbnailClicked
                     }
                     onEnded={() => setTimeout(() => scrollNext(), 5000)}
-                    // onPlay={() =>d setTimeout(() => setHover(false), 1000)}
-                    // onPause={() => setTimeout(() => setHover(true), 1000)}
-                    light={video.light}
+                    onProgress={({ played }) =>
+                      !paused && setVideoProgress(played * 100)
+                    }
+                    progressInterval={500}
+                    light={thumbnailClicked ? false : video.light}
                     playIcon={
-                      <PlayButtonProjectsPageMobile setPaused={setPaused} />
+                      <PlayButtonProjectsPageMobile
+                        setPaused={setPaused}
+                        setThumbnailClicked={setThumbnailClicked}
+                      />
                     }
                   />
+                  <VidProgressContainer>
+                    <VideoProgress
+                      animate={{ x: `${videoProgress}%` }}
+                      transition={{ ease: "linear", duration: 0.5 }}
+                    />
+                  </VidProgressContainer>
                 </EmblaSlide>
               )
             })}
@@ -204,7 +218,7 @@ const ProjectsPageCarousel = () => {
                     <motion.div
                       variants={thumbnailBlink}
                       initial="hidden"
-                      animate={thumbnailClick ? "visible" : "hidden"}
+                      animate={thumbnailClicked ? "visible" : "hidden"}
                       exit="hidden"
                     >
                       <svg
@@ -338,11 +352,52 @@ const EmblaContainer = styled.div`
 `
 const EmblaSlide = styled(motion.div)`
   position: relative;
-  min-width: 100px;
-  min-height: 100px;
   aspect-ratio: 16 / 9;
   width: 100%;
   height: 100%;
+  min-height: 160px;
+  min-width: 72vw; // 80% (embla) of 90% (container)
+
+  @media (max-width: ${breakpoints.xl}px) {
+    min-width: 90vw;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    min-height: 187px;
+    min-width: 90vw;
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    min-height: 160px;
+  }
+`
+
+const VideoProgress = styled(motion.div)`
+  position: absolute;
+  background-color: var(--color-white);
+  opacity: 0.7;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: -100%;
+`
+
+const VidProgressContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  margin-top: 20px;
+  max-width: 100%;
+  width: calc(100% - 40px);
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  /* top: 75px; */
+
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
+  }
 `
 
 const WatchTrailers = styled.div`
@@ -401,11 +456,13 @@ const Thumb = styled(motion.button)`
 
   span {
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
 
     div {
       left: -20px;
-      top: 5px;
+      top: 7px;
       position: absolute;
     }
   }

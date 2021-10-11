@@ -5,7 +5,7 @@ import breakpoints from "../breakpoints"
 import { PressPlaySVG } from "./buttons"
 import { StaticImage } from "gatsby-plugin-image"
 
-export const PlayButtonProjectsPageMobile = ({ setPaused }) => {
+export const PlayButtonProjectsPageMobile = ({ setPaused, setThumbnailClicked }) => {
   const button = {
     visible: {
       opacity: 1,
@@ -45,10 +45,16 @@ export const PlayButtonProjectsPageMobile = ({ setPaused }) => {
       },
     },
   }
+
+  const handleClick = () => {
+    setThumbnailClicked(true)
+    setPaused(false)
+  }
+
   return (
     <AnimatePresence>
       {/* Desktop layout starts here */}
-      <Background key={"desktop"}>
+      <Background key="desktop" onClick={handleClick}>
         <BackgroundText>
           <h2>
             Discover <br /> what’s in the works at Wonder Works Studio.
@@ -72,11 +78,9 @@ export const PlayButtonProjectsPageMobile = ({ setPaused }) => {
       </ThumbnailWrapper>
 
       {/* Mobile layout shift starts here */}
-      <MobileThumbnail key={"mobile"}>
+      <MobileThumbnail key="mobile">
         <Playbutton
-          onClick={() => {
-            setPaused(false)
-          }}
+          onClick={handleClick}
           aria-label="Play video"
           whileTap={{ scale: 0.9 }}
           variants={button}
@@ -114,7 +118,7 @@ export const PlayButtonProjectsPageMobile = ({ setPaused }) => {
   )
 }
 
-const Background = styled.div`
+const Background = styled(motion.div)`
   width: 100%;
   height: 100%;
   position: relative;
@@ -168,7 +172,6 @@ const BackgroundText = styled.span`
     font-size: 3.9vw;
     line-height: 102%;
   }
-
 
   @media (max-width: ${breakpoints.xxl}px) {
     top: 25%;

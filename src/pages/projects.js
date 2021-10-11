@@ -475,7 +475,6 @@ const Projects = ({ data }) => {
             </OrangeStarWrapper>
           </ShopVideo>
         </ShopFlex>
-        <h1>{shopInView ? "true" : "false"}</h1>
         <StayPeachyLink>
           <Svg.LinkStar />
           <UnderlinedLink
