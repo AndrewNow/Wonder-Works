@@ -284,12 +284,12 @@ const Embla = styled.div`
 
   @media (max-width: ${breakpoints.s}px) {
     button:first-of-type {
-      bottom: -15%;
+      bottom: -12.5%;
       left: 3%;
     }
 
     button:last-of-type {
-      bottom: -15%;
+      bottom: -12.5%;
       right: 3%;
     }
   }
@@ -309,7 +309,7 @@ const EmblaContainer = styled(motion.div)`
 const EmblaSlide = styled(motion.div)`
   position: relative;
   width: 100%;
-  margin-right: 5%;
+  margin-right: 8%;
   flex: 0 0 30%;
 
   @media (max-width: ${breakpoints.xxl}px) {
@@ -318,11 +318,11 @@ const EmblaSlide = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.m}px) {
     flex: 0 0 25%;
-    margin-right: 5%;
+    margin-right: 10%;
   }
   @media (max-width: ${breakpoints.s}px) {
     flex: 0 0 50%;
-    margin-right: 5%;
+    margin-right: 15%;
   }
 `
 

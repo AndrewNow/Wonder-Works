@@ -14,6 +14,8 @@ import PressCarouselLogos from "../components/AsSeenOn/PressCarouselLogos"
 import { Arrow } from "../svg/miscellaneous"
 import { useGlobalDispatchContext } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
+import EventsCarouselMobile from "../components/EmblaCarousel/eventsCarouselMobile"
+import * as Svg from "../svg/investorspage"
 
 const Investors = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Investment Centre`
@@ -33,6 +35,16 @@ const Investors = ({ data }) => {
   const [countUpRef, countUpInView] = useInView({
     root: null,
     threshold: 0.2,
+    triggerOnce: true,
+  })
+  const [countUpRef2, countUpInView2] = useInView({
+    root: null,
+    threshold: 0.5,
+    triggerOnce: true,
+  })
+  const [countUpRef3, countUpInView3] = useInView({
+    root: null,
+    threshold: 0.5,
     triggerOnce: true,
   })
 
@@ -107,7 +119,7 @@ const Investors = ({ data }) => {
     inView: {
       transition: {
         duration: 0.5,
-        delay: 0.5,
+        delay: 0.25,
       },
       scale: 1,
     },
@@ -115,28 +127,19 @@ const Investors = ({ data }) => {
       scale: 0,
     },
   }
-  const circleAnimation2 = {
-    inView: {
+
+  const circleText = {
+    visible: {
+      opacity: 1,
+      y: 0,
       transition: {
+        delay: 0.2,
         duration: 0.5,
-        delay: 0.65,
       },
-      scale: 1,
     },
-    notInView: {
-      scale: 0,
-    },
-  }
-  const circleAnimation3 = {
-    inView: {
-      transition: {
-        duration: 0.5,
-        delay: 0.8,
-      },
-      scale: 1,
-    },
-    notInView: {
-      scale: 0,
+    hidden: {
+      opacity: 0,
+      y: -60,
     },
   }
   const eventAnimation = {
@@ -232,9 +235,9 @@ const Investors = ({ data }) => {
           </motion.h3>
         </Right>
       </HeaderFlex>
-      <StatsWrapper ref={countUpRef}>
+      <StatsWrapper>
         <Columns>
-          <Column>
+          <Column ref={countUpRef}>
             <motion.h5
               variants={circleAnimation}
               animate={countUpInView ? "inView" : "notInView"}
@@ -251,7 +254,7 @@ const Investors = ({ data }) => {
                     start={0}
                     end={37}
                     duration={1}
-                    delay={1.15}
+                    delay={1}
                     suffix="M"
                   />
                 </h6>
@@ -259,23 +262,23 @@ const Investors = ({ data }) => {
               <p>DAU</p>
             </Circle>
           </Column>
-          <Column>
+          <Column ref={countUpRef2}>
             <motion.h5
-              variants={circleAnimation2}
-              animate={countUpInView ? "inView" : "notInView"}
+              variants={circleAnimation}
+              animate={countUpInView2 ? "inView" : "notInView"}
             >
               Overlook Bay
             </motion.h5>
             <Circle
-              variants={circleAnimation2}
-              animate={countUpInView ? "inView" : "notInView"}
+              variants={circleAnimation}
+              animate={countUpInView2 ? "inView" : "notInView"}
             >
-              {countUpInView && (
+              {countUpInView2 && (
                 <h6>
                   <CountUp
                     start={0}
                     end={1.5}
-                    delay={1.25}
+                    delay={1.15}
                     decimals={1}
                     duration={1}
                     suffix="M"
@@ -284,7 +287,10 @@ const Investors = ({ data }) => {
               )}
               <p>DAU</p>
             </Circle>
-            <Desc>
+            <Desc
+              variants={circleText}
+              animate={countUpInView2 ? "visible" : "hidden"}
+            >
               <p>4% of Roblox DAU</p>
               <p>
                 2.2M+ Total Playing hrs/mo <br />
@@ -293,21 +299,24 @@ const Investors = ({ data }) => {
               </p>
             </Desc>
           </Column>
-          <Column>
+          <Column ref={countUpRef3}>
             <motion.h5
-              variants={circleAnimation3}
-              animate={countUpInView ? "inView" : "notInView"}
+              variants={circleAnimation}
+              animate={countUpInView3 ? "inView" : "notInView"}
             >
               Timmeh
             </motion.h5>
             <Circle
-              variants={circleAnimation3}
-              animate={countUpInView ? "inView" : "notInView"}
+              variants={circleAnimation}
+              animate={countUpInView3 ? "inView" : "notInView"}
             >
               <h6>0.0M</h6>
               <p>DAU</p>
             </Circle>
-            <Desc>
+            <Desc
+              variants={circleText}
+              animate={countUpInView3 ? "visible" : "hidden"}
+            >
               <p>0.0% of Roblox DAU</p>
               <p>
                 0.0M+ Total Playing hrs/mo <br />
@@ -405,13 +414,17 @@ const Investors = ({ data }) => {
 
       <EventsWrapper>
         <FutureEvents>
-          <h2>Future Events</h2>
+          <h2>
+            Future <br /> Events
+          </h2>
           <h4>Coming Soon...</h4>
         </FutureEvents>
         <PastEvents>
-          <h2>Past Events</h2>
+          <h2>
+            Past <br />
+            Events
+          </h2>
           <AnimateSharedLayout>
-            {/* <AnimatePresence exitBeforeEnter> */}
             <EventsList layout>
               {/* we use .slice() to only render the declared number of events at once */}
               {/* otherwise, .map() would load all posts on the DOM at once */}
@@ -447,11 +460,42 @@ const Investors = ({ data }) => {
                 </EventsButton>
               )}
             </EventsList>
-            {/* </AnimatePresence> */}
           </AnimateSharedLayout>
         </PastEvents>
+        <PastEventsMobile>
+          <h2>
+            Past <br /> Events
+          </h2>
+          <EventsCarouselMobile PastEventsData={PastEventsData} />
+        </PastEventsMobile>
       </EventsWrapper>
-      <ContactUs />
+      <ContactUsWrapper>
+        <LightBlueStarFillWrapper
+          animate={{
+            rotate: 360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <Svg.LightBlueStarFill />
+        </LightBlueStarFillWrapper>
+        <LightBlueStarStrokeWrapper
+          animate={{
+            rotate: -360,
+            transition: {
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
+          <Svg.LightBlueStarStroke />
+        </LightBlueStarStrokeWrapper>
+        <ContactUs />
+      </ContactUsWrapper>
     </Layout>
   )
 }
@@ -541,6 +585,12 @@ const Left = styled.div`
         font-size: 16px;
         line-height: 20px;
       }
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      font-size: 38px;
+      line-height: 42px;
     }
   }
 `
@@ -635,7 +685,7 @@ const Column = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     flex-basis: 100%;
     width: 100%;
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
     p {
       white-space: normal;
     }
@@ -695,7 +745,7 @@ const Circle = styled(motion.span)`
   }
 `
 
-const Desc = styled.div`
+const Desc = styled(motion.div)`
   padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
@@ -949,24 +999,66 @@ const EventsWrapper = styled.section`
   h2 {
     padding-bottom: 5rem;
   }
+  br {
+    display: none;
+  }
   @media (max-width: ${breakpoints.xl}px) {
     flex-direction: column;
-    border: 1px solid red;
   }
-  `
+
+  @media (max-width: ${breakpoints.l}px) {
+    width: 93%;
+    right: 0;
+    margin-left: 7%;
+    margin-bottom: 4rem;
+    h2 {
+      padding-bottom: 2rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    br {
+      display: block;
+    }
+  }
+`
 
 const FutureEvents = styled.div`
   width: 50%;
+  h4 {
+    font-family: "calibre-medium";
+  }
   @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
   }
-  `
+`
 
 const PastEvents = styled.div`
   width: 50%;
   @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
-}
+    h2 {
+      margin-top: 5rem;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 5rem;
+    display: none;
+  }
+`
+
+const PastEventsMobile = styled.div`
+  display: none;
+  width: 100%;
+
+  @media (max-width: ${breakpoints.l}px) {
+    display: block;
+    overflow: hidden;
+    h2 {
+      margin-top: 5rem;
+      padding-bottom: 0;
+    }
+  }
 `
 
 const EventsList = styled(motion.div)``
@@ -978,6 +1070,10 @@ const Event = styled(motion.div)`
 
   p:first-child {
     font-size: 20px;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    flex-direction: column;
   }
 `
 
@@ -992,12 +1088,13 @@ const EventImage = styled.div`
   border: 2px solid var(--color-black);
   box-shadow: 6px 6px 0px #1a1748;
 
-
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.l}px) {
     width: 180px;
     height: 180px;
     min-width: none;
     min-height: none;
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 `
 const EventText = styled.div``
@@ -1011,13 +1108,16 @@ const EventsButton = styled(motion.button)`
   color: var(--color-black);
   font-family: "calibre-medium";
   font-size: 25px;
-  line-height: 35px;
+  line-height: 100%;
   margin-top: 3rem;
   padding: 0.75rem 2.75rem;
   padding-bottom: 0.9rem;
   text-align: center;
   text-transform: uppercase;
   transition: var(--hover-transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   :hover {
     background-color: var(--color-black);
     color: var(--color-white);
@@ -1027,8 +1127,126 @@ const EventsButton = styled(motion.button)`
   }
   svg {
     margin-left: 0.25rem;
-    transform: translateY(0.15rem);
     fill: var(--color-black);
     transition: var(--hover-transition);
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    padding: 0.5rem 0.5rem;
+    width: 320px;
+    svg {
+      scale: 0.8;
+      margin-left: 0.35rem;
+    }
+  }
+`
+
+const ContactUsWrapper = styled.div`
+  position: relative;
+`
+
+const LightBlueStarStrokeWrapper = styled(motion.div)`
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    right: 15%;
+    top: 10%;
+    svg {
+      width: 300px;
+      height: auto;
+    }
+  }
+  @media (max-width: 1050px) {
+    top: 13%;
+
+    svg {
+      width: 250px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    right: 20%;
+    top: 15%;
+    svg {
+      width: 200px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    right: 10%;
+    top: 18%;
+    svg {
+      width: 175px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    top: 26%;
+    right: 10%;
+    svg {
+      width: 140px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 25%;
+    right: 10%;
+    svg {
+      width: 130px;
+      height: auto;
+    }
+  }
+`
+const LightBlueStarFillWrapper = styled(motion.div)`
+  display: none;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    right: 30%;
+    top: 25%;
+    svg {
+      width: 225px;
+      height: auto;
+    }
+  }
+  @media (max-width: 1050px) {
+    svg {
+      width: 180px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    top: 25%;
+    svg {
+      width: 150px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 30%;
+    right: 22%;
+    svg {
+      width: 125px;
+      height: auto;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 36%;
+    right: 29%;
+    svg {
+      width: 85px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 32%;
+    right: 30%;
+    svg {
+      width: 80px;
+      height: auto;
+    }
   }
 `

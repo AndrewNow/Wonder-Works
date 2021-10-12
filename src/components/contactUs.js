@@ -246,12 +246,16 @@ const Left = styled.div`
       font-size: 76px;
       line-height: 70px;
     }
+
+    h1,
+    h2 {
+      padding-bottom: 5rem;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
     h1,
     h2 {
-      padding-bottom: 5rem;
       font-size: 9vw;
     }
     h2 {
@@ -276,10 +280,11 @@ const Left = styled.div`
 `
 const Right = styled.div`
   align-self: flex-end;
-
   @media (max-width: ${breakpoints.xl}px) {
     margin-top: 5rem;
-    /* align-self: center; */
+  }
+  @media (max-width: 1100px) {
+    width: 100%;
   }
   @media (max-width: ${breakpoints.l}px) {
     margin-top: 0rem;
@@ -350,11 +355,27 @@ const Contact = styled.div`
       transform-origin: bottom left;
     }
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    grid-template-columns: 2fr 2fr 2fr;
+    p,
+    a,
+    strong {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    margin-top: 1.5rem;
+  }
   @media (max-width: ${breakpoints.l}px) {
     display: flex;
     flex-direction: column;
     width: 85%;
-
+    margin-top: 2rem;
+    p,
+    a,
+    strong {
+      font-size: 18px;
+      line-height: 22px;
+    }
     br {
       display: none;
     }

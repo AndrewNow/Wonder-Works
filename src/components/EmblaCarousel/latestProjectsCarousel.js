@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../breakpoints"
 import { Arrow } from "../../svg/miscellaneous"
-import { PlayIconReactPlayer, PlayButtonFirstSlide } from "./playButtons"
+import { PlayIconReactPlayer, PlayButtonLatestProjects } from "./playButtons"
 
 const LatestProjectsCarousel = () => {
   // -------------------- 1. Initialize Embla Carousel & State --------------------
@@ -17,12 +17,12 @@ const LatestProjectsCarousel = () => {
     speed: 10,
   })
 
-  const [firstPlayClick, setFirstPlayClick] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [videoProgress, setVideoProgress] = useState(0)
   const [slidesInView, setSlidesInView] = useState(0)
   const [paused, setPaused] = useState(true)
   const [hover, setHover] = useState(true)
+  const [thumbnailClicked, setThumbnailClicked] = useState(false)
 
   // event handlers for displaying pause/play button
   const setHoverTrue = () => {
@@ -51,6 +51,10 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
     setPaused(false)
+    setHover(false)
+    if (slidesInView > 0) {
+      setThumbnailClicked(true)
+    }
   }, [embla])
 
   // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
@@ -61,9 +65,9 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     const progress = Math.max(0, Math.min(1, embla.scrollProgress()))
     setScrollProgress(progress * 100)
-    // setFirstPlayClick to true if user scrolls past first slide without clicking the intial "light" play button
+    // setThumbnailClicked to true if user scrolls past first slide without clicking the intial "light" play button
     if (embla.canScrollPrev()) {
-      setFirstPlayClick(true)
+      setThumbnailClicked(true)
     }
   }, [embla, setScrollProgress])
 
@@ -98,11 +102,12 @@ const LatestProjectsCarousel = () => {
 
   return (
     <Wrapper ref={videoRef}>
-      <h2>
-        Latest <br />
-        Projects
+      <Title>
+        <h2>
+          Latest <br />
+          Projects
+        </h2>
         <svg
-          width="134"
           height="2"
           viewBox="0 0 134 2"
           fill="none"
@@ -116,7 +121,7 @@ const LatestProjectsCarousel = () => {
             vectorEffect="non-scaling-stroke"
           />
         </svg>
-      </h2>
+      </Title>
       <ViewAll to="/projects">
         <p>
           View all
@@ -130,11 +135,11 @@ const LatestProjectsCarousel = () => {
               return (
                 <EmblaSlide
                   key={index}
-                  onHoverStart={firstPlayClick && setHoverTrue}
-                  onHoverEnd={firstPlayClick && setHoverFalse}
+                  onHoverStart={thumbnailClicked && setHoverTrue}
+                  onHoverEnd={thumbnailClicked && setHoverFalse}
                 >
                   {/* Only render this button after the first slide's button has been pressed or if user slides to second/third slide  */}
-                  {firstPlayClick && (
+                  {thumbnailClicked && (
                     <AnimatePresence>
                       {hover && (
                         <PlayIconReactPlayer
@@ -147,26 +152,25 @@ const LatestProjectsCarousel = () => {
                     </AnimatePresence>
                   )}
                   <ReactPlayer
-                    light={video.light}
                     url={video.Src}
                     width="100%"
                     height="100%"
-                    // playsinline={true}
+                    playing={
+                      slidesInView === `video[${index}]` &&
+                      !paused &&
+                      videoInView
+                    }
                     onEnded={() => setTimeout(() => scrollNext(), 1500)}
                     onProgress={({ played }) =>
                       !paused && setVideoProgress(played * 100)
                     }
                     progressInterval={500}
+                    light={thumbnailClicked ? false : video.light}
                     playIcon={
-                      <PlayButtonFirstSlide
+                      <PlayButtonLatestProjects
                         setPaused={setPaused}
-                        setFirstPlayClick={setFirstPlayClick}
+                        setThumbnailClicked={setThumbnailClicked}
                       />
-                    }
-                    playing={
-                      slidesInView === `video[${index}]` &&
-                      !paused &&
-                      videoInView
                     }
                   />
                   <VidProgressContainer>
@@ -205,17 +209,6 @@ const Wrapper = styled.div`
   width: 90%;
   margin: 0 auto;
   position: relative;
-  h2 {
-    position: absolute;
-    top: 10%;
-    left: -2%;
-    z-index: 2;
-    color: var(--color-white);
-
-    svg {
-      display: none;
-    }
-  }
   p {
     position: absolute;
     top: 10%;
@@ -236,69 +229,126 @@ const Wrapper = styled.div`
       transition: var(--hover-transition);
     }
   }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    padding-top: 20rem;
+    padding-bottom: 25rem;
+  }
+
+  @media (max-width: ${breakpoints.l}px) {
+    padding: 15rem 0;
+    padding-bottom: 20rem;
+  }
   @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 15rem;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    padding-bottom: 10rem;
     padding-top: 10rem;
+  }
+`
+
+const Title = styled.div`
+  position: absolute;
+  top: 10%;
+  left: -2%;
+  z-index: 2;
+  color: var(--color-white);
+
+  svg {
+    display: none;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    top: 8%;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    top: 6.5%;
+    left: 0%;
     h2 {
-      top: 5%;
-      left: 1%;
-      font-size: 40px;
+      font-size: 100px;
       line-height: 100%;
-      svg {
-        display: inline;
-        margin-left: 1rem;
-        margin-bottom: 0.75rem;
-      }
+    }
+    svg {
+      width: 100%;
+      align-self: flex-end;
+      margin-bottom: 2rem;
+      border: 1px solid var(--color-white);
+      margin-left: 1rem;
+      display: inline;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h2 {
+      font-size: 80px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 10%;
+    h2 {
+      font-size: 60px;
+    }
+    svg {
+      margin-bottom: 1.25rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 15%;
+    h2 {
+      font-size: 45px;
+      line-height: 100%;
+    }
+    svg {
+      margin-bottom: .85rem;
     }
   }
   @media (max-width: ${breakpoints.xs}px) {
     h2 {
       font-size: 32px;
-      svg {
-        width: 40%;
-        margin-bottom: 0.5rem;
-      }
+    }
+    svg {
+      margin-bottom: 0.5rem;
     }
   }
 `
+
 const ViewAll = styled(Link)`
   @media (max-width: ${breakpoints.xl}px) {
-    p {
-      :hover {
-        filter: opacity(1);
-        svg {
-          transform: translate3d(5px, 0.2rem, 0);
-        }
-      }
-      svg {
-        transform: translateY(0.2rem);
-      }
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
     display: none;
   }
 `
 
 const ViewAllBottom = styled(Link)`
   display: none;
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     display: block;
     float: right;
     position: absolute;
-    right: 0%;
-    bottom: -20%;
+    right: 8%;
+    bottom: -18.5%;
     p {
+      filter: opacity(1);
+      font-size: 24px;
       position: relative;
       :hover {
         filter: opacity(1);
         svg {
-          transform: translate3d(5px, 0.25rem, 0);
+          transform: translate3d(5px, 0.15rem, 0);
         }
       }
       svg {
-        scale: 0.8;
-        transform: translateY(0.25rem);
+        margin-left: 20px;
+        transform: translateY(0.15rem);
       }
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: -20%;
+    p {
+      font-size: 22px;
     }
   }
 
@@ -306,9 +356,10 @@ const ViewAllBottom = styled(Link)`
     display: block;
     float: right;
     position: absolute;
-    right: 0%;
-    bottom: -30%;
+    right: 5%;
+    bottom: -75%;
     p {
+      font-size: 16px;
       filter: opacity(1) !important;
       color: var(--color-white);
       position: relative;
@@ -318,31 +369,23 @@ const ViewAllBottom = styled(Link)`
         }
       }
       svg {
-        scale: 0.6;
+        margin-left: 5px;
+        scale: 0.7;
         transform: translateY(0.4rem);
       }
     }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    bottom: -50%;
   }
 `
 const Embla = styled.div`
   width: 80%;
   position: relative;
-  /* background-color: #f7f7f710; */
   margin-left: auto;
   margin-right: auto;
 
-  /* & button:first-of-type {
-    left: -5%;
-  }
-
-  & button:last-of-type {
-    right: -5%;
-  } */
-
-  @media (max-width: ${breakpoints.l}px) {
-    width: 90%;
-  }
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
   }
 `
@@ -364,15 +407,28 @@ const EmblaContainer = styled.div`
 `
 const EmblaSlide = styled(motion.div)`
   position: relative;
-  min-width: 100%;
-  min-height: 100%;
   aspect-ratio: 16 / 9;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  min-width: 72vw;
+  min-width: calc(80vw * 90% / 100); // 80% (const Embla) of 90% (const Wrapper)
+
+  @media (max-width: ${breakpoints.xl}px) {
+    min-width: 90vw;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    min-height: 187px;
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    min-height: 160px;
+  }
 `
 
 const EmblaProgress = styled.div`
   position: relative;
   background-color: #f4f4f4;
-  /* margin-top: 20px; */
   max-width: 80%;
   width: calc(100% - 40px);
   height: 15px;
@@ -380,7 +436,6 @@ const EmblaProgress = styled.div`
   border-radius: 50px;
   margin-left: auto;
   margin-right: auto;
-  /* top: 75px; */
 
   @media (max-width: ${breakpoints.l}px) {
     height: 10px;
@@ -425,7 +480,6 @@ const EmblaProgressBar = styled.div`
   top: 0px;
   bottom: 0px;
   width: calc(100% / 3);
-  /* left: -100%; */
   border-radius: 50px;
 `
 
@@ -451,87 +505,8 @@ const VidProgressContainer = styled.div`
   border-radius: 2px;
   margin-left: auto;
   margin-right: auto;
-  /* top: 75px; */
 
   @media (max-width: ${breakpoints.m}px) {
     display: none;
-  }
-`
-
-const Playbutton = styled(motion.button)`
-  border: none;
-  overflow: hidden;
-  background: none;
-  background-color: #ffffff50;
-  cursor: pointer;
-  position: absolute;
-  z-index: 50;
-  width: 240px;
-  height: 240px;
-  top: 50%;
-  left: 50%;
-  border-radius: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: ${breakpoints.l}px) {
-    width: 200px;
-    height: 200px;
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    width: 150px;
-    height: 150px;
-  }
-`
-
-const TextWrapper = styled(motion.div)`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-
-  @media (max-width: ${breakpoints.l}px) {
-    svg {
-      width: 220px;
-      height: 220px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    svg {
-      width: 150px;
-      height: 150px;
-    }
-  }
-`
-
-const PlaySVG = styled.div`
-  @media (max-width: ${breakpoints.l}px) {
-    svg {
-      width: 75px;
-      height: 75px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    svg {
-      width: 55px;
-      height: 55px;
-    }
-  }
-`
-const PauseSVG = styled.div`
-  margin-left: 1rem;
-
-  @media (max-width: ${breakpoints.l}px) {
-    svg {
-      width: 75px;
-      height: 75px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    svg {
-      width: 55px;
-      height: 55px;
-    }
   }
 `

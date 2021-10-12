@@ -714,7 +714,7 @@ export const PinkGears = () => {
 const PinkFillWrapper = styled(motion.div)`
   aspect-ratio: 1/1;
   width: 60%;
-  height: auto;
+  height: 60%;
 
   position: absolute;
   right: 0;
@@ -729,7 +729,7 @@ const PinkFillWrapper = styled(motion.div)`
 const PinkStrokeWrapper = styled(motion.div)`
   aspect-ratio: 1/1;
   width: 80%;
-  height: auto;
+  height: 80%;
 
   position: absolute;
   left: 0%;

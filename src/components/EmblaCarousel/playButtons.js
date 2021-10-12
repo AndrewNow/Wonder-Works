@@ -5,7 +5,10 @@ import breakpoints from "../breakpoints"
 import { PressPlaySVG } from "./buttons"
 import { StaticImage } from "gatsby-plugin-image"
 
-export const PlayButtonProjectsPageMobile = ({ setPaused, setThumbnailClicked }) => {
+export const PlayButtonProjectsPageMobile = ({
+  setPaused,
+  setThumbnailClicked,
+}) => {
   const button = {
     visible: {
       opacity: 1,
@@ -129,7 +132,7 @@ const Background = styled(motion.div)`
 `
 const DarkenImage = styled.div`
   background: #1a1748;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
   opacity: 0.7;
   position: absolute;
   top: 0;
@@ -220,7 +223,19 @@ const MobileThumbnail = styled.div`
   }
 `
 
-export const PlayButtonFirstSlide = ({ setPaused, setFirstPlayClick }) => {
+const Thumbnail = styled.div`
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const PlayButtonLatestProjects = ({
+  setPaused,
+  setThumbnailClicked,
+}) => {
   const button = {
     visible: {
       opacity: 1,
@@ -261,34 +276,46 @@ export const PlayButtonFirstSlide = ({ setPaused, setFirstPlayClick }) => {
     },
   }
   return (
-    <Playbutton
-      onClick={() => {
-        setPaused(false)
-        setFirstPlayClick(true)
-      }}
-      aria-label="Play video"
-      whileTap={{ scale: 0.9 }}
-      variants={button}
-      initial="visible"
-    >
-      <TextWrapper variants={rotation} animate="visible">
-        <PressPlaySVG />
-      </TextWrapper>
-      <PlaySVG>
-        <svg
-          width="78"
-          height="89"
-          viewBox="0 0 78 89"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 8.70153C0 3.89553 3.86997 0 8.64554 0C10.1286 0 11.0687 0.38982 12.7225 1.05198L73.3695 36.563C76.1897 38.2451 77.4959 40.948 78 44.0639V44.9379C77.4959 48.052 76.1897 50.7558 73.3695 52.4388L12.7233 87.9489C11.0687 88.612 10.1286 89 8.64643 89C3.87086 89 0.0008843 85.1045 0.0008843 80.2985L0 8.70153Z"
-            fill="#F7F7FC"
-          />
-        </svg>
-      </PlaySVG>
-    </Playbutton>
+    <Thumbnail key="mobile">
+      <Playbutton
+        onClick={() => {
+          setPaused(false)
+          setThumbnailClicked(true)
+        }}
+        aria-label="Play video"
+        whileTap={{ scale: 0.9 }}
+        variants={button}
+        initial="visible"
+      >
+        <TextWrapper variants={rotation} animate="visible">
+          <PressPlaySVG />
+        </TextWrapper>
+        <PlaySVG>
+          <svg
+            width="78"
+            height="89"
+            viewBox="0 0 78 89"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 8.70153C0 3.89553 3.86997 0 8.64554 0C10.1286 0 11.0687 0.38982 12.7225 1.05198L73.3695 36.563C76.1897 38.2451 77.4959 40.948 78 44.0639V44.9379C77.4959 48.052 76.1897 50.7558 73.3695 52.4388L12.7233 87.9489C11.0687 88.612 10.1286 89 8.64643 89C3.87086 89 0.0008843 85.1045 0.0008843 80.2985L0 8.70153Z"
+              fill="#F7F7FC"
+            />
+          </svg>
+        </PlaySVG>
+      </Playbutton>
+      <DarkenImage />
+      <ThumbnailWrapper>
+        <StaticImage
+          src="../../images/Projects/thumbnail1.png"
+          alt="Traitor video thumbnail"
+          placeholder="none"
+          quality={100}
+          style={{ position: "relative", zIndex: "5" }}
+        />
+      </ThumbnailWrapper>
+    </Thumbnail>
   )
 }
 

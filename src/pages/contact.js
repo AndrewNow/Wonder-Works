@@ -259,7 +259,8 @@ const CurrentProjects = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     width: 86px;
     height: 86px;
-    right: 30%;
+    right: 25%;
+    top: 30%;
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: 25%;

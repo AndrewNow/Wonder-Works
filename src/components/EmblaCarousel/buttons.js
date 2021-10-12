@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { motion } from 'framer-motion'
-import breakpoints from '../../components/breakpoints'
+import { motion } from "framer-motion"
+import breakpoints from "../../components/breakpoints"
+import { Arrow } from "../../svg/miscellaneous"
 
 export const PrevButton = ({ enabled, onClick }) => {
   return (
@@ -103,6 +104,18 @@ export const NextButtonPress = ({ enabled, onClick }) => {
         />
       </svg>
     </EmblaButtonPress>
+  )
+}
+
+export const MoreEventsButton = ({ enabled, onClick, text }) => {
+  return (
+    <EventsButton
+      onClick={onClick}
+      disabled={!enabled}
+      whileTap={{ scale: 0.9 }}
+    >
+      {text} <Arrow />
+    </EventsButton>
   )
 }
 
@@ -211,6 +224,59 @@ export const PressPlaySVG = () => {
   )
 }
 
+const EventsButton = styled(motion.button)`
+  cursor: pointer;
+  width: 275px;
+  border-radius: 50px;
+  border: 2px solid var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: "calibre-medium";
+  font-size: 20px;
+  line-height: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    svg {
+      fill: var(--color-white);
+    }
+  }
+  svg {
+    scale: 0.8;
+    margin-left: 0.25rem;
+    fill: var(--color-black);
+  }
+
+  & :disabled {
+    opacity: 0.5;
+    cursor: default;
+    :hover {
+      background-color: var(--color-white);
+      color: var(--color-black);
+      svg {
+        fill: var(--color-black);
+      }
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    border: 1px solid var(--color-black);
+    font-size: 16px;
+    padding: 0.35rem 0.75rem;
+    width: 230px;
+    svg {
+      scale: 0.75;
+    }
+  }
+`
+
 const EmblaButton = styled(motion.button)`
   outline: 0;
   cursor: pointer;
@@ -238,7 +304,7 @@ const EmblaButton = styled(motion.button)`
 
     svg {
       max-width: 38px;
-      opacity: .9;
+      opacity: 0.9;
       filter: brightness(6);
     }
   }
@@ -270,7 +336,7 @@ const EmblaButtonPress = styled(motion.button)`
 
     svg {
       max-width: 38px;
-      opacity: .9;
+      opacity: 0.9;
     }
   }
 `

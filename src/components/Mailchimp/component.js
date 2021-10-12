@@ -123,7 +123,10 @@ const MobileWhiteSparkle = styled.div`
     right: 7%;
     z-index: 0;
     bottom: 55%;
+    height: 71px;
+    width: 71px;
     svg {
+      height: 71px;
       width: 71px;
     }
   }

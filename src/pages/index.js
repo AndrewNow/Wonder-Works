@@ -11,7 +11,7 @@ import { GreenStars, PurpleStar } from "../svg/miscellaneous"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
-import {AsSeenOnLogosHome} from "../components/AsSeenOn/AsSeenOnLogos"
+import { AsSeenOnLogosHome } from "../components/AsSeenOn/AsSeenOnLogos"
 import { ContactUsHomePage } from "../components/contactUs"
 import {
   useGlobalDispatchContext,
@@ -49,7 +49,7 @@ const HomeIndex = ({ data }) => {
   useEffect(() => {
     const onScroll = () => {
       const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
-      if ( blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
+      if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
         toggleLightTheme()
       }
     }
@@ -191,7 +191,6 @@ const HomeIndex = ({ data }) => {
     },
   }
 
-
   const circleAnimation = {
     inView: {
       transition: {
@@ -246,7 +245,6 @@ const HomeIndex = ({ data }) => {
     scrollYProgress,
     throttle(scrollYProgress => scrollYProgress * -700, 100)
   )
-
 
   return (
     <Layout title={siteTitle}>
@@ -902,30 +900,53 @@ const DiscoverMore = styled(Link)`
   color: var(--color-black);
   font-family: "calibre-medium";
   font-size: 28px;
-  line-height: 35px;
-
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   :hover {
     background-color: var(--color-black);
     color: var(--color-white);
     svg {
       fill: var(--color-white);
+      transform: translateX(0.25rem);
     }
   }
   svg {
+    margin-left: 0.35rem;
     transition: var(--hover-transition);
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    font-size: 25px;
+    padding: 0.5rem 2.5rem;
+    svg {
+      margin-left: 0.25rem;
 
+      scale: 0.8;
+    }
+  }
   @media (max-width: ${breakpoints.l}px) {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 17px;
-
+    width: auto;
     svg {
       width: 25px;
-      transform: translate3d(0.2rem, 0.3rem, 0);
     }
   }
   @media (max-width: ${breakpoints.m}px) {
-    width: 250px;
+    font-size: 18px;
+    padding: 0.5rem 1.75rem;
+    border: 1px solid var(--color-black);
+    svg {
+      scale: 0.75;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    font-size: 16px;
+    padding: 0.35rem 1.25rem;
+    svg {
+      scale: 0.75;
+    }
   }
 `
 
@@ -1253,9 +1274,17 @@ const Brief = styled(motion.div)`
     padding-bottom: 4rem;
     white-space: nowrap;
   }
+  a {
+    max-width: 300px;
+  }
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 70%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    a {
+      max-width: 250px;
+    }
   }
 
   @media (max-width: ${breakpoints.m}px) {
@@ -1263,6 +1292,10 @@ const Brief = styled(motion.div)`
     margin: 0 auto;
   }
   @media (max-width: ${breakpoints.s}px) {
+    a {
+      max-width: 200px;
+    }
+
     h2,
     p {
       white-space: normal;

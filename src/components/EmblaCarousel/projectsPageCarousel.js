@@ -65,28 +65,25 @@ const ProjectsPageCarousel = () => {
   const videoLinks = [
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      // light: "https://i.imgur.com/yNmhs4y.png",
       light: true,
       trailerbuttontext: "Overlook bay",
       trailerbuttoncolor: "var(--color-green)",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      // light: false,
       light: true,
       trailerbuttontext: "Traitor",
       trailerbuttoncolor: "var(--color-pink)",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      // light: false,
       light: true,
       trailerbuttontext: "Timmeh",
       trailerbuttoncolor: "var(--color-lightblue)",
     },
     // {
     //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-    //   light: false,
+    //   light: true,
     //   trailerbuttontext: "World of havoc",
     //   trailerbuttoncolor: "var(--color-orange)",
     // },
@@ -170,7 +167,6 @@ const ProjectsPageCarousel = () => {
                       slidesInView === `video[${index}]` &&
                       !paused &&
                       videoInView
-                      // && thumbnailClicked
                     }
                     onEnded={() => setTimeout(() => scrollNext(), 5000)}
                     onProgress={({ played }) =>
@@ -355,7 +351,7 @@ const EmblaSlide = styled(motion.div)`
   width: 100%;
   height: 100%;
   min-height: 160px;
-  min-width: 72vw; // 80% (embla) of 90% (container)
+  min-width: 72vw; // 80% (embla) of 90% (const Embla)
 
   @media (max-width: ${breakpoints.xl}px) {
     min-width: 90vw;

@@ -316,6 +316,10 @@ const Bottom = styled.div`
   justify-content: space-between;
   align-items: flex-start;
 
+  @media (max-width: ${breakpoints.xl}px) {
+    flex-direction: column;
+  }
+
   @media (max-width: ${breakpoints.l}px) {
     padding-top: 3rem;
     width: 85%;
@@ -324,11 +328,9 @@ const Bottom = styled.div`
 
 const Right = styled.div`
   align-self: flex-end;
-  @media (max-width: ${breakpoints.xxl}px) {
-    margin-top: 5rem;
-  }
   @media (max-width: ${breakpoints.xl}px) {
-    margin-top: 5rem;
+    margin-top: 0rem;
+    width: 100%;
   }
   @media (max-width: ${breakpoints.l}px) {
     margin-top: 0rem;
@@ -363,14 +365,6 @@ const Headline = styled.div`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    h4 {
-      margin-right: 0;
-    }
-    svg {
-      transform: scaleX(0.7);
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
     display: none;
   }
 `
@@ -378,7 +372,7 @@ const Headline = styled.div`
 const HeadlineMobile = styled.div`
   display: none;
 
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     display: flex;
     align-items: center;
     margin-bottom: 3.5rem;
@@ -400,7 +394,7 @@ const HeadlineMobile = styled.div`
 const Contact = styled.div`
   display: grid;
   grid-template-columns: 150px 2fr 2fr;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 
   p,
   strong,
@@ -446,11 +440,27 @@ const Contact = styled.div`
       transform-origin: bottom left;
     }
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    grid-template-columns: 2fr 2fr 2fr;
+    p,
+    a,
+    strong {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    margin-top: 1.5rem;
+  }
   @media (max-width: ${breakpoints.l}px) {
     display: flex;
     flex-direction: column;
     width: 85%;
-
+    margin-top: 2rem;
+    p,
+    a,
+    strong {
+      font-size: 18px;
+      line-height: 22px;
+    }
     br {
       display: none;
     }
@@ -464,16 +474,16 @@ const Contact = styled.div`
       }
     }
   }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 100%;
+  }
   @media (max-width: ${breakpoints.s}px) {
     a,
     p {
-      font-size: 14px;
+      font-size: 15px;
     }
     p {
       white-space: nowrap;
-    }
-    a {
-      padding-top: .25rem;
     }
   }
   @media (max-width: ${breakpoints.xs}px) {

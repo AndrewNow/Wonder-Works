@@ -1760,6 +1760,8 @@ const Select = styled.select`
   font-size: 20px;
   text-transform: uppercase;
   color: #42423e;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
 
   ::placeholder {
     font-family: "calibre-regular";
