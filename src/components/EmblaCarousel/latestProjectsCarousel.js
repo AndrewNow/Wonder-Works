@@ -357,7 +357,7 @@ const ViewAllBottom = styled(Link)`
     float: right;
     position: absolute;
     right: 5%;
-    bottom: -75%;
+    bottom: -60%;
     p {
       font-size: 16px;
       filter: opacity(1) !important;
@@ -374,6 +374,9 @@ const ViewAllBottom = styled(Link)`
         transform: translateY(0.4rem);
       }
     }
+  }
+  @media (max-width: 400px) {
+    bottom: -75%;
   }
   @media (max-width: ${breakpoints.xs}px) {
     bottom: -50%;

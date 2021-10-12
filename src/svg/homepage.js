@@ -673,3 +673,166 @@ export const PinkStarFill = () => {
     </svg>
   )
 }
+
+export const WWStudioBG = () => {
+  return (
+    <StudioWrap>
+      <BgTablet
+        width="1024"
+        height="1366"
+        viewBox="0 0 1024 1366"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M1023.59 0H413L1023.59 1268.68V0Z" fill="#6653A3" />
+      </BgTablet>
+      <BgMobile
+        width="428"
+        height="926"
+        viewBox="0 0 428 926"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M428 0H80L428 825V0Z" fill="#6653A3" />
+      </BgMobile>
+    </StudioWrap>
+  )
+}
+export const WWPartnershipsBG = () => {
+  return (
+    <PartnershipWrap>
+      <BgTablet
+        width="1024"
+        height="1366"
+        viewBox="0 0 1024 1366"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1024 849.2V0H847.51L539.26 546.44H515.75L264.21 0H0V1268.68L46.84 1366H724.44L1012.5 849.2H1024Z"
+          fill="#FABB17"
+        />
+      </BgTablet>
+      <BgMobile
+        width="428"
+        height="924"
+        viewBox="0 0 428 924"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M428 513.339V0H371.242L209.48 348.045H198.912L66.9164 0H0V825.768L38.9537 924H233.756L422.339 513.339H428Z"
+          fill="#FABB17"
+        />
+      </BgMobile>
+    </PartnershipWrap>
+  )
+}
+export const WWCollabBG = () => {
+  return (
+    <CollabWrap>
+      <BgTablet
+        width="1024"
+        height="1366"
+        viewBox="0 0 1024 1366"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1024.5 0H759.642L505.561 547.24H482.016L175.318 0H-1V850.443H8.08328L296.565 1368H978.883L1024.5 1273.48V0Z"
+          fill="#D9E141"
+        />
+      </BgTablet>
+      <BgMobile
+        width="428"
+        height="926"
+        viewBox="0 0 428 926"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="428" height="926" fill="white" />
+        <path
+          d="M428 0H360.171L227.034 348.798H216.454L55.7541 0H0V514.451H3.59519L192.178 926H388.51L428 826.486V0Z"
+          fill="#D9E141"
+        />
+      </BgMobile>
+    </CollabWrap>
+  )
+}
+export const WWJamsBG = () => {
+  return (
+    <JamsWrap>
+<BgTablet width="1028" height="1366" viewBox="0 0 1028 1366" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 1286.14L621 0H0V1286.14Z" fill="#EB2C90"/>
+</BgTablet>
+
+      <BgMobile
+        width="428"
+        height="926"
+        viewBox="0 0 428 926"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 826L328 0H0V826Z" fill="#EB2C90" />
+      </BgMobile>
+    </JamsWrap>
+  )
+}
+
+const BgTablet = styled.svg`
+  @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
+`
+const BgMobile = styled.svg`
+  display: none;
+  @media (max-width: ${breakpoints.s}px) {
+    display: block;
+  }
+`
+const StudioWrap = styled.div`
+  width: 100vw;
+  height: 100vh;
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: auto;
+  }
+`
+const PartnershipWrap = styled.div`
+  width: 100vw;
+  height: 100vh;
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+  }
+`
+const CollabWrap = styled.div`
+  width: 100vw;
+  height: 100vh;
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+  }
+`
+const JamsWrap = styled.div`
+  width: 100vw;
+  height: 100vh;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+  }
+`

@@ -8,7 +8,12 @@ import React, {
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import breakpoints from "../../breakpoints"
-import * as Svg from "../../../svg/aboutpage"
+import {
+  WWStudioBG,
+  WWPartnershipsBG,
+  WWCollabBG,
+  WWJamsBG,
+} from "../../../svg/homepage"
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
 import { StaticImage } from "gatsby-plugin-image"
@@ -41,7 +46,6 @@ const OurPillars = () => {
     threshold: 0.8,
     triggerOnce: false,
   })
-
 
   // ------------------- 2. Track component scroll progress -------------------
   // This section handles the side scrolling "Pillars" section.
@@ -148,6 +152,10 @@ const OurPillars = () => {
       titleColor: "#1A1749",
       bodyText:
         "Discover what’s in the works at Wonder Works Studio. We’re always dreaming up new adventures in exciting roleplay games for immersive, imaginative fun for everyone. Check out our ambitious new projects or our latest launches—they all live here. ",
+      backgroundSVG: (
+        <WWStudioBG />
+      ),
+      backgroundColor: "#D9E141",
       image: (
         <StaticImage
           src="../../../images/Home/topleft.png"
@@ -156,9 +164,6 @@ const OurPillars = () => {
           quality={100}
         />
       ),
-      backgroundSVG: <Svg.WWStudioHeader />,
-      backgroundColor: "#D9E141",
-      mainSVG: <Svg.WWStudioMain />,
     },
     {
       ref: PartnershipRef,
@@ -167,6 +172,11 @@ const OurPillars = () => {
       titleColor: "#6653A3",
       bodyText:
         "We love growing and connecting with our community. If you’re interested in partnering with the wonderful world of Wonder Works Studio send us a message—we have big ideas to launch with brands of all sizes. ",
+      backgroundSVG: (
+        <WWPartnershipsBG
+        />
+      ),
+      backgroundColor: "#F7F7FC",
       image: (
         <StaticImage
           src="../../../images/Home/bottomleft.png"
@@ -175,9 +185,6 @@ const OurPillars = () => {
           quality={100}
         />
       ),
-      backgroundSVG: <Svg.WWCollabHeader />,
-      backgroundColor: "#F7F7FC",
-      mainSVG: <Svg.WWCollabMain />,
     },
     {
       ref: CollabRef,
@@ -186,6 +193,10 @@ const OurPillars = () => {
       titleColor: "#EB2C90",
       bodyText:
         "Growing our community is important to us and collaborating with optimistic, adventurous individuals pushes our own creativity to new heights. We’re always on the lookout for YouTubers and influencers to help tell our story—let us know if that’s you! ",
+      backgroundSVG: (
+        <WWCollabBG />
+      ),
+      backgroundColor: "#1A1749",
       image: (
         <StaticImage
           src="../../../images/Home/bottomright.png"
@@ -194,9 +205,6 @@ const OurPillars = () => {
           quality={100}
         />
       ),
-      backgroundSVG: <Svg.WWCollabHeader />,
-      backgroundColor: "#1A1749",
-      mainSVG: <Svg.WWCollabMain />,
     },
     {
       ref: JamsRef,
@@ -205,6 +213,10 @@ const OurPillars = () => {
       titleColor: "#6653A3",
       bodyText:
         "Wonder Works Jams is a space for our junior talent to QA various game genres. It’s a creative hub of mentorship that fosters a lifelong love for exploration and innovation and promotes success on individual and collaborative levels. ",
+      backgroundSVG: (
+        <WWJamsBG />
+      ),
+      backgroundColor: "#F7F7FC",
       image: (
         <>
           <StarWrapper>
@@ -218,9 +230,6 @@ const OurPillars = () => {
           />
         </>
       ),
-      backgroundSVG: <Svg.WWJamsHeader />,
-      backgroundColor: "#F7F7FC",
-      mainSVG: <Svg.WWJamsMain />,
     },
   ]
   return (
@@ -248,6 +257,9 @@ const OurPillars = () => {
                       <ImageWrapper>{slide.image}</ImageWrapper>
                       <p>{slide.bodyText}</p>
                     </SlideContentWrapper>
+                    <BackgroundSvgWrapper>
+                      {slide.backgroundSVG}
+                    </BackgroundSvgWrapper>
                   </Background>
                 </EmblaSlide>
               )
@@ -263,7 +275,7 @@ export default OurPillars
 
 const StickyContainer = styled.div`
   display: none;
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: 1024px) {
     margin-top: 15rem;
     // the height value here determines the "length" of the horizontal scroll carousel
     // higher values = longer distance to initiate slide change
@@ -290,6 +302,8 @@ const EmblaViewport = styled(motion.div)`
   width: 100%;
   height: 100%;
   background-color: var(--color-purple);
+  position: relative;
+  z-index: 10;
 `
 
 const EmblaContainer = styled(motion.div)`
@@ -304,7 +318,6 @@ const EmblaContainer = styled(motion.div)`
 const EmblaSlide = styled(motion.div)`
   width: 100vw;
   height: 100vh;
-  position: relative;
 `
 
 const Background = styled.div`
@@ -312,8 +325,17 @@ const Background = styled.div`
   height: 100%;
 `
 
+const BackgroundSvgWrapper = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+`
+
 const SlideContentWrapper = styled.div`
   z-index: 10;
+  position: relative;
   margin: 0 auto;
   width: 80%;
   height: 90%;
@@ -339,8 +361,13 @@ const SlideContentWrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  width: 100%;
-  position: relative;
+  @media (max-width: ${breakpoints.m}px) {
+    width: 50%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+    position: relative;
+  }
 `
 
 const StarWrapper = styled.div`

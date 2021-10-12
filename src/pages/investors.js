@@ -1150,27 +1150,20 @@ const LightBlueStarStrokeWrapper = styled(motion.div)`
     position: absolute;
     z-index: 1;
     display: block;
-    right: 15%;
-    top: 10%;
+    right: 20%;
+    top: 18%;
     svg {
-      width: 300px;
-      height: auto;
-    }
-  }
-  @media (max-width: 1050px) {
-    top: 13%;
-
-    svg {
-      width: 250px;
+      width: 270px;
+      height: 270px;
     }
   }
 
   @media (max-width: ${breakpoints.l}px) {
     right: 20%;
-    top: 15%;
+    top: 21%;
     svg {
-      width: 200px;
-      height: auto;
+      width: 220px;
+      height: 220px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1207,23 +1200,18 @@ const LightBlueStarFillWrapper = styled(motion.div)`
     position: absolute;
     z-index: 1;
     right: 30%;
-    top: 25%;
+    top: 30%;
     svg {
-      width: 225px;
-      height: auto;
-    }
-  }
-  @media (max-width: 1050px) {
-    svg {
-      width: 180px;
+      width: 200px;
+      height: 200px;
     }
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    top: 25%;
+    top: 35%;
     svg {
       width: 150px;
-      height: auto;
+      height: 150px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1231,7 +1219,7 @@ const LightBlueStarFillWrapper = styled(motion.div)`
     right: 22%;
     svg {
       width: 125px;
-      height: auto;
+      height: 125px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -1239,6 +1227,7 @@ const LightBlueStarFillWrapper = styled(motion.div)`
     right: 29%;
     svg {
       width: 85px;
+      height: 85px;
     }
   }
   @media (max-width: ${breakpoints.xs}px) {
@@ -1246,7 +1235,7 @@ const LightBlueStarFillWrapper = styled(motion.div)`
     right: 30%;
     svg {
       width: 80px;
-      height: auto;
+      height: 80px;
     }
   }
 `

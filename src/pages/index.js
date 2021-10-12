@@ -182,7 +182,6 @@ const HomeIndex = ({ data }) => {
         type: "spring",
         stiffness: 100,
         damping: 13,
-        // ...transition
       },
     },
     hidden: {
@@ -366,6 +365,7 @@ const HomeIndex = ({ data }) => {
           collaboration, and push innovation so gamers grow alongside the
           stories they create.
         </motion.p>
+        {/* ==============  */}
         <ImaginationBG>
           <CircleWrapper>
             <Svg.Circle />
@@ -1574,18 +1574,18 @@ const PinkStarStrokeWrapper = styled(motion.div)`
   right: 15%;
   @media (max-width: ${breakpoints.xl}px) {
     right: 20%;
-    top: 5%;
+    top: 18%;
     svg {
-      width: 250px;
-      height: auto;
+      width: 270px;
+      height: 270px;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
     right: 20%;
-    top: 15%;
+    top: 21%;
     svg {
-      width: 200px;
-      height: auto;
+      width: 220px;
+      height: 220px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1593,7 +1593,7 @@ const PinkStarStrokeWrapper = styled(motion.div)`
     top: 25%;
     svg {
       width: 150px;
-      height: auto;
+      height: 150px;
     }
   }
   @media (max-width: ${breakpoints.xs}px) {
@@ -1601,7 +1601,7 @@ const PinkStarStrokeWrapper = styled(motion.div)`
     top: 27%;
     svg {
       width: 130px;
-      height: auto;
+      height: 130px;
     }
   }
 `
@@ -1613,17 +1613,17 @@ const PinkStarFillWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xl}px) {
     right: 30%;
-    top: 17%;
+    top: 30%;
     svg {
       width: 200px;
-      height: auto;
+      height: 200px;
     }
   }
   @media (max-width: ${breakpoints.l}px) {
-    top: 25%;
+    top: 35%;
     svg {
       width: 150px;
-      height: auto;
+      height: 150px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1631,7 +1631,7 @@ const PinkStarFillWrapper = styled(motion.div)`
     right: 20%;
     svg {
       width: 100px;
-      height: auto;
+      height: 100px;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -1642,7 +1642,7 @@ const PinkStarFillWrapper = styled(motion.div)`
     top: 33%;
     svg {
       width: 80px;
-      height: auto;
+      height: 80px;
     }
   }
 `

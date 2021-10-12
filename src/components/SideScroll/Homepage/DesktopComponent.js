@@ -114,7 +114,7 @@ const DesktopComponent = () => {
             src="../../../images/Home/bottomleft.png"
             alt="Playful text which reads 'Wonder Works Jams'"
             placeholder="none"
-dss          />
+          />
         </ImageWrapper>
         <StarWrapper>
           <motion.svg
@@ -224,7 +224,7 @@ const Pillars = styled.section`
   display: flex;
   flex-wrap: wrap;
 
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `

@@ -242,13 +242,10 @@ const Left = styled.div`
     width: 50%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    h2 {
-      font-size: 76px;
-      line-height: 70px;
-    }
-
     h1,
     h2 {
+      font-size: 100px;
+      line-height: 90%;
       padding-bottom: 5rem;
     }
   }
