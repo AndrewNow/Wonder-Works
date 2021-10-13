@@ -27,7 +27,7 @@ import {
   useGlobalStateContext,
 } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
-import OurPillars from "../components/SideScroll/ourPillars"
+import OurPillarsAboutPage from "../components/SideScroll/ourPillarsAboutpage"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -313,7 +313,7 @@ const About = ({ data }) => {
           <AsSeenOnLogosAbout />
         </Logos>
       </OrangeBg>
-      <OurPillars />
+      <OurPillarsAboutPage />
       {/* <Container>
         <OurPillars ref={horizontalScroll}>
           {sideScrollInView && (

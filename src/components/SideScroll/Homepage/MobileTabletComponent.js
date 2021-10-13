@@ -19,7 +19,7 @@ import { useEmblaCarousel } from "embla-carousel/react"
 import { StaticImage } from "gatsby-plugin-image"
 import { WWJamsStars } from "../../../svg/miscellaneous"
 
-const OurPillars = () => {
+const MobileTabletComponent = () => {
   // ------------------------- 1. Establish refs -------------------------
   const horizontalScroll = useRef()
 
@@ -152,9 +152,7 @@ const OurPillars = () => {
       titleColor: "#1A1749",
       bodyText:
         "Discover what’s in the works at Wonder Works Studio. We’re always dreaming up new adventures in exciting roleplay games for immersive, imaginative fun for everyone. Check out our ambitious new projects or our latest launches—they all live here. ",
-      backgroundSVG: (
-        <WWStudioBG />
-      ),
+      backgroundSVG: <WWStudioBG />,
       backgroundColor: "#D9E141",
       image: (
         <StaticImage
@@ -172,10 +170,7 @@ const OurPillars = () => {
       titleColor: "#6653A3",
       bodyText:
         "We love growing and connecting with our community. If you’re interested in partnering with the wonderful world of Wonder Works Studio send us a message—we have big ideas to launch with brands of all sizes. ",
-      backgroundSVG: (
-        <WWPartnershipsBG
-        />
-      ),
+      backgroundSVG: <WWPartnershipsBG />,
       backgroundColor: "#F7F7FC",
       image: (
         <StaticImage
@@ -193,9 +188,7 @@ const OurPillars = () => {
       titleColor: "#EB2C90",
       bodyText:
         "Growing our community is important to us and collaborating with optimistic, adventurous individuals pushes our own creativity to new heights. We’re always on the lookout for YouTubers and influencers to help tell our story—let us know if that’s you! ",
-      backgroundSVG: (
-        <WWCollabBG />
-      ),
+      backgroundSVG: <WWCollabBG />,
       backgroundColor: "#1A1749",
       image: (
         <StaticImage
@@ -213,9 +206,7 @@ const OurPillars = () => {
       titleColor: "#6653A3",
       bodyText:
         "Wonder Works Jams is a space for our junior talent to QA various game genres. It’s a creative hub of mentorship that fosters a lifelong love for exploration and innovation and promotes success on individual and collaborative levels. ",
-      backgroundSVG: (
-        <WWJamsBG />
-      ),
+      backgroundSVG: <WWJamsBG />,
       backgroundColor: "#F7F7FC",
       image: (
         <>
@@ -232,6 +223,39 @@ const OurPillars = () => {
       ),
     },
   ]
+  // ------------------- 5. Animations -------------------
+
+  const Parent = {
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: .25,
+      },
+    },
+    hidden: {
+      opacity: 0,
+    },
+  }
+
+  const FadeIn = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 50
+    },
+    exit: {
+       opacity: 0,
+      y: -50
+    }
+  }
+
   return (
     <StickyContainer ref={horizontalScroll}>
       <Embla>
@@ -245,17 +269,25 @@ const OurPillars = () => {
                       backgroundColor: `${slide.backgroundColor}`,
                     }}
                   >
-                    <SlideContentWrapper>
-                      <p
+                    <SlideContentWrapper
+                      variants={Parent}
+                      initial="hidden"
+                      animate={slide.inView ? "visible" : "hidden"}
+                      exit="exit"
+                    >
+                      <motion.h5
+                        variants={FadeIn}
                         style={{
                           color: `${slide.titleColor}`,
                           fontFamily: "calibre-semibold",
                         }}
                       >
                         {slide.title}
-                      </p>
-                      <ImageWrapper>{slide.image}</ImageWrapper>
-                      <p>{slide.bodyText}</p>
+                      </motion.h5>
+                      <ImageWrapper variants={FadeIn}>
+                        {slide.image}
+                      </ImageWrapper>
+                      <motion.p variants={FadeIn}>{slide.bodyText}</motion.p>
                     </SlideContentWrapper>
                     <BackgroundSvgWrapper>
                       {slide.backgroundSVG}
@@ -271,7 +303,7 @@ const OurPillars = () => {
   )
 }
 
-export default OurPillars
+export default MobileTabletComponent
 
 const StickyContainer = styled.div`
   display: none;
@@ -333,7 +365,7 @@ const BackgroundSvgWrapper = styled.div`
   height: 100vh;
 `
 
-const SlideContentWrapper = styled.div`
+const SlideContentWrapper = styled(motion.div)`
   z-index: 10;
   position: relative;
   margin: 0 auto;
@@ -345,14 +377,20 @@ const SlideContentWrapper = styled.div`
   grid-template-columns: 1;
   justify-items: center;
 
-  p {
+  h5 {
+    font-size: 35px;
+    line-height: 42px;
     text-align: center;
-    width: 60%;
+  }
+  p {
+    font-size: 20px;
+    text-align: center;
+    width: 62%;
     margin: 0 auto;
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    p {
+    p, h5 {
       width: 90%;
       font-size: 16px;
       line-height: 19px;
@@ -360,7 +398,7 @@ const SlideContentWrapper = styled.div`
   }
 `
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.m}px) {
     width: 50%;
   }

@@ -213,7 +213,7 @@ const Wrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    padding-bottom: 7rem;
+    padding-bottom: 4rem;
     padding-top: 3rem;
     h2 {
       font-size: 45px;
@@ -283,14 +283,8 @@ const Embla = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    button:first-of-type {
-      bottom: -12.5%;
-      left: 3%;
-    }
-
-    button:last-of-type {
-      bottom: -12.5%;
-      right: 3%;
+    button {
+      display: none;
     }
   }
 `
@@ -309,12 +303,11 @@ const EmblaContainer = styled(motion.div)`
 const EmblaSlide = styled(motion.div)`
   position: relative;
   width: 100%;
-  margin-right: 8%;
+  margin-right: 4%;
   flex: 0 0 30%;
 
   @media (max-width: ${breakpoints.xxl}px) {
     flex: 0 0 40%;
-    margin-right: 4%;
   }
   @media (max-width: ${breakpoints.m}px) {
     flex: 0 0 25%;

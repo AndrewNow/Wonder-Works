@@ -762,10 +762,15 @@ export const WWCollabBG = () => {
 export const WWJamsBG = () => {
   return (
     <JamsWrap>
-<BgTablet width="1028" height="1366" viewBox="0 0 1028 1366" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 1286.14L621 0H0V1286.14Z" fill="#EB2C90"/>
-</BgTablet>
-
+      <BgTablet
+        width="1028"
+        height="1366"
+        viewBox="0 0 1028 1366"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 1286.14L621 0H0V1286.14Z" fill="#EB2C90" />
+      </BgTablet>
       <BgMobile
         width="428"
         height="926"

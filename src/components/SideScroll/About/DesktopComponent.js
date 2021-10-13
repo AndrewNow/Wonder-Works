@@ -7,12 +7,12 @@ import React, {
 } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
-import breakpoints from "../breakpoints"
-import * as Svg from "../../svg/aboutpage"
+import breakpoints from "../../breakpoints"
+import * as Svg from "../../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
 
-const OurPillars = () => {
+const DesktopComponent = () => {
   // ------------------------- 1. Establish refs -------------------------
   const horizontalScroll = useRef()
 
@@ -23,19 +23,24 @@ const OurPillars = () => {
     triggerOnce: false,
   })
 
-  const [JamsRef, JamsRefInView] = useInView({
+  const [PartnershipRef, PartnershipRefInView] = useInView({
     root: null,
     threshold: 0.8,
     triggerOnce: false,
   })
-
+  
   const [CollabRef, CollabRefInView] = useInView({
     root: null,
     threshold: 0.8,
     triggerOnce: false,
   })
-
-
+  
+  const [JamsRef, JamsRefInView] = useInView({
+    root: null,
+    threshold: 0.8,
+    triggerOnce: false,
+  })
+  
   // ------------------- 2. Framer animation variants -------------------
   const sideScrollHeader = {
     visible: {
@@ -57,18 +62,11 @@ const OurPillars = () => {
   const sideScrollSVG = {
     visible: {
       opacity: 1,
-      // y: 0,
-      // scale: 1,
-      // rotate: 0,
       transition: {
-        // delay: 0.25,
         duration: 0.5,
       },
     },
     hidden: {
-      // scale: .7,
-      // rotate: 10,
-      // y: -50,
       opacity: 0,
       transition: {
         duration: 0.5,
@@ -142,8 +140,16 @@ const OurPillars = () => {
     align: "start",
     speed: 5,
   })
-
+  
+  // !!!
+  //
+  // It's super important that you update the following section when adding/removing the total number of slides.
+  // Without adding a new Callback / useEffect entry, the slide will never scroll into view.
+  //
+  // !!!
+  
   // Create callback hooks for scrolling each slide into view according to its index
+  // embla.ScrollTo() takes in the index of the slide you wish to scroll to
   const scrollToFirstSlide = useCallback(
     () => embla && embla.scrollTo(0),
     [embla]
@@ -156,21 +162,27 @@ const OurPillars = () => {
     () => embla && embla.scrollTo(2),
     [embla]
   )
-
+  const scrollToFourthSlide = useCallback(
+    () => embla && embla.scrollTo(3),
+    [embla]
+  )
   // Create rules for when the slides should change according to the returned value from scrollProgress
   useEffect(() => {
-    if (scrollProgress > 0.8 && scrollProgress < 1) {
+    if (scrollProgress > 0.85 && scrollProgress < 1) {
       scrollToFirstSlide()
-    } else if (scrollProgress < 0.8 && scrollProgress > 0.45) {
+    } else if (scrollProgress < 0.85 && scrollProgress > 0.5) {
       scrollToSecondSlide()
-    } else if (scrollProgress < 0.45 && scrollProgress > 0) {
+    } else if (scrollProgress < 0.5 && scrollProgress > .25) {
       scrollToThirdSlide()
+    } else if (scrollProgress < 0.25 && scrollProgress > 0) {
+      scrollToFourthSlide()
     }
   }, [
     scrollProgress,
     scrollToFirstSlide,
     scrollToSecondSlide,
     scrollToThirdSlide,
+    scrollToFourthSlide,
   ])
 
   // prevent excessive scrolling
@@ -211,15 +223,15 @@ const OurPillars = () => {
       rightSVG: <Svg.WWStudioRight />,
     },
     {
-      ref: JamsRef,
-      inView: JamsRefInView,
-      title: "Wonder Works Jams",
-      titleColor: "#F9DB1E",
+      ref: PartnershipRef,
+      inView: PartnershipRefInView,
+      title: "Wonder Works Partnership",
+      titleColor: "#E795BF",
       bodyText:
-        "Wonder Works Jams is a space for our junior talent to QA various game genres. It’s a creative hub of mentorship that fosters a lifelong love for exploration and innovation and promotes success on individual and collaborative levels. ",
-      headerSVG: <Svg.WWJamsHeader />,
-      mainSVG: <Svg.WWJamsMain />,
-      rightSVG: <Svg.WWJamsRight />,
+        "We love growing and connecting with our community. If you’re interested in partnering with the wonderful world of Wonder Works Studio send us a message—we have big ideas to launch with brands of all sizes. ",
+      headerSVG: <Svg.WWPartnershipHeader />,
+      mainSVG: <Svg.WWPartnershipMain />,
+      rightSVG: <Svg.WWPartnershipRight />,
     },
     {
       ref: CollabRef,
@@ -231,6 +243,17 @@ const OurPillars = () => {
       headerSVG: <Svg.WWCollabHeader />,
       mainSVG: <Svg.WWCollabMain />,
       rightSVG: <Svg.WWCollabRight />,
+    },
+    {
+      ref: JamsRef,
+      inView: JamsRefInView,
+      title: "Wonder Works Jams",
+      titleColor: "#F9DB1E",
+      bodyText:
+        "Wonder Works Jams is a space for our junior talent to QA various game genres. It’s a creative hub of mentorship that fosters a lifelong love for exploration and innovation and promotes success on individual and collaborative levels. ",
+      headerSVG: <Svg.WWJamsHeader />,
+      mainSVG: <Svg.WWJamsMain />,
+      rightSVG: <Svg.WWJamsRight />,
     },
   ]
   return (
@@ -305,16 +328,16 @@ const OurPillars = () => {
   )
 }
 
-export default OurPillars
+export default DesktopComponent
 
 // the height value here determines the "length" of the horizontal scroll carousel
 // higher values = longer distance to initiate slide change
 const StickyContainer = styled.div`
-  height: 800vh;
+  height: 850vh;
   position: relative;
 
-  @media (max-width: ${breakpoints.s}px) {
-    height: 1500vh;
+  @media (max-width: ${breakpoints.m}px) {
+    display: none;
   }
 `
 
@@ -371,7 +394,10 @@ const OurPillarsHeader = styled(motion.div)`
     padding-top: 10%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    /* padding-top: 20%; */
+    padding-top: 12vh;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-top: 15vh;
   }
 
   @media (max-width: ${breakpoints.s}px) {
@@ -426,7 +452,12 @@ const LeftInner = styled.div`
     width: 80%;
   }
   @media (max-width: ${breakpoints.xl}px) {
+    justify-content: center;
     padding-left: 0rem;
+    margin-top: 0rem;
+    div > svg {
+      max-width: 430px;
+    }
     h4 {
       margin-top: 1rem;
     }

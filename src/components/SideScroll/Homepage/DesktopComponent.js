@@ -101,7 +101,32 @@ const DesktopComponent = () => {
         onMouseEnter={() => setHover({ topRightHover: true })}
         onMouseLeave={() => setHover({ topRightHover: false })}
       >
+        <ImageWrapper>
+          <StaticImage
+            onMouseEnter={() => setHover({ topRightHover: true })}
+            onMouseLeave={() => setHover({ topRightHover: false })}
+            src="../../../images/Home/topleft.png"
+            alt="Playful text which reads 'Wonder Works Studio"
+            placeholder="none"
+            quality={100}
+          />
+        </ImageWrapper>
         <Svg.TopRightPillar />
+        <PillarHover
+          variants={pillarVariants}
+          initial="hidden"
+          animate={hover.topRightHover ? "visible" : "hidden"}
+          exit="hidden"
+        >
+          <PillarHoverInner>
+            <p>
+              We love growing and connecting with our community. If you’re
+              interested in partnering with the wonderful world of Wonder Works
+              Studio send us a message—we have big ideas to launch with brands
+              of all sizes.
+            </p>
+          </PillarHoverInner>
+        </PillarHover>
       </TopRight>
       <BottomLeft
         onMouseEnter={() => setHover({ bottomLeftHover: true })}
@@ -254,7 +279,7 @@ const ImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-
+  
   @media (max-width: 1440px) {
     max-width: 70%;
   }
