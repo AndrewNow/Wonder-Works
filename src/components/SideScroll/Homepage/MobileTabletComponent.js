@@ -4,6 +4,7 @@ import React, {
   useState,
   useEffect,
   useLayoutEffect,
+  useMemo,
 } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
@@ -17,7 +18,7 @@ import {
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
 import { StaticImage } from "gatsby-plugin-image"
-import { WWJamsStars } from "../../../svg/miscellaneous"
+import { useThrottleFn } from "react-use"
 
 const MobileTabletComponent = () => {
   // ------------------------- 1. Establish refs -------------------------
@@ -54,19 +55,22 @@ const MobileTabletComponent = () => {
   // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
   const useScrollProgress = () => {
     const [scrollProgress, setScrollProgress] = useState()
+
+    // Throttle the scroll events for performance
+    const throttledOnScroll = useThrottleFn(onScroll, 500, [onScroll])
+
+    const onScroll = useCallback(() => {
+      console.log("testing throttle")
+      // get the component's coordinates
+      const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
+      // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
+      setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
+    },[])
+
     useLayoutEffect(() => {
-      const onScroll = () => {
-        // get the component's coordinates
-        const horizontalScrollDiv =
-          horizontalScroll.current.getBoundingClientRect()
-        // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
-        setScrollProgress(
-          horizontalScrollDiv.bottom / horizontalScrollDiv.height
-        )
-      }
-      window.addEventListener("scroll", onScroll)
-      return () => window.removeEventListener("scroll", onScroll)
-    }, [])
+      window.addEventListener("scroll", throttledOnScroll)
+      return () => window.removeEventListener("scroll", throttledOnScroll)
+    }, [throttledOnScroll])
     return scrollProgress
   }
   const scrollProgress = useScrollProgress()
@@ -119,28 +123,28 @@ const MobileTabletComponent = () => {
     scrollToFourthSlide,
   ])
 
-  // prevent excessive scrolling
-  const preventEdgeScrolling = embla => {
-    const { limit, target, location, scrollTo } = embla.dangerouslyGetEngine()
+  // // prevent excessive scrolling
+  // const preventEdgeScrolling = embla => {
+  //   const { limit, target, location, scrollTo } = embla.dangerouslyGetEngine()
 
-    return () => {
-      if (limit.reachedMax(target.get())) {
-        if (limit.reachedMax(location.get())) location.set(limit.max)
-        target.set(limit.max)
-        scrollTo.distance(0, false)
-      }
-      if (limit.reachedMin(target.get())) {
-        if (limit.reachedMin(location.get())) location.set(limit.min)
-        target.set(limit.min)
-        scrollTo.distance(0, false)
-      }
-    }
-  }
+  //   return () => {
+  //     if (limit.reachedMax(target.get())) {
+  //       if (limit.reachedMax(location.get())) location.set(limit.max)
+  //       target.set(limit.max)
+  //       scrollTo.distance(0, false)
+  //     }
+  //     if (limit.reachedMin(target.get())) {
+  //       if (limit.reachedMin(location.get())) location.set(limit.min)
+  //       target.set(limit.min)
+  //       scrollTo.distance(0, false)
+  //     }
+  //   }
+  // }
 
   // Run Embla
   useEffect(() => {
     if (!embla) return
-    embla.on("scroll", preventEdgeScrolling(embla))
+    // embla.on("scroll", preventEdgeScrolling(embla))
   }, [embla])
 
   // ------------------- 4. Data for slide markup -------------------
@@ -210,11 +214,8 @@ const MobileTabletComponent = () => {
       backgroundColor: "#F7F7FC",
       image: (
         <>
-          <StarWrapper>
-            <WWJamsStars />
-          </StarWrapper>
           <StaticImage
-            src="../../../images/Home/bottomleft.png"
+            src="../../../images/Home/bottomlefttablet.png"
             alt="Playful text which reads 'Wonder Works Jams'"
             placeholder="none"
             quality={100}
@@ -230,7 +231,7 @@ const MobileTabletComponent = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: .25,
+        delayChildren: 0.25,
       },
     },
     hidden: {
@@ -248,12 +249,12 @@ const MobileTabletComponent = () => {
     },
     hidden: {
       opacity: 0,
-      y: 50
+      y: 50,
     },
     exit: {
-       opacity: 0,
-      y: -50
-    }
+      opacity: 0,
+      y: -50,
+    },
   }
 
   return (
@@ -390,7 +391,8 @@ const SlideContentWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    p, h5 {
+    p,
+    h5 {
       width: 90%;
       font-size: 16px;
       line-height: 19px;
@@ -411,14 +413,16 @@ const ImageWrapper = styled(motion.div)`
 const StarWrapper = styled.div`
   width: 100%;
   height: auto;
-  /* height: 100%; */
   position: absolute;
   z-index: 11;
-  left: -8%;
-  top: -2%;
-  /* top: -35%; */
-  svg {
-    height: auto;
-    width: 100%;
+  left: -2%;
+  top: 34%;
+  @media (max-width: ${breakpoints.s}px) {
+    left: -8%;
+    top: -2%;
+    svg {
+      height: auto;
+      width: 100%;
+    }
   }
 `
