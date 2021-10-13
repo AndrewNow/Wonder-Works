@@ -4,7 +4,6 @@ import React, {
   useState,
   useEffect,
   useLayoutEffect,
-  useMemo,
 } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
@@ -20,10 +19,30 @@ import { useEmblaCarousel } from "embla-carousel/react"
 import { StaticImage } from "gatsby-plugin-image"
 import { useThrottleFn } from "react-use"
 
+// ------------------- Hook for 2. -------------------
+const useScrollProgress = horizontalScroll => {
+  const [scrollProgress, setScrollProgress] = useState()
+  const onScroll = () => {
+    // get the component's coordinates
+    const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
+    // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
+    setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
+  }
+
+  // Throttle the scroll events for performance
+  const throttledOnScroll = useThrottleFn(onScroll, 300, [onScroll])
+
+  useLayoutEffect(() => {
+    window.addEventListener("scroll", throttledOnScroll)
+    return () => window.removeEventListener("scroll", throttledOnScroll)
+  }, [throttledOnScroll])
+  return scrollProgress
+}
+
 const MobileTabletComponent = () => {
+  // This section handles the side scrolling "Pillars" section.
   // ------------------------- 1. Establish refs -------------------------
   const horizontalScroll = useRef()
-
   // refs for each slide to animate when inView
   const [StudioRef, StudioRefInView] = useInView({
     root: null,
@@ -48,32 +67,9 @@ const MobileTabletComponent = () => {
     triggerOnce: false,
   })
 
-  // ------------------- 2. Track component scroll progress -------------------
-  // This section handles the side scrolling "Pillars" section.
-  // The height of the container (StickyContainer) defines how long the user must scroll to get to the next slide
-
-  // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
-  const useScrollProgress = () => {
-    const [scrollProgress, setScrollProgress] = useState()
-
-    // Throttle the scroll events for performance
-    const throttledOnScroll = useThrottleFn(onScroll, 500, [onScroll])
-
-    const onScroll = useCallback(() => {
-      console.log("testing throttle")
-      // get the component's coordinates
-      const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
-      // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
-      setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
-    },[])
-
-    useLayoutEffect(() => {
-      window.addEventListener("scroll", throttledOnScroll)
-      return () => window.removeEventListener("scroll", throttledOnScroll)
-    }, [throttledOnScroll])
-    return scrollProgress
-  }
-  const scrollProgress = useScrollProgress()
+  // ------------------- 2. Track component scroll progress, see hook above -------------------
+  const scrollProgress = useScrollProgress(horizontalScroll)
+  console.log(scrollProgress)
 
   // ------------------- 3. Embla Carousel Logic -------------------
   // Configure Embla settings (notably: disabled user touch/click interaction)
@@ -83,7 +79,7 @@ const MobileTabletComponent = () => {
     containScroll: "trimSnaps",
     loop: false,
     align: "start",
-    speed: 5,
+    speed: 6,
   })
 
   // Create callback hooks for scrolling each slide into view according to its index
@@ -123,28 +119,28 @@ const MobileTabletComponent = () => {
     scrollToFourthSlide,
   ])
 
-  // // prevent excessive scrolling
-  // const preventEdgeScrolling = embla => {
-  //   const { limit, target, location, scrollTo } = embla.dangerouslyGetEngine()
+  // prevent excessive scrolling
+  const preventEdgeScrolling = embla => {
+    const { limit, target, location, scrollTo } = embla.dangerouslyGetEngine()
 
-  //   return () => {
-  //     if (limit.reachedMax(target.get())) {
-  //       if (limit.reachedMax(location.get())) location.set(limit.max)
-  //       target.set(limit.max)
-  //       scrollTo.distance(0, false)
-  //     }
-  //     if (limit.reachedMin(target.get())) {
-  //       if (limit.reachedMin(location.get())) location.set(limit.min)
-  //       target.set(limit.min)
-  //       scrollTo.distance(0, false)
-  //     }
-  //   }
-  // }
+    return () => {
+      if (limit.reachedMax(target.get())) {
+        if (limit.reachedMax(location.get())) location.set(limit.max)
+        target.set(limit.max)
+        scrollTo.distance(0, false)
+      }
+      if (limit.reachedMin(target.get())) {
+        if (limit.reachedMin(location.get())) location.set(limit.min)
+        target.set(limit.min)
+        scrollTo.distance(0, false)
+      }
+    }
+  }
 
   // Run Embla
   useEffect(() => {
     if (!embla) return
-    // embla.on("scroll", preventEdgeScrolling(embla))
+    embla.on("scroll", preventEdgeScrolling(embla))
   }, [embla])
 
   // ------------------- 4. Data for slide markup -------------------
@@ -170,7 +166,7 @@ const MobileTabletComponent = () => {
     {
       ref: PartnershipRef,
       inView: PartnershipRefInView,
-      title: "Wonder Works Partnership",
+      title: "Wonder Works Partnerships",
       titleColor: "#6653A3",
       bodyText:
         "We love growing and connecting with our community. If you’re interested in partnering with the wonderful world of Wonder Works Studio send us a message—we have big ideas to launch with brands of all sizes. ",
@@ -178,8 +174,8 @@ const MobileTabletComponent = () => {
       backgroundColor: "#F7F7FC",
       image: (
         <StaticImage
-          src="../../../images/Home/bottomleft.png"
-          alt="Playful text which reads 'Wonder Works Jams'"
+          src="../../../images/Home/topright.png"
+          alt="Playful text which reads 'Wonder Works Parterships'"
           placeholder="none"
           quality={100}
         />
@@ -189,7 +185,7 @@ const MobileTabletComponent = () => {
       ref: CollabRef,
       inView: CollabRefInView,
       title: "Wonder Works Collab",
-      titleColor: "#EB2C90",
+      titleColor: "#F7F7FC",
       bodyText:
         "Growing our community is important to us and collaborating with optimistic, adventurous individuals pushes our own creativity to new heights. We’re always on the lookout for YouTubers and influencers to help tell our story—let us know if that’s you! ",
       backgroundSVG: <WWCollabBG />,
@@ -230,6 +226,7 @@ const MobileTabletComponent = () => {
     visible: {
       opacity: 1,
       transition: {
+        delay: .5,
         staggerChildren: 0.2,
         delayChildren: 0.25,
       },
@@ -384,13 +381,18 @@ const SlideContentWrapper = styled(motion.div)`
     text-align: center;
   }
   p {
+    font-family: "calibre-medium";
     font-size: 20px;
     text-align: center;
     width: 62%;
     margin: 0 auto;
   }
-
+  
   @media (max-width: ${breakpoints.s}px) {
+    grid-template-rows: 1fr 2fr 3fr;
+    p {
+      font-family: "calibre-regular";
+    }
     p,
     h5 {
       width: 90%;

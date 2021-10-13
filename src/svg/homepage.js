@@ -750,7 +750,7 @@ export const WWCollabBG = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="428" height="926" fill="white" />
+        {/* <rect width="428" height="926" fill="white" /> */}
         <path
           d="M428 0H360.171L227.034 348.798H216.454L55.7541 0H0V514.451H3.59519L192.178 926H388.51L428 826.486V0Z"
           fill="#D9E141"

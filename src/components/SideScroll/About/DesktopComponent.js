@@ -225,8 +225,8 @@ const DesktopComponent = () => {
     {
       ref: PartnershipRef,
       inView: PartnershipRefInView,
-      title: "Wonder Works Partnership",
-      titleColor: "#E795BF",
+      title: "Wonder Works Partnerships",
+      titleColor: "#59C9F3",
       bodyText:
         "We love growing and connecting with our community. If you’re interested in partnering with the wonderful world of Wonder Works Studio send us a message—we have big ideas to launch with brands of all sizes. ",
       headerSVG: <Svg.WWPartnershipHeader />,
@@ -538,6 +538,9 @@ const RightInner = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
+    margin-top: 5rem;
+    align-self: flex-start;
+
     svg {
       max-width: 170px;
       display: flex;

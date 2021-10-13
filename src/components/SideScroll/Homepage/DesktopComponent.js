@@ -105,8 +105,8 @@ const DesktopComponent = () => {
           <StaticImage
             onMouseEnter={() => setHover({ topRightHover: true })}
             onMouseLeave={() => setHover({ topRightHover: false })}
-            src="../../../images/Home/topleft.png"
-            alt="Playful text which reads 'Wonder Works Studio"
+            src="../../../images/Home/topright.png"
+            alt="Playful text which reads 'Wonder Works Parterships"
             placeholder="none"
             quality={100}
           />
@@ -139,6 +139,7 @@ const DesktopComponent = () => {
             src="../../../images/Home/bottomleft.png"
             alt="Playful text which reads 'Wonder Works Jams'"
             placeholder="none"
+            quality={100}
           />
         </ImageWrapper>
         <StarWrapper>
@@ -280,6 +281,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   margin: 0 auto;
   
+
   @media (max-width: 1440px) {
     max-width: 70%;
   }

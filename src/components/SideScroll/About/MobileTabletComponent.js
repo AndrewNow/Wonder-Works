@@ -13,51 +13,46 @@ import {
 import { useInView } from "react-intersection-observer"
 
 const MobileTabletComponent = () => {
-
-
   const FadeIn = {
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: .7
-      }
+        duration: 0.7,
+      },
     },
     hidden: {
       opacity: 0,
       y: 80,
     },
   }
-  
-    // refs for each slide to animate when inView
-    const [StudioRef, StudioRefInView] = useInView({
-      root: null,
-      threshold: 0.6,
-      triggerOnce: true,
-    })
-  
-    const [PartnershipRef, PartnershipRefInView] = useInView({
-      root: null,
-      threshold: 0.8,
-      triggerOnce: true,
-    })
-    const [CollabRef, CollabRefInView] = useInView({
-      root: null,
-      threshold: 0.8,
-      triggerOnce: true,
-    })
-    const [JamsRef, JamsRefInView] = useInView({
-      root: null,
-      threshold: 0.8,
-      triggerOnce: true,
-    })
-  
-  
+
+  // refs for each slide to animate when inView
+  const [StudioRef, StudioRefInView] = useInView({
+    root: null,
+    threshold: 0.6,
+    triggerOnce: true,
+  })
+
+  const [PartnershipRef, PartnershipRefInView] = useInView({
+    root: null,
+    threshold: 0.8,
+    triggerOnce: true,
+  })
+  const [CollabRef, CollabRefInView] = useInView({
+    root: null,
+    threshold: 0.8,
+    triggerOnce: true,
+  })
+  const [JamsRef, JamsRefInView] = useInView({
+    root: null,
+    threshold: 0.8,
+    triggerOnce: true,
+  })
+
   return (
     <Wrapper>
-      <h6>
-        Our Pillars
-      </h6>
+      <h6>Our Pillars</h6>
       <TopSVG>
         <PillarsCog />
       </TopSVG>
@@ -68,6 +63,7 @@ const MobileTabletComponent = () => {
         animate={StudioRefInView ? "visible" : "hidden"}
       >
         <StudioPillar />
+        <h6 style={{ color: "#D9E141" }}>Wonder Works Studio</h6>
         <p>
           Discover what’s in the works at Wonder Works Studio. We’re always
           dreaming up new adventures in exciting roleplay games for immersive,
@@ -82,6 +78,7 @@ const MobileTabletComponent = () => {
         animate={PartnershipRefInView ? "visible" : "hidden"}
       >
         <PartnershipsPillar />
+        <h6 style={{ color: "#59C9F3" }}>Wonder Works Parterships</h6>
         <p>
           We love growing and connecting with our community. If you’re
           interested in partnering with the wonderful world of Wonder Works
@@ -96,6 +93,7 @@ const MobileTabletComponent = () => {
         animate={CollabRefInView ? "visible" : "hidden"}
       >
         <CollabPillar />
+        <h6 style={{ color: "#1A1749" }}>Wonder Works Collab</h6>
         <p>
           Growing our community is important to us and collaborating with
           optimistic, adventurous individuals pushes our own creativity to new
@@ -110,6 +108,7 @@ const MobileTabletComponent = () => {
         animate={JamsRefInView ? "visible" : "hidden"}
       >
         <JamsPillar />
+        <h6 style={{ color: "#F9DB1E" }}>Wonder Works Jams</h6>
         <p>
           Wonder Works Jams is a space for our junior talent to QA various game
           genres. It’s a creative hub of mentorship that fosters a lifelong love
@@ -134,7 +133,7 @@ const Wrapper = styled.section`
     letter-spacing: 0.01rem;
     font-family: "calibre-semibold";
     text-align: center;
-    padding-bottom: 1rem;  
+    padding-bottom: 1rem;
   }
 
   @media (max-width: ${breakpoints.m}px) {
@@ -160,10 +159,18 @@ const Section = styled(motion.div)`
   padding: 2.5rem 0;
   text-align: center;
   p {
+    color: var(--color-white);
+  }
+  h6 {
+    padding-bottom: 0;
+    padding-top: 1rem;
+    font-family: "balgin-medium";
+    font-size: 18px;
+    line-height: 48px;
+  }
+  h6, p {
     margin: 0 auto;
     width: 77%;
-    padding-top: 1rem;
-    color: var(--color-white);
   }
   div {
     margin: 0 auto;
