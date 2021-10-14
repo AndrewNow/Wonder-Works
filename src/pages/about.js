@@ -838,6 +838,7 @@ const TextContent = styled(motion.div)`
     h1:last-of-type {
       svg {
         scale: 0.8;
+        transform: scale(0.8);
       }
     }
   }
@@ -859,7 +860,7 @@ const TextContent = styled(motion.div)`
       top: 60%;
       svg {
         scale: 0.6;
-        transform: translate3d(-15px, 10px, 0);
+        transform: translate3d(-15px, 10px, 0) scale(0.6);
       }
     }
     p {
@@ -892,7 +893,7 @@ const TextContent = styled(motion.div)`
       top: 45%;
       svg {
         scale: 0.5;
-        transform: translate3d(15px, 5px, 0);
+        transform: translate3d(15px, 5px, 0) scale(0.5);
       }
     }
   }

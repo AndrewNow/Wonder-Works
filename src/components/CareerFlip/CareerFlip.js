@@ -305,17 +305,20 @@ const SvgWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xxl}px) {
     svg {
+      transform: scale(.75);
       scale: 0.75;
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
     svg {
       scale: 0.65;
+      transform: scale(.65);
     }
   }
   @media (max-width: ${breakpoints.s}px) {
     svg {
       scale: 0.5;
+      transform: scale(.5);
     }
   }
 `

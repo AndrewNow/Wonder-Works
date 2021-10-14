@@ -212,7 +212,7 @@ const Brief = styled.div`
     width: 85%;
     h2 {
       width: 95%;
-      font-size: 36px;
+      font-size: 34px;
       line-height: 36px;
     }
     h3 {

@@ -935,6 +935,7 @@ const DiscoverMore = styled(Link)`
       margin-left: 0.25rem;
 
       scale: 0.8;
+      transform: scale(0.5);
     }
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -951,6 +952,7 @@ const DiscoverMore = styled(Link)`
     border: 1px solid var(--color-black);
     svg {
       scale: 0.75;
+      transform: scale(0.5);
     }
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -958,6 +960,7 @@ const DiscoverMore = styled(Link)`
     padding: 0.35rem 1.25rem;
     svg {
       scale: 0.75;
+      transform: scale(0.5);
     }
   }
 `
@@ -1037,7 +1040,7 @@ const ImaginationText = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     h2 {
       font-size: 55px;
-      line-height: 45px;
+      line-height: 50px;
     }
     p {
       width: 85%;
@@ -1152,6 +1155,7 @@ const CircleWrapper = styled(motion.div)`
     top: -3%;
     svg {
       scale: 1;
+      transform: scale(1);
       width: 160px;
       height: auto;
     }
@@ -1198,6 +1202,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.7;
+    transform: scale(0.7);
     top: 5%;
     left: -10%;
     svg {
@@ -1211,6 +1216,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.s}px) {
     scale: 1;
+    transform: scale(1);    
     top: 20%;
     left: 5%;
     bottom: auto;
@@ -1230,6 +1236,7 @@ const BlueTriangleWrapper = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.7;
+    transform: scale(0.7);
     bottom: 10%;
   }
 
@@ -1251,11 +1258,13 @@ const PurpleTriangleWrapper = styled(motion.div)`
     bottom: 15%;
     right: 15%;
     scale: 0.85;
+    transform: scale(0.85);
   }
   @media (max-width: ${breakpoints.s}px) {
     bottom: -10%;
     right: 10%;
     scale: 0.3;
+    transform: scale(0.35);
   }
 `
 
@@ -1273,14 +1282,16 @@ const GreenTriangleWrapper = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.8;
+    transform: scale(0.8);
     top: 5%;
     right: 25%;
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    right: -2.5%;
+    right: 0%;
     top: 66%;
     scale: 0.5;
+    transform: scale(0.5);
   }
 `
 
@@ -1291,6 +1302,7 @@ const OrangeTriangleWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.5;
+    transform: scale(0.5);
     top: 0%;
   }
 
@@ -1298,6 +1310,7 @@ const OrangeTriangleWrapper = styled(motion.div)`
     left: -3%;
     top: 30%;
     scale: 0.45;
+    transform: scale(0.45);
   }
 `
 
