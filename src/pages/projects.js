@@ -2018,7 +2018,8 @@ const VideoInner = styled.div`
   aspect-ratio: 1918/942;
   height: auto;
   border-radius: 10px;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  /* box-sizing: content-box; */
   border: 2px solid var(--color-black);
   z-index: 5;
   background-color: #fff9f9;

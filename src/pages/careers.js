@@ -1276,6 +1276,7 @@ const CareerLeft = styled.div`
   }
 
   @media (max-width: ${breakpoints.l}px) {
+    margin-right: 2rem;
     div {
       h5 {
         font-size: 21px;
@@ -1306,8 +1307,8 @@ const CareerLeft = styled.div`
       width: 95%;
       padding-top: 3rem;
       h5 {
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 17px;
+        line-height: 20px;
         strong {
           white-space: normal;
         }
@@ -1320,6 +1321,13 @@ const CareerRight = styled.div`
   width: 50%;
   display: relative;
   z-index: 1000;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 60%;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 70%;
+  }
 
   @media (max-width: ${breakpoints.m}px) {
     width: 100%;
@@ -1394,7 +1402,7 @@ const Button = styled(motion.div)`
   background-color: var(--color-white);
   border-radius: 100%;
   width: 35px;
-  height: auto;
+  height: 35px;
   aspect-ratio: 1/1;
   display: flex;
   align-items: center;
@@ -1975,6 +1983,7 @@ const FullWidthSelect = styled.select`
   width: 100%;
   background: none;
   border: none;
+  border-radius: 0;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--color-black);
   box-sizing: border-box;

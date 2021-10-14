@@ -1024,7 +1024,7 @@ const ImaginationText = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     h2 {
       font-size: 110px;
-      line-height: 75px;
+      line-height: 90px;
       width: 90%;
     }
     p {
@@ -1034,13 +1034,13 @@ const ImaginationText = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     h2 {
       font-size: 75px;
-      line-height: 45px;
+      line-height: 75px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
     h2 {
       font-size: 55px;
-      line-height: 50px;
+      line-height: 55px;
     }
     p {
       width: 85%;
