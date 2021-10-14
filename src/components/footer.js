@@ -45,7 +45,7 @@ const Footer = () => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
+              href="https://www.tiktok.com/@wonderworks_studios"
               rel="noreferrer"
               target="_blank"
               alt="Tik Tok social media link"

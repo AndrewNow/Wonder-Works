@@ -70,7 +70,7 @@ export const LetsWork = ({ svg, currentProjects }) => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
+              href="https://www.tiktok.com/@wonderworks_studios"
               rel="noreferrer"
               target="_blank"
               alt="Tik Tok social media link"
@@ -246,7 +246,7 @@ const CurrentProjectsWrapper = styled.div`
 
 const SVGWrapper = styled.div`
   width: 600px;
-  height: auto;
+  height: 600px;
   aspect-ratio: 1/1;
   position: relative;
   svg {
@@ -254,23 +254,28 @@ const SVGWrapper = styled.div`
   }
   @media (max-width: 1600px) {
     width: 500px;
+    height: 500px;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 400px;
+    height: 400px;
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 300px;
+    height: 300px;
   }
   @media (max-width: ${breakpoints.m}px) {
     width: 250px;
+    height: 250px;
     position: absolute;
     right: 0;
     top: 0;
   }
   @media (max-width: ${breakpoints.s}px) {
     width: 150px;
+    height: 150px;
     top: 30%;
-    /* transform: rotate(90deg); */
+    transform: rotate(90deg);
   }
 `
 

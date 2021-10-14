@@ -187,17 +187,19 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    padding-top: 10rem;
+    margin-bottom: 40rem;
   }
 
   @media (max-width: ${breakpoints.l}px) {
+    padding-top: 15rem;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
   }
-
+  
   @media (max-width: ${breakpoints.s}px) {
+    padding-top: 10rem;
     margin-bottom: 0rem;
     width: 80%;
     overflow-x: hidden;
@@ -323,6 +325,9 @@ const AdventuresWrapper = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(-15%, -25%, 0);
   }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(5%, -42%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(5%, -42%, 0);
   }
@@ -333,6 +338,9 @@ const GamesWrapper = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(25%, -20%, 0);
   }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(25%, -42%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(25%, -42%, 0);
   }
@@ -341,6 +349,9 @@ const PingPongWrapper = styled.div`
   transform: translate3d(-25%, 35%, 0);
   @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(10%, -15%, 0);
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(25%, -37%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(25%, -37%, 0);
@@ -354,6 +365,9 @@ const TechnologyWrapper = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     transform: translate3d(5%, -5%, 0);
   }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(10%, -27%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(10%, -27%, 0);
   }
@@ -363,6 +377,9 @@ const AnimalsWrapper = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(20%, 0%, 0);
   }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(40%, -12%, 0);
+  }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(40%, -12%, 0);
   }
@@ -371,6 +388,9 @@ const RobloxWrapper = styled.div`
   transform: translate3d(15%, -10%, 0);
   @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(20%, -20%, 0);
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(40%, -30%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(40%, -30%, 0);
@@ -384,6 +404,9 @@ const UsWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.xl}px) {
     transform: translate3d(60%, 10%, 0);
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    transform: translate3d(0, 10%, 0);
   }
   @media (max-width: ${breakpoints.s}px) {
     transform: translate3d(0, -5%, 0);

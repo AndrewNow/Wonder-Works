@@ -129,16 +129,123 @@ const Careers = ({ data }) => {
 
   const CareerData = [
     {
-      title: "Game developer",
+      title: "Marketing Strategist",
+      desc: "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. We work with a team of world class engineers, designers and artists to deliver them to players of all ages.\n\nWe are on the lookout for a bright-and-bushy-tailed Marketing Strategist. This position is responsible for setting realistic fast, paced objectives, and strategizing with company goals in mind and is able to advance the WWS online presence as a whole through many outlets such as our social media platforms, website, content campaigns, and so on. The scope of work is largely to produce effective and efficient marketing strategies for our company and our clientele. You will design strategically planned marketing campaigns and lead market research efforts. Success in this role will be determined by your ability to bolster the company’s market share while remaining consistent with the brand’s identity.",
+      primaryResponsibilities: [
+        "Produce marketing strategies in regard to new launches of products and content.",
+        "Perform CRM duties to ensure client satisfaction.",
+        "Forecast market trends with accuracy, be a trendsetter and differentiate WWS from the rest.",
+        "Provide analysis and recommendations to the marketing and communications team.",
+        "Help shape the brand’s position in the industry and our narrative by targeting our demographic audience.",
+        "Continuously monitor the market/industry feedback and analyze it to produce the best strategic plans to implement and not only meet goals, but exceed them.",
+        "Work closely with all Administrative positions to ensure marketing strategies align with the WWS overall business strategy, a unified front.",
+      ],
+      minimumRequirements: [
+        "Bachelor’s degree in Marketing, Communications, or related field/experience.",
+        "Minimum 2+ years of experience as a marketing strategist, marketing manager, or similar role.",
+        "Must be a creative thinker and data-driven, very analytical, and attention to detail is key to the success of this position.",
+        "Must have a proven track record of high stakes project management. We would love to see some of the things you have produced previously and are proud to show off!",
+        "In-depth knowledge of CRM softwares, content management systems, and data-analytical heavy software.",
+        "Excellent communication skills, both verbal and written.",
+        "Keep in mind that this is a leadership position.",
+      ],
+      plus: [
+        "Understands how to tactfully communicate difficult/sensitive information (is open, friendly and doesn’t shy from saying what needs to be said)",
+        "Comfortable wearing many hats and jumping into something new from time to time.",
+        "Experience in the gaming or creative/advertising industry is a plus but not required.",
+      ],
+      weOffer: [
+        "Plenty of opportunities to learn, grow your career, and wear lots of hats. ",
+        "Startup life – flexible, relaxed, yet high stakes work environment.",
+        "Awesome coworkers who care about their work and each other’s growth.",
+        "Competitive benefits include medical, dental, vision coverage, 401k options and many more!",
+      ],
+      travelRequirements:
+        "Travel will be required very rarely but encouraged from time to time for team-building events including gaming and technology conferences. A willingness to relocate to our office location in Texas, should the company require it, is a plus.",
+      covidUpdate:
+        "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
+    },
+    {
+      title: "Jr. Programmer",
       desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
     },
     {
-      title: "Game developer Two",
+      title: "Sr. Programmer",
       desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
     },
     {
-      title: "Game developer Three",
+      title: "Environmental Artist",
       desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
+    },
+    {
+      title: "3D Modeler",
+      desc: "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform and is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences.\n\nLocated in Arlington, Texas and reporting to the Wonder Works Studio Creative Director, the 3D Modeler is a full-time position that participates in all phases of the product life cycle and translates the studio vision as the project takes into place. \n\nThe 3D Modeler will work with the internal art team to ensure the technical specifications of 3D assets are followed by the external partners and enforce the proper engine implementation of the assets. The 3D Modeler must have a pristine eye for a playful and artful mind with efficiency to develop and launch new incredible experiences for players. You will be responsible for ideating, sculpting, and crafting your talent from concept to delivering the game’s vision. ",
+      primaryResponsibilities: [
+        "Experience making aesthetically beautiful performant 3D assets and game art optimization.",
+        "Ability to manage time to adjust to unforeseen changes in timelines, scope of work or direction without becoming frustrated or negative.",
+        "Conduct internal QA on the asset source files from the external partners. Ensure assets are implemented with correct file structures, hierarchy, naming and meet all other tech requirements.",
+        "Ability to work creatively as part of a larger group of artists, game designers and engineers.",
+        "Demonstrates the ability to develop a comprehensive knowledge of the art production pipeline and all engine features, tools, and systems associated with the creation of art assets.",
+        "Creating high-quality 3D and 2D assets to meet tight deadlines.",
+      ],
+      minimumRequirements: [
+        "2+ years experience in relevant experience with the game industry or similar (or just show us that you rock!)",
+        "Bachelors of Art degree or relevant experiences",
+        "Proficient with modeling within common 3D applications (Maya, Max, Blender, Z-Brush is a plus) and industry standards for the character production pipeline in games.",
+        "Knowledgeable of various industry standard engines (Unreal, Unity, etc), experience with proprietary engines is a plus.",
+        "Able to produce quality work in both high and low poly art styles.",
+        "Please ensure that a link to your portfolio / website is included on your resume.",
+      ],
+      plus: [
+        "Understands how to tactfully communicate difficult/sensitive information (is open, friendly and doesn’t shy from saying what needs to be said)",
+        "Comfortable wearing many hats and jumping into something new from time to time.",
+        "Experience in Roblox is a plus but not required.",
+      ],
+      weOffer: [
+        "Plenty of opportunities to learn, grow your career, and wear lots of hats. ",
+        "Startup life – flexible, relaxed, yet high stakes work environment.",
+        "Awesome coworkers who care about their work and each other’s growth.",
+        "Competitive benefits include medical, dental, vision coverage, 401k options and many more!",
+      ],
+      travelRequirements:
+        "Travel will be required very rarely but encouraged from time to time for team-building events including gaming and technology conferences. A willingness to relocate to our office location in Texas, should the company require it, is a plus.\n\nIf this sparks your interests, please send your cover letter, resume, and portfolio to: pthephaphine@wonderworks.gg",
+      covidUpdate:
+        "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
+    },
+    {
+      title: "Animator",
+      desc: "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. We work with a team of world class engineers, designers and artists to deliver them to players of all ages.\n\nLocated in Arlington, Texas and reporting to the Wonder Works Studio CEO and Creative Director, the Animator is a full-time wanderlust position that participates in all phases of the product life cycle and translates the studio vision as the project takes into place. \n\nThe Animator will breathe life into our vibrant new fantasy universe and loves to design anything thrown at them. Whether it's characters or critters, you will create iconic animations that set the tone and style of our game. You will work closely with a team of highly talented people to develop gameplay experiences that surprise and blow the minds of players. As an early member of the team, you’ll have the unique opportunity to explore broad areas of game development, learn new skills, and shape the game as it goes.",
+      primaryResponsibilities: [
+        "Work with a group of designers and developers to implement and iterate on these motions to create compelling, entertaining, and visually appealing gameplay and/or cinematic events.",
+        "Evaluate animation and illustration techniques and concepts to ensure that the company creates best in industry content. ",
+        "The ability to juggle multiple projects in parallel from concept to implementation and efficiently manage their workload on their own initiative to meet deadlines.",
+        "Understand and compensate for the limitations of how gameplay and real-time issues can affect animations.",
+      ],
+      minimumRequirements: [
+        "Send an online animation and motion graphics demo reel.",
+        "BA degree preferred or have 2+ years of professional relative experiences in a high-paced studio or start-up.",
+        "2+ years experience animating effects and environments in Maya, Unity, Mocap Data (or equivalent 3D Programs) specifically for games.",
+        "Consistently demonstrates clear and concise written and verbal communication.",
+        "Skill and proficiency animating with Adobe Creative Suites (AfterEffects, Illustrator, Premiere, Photoshop, etc,)",
+        "Please ensure that a link to your portfolio / website is included on your resume.",
+      ],
+      plus: [
+        "Understands how to tactfully communicate difficult/sensitive information (is open, communicative and doesn’t shy from saying what needs to be said)",
+        "Comfortable wearing many hats and jumping into something new from time to time.",
+        "Familiar with video game product development including, but not limited to workflow, tools, in-game 3D animation, pose blending, motion capture, and rigging but not required.",
+        "Familiar with Unreal 4 Engine.",
+        "Experience with Roblox is a plus, but not required.",
+      ],
+      weOffer: [
+        "Plenty of opportunities to learn, grow your career, and wear lots of hats. ",
+        "Startup life – flexible, relaxed, yet high stakes work environment.",
+        "Awesome coworkers who care about their work and each other’s growth.",
+        "Competitive benefits include medical, dental, vision coverage, 401k options and many more!",
+      ],
+      travelRequirements:
+        "Travel will be required very rarely but encouraged from time to time for team-building events including gaming and technology conferences. A willingness to relocate to our office location in Texas, should the company require it, is a plus.\n\nIf this sparks your interests, please send your cover letter, resume, and portfolio to: pthephaphine@wonderworks.gg",
+      covidUpdate:
+        "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
     },
   ]
 
@@ -443,36 +550,71 @@ const Careers = ({ data }) => {
                 </LinkCopiedAlert>
               </SharePostingWrapper>
             </FormTop>
-            <FormContentSection>
-              {/* <h5>{CareerData[`${selectedCareer}`].title}</h5> */}
-              <h5>Our Values</h5>
-              <p>Passion, Collaboration & Innovation</p>
-            </FormContentSection>
-            <FormContentSection>
-              <h5>Benefits</h5>
-              <p>
-                401K options, Health, Medical and Vision, Generous Holiday
-                Leaves, Workshops, Pet-Friendly Office, Team Lunches, Enriching
-                Office Culture (Company Social Events, Team Lunches, Weekly
-                Catered Lunches, Snack-Filled Pantry, Lounge with Games),
-                Company Offisite Trips, Birthdays and Anniversary Treats,
-                Wellness Talks
-              </p>
-            </FormContentSection>
-            <FormContentSection>
-              <h5>Qualifications</h5>
-              <p>
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-                · Job Descriptions blah blah blah <br />
-              </p>
-            </FormContentSection>
+            {CareerData[`${selectedCareer}`].primaryResponsibilities ? (
+              <FormContentSection>
+                <h5>Primary Responsibilities</h5>
+                <ul>
+                  {CareerData[`${selectedCareer}`].primaryResponsibilities?.map(
+                    (item, i) => (
+                      <li key={i}>
+                        <p>{item}</p>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].minimumRequirements ? (
+              <FormContentSection>
+                <h5>Qualifications</h5>
+                <ul>
+                  {CareerData[`${selectedCareer}`].minimumRequirements?.map(
+                    (item, i) => (
+                      <li key={i}>
+                        <p>{item}</p>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].plus ? (
+              <FormContentSection>
+                <h5>Plus</h5>
+                <ul>
+                  {CareerData[`${selectedCareer}`].plus?.map((item, i) => (
+                    <li key={i}>
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].weOffer ? (
+              <FormContentSection>
+                <h5>Benefits</h5>
+                <ul>
+                  {CareerData[`${selectedCareer}`].weOffer?.map((item, i) => (
+                    <li key={i}>
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].travelRequirements ? (
+              <FormContentSection>
+                <h5>Travel Requirements</h5>
+                <p>{CareerData[`${selectedCareer}`].travelRequirements}</p>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].covidUpdate ? (
+              <FormContentSection>
+                <h5>COVID Update</h5>
+                <p>{CareerData[`${selectedCareer}`].covidUpdate}</p>
+              </FormContentSection>
+            ) : null}
+
             <FillOut onSubmit={sendEmail}>
               <h3>
                 Ok, I’m sold. <br /> I’m ready to join.
@@ -604,15 +746,6 @@ const Careers = ({ data }) => {
               </Line>
               <Bottom>
                 {!completedFields && <p></p>}
-
-                {/* {completedFields === 1 ? (
-                  formdata.firstName ? (
-                    <p>Nice to meet you, {formdata.firstName}!</p>
-                  ) : (
-                    <p>Nice to meet you!</p>
-                  )
-                ) : null} */}
-
                 <AnimatePresence>
                   {completedFields === 1 && formdata.firstName ? (
                     <motion.p
@@ -1198,6 +1331,30 @@ const CareerEntry = styled.div`
   width: 80%;
   margin-bottom: 4rem;
 
+  p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    /* position: relative; */
+    /* height: 5em;  */
+    /* exactly three lines */
+  }
+  /* p:after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 20%;
+      height: 1.2em;
+      background: linear-gradient(
+        to right,
+        rgba(177, 110, 172, 0),
+        rgba(177, 110, 172, 1) 50%
+      );
+    }
+  } */
   @media (max-width: ${breakpoints.xxl}px) {
     width: 100%;
   }
@@ -1316,6 +1473,9 @@ const FormTop = styled.div`
 
   @media (max-width: ${breakpoints.xxl}px) {
     padding-bottom: 0rem;
+    h5 {
+      width: 70%;
+    }
   }
 
   @media (max-width: ${breakpoints.xl}px) {
@@ -1349,16 +1509,22 @@ const FormTop = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     padding-top: 5rem;
     padding-bottom: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    margin: 0 auto;
+    width: 80%;
     h3 {
       font-size: 20px;
       line-height: 22px;
       width: 85%;
+      height: auto;
+      padding-bottom: 2rem;
     }
     h5 {
       font-size: 16px;
       line-height: 20px;
       letter-spacing: 0.01rem;
-      width: 85%;
+      width: 100%;
     }
   }
 `
@@ -1393,13 +1559,7 @@ const FormTopPositionDetails = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    max-width: 45px;
-    min-width: 45px;
-    padding: 0;
-    max-height: 350px;
-    svg {
-      transform: translateY(-3rem) scale(0.5);
-    }
+    display: none;
   }
 `
 
@@ -1416,6 +1576,14 @@ const WOLogo = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     display: none;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    display: block;
+    top: 10%;
+    right: 0%;
+    svg {
+      width: 40px;
+    }
   }
 `
 
@@ -1540,7 +1708,7 @@ const SharePostingButton = styled.button`
   @media (max-width: ${breakpoints.s}px) {
     border: 1px solid var(--color-black);
     min-width: 180px;
-    padding: 0.35rem .5rem;
+    padding: 0.35rem 0.5rem;
     font-size: 16px;
     line-height: 19px;
     svg {
@@ -1558,6 +1726,18 @@ const FormContentSection = styled.div`
   padding: 2.5rem 0;
   width: 60%;
   margin: 0 auto;
+  white-space: pre-wrap;
+
+  ul {
+    padding-left: 1.5rem !important;
+    li {
+      padding-bottom: 0.75rem;
+    }
+    li ::marker {
+      font-size: 85%;
+      color: var(--color-black);
+    }
+  }
 
   h5 {
     font-family: "calibre-semibold";
@@ -1570,7 +1750,6 @@ const FormContentSection = styled.div`
 
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
-
     // same rem width as FormTop and same px width as the positiondetails svg.
     // This should eventually be converted to grid/columns instead.
     padding-left: calc(2rem + 110px);
@@ -1585,15 +1764,22 @@ const FormContentSection = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    padding: 0.75rem calc(1.5rem + 45px);
-
+    padding: 0.75rem 0;
+    width: 80%;
+    margin: 0 auto;
     h5,
     p {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 115%;
+    }
+    p {
+      /* font-family: "calibre-medium"; */
     }
     h5 {
       padding-bottom: 0.75rem;
+    }
+    ul {
+      padding-left: 0.8rem !important;
     }
   }
 `

@@ -11,8 +11,31 @@ import breakpoints from "../../breakpoints"
 import * as Svg from "../../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
+import { useThrottleFn } from "react-use"
+
+// ------------------- Hook for 3. -------------------
+const useScrollProgress = horizontalScroll => {
+  const [scrollProgress, setScrollProgress] = useState()
+  const onScroll = () => {
+    // get the component's coordinates
+    const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
+    // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
+    setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
+  }
+
+  // Throttle the scroll events for performance
+  const throttledOnScroll = useThrottleFn(onScroll, 300, [onScroll])
+
+  useLayoutEffect(() => {
+    window.addEventListener("scroll", throttledOnScroll)
+    return () => window.removeEventListener("scroll", throttledOnScroll)
+  }, [throttledOnScroll])
+  return scrollProgress
+}
 
 const DesktopComponent = () => {
+  // This section handles the side scrolling "Pillars" section.
+  // The height of the container (StickyContainer) defines how long the user must scroll to get to the next slide
   // ------------------------- 1. Establish refs -------------------------
   const horizontalScroll = useRef()
 
@@ -28,19 +51,19 @@ const DesktopComponent = () => {
     threshold: 0.8,
     triggerOnce: false,
   })
-  
+
   const [CollabRef, CollabRefInView] = useInView({
     root: null,
     threshold: 0.8,
     triggerOnce: false,
   })
-  
+
   const [JamsRef, JamsRefInView] = useInView({
     root: null,
     threshold: 0.8,
     triggerOnce: false,
   })
-  
+
   // ------------------- 2. Framer animation variants -------------------
   const sideScrollHeader = {
     visible: {
@@ -107,28 +130,8 @@ const DesktopComponent = () => {
   }
 
   // ------------------- 3. Track component scroll progress -------------------
-  // This section handles the side scrolling "Pillars" section.
-  // The height of the container (StickyContainer) defines how long the user must scroll to get to the next slide
-
   // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
-  const useScrollProgress = () => {
-    const [scrollProgress, setScrollProgress] = useState()
-    useLayoutEffect(() => {
-      const onScroll = () => {
-        // get the component's coordinates
-        const horizontalScrollDiv =
-          horizontalScroll.current.getBoundingClientRect()
-        // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
-        setScrollProgress(
-          horizontalScrollDiv.bottom / horizontalScrollDiv.height
-        )
-      }
-      window.addEventListener("scroll", onScroll)
-      return () => window.removeEventListener("scroll", onScroll)
-    }, [])
-    return scrollProgress
-  }
-  const scrollProgress = useScrollProgress()
+  const scrollProgress = useScrollProgress(horizontalScroll)
 
   // ------------------- 4. Embla Carousel Logic -------------------
   // Configure Embla settings (notably: disabled user touch/click interaction)
@@ -140,14 +143,14 @@ const DesktopComponent = () => {
     align: "start",
     speed: 5,
   })
-  
+
   // !!!
   //
   // It's super important that you update the following section when adding/removing the total number of slides.
   // Without adding a new Callback / useEffect entry, the slide will never scroll into view.
   //
   // !!!
-  
+
   // Create callback hooks for scrolling each slide into view according to its index
   // embla.ScrollTo() takes in the index of the slide you wish to scroll to
   const scrollToFirstSlide = useCallback(
@@ -167,23 +170,26 @@ const DesktopComponent = () => {
     [embla]
   )
   // Create rules for when the slides should change according to the returned value from scrollProgress
-  useEffect(() => {
-    if (scrollProgress > 0.85 && scrollProgress < 1) {
-      scrollToFirstSlide()
-    } else if (scrollProgress < 0.85 && scrollProgress > 0.5) {
-      scrollToSecondSlide()
-    } else if (scrollProgress < 0.5 && scrollProgress > .25) {
-      scrollToThirdSlide()
-    } else if (scrollProgress < 0.25 && scrollProgress > 0) {
-      scrollToFourthSlide()
+  useEffect(
+    () => {
+      if (scrollProgress > 0.85 && scrollProgress < 1) {
+        scrollToFirstSlide()
+      } else if (scrollProgress < 0.85 && scrollProgress > 0.5) {
+        scrollToSecondSlide()
+      } else if (scrollProgress < 0.5 && scrollProgress > 0.25) {
+        scrollToThirdSlide()
+      } else if (scrollProgress < 0.25 && scrollProgress > 0) {
+        scrollToFourthSlide()
+      }
     }
-  }, [
-    scrollProgress,
-    scrollToFirstSlide,
-    scrollToSecondSlide,
-    scrollToThirdSlide,
-    scrollToFourthSlide,
-  ])
+    // , [
+    // scrollProgress,
+    // scrollToFirstSlide,
+    // scrollToSecondSlide,
+    // scrollToThirdSlide,
+    // scrollToFourthSlide,
+    // ]
+  )
 
   // prevent excessive scrolling
   const preventEdgeScrolling = embla => {

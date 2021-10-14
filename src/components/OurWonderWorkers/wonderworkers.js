@@ -33,6 +33,11 @@ const Title = styled.div`
       line-height: 50px;
     }
   }
+  @media (max-width: ${breakpoints.xs}px) {
+    h2 {
+      font-size: 40px;
+    }
+  }
 `
 
 const Wrapper = styled.div`

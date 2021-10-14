@@ -42,14 +42,11 @@ const EventsCarouselMobile = ({ PastEventsData }) => {
   })
 
   // ---------- Set up embla pagination buttons ----------
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
 
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
   const onSelect = useCallback(() => {
     if (!embla) return
-    setPrevBtnEnabled(embla.canScrollPrev())
     setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 

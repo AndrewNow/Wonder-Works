@@ -69,15 +69,14 @@ const MobileTabletComponent = () => {
 
   // ------------------- 2. Track component scroll progress, see hook above -------------------
   const scrollProgress = useScrollProgress(horizontalScroll)
-  console.log(scrollProgress)
 
   // ------------------- 3. Embla Carousel Logic -------------------
   // Configure Embla settings (notably: disabled user touch/click interaction)
   const [viewportRef, embla] = useEmblaCarousel({
     skipSnaps: false,
     draggable: false,
-    containScroll: "trimSnaps",
     loop: false,
+    containScroll: "trimSnaps",
     align: "start",
     speed: 6,
   })
@@ -111,13 +110,7 @@ const MobileTabletComponent = () => {
     } else if (scrollProgress < 0.25 && scrollProgress > 0) {
       scrollToFourthSlide()
     }
-  }, [
-    scrollProgress,
-    scrollToFirstSlide,
-    scrollToSecondSlide,
-    scrollToThirdSlide,
-    scrollToFourthSlide,
-  ])
+  })
 
   // prevent excessive scrolling
   const preventEdgeScrolling = embla => {
@@ -226,8 +219,8 @@ const MobileTabletComponent = () => {
     visible: {
       opacity: 1,
       transition: {
-        delay: .5,
-        staggerChildren: 0.2,
+        // delay: .5,
+        staggerChildren: 0.4,
         delayChildren: 0.25,
       },
     },
@@ -306,7 +299,6 @@ export default MobileTabletComponent
 const StickyContainer = styled.div`
   display: none;
   @media (max-width: 1024px) {
-    margin-top: 15rem;
     // the height value here determines the "length" of the horizontal scroll carousel
     // higher values = longer distance to initiate slide change
     height: 800vh;
@@ -387,15 +379,16 @@ const SlideContentWrapper = styled(motion.div)`
     width: 62%;
     margin: 0 auto;
   }
-  
+
   @media (max-width: ${breakpoints.s}px) {
     grid-template-rows: 1fr 2fr 3fr;
     p {
+      margin-top: 1.5rem;
       font-family: "calibre-regular";
     }
     p,
     h5 {
-      width: 90%;
+      width: 95%;
       font-size: 16px;
       line-height: 19px;
     }

@@ -398,17 +398,19 @@ const MobileAnimation = styled(motion.div)`
   display: flex;
   justify-content: center;
   position: relative;
-`
+  `
 
 const MobileNav = styled(motion.div)`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  justify-content: flex-start;
   height: 80%;
   margin-top: 2rem;
   width: 90%;
+
+
+  /* justify-content: flex-start; */
 `
 
 const MobileNavElement = styled(motion.div)`

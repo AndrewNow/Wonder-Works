@@ -338,7 +338,7 @@ const Investors = ({ data }) => {
         </motion.h3>
         <DiscoverMore whileTap={{ scale: 0.9 }}>
           <a
-            href="mailto: info@wonderworks.gg"
+            href="mailto: partnerships@wonderworks.gg"
             target="_blank"
             rel="noreferrer"
           >

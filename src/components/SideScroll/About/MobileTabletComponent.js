@@ -16,6 +16,18 @@ const MobileTabletComponent = () => {
   const FadeIn = {
     visible: {
       opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+    hidden: {
+      opacity: 0,
+    },
+  }
+
+  const child = {
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.7,
@@ -63,13 +75,15 @@ const MobileTabletComponent = () => {
         animate={StudioRefInView ? "visible" : "hidden"}
       >
         <StudioPillar />
-        <h6 style={{ color: "#D9E141" }}>Wonder Works Studio</h6>
-        <p>
+        <motion.h6 variants={child} style={{ color: "#D9E141" }}>
+          Wonder Works Studio
+        </motion.h6>
+        <motion.p variants={child}>
           Discover what’s in the works at Wonder Works Studio. We’re always
           dreaming up new adventures in exciting roleplay games for immersive,
           imaginative fun for everyone. Check out our ambitious new projects or
           our latest launches —they all live here.{" "}
-        </p>
+        </motion.p>
       </Section>
       <Section
         ref={PartnershipRef}
@@ -78,13 +92,15 @@ const MobileTabletComponent = () => {
         animate={PartnershipRefInView ? "visible" : "hidden"}
       >
         <PartnershipsPillar />
-        <h6 style={{ color: "#59C9F3" }}>Wonder Works Parterships</h6>
-        <p>
+        <motion.h6 variants={child} style={{ color: "#59C9F3" }}>
+          Wonder Works Parterships
+        </motion.h6>
+        <motion.p variants={child}>
           We love growing and connecting with our community. If you’re
           interested in partnering with the wonderful world of Wonder Works
           Studio send us a message—we have big ideas to launch with brands of
           all sizes.
-        </p>
+        </motion.p>
       </Section>
       <Section
         ref={CollabRef}
@@ -93,13 +109,15 @@ const MobileTabletComponent = () => {
         animate={CollabRefInView ? "visible" : "hidden"}
       >
         <CollabPillar />
-        <h6 style={{ color: "#1A1749" }}>Wonder Works Collab</h6>
-        <p>
+        <motion.h6 variants={child} style={{ color: "#1A1749" }}>
+          Wonder Works Collab
+        </motion.h6>
+        <motion.p variants={child}>
           Growing our community is important to us and collaborating with
           optimistic, adventurous individuals pushes our own creativity to new
           heights. We’re always on the lookout for YouTubers and influencers to
           help tell our story—let us know if that’s you!
-        </p>
+        </motion.p>
       </Section>
       <Section
         ref={JamsRef}
@@ -108,13 +126,15 @@ const MobileTabletComponent = () => {
         animate={JamsRefInView ? "visible" : "hidden"}
       >
         <JamsPillar />
-        <h6 style={{ color: "#F9DB1E" }}>Wonder Works Jams</h6>
-        <p>
+        <motion.h6 variants={child} style={{ color: "#F9DB1E" }}>
+          Wonder Works Jams
+        </motion.h6>
+        <motion.p variants={child}>
           Wonder Works Jams is a space for our junior talent to QA various game
           genres. It’s a creative hub of mentorship that fosters a lifelong love
           for exploration and innovation and promotes success on individual and
           collaborative levels.
-        </p>
+        </motion.p>
       </Section>
       <TopSVG>
         <PinkGuy />
@@ -168,11 +188,21 @@ const Section = styled(motion.div)`
     font-size: 18px;
     line-height: 48px;
   }
-  h6, p {
+  h6,
+  p {
     margin: 0 auto;
     width: 77%;
   }
   div {
     margin: 0 auto;
+  }
+
+  @media (max-width: ${breakpoints.xs}px) {
+    h6 {
+      padding-top: 1rem;
+      font-size: 16px;
+      line-height: 120%;
+      padding-bottom: 2rem;
+    }
   }
 `

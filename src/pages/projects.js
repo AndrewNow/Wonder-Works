@@ -172,7 +172,7 @@ const Projects = ({ data }) => {
           </motion.p>
           <OverlookRobloxLink
             variants={body}
-            href=""
+            href="https://www.roblox.com/games/5063122755/PALS-Overlook-Bay"
             target="_blank"
             rel="noreferrer"
             whileTap={{ scale: 0.9 }}
@@ -242,7 +242,7 @@ const Projects = ({ data }) => {
           </motion.p>
           <TraitorRobloxLink
             variants={body}
-            href=""
+            href="https://www.roblox.com/games/6118086552/TRAITOR"
             target="_blank"
             rel="noreferrer"
             whileTap={{ scale: 0.9 }}
@@ -306,10 +306,12 @@ const Projects = ({ data }) => {
             animate={timmehInView ? "visible" : "hidden"}
           >
             <motion.p variants={body}>
-              Are you ready to jump into Overlook Bay with your friends? Home to
-              many land and sea creatures, explore the island with your friends
-              in this Massively multiplayer online role-playing game. Collect
-              pets, rent out your own cottage, and participate daily activities!
+              KreekCraft and Timmeh need your help to save the universe from a
+              dark destruction. Team up with your friends and defeat evil
+              monsters, all while you solve the universe's biggest mystery. In
+              this horror round based game, players will elude monsters,
+              discover secrets, unlock easter eggs and collect many exciting
+              cosmetics!
             </motion.p>
             <TimmehRobloxLink
               variants={body}
@@ -1543,7 +1545,7 @@ const TimmehBody = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    width: 80%;
+    width: 75%;
     padding-left: 0rem;
     p {
       padding-bottom: 3rem;
@@ -2013,13 +2015,13 @@ const VideoWrapper = styled.a`
 `
 
 const VideoInner = styled.div`
-  /* box-sizing: content-box; */
   aspect-ratio: 1918/942;
   height: auto;
   border-radius: 10px;
   box-sizing: content-box;
   border: 2px solid var(--color-black);
   z-index: 5;
+  background-color: #fff9f9;
 
   :after {
     content: "";
@@ -2058,9 +2060,6 @@ const StayPeachyLink = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     transform: translate3d(-1rem, -120%, 0);
   }
-  /* @media (max-width: 1430px) { */
-  /* transform: translateY(-50%); */
-  /* } */
   @media (max-width: ${breakpoints.xl}px) {
     transform: translateY(50%);
   }

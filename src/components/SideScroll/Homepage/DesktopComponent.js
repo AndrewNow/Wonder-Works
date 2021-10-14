@@ -243,7 +243,7 @@ const DesktopComponent = () => {
 export default DesktopComponent
 
 const Pillars = styled.section`
-  margin-top: 10rem;
+  /* margin-top: 10rem; */
   width: 100%;
   height: 100vh;
   position: relative;

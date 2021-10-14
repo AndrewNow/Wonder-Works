@@ -335,36 +335,44 @@ const HomeIndex = ({ data }) => {
       </LandingTextMobile>
       {/* end mobile text animation layout */}
       <ImaginationSection ref={sectionRef}>
-        <h2>
-          <FirstLine
-            variants={line2}
+        <ImaginationText>
+          <h2>
+            <FirstLine
+              variants={line2}
+              initial="hidden"
+              animate={sectionInView ? "visible" : "hidden"}
+            >
+              <WordSpan variants={word2}>Where </WordSpan>
+              <WordSpan variants={word2}>Imagination</WordSpan>
+            </FirstLine>
+            <SecondLine
+              variants={line2}
+              initial="hidden"
+              animate={sectionInView ? "visible" : "hidden"}
+            >
+              <WordSpan variants={word2}>Comes</WordSpan>
+              <WordSpan variants={word2}>to</WordSpan>
+              <WordSpan variants={word2}>Play.</WordSpan>
+            </SecondLine>
+            <ThirdLineTabletMobile variants={line2}
+              initial="hidden"
+              animate={sectionInView ? "visible" : "hidden"}>
+              <WordSpan variants={word2}>to</WordSpan>
+              <WordSpan variants={word2}>Play.</WordSpan>
+            </ThirdLineTabletMobile>
+          </h2>
+          <motion.p
+            variants={fadeIn}
             initial="hidden"
             animate={sectionInView ? "visible" : "hidden"}
           >
-            <WordSpan variants={word2}>Where </WordSpan>
-            <WordSpan variants={word2}>Imagination</WordSpan>
-          </FirstLine>
-          <SecondLine
-            variants={line2}
-            initial="hidden"
-            animate={sectionInView ? "visible" : "hidden"}
-          >
-            <WordSpan variants={word2}>Comes</WordSpan>
-            <WordSpan variants={word2}>to</WordSpan>
-            <WordSpan variants={word2}>Play.</WordSpan>
-          </SecondLine>
-        </h2>
-        <motion.p
-          variants={fadeIn}
-          initial="hidden"
-          animate={sectionInView ? "visible" : "hidden"}
-        >
-          At Wonder Works Studio we are ushering in the new era of immersive
-          gaming, where players can express, explore, and expand their
-          creativity. We build video games that spark imagination, encourage
-          collaboration, and push innovation so gamers grow alongside the
-          stories they create.
-        </motion.p>
+            At Wonder Works Studio we are ushering in the new era of immersive
+            gaming, where players can express, explore, and expand their
+            creativity. We build video games that spark imagination, encourage
+            collaboration, and push innovation so gamers grow alongside the
+            stories they create.
+          </motion.p>
+        </ImaginationText>
         {/* ==============  */}
         <ImaginationBG>
           <CircleWrapper>
@@ -611,6 +619,9 @@ const Background = styled(motion.div)`
   @media (max-width: ${breakpoints.xxl}px) {
     height: 135vh;
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    height: 110vh;
+  }
 `
 const StaircaseWrapper = styled.div`
   position: absolute;
@@ -776,6 +787,7 @@ const LandingText = styled.div`
     color: var(--color-black);
   }
   @media (max-width: ${breakpoints.xl}px) {
+    padding-top: 16rem;
     h1 {
       font-size: 7.8vw;
     }
@@ -951,8 +963,9 @@ const DiscoverMore = styled(Link)`
 `
 
 const ImaginationSection = styled.section`
-  height: 100%;
-  padding-top: 28rem;
+  height: 100vh;
+  margin-top: 15rem;
+  margin-bottom: 5rem;
   text-align: center;
   position: relative;
   h2,
@@ -969,13 +982,61 @@ const ImaginationSection = styled.section`
     width: 45%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    padding-top: 20rem;
+    margin-top: 10rem;
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    padding-top: 12.5rem;
+    margin-top: 7rem;
+  }
+`
+
+const ImaginationText = styled.div`
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  h2,
+  p {
+    z-index: 2;
+    position: relative;
+  }
+  h2 {
+    line-height: 100%;
+    font-size: 6.5625vw;
+    font-family: "ppwoodland-light";
+  }
+  p {
+    padding-top: 3rem;
+    margin: 0 auto;
+    width: 45%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
     h2 {
-      font-size: 45px;
+      line-height: 100%;
+      font-size: 8vw;
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h2 {
+      font-size: 110px;
+      line-height: 75px;
+      width: 90%;
+    }
+    p {
+      width: 57%;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    h2 {
+      font-size: 75px;
+      line-height: 45px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    h2 {
+      font-size: 55px;
       line-height: 45px;
     }
     p {
@@ -1003,6 +1064,26 @@ const SecondLine = styled(motion.div)`
   position: relative;
   z-index: 2;
   overflow: hidden;
+
+  @media (max-width: ${breakpoints.l}px) {
+    span:nth-child(2) {
+      display: none;
+    }
+    span:nth-child(3) {
+      display: none;
+    }
+  }
+`
+
+const ThirdLineTabletMobile = styled(motion.div)`
+  display: none;
+
+  @media (max-width: ${breakpoints.l}px) {
+    display: block;  
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
 `
 
 const WordSpan = styled(motion.span)`
@@ -1019,13 +1100,9 @@ const WordSpan = styled(motion.span)`
 const ImaginationBG = styled(motion.div)`
   z-index: 0;
   height: 100%;
-  width: 100%;
+  width: 99vw;
   margin: 0 auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  /* overflow: hidden; */
+  position: relative;
 
   @media (max-width: ${breakpoints.xl}px) {
     top: 15%;
@@ -1034,8 +1111,8 @@ const ImaginationBG = styled(motion.div)`
 
 const CircleWrapper = styled(motion.div)`
   position: absolute;
-  top: 32%;
-  right: 15.5%;
+  top: 27%;
+  right: 5%;
 
   @media (max-width: 1600px) {
     svg {
@@ -1044,31 +1121,35 @@ const CircleWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.xxl}px) {
-    right: 10%;
+    top: 30%;
     svg {
       width: 300px;
-      height: auto;
+      height: 300px;
     }
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 10%;
+    right: 0%;
+  }
   @media (max-width: ${breakpoints.l}px) {
-    right: 5%;
-    top: 18%;
+    right: 0%;
+    top: 10%;
     svg {
-      width: 250px;
+      width: 225px;
       height: auto;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
     right: 2%;
-    top: 20%;
+    top: 5%;
     svg {
       width: 160px;
       height: auto;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    right: 5%;
-    top: 15%;
+    right: 1%;
+    top: -3%;
     svg {
       scale: 1;
       width: 160px;
@@ -1079,12 +1160,21 @@ const CircleWrapper = styled(motion.div)`
 
 const CircleStrokeWrapper = styled(motion.div)`
   position: absolute;
-  top: 75%;
+  bottom: 0%;
   left: 12.5%;
+
+  @media (max-width: ${breakpoints.l}px) {
+    bottom: 25%;
+    left: 5%;
+    svg {
+      width: 325px;
+      height: 325px;
+    }
+  }
 
   @media (max-width: ${breakpoints.s}px) {
     left: -15%;
-    top: 90%;
+    bottom: 24%;
     svg {
       width: 200px;
       height: 200px;
@@ -1094,41 +1184,50 @@ const CircleStrokeWrapper = styled(motion.div)`
 
 const BlueTrianglesWrapper = styled(motion.div)`
   position: absolute;
-  bottom: 1%;
-  left: 0;
+  bottom: 10%;
+  left: 5%;
   margin: 0 auto;
   width: 90vw;
   overflow: hidden;
   @media (max-width: 1700px) {
     left: 5%;
-    top: 40%;
+    bottom: 10%;
+    svg {
+      width: 100%;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.7;
-    top: 10%;
+    top: 5%;
+    left: -10%;
+    svg {
+      width: auto;
+    }
   }
   @media (max-width: ${breakpoints.m}px) {
     left: -5%;
-    top: 20%;
+    bottom: 20%;
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    scale: 0.5;
-    top: -5%;
-    left: -10%;
+    scale: 1;
+    top: 20%;
+    left: 5%;
+    bottom: auto;
+    svg {
+      max-width: 80vw;
+    }
   }
 `
 
 const BlueTriangleWrapper = styled(motion.div)`
   position: absolute;
-  top: 60%;
-  left: 20%;
+  top: 55%;
+  left: 15%;
   @media (max-width: ${breakpoints.xxl}px) {
     left: 10%;
-    top: auto;
-    bottom: 5%;
+    /* bottom: 7%; */
   }
-
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.7;
     bottom: 10%;
@@ -1141,7 +1240,7 @@ const BlueTriangleWrapper = styled(motion.div)`
 
 const PurpleTriangleWrapper = styled(motion.div)`
   position: absolute;
-  bottom: -7%;
+  bottom: 0%;
   right: 22%;
 
   @media (max-width: ${breakpoints.xl}px) {
@@ -1149,9 +1248,9 @@ const PurpleTriangleWrapper = styled(motion.div)`
     right: 5%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    bottom: 5%;
+    bottom: 15%;
     right: 15%;
-    scale: 0.5;
+    scale: 0.85;
   }
   @media (max-width: ${breakpoints.s}px) {
     bottom: -10%;
@@ -1162,12 +1261,20 @@ const PurpleTriangleWrapper = styled(motion.div)`
 
 const GreenTriangleWrapper = styled(motion.div)`
   position: absolute;
-  top: 30%;
+  top: 15%;
   right: 25%;
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    right: 20%;
+    top: 17%;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 5%;
+  }
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.8;
-    top: 15%;
+    top: 5%;
+    right: 25%;
   }
 
   @media (max-width: ${breakpoints.s}px) {
@@ -1179,18 +1286,18 @@ const GreenTriangleWrapper = styled(motion.div)`
 
 const OrangeTriangleWrapper = styled(motion.div)`
   position: absolute;
-  top: 34%;
-  left: 25%;
+  top: 15%;
+  left: 20%;
 
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.5;
-    top: 10%;
+    top: 0%;
   }
 
   @media (max-width: ${breakpoints.s}px) {
     left: -3%;
-    top: 85%;
-    scale: 0.5;
+    top: 30%;
+    scale: 0.45;
   }
 `
 
@@ -1295,7 +1402,13 @@ const Brief = styled(motion.div)`
     a {
       max-width: 200px;
     }
-
+    h4 {
+      padding-bottom: 3rem;
+    }
+    p {
+      width: 85%;
+      padding-bottom: 2rem;
+    }
     h2,
     p {
       white-space: normal;

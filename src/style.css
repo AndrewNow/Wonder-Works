@@ -137,11 +137,11 @@ a {
   font-weight: 300;
   margin: 0;
 }
-
+/* 
 blockquote > ul,
 blockquote > ol {
   list-style-position: inside;
-}
+} */
 
 a:hover,
 a:focus {

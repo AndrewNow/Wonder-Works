@@ -1,7 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-} from "react"
+import React, { useCallback, useEffect } from "react"
 import Layout from "../components/layout"
 import { StaticImage } from "gatsby-plugin-image"
 import { useInView } from "react-intersection-observer"
@@ -21,7 +18,7 @@ import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
-import {AsSeenOnLogosAbout} from "../components/AsSeenOn/AsSeenOnLogos"
+import { AsSeenOnLogosAbout } from "../components/AsSeenOn/AsSeenOnLogos"
 import {
   useGlobalDispatchContext,
   useGlobalStateContext,
@@ -167,31 +164,6 @@ const About = ({ data }) => {
     triggerOnce: true,
   })
 
-  // const [StudioRef, StudioRefInView] = useInView({
-  //   root: null,
-  //   threshold: 0.6,
-  //   triggerOnce: false,
-  // })
-
-  // const [JamsRef, JamsRefInView] = useInView({
-  //   root: null,
-  //   threshold: 0.8,
-  //   triggerOnce: false,
-  // })
-
-  // const [CollabRef, CollabRefInView] = useInView({
-  //   root: null,
-  //   threshold: 0.8,
-  //   triggerOnce: false,
-  // })
-
-  // const [pillarsRef, pillarsInView] = useInView({
-  //   root: null,
-  //   threshold: 0.65,
-  //   triggerOnce: true,
-  // })
-
-
   // ---------- Parrallax scroll logic using Framer  ----------
   let throttle = require("lodash/throttle")
 
@@ -221,7 +193,6 @@ const About = ({ data }) => {
   useEffect(() => {
     window.localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
-
 
   return (
     <Layout title={siteTitle}>
@@ -314,158 +285,6 @@ const About = ({ data }) => {
         </Logos>
       </OrangeBg>
       <OurPillarsAboutPage />
-      {/* <Container>
-        <OurPillars ref={horizontalScroll}>
-          {sideScrollInView && (
-            <SideScrollInner
-              style={{ x: usexRightRange }}
-              variants={sideSrollAnim}
-              initial="hidden"
-              animate={sideScrollInView ? "visible" : "hidden"}
-              exit="hidden"
-            >
-              {SideScrollData.map((frame, i) => {
-                return (
-                  <Frame ref={frame.ref} key={i}>
-                    <AnimatePresence>
-                      {frame.inView && (
-                        <FrameWrapper
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        >
-                          <FrameHeader
-                            variants={sideScrollHeader}
-                            initial="hidden"
-                            animate={frame.inView ? "visible" : "hidden"}
-                            exit="hidden"
-                          >
-                            {frame.headerSVG}
-                            <h4>Our Pillars</h4>
-                            <Svg.HorizontalLine />
-                          </FrameHeader>
-                          <FrameContainer>
-                            <FrameLeft>
-                              <LeftSVG
-                                variants={sideScrollSVG}
-                                initial="hidden"
-                                animate={frame.inView ? "visible" : "hidden"}
-                                exit="hidden"
-                              >
-                                {frame.mainSVG}
-                              </LeftSVG>
-                              <motion.div
-                                variants={sideScrollBody}
-                                initial="hidden"
-                                animate={frame.inView ? "visible" : "hidden"}
-                                exit="hidden"
-                              >
-                                <motion.h4
-                                  style={{ color: `${frame.titleColor}` }}
-                                  variants={bodyChild}
-                                >
-                                  {frame.title}
-                                </motion.h4>
-                                <motion.p variants={bodyChild}>
-                                  {frame.bodyText}
-                                </motion.p>
-                              </motion.div>
-                            </FrameLeft>
-                            <FrameRight
-                              variants={sideScrollSVG}
-                              initial="hidden"
-                              animate={frame.inView ? "visible" : "hidden"}
-                              exit="hidden"
-                            >
-                              {frame.rightSVG}
-                            </FrameRight>
-                          </FrameContainer>
-                        </FrameWrapper>
-                      )}
-                    </AnimatePresence>
-                  </Frame>
-                )
-              })}
-            </SideScrollInner>
-          )}
-        </OurPillars>
-      </Container> */}
-
-      
-
-
-      {/* <StudioCollab ref={pillarsRef}>
-        <Inner>
-          <Top>
-            <TopLeft>
-              <Mask
-                variants={line}
-                initial="hidden"
-                animate={pillarsInView && "visible"}
-              >
-                <motion.div variants={word2}>
-                  <svg.Studio />
-                </motion.div>
-              </Mask>
-              <GreenStarWrapper>
-                <svg.GreenStar />
-              </GreenStarWrapper>
-              <p>
-                Discover what’s in the works at Wonder Works Studio. We’re
-                always dreaming up new adventures in exciting roleplay games for
-                immersive, imaginative fun for everyone. Check out our ambitious
-                new projects or our latest launches—they all live here.
-              </p>
-            </TopLeft>
-            <TopRight>
-              <Flex>
-                <svg.Stars />
-                <JamsWrapper
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={
-                    pillarsInView && {
-                      scale: 1,
-                      opacity: 1,
-                      transition: { duration: 1 },
-                    }
-                  }
-                >
-                  <svg.Jams />
-                </JamsWrapper>
-              </Flex>
-              <p>
-                Wonder Works Jams is a space for our junior talent to QA various
-                game genres. It’s a creative hub of mentorship that fosters a
-                lifelong love for exploration and innovation and promotes
-                success on individual and collaborative levels.
-              </p>
-            </TopRight>
-          </Top>
-          <Bottom>
-            <svg.Hexagon />
-            <BottomWrapper>
-              <Mask
-                variants={line}
-                initial="hidden"
-                animate={pillarsInView && "visible"}
-              >
-                <motion.div variants={word}>
-                  <svg.Collab />
-                </motion.div>
-              </Mask>
-              <SingleStarWrapper>
-                <svg.SingleStar />
-              </SingleStarWrapper>
-              <p>
-                Growing our community is important to us and collaborating with
-                optimistic, adventurous individuals pushes our own creativity to
-                new heights. We’re always on the lookout for YouTubers and
-                influencers to help tell our story—let us know if that’s you!{" "}
-              </p>
-            </BottomWrapper>
-          </Bottom>
-        </Inner>
-      </StudioCollab> */}
       <MeganZach ref={meganzachRef}>
         <TextContent
           variants={meganzachAnim}
@@ -566,7 +385,6 @@ export const pageQuery = graphql`
     }
   }
 `
-
 
 const Background = styled(motion.div)`
   z-index: 0;
@@ -807,7 +625,7 @@ const LandingText = styled.div`
       font-size: 7.8vw;
     }
   }
-  
+
   @media (max-width: 1025px) {
     top: 30vh;
   }
@@ -925,106 +743,6 @@ const Logos = styled.div`
     color: black;
   }
 `
-
-// const StudioCollab = styled.section`
-//   background-color: var(--color-purple);
-//   padding: 5rem 0;
-//   p {
-//     color: var(--color-white);
-//   }
-// `
-
-// const Inner = styled.div`
-//   width: 80%;
-//   margin: 0 auto;
-//   display: flex;
-//   flex-direction: column;
-// `
-
-// const Top = styled.div`
-//   display: flex;
-
-//   div:nth-of-type(2) {
-//     align-self: flex-end;
-//     padding-top: 5rem;
-//   }
-//   div:nth-of-type(3) {
-//     align-self: center;
-//   }
-// `
-// const Flex = styled.div`
-//   display: flex;
-// `
-
-// const TopLeft = styled.div`
-//   width: 50%;
-//   position: relative;
-//   margin-top: 4rem;
-
-//   p {
-//     width: 90%;
-//     padding-top: 3rem;
-//   }
-// `
-
-// const Mask = styled(motion.div)`
-//   height: auto;
-//   padding-top: 2rem;
-//   overflow-y: hidden;
-// `
-
-// const TopRight = styled.div`
-//   width: 50%;
-//   display: flex;
-//   flex-direction: column;
-//   align-self: flex-end;
-//   padding-bottom: 4rem;
-//   text-align: right;
-
-//   svg {
-//     align-self: flex-end;
-//   }
-//   div {
-//     align-self: flex-end;
-//     padding-bottom: 2rem;
-//   }
-//   p {
-//     width: 85%;
-//     align-self: flex-end;
-//   }
-// `
-
-// const Bottom = styled.div`
-//   display: flex;
-//   align-items: flex-start;
-
-//   p {
-//     padding-top: 3rem;
-//   }
-//   svg:first-of-type {
-//     align-self: center;
-//   }
-// `
-
-// const BottomWrapper = styled.div`
-//   width: 40%;
-//   margin-left: 7rem;
-//   position: relative;
-// `
-
-// const JamsWrapper = styled(motion.div)``
-
-// const GreenStarWrapper = styled(motion.div)`
-//   position: absolute;
-//   left: -15%;
-//   top: 45%;
-// `
-
-// const SingleStarWrapper = styled.div`
-//   position: absolute;
-//   right: 5%;
-//   top: -15%;
-// `
 
 const MeganZach = styled.section`
   padding: 10rem 0;
@@ -1155,6 +873,9 @@ const TextContent = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    p {
+      width: 72%;
+    }
     h1 {
       font-size: 45px;
     }
@@ -1216,20 +937,24 @@ const CirclesWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xxl}px) {
     right: 5%;
+    top: -85%;
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    top: -70%;
+    top: -90%;
     right: 10%;
     width: 80%;
     svg {
       width: 100%;
     }
   }
+  @media (max-width: ${breakpoints.l}px) {
+    top: -100%;
+  }
 
   @media (max-width: ${breakpoints.s}px) {
-    right: 3%;
-    top: -40%;
+    right: 0%;
+    top: -80%;
     width: 100%;
     height: 100%;
     svg {
@@ -1237,15 +962,12 @@ const CirclesWrapper = styled(motion.div)`
       height: auto;
     }
   }
-  @media (max-width: 400px) {
-    top: -60%;
-  }
 `
 const PinkShapesWrapper = styled(motion.div)`
   z-index: 2;
   position: absolute;
   z-index: 5;
-  top: -35%;
+  top: -45%;
   left: 13%;
   aspect-ratio: 1/1;
   @media (max-width: 1700px) {
@@ -1258,13 +980,13 @@ const PinkShapesWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    top: -25%;
+    top: -35%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    top: -30%;
+    top: -50%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    top: -30%;
+    top: -50%;
     left: 5%;
     width: 95%;
     svg {
@@ -1272,10 +994,10 @@ const PinkShapesWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.m}px) {
-    top: -40%;
+    top: -30%;
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: -35%;
+    top: -45%;
     left: 0;
     svg {
       scale: 1;
