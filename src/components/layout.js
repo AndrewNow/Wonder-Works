@@ -17,6 +17,12 @@ const Layout = ({ children }) => {
 
   const { currentTheme } = useGlobalStateContext()
 
+//   console.log(
+//     // "%cDeveloped by Andrew Nowacki!",
+//     "%cLog me once!",
+//     "background: black; color: white; display: block; text-align: center; padding: .5rem 2rem; border-radius: 15px; width: 70%; margin: 1rem auto;"
+// )
+
   return (
     <ThemeProvider
       theme={currentTheme === "blue" ? darkNavTheme : lightNavTheme}

@@ -25,6 +25,17 @@ const ProjectsPageCarousel = () => {
   const [videoProgress, setVideoProgress] = useState(0)
   const [thumbnailClicked, setThumbnailClicked] = useState(false)
 
+  // start playing the video if user scrolls to next slide
+  const onInView = useCallback(() => {
+    if (!embla) return
+    setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
+    setPaused(false)
+    setHover(false)
+    if (slidesInView > 0) {
+      setThumbnailClicked(true)
+    }
+  }, [embla, slidesInView])
+
   // ---------- Set up embla navigation buttons ----------
   const onThumbClick = useCallback(
     index => {
@@ -37,23 +48,13 @@ const ProjectsPageCarousel = () => {
       onInView()
     },
 
-    [embla]
+    [embla, onInView]
   )
 
   // ---------- Set up embla pagination buttons ----------
   // scroll to next slide when video ends
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
 
-  // start playing the video if user scrolls to next slide
-  const onInView = useCallback(() => {
-    if (!embla) return
-    setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
-    setPaused(false)
-    setHover(false)
-    if (slidesInView > 0) {
-      setThumbnailClicked(true)
-    }
-  }, [embla])
 
   // ---------- Run embla configurations ----------
   useEffect(() => {
@@ -303,7 +304,7 @@ const MobileText = styled(motion.div)`
       color: var(--color-white);
     }
     h2 {
-      font-size: 29px;
+      font-size: 29px!important;
       line-height: 32px;
       padding-top: 6rem;
       padding-bottom: 2rem;

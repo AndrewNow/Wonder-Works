@@ -466,6 +466,11 @@ const MobileNavElement = styled(motion.div)`
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
   }
+  @media (max-width: 375px) {
+    a {
+      font-size: 32px;
+    }
+  }
 
   @media (max-width: ${breakpoints.xs}px) {
     a {

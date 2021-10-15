@@ -55,7 +55,7 @@ const LatestProjectsCarousel = () => {
     if (slidesInView > 0) {
       setThumbnailClicked(true)
     }
-  }, [embla])
+  }, [embla, slidesInView])
 
   // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
@@ -169,6 +169,7 @@ const LatestProjectsCarousel = () => {
                     playIcon={
                       <PlayButtonLatestProjects
                         setPaused={setPaused}
+                        paused={paused}
                         setThumbnailClicked={setThumbnailClicked}
                       />
                     }
@@ -295,7 +296,7 @@ const Title = styled.div`
       margin-bottom: 1.25rem;
     }
   }
-  @media (max-width: ${breakpoints.s}px) {
+  /* @media (max-width: ${breakpoints.s}px) {
     top: 15%;
     h2 {
       font-size: 45px;
@@ -312,7 +313,7 @@ const Title = styled.div`
     svg {
       margin-bottom: 0.5rem;
     }
-  }
+  } */
 `
 
 const ViewAll = styled(Link)`

@@ -2,11 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import breakpoints from "../breakpoints"
-import { PressPlaySVG } from "./buttons"
+import { PressPlaySVG, PressPauseSVG } from "./buttons"
 import { StaticImage } from "gatsby-plugin-image"
 
 export const PlayButtonProjectsPageMobile = ({
   setPaused,
+  paused,
   setThumbnailClicked,
 }) => {
   const button = {
@@ -90,7 +91,7 @@ export const PlayButtonProjectsPageMobile = ({
           initial="visible"
         >
           <TextWrapper variants={rotation} animate="visible">
-            <PressPlaySVG />
+            {!paused ? <PressPauseSVG /> : <PressPlaySVG />}
           </TextWrapper>
           <PlaySVG>
             <svg
@@ -234,6 +235,7 @@ const Thumbnail = styled.div`
 
 export const PlayButtonLatestProjects = ({
   setPaused,
+  paused,
   setThumbnailClicked,
 }) => {
   const button = {
@@ -374,7 +376,7 @@ export const PlayIconReactPlayer = ({ paused, setPaused, setHover }) => {
       exit="hidden"
     >
       <TextWrapper variants={rotation}>
-        <PressPlaySVG />
+        {!paused ? <PressPauseSVG /> : <PressPlaySVG />}
       </TextWrapper>
       {!paused ? (
         <PauseSVG>
@@ -448,16 +450,27 @@ const TextWrapper = styled(motion.div)`
   align-items: center;
   position: absolute;
 
+  /* width: 215px;
+  height: 215px;
+  svg {
+    width: 215px;
+    height: 215px;
+  } */
+
   @media (max-width: ${breakpoints.l}px) {
+    width: 220px;
+    height: 220px;
     svg {
       width: 220px;
       height: 220px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    width: 125px;
+    height: 125px;
     svg {
-      width: 150px;
-      height: 150px;
+      width: 125px;
+      height: 125px;
     }
   }
 `

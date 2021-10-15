@@ -7,7 +7,7 @@ import {
   useGlobalDispatchContext,
   useGlobalStateContext,
 } from "../../../context/globalContext"
-import breakpoints from "../../breakpoints"
+// import breakpoints from "../../breakpoints"
 
 const DesktopComponent = () => {
   const pillarVariants = {

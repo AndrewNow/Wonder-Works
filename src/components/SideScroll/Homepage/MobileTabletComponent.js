@@ -405,19 +405,19 @@ const ImageWrapper = styled(motion.div)`
   }
 `
 
-const StarWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  position: absolute;
-  z-index: 11;
-  left: -2%;
-  top: 34%;
-  @media (max-width: ${breakpoints.s}px) {
-    left: -8%;
-    top: -2%;
-    svg {
-      height: auto;
-      width: 100%;
-    }
-  }
-`
+// const StarWrapper = styled.div`
+//   width: 100%;
+//   height: auto;
+//   position: absolute;
+//   z-index: 11;
+//   left: -2%;
+//   top: 34%;
+//   @media (max-width: ${breakpoints.s}px) {
+//     left: -8%;
+//     top: -2%;
+//     svg {
+//       height: auto;
+//       width: 100%;
+//     }
+//   }
+// `

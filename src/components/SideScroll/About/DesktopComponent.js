@@ -11,27 +11,9 @@ import breakpoints from "../../breakpoints"
 import * as Svg from "../../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
-import { useThrottleFn } from "react-use"
+// import { useThrottleFn } from "react-use"
 
-// ------------------- Hook for 3. -------------------
-const useScrollProgress = horizontalScroll => {
-  const [scrollProgress, setScrollProgress] = useState()
-  const onScroll = () => {
-    // get the component's coordinates
-    const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
-    // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
-    setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
-  }
 
-  // Throttle the scroll events for performance
-  const throttledOnScroll = useThrottleFn(onScroll, 300, [onScroll])
-
-  useLayoutEffect(() => {
-    window.addEventListener("scroll", throttledOnScroll)
-    return () => window.removeEventListener("scroll", throttledOnScroll)
-  }, [throttledOnScroll])
-  return scrollProgress
-}
 
 const DesktopComponent = () => {
   // This section handles the side scrolling "Pillars" section.
@@ -131,8 +113,27 @@ const DesktopComponent = () => {
 
   // ------------------- 3. Track component scroll progress -------------------
   // Hook which returns a value between 1-0 depending on how close the bottom of the container is to the top of the viewport. When scrollProgress = 0, the container's bottom is touching top of viewport.
-  const scrollProgress = useScrollProgress(horizontalScroll)
+  // ------------------- Hook for 3. -------------------
+  const useScrollProgress = horizontalScroll => {
+    const [scrollProgress, setScrollProgress] = useState()
+    const onScroll = () => {
+      // get the component's coordinates
+      const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
+      // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
+      setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
+    }
+    
+    // Throttle the scroll events for performance
+    // const throttledOnScroll = useThrottleFn(onScroll, 300, [onScroll])
+    
+    useLayoutEffect(() => {
+      window.addEventListener("scroll", onScroll)
+      return () => window.removeEventListener("scroll", onScroll)
+    }, [onScroll])
+    return scrollProgress
+  }
 
+  const scrollProgress = useScrollProgress(horizontalScroll)
   // ------------------- 4. Embla Carousel Logic -------------------
   // Configure Embla settings (notably: disabled user touch/click interaction)
   const [viewportRef, embla] = useEmblaCarousel({
@@ -182,13 +183,13 @@ const DesktopComponent = () => {
         scrollToFourthSlide()
       }
     }
-    // , [
-    // scrollProgress,
-    // scrollToFirstSlide,
-    // scrollToSecondSlide,
-    // scrollToThirdSlide,
-    // scrollToFourthSlide,
-    // ]
+    , [
+    scrollProgress,
+    scrollToFirstSlide,
+    scrollToSecondSlide,
+    scrollToThirdSlide,
+    scrollToFourthSlide,
+    ]
   )
 
   // prevent excessive scrolling

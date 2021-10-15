@@ -23,14 +23,27 @@ const Footer = () => {
             >
               <Twitter />
             </motion.a>
+
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               href="https://www.instagram.com/wonderworksstudio/"
               rel="noreferrer"
               target="_blank"
+              alt="Instagram social media link"
             >
               <Instagram />
+            </motion.a>
+
+            <motion.a
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.tiktok.com/@wonderworks_studios"
+              alt="Tik Tok social media link"
+              >
+              <TikTok />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1 }}
@@ -38,17 +51,7 @@ const Footer = () => {
               href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
               rel="noreferrer"
               target="_blank"
-              alt="Instagram social media link"
-            >
-              <TikTok />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.tiktok.com/@wonderworks_studios"
-              rel="noreferrer"
-              target="_blank"
-              alt="Tik Tok social media link"
+              alt="YouTube social media link"
             >
               <YouTube />
             </motion.a>
@@ -58,7 +61,7 @@ const Footer = () => {
               href="https://www.roblox.com/groups/6258143/Wonder-Works-Studio#!/about"
               rel="noreferrer"
               target="_blank"
-              alt="YouTube social media link"
+              alt="Roblox social media link"
             >
               <Roblox />
             </motion.a>
@@ -88,7 +91,6 @@ const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 
   p {
     font-family: "calibre-regular";
@@ -172,10 +174,10 @@ const Icons = styled.div`
       max-width: 40px !important;
     }
   }
-  
+
   @media (max-width: ${breakpoints.s}px) {
     a {
-      margin: 0 .5rem;
+      margin: 0 0.5rem;
       width: 40px;
       height: 40px;
       svg {
@@ -185,7 +187,7 @@ const Icons = styled.div`
   }
   @media (max-width: ${breakpoints.xs}px) {
     a {
-      margin: 0 .15rem;
+      margin: 0 0.15rem;
       width: 60px;
     }
   }

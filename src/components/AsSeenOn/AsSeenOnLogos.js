@@ -382,12 +382,17 @@ const LogosHomepage = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xxl}px) {
     max-width: 80%;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    height: 150px;
+    padding-bottom: 0;
+    margin-bottom: 5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     gap: 3rem;
   }
-
+  
   @media (max-width: ${breakpoints.xl}px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     max-width: 90%;
     gap: 4rem;
   }
