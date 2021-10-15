@@ -42,17 +42,17 @@ const PressCarouselLogos = () => {
       initial="hidden"
       animate={logosInView && "visible"}
     >
-      <motion.div variants={logoMask}>
+      <motion.span variants={logoMask}>
         <StaticImage
-          src="../../images/Home/asSeenOn/Forbes.png"
+          src="../../images/Home/asSeenOn/FORBES.png"
           alt="Forbes logo"
           placeholder="none"
           quality={100}
           style={{ height: "100%", width: "100%" }}
           imgStyle={{ objectFit: "contain" }}
         />
-      </motion.div>
-      <motion.div variants={logoMask}>
+      </motion.span>
+      <motion.span variants={logoMask}>
         <StaticImage
           src="../../images/Home/asSeenOn/CNBC.png"
           alt="CNBC logo"
@@ -61,38 +61,38 @@ const PressCarouselLogos = () => {
           style={{ height: "100%", width: "100%" }}
           imgStyle={{ objectFit: "contain" }}
         />
-      </motion.div>
-      <motion.div variants={logoMask}>
+      </motion.span>
+      <motion.span variants={logoMask}>
         <StaticImage
-          src="../../images/Home/asSeenOn/npr.png"
+          src="../../images/Home/asSeenOn/NPR.png"
           alt="n p r logo"
           placeholder="none"
           quality={100}
           style={{ height: "100%", width: "100%" }}
           imgStyle={{ objectFit: "contain" }}
         />
-      </motion.div>
-      <motion.div variants={logoMask}>
+      </motion.span>
+      <motion.span variants={logoMask}>
         <StaticImage
-          src="../../images/Home/asSeenOn/edc.png"
+          src="../../images/Home/asSeenOn/EDC.png"
           alt="e d c logo"
           placeholder="none"
           quality={100}
           style={{ height: "100%", width: "100%" }}
           imgStyle={{ objectFit: "contain" }}
         />
-      </motion.div>
-      <motion.div variants={logoMask}>
+      </motion.span>
+      <motion.span variants={logoMask}>
         <StaticImage
-          src="../../images/Home/asSeenOn/Bloomberg.png"
+          src="../../images/Home/asSeenOn/BLOOMBERG.png"
           alt="Forbes logo"
           placeholder="none"
           quality={100}
           style={{ height: "100%", width: "100%" }}
           imgStyle={{ objectFit: "contain" }}
         />
-      </motion.div>
-      <motion.div variants={logoMask}>
+      </motion.span>
+      <motion.span variants={logoMask}>
         <StaticImage
           src="../../images/Home/asSeenOn/B2.png"
           alt="B2 logo"
@@ -101,7 +101,7 @@ const PressCarouselLogos = () => {
           style={{ height: "100%", width: "100%" }}
           imgStyle={{ objectFit: "contain" }}
         />
-      </motion.div>
+      </motion.span>
     </LogosPress>
   )
 }
@@ -109,56 +109,53 @@ const PressCarouselLogos = () => {
 export default PressCarouselLogos
 
 const LogosPress = styled(motion.div)`
-  max-width: 60%;
-  height: 70px;
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
-  column-gap: 2rem;
-  img {
-    max-height: 50px;
-    min-height: 20px;
-  }
-  div {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  span {
+    width: 150px;
     align-self: center;
     transform-origin: bottom;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    max-width: 60%;
     margin-right: 2rem;
-    img {
-      max-height: 40px;
-      min-height: 15px;
+    height: auto;
+    span {
+      width: 130px;
+      /* width: 115px; */
     }
   }
 
   @media (max-width: ${breakpoints.xl}px) {
     max-width: 100%;
-    width: 100%;
     margin-right: 0rem;
-    height: 60px;
-    img {
-      max-height: 60px;
-      min-height: none;
+    span {
+      max-width: auto;
     }
   }
-  @media (max-width: ${breakpoints.l}px) {
-    img {
-      max-height: 35px;
-      min-height: none;
-    }
-  }
+
   @media (max-width: ${breakpoints.m}px) {
-    grid-template-columns: auto auto auto;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     column-gap: 0;
-
+    row-gap: .5rem;
+    margin: 0 auto;
     justify-items: center;
     align-items: center;
-    min-height: 100px;
-    img {
-      max-height: 35px;
-      min-height: min-content;
+    width: auto;
+    span {
+      width: 150px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    span {
+      width: 90px;
+      height: auto;
     }
   }
 `

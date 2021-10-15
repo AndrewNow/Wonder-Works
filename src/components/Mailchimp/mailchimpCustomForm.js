@@ -42,9 +42,9 @@ const MailchimpCustomForm = ({ status, message, onValidated }) => {
         {status === "sending" && (
           <Sending
             variants={modalvariants}
-            initial={{ opacity: 0, y: 50, scale: 0.3 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.5 } }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
           >
             Sending...
           </Sending>
@@ -52,19 +52,23 @@ const MailchimpCustomForm = ({ status, message, onValidated }) => {
         )}
         {status === "error" && (
           <Error
-            dangerouslySetInnerHTML={{ __html: message }}
-            initial={{ opacity: 0, y: 50, scale: 0.3 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5, transition: { duration: 1 } }}
-          />
+            // dangerouslySetInnerHTML={{ __html: message }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, transition: { duration: 1 } }}
+          >
+            OOPS! SEEMS LIKE SOMETHING WENT WRONG. PLEASE TRY AGAIN.
+          </Error>
         )}
         {status === "success" && (
           <Success
-            dangerouslySetInnerHTML={{ __html: message }}
-            initial={{ opacity: 0, y: 50, scale: 0.3 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.5 } }}
-          />
+            // dangerouslySetInnerHTML={{ __html: message }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            Success!
+          </Success>
         )}
 
         <MailchimpInputField
@@ -104,66 +108,72 @@ const EmailForm = styled.form`
 
 const Sending = styled(motion.div)`
   position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: var(--color-white);
   margin-top: 5rem;
-  width: 270px;
+  max-width: 40vw;
   word-wrap: wrap;
-  padding: 1rem 2rem;
-  color: var(--color-darkgreen);
+  font-family: "calibre-semibold";
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-black);
 
   & a {
-    padding-top: 1rem;
+    font-family: "calibre-semibold";
+    text-transform: uppercase;
+    padding-top: 2rem;
     font-size: 16px;
-    line-height: 16px;
+    line-height: 20px;
+    color: var(--color-black);
   }
   @media (max-width: ${breakpoints.m}px) {
-    margin-top: 2.5rem;
+    margin-top: 4rem;
   }
 `
 
 const Error = styled(motion.div)`
-  font-size: 16px;
-  line-height: 16px;
   position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: var(--color-white);
   margin-top: 5rem;
-  width: 270px;
+  max-width: 40vw;
   word-wrap: wrap;
-  padding: 1rem 2rem;
+  font-family: "calibre-semibold";
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-black);
 
   & a {
-    padding-top: 1rem;
+    font-family: "calibre-semibold";
+    text-transform: uppercase;
+    padding-top: 2rem;
     font-size: 16px;
-    line-height: 16px;
+    line-height: 20px;
+    color: var(--color-black);
   }
   @media (max-width: ${breakpoints.m}px) {
-    margin-top: 2.5rem;
+    margin-top: 4rem;
   }
 `
 
 const Success = styled(motion.div)`
-  font-size: 16px;
-  line-height: 16px;
   position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: var(--color-white);
   margin-top: 5rem;
-  width: 270px;
+  max-width: 40vw;
   word-wrap: wrap;
-  padding: 1rem 2rem;
-  color: var(--color-darkgreen);
+  font-family: "calibre-semibold";
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-black);
 
   & a {
-    padding-top: 1rem;
+    font-family: "calibre-semibold";
+    text-transform: uppercase;
+    padding-top: 2rem;
     font-size: 16px;
-    line-height: 16px;
+    line-height: 20px;
+    color: var(--color-black);
   }
   @media (max-width: ${breakpoints.m}px) {
-    margin-top: 2.5rem;
+    margin-top: 4rem;
   }
 `

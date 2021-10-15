@@ -207,7 +207,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 10rem;
-  padding-top: 5rem;
+  padding-top: 10rem;
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 85%;

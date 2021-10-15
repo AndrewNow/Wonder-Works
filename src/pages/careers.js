@@ -1011,7 +1011,7 @@ const Left = styled.div`
     line-height: 80%;
   }
   @media (max-width: 1600px) {
-    width: 65%;
+    width: 75%;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
@@ -1157,8 +1157,8 @@ const BigPlusWrapper = styled(motion.div)`
 const TwoPlusWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
-  bottom: 14%;
-  right: 12%;
+  bottom: 15%;
+  right: 9%;
 
   @media (max-width: ${breakpoints.xl}px) {
     bottom: 18%;

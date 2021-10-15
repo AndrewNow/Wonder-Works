@@ -133,32 +133,44 @@ const Navbar = () => {
             exit="hidden"
             variants={navAnimation}
           >
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+            <motion.div variants={navItem} 
+            whileHover={{ x: -15 }}
+            >
               <Link to="/" activeClassName="active">
                 Home
               </Link>
             </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+            <motion.div variants={navItem} 
+            whileHover={{ x: -15 }}
+            >
               <Link to="/about" activeClassName="active">
                 About
               </Link>
             </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+            <motion.div variants={navItem} 
+            whileHover={{ x: -15 }}
+            >
               <Link to="/projects" activeClassName="active">
                 Projects
               </Link>
             </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+            <motion.div variants={navItem} 
+            whileHover={{ x: -15 }}
+            >
               <Link to="/investors" activeClassName="active">
                 Investors
               </Link>
             </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+            <motion.div variants={navItem} 
+            whileHover={{ x: -15 }}
+            >
               <Link to="/careers" activeClassName="active">
                 Careers
               </Link>
             </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+            <motion.div variants={navItem} 
+            whileHover={{ x: -15 }}
+            >
               <Link to="/contact" activeClassName="active">
                 Contact
               </Link>
@@ -297,6 +309,9 @@ const HomeLink = styled(Link)`
     height: 100%;
     display: flex;
   }
+  @media (max-width: ${breakpoints.xxl}px) {
+    height: 60px;
+  }
 
   @media (max-width: ${breakpoints.l}px) {
     width: 150px;
@@ -340,7 +355,7 @@ const Dropdown = styled(motion.div)`
     padding-bottom: 1rem;
     font-size: 18px;
   }
-  & div:hover {
+  div:hover {
     a {
       font-family: "calibre-semibold";
     }

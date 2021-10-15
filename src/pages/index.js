@@ -492,7 +492,7 @@ const HomeIndex = ({ data }) => {
                         start={0}
                         end={5}
                         delay={1.25}
-                        decimals={1}
+                        decimals={0}
                         duration={1}
                         suffix="M"
                       />
@@ -504,7 +504,7 @@ const HomeIndex = ({ data }) => {
                   <p>4% of Roblox DAU</p>
                   <p>
                     2.2M+ Total Playing hrs/mo <br />
-                    MAU 2.74M <br />
+                    DAU 1.5M <br />
                     DAU/MAU Ratio 7.79%
                   </p>
                 </Desc>
@@ -538,7 +538,7 @@ const HomeIndex = ({ data }) => {
                   <p>0.0% of Roblox DAU</p>
                   <p>
                     0.0M+ Total Playing hrs/mo <br />
-                    MAU 0.0M <br />
+                    DAU 0.0M <br />
                     DAU/MAU Ratio 0.00%
                   </p>
                 </Desc>
@@ -552,21 +552,8 @@ const HomeIndex = ({ data }) => {
         <OrangeBackgroundMobileTablet>
           <Svg.BigOrangeBackgroundMobileTablet />
         </OrangeBackgroundMobileTablet>
-        <PurpleStrokeStarWrapper
-          animate={{
-            rotate: 360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.PurpleStrokeStar />
-        </PurpleStrokeStarWrapper>
         <MailchimpComponent
           smallStarSvg={<GreenStars />}
-          bigStarSvg={<PurpleStar />}
         />
         <OrangeBackground>
           <Svg.BigOrangeBackground />
@@ -1342,8 +1329,9 @@ const Press = styled.div`
     font-family: "calibre-semibold";
     color: black;
   }
+  @media (max-width: ${breakpoints.xl}px) {
+  }
   @media (max-width: ${breakpoints.m}px) {
-    background-color: var(--color-white);
     h4 {
       padding-top: 5rem;
       padding-bottom: 2.5rem;
@@ -1571,8 +1559,8 @@ const Circle = styled(motion.span)`
     width: 200px;
     height: 200px;
     h6 {
-      line-height: 60px;
-      font-size: 60px;
+      line-height: 50px;
+      font-size: 50px;
       font-family: "calibre-medium";
     }
   }
@@ -1691,20 +1679,11 @@ const ContactUsWrapper = styled.div`
   background-color: var(--color-orange);
   position: relative;
 `
-const PurpleStrokeStarWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 1;
-  top: -12.5%;
-  left: -3%;
 
-  @media (max-width: ${breakpoints.xl}px) {
-    display: none;
-  }
-`
 const PinkStarStrokeWrapper = styled(motion.div)`
   position: absolute;
   z-index: 1;
-  top: -15%;
+  top: 0%;
   right: 15%;
   @media (max-width: ${breakpoints.xl}px) {
     right: 20%;
@@ -1742,7 +1721,7 @@ const PinkStarStrokeWrapper = styled(motion.div)`
 const PinkStarFillWrapper = styled(motion.div)`
   position: absolute;
   z-index: 1;
-  top: 5%;
+  top: 15%;
   right: 25%;
 
   @media (max-width: ${breakpoints.xl}px) {

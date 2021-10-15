@@ -99,11 +99,11 @@ const EmailInput = styled.input`
   }
   @media (max-width: ${breakpoints.xl}px) {
     font-size: 24px;
-    width: 70%;
+    width: 50vw;
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    width: 80%;
+    width: 70vw;
     font-size: 18px;
     font-family: "calibre-medium";
     letter-spacing: 0.01rem;

@@ -314,8 +314,10 @@ const Headline = styled.div`
     font-family: "calibre-semibold";
     padding: 0;
   }
-  svg {
-    width: 30%;
+  @media (max-width: ${breakpoints.xl}px) {
+    svg {
+      width: 30%;
+    }
   }
 
   @media (max-width: ${breakpoints.s}px) {

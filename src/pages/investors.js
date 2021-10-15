@@ -294,7 +294,7 @@ const Investors = ({ data }) => {
               <p>4% of Roblox DAU</p>
               <p>
                 2.2M+ Total Playing hrs/mo <br />
-                MAU 2.74M <br />
+                DAU 1.5M <br />
                 DAU/MAU Ratio 7.79%
               </p>
             </Desc>
@@ -331,7 +331,7 @@ const Investors = ({ data }) => {
               <p>0.0% of Roblox DAU</p>
               <p>
                 0.0M+ Total Playing hrs/mo <br />
-                MAU 0.0M <br />
+                DAU 0.0M <br />
                 DAU/MAU Ratio 0.00%
               </p>
             </Desc>
@@ -381,10 +381,10 @@ const Investors = ({ data }) => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
+              href="https://www.tiktok.com/@wonderworks_studios"
               rel="noreferrer"
               target="_blank"
-              alt="Instagram social media link"
+              alt="Tik Tok social media link"
             >
               <TikTok />
             </motion.a>
@@ -394,7 +394,7 @@ const Investors = ({ data }) => {
               href="https://www.youtube.com/channel/UCxAUri__UiH2K3S8LGDDJuQ/videos"
               rel="noreferrer"
               target="_blank"
-              alt="Tik Tok social media link"
+              alt="YouTube social media link"
             >
               <YouTube />
             </motion.a>
@@ -404,7 +404,7 @@ const Investors = ({ data }) => {
               href="https://www.roblox.com/groups/6258143/Wonder-Works-Studio#!/about"
               rel="noreferrer"
               target="_blank"
-              alt="YouTube social media link"
+              alt="Roblox social media link"
             >
               <Roblox />
             </motion.a>
@@ -732,8 +732,8 @@ const Circle = styled(motion.span)`
     width: 200px;
     height: 200px;
     h6 {
-      line-height: 60px;
-      font-size: 60px;
+      line-height: 50px;
+      font-size: 50px;
       font-family: "calibre-medium";
     }
   }
@@ -967,15 +967,29 @@ const LogoWrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    justify-content: flex-start;
     flex-direction: column;
-    align-items: flex-start;
-
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
     p {
-      align-self: flex-start;
-      font-size: 35px;
-      line-height: 42px;
+      align-self: center;
+      text-align: center;
+      font-size: 24px;
+      line-height: 30px;
       padding-bottom: 2rem;
+      font-family: "calibre-medium";
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin: 0 auto;
+    p {
+      padding-left: 0;
+      align-self: center;
+      text-align: center;
+      padding-right: 0;
+      padding-bottom: 1rem;
+      font-size: 18px;
+      line-height: 20px;
       font-family: "calibre-medium";
     }
   }

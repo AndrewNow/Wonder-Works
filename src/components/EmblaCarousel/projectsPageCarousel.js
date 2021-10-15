@@ -55,7 +55,6 @@ const ProjectsPageCarousel = () => {
   // scroll to next slide when video ends
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
 
-
   // ---------- Run embla configurations ----------
   useEffect(() => {
     if (!embla) return
@@ -64,23 +63,29 @@ const ProjectsPageCarousel = () => {
   }, [embla, onInView])
 
   const videoLinks = [
-    {
-      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: true,
-      trailerbuttontext: "Overlook bay",
-      trailerbuttoncolor: "var(--color-green)",
-    },
-    {
-      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: true,
-      trailerbuttontext: "Traitor",
-      trailerbuttoncolor: "var(--color-pink)",
-    },
+    // {
+    //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
+    //   light: true,
+    //   trailerbuttontext: "Overlook bay",
+    //   trailerbuttoncolor: "var(--color-green)",
+    // },
+    // {
+    //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
+    //   light: true,
+    //   trailerbuttontext: "Traitor",
+    //   trailerbuttoncolor: "var(--color-pink)",
+    // },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       light: true,
       trailerbuttontext: "Timmeh",
       trailerbuttoncolor: "var(--color-lightblue)",
+    },
+    {
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/insomniac+trailer2.mp4",
+      light: true,
+      trailerbuttontext: "EDC",
+      trailerbuttoncolor: "var(--color-orange)",
     },
     // {
     //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
@@ -208,7 +213,7 @@ const ProjectsPageCarousel = () => {
                 border: `2px solid ${video.trailerbuttoncolor}`,
               }}
             >
-              <motion.div>
+              <ThumbInner>
                 <span>
                   {slidesInView === `video[${index}]` && videoInView && (
                     <motion.div
@@ -237,7 +242,7 @@ const ProjectsPageCarousel = () => {
                     {video.trailerbuttontext}
                   </p>
                 </span>
-              </motion.div>
+              </ThumbInner>
               <Arrow style={{ fill: `${video.trailerbuttoncolor}` }} />
             </Thumb>
           ))}
@@ -304,7 +309,7 @@ const MobileText = styled(motion.div)`
       color: var(--color-white);
     }
     h2 {
-      font-size: 29px!important;
+      font-size: 29px !important;
       line-height: 32px;
       padding-top: 6rem;
       padding-bottom: 2rem;
@@ -351,11 +356,16 @@ const EmblaSlide = styled(motion.div)`
   aspect-ratio: 16 / 9;
   width: 100%;
   height: 100%;
-  min-height: 160px;
+  min-height: 600px;
   min-width: 72vw; // 80% (embla) of 90% (const Embla)
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    min-height: 600px;
+    min-width: 100%;
+  }
   @media (max-width: ${breakpoints.xl}px) {
     min-width: 90vw;
+    min-height: 400px;
   }
   @media (max-width: ${breakpoints.s}px) {
     min-height: 187px;
@@ -409,17 +419,17 @@ const EmblaThumbnails = styled.div`
   width: 70%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 1rem;
 
   @media (max-width: ${breakpoints.xxl}px) {
-    width: 65%;
+    width: 55%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 75%;
-    display: grid;
+    /* display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; */
     gap: 1.5rem;
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -439,29 +449,18 @@ const EmblaThumbnails = styled.div`
 const Thumb = styled(motion.button)`
   background: none;
   text-transform: uppercase;
-  padding: 0.5rem 2rem;
-  margin: 0 0.5rem;
+  padding: 0.5rem 1.25rem;
+  margin: 0 1.5rem;
   border-radius: 40px;
   box-sizing: border-box;
   cursor: pointer;
+  width: 195px;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
 
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-    div {
-      left: -20px;
-      top: 7px;
-      position: absolute;
-    }
-  }
   @media (max-width: ${breakpoints.xl}px) {
     justify-content: space-between;
     max-width: 280px;
@@ -499,6 +498,26 @@ const Thumb = styled(motion.button)`
     svg {
       padding-top: 0;
       scale: 0.7;
+    }
+  }
+`
+
+const ThumbInner = styled(motion.div)`
+  display: flex;
+  width: 100%;
+  text-align: center;
+  span {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    position: relative;
+
+    div {
+      left: -5px;
+      top: 7px;
+      position: absolute;
     }
   }
 `

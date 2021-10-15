@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
 import * as Svg from "../svg/contactpage"
-import { BlueStars, PurpleStar } from "../svg/miscellaneous"
+import { BlueStars } from "../svg/miscellaneous"
 import { motion } from "framer-motion"
 import { useGlobalDispatchContext } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
@@ -116,21 +116,9 @@ const Contact = ({ data }) => {
         </OpenPositons>
       </OpenPositonsSection>
       <MailchimpWrapper>
-        <PurpleStrokeStarWrapper
-          animate={{
-            rotate: 360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.PurpleStrokeStar />
-        </PurpleStrokeStarWrapper>
         <MailchimpComponent
           smallStarSvg={<BlueStars />}
-          bigStarSvg={<PurpleStar />}
+          // bigStarSvg={<PurpleStar />}
           color={"#F7F7FC"}
         />
         <PinkBackground>
@@ -474,16 +462,5 @@ const OpenPositionsText = styled(motion.div)`
       font-size: 14px;
       line-height: 14px;
     }
-  }
-`
-
-const PurpleStrokeStarWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 1;
-  top: -12.5%;
-  left: -3%;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    display: none;
   }
 `

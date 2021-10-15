@@ -238,7 +238,6 @@ const Header = styled.header`
 const Embla = styled.div`
   width: 100%;
   position: relative;
-  background-color: #f7f7f7;
   padding: 20px;
   margin-left: auto;
   margin-right: auto;

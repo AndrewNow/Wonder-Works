@@ -31,7 +31,7 @@ const ScrollToTop = () => {
     }
     window.addEventListener("scroll", debounce(toggleVisibility, 300))
     return () =>
-      window.removeEventListener("scroll", toggleVisibility)
+      window.removeEventListener("scroll", debounce(toggleVisibility, 300))
   }, [debounce])
 
   const button = {

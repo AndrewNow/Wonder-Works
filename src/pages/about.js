@@ -442,17 +442,18 @@ const BigCircleWrapper = styled(motion.div)`
 `
 const SmallCircleWrapper = styled(motion.div)`
   position: absolute;
-  bottom: 1%;
+  bottom: 4%;
   left: 5%;
   overflow: visible;
 
   svg {
-    width: 315px;
+    width: 310px;
     height: auto;
   }
 
   @media (max-width: 1600px) {
     left: 2%;
+    bottom: 5%;
     svg {
       width: 250px;
     }
@@ -734,6 +735,7 @@ const Logos = styled.div`
   flex-direction: column;
   padding-bottom: 5rem;
   position: relative;
+  z-index: 2000;
   background-color: var(--color-white);
   h4 {
     padding-top: 3rem;
@@ -741,6 +743,16 @@ const Logos = styled.div`
     font-size: 30px;
     font-family: "calibre-semibold";
     color: black;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    padding-bottom: 0;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h4 {
+      font-size: 16px;
+      line-height: 19px;
+    }
   }
 `
 
