@@ -354,9 +354,11 @@ const HomeIndex = ({ data }) => {
               <WordSpan variants={word2}>to</WordSpan>
               <WordSpan variants={word2}>Play.</WordSpan>
             </SecondLine>
-            <ThirdLineTabletMobile variants={line2}
+            <ThirdLineTabletMobile
+              variants={line2}
               initial="hidden"
-              animate={sectionInView ? "visible" : "hidden"}>
+              animate={sectionInView ? "visible" : "hidden"}
+            >
               <WordSpan variants={word2}>to</WordSpan>
               <WordSpan variants={word2}>Play.</WordSpan>
             </ThirdLineTabletMobile>
@@ -463,7 +465,7 @@ const HomeIndex = ({ data }) => {
                     <h6>
                       <CountUp
                         start={0}
-                        end={37}
+                        end={150}
                         duration={1}
                         delay={1.15}
                         suffix="M"
@@ -488,7 +490,7 @@ const HomeIndex = ({ data }) => {
                     <h6>
                       <CountUp
                         start={0}
-                        end={1.5}
+                        end={5}
                         delay={1.25}
                         decimals={1}
                         duration={1}
@@ -518,7 +520,18 @@ const HomeIndex = ({ data }) => {
                   variants={circleAnimation3}
                   animate={countUpInView ? "inView" : "notInView"}
                 >
-                  <h6>0.0M</h6>
+                  {countUpInView && (
+                    <h6>
+                      <CountUp
+                        start={0}
+                        end={500}
+                        delay={1.25}
+                        decimals={0}
+                        duration={1}
+                        suffix="K"
+                      />
+                    </h6>
+                  )}
                   <p>DAU</p>
                 </Circle>
                 <Desc>
@@ -1471,11 +1484,6 @@ const Columns = styled.div`
   justify-content: space-evenly;
   align-items: flex-start;
 
-  div:nth-child(1) {
-    h5 {
-      font-family: "calibre-semibold";
-    }
-  }
   div:nth-child(2) {
     span {
       background-color: var(--color-green);

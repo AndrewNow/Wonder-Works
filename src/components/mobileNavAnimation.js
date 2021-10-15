@@ -2,8 +2,9 @@ import React from "react"
 import {
   MobileNavGreen,
   MobileNavWhite,
+  MobileNavPink,
   MobileNavOrange,
-  MobileNavBlue,
+  MobileNavLightBlue,
   MobileNavBlack,
   MobileNavPurple,
 } from "../../src/svg/logos"
@@ -14,8 +15,9 @@ const MobileNavAnimation = () => {
   const SVGs = [
     <MobileNavGreen />,
     <MobileNavWhite />,
+    <MobileNavPink />,
     <MobileNavOrange />,
-    <MobileNavBlue />,
+    <MobileNavLightBlue />,
     <MobileNavBlack />,
     <MobileNavPurple />,
   ]
