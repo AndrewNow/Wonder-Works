@@ -102,6 +102,9 @@ const Background = styled.div`
     padding-top: 10rem;
     padding-bottom: 8rem;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 0rem;
+  }
 `
 
 const MobileWhiteSparkle = styled.div`
@@ -211,9 +214,9 @@ const Brief = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 85%;
     h2 {
-      width: 95%;
-      font-size: 34px;
-      line-height: 36px;
+      width: 90%;
+      font-size: 37px;
+      line-height: 42px;
     }
     h3 {
       font-size: 22px;
@@ -221,9 +224,9 @@ const Brief = styled.div`
     }
   }
 
-  @media (max-width: 374px) {
+  @media (max-width: 375px) {
     h2 {
-      font-size: 30px;
+      font-size: 32px;
       line-height: 105%;
     }
   }

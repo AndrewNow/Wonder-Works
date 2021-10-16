@@ -1329,10 +1329,17 @@ const TraitorLeftImageWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
   left: 0;
-  bottom: -30%;
+  bottom: -25%;
+  max-width: 700px;
 
   @media (max-width: 1800px) {
     max-width: 700px;
+  }
+  @media (max-width: 1600px) {
+    max-width: 600px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    bottom: -20%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     max-width: 500px;

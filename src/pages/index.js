@@ -552,9 +552,7 @@ const HomeIndex = ({ data }) => {
         <OrangeBackgroundMobileTablet>
           <Svg.BigOrangeBackgroundMobileTablet />
         </OrangeBackgroundMobileTablet>
-        <MailchimpComponent
-          smallStarSvg={<GreenStars />}
-        />
+        <MailchimpComponent smallStarSvg={<GreenStars />} />
         <OrangeBackground>
           <Svg.BigOrangeBackground />
         </OrangeBackground>
@@ -916,6 +914,10 @@ const DiscoverMore = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  svg {
+    margin-left: 0.35rem;
+    transition: var(--hover-transition);
+  }
   :hover {
     background-color: var(--color-black);
     color: var(--color-white);
@@ -924,27 +926,24 @@ const DiscoverMore = styled(Link)`
       transform: translateX(0.25rem);
     }
   }
-  svg {
-    margin-left: 0.35rem;
-    transition: var(--hover-transition);
-  }
   @media (max-width: ${breakpoints.xl}px) {
     font-size: 25px;
     padding: 0.5rem 2.5rem;
     svg {
       margin-left: 0.25rem;
-
       scale: 0.8;
-      transform: scale(0.5);
+      transform: scale(0.8);
+    }
+    :hover {
+      svg {
+        transform: translateX(0.25rem) scale(0.8);
+      }
     }
   }
   @media (max-width: ${breakpoints.l}px) {
     font-size: 20px;
     line-height: 17px;
     width: auto;
-    svg {
-      width: 25px;
-    }
   }
   @media (max-width: ${breakpoints.m}px) {
     font-size: 18px;
@@ -952,15 +951,26 @@ const DiscoverMore = styled(Link)`
     border: 1px solid var(--color-black);
     svg {
       scale: 0.75;
-      transform: scale(0.5);
+      transform: scale(0.75);
+    }
+    :hover {
+      svg {
+        transform: translateX(0.25rem) scale(0.75);
+      }
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    padding: 0.5rem 1rem;
     font-size: 16px;
     padding: 0.35rem 1.25rem;
     svg {
-      scale: 0.75;
-      transform: scale(0.5);
+      scale: 0.85;
+      transform: scale(0.85);
+    }
+    :hover {
+      svg {
+        transform: translateX(0.25rem) scale(0.85);
+      }
     }
   }
 `
@@ -1043,7 +1053,7 @@ const ImaginationText = styled.div`
       line-height: 55px;
     }
     p {
-      width: 85%;
+      width: 70%;
       padding-top: 2.5rem;
     }
   }
@@ -1082,7 +1092,7 @@ const ThirdLineTabletMobile = styled(motion.div)`
   display: none;
 
   @media (max-width: ${breakpoints.l}px) {
-    display: block;  
+    display: block;
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -1216,7 +1226,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.s}px) {
     scale: 1;
-    transform: scale(1);    
+    transform: scale(1);
     top: 20%;
     left: 5%;
     bottom: auto;
@@ -1322,7 +1332,7 @@ const Press = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  
   h4 {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -1332,6 +1342,7 @@ const Press = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
   }
   @media (max-width: ${breakpoints.m}px) {
+    background-color: var(--color-white);
     h4 {
       padding-top: 5rem;
       padding-bottom: 2.5rem;
@@ -1416,7 +1427,11 @@ const Brief = styled(motion.div)`
     a {
       max-width: 200px;
     }
+    h4 :nth-child(1) {
+      font-size: 16px;
+    }
     h4 {
+      font-size: 20px;
       padding-bottom: 3rem;
     }
     p {
@@ -1429,8 +1444,8 @@ const Brief = styled(motion.div)`
     }
 
     h2 {
-      font-size: 40px;
-      line-height: 45px;
+      font-size: 45px;
+      line-height: 48px;
     }
 
     br {
@@ -1709,6 +1724,9 @@ const PinkStarStrokeWrapper = styled(motion.div)`
       height: 150px;
     }
   }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 30%;
+  }
   @media (max-width: ${breakpoints.xs}px) {
     right: 10%;
     top: 27%;
@@ -1740,16 +1758,16 @@ const PinkStarFillWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.m}px) {
-    top: 35%;
+    top: 40%;
     right: 20%;
     svg {
       width: 100px;
       height: 100px;
     }
   }
-  @media (max-width: ${breakpoints.m}px) {
-    top: 35%;
-    right: 25%;
+  @media (max-width: ${breakpoints.s}px) {
+    top: 40%;
+    right: 30%;
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: 33%;

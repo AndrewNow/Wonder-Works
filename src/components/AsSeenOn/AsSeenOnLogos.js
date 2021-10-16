@@ -420,7 +420,6 @@ const LogosHomepage = styled(motion.div)`
 const LogosHomepageMobile = styled(motion.div)`
   display: none;
   @media (max-width: ${breakpoints.m}px) {
-    /* width: 90%; */
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -448,8 +447,9 @@ const LogosHomepageMobile = styled(motion.div)`
 const LogosAboutpage = styled(motion.div)`
   position: relative;
   z-index: 4000;
-  max-width: 50%;
-  height: 70px;
+  max-width: 70%;
+  width: 70%;
+  /* height: 120px; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   span {
