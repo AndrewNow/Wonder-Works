@@ -300,8 +300,8 @@ const Careers = ({ data }) => {
           console.log(error.text)
         }
       )
-      e.target.reset()
-      // reset form after submission
+    e.target.reset()
+    // reset form after submission
   }
 
   // ------------ END FORM LOGIC ------------
@@ -517,7 +517,10 @@ const Careers = ({ data }) => {
                 </h5>
                 <SharePostingWrapperMobile>
                   <form>
-                    <textarea ref={textAreaRef} value="This is a test link!" />
+                    <textarea
+                      ref={textAreaRef}
+                      defaultValue="This is a test link!"
+                    />
                   </form>
                   <SharePostingButton onClick={copyToClipboard}>
                     Share Posting <Arrow />
@@ -538,7 +541,7 @@ const Careers = ({ data }) => {
                 {/* we hide it in CSS with opacity instead of "visibility: hidden" or "display: none" (these prevent it from functioning for some reason) */}
                 <form>
                   {/* the value prop is where the copied link resides */}
-                  <textarea ref={textAreaRef} value="This is a test link!" />
+                  <textarea ref={textAreaRef} defaultValue="This is a test link!" />
                 </form>
                 <SharePostingButton onClick={copyToClipboard}>
                   Share Posting <Arrow />
@@ -653,14 +656,18 @@ const Careers = ({ data }) => {
                   name="position"
                   required
                   onChange={handleChange("position")}
-                  defaultValue=""
+                  value=""
                 >
-                  <option value="" disabled selected>
+                  <option defaultValue="" disabled>
                     Position applying for *{" "}
                   </option>
                   {CareerData.map((job, i) => {
                     return (
-                      <option key={i} value={job.title}>
+                      <option
+                        key={i}
+                        value={job.title}
+                        onChange={handleChange("position")}
+                      >
                         {job.title}
                       </option>
                     )
@@ -674,14 +681,18 @@ const Careers = ({ data }) => {
                   name="position"
                   required
                   onChange={handleChange("position")}
-                  defaultValue=""
+                  defaultValue="Position applying for *"
                 >
-                  <option value="" disabled selected>
+                  <option defaultValue="" disabled>
                     Position applying for *{" "}
                   </option>
                   {CareerData.map((job, i) => {
                     return (
-                      <option key={i} value={job.title}>
+                      <option
+                        key={i}
+                        value={job.title}
+                        onChange={handleChange("position")}
+                      >
                         {job.title}
                       </option>
                     )
