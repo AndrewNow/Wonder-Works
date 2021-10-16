@@ -864,7 +864,7 @@ const DiscoverMore = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    width: 350px;
+    width: 370px;
     a {
       padding: 0.6rem 0.1rem;
     }

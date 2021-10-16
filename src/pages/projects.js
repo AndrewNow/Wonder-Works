@@ -1856,7 +1856,6 @@ const ShopBubble = styled.div`
   border-radius: 100%;
   width: 460px;
   height: 460px;
-  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1867,7 +1866,6 @@ const ShopBubble = styled.div`
   @media (max-width: ${breakpoints.xxl}px) {
     width: 400px;
     height: 400px;
-    height: auto;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 600px;

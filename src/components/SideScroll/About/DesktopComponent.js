@@ -340,7 +340,7 @@ export default DesktopComponent
 // the height value here determines the "length" of the horizontal scroll carousel
 // higher values = longer distance to initiate slide change
 const StickyContainer = styled.div`
-  height: 850vh;
+  height: 750vh;
   position: relative;
 
   @media (max-width: ${breakpoints.m}px) {
