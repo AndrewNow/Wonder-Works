@@ -1008,7 +1008,7 @@ const Left = styled.div`
     font-family: "ppwoodland-light";
     white-space: nowrap;
     font-size: 6.5vw;
-    line-height: 80%;
+    line-height: 90%;
   }
   @media (max-width: 1600px) {
     width: 75%;

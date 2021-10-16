@@ -27,7 +27,7 @@ const HomeIndex = ({ data }) => {
   // ---------- intersection observer logic, Refs ----------
   const [sectionRef, sectionInView] = useInView({
     root: null,
-    threshold: 0.75,
+    threshold: 0.65,
     triggerOnce: true,
   })
   const [countUpRef, countUpInView] = useInView({

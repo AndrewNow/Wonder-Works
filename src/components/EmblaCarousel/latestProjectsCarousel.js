@@ -414,15 +414,21 @@ const EmblaSlide = styled(motion.div)`
   aspect-ratio: 16 / 9;
   width: 100%;
   height: 100%;
-  min-height: 160px;
+  min-height: 600px;
   min-width: 72vw;
   min-width: calc(80vw * 90% / 100); // 80% (const Embla) of 90% (const Wrapper)
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    min-height: 600px;
+    min-width: 100%;
+  }
   @media (max-width: ${breakpoints.xl}px) {
     min-width: 90vw;
+    min-height: 400px;
   }
   @media (max-width: ${breakpoints.s}px) {
     min-height: 187px;
+    min-width: 90vw;
   }
 
   @media (max-width: ${breakpoints.xs}px) {
