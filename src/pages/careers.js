@@ -265,7 +265,6 @@ const Careers = ({ data }) => {
     resume: "",
   })
 
-  // const max = Object.keys(formdata).length
   // Calculate the number of fields that have been completed, then change the message at the bottom.
   const completedFields = Object.values(formdata).reduce((prev, curr) => {
     if (curr) {
@@ -279,7 +278,7 @@ const Careers = ({ data }) => {
     setFormData(data => ({ ...data, [attribute]: e.target.value }))
   }
 
-  // list file name within the label when user uploads a file
+  // list file name within the file input label when user uploads a file
   const handleFileChange = e => {
     if (e.target.files && e.target.files[0]) {
       setFormData(d => ({ ...d, resume: e.target.files[0].name }))
@@ -287,11 +286,17 @@ const Careers = ({ data }) => {
   }
 
   // +++++++++++++++++++++ EMAIL JS CONFIG +++++++++++++++++++++
+  const form = useRef()
+
   const sendEmail = e => {
     e.preventDefault()
-
     emailjs
-      .sendForm("gmail", "careers", e.target, "user_dWkFbMOrK5P1TY2yRul72")
+      .sendForm(
+        "default_service",
+        "careers",
+        form.current,
+        "user_dWkFbMOrK5P1TY2yRul72"
+      )
       .then(
         result => {
           console.log(result.text)
@@ -304,10 +309,12 @@ const Careers = ({ data }) => {
     // reset form after submission
   }
 
+  console.log(form.current)
+
   // ------------ END FORM LOGIC ------------
 
   //  Scroll to clicked career option on click
-  let formRef = useRef()
+  const formRef = useRef()
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (formRef.current) {
@@ -541,7 +548,10 @@ const Careers = ({ data }) => {
                 {/* we hide it in CSS with opacity instead of "visibility: hidden" or "display: none" (these prevent it from functioning for some reason) */}
                 <form>
                   {/* the value prop is where the copied link resides */}
-                  <textarea ref={textAreaRef} defaultValue="This is a test link!" />
+                  <textarea
+                    ref={textAreaRef}
+                    defaultValue="This is a test link!"
+                  />
                 </form>
                 <SharePostingButton onClick={copyToClipboard}>
                   Share Posting <Arrow />
@@ -620,7 +630,7 @@ const Careers = ({ data }) => {
               </FormContentSection>
             ) : null}
 
-            <FillOut onSubmit={sendEmail}>
+            <FillOut onSubmit={sendEmail} ref={form}>
               <h3>
                 Ok, I’m sold. <br /> I’m ready to join.
               </h3>
@@ -656,18 +666,14 @@ const Careers = ({ data }) => {
                   name="position"
                   required
                   onChange={handleChange("position")}
-                  value=""
+                  value={formdata.position}
                 >
-                  <option defaultValue="" disabled>
+                  <option value="" disabled>
                     Position applying for *{" "}
                   </option>
                   {CareerData.map((job, i) => {
                     return (
-                      <option
-                        key={i}
-                        value={job.title}
-                        onChange={handleChange("position")}
-                      >
+                      <option key={i} value={job.title}>
                         {job.title}
                       </option>
                     )
@@ -681,18 +687,14 @@ const Careers = ({ data }) => {
                   name="position"
                   required
                   onChange={handleChange("position")}
-                  defaultValue="Position applying for *"
+                  value={formdata.position}
                 >
-                  <option defaultValue="" disabled>
+                  <option value="" disabled>
                     Position applying for *{" "}
                   </option>
                   {CareerData.map((job, i) => {
                     return (
-                      <option
-                        key={i}
-                        value={job.title}
-                        onChange={handleChange("position")}
-                      >
+                      <option key={i} value={job.title}>
                         {job.title}
                       </option>
                     )
@@ -718,7 +720,9 @@ const Careers = ({ data }) => {
               </Line>
               <Line>
                 <FileLabel htmlFor="myfile">
-                  {formdata.resume ? formdata.resume : "Attach resume here *"}
+                  {formdata.resume
+                    ? formdata.resume
+                    : "Attach resume here* (50kb limit)"}
                   <svg
                     width="23"
                     height="23"
