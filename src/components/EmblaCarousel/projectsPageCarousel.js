@@ -82,7 +82,7 @@ const ProjectsPageCarousel = () => {
       trailerbuttoncolor: "var(--color-lightblue)",
     },
     {
-      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/insomniac+trailer2.mp4",
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/EDC+Format.mp4",
       light: true,
       trailerbuttontext: "EDC",
       trailerbuttoncolor: "var(--color-orange)",

@@ -931,7 +931,7 @@ const DiscoverMore = styled(Link)`
     padding: 0.5rem 2.5rem;
     svg {
       margin-left: 0.25rem;
-      scale: 0.8;
+      /* scale: 0.8; */
       transform: scale(0.8);
     }
     :hover {
@@ -950,7 +950,7 @@ const DiscoverMore = styled(Link)`
     padding: 0.5rem 1.75rem;
     border: 1px solid var(--color-black);
     svg {
-      scale: 0.75;
+      /* scale: 0.75; */
       transform: scale(0.75);
     }
     :hover {
@@ -964,7 +964,7 @@ const DiscoverMore = styled(Link)`
     font-size: 16px;
     padding: 0.35rem 1.25rem;
     svg {
-      scale: 0.85;
+      /* scale: 0.85; */
       transform: scale(0.85);
     }
     :hover {
@@ -1164,7 +1164,7 @@ const CircleWrapper = styled(motion.div)`
     right: 1%;
     top: -3%;
     svg {
-      scale: 1;
+      /* scale: 1; */
       transform: scale(1);
       width: 160px;
       height: auto;
@@ -1225,7 +1225,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    scale: 1;
+    /* scale: 1; */
     transform: scale(1);
     top: 20%;
     left: 5%;
@@ -1245,7 +1245,7 @@ const BlueTriangleWrapper = styled(motion.div)`
     /* bottom: 7%; */
   }
   @media (max-width: ${breakpoints.l}px) {
-    scale: 0.7;
+    /* scale: 0.7; */
     transform: scale(0.7);
     bottom: 10%;
   }
@@ -1267,14 +1267,14 @@ const PurpleTriangleWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.l}px) {
     bottom: 15%;
     right: 15%;
-    scale: 0.85;
+    /* scale: 0.85; */
     transform: scale(0.85);
   }
   @media (max-width: ${breakpoints.s}px) {
     bottom: -10%;
     right: 10%;
-    scale: 0.3;
-    transform: scale(0.35);
+    /* scale: 0.3; */
+    transform: scale(0.3);
   }
 `
 
@@ -1292,7 +1292,7 @@ const GreenTriangleWrapper = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.8;
-    transform: scale(0.8);
+    /* transform: scale(0.8); */
     top: 5%;
     right: 25%;
   }
@@ -1301,7 +1301,7 @@ const GreenTriangleWrapper = styled(motion.div)`
     right: 0%;
     top: 66%;
     scale: 0.5;
-    transform: scale(0.5);
+    /* transform: scale(0.5); */
   }
 `
 
@@ -1312,7 +1312,7 @@ const OrangeTriangleWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.l}px) {
     scale: 0.5;
-    transform: scale(0.5);
+    /* transform: scale(0.5); */
     top: 0%;
   }
 
@@ -1320,7 +1320,7 @@ const OrangeTriangleWrapper = styled(motion.div)`
     left: -3%;
     top: 30%;
     scale: 0.45;
-    transform: scale(0.45);
+    /* transform: scale(0.45); */
   }
 `
 
@@ -1340,8 +1340,6 @@ const Press = styled.div`
     color: black;
   }
   @media (max-width: ${breakpoints.xl}px) {
-  }
-  @media (max-width: ${breakpoints.m}px) {
     background-color: var(--color-white);
     h4 {
       padding-top: 5rem;

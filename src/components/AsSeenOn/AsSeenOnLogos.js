@@ -367,13 +367,12 @@ export const AsSeenOnLogosAbout = () => {
 }
 
 const LogosHomepage = styled(motion.div)`
-  max-width: 70%;
+  max-width: 80%;
   padding-bottom: 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
 
   span {
-    width: 200px;
+    width: 220px;
     align-self: center;
     margin: 0 auto;
     transform-origin: bottom;
@@ -384,19 +383,18 @@ const LogosHomepage = styled(motion.div)`
     max-width: 80%;
     padding-bottom: 0;
     margin-bottom: 5rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    /* grid-template-rows: 1fr 1fr; */
     span {
       width: 200px;
     }
   }
-  
+
   @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     column-gap: 0;
-    row-gap: .5rem;
+    row-gap: 0.5rem;
     margin: 0 auto;
     justify-items: center;
     align-items: center;
@@ -406,7 +404,7 @@ const LogosHomepage = styled(motion.div)`
       height: auto;
     }
   }
-  
+
   @media (max-width: ${breakpoints.l}px) {
     span {
       width: 225px;
@@ -442,16 +440,19 @@ const LogosHomepageMobile = styled(motion.div)`
       width: 120px;
     }
   }
+  @media (max-width: ${breakpoints.xs}px) {
+    width: 90vw;
+    span {
+      width: 90px;
+    }
+  }
 `
 
 const LogosAboutpage = styled(motion.div)`
   position: relative;
-  z-index: 4000;
-  max-width: 70%;
-  width: 70%;
+  width: 45%;
   /* height: 120px; */
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
   span {
     align-self: center;
     margin: 0 auto;
@@ -459,7 +460,7 @@ const LogosAboutpage = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    max-width: 65%;
+    max-width: 50%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     max-width: 80%;
@@ -498,6 +499,12 @@ const LogosAboutpageMobile = styled(motion.div)`
     width: 95vw;
     span {
       width: 120px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    width: 90vw;
+    span {
+      width: 90px;
     }
   }
 `

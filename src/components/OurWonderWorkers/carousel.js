@@ -36,7 +36,7 @@ export const TeamCarousel = ({ index }) => {
     slidesToScroll: 1,
     startIndex: Index,
     align: "center",
-    //here is where we pass in
+    // loop: true,
   })
 
   // ---------- Set up embla pagination buttons ----------
@@ -189,7 +189,7 @@ const EmblaSlide = styled.article`
     margin-right: 3rem;
   }
   @media (max-width: ${breakpoints.xs}px) {
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 `
 
@@ -220,6 +220,11 @@ const Left = styled.div`
     min-height: 160px;
     max-height: 160px;
     margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 400px) {
+    margin-bottom: 0rem;
+    margin-top: 0;
   }
   @media (max-width: ${breakpoints.xs}px) {
     min-height: 140px;
@@ -238,21 +243,20 @@ const PortalWrapper = styled.div`
   justify-content: center;
   svg {
     align-self: center;
-    scale: 1.5;
-    transform: translateY(90%);
+    transform: translateY(133%) scale(1.5);
   }
 
   @media (max-width: 1600px) {
     svg {
-      width: 250px;
-      transform: translateY(75%);
+      /* width: 350px; */
+      transform: translateY(125%) scale(1.1);
     }
   }
 
   @media (max-width: ${breakpoints.xl}px) {
     svg {
       width: 200px;
-      transform: translateY(67%);
+      transform: translateY(115%) scale(1.3);
     }
   }
 
@@ -279,16 +283,17 @@ const PortalWrapper = styled.div`
     min-height: 160px;
     max-height: 160px;
     svg {
-      width: 100px;
-      transform: translate3d(15%, 31%, 0);
+      width: 135px;
+      transform: translate3d(10%, 51%, 0);
+      /* transform: translate3d(15%, 31%, 0); */
     }
   }
   @media (max-width: ${breakpoints.xs}px) {
     min-height: 120px;
     max-height: 120px;
     svg {
-      width: 80px;
-      transform: translate3d(15%, 30%, 0);
+      width: 100px;
+      transform: translate3d(15%, 45%, 0);
     }
   }
 `
@@ -384,6 +389,7 @@ const Text = styled.div`
     }
     @media (max-width: ${breakpoints.s}px) {
       width: 70vw;
+      padding-top: 2rem;
       h1 {
         font-size: 30px;
         line-height: auto;
@@ -395,21 +401,26 @@ const Text = styled.div`
         padding-bottom: 1rem;
       }
       p {
-        max-height: 90%;
+        /* max-height: 90%; */
         font-size: 16px;
         line-height: 115%;
         letter-spacing: 0.03rem;
-        max-height: 60%;
+        max-height: 65vh;
       }
     }
     @media (max-width: 376px) {
+      padding-top: 2rem;
       p {
-        max-height: 50%;
+        max-height: 32vh;
       }
     }
     @media (max-width: ${breakpoints.xs}px) {
+      padding-top: 0rem;
       p {
-        max-height: 40%;
+        max-height: 28vh;
+      }
+      h1 {
+        font-size: 27px;
       }
     }
   }

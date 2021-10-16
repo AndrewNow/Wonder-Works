@@ -5,9 +5,17 @@ import { AnimatePresence, motion } from "framer-motion"
 import breakpoints from "./breakpoints"
 
 const ScrollToTop = () => {
+  // const toggleVisibility = () => {
+  //   if (typeof window !== "undefined") {
+  //     if (window.pageYOffset > 1500) {
+  //       setIsVisible(true)
+  //     } else {
+  //       setIsVisible(false)
+  //     }
+  //   }
+  // }
   const [isVisible, setIsVisible] = useState(false)
   const [hovered, setHovered] = useState(false)
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -17,22 +25,41 @@ const ScrollToTop = () => {
     setHovered(false)
   }
 
-  let debounce = require("lodash/debounce")
+  // let debounce = require("lodash/debounce")
   useLayoutEffect(() => {
-    // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
       if (typeof window !== "undefined") {
         if (window.pageYOffset > 1500) {
+          // debounce(() => setIsVisible(true), 300)
           setIsVisible(true)
         } else {
+          // debounce(() => setIsVisible(false), 300)
           setIsVisible(false)
         }
       }
     }
-    window.addEventListener("scroll", debounce(toggleVisibility, 300))
-    return () =>
-      window.removeEventListener("scroll", debounce(toggleVisibility, 300))
-  }, [debounce])
+    // Button is displayed after scrolling for 1500 pixels
+    window.addEventListener("scroll", toggleVisibility)
+    return () => window.removeEventListener("scroll", toggleVisibility)
+  }, [])
+
+  // useLayoutEffect(() => {
+  //   // Button is displayed after scrolling for 500 pixels
+  //   const toggleVisibility = () => {
+  //     if (typeof window !== "undefined") {
+  //       if (window.pageYOffset > 1500) {
+  //         setIsVisible(true)
+  //       } else {
+  //         setIsVisible(false)
+  //       }
+  //     }
+  //   }
+  //   window.addEventListener("scroll", debounce(toggleVisibility, 300))
+  //   return () =>
+  //     window.removeEventListener("scroll", debounce(toggleVisibility, 300))
+  // }, [debounce])
+
+
 
   const button = {
     visible: {
@@ -133,7 +160,7 @@ const ArrowWrapper = styled.div`
   align-items: center;
   position: absolute;
   transform: translateY(-3px);
-    @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: ${breakpoints.l}px) {
     /* width: 70px; */
     /* height: 70px; */
   }

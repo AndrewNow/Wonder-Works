@@ -91,13 +91,13 @@ const LatestProjectsCarousel = () => {
       light: "https://i.imgur.com/yNmhs4y.png",
     },
     {
-      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
+      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/EDC+Format.mp4",
       light: "false",
     },
-    {
-      Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: "false",
-    },
+    // {
+    //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
+    //   light: "false",
+    // },
   ]
 
   return (
@@ -424,7 +424,7 @@ const EmblaSlide = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.xl}px) {
     min-width: 90vw;
-    min-height: 400px;
+    min-height: 500px;
   }
   @media (max-width: ${breakpoints.s}px) {
     min-height: 187px;

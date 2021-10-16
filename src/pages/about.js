@@ -735,7 +735,7 @@ const Logos = styled.div`
   flex-direction: column;
   padding-bottom: 5rem;
   position: relative;
-  z-index: 2000;
+  z-index: 80;
   background-color: var(--color-white);
   h4 {
     padding-top: 3rem;

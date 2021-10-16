@@ -277,6 +277,9 @@ const SVGWrapper = styled.div`
     top: 30%;
     transform: rotate(90deg);
   }
+  @media (max-width: ${breakpoints.xs}px) {
+    top: 50%;
+  }
 `
 
 const IconWrapper = styled.div`
