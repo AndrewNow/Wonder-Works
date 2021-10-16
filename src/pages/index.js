@@ -32,7 +32,7 @@ const HomeIndex = ({ data }) => {
   })
   const [countUpRef, countUpInView] = useInView({
     root: null,
-    threshold: 0.25,
+    threshold: 0.35,
     triggerOnce: true,
   })
 
@@ -1053,7 +1053,7 @@ const ImaginationText = styled.div`
       line-height: 55px;
     }
     p {
-      width: 70%;
+      width: 69%;
       padding-top: 2.5rem;
     }
   }
@@ -1161,8 +1161,8 @@ const CircleWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    right: 1%;
-    top: -3%;
+    right: 0%;
+    top: -10%;
     svg {
       /* scale: 1; */
       transform: scale(1);
@@ -1211,7 +1211,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.l}px) {
-    scale: 0.7;
+    /* scale: 0.7; */
     transform: scale(0.7);
     top: 5%;
     left: -10%;
@@ -1231,7 +1231,7 @@ const BlueTrianglesWrapper = styled(motion.div)`
     left: 5%;
     bottom: auto;
     svg {
-      max-width: 80vw;
+      max-width: 90vw;
     }
   }
 `
@@ -1267,14 +1267,12 @@ const PurpleTriangleWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.l}px) {
     bottom: 15%;
     right: 15%;
-    /* scale: 0.85; */
-    transform: scale(0.85);
+    scale: 0.85;
+    /* transform: scale(0.85); */
   }
   @media (max-width: ${breakpoints.s}px) {
-    bottom: -10%;
-    right: 10%;
-    /* scale: 0.3; */
-    transform: scale(0.3);
+    display: none;
+    /* transform: scale(0.3); */
   }
 `
 

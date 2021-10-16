@@ -291,7 +291,7 @@ const Careers = ({ data }) => {
     e.preventDefault()
 
     emailjs
-      .sendForm("service_lcnbclt", "template_i4qgqz5", e.target, "YOUR_USER_ID")
+      .sendForm("gmail", "careers", e.target, "user_dWkFbMOrK5P1TY2yRul72")
       .then(
         result => {
           console.log(result.text)
@@ -300,6 +300,8 @@ const Careers = ({ data }) => {
           console.log(error.text)
         }
       )
+      e.target.reset()
+      // reset form after submission
   }
 
   // ------------ END FORM LOGIC ------------
@@ -686,11 +688,9 @@ const Careers = ({ data }) => {
                   })}
                 </FullWidthSelect>
               </LineFullWidthMobile>
-
               <LineFullWidthMobile>
                 <FullWidthInput type="text" placeholder="City" name="city" />
               </LineFullWidthMobile>
-
               <Line>
                 <FullWidthInput
                   type="url"
