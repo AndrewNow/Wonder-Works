@@ -569,6 +569,20 @@ const Left = styled.div`
       }
     }
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    h1 {
+      div:nth-of-type(1) {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h1 {
+      div:nth-of-type(1) {
+        padding-bottom: 0rem;
+      }
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     h1 {
       div:nth-of-type(1) {

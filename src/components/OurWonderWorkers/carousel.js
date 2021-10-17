@@ -171,22 +171,30 @@ const EmblaContainer = styled.div`
   -webkit-tap-highlight-color: transparent;
 `
 const EmblaSlide = styled.article`
+  min-width: 90vw;
   width: 100%;
   height: 80vh;
   position: relative;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
-  @media (max-width: ${breakpoints.m}px) {
+  
+  @media (max-width: ${breakpoints.l}px) {
+    justify-content: flex-start;
     flex-direction: column;
+    padding-top: 4rem;
   }
   @media (max-width: ${breakpoints.m}px) {
+    padding-top: 0rem;
     justify-content: center;
   }
   @media (max-width: ${breakpoints.s}px) {
     justify-content: flex-start;
+    padding-top: 2rem;
     margin-right: 3rem;
+  }
+  @media (max-width: 400px) {
+    padding-top: 0rem;
   }
   @media (max-width: ${breakpoints.xs}px) {
     justify-content: space-evenly;
@@ -210,11 +218,14 @@ const Left = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     width: 35%;
   }
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.l}px) {
+    max-height: 250px;
     width: 100%;
+    justify-content: flex-start;
+  }
+  @media (max-width: ${breakpoints.m}px) {
     max-height: 230px;
     min-height: 200px;
-    justify-content: flex-start;
   }
   @media (max-width: ${breakpoints.s}px) {
     min-height: 160px;
@@ -261,9 +272,10 @@ const PortalWrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.l}px) {
+    max-height: 350px;
     svg {
-      width: 170px;
-      transform: translateY(65%);
+      width: 250px;
+      transform: translateY(89%);
     }
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -272,11 +284,11 @@ const PortalWrapper = styled.div`
     justify-content: flex-start;
     align-self: flex-start;
     margin: 0;
-    left: 0%;
+    left: 15%;
     bottom: 0%;
     svg {
       width: 150px;
-      transform: translate3d(15%, 31%, 0);
+      transform: translate3d(15%, 61%, 0);
     }
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -373,11 +385,14 @@ const Text = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     transform: none !important;
     margin-right: 3rem;
+    margin-top: 4rem;
+    width: 50vw;
     p {
       width: 100%;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
+    margin-top: 2rem;
     width: 62.5vw;
     margin: 0 auto;
     position: relative;
@@ -389,7 +404,7 @@ const Text = styled.div`
     }
     @media (max-width: ${breakpoints.s}px) {
       width: 70vw;
-      padding-top: 2rem;
+      margin-top: 2rem;
       h1 {
         font-size: 30px;
         line-height: auto;

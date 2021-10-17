@@ -122,7 +122,6 @@ const LogosPress = styled(motion.div)`
     height: auto;
     span {
       width: 130px;
-      /* width: 115px; */
     }
   }
 
@@ -134,12 +133,18 @@ const LogosPress = styled(motion.div)`
     }
   }
 
+  @media (max-width: ${breakpoints.l}px) {
+    span {
+      width: 120px;
+      height: auto;
+    }
+  }
   @media (max-width: ${breakpoints.m}px) {
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     column-gap: 0;
-    row-gap: .5rem;
+    row-gap: 0.5rem;
     margin: 0 auto;
     justify-items: center;
     align-items: center;

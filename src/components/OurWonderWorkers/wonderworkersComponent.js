@@ -113,6 +113,9 @@ const Worker = styled.div`
     h4 {
       transform: translateY(-1rem);
     }
+    p {
+      line-height: 100%;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     padding: 6rem 0;
