@@ -265,12 +265,11 @@ const KeepScrolling = styled.div`
     top: -15%;
   }
 
-  @media (max-width: ${breakpoints.m}px) {
-    top: -20%;
-  }
-
   @media (max-width: ${breakpoints.s}px) {
-    top: -10%;
+    top: -9%;
+    p {
+      font-size: 16px;
+    }
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: -5%;

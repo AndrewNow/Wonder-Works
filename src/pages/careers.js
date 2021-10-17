@@ -9,8 +9,7 @@ import { ContactUs } from "../components/contactUs"
 import { WOShortLogo } from "../svg/logos"
 import emailjs from "emailjs-com"
 import breakpoints from "../components/breakpoints"
-import { Arrow } from "../svg/miscellaneous"
-import * as Svg from "../svg/careerspage"
+import { Arrow, ColoredGears } from "../svg/miscellaneous"
 import {
   motion,
   useViewportScroll,
@@ -281,7 +280,14 @@ const Careers = ({ data }) => {
   // list file name within the file input label when user uploads a file
   const handleFileChange = e => {
     if (e.target.files && e.target.files[0]) {
-      setFormData(d => ({ ...d, resume: e.target.files[0].name }))
+      console.log(e.target.files[0].size)
+      if (e.target.files[0].size <= 500000 ) {
+        setFormData(d => ({ ...d, resume: e.target.files[0].name }))
+      } else {
+        console.log(
+          "your file is too big!, file size:" + `${e.target.files[0].size}bytes`
+        )
+      }
     }
   }
 
@@ -526,7 +532,7 @@ const Careers = ({ data }) => {
                   <form>
                     <textarea
                       ref={textAreaRef}
-                      defaultValue="This is a test link!"
+                      defaultValue="Thttps://www.wonderworks.gg/careers"
                     />
                   </form>
                   <SharePostingButton onClick={copyToClipboard}>
@@ -636,14 +642,14 @@ const Careers = ({ data }) => {
               </h3>
               <input type="hidden" name="contact_number" />
               <Line>
-                <Input
+                <HalfWidthInput
                   onChange={handleChange("firstName")}
                   type="text"
                   placeholder="First Name *"
                   name="first_name"
                   required
                 />
-                <Input
+                <HalfWidthInput
                   onChange={handleChange("lastName")}
                   type="text"
                   placeholder="Last Name *"
@@ -681,29 +687,6 @@ const Careers = ({ data }) => {
                 </Select>
                 <Input type="text" placeholder="City" name="city" />
               </LineHalfWidthDesktop>
-
-              <LineFullWidthMobile>
-                <FullWidthSelect
-                  name="position"
-                  required
-                  onChange={handleChange("position")}
-                  value={formdata.position}
-                >
-                  <option value="" disabled>
-                    Position applying for *{" "}
-                  </option>
-                  {CareerData.map((job, i) => {
-                    return (
-                      <option key={i} value={job.title}>
-                        {job.title}
-                      </option>
-                    )
-                  })}
-                </FullWidthSelect>
-              </LineFullWidthMobile>
-              <LineFullWidthMobile>
-                <FullWidthInput type="text" placeholder="City" name="city" />
-              </LineFullWidthMobile>
               <Line>
                 <FullWidthInput
                   type="url"
@@ -722,7 +705,7 @@ const Careers = ({ data }) => {
                 <FileLabel htmlFor="myfile">
                   {formdata.resume
                     ? formdata.resume
-                    : "Attach resume here* (50kb limit)"}
+                    : "Attach resume here* (500kb limit)"}
                   <svg
                     width="23"
                     height="23"
@@ -861,30 +844,9 @@ const Careers = ({ data }) => {
         </FormBg>
       )}
       <ContactUsWrapper>
-        <WhiteStarFillWrapper
-          animate={{
-            rotate: 360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.WhiteStarFill />
-        </WhiteStarFillWrapper>
-        <WhiteStarStrokeWrapper
-          animate={{
-            rotate: -360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.WhiteStarStroke />
-        </WhiteStarStrokeWrapper>
+        <SVGWrapper>
+          <ColoredGears gearColor={"#f7f7fc"} />
+        </SVGWrapper>
         <ContactUs />
       </ContactUsWrapper>
     </Layout>
@@ -1503,6 +1465,9 @@ const FormTop = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     padding-bottom: 2rem;
+    h5 {
+      width: 90%;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     padding-left: 2rem;
@@ -1510,9 +1475,6 @@ const FormTop = styled.div`
     h3 {
       width: 90%;
       height: 4rem;
-    }
-    h5 {
-      width: 90%;
     }
   }
 
@@ -1654,6 +1616,9 @@ const LinkCopiedAlert = styled(motion.p)`
   margin: 0 auto;
   text-align: center;
   width: 100%;
+  @media (max-width: ${breakpoints.xxl}px) {
+    bottom: 3rem;
+  }
 `
 const LinkCopiedAlertMobile = styled(motion.p)`
   position: absolute;
@@ -1663,14 +1628,18 @@ const LinkCopiedAlertMobile = styled(motion.p)`
   text-align: center;
   width: 280px;
 
-  @media (max-width: ${breakpoints.l}px) {
-    bottom: 4rem;
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 225px;
+    font-size: 16px !important;
   }
-
+  @media (max-width: ${breakpoints.l}px) {
+    width: 210px;
+  }
+  
   @media (max-width: ${breakpoints.s}px) {
     width: 180px;
-    bottom: 5rem;
-    font-size: 16px !important;
+    bottom: 4.5rem;
+    font-size: 14px !important;
   }
 `
 
@@ -1686,7 +1655,7 @@ const SharePostingButton = styled.button`
   color: var(--color-black);
   font-family: "calibre-medium";
   font-size: 25px;
-  line-height: 35px;
+  line-height: 100%;
   text-transform: uppercase;
   white-space: nowrap;
   display: flex;
@@ -1715,7 +1684,10 @@ const SharePostingButton = styled.button`
     min-width: 280px;
     font-size: 20px;
   }
-
+  @media (max-width: ${breakpoints.xxl}px) {
+      padding: 0.5rem 1.5rem;
+      min-width: fit-content;
+  }
   @media (max-width: ${breakpoints.l}px) {
     padding: 0.5rem 1rem;
 
@@ -1814,12 +1786,18 @@ const FillOut = styled.form`
   h3 {
     padding: 5rem 0;
     font-family: "ppwoodland-bold";
+    white-space: nowrap;
   }
   br {
     display: none;
   }
 
-  @media (max-width: ${breakpoints.xl}px) {
+  @media (max-width: ${breakpoints.xxl}px) {
+    h3 {
+      white-space: normal;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
     width: 80%;
   }
 
@@ -1867,29 +1845,54 @@ const LineHalfWidthDesktop = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    display: none;
-  }
-`
-
-const LineFullWidthMobile = styled.div`
-  display: none;
-
-  @media (max-width: ${breakpoints.s}px) {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-
-    p {
-      font-size: 14px;
-      font-family: "calibre-medium";
-      text-transform: uppercase;
+    flex-direction: column;
+    padding: 0;
+    /* margin: 0.75rem 0; */
+    select,
+    input {
+      margin: 0.75rem 0;
     }
   }
 `
 
 const Input = styled.input`
+  width: 45%;
+  background: none;
+  border: none;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-black);
+  box-sizing: border-box;
+  transition: var(--hover-transition);
+  font-family: "calibre-regular";
+  font-size: 20px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  ::placeholder {
+    font-family: "calibre-regular";
+    font-size: 20px;
+    color: #42423e;
+    text-transform: uppercase;
+  }
+
+  :focus {
+    outline: none !important;
+    border-bottom: 2px solid #b06eab;
+  }
+
+  :hover {
+    border-bottom: 2px solid #b06eab;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 100%;
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
+`
+
+const HalfWidthInput = styled.input`
   width: 45%;
   background: none;
   border: none;
@@ -1924,6 +1927,7 @@ const Input = styled.input`
     }
   }
 `
+
 
 const FullWidthInput = styled.input`
   width: 100%;
@@ -1989,41 +1993,7 @@ const Select = styled.select`
 
   @media (max-width: ${breakpoints.s}px) {
     font-size: 14px;
-    ::placeholder {
-      font-size: 14px;
-    }
-  }
-`
-const FullWidthSelect = styled.select`
-  width: 100%;
-  background: none;
-  border: none;
-  border-radius: 0;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--color-black);
-  box-sizing: border-box;
-  font-family: "calibre-regular";
-  font-size: 20px;
-  text-transform: uppercase;
-  color: #42423e;
-
-  ::placeholder {
-    font-family: "calibre-regular";
-    font-size: 20px;
-    text-transform: uppercase;
-    color: #42423e;
-  }
-  :focus {
-    outline: none !important;
-    border-bottom: 2px solid #b06eab;
-  }
-  transition: var(--hover-transition);
-  :hover {
-    border-bottom: 2px solid #b06eab;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    font-size: 14px;
+    width: 100%;
     ::placeholder {
       font-size: 14px;
     }
@@ -2102,18 +2072,20 @@ const SubmitLabel = styled.label`
   svg {
     transition: var(--hover-transition);
   }
-
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding: 0.5rem 1.5rem;
+  }
   @media (max-width: ${breakpoints.l}px) {
-    padding: 0.75rem 1.5rem;
+    padding: 0.35rem 1.5rem;
     font-size: 22px;
     :hover {
       svg {
         fill: var(--color-white);
-        transform: translate3d(5px, 0.1rem, 0);
+        transform: translate3d(5px, 0.2rem, 0);
       }
     }
     svg {
-      transform: translate3d(0, 0.1rem, 0);
+      transform: translate3d(0, 0.2rem, 0);
       transition: var(--hover-transition);
       width: 30px;
       scale: 0.8;
@@ -2171,34 +2143,6 @@ const Submit = styled(motion.input)`
   position: absolute !important;
   white-space: nowrap;
   width: 1px;
-
-  /* position: absolute;
-  right: 0;
-  align-self: flex-end;
-  cursor: pointer;
-  background: none;
-  border: 2px solid var(--color-black);
-  color: var(--color-black);
-  border-radius: 50px;
-  padding: 1rem 2rem;
-  font-size: 25px;
-  font-family: "calibre-medium";
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: var(--hover-transition);
-  :hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    bottom: 0;
-    left: 0;
-    min-width: 130px;
-    padding: 0.5rem 0.5rem;
-    font-size: 16px;
-    border: 1px solid var(--color-black);
-  } */
 `
 
 const Bottom = styled.div`
@@ -2218,10 +2162,28 @@ const Bottom = styled.div`
     font-family: "calibre-medium";
     text-transform: uppercase;
   }
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
+    p {
+      max-width: 63%;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    p {
+      max-width: 63%;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    p {
+      padding-top: 1rem;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
     height: 150px;
     p {
+      max-width: none;
       position: absolute;
       top: 1rem;
       font-size: 14px;
@@ -2230,109 +2192,62 @@ const Bottom = styled.div`
   }
 `
 
-const WhiteStarStrokeWrapper = styled(motion.div)`
-  display: none;
+const SVGWrapper = styled.div`
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  z-index: 1;
+  top: -5%;
+  right: 15%;
+  transform: rotate(90deg);
+  svg {
+    aspect-ratio: 1/1;
+  }
+  @media (max-width: 1600px) {
+    width: 450px;
+    height: 450px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 410px;
+    height: 410px;
+  }
   @media (max-width: ${breakpoints.xl}px) {
-    position: absolute;
-    z-index: 1;
-    display: block;
-    right: 15%;
+    width: 400px;
+    height: 400px;
     top: 10%;
-    svg {
-      width: 300px;
-      height: auto;
-    }
+    right: 10%;
   }
-  @media (max-width: 1050px) {
-    top: 13%;
-
-    svg {
-      width: 250px;
-    }
+  @media (max-width: 1080px) {
+    width: 350px;
+    height: 350px;
+    top: 10%;
+    right: 10%;
   }
-
   @media (max-width: ${breakpoints.l}px) {
-    right: 20%;
-    top: 15%;
-    svg {
-      width: 200px;
-      height: auto;
-    }
+    width: 250px;
+    height: 250px;
+    top: 28%;
+    right: 15%;
   }
   @media (max-width: ${breakpoints.m}px) {
-    right: 10%;
-    top: 18%;
-    svg {
-      width: 175px;
-      height: auto;
-    }
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    top: 26%;
-    right: 10%;
-    svg {
-      width: 140px;
-      height: auto;
-    }
-  }
-  @media (max-width: ${breakpoints.xs}px) {
+    width: 250px;
+    height: 250px;
+    right: 5%;
     top: 25%;
-    right: 10%;
-    svg {
-      width: 130px;
-      height: auto;
-    }
-  }
-`
-const WhiteStarFillWrapper = styled(motion.div)`
-  display: none;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    right: 30%;
-    top: 25%;
-    svg {
-      width: 225px;
-      height: auto;
-    }
-  }
-  @media (max-width: 1050px) {
-    svg {
-      width: 180px;
-    }
-  }
-
-  @media (max-width: ${breakpoints.l}px) {
-    top: 25%;
-    svg {
-      width: 150px;
-      height: auto;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    top: 30%;
-    right: 22%;
-    svg {
-      width: 125px;
-      height: auto;
-    }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 36%;
-    right: 29%;
-    svg {
-      width: 85px;
-    }
+    width: 180px;
+    height: 180px;
+
+    top: 31%;
+    right: 18%;
+  }
+  @media (max-width: 400px) {
+    width: 150px;
+    height: 150px;
+    top: 35%;
   }
   @media (max-width: ${breakpoints.xs}px) {
-    top: 32%;
-    right: 30%;
-    svg {
-      width: 80px;
-      height: auto;
-    }
+    top: 28%;
   }
 `

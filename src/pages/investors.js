@@ -15,7 +15,7 @@ import { Arrow } from "../svg/miscellaneous"
 import { useGlobalDispatchContext } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
 import EventsCarouselMobile from "../components/EmblaCarousel/eventsCarouselMobile"
-import * as Svg from "../svg/investorspage"
+import { ColoredGears } from "../svg/miscellaneous"
 
 const Investors = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Investment Centre`
@@ -481,30 +481,9 @@ const Investors = ({ data }) => {
         </PastEventsMobile>
       </EventsWrapper>
       <ContactUsWrapper>
-        <LightBlueStarFillWrapper
-          animate={{
-            rotate: 360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.LightBlueStarFill />
-        </LightBlueStarFillWrapper>
-        <LightBlueStarStrokeWrapper
-          animate={{
-            rotate: -360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.LightBlueStarStroke />
-        </LightBlueStarStrokeWrapper>
+        <SVGWrapper>
+          <ColoredGears gearColor={"#59c9f3"} />
+        </SVGWrapper>
         <ContactUs />
       </ContactUsWrapper>
     </Layout>
@@ -1164,98 +1143,62 @@ const ContactUsWrapper = styled.div`
   position: relative;
 `
 
-const LightBlueStarStrokeWrapper = styled(motion.div)`
-  display: none;
-  @media (max-width: ${breakpoints.xl}px) {
-    position: absolute;
-    z-index: 1;
-    display: block;
-    right: 20%;
-    top: 18%;
-    svg {
-      width: 270px;
-      height: 270px;
-    }
+const SVGWrapper = styled.div`
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  z-index: 1;
+  top: -5%;
+  right: 15%;
+  transform: rotate(90deg);
+  svg {
+    aspect-ratio: 1/1;
   }
-
+  @media (max-width: 1600px) {
+    width: 450px;
+    height: 450px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 410px;
+    height: 410px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    right: 10%;
+  }
+  @media (max-width: 1080px) {
+    width: 350px;
+    height: 350px;
+    top: 10%;
+    right: 10%;
+  }
   @media (max-width: ${breakpoints.l}px) {
-    right: 20%;
-    top: 21%;
-    svg {
-      width: 220px;
-      height: 220px;
-    }
+    width: 250px;
+    height: 250px;
+    top: 28%;
+    right: 15%;
   }
   @media (max-width: ${breakpoints.m}px) {
-    right: 10%;
-    top: 18%;
-    svg {
-      width: 175px;
-      height: auto;
-    }
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    top: 26%;
-    right: 10%;
-    svg {
-      width: 140px;
-      height: auto;
-    }
-  }
-  @media (max-width: ${breakpoints.xs}px) {
+    width: 250px;
+    height: 250px;
+    right: 5%;
     top: 25%;
-    right: 10%;
-    svg {
-      width: 130px;
-      height: auto;
-    }
-  }
-`
-const LightBlueStarFillWrapper = styled(motion.div)`
-  display: none;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    right: 30%;
-    top: 30%;
-    svg {
-      width: 200px;
-      height: 200px;
-    }
-  }
-
-  @media (max-width: ${breakpoints.l}px) {
-    top: 35%;
-    svg {
-      width: 150px;
-      height: 150px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    top: 30%;
-    right: 22%;
-    svg {
-      width: 125px;
-      height: 125px;
-    }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 36%;
-    right: 29%;
-    svg {
-      width: 85px;
-      height: 85px;
-    }
+    width: 180px;
+    height: 180px;
+
+    top: 31%;
+    right: 18%;
+  }
+  @media (max-width: 400px) {
+    width: 150px;
+    height: 150px;
+    top: 35%;
   }
   @media (max-width: ${breakpoints.xs}px) {
-    top: 32%;
-    right: 30%;
-    svg {
-      width: 80px;
-      height: 80px;
-    }
+    top: 28%;
   }
 `

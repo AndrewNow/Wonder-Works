@@ -620,6 +620,8 @@ const Mobile = styled.svg`
 `
 
 
+
+
 export const PinkStarStroke = () => {
   return (
     <svg

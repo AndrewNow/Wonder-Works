@@ -25,6 +25,7 @@ import {
 } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
 import OurPillarsAboutPage from "../components/SideScroll/ourPillarsAboutpage"
+import { ColoredGears } from "../svg/miscellaneous"
 
 const About = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `About`
@@ -356,7 +357,7 @@ const About = ({ data }) => {
       <WonderWorkersWrapper>
         <WonderWorkers />
       </WonderWorkersWrapper>
-      <LetsWork svg={<Svg.PinkGears />} />
+      <LetsWork svg={<ColoredGears gearColor={"#eb2c90"} />} />
       <CareerFlip />
       <Newsletter>
         <BlueBackgroundMobileTablet>
@@ -1059,14 +1060,10 @@ const Newsletter = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     margin-top: 15rem;
+    padding-bottom: 8rem;
   }
 `
-// const PurpleStrokeStarWrapper = styled(motion.div)`
-//   position: absolute;
-//   z-index: 1;
-//   top: -12.5%;
-//   left: -3%;
-// `
+
 
 const BlueBackgroundMobileTablet = styled.div`
   display: none;

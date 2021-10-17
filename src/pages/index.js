@@ -7,7 +7,7 @@ import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as Svg from "../svg/homepage"
 import { Arrow } from "../svg/miscellaneous"
-import { GreenStars, PurpleStar } from "../svg/miscellaneous"
+import { GreenStars, ColoredGears } from "../svg/miscellaneous"
 import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
@@ -558,30 +558,9 @@ const HomeIndex = ({ data }) => {
         </OrangeBackground>
       </Newsletter>
       <ContactUsWrapper>
-        <PinkStarFillWrapper
-          animate={{
-            rotate: 360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.PinkStarFill />
-        </PinkStarFillWrapper>
-        <PinkStarStrokeWrapper
-          animate={{
-            rotate: -360,
-            transition: {
-              duration: 60,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <Svg.PinkStarStroke />
-        </PinkStarStrokeWrapper>
+        <SVGWrapper>
+          <ColoredGears gearColor={"#eb2c90"} />
+        </SVGWrapper>
         <ContactUsHomePage />
       </ContactUsWrapper>
     </Layout>
@@ -1330,7 +1309,7 @@ const Press = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   h4 {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -1691,85 +1670,62 @@ const ContactUsWrapper = styled.div`
   position: relative;
 `
 
-const PinkStarStrokeWrapper = styled(motion.div)`
+const SVGWrapper = styled.div`
+  width: 500px;
+  height: 500px;
   position: absolute;
   z-index: 1;
-  top: 0%;
+  top: -5%;
   right: 15%;
+  transform: rotate(90deg);
+  svg {
+    aspect-ratio: 1/1;
+  }
+  @media (max-width: 1600px) {
+    width: 450px;
+    height: 450px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 410px;
+    height: 410px;
+  }
   @media (max-width: ${breakpoints.xl}px) {
-    right: 20%;
-    top: 18%;
-    svg {
-      width: 270px;
-      height: 270px;
-    }
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    right: 10%;
+  }
+  @media (max-width: 1080px) {
+    width: 350px;
+    height: 350px;
+    top: 10%;
+    right: 10%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    right: 20%;
-    top: 21%;
-    svg {
-      width: 220px;
-      height: 220px;
-    }
+    width: 250px;
+    height: 250px;
+    top: 28%;
+    right: 15%;
   }
   @media (max-width: ${breakpoints.m}px) {
-    right: 10%;
+    width: 250px;
+    height: 250px;
+    right: 5%;
     top: 25%;
-    svg {
-      width: 150px;
-      height: 150px;
-    }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 30%;
-  }
-  @media (max-width: ${breakpoints.xs}px) {
-    right: 10%;
-    top: 27%;
-    svg {
-      width: 130px;
-      height: 130px;
-    }
-  }
-`
-const PinkStarFillWrapper = styled(motion.div)`
-  position: absolute;
-  z-index: 1;
-  top: 15%;
-  right: 25%;
+    width: 180px;
+    height: 180px;
 
-  @media (max-width: ${breakpoints.xl}px) {
-    right: 30%;
-    top: 30%;
-    svg {
-      width: 200px;
-      height: 200px;
-    }
+    top: 31%;
+    right: 18%;
   }
-  @media (max-width: ${breakpoints.l}px) {
+  @media (max-width: 400px) {
+    width: 150px;
+    height: 150px;
     top: 35%;
-    svg {
-      width: 150px;
-      height: 150px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    top: 40%;
-    right: 20%;
-    svg {
-      width: 100px;
-      height: 100px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    top: 40%;
-    right: 30%;
   }
   @media (max-width: ${breakpoints.xs}px) {
-    top: 33%;
-    svg {
-      width: 80px;
-      height: 80px;
-    }
+    top: 28%;
   }
 `

@@ -83,19 +83,19 @@ const Contact = ({ data }) => {
       <LetsWork
         svg={<Svg.BlueGear />}
         currentProjects={
-            <CurrentProjects
-              onClick={handleProjectsPageTransition}
-              variants={Button}
-              initial="normal"
-              animate={expandProjectsButton ? "expand" : "normal"}
-              whileHover="hover"
-            >
-              <CurrentProjectsText variants={buttonText}>
-                <p>Current</p>
-                <h4>Projects</h4>
-                <p>Check out what we’re up to on the Wonder Works Web! </p>
-              </CurrentProjectsText>
-            </CurrentProjects>
+          <CurrentProjects
+            onClick={handleProjectsPageTransition}
+            variants={Button}
+            initial="normal"
+            animate={expandProjectsButton ? "expand" : "normal"}
+            whileHover="hover"
+          >
+            <CurrentProjectsText variants={buttonText}>
+              <p>Current</p>
+              <h4>Projects</h4>
+              <p>Check out what we’re up to on the Wonder Works Web! </p>
+            </CurrentProjectsText>
+          </CurrentProjects>
         }
       />
       <OpenPositonsSection>
@@ -150,6 +150,9 @@ const MailchimpWrapper = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     background-color: var(--color-pink);
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 8rem;
   }
 `
 
@@ -232,7 +235,7 @@ const CurrentProjects = styled(motion.div)`
   @media (max-width: ${breakpoints.xl}px) {
     width: 160px;
     height: 160px;
-    top: 26%;
+    top: 30%;
   }
   @media (max-width: ${breakpoints.l}px) {
     top: 35%;
@@ -307,7 +310,7 @@ const CurrentProjectsText = styled(motion.div)`
 
   @media (max-width: ${breakpoints.m}px) {
     h4 {
-      font-size: 2.7vw;
+      font-size: 3.2vw;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -330,7 +333,7 @@ const OpenPositonsSection = styled.div`
   background-color: var(--color-green);
 
   @media (max-width: ${breakpoints.xl}px) {
-    height: 200px;
+    height: 330px;
   }
 
   @media (max-width: ${breakpoints.l}px) {
@@ -338,6 +341,7 @@ const OpenPositonsSection = styled.div`
   }
   @media (max-width: ${breakpoints.m}px) {
     padding-top: 10rem;
+    height: 200px;
   }
   @media (max-width: ${breakpoints.s}px) {
     padding-top: 0rem;
@@ -372,11 +376,12 @@ const OpenPositons = styled(motion.div)`
     width: 200px;
     height: 200px;
     left: 10%;
+    top: -100%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 160px;
     height: 160px;
-    top: -175%;
+    top: -5%;
   }
   @media (max-width: ${breakpoints.l}px) {
     top: 20%;
@@ -412,6 +417,7 @@ const OpenPositionsText = styled(motion.div)`
   p:nth-of-type(1) {
     text-align: left;
     padding-right: 1rem;
+    padding-left: 1rem;
   }
   p:nth-of-type(2) {
     text-align: center;
@@ -430,6 +436,7 @@ const OpenPositionsText = styled(motion.div)`
   @media (max-width: ${breakpoints.xxl}px) {
     h4 {
       margin-bottom: 1rem;
+      font-size: 2.2vw;
     }
     p:nth-of-type(2) {
       font-size: 14px;
@@ -437,9 +444,10 @@ const OpenPositionsText = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.xl}px) {
     h4 {
-      font-size: 2.5vw;
+      font-size: 2.1vw;
     }
     p:nth-of-type(1) {
+      padding-left: 0.5rem;
       padding-bottom: 0;
     }
     p:nth-of-type(2) {
@@ -449,7 +457,7 @@ const OpenPositionsText = styled(motion.div)`
 
   @media (max-width: ${breakpoints.m}px) {
     h4 {
-      font-size: 2.7vw;
+      font-size: 3.2vw;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -457,6 +465,7 @@ const OpenPositionsText = styled(motion.div)`
       font-size: 14px;
       text-align: center;
       padding-right: 0;
+      padding-left: 0;
     }
     h4 {
       font-size: 14px;
