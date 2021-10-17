@@ -32,7 +32,18 @@ const HomeIndex = ({ data }) => {
   })
   const [countUpRef, countUpInView] = useInView({
     root: null,
-    threshold: 0.35,
+    threshold: 0.25,
+    triggerOnce: true,
+  })
+
+  const [countUpRef2, countUpInView2] = useInView({
+    root: null,
+    threshold: 0.25,
+    triggerOnce: true,
+  })
+  const [countUpRef3, countUpInView3] = useInView({
+    root: null,
+    threshold: 0.25,
     triggerOnce: true,
   })
 
@@ -202,30 +213,21 @@ const HomeIndex = ({ data }) => {
       scale: 0,
     },
   }
-  const circleAnimation2 = {
-    inView: {
-      transition: {
-        duration: 0.5,
-        delay: 1.15,
+
+    const circleText = {
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: 0.2,
+          duration: 0.5,
+        },
       },
-      scale: 1,
-    },
-    notInView: {
-      scale: 0,
-    },
-  }
-  const circleAnimation3 = {
-    inView: {
-      transition: {
-        duration: 0.5,
-        delay: 1.3,
+      hidden: {
+        opacity: 0,
+        y: -60,
       },
-      scale: 1,
-    },
-    notInView: {
-      scale: 0,
-    },
-  }
+    }
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })
@@ -450,7 +452,7 @@ const HomeIndex = ({ data }) => {
           </Brief>
           <Stats>
             <Columns>
-              <Column>
+              <Column ref={countUpRef}>
                 <motion.h5
                   variants={circleAnimation}
                   animate={countUpInView ? "inView" : "notInView"}
@@ -467,80 +469,102 @@ const HomeIndex = ({ data }) => {
                         start={0}
                         end={150}
                         duration={1}
-                        delay={1.15}
+                        delay={1}
                         suffix="M"
                       />
                     </h6>
                   )}
-                  <p>DAU</p>
+                  <p>MAU</p>
                 </Circle>
               </Column>
-              <Column>
+              <Column ref={countUpRef2}>
                 <motion.h5
-                  variants={circleAnimation2}
-                  animate={countUpInView ? "inView" : "notInView"}
+                  variants={circleAnimation}
+                  animate={countUpInView2 ? "inView" : "notInView"}
                 >
                   Overlook Bay
                 </motion.h5>
                 <Circle
-                  variants={circleAnimation2}
-                  animate={countUpInView ? "inView" : "notInView"}
+                  variants={circleAnimation}
+                  animate={countUpInView2 ? "inView" : "notInView"}
                 >
-                  {countUpInView && (
+                  {countUpInView2 && (
                     <h6>
                       <CountUp
                         start={0}
                         end={5}
-                        delay={1.25}
-                        decimals={0}
+                        delay={1.15}
+                        decimals={1}
                         duration={1}
                         suffix="M"
                       />
                     </h6>
                   )}
-                  <p>DAU</p>
+                  <p>MAU</p>
                 </Circle>
-                <Desc>
-                  <p>4% of Roblox DAU</p>
-                  <p>
+                <Desc
+                  variants={circleText}
+                  animate={countUpInView3 ? "visible" : "hidden"}
+                >
+                  <motion.p
+                    variants={circleText}
+                    animate={countUpInView3 ? "visible" : "hidden"}
+                  >
+                    4% of Roblox DAU
+                  </motion.p>
+                  <motion.p
+                    variants={circleText}
+                    animate={countUpInView3 ? "visible" : "hidden"}
+                  >
                     2.2M+ Total Playing hrs/mo <br />
                     DAU 1.5M <br />
                     DAU/MAU Ratio 7.79%
-                  </p>
+                  </motion.p>
                 </Desc>
               </Column>
-              <Column>
+              <Column ref={countUpRef3}>
                 <motion.h5
-                  variants={circleAnimation3}
-                  animate={countUpInView ? "inView" : "notInView"}
+                  variants={circleAnimation}
+                  animate={countUpInView3 ? "inView" : "notInView"}
                 >
                   Timmeh
                 </motion.h5>
                 <Circle
-                  variants={circleAnimation3}
-                  animate={countUpInView ? "inView" : "notInView"}
+                  variants={circleAnimation}
+                  animate={countUpInView3 ? "inView" : "notInView"}
                 >
-                  {countUpInView && (
+                  {countUpInView3 && (
                     <h6>
                       <CountUp
                         start={0}
                         end={500}
-                        delay={1.25}
+                        delay={1.15}
                         decimals={0}
                         duration={1}
                         suffix="K"
                       />
                     </h6>
                   )}
-                  <p>DAU</p>
+                  <p>MAU</p>
                 </Circle>
-                <Desc>
-                  <p>0.0% of Roblox DAU</p>
-                  <p>
+                <Desc
+                  variants={circleText}
+                  animate={countUpInView3 ? "visible" : "hidden"}
+                >
+                  <motion.p
+                    variants={circleText}
+                    animate={countUpInView3 ? "visible" : "hidden"}
+                  >
+                    0.0% of Roblox DAU
+                  </motion.p>
+                  <motion.p
+                    variants={circleText}
+                    animate={countUpInView3 ? "visible" : "hidden"}
+                  >
                     0.0M+ Total Playing hrs/mo <br />
                     DAU 0.0M <br />
                     DAU/MAU Ratio 0.00%
-                  </p>
+                  </motion.p>
                 </Desc>
               </Column>
             </Columns>
@@ -1461,13 +1485,11 @@ const Columns = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-
   div:nth-child(2) {
     span {
       background-color: var(--color-green);
     }
   }
-
   div:nth-child(3) {
     span {
       background-color: var(--color-lightpink);
@@ -1491,7 +1513,6 @@ const Column = styled(motion.div)`
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-
   h5 {
     text-transform: uppercase;
     font-family: "calibre-medium";
@@ -1530,7 +1551,6 @@ const Circle = styled(motion.span)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   h6 {
     line-height: 84px;
     font-size: 84px;
@@ -1539,12 +1559,10 @@ const Circle = styled(motion.span)`
   p {
     color: var(--color-black);
   }
-
   @media (max-width: ${breakpoints.xl}px) {
     width: 225px;
     height: 225px;
   }
-
   @media (max-width: ${breakpoints.l}px) {
     width: 200px;
     height: 200px;
@@ -1558,7 +1576,6 @@ const Circle = styled(motion.span)`
     width: 150px;
     height: 150px;
   }
-
   @media (max-width: ${breakpoints.s}px) {
     width: 150px;
     height: 150px;
@@ -1574,10 +1591,8 @@ const Desc = styled.div`
     margin-bottom: 1.25rem;
     border-bottom: 1px solid black;
   }
-
   @media (max-width: 800px) {
     padding-top: 1.5rem;
-
     p:nth-of-type(1) {
       padding-bottom: 1rem;
       margin-bottom: 1rem;
@@ -1716,9 +1731,7 @@ const SVGWrapper = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 180px;
     height: 180px;
-
     top: 31%;
-    right: 18%;
   }
   @media (max-width: 400px) {
     width: 150px;

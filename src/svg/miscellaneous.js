@@ -484,21 +484,21 @@ export const ColoredGears = ({gearColor}) => {
   const { scrollYProgress } = useViewportScroll({ passive: true })
   const yRange = useTransform(
     scrollYProgress,
-    _.throttle(scrollYProgress => scrollYProgress * 1000, 100)
+    _.throttle(scrollYProgress => scrollYProgress * 700, 100)
   )
   const yRange2 = useTransform(
     scrollYProgress,
-    _.throttle(scrollYProgress => scrollYProgress * -1000, 100)
+    _.throttle(scrollYProgress => scrollYProgress * -700, 100)
   )
   const degrees = useSpring(yRange, {
     stiffness: 105,
     damping: 50,
-    mass: 25,
+    mass: 1,
   })
   const degrees2 = useSpring(yRange2, {
     stiffness: 105,
     damping: 50,
-    mass: 25,
+    mass: 1,
   })
 
   return (

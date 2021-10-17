@@ -279,7 +279,7 @@ const Investors = ({ data }) => {
                     start={0}
                     end={5}
                     delay={1.15}
-                    decimals={0}
+                    decimals={1}
                     duration={1}
                     suffix="M"
                   />
@@ -310,7 +310,7 @@ const Investors = ({ data }) => {
               variants={circleAnimation}
               animate={countUpInView3 ? "inView" : "notInView"}
             >
-              {countUpInView2 && (
+              {countUpInView3 && (
                 <h6>
                   <CountUp
                     start={0}
@@ -328,12 +328,20 @@ const Investors = ({ data }) => {
               variants={circleText}
               animate={countUpInView3 ? "visible" : "hidden"}
             >
-              <p>0.0% of Roblox DAU</p>
-              <p>
+              <motion.p
+                variants={circleText}
+                animate={countUpInView3 ? "visible" : "hidden"}
+              >
+                0.0% of Roblox DAU
+              </motion.p>
+              <motion.p
+                variants={circleText}
+                animate={countUpInView3 ? "visible" : "hidden"}
+              >
                 0.0M+ Total Playing hrs/mo <br />
                 DAU 0.0M <br />
                 DAU/MAU Ratio 0.00%
-              </p>
+              </motion.p>
             </Desc>
           </Column>
         </Columns>
@@ -1158,23 +1166,25 @@ const ContactUsWrapper = styled.div`
 `
 
 const SVGWrapper = styled.div`
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  z-index: 1;
-  top: -5%;
-  right: 15%;
-  transform: rotate(90deg);
-  svg {
-    aspect-ratio: 1/1;
+  display: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    position: absolute;
+    z-index: 1;
+    transform: rotate(90deg);
+    display: block;
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    right: 10%;
+    svg {
+      aspect-ratio: 1/1;
+    }
   }
-  @media (max-width: 1600px) {
-    width: 450px;
-    height: 450px;
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    width: 410px;
-    height: 410px;
+  @media (max-width: 1080px) {
+    width: 350px;
+    height: 350px;
+    top: 10%;
+    right: 10%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 400px;
@@ -1203,9 +1213,7 @@ const SVGWrapper = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 180px;
     height: 180px;
-
     top: 31%;
-    right: 18%;
   }
   @media (max-width: 400px) {
     width: 150px;

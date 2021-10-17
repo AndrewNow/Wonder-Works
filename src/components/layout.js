@@ -236,7 +236,6 @@ const GlobalWrapper = styled.div`
     a {
       font-size: 16px;
       line-height: 19px;
-      letter-spacing: 0.01rem;
     }
   }
 
@@ -276,7 +275,6 @@ const GlobalWrapper = styled.div`
     li {
       font-size: 16px;
       line-height: 19px;
-      letter-spacing: 0.01rem;
     }
   }
 `

@@ -424,7 +424,7 @@ const Text = styled.div`
       }
     }
     @media (max-width: 376px) {
-      padding-top: 2rem;
+      padding-top: 0rem;
       p {
         max-height: 32vh;
       }

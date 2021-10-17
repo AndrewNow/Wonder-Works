@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer"
 import breakpoints from "../breakpoints"
 import { Arrow } from "../../svg/miscellaneous"
 import { PlayIconReactPlayer, PlayButtonLatestProjects } from "./playButtons"
+import { NextButton, PrevButton } from './buttons'
 
 const LatestProjectsCarousel = () => {
   // -------------------- 1. Initialize Embla Carousel & State --------------------
@@ -188,7 +189,8 @@ const LatestProjectsCarousel = () => {
         <ProgressContainer>
           <EmblaProgress>
             <EmblaProgressBar
-              style={{ transform: `translateX(calc(${scrollProgress}% * 2))` }}
+              // style={{ transform: `translateX(calc(${scrollProgress}% * 2))` }}
+              style={{ transform: `translateX(calc(${scrollProgress}% * 1))` }}
             />
           </EmblaProgress>
         </ProgressContainer>
@@ -489,7 +491,9 @@ const EmblaProgressBar = styled.div`
   background-color: #6753a0;
   top: 0px;
   bottom: 0px;
-  width: calc(100% / 3);
+  width: calc(100% / 2);
+  //divided by number of total slides
+  /* width: calc(100% / 3); */
   border-radius: 50px;
 `
 

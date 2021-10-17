@@ -114,6 +114,20 @@ const Careers = ({ data }) => {
       opacity: 0,
     },
   }
+  const fileSizeMsg = {
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+    hidden: {
+      y: -20,
+      opacity: 0,
+    },
+    exit: {
+      y: 20,
+      opacity: 0,
+    },
+  }
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })
@@ -261,6 +275,7 @@ const Careers = ({ data }) => {
     lastName: "",
     email: "",
     position: "",
+    city: "",
     resume: "",
   })
 
@@ -277,22 +292,23 @@ const Careers = ({ data }) => {
     setFormData(data => ({ ...data, [attribute]: e.target.value }))
   }
 
+  const [FileSizeAlert, setFileSizeAlert] = useState(false)
   // list file name within the file input label when user uploads a file
   const handleFileChange = e => {
     if (e.target.files && e.target.files[0]) {
-      console.log(e.target.files[0].size)
-      if (e.target.files[0].size <= 500000 ) {
+      if (e.target.files[0].size <= 500000) {
         setFormData(d => ({ ...d, resume: e.target.files[0].name }))
+        setFileSizeAlert(false)
       } else {
-        console.log(
-          "your file is too big!, file size:" + `${e.target.files[0].size}bytes`
-        )
+        setFileSizeAlert(true)
       }
     }
   }
 
   // +++++++++++++++++++++ EMAIL JS CONFIG +++++++++++++++++++++
   const form = useRef()
+
+  const [SuccessfulSubmission, setSuccessfulSubmission] = useState(false)
 
   const sendEmail = e => {
     e.preventDefault()
@@ -305,9 +321,11 @@ const Careers = ({ data }) => {
       )
       .then(
         result => {
+          setSuccessfulSubmission(true)
           console.log(result.text)
         },
         error => {
+          setSuccessfulSubmission(false)
           console.log(error.text)
         }
       )
@@ -315,9 +333,7 @@ const Careers = ({ data }) => {
     // reset form after submission
   }
 
-  console.log(form.current)
-
-  // ------------ END FORM LOGIC ------------
+  // +++++++++++++++++++++++++++++++++++++++ END FORM LOGIC +++++++++++++++++++++++++++++++++++++++
 
   //  Scroll to clicked career option on click
   const formRef = useRef()
@@ -685,7 +701,13 @@ const Careers = ({ data }) => {
                     )
                   })}
                 </Select>
-                <Input type="text" placeholder="City" name="city" />
+                <Input
+                  type="text"
+                  placeholder="City *"
+                  name="city"
+                  onChange={handleChange("city")}
+                  required
+                />
               </LineHalfWidthDesktop>
               <Line>
                 <FullWidthInput
@@ -742,6 +764,21 @@ const Careers = ({ data }) => {
                   required
                 />
               </Line>
+              <FileSizeMessage>
+                <AnimatePresence>
+                  {FileSizeAlert ? (
+                    <motion.p
+                      key="File size message"
+                      variants={fileSizeMsg}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      *FILE SIZE LIMIT IS 500KB
+                    </motion.p>
+                  ) : null}
+                </AnimatePresence>
+              </FileSizeMessage>
               <Bottom>
                 {!completedFields && <p></p>}
                 <AnimatePresence>
@@ -812,12 +849,24 @@ const Careers = ({ data }) => {
                       animate="visible"
                       exit="exit"
                     >
-                      It looks like you're ready, are you?
+                      Looking good!
                     </motion.p>
                   )}
                 </AnimatePresence>
                 <AnimatePresence>
-                  {completedFields === 5 && (
+                  {completedFields === 5 && !SuccessfulSubmission ? (
+                    <motion.p
+                      variants={bottomMessage}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      It looks like you're ready, are you?
+                    </motion.p>
+                  ) : null}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {completedFields >= 5 && SuccessfulSubmission ? (
                     <motion.p
                       variants={bottomMessage}
                       initial="hidden"
@@ -827,17 +876,18 @@ const Careers = ({ data }) => {
                       Thank you for your interest! <br /> We'll reach out to you
                       if it's a good fit.
                     </motion.p>
-                  )}
+                  ) : null}
                 </AnimatePresence>
-                <SubmitLabel htmlFor="applyNow">
-                  Apply <Arrow />
-                </SubmitLabel>
                 <Submit
                   type="submit"
                   id="applyNow"
                   value="Apply"
                   whileTap={{ scale: 0.9 }}
+                  disabled={FileSizeAlert}
                 />
+                <SubmitLabel htmlFor="applyNow" disabled={FileSizeAlert}>
+                  Apply <Arrow />
+                </SubmitLabel>
               </Bottom>
             </FillOut>
           </FormContent>
@@ -1287,7 +1337,7 @@ const CareerLeft = styled.div`
         font-size: 17px;
         line-height: 20px;
         strong {
-          white-space: normal;
+          white-space: nowrap;
         }
       }
     }
@@ -1508,7 +1558,6 @@ const FormTop = styled.div`
     h5 {
       font-size: 16px;
       line-height: 20px;
-      letter-spacing: 0.01rem;
       width: 100%;
     }
   }
@@ -1635,7 +1684,7 @@ const LinkCopiedAlertMobile = styled(motion.p)`
   @media (max-width: ${breakpoints.l}px) {
     width: 210px;
   }
-  
+
   @media (max-width: ${breakpoints.s}px) {
     width: 180px;
     bottom: 4.5rem;
@@ -1685,8 +1734,8 @@ const SharePostingButton = styled.button`
     font-size: 20px;
   }
   @media (max-width: ${breakpoints.xxl}px) {
-      padding: 0.5rem 1.5rem;
-      min-width: fit-content;
+    padding: 0.5rem 1.5rem;
+    min-width: fit-content;
   }
   @media (max-width: ${breakpoints.l}px) {
     padding: 0.5rem 1rem;
@@ -1928,7 +1977,6 @@ const HalfWidthInput = styled.input`
   }
 `
 
-
 const FullWidthInput = styled.input`
   width: 100%;
   background: none;
@@ -2055,7 +2103,7 @@ const SubmitLabel = styled.label`
   border: 2px solid var(--color-black);
   color: var(--color-black);
   border-radius: 50px;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   font-size: 25px;
   font-family: "calibre-medium";
   cursor: pointer;
@@ -2143,6 +2191,19 @@ const Submit = styled(motion.input)`
   position: absolute !important;
   white-space: nowrap;
   width: 1px;
+
+  :disabled + label {
+    cursor: default;
+    filter: opacity(0.5);
+    :hover {
+      background-color: var(--color-white);
+      color: var(--color-black);
+      svg {
+        fill: var(--color-black);
+        transform: translate3d(0px, 0rem, 0);
+      }
+    }
+  }
 `
 
 const Bottom = styled.div`
@@ -2156,22 +2217,16 @@ const Bottom = styled.div`
   position: relative;
 
   p {
+    max-width: 63%;
     position: absolute;
     left: 0;
     font-size: 20px;
+    line-height: 105%;
     font-family: "calibre-medium";
     text-transform: uppercase;
   }
   @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
-    p {
-      max-width: 63%;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    p {
-      max-width: 63%;
-    }
   }
   @media (max-width: ${breakpoints.m}px) {
     p {
@@ -2193,29 +2248,19 @@ const Bottom = styled.div`
 `
 
 const SVGWrapper = styled.div`
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  z-index: 1;
-  top: -5%;
-  right: 15%;
-  transform: rotate(90deg);
-  svg {
-    aspect-ratio: 1/1;
-  }
-  @media (max-width: 1600px) {
-    width: 450px;
-    height: 450px;
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    width: 410px;
-    height: 410px;
-  }
+  display: none;
   @media (max-width: ${breakpoints.xl}px) {
+    position: absolute;
+    z-index: 1;
+    transform: rotate(90deg);
+    display: block;
     width: 400px;
     height: 400px;
     top: 10%;
     right: 10%;
+    svg {
+      aspect-ratio: 1/1;
+    }
   }
   @media (max-width: 1080px) {
     width: 350px;
@@ -2238,9 +2283,7 @@ const SVGWrapper = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     width: 180px;
     height: 180px;
-
     top: 31%;
-    right: 18%;
   }
   @media (max-width: 400px) {
     width: 150px;
@@ -2249,5 +2292,17 @@ const SVGWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: 28%;
+  }
+`
+
+const FileSizeMessage = styled.small`
+  min-height: 30px;
+  display: block;
+  height: 30px;
+  p {
+    text-transform: uppercase;
+    color: #eb1313;
+    font-family: "calibre-medium";
+    font-size: 15px;
   }
 `
