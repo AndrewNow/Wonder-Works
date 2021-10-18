@@ -230,7 +230,7 @@ export const AsSeenOnLogosAbout = () => {
       >
         <motion.span variants={logoMask}>
           <StaticImage
-            height={40}
+            // height={40}
             src="../../images/Home/asSeenOn/FORBES.png"
             alt="Forbes logo"
             placeholder="none"
@@ -241,7 +241,7 @@ export const AsSeenOnLogosAbout = () => {
         </motion.span>
         <motion.span variants={logoMask}>
           <StaticImage
-            height={40}
+            // height={40}
             src="../../images/Home/asSeenOn/CNBC.png"
             alt="CNBC logo"
             placeholder="none"
@@ -252,7 +252,7 @@ export const AsSeenOnLogosAbout = () => {
         </motion.span>
         <motion.span variants={logoMask}>
           <StaticImage
-            height={40}
+            // height={40}
             src="../../images/Home/asSeenOn/NPR.png"
             alt="n p r logo"
             placeholder="none"
@@ -263,7 +263,7 @@ export const AsSeenOnLogosAbout = () => {
         </motion.span>
         <motion.span variants={logoMask}>
           <StaticImage
-            height={40}
+            // height={40}
             src="../../images/Home/asSeenOn/EDC.png"
             alt="e d c logo"
             placeholder="none"
@@ -274,7 +274,7 @@ export const AsSeenOnLogosAbout = () => {
         </motion.span>
         <motion.span variants={logoMask}>
           <StaticImage
-            height={40}
+            // height={40}
             src="../../images/Home/asSeenOn/BLOOMBERG.png"
             alt="Forbes logo"
             placeholder="none"
@@ -285,7 +285,7 @@ export const AsSeenOnLogosAbout = () => {
         </motion.span>
         <motion.span variants={logoMask}>
           <StaticImage
-            height={40}
+            // height={40}
             src="../../images/Home/asSeenOn/B2.png"
             alt="B2 logo"
             placeholder="none"
@@ -450,24 +450,25 @@ const LogosHomepageMobile = styled(motion.div)`
 
 const LogosAboutpage = styled(motion.div)`
   position: relative;
-  width: 45%;
-  /* height: 120px; */
+  width: 55%;
   display: flex;
   span {
+    width: auto;
     align-self: center;
     margin: 0 auto;
     transform-origin: bottom;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    max-width: 50%;
+    width: 65%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    max-width: 80%;
+    width: 80%;
     height: 85px;
   }
   @media (max-width: ${breakpoints.l}px) {
-    max-width: 85%;
+    width: 85%;
+    margin-bottom: 3rem;
   }
 
   @media (max-width: ${breakpoints.m}px) {

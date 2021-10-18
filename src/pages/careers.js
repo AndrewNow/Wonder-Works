@@ -1185,7 +1185,7 @@ const TwoPlusWrapper = styled(motion.div)`
   position: absolute;
   z-index: 2;
   bottom: 15%;
-  right: 9%;
+  right: 13%;
 
   @media (max-width: ${breakpoints.xl}px) {
     bottom: 18%;

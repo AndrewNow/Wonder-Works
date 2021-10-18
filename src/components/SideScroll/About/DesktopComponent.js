@@ -442,6 +442,7 @@ const LeftInner = styled.div`
     max-height: 350px;
   }
   h4 {
+    white-space: nowrap;
     font-family: "balgin-bold";
   }
   p {
@@ -459,6 +460,7 @@ const LeftInner = styled.div`
     width: 80%;
   }
   @media (max-width: ${breakpoints.xl}px) {
+    height: 65vh;
     justify-content: center;
     padding-left: 0rem;
     margin-top: 0rem;
@@ -468,6 +470,9 @@ const LeftInner = styled.div`
     h4 {
       margin-top: 1rem;
     }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    height: 65vh;
   }
 
   @media (max-width: ${breakpoints.s}px) {
@@ -535,13 +540,13 @@ const RightInner = styled(motion.div)`
 
   @media (max-width: 1600px) {
     svg {
-      max-width: 200px;
+      max-width: 250px;
       height: auto;
     }
   }
   @media (max-width: ${breakpoints.xxl}px) {
     svg {
-      max-width: 180px;
+      max-width: 250px;
     }
   }
   @media (max-width: ${breakpoints.xl}px) {
@@ -549,11 +554,18 @@ const RightInner = styled(motion.div)`
     align-self: flex-start;
 
     svg {
-      max-width: 170px;
+      max-width: 225px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin-top: 0rem;
+    svg {
+      max-width: 170px;
+    }
+
   }
   @media (max-width: ${breakpoints.s}px) {
     margin: 0;

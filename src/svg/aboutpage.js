@@ -937,14 +937,15 @@ export const WWPartnershipMain = () => (
 export const WWPartnershipRight = () => (
   <PartnershipsRightWrapper>
     <PartershipsBig
-    // animate={{
-    //   rotate: [0, 10, -10, 0],
-    //   transition: {
-    //     repeatType: "mirror",
-    //     repeat: Infinity,
-    //     duration: 5,
-    //   },
-    // }}
+      animate={{
+        rotate: [8, -7, 8],
+        scale: [1, .97, 1],
+        transition: {
+          repeatType: "mirror",
+          repeat: Infinity,
+          duration: 6,
+        },
+      }}
     >
       <svg
         width="245"
@@ -962,14 +963,15 @@ export const WWPartnershipRight = () => (
       </svg>
     </PartershipsBig>
     <PartershipsSmall
-    // animate={{
-    //   rotate: [0, 20],
-    //   transition: {
-    //     repeatType: "mirror",
-    //     repeat: Infinity,
-    //     duration: 3,
-    //   },
-    // }}
+      animate={{
+        scale: [.9, 1, .9],
+        rotate: [-8, 7, -8],
+        transition: {
+          repeatType: "mirror",
+          repeat: Infinity,
+          duration: 6,
+        },
+      }}
     >
       <svg
         width="83"
@@ -994,9 +996,18 @@ const PartnershipsRightWrapper = styled(motion.div)`
   aspect-ratio: 1/1;
   width: 305px;
   height: 305px;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 250px;
+    height: 250px;
+  }
   @media (max-width: ${breakpoints.xl}px) {
-    width: 215px;
-    height: 215px;
+    width: 250px;
+    height: 250px;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 200px;
+    height: 200px;
   }
 `
 
@@ -1007,9 +1018,15 @@ const PartershipsBig = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: ${breakpoints.xl}px) {
+  svg {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
     svg {
-      scale: 0.8;
+      scale: 0.7;
     }
   }
 `
@@ -1020,9 +1037,15 @@ const PartershipsSmall = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: ${breakpoints.xl}px) {
+  svg {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
     svg {
-      scale: 0.8;
+      scale: 0.7;
     }
   }
 `
@@ -1283,48 +1306,62 @@ export const WWCollabMain = () => (
   </svg>
 )
 export const WWCollabRight = () => (
-  <svg
-    width="387"
-    height="398"
-    viewBox="0 0 387 398"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+  <CollabGuy
+    animate={{
+      rotate: [0, -5, 5, -5, 5, 0],
+      transition: {
+        duration: 1.5,
+        repeat: "Infinity",
+        repeatDelay: 3,
+        repeatType: "mirror",
+      },
+    }}
   >
-    <path
-      d="M259.392 63.1362L109.014 73.701L42.975 209.216L127.316 334.165L277.695 323.598L343.73 188.086L259.392 63.1362Z"
-      fill="#EB2C90"
-      stroke="#1A1748"
-      strokeWidth="1.317"
-      strokeMiterlimit="10"
-    />
-    <path
-      d="M211.397 199.95C215.685 207.777 225.883 210.44 234.173 205.898Z"
-      fill="black"
-    />
-    <path
-      d="M211.397 199.95C215.685 207.777 225.883 210.44 234.173 205.898"
-      stroke="#231F20"
-      strokeWidth="9.789"
-      strokeMiterlimit="10"
-    />
-    <path
-      d="M252.007 146.14C245.762 128.741 248.836 111.717 258.874 108.114C260.057 107.693 261.302 107.469 262.558 107.449C259.163 105.084 255.076 103.922 250.945 104.147C236.753 105.144 226.506 123.883 228.062 146.012C228.093 146.432 228.127 146.85 228.165 147.268C230.105 168.78 242.653 185.244 256.575 184.266C260.821 183.897 264.813 182.085 267.887 179.132C270.306 176.86 272.335 174.205 273.893 171.275C265.54 169.013 256.76 159.38 252.007 146.14Z"
-      fill="white"
-    />
-    <path
-      d="M279.458 142.4C278.345 126.609 271.53 113.377 262.559 107.448C261.303 107.468 260.059 107.693 258.875 108.114C248.837 111.716 245.763 128.741 252.008 146.139C256.761 159.379 265.541 169.013 273.892 171.276C278.045 163.696 280.236 153.479 279.458 142.4Z"
-      fill="black"
-    />
-    <path
-      d="M180.43 149.949C174.184 132.552 177.258 115.527 187.296 111.924C187.873 111.719 188.466 111.56 189.068 111.45C186.063 109.768 182.637 108.985 179.199 109.193C165.007 110.19 154.76 128.929 156.317 151.057C156.346 151.478 156.38 151.896 156.42 152.313C158.36 173.825 170.907 190.289 184.829 189.312C189.075 188.942 193.067 187.13 196.141 184.177C198.865 181.608 201.102 178.566 202.742 175.2C194.263 173.15 185.266 163.413 180.43 149.949Z"
-      fill="white"
-    />
-    <path
-      d="M207.708 147.442C206.526 130.645 198.889 116.745 189.069 111.45C188.467 111.56 187.874 111.719 187.297 111.924C177.259 115.527 174.185 132.552 180.431 149.948C185.265 163.415 194.258 173.153 202.738 175.196C206.826 166.549 208.541 156.97 207.708 147.442V147.442Z"
-      fill="black"
-    />
-  </svg>
+    <svg
+      width="387"
+      height="398"
+      viewBox="0 0 387 398"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M259.392 63.1362L109.014 73.701L42.975 209.216L127.316 334.165L277.695 323.598L343.73 188.086L259.392 63.1362Z"
+        fill="#EB2C90"
+        stroke="#1A1748"
+        strokeWidth="1.317"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M211.397 199.95C215.685 207.777 225.883 210.44 234.173 205.898Z"
+        fill="black"
+      />
+      <path
+        d="M211.397 199.95C215.685 207.777 225.883 210.44 234.173 205.898"
+        stroke="#231F20"
+        strokeWidth="9.789"
+        strokeMiterlimit="10"
+      />
+      <path
+        d="M252.007 146.14C245.762 128.741 248.836 111.717 258.874 108.114C260.057 107.693 261.302 107.469 262.558 107.449C259.163 105.084 255.076 103.922 250.945 104.147C236.753 105.144 226.506 123.883 228.062 146.012C228.093 146.432 228.127 146.85 228.165 147.268C230.105 168.78 242.653 185.244 256.575 184.266C260.821 183.897 264.813 182.085 267.887 179.132C270.306 176.86 272.335 174.205 273.893 171.275C265.54 169.013 256.76 159.38 252.007 146.14Z"
+        fill="white"
+      />
+      <path
+        d="M279.458 142.4C278.345 126.609 271.53 113.377 262.559 107.448C261.303 107.468 260.059 107.693 258.875 108.114C248.837 111.716 245.763 128.741 252.008 146.139C256.761 159.379 265.541 169.013 273.892 171.276C278.045 163.696 280.236 153.479 279.458 142.4Z"
+        fill="black"
+      />
+      <path
+        d="M180.43 149.949C174.184 132.552 177.258 115.527 187.296 111.924C187.873 111.719 188.466 111.56 189.068 111.45C186.063 109.768 182.637 108.985 179.199 109.193C165.007 110.19 154.76 128.929 156.317 151.057C156.346 151.478 156.38 151.896 156.42 152.313C158.36 173.825 170.907 190.289 184.829 189.312C189.075 188.942 193.067 187.13 196.141 184.177C198.865 181.608 201.102 178.566 202.742 175.2C194.263 173.15 185.266 163.413 180.43 149.949Z"
+        fill="white"
+      />
+      <path
+        d="M207.708 147.442C206.526 130.645 198.889 116.745 189.069 111.45C188.467 111.56 187.874 111.719 187.297 111.924C177.259 115.527 174.185 132.552 180.431 149.948C185.265 163.415 194.258 173.153 202.738 175.196C206.826 166.549 208.541 156.97 207.708 147.442V147.442Z"
+        fill="black"
+      />
+    </svg>
+  </CollabGuy>
 )
+
+const CollabGuy = styled(motion.div)``
 
 export const PillarsCog = () => {
   return (

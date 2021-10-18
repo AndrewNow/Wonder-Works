@@ -747,6 +747,10 @@ const Logos = styled.div`
   }
   @media (max-width: ${breakpoints.l}px) {
     padding-bottom: 0;
+    h4 {
+      padding-bottom: 1rem;
+      font-size: 26px;
+    }
   }
 
   @media (max-width: ${breakpoints.s}px) {

@@ -38,12 +38,12 @@ const HomeIndex = ({ data }) => {
 
   const [countUpRef2, countUpInView2] = useInView({
     root: null,
-    threshold: 0.25,
+    threshold: 0.2,
     triggerOnce: true,
   })
   const [countUpRef3, countUpInView3] = useInView({
     root: null,
-    threshold: 0.25,
+    threshold: 0.2,
     triggerOnce: true,
   })
 
@@ -128,7 +128,7 @@ const HomeIndex = ({ data }) => {
       },
     },
   }
-
+  
   const word2 = {
     visible: {
       y: 0,
@@ -161,7 +161,33 @@ const HomeIndex = ({ data }) => {
       },
     },
     hidden: {
-      y: 100,
+      y: 70,
+      opacity: 0,
+    },
+  }
+  const investorFadeIn = {
+    visible: {
+      transition: {
+        delay: 0.3,
+        // type: "spring",
+        // stiffness: 100,
+        // damping: 13,
+        staggerChildren: 0.15,
+      },
+    },
+    hidden: {
+    },
+  }
+  const investorWords = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: .5,
+      },
+    },
+    hidden: {
+      y: 70,
       opacity: 0,
     },
   }
@@ -182,7 +208,7 @@ const HomeIndex = ({ data }) => {
       opacity: 0,
     },
   }
-
+  
   const button = {
     visible: {
       y: 0,
@@ -200,7 +226,7 @@ const HomeIndex = ({ data }) => {
       opacity: 0,
     },
   }
-
+  
   const circleAnimation = {
     inView: {
       transition: {
@@ -414,12 +440,12 @@ const HomeIndex = ({ data }) => {
       <InvestmentCenter>
         <InvestmentWrapper ref={countUpRef}>
           <Brief
-            variants={fadeIn}
+            variants={investorFadeIn}
             initial="hidden"
             animate={countUpInView ? "visible" : "hidden"}
             exit="hidden"
           >
-            <Headline>
+            <Headline variants={investorWords}>
               <h4>Investment Center</h4>
               <svg
                 width="160"
@@ -436,15 +462,15 @@ const HomeIndex = ({ data }) => {
                 />
               </svg>
             </Headline>
-            <motion.h2 variants={word}>Let’s talk numbers</motion.h2>
-            <motion.h4 variants={word}>
+            <motion.h2 variants={investorWords}>Let’s talk numbers</motion.h2>
+            <motion.h4 variants={investorWords}>
               INSIDER INFO FOR OUR INVESTORS
             </motion.h4>
-            <motion.p variants={word}>
+            <motion.p variants={investorWords}>
               See where we’re headed and how we’re growing from <br />
               navigating platform trends to uncovering user desires.
             </motion.p>
-            <motion.div variants={word} whileTap={{ scale: 0.9 }}>
+            <motion.div variants={investorWords} whileTap={{ scale: 0.9 }}>
               <DiscoverMore to="/investors">
                 LEARN MORE <Arrow />
               </DiscoverMore>
@@ -469,7 +495,7 @@ const HomeIndex = ({ data }) => {
                         start={0}
                         end={150}
                         duration={1}
-                        delay={1}
+                        delay={.75}
                         suffix="M"
                       />
                     </h6>
@@ -493,7 +519,7 @@ const HomeIndex = ({ data }) => {
                       <CountUp
                         start={0}
                         end={5}
-                        delay={1.15}
+                        delay={.75}
                         decimals={1}
                         duration={1}
                         suffix="M"
@@ -504,17 +530,17 @@ const HomeIndex = ({ data }) => {
                 </Circle>
                 <Desc
                   variants={circleText}
-                  animate={countUpInView3 ? "visible" : "hidden"}
+                  animate={countUpInView2 ? "visible" : "hidden"}
                 >
                   <motion.p
                     variants={circleText}
-                    animate={countUpInView3 ? "visible" : "hidden"}
+                    animate={countUpInView2 ? "visible" : "hidden"}
                   >
-                    4% of Roblox DAU
+                    4% of Roblox MAU
                   </motion.p>
                   <motion.p
                     variants={circleText}
-                    animate={countUpInView3 ? "visible" : "hidden"}
+                    animate={countUpInView2 ? "visible" : "hidden"}
                   >
                     2.2M+ Total Playing hrs/mo <br />
                     DAU 1.5M <br />
@@ -537,11 +563,11 @@ const HomeIndex = ({ data }) => {
                     <h6>
                       <CountUp
                         start={0}
-                        end={500}
-                        delay={1.15}
-                        decimals={0}
+                        end={2}
+                        delay={.75}
+                        decimals={1}
                         duration={1}
-                        suffix="K"
+                        suffix="M"
                       />
                     </h6>
                   )}
@@ -555,7 +581,7 @@ const HomeIndex = ({ data }) => {
                     variants={circleText}
                     animate={countUpInView3 ? "visible" : "hidden"}
                   >
-                    0.0% of Roblox DAU
+                    2% of Roblox MAU
                   </motion.p>
                   <motion.p
                     variants={circleText}
@@ -1056,7 +1082,7 @@ const ImaginationText = styled.div`
       line-height: 55px;
     }
     p {
-      width: 69%;
+      width: 75%;
       padding-top: 2.5rem;
     }
   }
@@ -1165,13 +1191,19 @@ const CircleWrapper = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.s}px) {
     right: 0%;
-    top: -10%;
+    top: 4%;
     svg {
       /* scale: 1; */
       transform: scale(1);
       width: 160px;
       height: auto;
     }
+  }
+  @media (max-width: 390px) {
+    top: -5%;
+  }
+  @media (max-width: 375px) {
+    top: -10%;
   }
 `
 
@@ -1299,8 +1331,8 @@ const GreenTriangleWrapper = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    right: 0%;
-    top: 66%;
+    right: 2%;
+    top: 70%;
     scale: 0.5;
     /* transform: scale(0.5); */
   }
@@ -1453,7 +1485,7 @@ const Brief = styled(motion.div)`
   }
 `
 
-const Headline = styled.div`
+const Headline = styled(motion.div)`
   display: flex;
   align-items: center;
   margin-bottom: 3.5rem;

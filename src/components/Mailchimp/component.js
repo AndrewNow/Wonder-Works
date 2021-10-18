@@ -125,7 +125,7 @@ const MobileWhiteSparkle = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     right: 7%;
     z-index: 0;
-    bottom: 55%;
+    bottom: 42%;
     height: 71px;
     width: 71px;
     svg {
@@ -136,7 +136,7 @@ const MobileWhiteSparkle = styled.div`
   @media (max-width: 400px) {
     right: 11%;
     z-index: 0;
-    bottom: 53%;
+    bottom: 42%;
   }
 `
 

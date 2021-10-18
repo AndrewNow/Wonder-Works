@@ -155,36 +155,36 @@ const Investors = ({ data }) => {
   }
 
   const PastEventsData = [
-    {
-      date: "29.04.21 — 12:45PM ET",
-      name: "First Event Name",
-      desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
-    },
-    {
-      date: "29.04.21 — 12:45PM ET",
-      name: "Second Event Name",
-      desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
-    },
-    {
-      date: "29.04.21 — 12:45PM ET",
-      name: "Event Name",
-      desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
-    },
-    {
-      date: "29.04.21 — 12:45PM ET",
-      name: "Event Name",
-      desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
-    },
-    {
-      date: "29.04.21 — 12:45PM ET",
-      name: "Event Name",
-      desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
-    },
-    {
-      date: "29.04.21 — 12:45PM ET",
-      name: "Event Name",
-      desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
-    },
+    // {
+    //   date: "29.04.21 — 12:45PM ET",
+    //   name: "First Event Name",
+    //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
+    // },
+    // {
+    //   date: "29.04.21 — 12:45PM ET",
+    //   name: "Second Event Name",
+    //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
+    // },
+    // {
+    //   date: "29.04.21 — 12:45PM ET",
+    //   name: "Event Name",
+    //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
+    // },
+    // {
+    //   date: "29.04.21 — 12:45PM ET",
+    //   name: "Event Name",
+    //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
+    // },
+    // {
+    //   date: "29.04.21 — 12:45PM ET",
+    //   name: "Event Name",
+    //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
+    // },
+    // {
+    //   date: "29.04.21 — 12:45PM ET",
+    //   name: "Event Name",
+    //   desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna ",
+    // },
   ]
 
   // Only display 2 posts from PastEventsData[] at first
@@ -291,7 +291,7 @@ const Investors = ({ data }) => {
               variants={circleText}
               animate={countUpInView2 ? "visible" : "hidden"}
             >
-              <p>4% of Roblox DAU</p>
+              <p>4% of Roblox MAU</p>
               <p>
                 2.2M+ Total Playing hrs/mo <br />
                 DAU 1.5M <br />
@@ -314,11 +314,11 @@ const Investors = ({ data }) => {
                 <h6>
                   <CountUp
                     start={0}
-                    end={500}
+                    end={2}
                     delay={1.15}
-                    decimals={0}
+                    decimals={1}
                     duration={1}
-                    suffix="K"
+                    suffix="M"
                   />
                 </h6>
               )}
@@ -332,7 +332,7 @@ const Investors = ({ data }) => {
                 variants={circleText}
                 animate={countUpInView3 ? "visible" : "hidden"}
               >
-                0.0% of Roblox DAU
+                2% of Roblox MAU
               </motion.p>
               <motion.p
                 variants={circleText}
@@ -443,49 +443,59 @@ const Investors = ({ data }) => {
             Past <br />
             Events
           </h2>
-          <AnimateSharedLayout>
-            <EventsList layout>
-              {/* we use .slice() to only render the declared number of events at once */}
-              {/* otherwise, .map() would load all posts on the DOM at once */}
-              {PastEventsData.slice(0, visiblePosts).map((event, index) => {
-                return (
-                  <Event
-                    key={index}
-                    variants={eventAnimation}
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    layout
-                  >
-                    <EventImage />
-                    <EventText>
-                      <p>{event.date}</p>
-                      <h4>{event.name}</h4>
-                      <p>{event.desc}</p>
-                    </EventText>
-                  </Event>
-                )
-              })}
 
-              {visiblePosts === PastEventsData.length ? (
-                // if user hits end of PastEventsData array, button closes posts
-                <EventsButton layout onClick={handleClosePosts}>
-                  View less events
-                </EventsButton>
-              ) : (
-                // Button to open more posts
-                <EventsButton layout onClick={handleLoadNewPosts}>
-                  More past events <Arrow />
-                </EventsButton>
-              )}
-            </EventsList>
-          </AnimateSharedLayout>
+          {PastEventsData.length > 0 ? (
+            <AnimateSharedLayout>
+              <EventsList layout>
+                {/* we use .slice() to only render the declared number of events at once */}
+                {/* otherwise, .map() would load all posts on the DOM at once */}
+                {PastEventsData.slice(0, visiblePosts).map((event, index) => {
+                  return (
+                    <Event
+                      key={index}
+                      variants={eventAnimation}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      layout
+                    >
+                      <EventImage />
+                      <EventText>
+                        <p>{event.date}</p>
+                        <h4>{event.name}</h4>
+                        <p>{event.desc}</p>
+                      </EventText>
+                    </Event>
+                  )
+                })}
+
+                {visiblePosts === PastEventsData.length ? (
+                  // if user hits end of PastEventsData array, button closes posts
+                  <EventsButton layout onClick={handleClosePosts}>
+                    View less events
+                  </EventsButton>
+                ) : (
+                  // Button to open more posts
+                  <EventsButton layout onClick={handleLoadNewPosts}>
+                    More past events <Arrow />
+                  </EventsButton>
+                )}
+              </EventsList>
+            </AnimateSharedLayout>
+          ) : (
+            <h4>Coming Soon...</h4>
+          )}
         </PastEvents>
+
         <PastEventsMobile>
           <h2>
             Past <br /> Events
           </h2>
-          <EventsCarouselMobile PastEventsData={PastEventsData} />
+          {PastEventsData.length > 0 ? (
+            <EventsCarouselMobile PastEventsData={PastEventsData} />
+          ) : (
+            <h4>Coming Soon...</h4>
+          )}
         </PastEventsMobile>
       </EventsWrapper>
       <ContactUsWrapper>
@@ -963,7 +973,7 @@ const LogoWrapper = styled.div`
     padding-right: 2rem;
     font-size: 20px;
     line-height: 20px;
-    font-family: "calibre-regular";
+    font-family: "calibre-semibold";
     color: black;
   }
 
@@ -1019,6 +1029,9 @@ const EventsWrapper = styled.section`
   margin-bottom: 10rem;
   h2 {
     padding-bottom: 5rem;
+  }
+  h4 {
+    line-height: 105%;
   }
   br {
     display: none;
@@ -1077,7 +1090,7 @@ const PastEventsMobile = styled.div`
     overflow: hidden;
     h2 {
       margin-top: 5rem;
-      padding-bottom: 0;
+      padding-bottom: 2rem;
     }
   }
 `
