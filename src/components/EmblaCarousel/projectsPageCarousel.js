@@ -8,7 +8,7 @@ import * as Svg from "../../svg/projectspage"
 import { Arrow } from "../../svg/miscellaneous"
 import breakpoints from "../breakpoints"
 import {
-  PlayButtonProjectsPageMobile,
+  PlayButtonProjectsPage,
   PlayIconReactPlayer,
 } from "./playButtons"
 
@@ -181,7 +181,7 @@ const ProjectsPageCarousel = () => {
                     progressInterval={500}
                     light={thumbnailClicked ? false : video.light}
                     playIcon={
-                      <PlayButtonProjectsPageMobile
+                      <PlayButtonProjectsPage
                         setPaused={setPaused}
                         setThumbnailClicked={setThumbnailClicked}
                       />
@@ -367,6 +367,9 @@ const EmblaSlide = styled(motion.div)`
     min-width: 90vw;
     min-height: 400px;
   }
+  @media (max-width: ${breakpoints.l}px) {
+    min-height: 380px;
+  }
   @media (max-width: ${breakpoints.s}px) {
     min-height: 187px;
     min-width: 90vw;
@@ -536,7 +539,8 @@ const KeepGoing = styled.div`
     left: 50%;
     transform: translate3d(-50%, 0, 0);
     svg {
-      scale: 0.8;
+      /* scale: 0.8; */
+      transform: scale(.8);
       padding: 0;
     }
   }

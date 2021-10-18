@@ -5,7 +5,7 @@ import breakpoints from "../breakpoints"
 import { PressPlaySVG, PressPauseSVG } from "./buttons"
 import { StaticImage } from "gatsby-plugin-image"
 
-export const PlayButtonProjectsPageMobile = ({
+export const PlayButtonProjectsPage = ({
   setPaused,
   paused,
   setThumbnailClicked,
@@ -78,7 +78,7 @@ export const PlayButtonProjectsPageMobile = ({
           placeholder="none"
           quality={100}
           style={{ position: "relative", zIndex: "5" }}
-        />
+          />
       </ThumbnailWrapper>
 
       {/* Mobile layout shift starts here */}
@@ -89,7 +89,7 @@ export const PlayButtonProjectsPageMobile = ({
           whileTap={{ scale: 0.9 }}
           variants={button}
           initial="visible"
-        >
+          >
           <TextWrapper variants={rotation} animate="visible">
             {!paused ? <PressPauseSVG /> : <PressPlaySVG />}
           </TextWrapper>
@@ -100,11 +100,11 @@ export const PlayButtonProjectsPageMobile = ({
               viewBox="0 0 78 89"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-            >
+              >
               <path
                 d="M0 8.70153C0 3.89553 3.86997 0 8.64554 0C10.1286 0 11.0687 0.38982 12.7225 1.05198L73.3695 36.563C76.1897 38.2451 77.4959 40.948 78 44.0639V44.9379C77.4959 48.052 76.1897 50.7558 73.3695 52.4388L12.7233 87.9489C11.0687 88.612 10.1286 89 8.64643 89C3.87086 89 0.0008843 85.1045 0.0008843 80.2985L0 8.70153Z"
                 fill="#F7F7FC"
-              />
+                />
             </svg>
           </PlaySVG>
         </Playbutton>
@@ -115,6 +115,7 @@ export const PlayButtonProjectsPageMobile = ({
             alt="Traitor video thumbnail"
             placeholder="none"
             quality={100}
+            style={{ position: "relative", zIndex: "5" }}
           />
         </ThumbnailWrapper>
       </MobileThumbnail>
@@ -458,11 +459,11 @@ const TextWrapper = styled(motion.div)`
   } */
 
   @media (max-width: ${breakpoints.l}px) {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     svg {
-      width: 220px;
-      height: 220px;
+      width: 180px;
+      height: 180px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
