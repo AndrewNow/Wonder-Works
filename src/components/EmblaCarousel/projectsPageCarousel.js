@@ -360,6 +360,10 @@ const EmblaSlide = styled(motion.div)`
   min-height: 600px;
   min-width: 72vw; // 80% (embla) of 90% (const Embla)
 
+  video {
+    object-fit: contain;
+  }
+
   @media (max-width: ${breakpoints.xxl}px) {
     min-height: 650px;
     min-width: 100%;

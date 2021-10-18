@@ -126,6 +126,7 @@ export const PlayButtonProjectsPage = ({
 const EmblaChild = styled.div`
   width: 100%;
   height: 100%;
+  object-fit: contain;
 `
 
 const Background = styled(motion.div)`
