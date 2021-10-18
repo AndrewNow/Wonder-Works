@@ -49,8 +49,7 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     setPrevBtnEnabled(embla.canScrollPrev())
     setNextBtnEnabled(embla.canScrollNext())
-    onInView()
-  }, [embla, onInView])
+  }, [embla])
 
   // Start playing the video if user scrolls to next slide
   const onInView = useCallback(() => {
@@ -65,8 +64,18 @@ const LatestProjectsCarousel = () => {
 
   // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
   // also controls left/right buttons
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+  const scrollNext = useCallback(() => {
+    if (!embla) return
+    embla.scrollNext()
+    onInView()
+  }, [embla, onInView])
+  
+  const scrollPrev = useCallback(() => {
+    if (!embla) return
+    embla.scrollPrev()
+    onInView()
+  }, [embla, onInView])
+  // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
 
   // Logic for bottom progress bar (pagination)
   const onScroll = useCallback(() => {
@@ -217,7 +226,7 @@ const LatestProjectsCarousel = () => {
           </p>
         </ViewAllBottom>
       </Embla>
-      {console.log("paused:" + !paused, "videoInView:" + videoInView )}
+      {console.log("paused:" + !paused, "videoInView:" + videoInView)}
     </Wrapper>
   )
 }
