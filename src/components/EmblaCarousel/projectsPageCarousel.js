@@ -361,12 +361,12 @@ const EmblaSlide = styled(motion.div)`
   min-width: 72vw; // 80% (embla) of 90% (const Embla)
 
   @media (max-width: ${breakpoints.xxl}px) {
-    min-height: 600px;
+    min-height: 650px;
     min-width: 100%;
   }
   @media (max-width: ${breakpoints.xl}px) {
+    min-height: 520px;
     min-width: 90vw;
-    min-height: 400px;
   }
   @media (max-width: ${breakpoints.l}px) {
     min-height: 380px;
