@@ -49,6 +49,7 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     setPrevBtnEnabled(embla.canScrollPrev())
     setNextBtnEnabled(embla.canScrollNext())
+    onInView()
   }, [embla])
 
   // Start playing the video if user scrolls to next slide
