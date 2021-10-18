@@ -80,13 +80,9 @@ const LatestProjectsCarousel = () => {
     if (!embla) return
     if (!videoInView) return
     if (embla.clickAllowed()) embla.scrollNext()
-    embla.scrollNext()
     setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
     setThumbnailClicked(true)
-    setPaused(false)
-    setHover(false)
-    onInView()
-  }, [embla, videoInView, onInView])
+  }, [embla, videoInView])
 
   const scrollPrev = useCallback(() => {
     if (!embla) return
@@ -94,23 +90,21 @@ const LatestProjectsCarousel = () => {
     if (embla.clickAllowed()) embla.scrollPrev()
     setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
     setThumbnailClicked(true)
-    setPaused(false)
-    setHover(false)
-    onInView()
-  }, [embla, videoInView, onInView])
+  }, [embla, videoInView])
 
   // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
 
   // Logic for bottom progress bar (pagination)
   const onScroll = useCallback(() => {
     if (!embla) return
+    if (!videoInView) return
     const progress = Math.max(0, Math.min(1, embla.scrollProgress()))
     setScrollProgress(progress * 100)
     // setThumbnailClicked to true if user scrolls past first slide without clicking the intial "light" play button
     if (embla.canScrollPrev()) {
       setThumbnailClicked(true)
     }
-  }, [embla, setScrollProgress])
+  }, [embla, videoInView, setScrollProgress])
 
   // ----------------------- 4. Run embla configurations -----------------------
   useEffect(() => {
