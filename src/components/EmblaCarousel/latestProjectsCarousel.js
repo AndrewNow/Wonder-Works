@@ -64,17 +64,41 @@ const LatestProjectsCarousel = () => {
 
   // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
   // also controls left/right buttons
+  // const scrollNext = useCallback(() => {
+  //   if (!embla) return
+  //   embla.scrollNext()
+  //   onInView()
+  // }, [embla, onInView])
+
+  // const scrollPrev = useCallback(() => {
+  //   if (!embla) return
+  //   embla.scrollPrev()
+  //   onInView()
+  // }, [embla, onInView])
+
   const scrollNext = useCallback(() => {
     if (!embla) return
+    if (!videoInView) return
+    if (embla.clickAllowed()) embla.scrollNext()
     embla.scrollNext()
+    setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
+    setThumbnailClicked(true)
+    setPaused(false)
+    setHover(false)
     onInView()
-  }, [embla, onInView])
-  
+  }, [embla, videoInView, onInView])
+
   const scrollPrev = useCallback(() => {
     if (!embla) return
-    embla.scrollPrev()
+    if (!videoInView) return
+    if (embla.clickAllowed()) embla.scrollPrev()
+    setSlidesInView("video" + JSON.stringify(embla.slidesInView()))
+    setThumbnailClicked(true)
+    setPaused(false)
+    setHover(false)
     onInView()
-  }, [embla, onInView])
+  }, [embla, videoInView, onInView])
+
   // const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
 
   // Logic for bottom progress bar (pagination)
@@ -91,13 +115,14 @@ const LatestProjectsCarousel = () => {
   // ----------------------- 4. Run embla configurations -----------------------
   useEffect(() => {
     if (!embla) return
+    if (!videoInView) return
     onSelect()
     onScroll()
     onInView()
     embla.on("select", onSelect)
     embla.on("scroll", onScroll)
     embla.on("settle", onInView)
-  }, [embla, onScroll, onSelect, onInView])
+  }, [embla, videoInView, onScroll, onSelect, onInView])
 
   // ---------------------------- 5. Video data ----------------------------
   // Light: is the first video's thumbnail, loading react-player in "light mode"
