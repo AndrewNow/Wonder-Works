@@ -64,18 +64,6 @@ const LatestProjectsCarousel = () => {
 
   // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
   // also controls left/right buttons
-  // const scrollNext = useCallback(() => {
-  //   if (!embla) return
-  //   embla.scrollNext()
-  //   onInView()
-  // }, [embla, onInView])
-
-  // const scrollPrev = useCallback(() => {
-  //   if (!embla) return
-  //   embla.scrollPrev()
-  //   onInView()
-  // }, [embla, onInView])
-
   const scrollNext = useCallback(() => {
     if (!embla) return
     if (!videoInView) return

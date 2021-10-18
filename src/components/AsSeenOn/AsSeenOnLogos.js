@@ -367,22 +367,19 @@ export const AsSeenOnLogosAbout = () => {
 }
 
 const LogosHomepage = styled(motion.div)`
-  max-width: 80%;
-  padding-bottom: 5rem;
+  position: relative;
+  max-width: 85%;
   display: flex;
-
+  margin-bottom: 5rem;
   span {
-    width: 220px;
+    width: 195px;
     align-self: center;
     margin: 0 auto;
     transform-origin: bottom;
-    overflow: hidden;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
     max-width: 80%;
-    padding-bottom: 0;
-    margin-bottom: 5rem;
     span {
       width: 200px;
     }
