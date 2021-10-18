@@ -450,24 +450,24 @@ const LogosHomepageMobile = styled(motion.div)`
 
 const LogosAboutpage = styled(motion.div)`
   position: relative;
-  width: 55%;
+  max-width: 65%;
   display: flex;
   span {
-    width: auto;
+    width: 175px;
     align-self: center;
     margin: 0 auto;
     transform-origin: bottom;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
-    width: 65%;
+    max-width: 65%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    width: 80%;
+    max-width: 80%;
     height: 85px;
   }
   @media (max-width: ${breakpoints.l}px) {
-    width: 85%;
+    max-width: 85%;
     margin-bottom: 3rem;
   }
 
@@ -480,7 +480,7 @@ const LogosAboutpageMobile = styled(motion.div)`
   @media (max-width: ${breakpoints.m}px) {
     margin-bottom: 3rem;
     /* width: 90%; */
-    width: 100%;
+    width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;

@@ -944,7 +944,7 @@ const DiscoverMore = styled(Link)`
   justify-content: center;
   align-items: center;
   svg {
-    margin-left: 0.35rem;
+    margin-left: 0.5rem!important;
     transition: var(--hover-transition);
   }
   :hover {
@@ -959,7 +959,7 @@ const DiscoverMore = styled(Link)`
     font-size: 25px;
     padding: 0.5rem 2.5rem;
     svg {
-      margin-left: 0.25rem;
+      margin-left: 0.45rem;
       /* scale: 0.8; */
       transform: scale(0.8);
     }
