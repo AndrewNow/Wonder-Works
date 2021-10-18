@@ -279,7 +279,7 @@ export const PlayButtonLatestProjects = ({
     },
   }
   return (
-    <Thumbnail key="mobile">
+    <Thumbnail key="thumb">
       <Playbutton
         onClick={() => {
           setPaused(false)

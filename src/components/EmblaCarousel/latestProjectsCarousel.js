@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer"
 import breakpoints from "../breakpoints"
 import { Arrow } from "../../svg/miscellaneous"
 import { PlayIconReactPlayer, PlayButtonLatestProjects } from "./playButtons"
-import { NextButton, PrevButton } from './buttons'
+import { NextButtonLatestProjects, PrevButtonLatestProjects } from "./buttons"
 
 const LatestProjectsCarousel = () => {
   // -------------------- 1. Initialize Embla Carousel & State --------------------
@@ -24,6 +24,8 @@ const LatestProjectsCarousel = () => {
   const [paused, setPaused] = useState(true)
   const [hover, setHover] = useState(true)
   const [thumbnailClicked, setThumbnailClicked] = useState(false)
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
 
   // event handlers for displaying pause/play button
   const setHoverTrue = () => {
@@ -45,6 +47,8 @@ const LatestProjectsCarousel = () => {
   // Run embla when the scroll snap changes
   const onSelect = useCallback(() => {
     if (!embla) return
+    setPrevBtnEnabled(embla.canScrollPrev())
+    setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 
   // Start playing the video if user scrolls to next slide
@@ -59,7 +63,10 @@ const LatestProjectsCarousel = () => {
   }, [embla, slidesInView])
 
   // Scroll to next slide after video ends (see onEnded method for <ReactPlayer/> )
+  // also controls left/right buttons
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+
 
   // Logic for bottom progress bar (pagination)
   const onScroll = useCallback(() => {
@@ -89,7 +96,8 @@ const LatestProjectsCarousel = () => {
   const videoLinks = [
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
-      light: "https://i.imgur.com/yNmhs4y.png",
+      // light: "https://i.imgur.com/yNmhs4y.png",
+      light: "false",
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/EDC+Format.mp4",
@@ -193,6 +201,11 @@ const LatestProjectsCarousel = () => {
               style={{ transform: `translateX(calc(${scrollProgress}% * 1))` }}
             />
           </EmblaProgress>
+          <PrevButtonLatestProjects onClick={scrollPrev} enabled={prevBtnEnabled} />
+          <NextButtonLatestProjects
+            onClick={scrollNext}
+            enabled={nextBtnEnabled}
+          />
         </ProgressContainer>
         <ViewAllBottom to="/projects">
           <p>
@@ -212,6 +225,7 @@ const Wrapper = styled.div`
   width: 90%;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 5rem;
   p {
     position: absolute;
     top: 10%;
@@ -298,6 +312,19 @@ const Title = styled.div`
       margin-bottom: 1.25rem;
     }
   }
+  @media (max-width: ${breakpoints.s}px) {
+    h2 {
+      font-size: 45px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h2 {
+      font-size: 32px;
+    }
+    svg {
+      margin-bottom: 0.65rem;
+    }
+  }
   /* @media (max-width: ${breakpoints.s}px) {
     top: 15%;
     h2 {
@@ -331,7 +358,8 @@ const ViewAllBottom = styled(Link)`
     float: right;
     position: absolute;
     right: 8%;
-    bottom: -18.5%;
+    /* bottom: -18.5%; */
+    bottom: -55%;
     p {
       filter: opacity(1);
       font-size: 24px;
@@ -349,7 +377,7 @@ const ViewAllBottom = styled(Link)`
     }
   }
   @media (max-width: ${breakpoints.l}px) {
-    bottom: -20%;
+    bottom: -65%;
     p {
       font-size: 22px;
     }
@@ -360,7 +388,7 @@ const ViewAllBottom = styled(Link)`
     float: right;
     position: absolute;
     right: 5%;
-    bottom: -60%;
+    bottom: -90%;
     p {
       font-size: 16px;
       filter: opacity(1) !important;
@@ -378,11 +406,14 @@ const ViewAllBottom = styled(Link)`
       }
     }
   }
+  @media (max-width: 470px) {
+    bottom: -100%;
+  }
   @media (max-width: 400px) {
-    bottom: -75%;
+    bottom: -85%;
   }
   @media (max-width: ${breakpoints.xs}px) {
-    bottom: -50%;
+    bottom: -70%;
   }
 `
 const Embla = styled.div`
@@ -431,6 +462,9 @@ const EmblaSlide = styled(motion.div)`
   @media (max-width: ${breakpoints.l}px) {
     min-height: 410px;
   }
+  @media (max-width: ${breakpoints.m}px) {
+    min-height: 200px;
+  }
   @media (max-width: ${breakpoints.s}px) {
     min-height: 187px;
     min-width: 90vw;
@@ -468,11 +502,10 @@ const ProgressContainer = styled.div`
   height: 100%;
   padding-top: 3rem;
 
-  ::after {
+  /* ::after {
     cursor: pointer;
     content: "Swipe to view more projects!";
     font-family: "calibre-regular";
-    /* display: none; */
     text-align: center;
     color: var(--color-white);
     padding-top: 1rem;
@@ -486,6 +519,36 @@ const ProgressContainer = styled.div`
   :hover::after {
     opacity: 1;
     transform: translateY(0rem);
+  } */
+
+  & button:nth-child(2) {
+    left: 33%;
+    bottom: -100px;
+    position: absolute;
+  }
+  & button:nth-child(3) {
+    bottom: -100px;
+    right: 33%;
+    position: absolute;
+  }
+  & button {
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    button {
+      border: 1px solid var(--color-white);
+      width: 50px;
+      height: 50px;
+    }
+    & button:nth-child(2) {
+      left: 25%;
+    }
+    & button:nth-child(3) {
+      right: 25%;
+    }
   }
 `
 
