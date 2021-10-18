@@ -166,6 +166,7 @@ const ProjectsPageCarousel = () => {
                     </AnimatePresence>
                   )}
                   <ReactPlayer
+                    style={{position: "absolute"}}
                     url={video.Src}
                     width="100%"
                     height="100%"

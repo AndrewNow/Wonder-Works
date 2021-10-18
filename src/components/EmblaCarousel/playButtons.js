@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import breakpoints from "../breakpoints"
 import { PressPlaySVG, PressPauseSVG } from "./buttons"
 import { StaticImage } from "gatsby-plugin-image"
@@ -58,7 +58,7 @@ export const PlayButtonProjectsPage = ({
   return (
     <EmblaChild>
       {/* Desktop layout starts here */}
-      <Background key="desktop" onClick={handleClick}>
+      <Background onClick={handleClick}>
         <BackgroundText>
           <h2>
             Discover <br /> what’s in the works at Wonder Works Studio.
