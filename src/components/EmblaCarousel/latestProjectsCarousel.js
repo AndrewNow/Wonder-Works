@@ -50,7 +50,7 @@ const LatestProjectsCarousel = () => {
     setPrevBtnEnabled(embla.canScrollPrev())
     setNextBtnEnabled(embla.canScrollNext())
     onInView()
-  }, [embla])
+  }, [embla, onInView])
 
   // Start playing the video if user scrolls to next slide
   const onInView = useCallback(() => {
@@ -67,7 +67,6 @@ const LatestProjectsCarousel = () => {
   // also controls left/right buttons
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
-
 
   // Logic for bottom progress bar (pagination)
   const onScroll = useCallback(() => {
@@ -98,11 +97,11 @@ const LatestProjectsCarousel = () => {
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
       // light: "https://i.imgur.com/yNmhs4y.png",
-      light: "false",
+      light: true,
     },
     {
       Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/EDC+Format.mp4",
-      light: "false",
+      light: true,
     },
     // {
     //   Src: "https://ww-project-trailers.s3.us-west-1.amazonaws.com/V2+-+TIMMEH+GAMEPLAY+TRAILER.mp4",
@@ -202,7 +201,10 @@ const LatestProjectsCarousel = () => {
               style={{ transform: `translateX(calc(${scrollProgress}% * 1))` }}
             />
           </EmblaProgress>
-          <PrevButtonLatestProjects onClick={scrollPrev} enabled={prevBtnEnabled} />
+          <PrevButtonLatestProjects
+            onClick={scrollPrev}
+            enabled={prevBtnEnabled}
+          />
           <NextButtonLatestProjects
             onClick={scrollNext}
             enabled={nextBtnEnabled}
@@ -215,6 +217,7 @@ const LatestProjectsCarousel = () => {
           </p>
         </ViewAllBottom>
       </Embla>
+      {console.log("paused:" + !paused, "videoInView:" + videoInView )}
     </Wrapper>
   )
 }

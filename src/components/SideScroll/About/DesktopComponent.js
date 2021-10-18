@@ -13,8 +13,6 @@ import { useInView } from "react-intersection-observer"
 import { useEmblaCarousel } from "embla-carousel/react"
 // import { useThrottleFn } from "react-use"
 
-
-
 const DesktopComponent = () => {
   // This section handles the side scrolling "Pillars" section.
   // The height of the container (StickyContainer) defines how long the user must scroll to get to the next slide
@@ -116,16 +114,17 @@ const DesktopComponent = () => {
   // ------------------- Hook for 3. -------------------
   const useScrollProgress = horizontalScroll => {
     const [scrollProgress, setScrollProgress] = useState()
-    const onScroll = () => {
+    const onScroll = useCallback(() => {
       // get the component's coordinates
-      const horizontalScrollDiv = horizontalScroll.current.getBoundingClientRect()
+      const horizontalScrollDiv =
+        horizontalScroll.current.getBoundingClientRect()
       // divide bottom distance to top of viewport by component height to get a 1-0 value of scroll progress
       setScrollProgress(horizontalScrollDiv.bottom / horizontalScrollDiv.height)
-    }
-    
+    }, [horizontalScroll])
+
     // Throttle the scroll events for performance
     // const throttledOnScroll = useThrottleFn(onScroll, 300, [onScroll])
-    
+
     useLayoutEffect(() => {
       window.addEventListener("scroll", onScroll)
       return () => window.removeEventListener("scroll", onScroll)
@@ -171,26 +170,23 @@ const DesktopComponent = () => {
     [embla]
   )
   // Create rules for when the slides should change according to the returned value from scrollProgress
-  useEffect(
-    () => {
-      if (scrollProgress > 0.85 && scrollProgress < 1) {
-        scrollToFirstSlide()
-      } else if (scrollProgress < 0.85 && scrollProgress > 0.5) {
-        scrollToSecondSlide()
-      } else if (scrollProgress < 0.5 && scrollProgress > 0.25) {
-        scrollToThirdSlide()
-      } else if (scrollProgress < 0.25 && scrollProgress > 0) {
-        scrollToFourthSlide()
-      }
+  useEffect(() => {
+    if (scrollProgress > 0.85 && scrollProgress < 1) {
+      scrollToFirstSlide()
+    } else if (scrollProgress < 0.85 && scrollProgress > 0.5) {
+      scrollToSecondSlide()
+    } else if (scrollProgress < 0.5 && scrollProgress > 0.25) {
+      scrollToThirdSlide()
+    } else if (scrollProgress < 0.25 && scrollProgress > 0) {
+      scrollToFourthSlide()
     }
-    , [
+  }, [
     scrollProgress,
     scrollToFirstSlide,
     scrollToSecondSlide,
     scrollToThirdSlide,
     scrollToFourthSlide,
-    ]
-  )
+  ])
 
   // prevent excessive scrolling
   const preventEdgeScrolling = embla => {
@@ -565,7 +561,6 @@ const RightInner = styled(motion.div)`
     svg {
       max-width: 170px;
     }
-
   }
   @media (max-width: ${breakpoints.s}px) {
     margin: 0;
