@@ -494,6 +494,7 @@ const Projects = ({ data }) => {
           <Tiles>
             <Tile>
               <Image
+                style={{ backgroundColor: "#1a1748" }}
                 initial={{
                   boxShadow: "6px 6px 0px #1a1748",
                 }}
@@ -509,7 +510,10 @@ const Projects = ({ data }) => {
                   placeholder="tracedSVG"
                   quality={80}
                   imgStyle={{ objectFit: "scale-down" }}
-                  style={{ height: "100%", width: "100%" }}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                  }}
                 />
               </Image>
               <p>KREEKCRAFT</p>
@@ -2179,14 +2183,14 @@ const Tile = styled.div`
   align-items: center;
   margin-bottom: 1.5rem;
   /* overflow: hidden; */
-  
+
   p {
     text-transform: uppercase;
     padding-top: 1rem;
     text-align: center;
     font-family: "calibre-medium";
   }
-  `
+`
 
 const Image = styled(motion.div)`
   overflow: hidden;
