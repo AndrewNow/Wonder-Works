@@ -502,9 +502,19 @@ const Projects = ({ data }) => {
                   y: -10,
                   x: -10,
                 }}
-              ></Image>
+              >
+                <StaticImage
+                  src="../images/Projects/kreekcraft.png"
+                  alt="An image of Kreekcraft's face"
+                  placeholder="tracedSVG"
+                  quality={80}
+                  imgStyle={{ objectFit: "scale-down" }}
+                  style={{ height: "100%", width: "100%" }}
+                />
+              </Image>
               <p>KREEKCRAFT</p>
             </Tile>
+
             <Tile>
               <Image
                 initial={{
@@ -561,15 +571,15 @@ const Projects = ({ data }) => {
                 }}
               >
                 <StaticImage
-                  src="../images/Projects/logo-juniper.png"
-                  alt="Juniper Play's logo"
+                  src="../images/Projects/insomniac.png"
+                  alt="Insomniac's logo"
                   placeholder="tracedSVG"
                   quality={80}
                   imgStyle={{ objectFit: "scale-down" }}
                   style={{ height: "100%", width: "100%" }}
                 />
               </Image>
-              <p>Juniper Play</p>
+              <p>EDC</p>
             </Tile>
             <Tile>
               <Image
@@ -581,17 +591,8 @@ const Projects = ({ data }) => {
                   y: -10,
                   x: -10,
                 }}
-              >
-                <StaticImage
-                  src="../images/Projects/logo-phatmojo.png"
-                  alt="Phat Mojo's logo."
-                  placeholder="tracedSVG"
-                  quality={80}
-                  imgStyle={{ objectFit: "scale-down" }}
-                  style={{ height: "100%", width: "100%" }}
-                />
-              </Image>
-              <p>Phat Mojo</p>
+              ></Image>
+              <p>TBA</p>
             </Tile>
             <Tile>
               <Image
@@ -2145,7 +2146,6 @@ const Tiles = styled.div`
   padding-top: 10rem;
   width: 65%;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
@@ -2178,14 +2178,18 @@ const Tile = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
+  /* overflow: hidden; */
+  
   p {
+    text-transform: uppercase;
     padding-top: 1rem;
     text-align: center;
     font-family: "calibre-medium";
   }
-`
+  `
 
 const Image = styled(motion.div)`
+  overflow: hidden;
   width: 250px;
   height: 250px;
   border: 2px solid var(--color-black);
