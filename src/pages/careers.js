@@ -683,13 +683,14 @@ const Careers = ({ data }) => {
                 />
               </Line>
 
-              <LineHalfWidthDesktop>
+                <Line>
+
                 <Select
                   name="position"
                   required
                   onChange={handleChange("position")}
                   value={formdata.position}
-                >
+                  >
                   <option value="" disabled>
                     Position applying for *{" "}
                   </option>
@@ -701,14 +702,7 @@ const Careers = ({ data }) => {
                     )
                   })}
                 </Select>
-                <Input
-                  type="text"
-                  placeholder="City *"
-                  name="city"
-                  onChange={handleChange("city")}
-                  required
-                />
-              </LineHalfWidthDesktop>
+                  </Line>
               <Line>
                 <FullWidthInput
                   type="url"
@@ -727,7 +721,7 @@ const Careers = ({ data }) => {
                 <FileLabel htmlFor="myfile">
                   {formdata.resume
                     ? formdata.resume
-                    : "Attach resume here* (500kb limit)"}
+                    : "Attach resume here* (PDF only)"}
                   <svg
                     width="23"
                     height="23"
@@ -2011,7 +2005,7 @@ const FullWidthInput = styled.input`
 `
 
 const Select = styled.select`
-  width: 45%;
+  width: 100%;
   background: none;
   border: none;
   padding-bottom: 1rem;
