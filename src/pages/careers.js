@@ -179,11 +179,11 @@ const Careers = ({ data }) => {
         "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
     },
     {
-      title: "Jr. Programmer",
+      title: "Jr. Developer",
       desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
     },
     {
-      title: "Sr. Programmer",
+      title: "Sr. Developer",
       desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
     },
     {
@@ -534,7 +534,7 @@ const Careers = ({ data }) => {
                   />
                 </svg>
               </FormTopPositionDetails>
-              <div>
+              <FormTopText>
                 <h3>{CareerData[selectedCareer].title}</h3>
                 <h5>
                   To build games for everyone, we need ideas and magic from
@@ -561,7 +561,7 @@ const Careers = ({ data }) => {
                     {copySuccess}
                   </LinkCopiedAlertMobile>
                 </SharePostingWrapperMobile>
-              </div>
+              </FormTopText>
               <WOLogo>
                 <WOShortLogo />
               </WOLogo>
@@ -683,14 +683,13 @@ const Careers = ({ data }) => {
                 />
               </Line>
 
-                <Line>
-
+              <Line>
                 <Select
                   name="position"
                   required
                   onChange={handleChange("position")}
                   value={formdata.position}
-                  >
+                >
                   <option value="" disabled>
                     Position applying for *{" "}
                   </option>
@@ -702,7 +701,7 @@ const Careers = ({ data }) => {
                     )
                   })}
                 </Select>
-                  </Line>
+              </Line>
               <Line>
                 <FullWidthInput
                   type="url"
@@ -800,40 +799,40 @@ const Careers = ({ data }) => {
                   ) : null}
                 </AnimatePresence>
                 <AnimatePresence>
-                  {completedFields === 2 && formdata.firstName ? (
+                  {completedFields === 2 ? (
                     <motion.p
                       variants={bottomMessage}
                       initial="hidden"
                       animate="visible"
                       exit="exit"
                     >
-                      Nice to meet you, {formdata.firstName}!
+                      Looking good!
                     </motion.p>
                   ) : null}
                 </AnimatePresence>
                 <AnimatePresence>
-                  {completedFields === 2 && !formdata.firstName ? (
+                  {completedFields === 3 && !formdata.position ? (
                     <motion.p
                       variants={bottomMessage}
                       initial="hidden"
                       animate="visible"
                       exit="exit"
                     >
-                      Nice to meet you!
+                      Make sure you pick the right hat <br /> for you!
                     </motion.p>
                   ) : null}
                 </AnimatePresence>
                 <AnimatePresence>
-                  {completedFields === 3 && (
+                  {completedFields === 3 && formdata.position ? (
                     <motion.p
                       variants={bottomMessage}
                       initial="hidden"
                       animate="visible"
                       exit="exit"
                     >
-                      Almost there...
+                      Almost there!
                     </motion.p>
-                  )}
+                  ) : null}
                 </AnimatePresence>
                 <AnimatePresence>
                   {completedFields === 4 && (
@@ -843,7 +842,7 @@ const Careers = ({ data }) => {
                       animate="visible"
                       exit="exit"
                     >
-                      Looking good!
+                      Almost there!
                     </motion.p>
                   )}
                 </AnimatePresence>
@@ -1475,7 +1474,7 @@ const FormTop = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 5rem;
+  padding-bottom: 5rem;
   padding-top: 7rem;
   position: relative;
   z-index: 5;
@@ -1558,19 +1557,19 @@ const FormTop = styled.div`
 `
 
 const FormTopPositionDetails = styled.div`
-  position: relative;
+  position: absolute;
   padding-right: 6rem;
-  padding-left: 3rem;
-  padding-top: 8rem;
+  left: 10rem;
+  top: 8rem;
 
   @media (max-width: ${breakpoints.xl}px) {
     padding-right: 4rem;
-    padding-left: 1.5rem;
-    padding-top: 5rem;
+    left: 7.5%;
+    top: 5rem;
   }
   @media (max-width: ${breakpoints.l}px) {
     padding-right: 3rem;
-    padding-top: 3rem;
+    top: 3rem;
     max-width: 110px;
     min-width: 110px;
     svg {
@@ -1588,6 +1587,31 @@ const FormTopPositionDetails = styled.div`
 
   @media (max-width: ${breakpoints.s}px) {
     display: none;
+  }
+`
+
+const FormTopText = styled.div`
+  margin-left: 20%;
+
+  @media (max-width: ${breakpoints.l}px) {
+    margin-left: 15%;
+    h3 {
+      font-size: 36px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+
+    h3 {
+      font-size: 32px;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-left: 0%;
+    h3 {
+      padding: 2rem 0;
+      font-size: 22px;
+      line-height: 110%;
+    }
   }
 `
 
@@ -1787,14 +1811,16 @@ const FormContentSection = styled.div`
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    width: 100%;
-    // same rem width as FormTop and same px width as the positiondetails svg.
-    // This should eventually be converted to grid/columns instead.
-    padding-left: calc(2rem + 110px);
-    padding-right: calc(2rem + 110px);
+    width: 65%;
+    ul {
+      padding-left: 1rem !important;
+    }
+    p, h5 {
+      font-size: 26px;
+      line-height: 30px;
+    }
   }
   @media (max-width: ${breakpoints.m}px) {
-    padding: 1.75rem calc(1.5rem + 60px);
     p {
       font-size: 18px;
       line-height: 115%;
@@ -1840,10 +1866,23 @@ const FillOut = styled.form`
       white-space: normal;
     }
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    h3 {
+      padding-bottom: 3rem;
+    }
+  }
   @media (max-width: ${breakpoints.l}px) {
     width: 80%;
+    h3 {
+      font-size: 36px;
+    }
   }
 
+  @media (max-width: ${breakpoints.m}px) {
+    h3 {
+      font-size: 32px;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 2.5rem;
     br {
@@ -1874,66 +1913,6 @@ const Line = styled.div`
   }
 `
 
-const LineHalfWidthDesktop = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 0;
-
-  p {
-    font-size: 20px;
-    font-family: "calibre-medium";
-    text-transform: uppercase;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    flex-direction: column;
-    padding: 0;
-    /* margin: 0.75rem 0; */
-    select,
-    input {
-      margin: 0.75rem 0;
-    }
-  }
-`
-
-const Input = styled.input`
-  width: 45%;
-  background: none;
-  border: none;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--color-black);
-  box-sizing: border-box;
-  transition: var(--hover-transition);
-  font-family: "calibre-regular";
-  font-size: 20px;
-  border-radius: 0;
-  -webkit-border-radius: 0;
-  ::placeholder {
-    font-family: "calibre-regular";
-    font-size: 20px;
-    color: #42423e;
-    text-transform: uppercase;
-  }
-
-  :focus {
-    outline: none !important;
-    border-bottom: 2px solid #b06eab;
-  }
-
-  :hover {
-    border-bottom: 2px solid #b06eab;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    width: 100%;
-    font-size: 14px;
-    ::placeholder {
-      font-size: 14px;
-    }
-  }
-`
 
 const HalfWidthInput = styled.input`
   width: 45%;
@@ -2230,8 +2209,10 @@ const Bottom = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    height: 150px;
+    height: 125px;
+    padding-top: 0;
     p {
+      padding-top: 0;
       max-width: none;
       position: absolute;
       top: 1rem;
