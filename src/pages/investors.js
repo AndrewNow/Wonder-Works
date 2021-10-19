@@ -291,12 +291,14 @@ const Investors = ({ data }) => {
               variants={circleText}
               animate={countUpInView2 ? "visible" : "hidden"}
             >
-              <p>4% of Roblox MAU</p>
-              <p>
-                2.2M+ Total Playing hrs/mo <br />
-                DAU 1.5M <br />
-                DAU/MAU Ratio 7.79%
-              </p>
+              <motion.p
+                variants={circleText}
+                animate={countUpInView2 ? "visible" : "hidden"}
+              >
+                4% of Roblox MAU
+                <br />
+                26M Unique Users
+              </motion.p>
             </Desc>
           </Column>
           <Column ref={countUpRef3}>
@@ -332,15 +334,8 @@ const Investors = ({ data }) => {
                 variants={circleText}
                 animate={countUpInView3 ? "visible" : "hidden"}
               >
-                2% of Roblox MAU
-              </motion.p>
-              <motion.p
-                variants={circleText}
-                animate={countUpInView3 ? "visible" : "hidden"}
-              >
-                0.0M+ Total Playing hrs/mo <br />
-                DAU 0.0M <br />
-                DAU/MAU Ratio 0.00%
+                2% of Roblox MAU <br />
+                1M Unique Users
               </motion.p>
             </Desc>
           </Column>
@@ -767,9 +762,9 @@ const Desc = styled(motion.div)`
   display: flex;
   flex-direction: column;
   p:nth-of-type(1) {
-    padding-bottom: 1.25rem;
+    /* padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid black; */
   }
 
   @media (max-width: 800px) {

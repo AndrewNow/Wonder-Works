@@ -640,6 +640,7 @@ export const pageQuery = graphql`
 
 const CarouselWrapper = styled.section`
   background-color: var(--color-black);
+  min-height: 100vh;
 `
 
 // ----------------------- Overlook Bay -----------------------

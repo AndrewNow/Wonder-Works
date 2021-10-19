@@ -220,10 +220,12 @@ const LatestProjectsCarousel = () => {
           <PrevButtonLatestProjects
             onClick={scrollPrev}
             enabled={prevBtnEnabled}
+            aria-label="Previous video slide button"
           />
           <NextButtonLatestProjects
             onClick={scrollNext}
             enabled={nextBtnEnabled}
+            aria-label="Next video slide button"
           />
         </ProgressContainer>
         <ViewAllBottom to="/projects">
@@ -233,7 +235,6 @@ const LatestProjectsCarousel = () => {
           </p>
         </ViewAllBottom>
       </Embla>
-      {console.log("paused:" + !paused, "videoInView:" + videoInView)}
     </Wrapper>
   )
 }

@@ -293,6 +293,9 @@ const Wrapper = styled.div`
     padding-top: 7rem;
   }
   @media (max-width: ${breakpoints.xl}px) {
+    padding: 15rem 0;
+  }
+  @media (max-width: ${breakpoints.l}px) {
     padding: 10rem 0;
   }
   @media (max-width: ${breakpoints.s}px) {
@@ -540,9 +543,15 @@ const KeepGoing = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.xl}px) {
+    bottom: 0;
+  }
+  @media (max-width: ${breakpoints.l}px) {
     left: 50%;
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0%, 0);
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    bottom: 6%;
     svg {
       /* scale: 0.8; */
       transform: scale(.8);

@@ -128,7 +128,7 @@ const HomeIndex = ({ data }) => {
       },
     },
   }
-  
+
   const word2 = {
     visible: {
       y: 0,
@@ -175,15 +175,14 @@ const HomeIndex = ({ data }) => {
         staggerChildren: 0.15,
       },
     },
-    hidden: {
-    },
+    hidden: {},
   }
   const investorWords = {
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: .5,
+        duration: 0.5,
       },
     },
     hidden: {
@@ -208,7 +207,7 @@ const HomeIndex = ({ data }) => {
       opacity: 0,
     },
   }
-  
+
   const button = {
     visible: {
       y: 0,
@@ -226,7 +225,7 @@ const HomeIndex = ({ data }) => {
       opacity: 0,
     },
   }
-  
+
   const circleAnimation = {
     inView: {
       transition: {
@@ -240,20 +239,20 @@ const HomeIndex = ({ data }) => {
     },
   }
 
-    const circleText = {
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: 0.2,
-          duration: 0.5,
-        },
+  const circleText = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.2,
+        duration: 0.5,
       },
-      hidden: {
-        opacity: 0,
-        y: -60,
-      },
-    }
+    },
+    hidden: {
+      opacity: 0,
+      y: -60,
+    },
+  }
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })
@@ -495,7 +494,7 @@ const HomeIndex = ({ data }) => {
                         start={0}
                         end={150}
                         duration={1}
-                        delay={.75}
+                        delay={0.75}
                         suffix="M"
                       />
                     </h6>
@@ -519,7 +518,7 @@ const HomeIndex = ({ data }) => {
                       <CountUp
                         start={0}
                         end={5}
-                        delay={.75}
+                        delay={0.75}
                         decimals={1}
                         duration={1}
                         suffix="M"
@@ -537,14 +536,8 @@ const HomeIndex = ({ data }) => {
                     animate={countUpInView2 ? "visible" : "hidden"}
                   >
                     4% of Roblox MAU
-                  </motion.p>
-                  <motion.p
-                    variants={circleText}
-                    animate={countUpInView2 ? "visible" : "hidden"}
-                  >
-                    2.2M+ Total Playing hrs/mo <br />
-                    DAU 1.5M <br />
-                    DAU/MAU Ratio 7.79%
+                    <br />
+                    26M Unique Users
                   </motion.p>
                 </Desc>
               </Column>
@@ -564,7 +557,7 @@ const HomeIndex = ({ data }) => {
                       <CountUp
                         start={0}
                         end={2}
-                        delay={.75}
+                        delay={0.75}
                         decimals={1}
                         duration={1}
                         suffix="M"
@@ -581,15 +574,8 @@ const HomeIndex = ({ data }) => {
                     variants={circleText}
                     animate={countUpInView3 ? "visible" : "hidden"}
                   >
-                    2% of Roblox MAU
-                  </motion.p>
-                  <motion.p
-                    variants={circleText}
-                    animate={countUpInView3 ? "visible" : "hidden"}
-                  >
-                    0.0M+ Total Playing hrs/mo <br />
-                    DAU 0.0M <br />
-                    DAU/MAU Ratio 0.00%
+                    2% of Roblox MAU <br />
+                    1M Unique Users
                   </motion.p>
                 </Desc>
               </Column>
@@ -944,7 +930,7 @@ const DiscoverMore = styled(Link)`
   justify-content: center;
   align-items: center;
   svg {
-    margin-left: 0.5rem!important;
+    margin-left: 0.5rem !important;
     transition: var(--hover-transition);
   }
   :hover {
@@ -1619,9 +1605,10 @@ const Desc = styled.div`
   display: flex;
   flex-direction: column;
   p:nth-of-type(1) {
+    /* 
     padding-bottom: 1.25rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid black; */
   }
   @media (max-width: 800px) {
     padding-top: 1.5rem;
