@@ -1022,6 +1022,16 @@ const EventsWrapper = styled.section`
   width: 80%;
   margin: 10rem auto;
   margin-bottom: 10rem;
+
+  //
+  // Remove for now
+  //
+  //
+  display: none;
+  //
+  //
+  //
+  //
   h2 {
     padding-bottom: 5rem;
   }

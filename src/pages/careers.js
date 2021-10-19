@@ -2280,4 +2280,9 @@ const FileSizeMessage = styled.small`
     font-family: "calibre-medium";
     font-size: 15px;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    p {
+      font-size: 13px;
+    }
+  }
 `
