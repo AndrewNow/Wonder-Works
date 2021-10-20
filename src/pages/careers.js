@@ -1229,6 +1229,7 @@ const FormTop = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
+    flex-direction: column;
     padding-top: 5rem;
     padding-bottom: 0rem;
     padding-left: 0rem;
@@ -1313,6 +1314,7 @@ const FormTopText = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    margin-bottom: 2rem;
     margin-left: 0%;
     h3 {
       padding: 2rem 0;
@@ -1367,6 +1369,8 @@ const SharePostingWrapper = styled.div`
     left: 18%;
   }
   @media (max-width: ${breakpoints.s}px) {
+    display: block;
+    position: relative;
     left: 0%;
   }
 `
@@ -1435,6 +1439,7 @@ const ApplyLink = styled.a`
   }
 
   @media (max-width: ${breakpoints.s}px) {
+    margin-bottom: 2rem;
     bottom: 0;
     left: 0;
     min-width: 100px;
