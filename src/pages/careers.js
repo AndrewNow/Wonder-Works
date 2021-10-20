@@ -142,123 +142,88 @@ const Careers = ({ data }) => {
 
   const CareerData = [
     {
-      title: "Marketing Strategist",
-      desc: "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. We work with a team of world class engineers, designers and artists to deliver them to players of all ages.\n\nWe are on the lookout for a bright-and-bushy-tailed Marketing Strategist. This position is responsible for setting realistic fast, paced objectives, and strategizing with company goals in mind and is able to advance the WWS online presence as a whole through many outlets such as our social media platforms, website, content campaigns, and so on. The scope of work is largely to produce effective and efficient marketing strategies for our company and our clientele. You will design strategically planned marketing campaigns and lead market research efforts. Success in this role will be determined by your ability to bolster the company’s market share while remaining consistent with the brand’s identity.",
-      primaryResponsibilities: [
-        "Produce marketing strategies in regard to new launches of products and content.",
-        "Perform CRM duties to ensure client satisfaction.",
-        "Forecast market trends with accuracy, be a trendsetter and differentiate WWS from the rest.",
-        "Provide analysis and recommendations to the marketing and communications team.",
-        "Help shape the brand’s position in the industry and our narrative by targeting our demographic audience.",
-        "Continuously monitor the market/industry feedback and analyze it to produce the best strategic plans to implement and not only meet goals, but exceed them.",
-        "Work closely with all Administrative positions to ensure marketing strategies align with the WWS overall business strategy, a unified front.",
+      title: "Senior Developer",
+      link: "https://wonder-works-studio.rippling-ats.com/job/331269/senior-developer",
+      brief:
+        "We are looking for game developers with at least 8-10 years of professional game development experience, with at least 2 shipped games on any platform.",
+      description: [
+        "Wonder Works is building a wide range of games for a variety of audiences. If you want to work in a fast-paced, agile and diverse environment, with the opportunity to reach new audiences with new experiences, please consider applying.",
+        "The role is primarily gameplay development across various genres and expressions, with some light tools and UI development. Additional skills, like art, design and production, are also valuable, but this position is primarily development.",
       ],
-      minimumRequirements: [
-        "Bachelor’s degree in Marketing, Communications, or related field/experience.",
-        "Minimum 2+ years of experience as a marketing strategist, marketing manager, or similar role.",
-        "Must be a creative thinker and data-driven, very analytical, and attention to detail is key to the success of this position.",
-        "Must have a proven track record of high stakes project management. We would love to see some of the things you have produced previously and are proud to show off!",
-        "In-depth knowledge of CRM softwares, content management systems, and data-analytical heavy software.",
-        "Excellent communication skills, both verbal and written.",
-        "Keep in mind that this is a leadership position.",
+      talkToUs: [
+        "Want to work for a young company, but a financially stable one with a strong business plan",
+        "Want to help mentor less experienced developers while making large contributions to code",
+        "Want to work on a different kind of game with a different kind of audience",
       ],
-      plus: [
-        "Understands how to tactfully communicate difficult/sensitive information (is open, friendly and doesn’t shy from saying what needs to be said)",
-        "Comfortable wearing many hats and jumping into something new from time to time.",
-        "Experience in the gaming or creative/advertising industry is a plus but not required.",
-      ],
-      weOffer: [
-        "Plenty of opportunities to learn, grow your career, and wear lots of hats. ",
-        "Startup life – flexible, relaxed, yet high stakes work environment.",
-        "Awesome coworkers who care about their work and each other’s growth.",
-        "Competitive benefits include medical, dental, vision coverage, 401k options and many more!",
-      ],
-      travelRequirements:
-        "Travel will be required very rarely but encouraged from time to time for team-building events including gaming and technology conferences. A willingness to relocate to our office location in Texas, should the company require it, is a plus.",
-      covidUpdate:
-        "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
+      lastMessage:
+        "We are especially seeking people with experience developing for and deploying to Roblox.",
     },
     {
-      title: "Jr. Developer",
-      desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
-    },
-    {
-      title: "Sr. Developer",
-      desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
-    },
-    {
-      title: "Environmental Artist",
-      desc: "Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
+      title: "Junior Developer",
+      link: "https://wonder-works-studio.rippling-ats.com/job/331264/junior-developer",
+      brief:
+        "We are looking for developers who have built student game projects, independent games, or even graphically intensive apps on different platforms, and who now want to turn that into a career.",
+      description: [
+        "Wonder Works is building a wide range of games for a variety of audiences. If you want to work in a fast-paced, agile and diverse environment, with the opportunity to learn new skills and technologies, please consider applying.",
+        "Minimum requirements are a significant development role in at least one finished game project on any platform, with the ability to clearly articulate your role. Please provide links to your portfolio on your resume. Additional skills, like art, design and production, are also valuable, but this position is primarily development.",
+      ],
+      lastMessage:
+        "We are especially seeking people with experience developing for and deploying to Roblox.",
     },
     {
       title: "3D Modeler",
-      desc: "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform and is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences.\n\nLocated in Arlington, Texas and reporting to the Wonder Works Studio Creative Director, the 3D Modeler is a full-time position that participates in all phases of the product life cycle and translates the studio vision as the project takes into place. \n\nThe 3D Modeler will work with the internal art team to ensure the technical specifications of 3D assets are followed by the external partners and enforce the proper engine implementation of the assets. The 3D Modeler must have a pristine eye for a playful and artful mind with efficiency to develop and launch new incredible experiences for players. You will be responsible for ideating, sculpting, and crafting your talent from concept to delivering the game’s vision. ",
-      primaryResponsibilities: [
-        "Experience making aesthetically beautiful performant 3D assets and game art optimization.",
-        "Ability to manage time to adjust to unforeseen changes in timelines, scope of work or direction without becoming frustrated or negative.",
-        "Conduct internal QA on the asset source files from the external partners. Ensure assets are implemented with correct file structures, hierarchy, naming and meet all other tech requirements.",
-        "Ability to work creatively as part of a larger group of artists, game designers and engineers.",
-        "Demonstrates the ability to develop a comprehensive knowledge of the art production pipeline and all engine features, tools, and systems associated with the creation of art assets.",
-        "Creating high-quality 3D and 2D assets to meet tight deadlines.",
+      link: "https://wonder-works-studio.rippling-ats.com/job/331272/3d-modeler",
+      brief:
+        "Reporting to the Wonder Works Studio Creative Director, the 3D Modeler is a full-time position that participates in all phases of the product life cycle and translates the studio vision as the project takes into place.",
+      description: [
+        "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform and is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. ",
+        "· The 3D Modeler will work with the internal art team to ensure the technical specifications of 3D assets are followed by the external partners and enforce the proper engine implementation of the assets. The 3D Modeler must have a pristine eye for a playful and artful mind with efficiency to develop and launch new incredible experiences for players. ",
+        "· You will be responsible for ideating, sculpting, and crafting your talent from concept to delivering the game’s vision. We’d like you to have experience making aesthetically beautiful performant 3D assets and game art optimization and conducting internal QA on the asset source files from the external partners, as well as ensuring assets are implemented with correct file structures, hierarchy, naming and meet all other tech requirements. Also experience creating high-quality 3D and 2D assets to meet tight deadlines. ",
       ],
-      minimumRequirements: [
-        "2+ years experience in relevant experience with the game industry or similar (or just show us that you rock!)",
-        "Bachelors of Art degree or relevant experiences",
-        "Proficient with modeling within common 3D applications (Maya, Max, Blender, Z-Brush is a plus) and industry standards for the character production pipeline in games.",
-        "Knowledgeable of various industry standard engines (Unreal, Unity, etc), experience with proprietary engines is a plus.",
-        "Able to produce quality work in both high and low poly art styles.",
-        "Please ensure that a link to your portfolio / website is included on your resume.",
+      lastMessage:
+        "Please ensure that a link to your portfolio / website is included on your resume. ",
+    },
+    {
+      title: "Marketing Strategist",
+      link: "https://wonder-works-studio.rippling-ats.com/job/331345/marketing-strategist",
+      brief:
+        "We are on the lookout for a bright-and-bushy-tailed Marketing Strategist. This position is responsible for setting realistic fast, paced objectives, and strategizing with company goals in mind and is able to advance the WWS online presence as a whole through many outlets such as our social media platforms, website, content campaigns, and so on.",
+      description: [
+        "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. We work with a team of world class engineers, designers and artists to deliver them to players of all ages. ",
+        "The scope of work is largely to produce effective and efficient marketing strategies for our company and our clientele. You will design strategically planned marketing campaigns and lead market research efforts. Success in this role will be determined by your ability to bolster the company’s market share while remaining consistent with the brand’s identity. We’d like you to have a degree in marketing or a similar field, and a few years of experience, along with data to showcase your skills. ",
       ],
-      plus: [
-        "Understands how to tactfully communicate difficult/sensitive information (is open, friendly and doesn’t shy from saying what needs to be said)",
-        "Comfortable wearing many hats and jumping into something new from time to time.",
-        "Experience in Roblox is a plus but not required.",
-      ],
-      weOffer: [
-        "Plenty of opportunities to learn, grow your career, and wear lots of hats. ",
-        "Startup life – flexible, relaxed, yet high stakes work environment.",
-        "Awesome coworkers who care about their work and each other’s growth.",
-        "Competitive benefits include medical, dental, vision coverage, 401k options and many more!",
-      ],
-      travelRequirements:
-        "Travel will be required very rarely but encouraged from time to time for team-building events including gaming and technology conferences. A willingness to relocate to our office location in Texas, should the company require it, is a plus.\n\nIf this sparks your interests, please send your cover letter, resume, and portfolio to: pthephaphine@wonderworks.gg",
-      covidUpdate:
-        "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
     },
     {
       title: "Animator",
-      desc: "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. We work with a team of world class engineers, designers and artists to deliver them to players of all ages.\n\nLocated in Arlington, Texas and reporting to the Wonder Works Studio CEO and Creative Director, the Animator is a full-time wanderlust position that participates in all phases of the product life cycle and translates the studio vision as the project takes into place. \n\nThe Animator will breathe life into our vibrant new fantasy universe and loves to design anything thrown at them. Whether it's characters or critters, you will create iconic animations that set the tone and style of our game. You will work closely with a team of highly talented people to develop gameplay experiences that surprise and blow the minds of players. As an early member of the team, you’ll have the unique opportunity to explore broad areas of game development, learn new skills, and shape the game as it goes.",
-      primaryResponsibilities: [
-        "Work with a group of designers and developers to implement and iterate on these motions to create compelling, entertaining, and visually appealing gameplay and/or cinematic events.",
-        "Evaluate animation and illustration techniques and concepts to ensure that the company creates best in industry content. ",
-        "The ability to juggle multiple projects in parallel from concept to implementation and efficiently manage their workload on their own initiative to meet deadlines.",
-        "Understand and compensate for the limitations of how gameplay and real-time issues can affect animations.",
+      link: "https://wonder-works-studio.rippling-ats.com/job/331270/animator",
+      brief:
+      "The Animator will breathe life into our vibrant new fantasy universe and loves to design anything thrown at them. Whether it's characters or critters, you will create iconic animations that set the tone and style of our game. ",
+      description: [
+        "Wonder Works Studio, creator of Overlook Bay and Traitor on the Roblox platform is committed to enriching players’ lives to new gaming realities and simulating unforgettable entertainment experiences. We work with a team of world class engineers, designers, and artists to deliver them to players of all ages. ",
+        "Located in Arlington, Texas and reporting to the Wonder Works Studio CEO and Creative Director, the Animator is a full-time wanderlust position that participates in all phases of the product life cycle and translates the studio vision as the project takes into place.",
+        "You will work closely with a team of highly talented people to develop gameplay experiences that surprise and blow the minds of players. As an early member of the team, you’ll have the unique opportunity to explore broad areas of game development, learn new skills, and shape the game as it goes. ",
       ],
-      minimumRequirements: [
-        "Send an online animation and motion graphics demo reel.",
-        "BA degree preferred or have 2+ years of professional relative experiences in a high-paced studio or start-up.",
-        "2+ years experience animating effects and environments in Maya, Unity, Mocap Data (or equivalent 3D Programs) specifically for games.",
-        "Consistently demonstrates clear and concise written and verbal communication.",
-        "Skill and proficiency animating with Adobe Creative Suites (AfterEffects, Illustrator, Premiere, Photoshop, etc,)",
-        "Please ensure that a link to your portfolio / website is included on your resume.",
+      lastMessage:
+      "Please ensure that a link to your portfolio / website is included on your resume. ",
+    },
+    {
+      title: "Environmental Artist",
+      link: "https://wonder-works-studio.rippling-ats.com/job/331344/environmental-artist",
+      brief: "The ideal candidate will have some experience with asset creation, high poly/low poly modeling, and PBR texture creation, in addition to world building knowledge. This job is a very versatile position that will use all aspects of your industry knowledge to create props, textures, and environments that stride to set the new industry standard in visuals.",
+      responsibilities: [
+        "Work collaboratively with art director, concept artists and environment artists to create the game environments.",
+        "Create models, textures and set pieces, based on concept art and the need of the project.",
       ],
-      plus: [
-        "Understands how to tactfully communicate difficult/sensitive information (is open, communicative and doesn’t shy from saying what needs to be said)",
-        "Comfortable wearing many hats and jumping into something new from time to time.",
-        "Familiar with video game product development including, but not limited to workflow, tools, in-game 3D animation, pose blending, motion capture, and rigging but not required.",
-        "Familiar with Unreal 4 Engine.",
-        "Experience with Roblox is a plus, but not required.",
+      qualifications: [
+        "Work collaboratively with art director, concept artists and environment artists to create the game environments.",
+        "2+ years of game or film industry experience as an Environment Artist",
+        "Familiarity with working on futuristic hard surface modeling",
+        "Some experience with world building, texturing and lighting inside a game editor such as Radiant Unreal or comparable editor",
+        "Some experience in environment asset creation using contemporary, real-time rendering methods",
+        "Understanding of modern 3D modeling packages",
       ],
-      weOffer: [
-        "Plenty of opportunities to learn, grow your career, and wear lots of hats. ",
-        "Startup life – flexible, relaxed, yet high stakes work environment.",
-        "Awesome coworkers who care about their work and each other’s growth.",
-        "Competitive benefits include medical, dental, vision coverage, 401k options and many more!",
-      ],
-      travelRequirements:
-        "Travel will be required very rarely but encouraged from time to time for team-building events including gaming and technology conferences. A willingness to relocate to our office location in Texas, should the company require it, is a plus.\n\nIf this sparks your interests, please send your cover letter, resume, and portfolio to: pthephaphine@wonderworks.gg",
-      covidUpdate:
-        "We’re currently using a work-from-home system and we’re continuing to interview and hire during this time. This role is expected to begin immediately as full-time and onsite at our Arlington office location. Proof of COVID-19 vaccination will be required and providing digital photo or hard copy of the vaccination card is acceptable. We understand each person’s circumstances may be unique and will work with you to explore possible interim options.\n\nWonder Works Studio is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, gender expression, national origin, protected veteran status, or any other basis protected by applicable law, and will not be discriminated against on the basis of disability.",
+      lastMessage:
+        "Please ensure that a link to your portfolio / website is included on your resume. ",
     },
   ]
 
@@ -269,71 +234,6 @@ const Careers = ({ data }) => {
   // Then, update the state of the selected career to match the index of the clicked item
   const [selectedCareer, setSelectedCareer] = useState()
 
-  // Logic for the progress messages found next to the submit button
-  const [formdata, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    position: "",
-    city: "",
-    resume: "",
-  })
-
-  // Calculate the number of fields that have been completed, then change the message at the bottom.
-  const completedFields = Object.values(formdata).reduce((prev, curr) => {
-    if (curr) {
-      prev++
-    }
-    return prev
-  }, 0)
-
-  // Event handler for changing the state of each field within {formdata}, depending on what the user types
-  const handleChange = attribute => e => {
-    setFormData(data => ({ ...data, [attribute]: e.target.value }))
-  }
-
-  const [FileSizeAlert, setFileSizeAlert] = useState(false)
-  // list file name within the file input label when user uploads a file
-  const handleFileChange = e => {
-    if (e.target.files && e.target.files[0]) {
-      if (e.target.files[0].size <= 500000) {
-        setFormData(d => ({ ...d, resume: e.target.files[0].name }))
-        setFileSizeAlert(false)
-      } else {
-        setFileSizeAlert(true)
-      }
-    }
-  }
-
-  // +++++++++++++++++++++ EMAIL JS CONFIG +++++++++++++++++++++
-  const form = useRef()
-
-  const [SuccessfulSubmission, setSuccessfulSubmission] = useState(false)
-
-  const sendEmail = e => {
-    e.preventDefault()
-    emailjs
-      .sendForm(
-        "default_service",
-        "careers",
-        form.current,
-        "user_dWkFbMOrK5P1TY2yRul72"
-      )
-      .then(
-        result => {
-          setSuccessfulSubmission(true)
-          console.log(result.text)
-        },
-        error => {
-          setSuccessfulSubmission(false)
-          console.log(error.text)
-        }
-      )
-    e.target.reset()
-    // reset form after submission
-  }
-
-  // +++++++++++++++++++++++++++++++++++++++ END FORM LOGIC +++++++++++++++++++++++++++++++++++++++
 
   //  Scroll to clicked career option on click
   const formRef = useRef()
@@ -351,24 +251,6 @@ const Careers = ({ data }) => {
       }
     }
   }, [selectedCareer])
-
-  // ------------ logic for copying share link to clipboard ------------
-  const [copySuccess, setCopySuccess] = useState("")
-  const [animateSuccess, setAnimateSuccess] = useState(false)
-  const textAreaRef = useRef(null)
-
-  const copyToClipboard = e => {
-    textAreaRef.current.select()
-    document.execCommand("copy")
-    setAnimateSuccess(true)
-    setTimeout(() => {
-      setAnimateSuccess(false)
-    }, 2000)
-    // This is just personal preference.
-    // I prefer to not show the the whole text area selected.
-    // e.target.focus()
-    setCopySuccess("Link copied to clipboard!")
-  }
 
   // ---------- Set navbar color back to blue on page change  ----------
   // If the navbar theme is currently "light" (white) and the user clicks to a different page, without this code, the navbar would stay white until the user refreshes. This code resets the theme to blue, our default state.
@@ -500,7 +382,7 @@ const Careers = ({ data }) => {
                         <PlusButton />
                       </Button>
                     </Title>
-                    <p>{career.desc}</p>
+                    <p>{career.brief}</p>
                   </CareerEntry>
                 )
               })
@@ -544,54 +426,59 @@ const Careers = ({ data }) => {
                   prioritize progression, growth and strongly believe in the
                   value of cultivating a diverse team.
                 </h5>
-                <SharePostingWrapperMobile>
-                  <form>
-                    <textarea
-                      ref={textAreaRef}
-                      defaultValue="Thttps://www.wonderworks.gg/careers"
-                    />
-                  </form>
-                  <SharePostingButton onClick={copyToClipboard}>
-                    Share Posting <Arrow />
-                  </SharePostingButton>
-                  <LinkCopiedAlertMobile
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: animateSuccess ? 1 : 0 }}
-                  >
-                    {copySuccess}
-                  </LinkCopiedAlertMobile>
-                </SharePostingWrapperMobile>
               </FormTopText>
               <WOLogo>
                 <WOShortLogo />
               </WOLogo>
               <SharePostingWrapper>
-                {/* this form element below is necessary for the copy to clipboard function */}
-                {/* we hide it in CSS with opacity instead of "visibility: hidden" or "display: none" (these prevent it from functioning for some reason) */}
-                <form>
-                  {/* the value prop is where the copied link resides */}
-                  <textarea
-                    ref={textAreaRef}
-                    defaultValue="This is a test link!"
-                  />
-                </form>
-                <SharePostingButton onClick={copyToClipboard}>
-                  Share Posting <Arrow />
-                </SharePostingButton>
-                <LinkCopiedAlert
-                  // animate the alert in and out according to the timeout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: animateSuccess ? 1 : 0 }}
+                <ApplyLink
+                  href={CareerData.[selectedCareer].link}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Click here to view this job position's application form."
                 >
-                  {copySuccess}
-                </LinkCopiedAlert>
+                  Apply <Arrow />
+                </ApplyLink>
               </SharePostingWrapper>
             </FormTop>
-            {CareerData[`${selectedCareer}`].primaryResponsibilities ? (
+            {CareerData[`${selectedCareer}`].brief ? (
               <FormContentSection>
-                <h5>Primary Responsibilities</h5>
+                <p>
+                  <strong>{CareerData[`${selectedCareer}`].brief}</strong>
+                </p>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].description ? (
+              <FormContentSection>
+                {CareerData[`${selectedCareer}`].description?.map((item, i) => (
+                  <p key={i}>
+                    {item} <br />
+                    <br />
+                  </p>
+                ))}
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].talkToUs ? (
+              <FormContentSection>
+                <h5>
+                  <strong>Talk to us if you:</strong>
+                </h5>
                 <ul>
-                  {CareerData[`${selectedCareer}`].primaryResponsibilities?.map(
+                  {CareerData[`${selectedCareer}`].talkToUs?.map((item, i) => (
+                    <li key={i}>
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </FormContentSection>
+            ) : null}
+            {CareerData[`${selectedCareer}`].responsibilities ? (
+              <FormContentSection>
+                <h5>
+                  <strong>Responsibilities:</strong>
+                </h5>
+                <ul>
+                  {CareerData[`${selectedCareer}`].responsibilities?.map(
                     (item, i) => (
                       <li key={i}>
                         <p>{item}</p>
@@ -601,11 +488,13 @@ const Careers = ({ data }) => {
                 </ul>
               </FormContentSection>
             ) : null}
-            {CareerData[`${selectedCareer}`].minimumRequirements ? (
+            {CareerData[`${selectedCareer}`].qualifications ? (
               <FormContentSection>
-                <h5>Qualifications</h5>
+                <h5>
+                  <strong>Qualifications:</strong>
+                </h5>
                 <ul>
-                  {CareerData[`${selectedCareer}`].minimumRequirements?.map(
+                  {CareerData[`${selectedCareer}`].qualifications?.map(
                     (item, i) => (
                       <li key={i}>
                         <p>{item}</p>
@@ -615,37 +504,14 @@ const Careers = ({ data }) => {
                 </ul>
               </FormContentSection>
             ) : null}
-            {CareerData[`${selectedCareer}`].plus ? (
+            {CareerData[`${selectedCareer}`].lastMessage ? (
               <FormContentSection>
-                <h5>Plus</h5>
-                <ul>
-                  {CareerData[`${selectedCareer}`].plus?.map((item, i) => (
-                    <li key={i}>
-                      <p>{item}</p>
-                    </li>
-                  ))}
-                </ul>
+                <p>
+                  <strong>{CareerData[`${selectedCareer}`].lastMessage}</strong>
+                </p>
               </FormContentSection>
             ) : null}
-            {CareerData[`${selectedCareer}`].weOffer ? (
-              <FormContentSection>
-                <h5>Benefits</h5>
-                <ul>
-                  {CareerData[`${selectedCareer}`].weOffer?.map((item, i) => (
-                    <li key={i}>
-                      <p>{item}</p>
-                    </li>
-                  ))}
-                </ul>
-              </FormContentSection>
-            ) : null}
-            {CareerData[`${selectedCareer}`].travelRequirements ? (
-              <FormContentSection>
-                <h5>Travel Requirements</h5>
-                <p>{CareerData[`${selectedCareer}`].travelRequirements}</p>
-              </FormContentSection>
-            ) : null}
-      
+
             {/*  */}
             <DividingLine>
               <DividingLineSVG />
@@ -706,237 +572,6 @@ const Careers = ({ data }) => {
                 proof of vaccination upon hire.{" "}
               </p>
             </FormContentSection>
-            {/* <FillOut onSubmit={sendEmail} ref={form}>
-              <h3>
-                Ok, I’m sold. <br /> I’m ready to join.
-              </h3>
-              <input type="hidden" name="contact_number" />
-              <Line>
-                <HalfWidthInput
-                  onChange={handleChange("firstName")}
-                  type="text"
-                  placeholder="First Name *"
-                  name="first_name"
-                  required
-                />
-                <HalfWidthInput
-                  onChange={handleChange("lastName")}
-                  type="text"
-                  placeholder="Last Name *"
-                  name="last_name"
-                  required
-                />
-              </Line>
-              <Line>
-                <FullWidthInput
-                  onChange={handleChange("email")}
-                  type="email"
-                  placeholder="Email Address *"
-                  name="user_email"
-                  required
-                />
-              </Line>
-
-              <Line>
-                <Select
-                  name="position"
-                  required
-                  onChange={handleChange("position")}
-                  value={formdata.position}
-                >
-                  <option value="" disabled>
-                    Position applying for *{" "}
-                  </option>
-                  {CareerData.map((job, i) => {
-                    return (
-                      <option key={i} value={job.title}>
-                        {job.title}
-                      </option>
-                    )
-                  })}
-                </Select>
-              </Line>
-              <Line>
-                <FullWidthInput
-                  type="url"
-                  placeholder="Linkedin profile link (if applicable)"
-                  name="linkedin"
-                />
-              </Line>
-              <Line>
-                <FullWidthInput
-                  type="url"
-                  placeholder="Link to portfolio (if applicable)"
-                  name="portfolio"
-                />
-              </Line>
-              <Line>
-                <FileLabel htmlFor="myfile">
-                  {formdata.resume
-                    ? formdata.resume
-                    : "Attach resume here* (PDF only)"}
-                  <svg
-                    width="23"
-                    height="23"
-                    viewBox="0 0 23 23"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5.40625 11.3838H18.0852"
-                      stroke="black"
-                      strokeWidth="0.684"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M11.7461 4.9458V17.824"
-                      stroke="black"
-                      strokeWidth="0.684"
-                      strokeMiterlimit="10"
-                    />
-                    <path
-                      d="M11.7451 22.302C17.6816 22.302 22.4941 17.4139 22.4941 11.3842C22.4941 5.35439 17.6816 0.466309 11.7451 0.466309C5.8086 0.466309 0.996094 5.35439 0.996094 11.3842C0.996094 17.4139 5.8086 22.302 11.7451 22.302Z"
-                      stroke="black"
-                      strokeWidth="0.684"
-                      strokeMiterlimit="10"
-                    />
-                  </svg>
-                </FileLabel>
-                <FileUpload
-                  type="file"
-                  accept=".pdf"
-                  id="myfile"
-                  name="myfile"
-                  onChange={handleFileChange}
-                  required
-                />
-              </Line>
-              <FileSizeMessage>
-                <AnimatePresence>
-                  {FileSizeAlert ? (
-                    <motion.p
-                      key="File size message"
-                      variants={fileSizeMsg}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      *FILE SIZE LIMIT IS 500KB
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-              </FileSizeMessage>
-              <Bottom>
-                {!completedFields && <p></p>}
-                <AnimatePresence>
-                  {completedFields === 1 && formdata.firstName ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Nice to meet you, {formdata.firstName}!
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields === 1 && !formdata.firstName ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Nice to meet you!
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields === 2 ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Looking good!
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields === 3 && !formdata.position ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Make sure you pick the right hat <br /> for you!
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields === 3 && formdata.position ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Almost there!
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields === 4 && (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Almost there!
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields === 5 && !SuccessfulSubmission ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      It looks like you're ready, are you?
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {completedFields >= 5 && SuccessfulSubmission ? (
-                    <motion.p
-                      variants={bottomMessage}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      Thank you for your interest! <br /> We'll reach out to you
-                      if it's a good fit.
-                    </motion.p>
-                  ) : null}
-                </AnimatePresence>
-                <Submit
-                  type="submit"
-                  id="applyNow"
-                  value="Apply"
-                  whileTap={{ scale: 0.9 }}
-                  disabled={FileSizeAlert}
-                />
-                <SubmitLabel htmlFor="applyNow" disabled={FileSizeAlert}>
-                  Apply <Arrow />
-                </SubmitLabel>
-              </Bottom>
-            </FillOut> */}
           </FormContent>
         </FormBg>
       )}
@@ -1510,6 +1145,7 @@ const FormContent = styled.div`
   margin: 0 auto;
   background-color: var(--color-white);
   border-radius: 40px;
+  padding-bottom: 5rem;
 
   h3 {
     padding-left: 14rem;
@@ -1530,6 +1166,7 @@ const FormTop = styled.div`
   justify-content: space-between;
   padding-bottom: 5rem;
   padding-top: 7rem;
+  margin-bottom: 4rem;
   position: relative;
   z-index: 5;
   h5 {
@@ -1713,441 +1350,27 @@ const WOLogo = styled.div`
     }
   }
 `
-
 const SharePostingWrapper = styled.div`
   position: absolute;
   right: 7%;
   bottom: 10%;
-  form {
-    filter: opacity(0);
-    display: inline;
-    pointer-events: none;
-  }
   @media (max-width: 1750px) {
     bottom: 3%;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    display: none;
-  }
-`
-const SharePostingWrapperMobile = styled.div`
-  display: none;
-  padding-bottom: 2rem;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    display: block;
-    position: relative;
-    margin-top: 1rem;
-    form {
-      filter: opacity(0);
-      /* display: block; */
-      pointer-events: none;
-      display: inline;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    margin-top: 0rem;
-  }
-`
-
-const LinkCopiedAlert = styled(motion.p)`
-  position: absolute;
-  font-family: "calibre-regular";
-  font-size: 18px;
-  bottom: 5rem;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-  @media (max-width: ${breakpoints.xxl}px) {
-    bottom: 3rem;
-  }
-`
-const LinkCopiedAlertMobile = styled(motion.p)`
-  position: absolute;
-  font-family: "calibre-regular";
-  font-size: 18px;
-  bottom: 5rem;
-  text-align: center;
-  width: 280px;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    width: 225px;
-    font-size: 16px !important;
+    left: 20%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    width: 210px;
+    left: 18%;
   }
-
   @media (max-width: ${breakpoints.s}px) {
-    width: 180px;
-    bottom: 4.5rem;
-    font-size: 14px !important;
+    left: 0%;
   }
 `
 
-const SharePostingButton = styled.button`
-  min-width: 320px;
-  border: 2px solid var(--color-black);
-  border-radius: 50px;
-  padding: 0.75rem 2.75rem;
-  transition: var(--hover-transition);
+const ApplyLink = styled.a`
   cursor: pointer;
-  background-color: var(--color-white);
   text-decoration: none;
-  color: var(--color-black);
-  font-family: "calibre-medium";
-  font-size: 25px;
-  line-height: 100%;
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    svg {
-      transform: translate3d(5px, 0rem, 0);
-      fill: var(--color-white);
-    }
-  }
-  svg {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    width: 30px !important;
-    margin-left: 0.4rem;
-    transform: translateY(0rem);
-    fill: var(--color-black);
-    transition: var(--hover-transition);
-  }
-
-  @media (max-width: 1750px) {
-    min-width: 280px;
-    font-size: 20px;
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    padding: 0.5rem 1.5rem;
-    min-width: fit-content;
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    padding: 0.5rem 1rem;
-
-    &:hover {
-      svg {
-        transform: translate3d(5px, 0rem, 0);
-      }
-    }
-    svg {
-      transform: translateY(0rem);
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    border: 1px solid var(--color-black);
-    min-width: 180px;
-    padding: 0.35rem 0.5rem;
-    font-size: 16px;
-    line-height: 19px;
-    svg {
-      scale: 0.7;
-    }
-  }
-`
-
-const ContactUsWrapper = styled.div`
-  background-color: var(--color-orange);
-  position: relative;
-`
-
-const FormContentSection = styled.div`
-  padding: 2.5rem 0;
-  width: 60%;
-  margin: 0 auto;
-  white-space: pre-wrap;
-
-  ul {
-    color: var(--color-black);
-    padding-left: 1.5rem !important;
-    li {
-      padding-bottom: 0.75rem;
-    }
-    li ::marker {
-      font-size: 85%;
-      color: var(--color-black);
-    }
-  }
-
-  h5 {
-    font-family: "calibre-semibold";
-    padding-bottom: 1rem;
-  }
-  p {
-    font-size: 30px;
-    line-height: 33px;
-  }
-
-  @media (max-width: ${breakpoints.l}px) {
-    width: 65%;
-    ul {
-      padding-left: 1rem !important;
-    }
-    p,
-    h5 {
-      font-size: 26px;
-      line-height: 30px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    p {
-      font-size: 18px;
-      line-height: 115%;
-    }
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    padding: 0.75rem 0;
-    width: 80%;
-    margin: 0 auto;
-    h5,
-    p {
-      font-size: 16px;
-      line-height: 115%;
-    }
-    p {
-      /* font-family: "calibre-medium"; */
-    }
-    h5 {
-      padding-bottom: 0.75rem;
-    }
-    ul {
-      padding-left: 0.8rem !important;
-    }
-  }
-`
-
-const FillOut = styled.form`
-  width: 60%;
-  margin: 0 auto;
-  padding-bottom: 7rem;
-  h3 {
-    padding: 5rem 0;
-    font-family: "ppwoodland-bold";
-    white-space: nowrap;
-  }
-  br {
-    display: none;
-  }
-
-  @media (max-width: ${breakpoints.xxl}px) {
-    h3 {
-      white-space: normal;
-    }
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    h3 {
-      padding-bottom: 3rem;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    width: 80%;
-    h3 {
-      font-size: 36px;
-    }
-  }
-
-  @media (max-width: ${breakpoints.m}px) {
-    h3 {
-      font-size: 32px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    padding-bottom: 2.5rem;
-    br {
-      display: block;
-    }
-    h3 {
-      padding: 2rem 0;
-      font-size: 20px;
-      line-height: 22px;
-    }
-  }
-`
-const Line = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem 0;
-
-  p {
-    font-size: 20px;
-    font-family: "calibre-medium";
-    text-transform: uppercase;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    padding: 0.75rem 0;
-  }
-`
-
-const HalfWidthInput = styled.input`
-  width: 45%;
-  background: none;
-  border: none;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--color-black);
-  box-sizing: border-box;
-  transition: var(--hover-transition);
-  font-family: "calibre-regular";
-  font-size: 20px;
-  border-radius: 0;
-  -webkit-border-radius: 0;
-  ::placeholder {
-    font-family: "calibre-regular";
-    font-size: 20px;
-    color: #42423e;
-    text-transform: uppercase;
-  }
-
-  :focus {
-    outline: none !important;
-    border-bottom: 2px solid #b06eab;
-  }
-
-  :hover {
-    border-bottom: 2px solid #b06eab;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    font-size: 14px;
-    ::placeholder {
-      font-size: 14px;
-    }
-  }
-`
-
-const FullWidthInput = styled.input`
-  width: 100%;
-  background: none;
-  border: none;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--color-black);
-  font-family: "calibre-regular";
-  font-size: 20px;
-  border-radius: 0;
-  -webkit-border-radius: 0;
-  ::placeholder {
-    font-family: "calibre-regular";
-    font-size: 20px;
-    text-transform: uppercase;
-    color: #42423e !important;
-  }
-  :focus {
-    outline: none !important;
-    border-bottom: 2px solid #b06eab;
-  }
-  transition: var(--hover-transition);
-  :hover {
-    border-bottom: 2px solid #b06eab;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    font-size: 14px;
-    ::placeholder {
-      font-size: 14px;
-    }
-  }
-`
-
-const Select = styled.select`
-  width: 100%;
-  background: none;
-  border: none;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--color-black);
-  box-sizing: border-box;
-  font-family: "calibre-regular";
-  font-size: 20px;
-  text-transform: uppercase;
-  color: #42423e;
-  border-radius: 0px;
-  -webkit-border-radius: 0px;
-
-  ::placeholder {
-    font-family: "calibre-regular";
-    font-size: 20px;
-    text-transform: uppercase;
-    color: #42423e;
-  }
-  :focus {
-    outline: none !important;
-    border-bottom: 2px solid #b06eab;
-  }
-  transition: var(--hover-transition);
-  :hover {
-    border-bottom: 2px solid #b06eab;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    font-size: 14px;
-    width: 100%;
-    ::placeholder {
-      font-size: 14px;
-    }
-  }
-`
-
-const FileUpload = styled.input`
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute !important;
-  white-space: nowrap;
-  width: 1px;
-  border-radius: 0;
-  -webkit-border-radius: 0;
-`
-
-const FileLabel = styled.label`
-  width: 100%;
-  background: none;
-  border: none;
-  padding-bottom: 1rem;
-  color: #42423e;
-  border-bottom: 2px solid var(--color-black);
-  font-family: "calibre-regular";
-  font-size: 20px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  svg {
-    min-width: 20px;
-  }
-  :focus {
-    outline: none !important;
-    border-bottom: 2px solid #b06eab;
-  }
-  transition: var(--hover-transition);
-  :hover {
-    border-bottom: 2px solid #b06eab;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    font-size: 14px;
-    ::placeholder {
-      font-size: 14px;
-    }
-  }
-`
-
-const SubmitLabel = styled.label`
-  position: absolute;
-  right: 0;
-  align-self: flex-end;
-  cursor: pointer;
   background: none;
   border: 2px solid var(--color-black);
   color: var(--color-black);
@@ -2167,6 +1390,7 @@ const SubmitLabel = styled.label`
     }
   }
   svg {
+    margin-left: 0.2rem;
     transition: var(--hover-transition);
   }
   @media (max-width: ${breakpoints.xxl}px) {
@@ -2231,69 +1455,84 @@ const SubmitLabel = styled.label`
   }
 `
 
-const Submit = styled(motion.input)`
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute !important;
-  white-space: nowrap;
-  width: 1px;
-
-  :disabled + label {
-    cursor: default;
-    filter: opacity(0.5);
-    :hover {
-      background-color: var(--color-white);
-      color: var(--color-black);
-      svg {
-        fill: var(--color-black);
-        transform: translate3d(0px, 0rem, 0);
-      }
-    }
-  }
+const ContactUsWrapper = styled.div`
+  background-color: var(--color-orange);
+  position: relative;
 `
 
-const Bottom = styled.div`
-  display: flex;
-  padding-top: 2rem;
-  width: 90%;
-  height: 90px;
+const FormContentSection = styled.div`
+  padding: 1.5rem 0;
+  width: 60%;
   margin: 0 auto;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-
-  p {
-    max-width: 63%;
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    line-height: 105%;
-    font-family: "calibre-medium";
-    text-transform: uppercase;
+  white-space: pre-wrap;
+  strong {
+    font-family: "calibre-semibold";
   }
-  @media (max-width: ${breakpoints.xl}px) {
-    width: 100%;
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    p {
-      padding-top: 1rem;
-      font-size: 16px;
-      line-height: 19px;
+  ul {
+    color: var(--color-black);
+    padding-left: 1.5rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    li {
+      font-size: 30px;
+      line-height: 110%;
+      padding-bottom: 0.75rem;
+    }
+    li ::marker {
+      /* font-size: 85%; */
+      color: var(--color-black);
     }
   }
-  @media (max-width: ${breakpoints.s}px) {
-    height: 125px;
-    padding-top: 0;
+
+  h5 {
+    font-family: "calibre-semibold";
+    padding-bottom: 1rem;
+  }
+  p {
+    font-size: 30px;
+    line-height: 33px;
+  }
+
+  @media (max-width: ${breakpoints.xxl}px) {
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 65%;
+    ul {
+      padding-left: 1rem !important;
+    }
+    li,
+    p,
+    h5 {
+      font-size: 26px !important;
+      line-height: 30px;
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    li,
     p {
-      padding-top: 0;
-      max-width: none;
-      position: absolute;
-      top: 1rem;
-      font-size: 14px;
-      line-height: 16px;
+      font-size: 18px !important;
+      line-height: 115%;
+    }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 0.75rem 0;
+    width: 80%;
+    margin: 0 auto;
+    h5,
+    li,
+    p {
+      font-size: 16px !important;
+      line-height: 115%;
+    }
+    p {
+      /* font-family: "calibre-medium"; */
+    }
+    h5 {
+      padding-bottom: 0.75rem;
+    }
+    ul {
+      padding-left: 0.8rem !important;
     }
   }
 `
@@ -2343,23 +1582,6 @@ const SVGWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: 28%;
-  }
-`
-
-const FileSizeMessage = styled.small`
-  min-height: 30px;
-  display: block;
-  height: 30px;
-  p {
-    text-transform: uppercase;
-    color: #eb1313;
-    font-family: "calibre-medium";
-    font-size: 15px;
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    p {
-      font-size: 13px;
-    }
   }
 `
 
