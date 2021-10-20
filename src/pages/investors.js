@@ -836,7 +836,7 @@ const DiscoverMore = styled(motion.div)`
   background-color: var(--color-white);
   transition: var(--hover-transition);
   /* width: 350px; */
-  width: 380px;
+  width: 395px;
   a {
     transition: var(--hover-transition);
     padding: 0.75rem 2.75rem;
@@ -864,7 +864,7 @@ const DiscoverMore = styled(motion.div)`
     }
   }
   svg {
-    margin-left: 10px;
+    margin-left: .75rem;
     fill: var(--color-black);
     transition: var(--hover-transition);
   }
@@ -874,6 +874,9 @@ const DiscoverMore = styled(motion.div)`
     a {
       padding: 0.6rem 0.1rem;
     }
+    svg {
+      margin-left: .75rem;
+    }
   }
   @media (max-width: ${breakpoints.l}px) {
     width: 300px;
@@ -881,6 +884,10 @@ const DiscoverMore = styled(motion.div)`
       padding: 0.6rem 0.1rem;
       font-size: 20px;
       line-height: 100%;
+    }
+    svg {
+      scale: .8;
+      margin-left: .5rem;
     }
   }
   @media (max-width: ${breakpoints.s}px) {

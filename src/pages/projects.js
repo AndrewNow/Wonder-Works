@@ -770,20 +770,51 @@ const OverlookRobloxLink = styled(motion.a)`
     color: var(--color-darkblue);
     svg {
       fill: var(--color-darkblue);
+      transform: translate3d(0.25rem, 0.15rem, 0);
     }
   }
   svg {
-    transform: translateY(0.15rem);
+    margin-left: 0.75rem;
     fill: var(--color-white);
     transition: var(--hover-transition);
+    transform: translate3d(0rem, 0.15rem, 0);
   }
 
   @media (max-width: ${breakpoints.xl}px) {
     border: 1px solid var(--color-white);
     padding: 0.5rem 1.5rem;
+    svg {
+      transform: translate3d(0rem, 0.1rem, 0);
+      margin-left: 0.25rem;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.1rem, 0);
+      }
+    }
   }
 
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.l}px) {
+    border: 1px solid var(--color-white);
+    font-size: 20px;
+    line-height: 22px;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-darkblue);
+
+    svg {
+      transform: translate3d(0rem, 0.15rem, 0);
+      margin-left: 0.25rem;
+      fill: var(--color-darkblue);
+      scale: 0.8;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.15rem, 0);
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
     border: 1px solid var(--color-white);
     font-size: 16px;
     line-height: 19px;
@@ -792,9 +823,14 @@ const OverlookRobloxLink = styled(motion.a)`
     color: var(--color-darkblue);
 
     svg {
-      fill: var(--color-darkblue);
-      transform: translateY(0.4rem);
+      transform: translate3d(0rem, 0.35rem, 0);
+      margin-left: 0.25rem;
       scale: 0.7;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.35rem, 0);
+      }
     }
   }
 `
@@ -822,7 +858,7 @@ const SmallCirclesWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.xl}px) {
     width: 50%;
     height: 50%;
-    right: 10%;
+    right: 0%;
     bottom: 0%;
     top: auto;
     transform: rotate(90deg);
@@ -1221,8 +1257,8 @@ const TraitorBody = styled(motion.div)`
 
 const TraitorRobloxLink = styled(motion.a)`
   border: 2px solid var(--color-white);
-  color: var(--color-white);
   width: 50%;
+  color: var(--color-white);
   border-radius: 50px;
   padding: 0.75rem 2.75rem;
   transition: var(--hover-transition);
@@ -1237,29 +1273,67 @@ const TraitorRobloxLink = styled(motion.a)`
     color: var(--color-black);
     svg {
       fill: var(--color-black);
+      transform: translate3d(0.25rem, 0.15rem, 0);
     }
   }
   svg {
-    transform: translateY(0.15rem);
+    margin-left: 0.75rem;
     fill: var(--color-white);
     transition: var(--hover-transition);
+    transform: translate3d(0rem, 0.15rem, 0);
   }
 
   @media (max-width: ${breakpoints.xl}px) {
     border: 1px solid var(--color-white);
     padding: 0.5rem 1.5rem;
+    svg {
+      transform: translate3d(0rem, 0.1rem, 0);
+      margin-left: 0.25rem;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.1rem, 0);
+      }
+    }
   }
-  @media (max-width: ${breakpoints.s}px) {
+
+  @media (max-width: ${breakpoints.l}px) {
+    border: 1px solid var(--color-white);
+    font-size: 20px;
+    line-height: 22px;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
+
+    svg {
+      transform: translate3d(0rem, 0.15rem, 0);
+      margin-left: 0.25rem;
+      fill: var(--color-black);
+      scale: 0.8;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.15rem, 0);
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
     border: 1px solid var(--color-white);
     font-size: 16px;
     line-height: 19px;
     padding: 0.5rem 1.5rem;
     background-color: var(--color-white);
     color: var(--color-black);
+
     svg {
-      transform: translateY(0.4rem);
+      transform: translate3d(0rem, 0.35rem, 0);
+      margin-left: 0.25rem;
       scale: 0.7;
-      fill: var(--color-black);
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.35rem, 0);
+      }
     }
   }
 `
@@ -1567,7 +1641,7 @@ const TimmehBody = styled(motion.div)`
 `
 
 const TimmehRobloxLink = styled(motion.a)`
-  border: 2px solid var(--color-white);
+ border: 2px solid var(--color-white);
   width: 50%;
   color: var(--color-white);
   border-radius: 50px;
@@ -1584,29 +1658,67 @@ const TimmehRobloxLink = styled(motion.a)`
     color: #000421;
     svg {
       fill: #000421;
+      transform: translate3d(0.25rem, 0.15rem, 0);
     }
   }
   svg {
-    transform: translateY(0.15rem);
+    margin-left: 0.75rem;
     fill: var(--color-white);
     transition: var(--hover-transition);
+    transform: translate3d(0rem, 0.15rem, 0);
   }
 
   @media (max-width: ${breakpoints.xl}px) {
     border: 1px solid var(--color-white);
     padding: 0.5rem 1.5rem;
+    svg {
+      transform: translate3d(0rem, 0.1rem, 0);
+      margin-left: 0.25rem;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.1rem, 0);
+      }
+    }
   }
-  @media (max-width: ${breakpoints.s}px) {
+
+  @media (max-width: ${breakpoints.l}px) {
+    border: 1px solid var(--color-white);
+    font-size: 20px;
+    line-height: 22px;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: #000421;
+
+    svg {
+      transform: translate3d(0rem, 0.15rem, 0);
+      margin-left: 0.25rem;
+      fill: #000421;
+      scale: 0.8;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.15rem, 0);
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.m}px) {
     border: 1px solid var(--color-white);
     font-size: 16px;
     line-height: 19px;
     padding: 0.5rem 1.5rem;
     background-color: var(--color-white);
     color: #000421;
+
     svg {
-      fill: #000421;
-      transform: translateY(0.4rem);
+      transform: translate3d(0rem, 0.35rem, 0);
+      margin-left: 0.25rem;
       scale: 0.7;
+    }
+    :hover {
+      svg {
+        transform: translate3d(0.25rem, 0.35rem, 0);
+      }
     }
   }
 `
@@ -1774,7 +1886,7 @@ const BigGearsWrapper = styled(motion.div)`
   }
   @media (max-width: 1080px) {
     top: auto;
-    bottom: -25%;
+    bottom: -35%;
     left: -5%;
   }
   @media (max-width: 1024px) {
@@ -1946,6 +2058,9 @@ const PinkStarWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${breakpoints.xl}px) {
+    top: 6%;
+  }
   @media (max-width: ${breakpoints.l}px) {
     top: 4%;
   }
@@ -2115,6 +2230,15 @@ const UnderlinedLink = styled.a`
 `
 
 const CollabSection = styled.section`
+  //
+  // !display none for now
+  //
+  //
+  display: none;
+  //
+  //
+  //
+
   background-color: var(--color-green);
   padding: 5rem 0;
 

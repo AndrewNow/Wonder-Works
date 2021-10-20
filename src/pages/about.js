@@ -326,28 +326,24 @@ const About = ({ data }) => {
           </motion.p>
         </TextContent>
         <AnimatePresence>
-          {meganzachInView && (
-            <>
-              <CirclesWrapper
-                style={{ y: mediumParallax }}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={meganZachSvg}
-              >
-                <Svg.Circles />
-              </CirclesWrapper>
-              <PinkShapesWrapper
-                style={{ y: smallParallax }}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={meganZachSvg}
-              >
-                <Svg.PinkShapes />
-              </PinkShapesWrapper>
-            </>
-          )}
+          <CirclesWrapper
+            style={{ y: mediumParallax }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={meganZachSvg}
+          >
+            <Svg.Circles />
+          </CirclesWrapper>
+          <PinkShapesWrapper
+            style={{ y: smallParallax }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={meganZachSvg}
+          >
+            <Svg.PinkShapes />
+          </PinkShapesWrapper>
         </AnimatePresence>
         <BlueSquigglyWrapper>
           <Svg.BlueSquiggly />
@@ -1067,7 +1063,6 @@ const Newsletter = styled.div`
     padding-bottom: 8rem;
   }
 `
-
 
 const BlueBackgroundMobileTablet = styled.div`
   display: none;

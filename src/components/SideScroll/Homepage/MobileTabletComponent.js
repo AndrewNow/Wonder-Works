@@ -160,7 +160,7 @@ const MobileTabletComponent = () => {
       ref: PartnershipRef,
       inView: PartnershipRefInView,
       title: "Wonder Works Partnerships",
-      titleColor: "#6653A3",
+      titleColor: "#1A1749",
       bodyText:
         "We love growing and connecting with our community. If you’re interested in partnering with the wonderful world of Wonder Works Studio send us a message—we have big ideas to launch with brands of all sizes. ",
       backgroundSVG: <WWPartnershipsBG />,
@@ -196,7 +196,7 @@ const MobileTabletComponent = () => {
       ref: JamsRef,
       inView: JamsRefInView,
       title: "Wonder Works Jams",
-      titleColor: "#6653A3",
+      titleColor: "#1A1749",
       bodyText:
         "Wonder Works Jams is a space for our junior talent to QA various game genres. It’s a creative hub of mentorship that fosters a lifelong love for exploration and innovation and promotes success on individual and collaborative levels. ",
       backgroundSVG: <WWJamsBG />,
@@ -396,6 +396,9 @@ const SlideContentWrapper = styled(motion.div)`
 `
 
 const ImageWrapper = styled(motion.div)`
+  @media (max-width: ${breakpoints.l}px) {
+    width: 70%;
+  }
   @media (max-width: ${breakpoints.m}px) {
     width: 50%;
   }

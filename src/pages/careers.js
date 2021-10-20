@@ -432,7 +432,7 @@ const Careers = ({ data }) => {
               </WOLogo>
               <SharePostingWrapper>
                 <ApplyLink
-                  href={CareerData.[selectedCareer].link}
+                  href={CareerData[selectedCareer].link}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Click here to view this job position's application form."

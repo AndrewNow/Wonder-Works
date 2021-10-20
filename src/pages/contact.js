@@ -90,7 +90,19 @@ const Contact = ({ data }) => {
             animate={expandProjectsButton ? "expand" : "normal"}
             whileHover="hover"
           >
-            <CurrentProjectsText variants={buttonText}>
+            <CurrentProjectsText
+              variants={buttonText}
+              // animate={{
+              //   rotate: [-15, 15],
+              //   transition: {
+              //     repeat: Infinity,
+              //     repeatType: "mirror",
+              //     ease: "linear",
+              //     duration: 2.5,
+              //     repeatDelay: 1,
+              //   },
+              // }}
+            >
               <p>Current</p>
               <h4>Projects</h4>
               <p>Check out what we’re up to on the Wonder Works Web! </p>

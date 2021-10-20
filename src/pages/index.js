@@ -930,7 +930,7 @@ const DiscoverMore = styled(Link)`
   justify-content: center;
   align-items: center;
   svg {
-    margin-left: 0.5rem !important;
+    margin-left: 0.75rem !important;
     transition: var(--hover-transition);
   }
   :hover {
