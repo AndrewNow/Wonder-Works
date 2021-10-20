@@ -14,10 +14,10 @@ module.exports = {
   siteMetadata: {
     title: `Wonder Works Studio`,
     description: `Wonder Works Studio's official website.`,
+    author: `@andrewnowacki_`,
     url: "https://wonderworks.com", // No trailing slash allowed!
-    image: "/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
-    defaultImage: "/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
-    twitterUsername: "@WonderWorksRBmency",
+    image: "https://og-meta-image.s3.us-east-2.amazonaws.com/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
+    twitterUsername: "@WonderWorksRB",
   },
   plugins: [
     `gatsby-plugin-image`,
