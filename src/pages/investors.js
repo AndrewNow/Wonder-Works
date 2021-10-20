@@ -1023,12 +1023,10 @@ const EventsWrapper = styled.section`
   margin: 10rem auto;
   margin-bottom: 10rem;
 
-  //
-  // Remove for now
+  // Remove for now until content is populated
   //
   //
   display: none;
-  //
   //
   //
   //

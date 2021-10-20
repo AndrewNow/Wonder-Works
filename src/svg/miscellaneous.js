@@ -570,3 +570,23 @@ const ColorStrokeWrapper = styled(motion.div)`
 
 const ColorGearStroke = styled.svg``
 const ColorGearFill = styled.svg``
+
+
+export const DividingLineSVG = () => (
+  <svg
+    width="102"
+    height="2"
+    viewBox="0 0 102 2"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <line
+      x1="-8.74228e-08"
+      y1="1"
+      x2="102"
+      y2="0.999991"
+      stroke="#1A1749"
+      strokeWidth="2"
+    />
+  </svg>
+)

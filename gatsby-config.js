@@ -1,14 +1,22 @@
 module.exports = {
+  // siteMetadata: {
+  //   title: `Wonder Works Studio`,
+  //   author: {
+  //     name: `Wonder Works`,
+  //   },
+  //   description: `Wonder Works Studio's official website.`,
+  //   siteUrl: `https://wonderworks.com/`,
+  //   image: `/static/ogimage.png`,
+  //   social: {
+  //     twitter: `https://twitter.com/WonderWorksRB`,
+  //   },
+  // },
   siteMetadata: {
     title: `Wonder Works Studio`,
-    author: {
-      name: `Wonder Works`,
-    },
     description: `Wonder Works Studio's official website.`,
-    siteUrl: `https://wonderworks.com/`,
-    social: {
-      // twitter: `kylemathews`,
-    },
+    url: "https://wonderworks.com", // No trailing slash allowed!
+    image: "/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
+    twitterUsername: "@WonderWorksRBmency",
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -19,7 +27,7 @@ module.exports = {
       },
     },
     //THIS IS COMMENTED OUT BECAUSE THERE ARE NO BLOG POSTS YET -
-    //UNCOMMENT IF YOU WISH TO ADD POSTS 
+    //UNCOMMENT IF YOU WISH TO ADD POSTS
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {

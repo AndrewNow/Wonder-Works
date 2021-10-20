@@ -9,7 +9,7 @@ import { ContactUs } from "../components/contactUs"
 import { WOShortLogo } from "../svg/logos"
 import emailjs from "emailjs-com"
 import breakpoints from "../components/breakpoints"
-import { Arrow, ColoredGears } from "../svg/miscellaneous"
+import { Arrow, ColoredGears, DividingLineSVG } from "../svg/miscellaneous"
 import {
   motion,
   useViewportScroll,
@@ -645,14 +645,68 @@ const Careers = ({ data }) => {
                 <p>{CareerData[`${selectedCareer}`].travelRequirements}</p>
               </FormContentSection>
             ) : null}
-            {CareerData[`${selectedCareer}`].covidUpdate ? (
-              <FormContentSection>
-                <h5>COVID Update</h5>
-                <p>{CareerData[`${selectedCareer}`].covidUpdate}</p>
-              </FormContentSection>
-            ) : null}
-
-            <FillOut onSubmit={sendEmail} ref={form}>
+      
+            {/*  */}
+            <DividingLine>
+              <DividingLineSVG />
+            </DividingLine>
+            <FormContentSection>
+              <h5>Location</h5>
+              <p>
+                This is a full-time, on-site position in our new office in
+                Arlington TX.
+              </p>
+            </FormContentSection>
+            <FormContentSection>
+              <h5>Wonder Works Studio Offers</h5>
+              <ul>
+                <li>
+                  Plenty of opportunities to learn, grow your career, and wear
+                  lots of hats.
+                </li>
+                <li>
+                  Startup life – flexible, relaxed, yet high stakes work
+                  environment.
+                </li>
+                <li>
+                  Awesome coworkers who care about their work and each other’s
+                  growth.
+                </li>
+                <li>
+                  Competitive benefits include medical, dental, vision coverage,
+                  401K options, FSA, and more!
+                </li>
+              </ul>
+            </FormContentSection>
+            <FormContentSection>
+              <h5>Equal Opportunities Employer</h5>
+              <p>
+                Diversity and inclusion are an integral part of Wonder Works
+                Studio’s work culture. We offer many on site perks to help
+                foster a sense of community, such as: Arcade Games, Other gaming
+                equipment, weekly catered lunches, many opportunities for
+                bonuses and recognition, holiday parties and celebrations,
+                monthly birthday parties, and more.
+                <br />
+                <br />
+                Wonder Works Studio is an Equal Opportunity Employer. All
+                qualified applicants will receive consideration for employment
+                without regard to race, color, religion, sex, sexual
+                orientation, gender identity, gender expression, national
+                origin, protected veteran status, or any other basis protected
+                by applicable law, and will not be discriminated against on the
+                basis of disability.
+              </p>
+            </FormContentSection>
+            <FormContentSection>
+              <h5>COVID-19</h5>
+              <p>
+                Wonder Works Studio is a 100% Vaccinated office against
+                Covid-19. All employees and new hires are required to present
+                proof of vaccination upon hire.{" "}
+              </p>
+            </FormContentSection>
+            {/* <FillOut onSubmit={sendEmail} ref={form}>
               <h3>
                 Ok, I’m sold. <br /> I’m ready to join.
               </h3>
@@ -882,7 +936,7 @@ const Careers = ({ data }) => {
                   Apply <Arrow />
                 </SubmitLabel>
               </Bottom>
-            </FillOut>
+            </FillOut> */}
           </FormContent>
         </FormBg>
       )}
@@ -1559,17 +1613,22 @@ const FormTop = styled.div`
 const FormTopPositionDetails = styled.div`
   position: absolute;
   padding-right: 6rem;
-  left: 10rem;
+  left: 7rem;
   top: 8rem;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    left: 6rem;
+  }
 
   @media (max-width: ${breakpoints.xl}px) {
     padding-right: 4rem;
-    left: 7.5%;
-    top: 5rem;
+    left: 5rem;
+    top: 10rem;
   }
   @media (max-width: ${breakpoints.l}px) {
     padding-right: 3rem;
     top: 3rem;
+    left: 3rem;
     max-width: 110px;
     min-width: 110px;
     svg {
@@ -1578,29 +1637,37 @@ const FormTopPositionDetails = styled.div`
   }
 
   @media (max-width: ${breakpoints.m}px) {
-    padding-top: 0rem;
-    padding-left: 0.25rem;
-    padding-right: 1rem;
-    max-width: 60px;
-    min-width: 60px;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
     display: none;
   }
 `
 
 const FormTopText = styled.div`
   margin-left: 20%;
+  h5 {
+    max-width: 56%;
+  }
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    margin-bottom: 5rem;
+    h5 {
+      max-width: 60%;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h5 {
+      max-width: 70%;
+    }
+  }
   @media (max-width: ${breakpoints.l}px) {
     margin-left: 15%;
     h3 {
       font-size: 36px;
     }
+    h5 {
+      max-width: 90%;
+    }
   }
   @media (max-width: ${breakpoints.m}px) {
-
     h3 {
       font-size: 32px;
     }
@@ -1628,6 +1695,14 @@ const WOLogo = styled.div`
 
   @media (max-width: ${breakpoints.xl}px) {
     display: none;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    display: block;
+    top: 5%;
+    right: 5%;
+    svg {
+      width: 70px;
+    }
   }
   @media (max-width: ${breakpoints.s}px) {
     display: block;
@@ -1791,6 +1866,7 @@ const FormContentSection = styled.div`
   white-space: pre-wrap;
 
   ul {
+    color: var(--color-black);
     padding-left: 1.5rem !important;
     li {
       padding-bottom: 0.75rem;
@@ -1815,7 +1891,8 @@ const FormContentSection = styled.div`
     ul {
       padding-left: 1rem !important;
     }
-    p, h5 {
+    p,
+    h5 {
       font-size: 26px;
       line-height: 30px;
     }
@@ -1912,7 +1989,6 @@ const Line = styled.div`
     padding: 0.75rem 0;
   }
 `
-
 
 const HalfWidthInput = styled.input`
   width: 45%;
@@ -2285,4 +2361,13 @@ const FileSizeMessage = styled.small`
       font-size: 13px;
     }
   }
+`
+
+const DividingLine = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
 `
