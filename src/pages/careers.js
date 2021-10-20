@@ -961,6 +961,7 @@ const CareerLeft = styled.div`
   div > h5 strong {
     font-family: "calibre-medium";
     white-space: nowrap;
+    font-weight: 300!important;
   }
 
   @media (max-width: 1440px) {
@@ -1019,6 +1020,8 @@ const CareerLeft = styled.div`
         font-size: 17px;
         line-height: 20px;
         strong {
+    font-weight: 300!important;
+
           white-space: nowrap;
         }
       }
@@ -1466,6 +1469,7 @@ const FormContentSection = styled.div`
   margin: 0 auto;
   white-space: pre-wrap;
   strong {
+    font-weight: 300 !important;
     font-family: "calibre-semibold";
   }
   ul {
