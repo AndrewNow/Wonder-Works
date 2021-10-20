@@ -1030,7 +1030,7 @@ const ImaginationText = styled.div`
     position: relative;
   }
   h2 {
-    line-height: 100%;
+    line-height: 110%;
     font-size: 6.5625vw;
     font-family: "ppwoodland-light";
   }
@@ -1041,7 +1041,7 @@ const ImaginationText = styled.div`
   }
   @media (max-width: ${breakpoints.xl}px) {
     h2 {
-      line-height: 100%;
+      line-height: 110%;
       font-size: 8vw;
       margin: 0 auto;
     }
@@ -1059,13 +1059,13 @@ const ImaginationText = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     h2 {
       font-size: 75px;
-      line-height: 75px;
+      line-height: 80px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
     h2 {
       font-size: 55px;
-      line-height: 55px;
+      line-height: 60x;
     }
     p {
       width: 75%;
