@@ -1,23 +1,16 @@
 module.exports = {
-  // siteMetadata: {
-  //   title: `Wonder Works Studio`,
-  //   author: {
-  //     name: `Wonder Works`,
-  //   },
-  //   description: `Wonder Works Studio's official website.`,
-  //   siteUrl: `https://wonderworks.com/`,
-  //   image: `/static/ogimage.png`,
-  //   social: {
-  //     twitter: `https://twitter.com/WonderWorksRB`,
-  //   },
-  // },
   siteMetadata: {
     title: `Wonder Works Studio`,
+    author: {
+      name: `Wonder Works`,
+    },
     description: `Wonder Works Studio's official website.`,
-    author: `@andrewnowacki_`,
-    url: "https://wonderworks.com", // No trailing slash allowed!
+    siteUrl: `https://wonderworks.com/`,
+    // image: `/static/ogimage.png`,
     image: "https://og-meta-image.s3.us-east-2.amazonaws.com/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
-    twitterUsername: "@WonderWorksRB",
+    social: {
+      twitter: `https://twitter.com/WonderWorksRB`,
+    },
   },
   plugins: [
     `gatsby-plugin-image`,
