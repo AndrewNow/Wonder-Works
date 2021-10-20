@@ -1439,7 +1439,7 @@ const ApplyLink = styled.a`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     bottom: 0;
     left: 0;
     min-width: 100px;
