@@ -16,6 +16,7 @@ module.exports = {
     description: `Wonder Works Studio's official website.`,
     url: "https://wonderworks.com", // No trailing slash allowed!
     image: "/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
+    defaultImage: "/ogimage.png", // Path to the image placed in the 'static' folder, in the project's root directory.
     twitterUsername: "@WonderWorksRBmency",
   },
   plugins: [
