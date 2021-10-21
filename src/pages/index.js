@@ -1065,7 +1065,7 @@ const ImaginationText = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     h2 {
       font-size: 55px;
-      line-height: 60x;
+      line-height: 60px;
     }
     p {
       width: 75%;
