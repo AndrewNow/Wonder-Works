@@ -64,11 +64,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: ${breakpoints.l}px) {
-    height: calc(100vh - 262.5px);
-    /* height: auto; */
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    /* height: calc(100vh - 267.5px); */
     height: 90vh;
   }
 `
@@ -87,6 +82,7 @@ const AnimationWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.s}px) {
     top: 20vh;
+    transform: scale(.75);
   }
   @media (max-width: ${breakpoints.xs}px) {
     transform: scale(0.6);
@@ -133,7 +129,7 @@ const FourOFour = styled.div`
   }
   @media (max-width: ${breakpoints.l}px) {
     margin-left: 7.5vw;
-    margin-top: 20vh;
+    margin-top: 25vh;
     h1 {
       font-size: 175px;
     }
@@ -222,9 +218,12 @@ const BackToWebButton = styled(Link)`
   }
   @media (max-width: ${breakpoints.xxl}px) {
     padding: 0.75rem 4rem;
+    font-size: 32px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    font-size: 22px;
   }
   @media (max-width: ${breakpoints.l}px) {
-    font-size: 22px;
     padding: 0.75rem 3rem;
   }
   @media (max-width: ${breakpoints.s}px) {
