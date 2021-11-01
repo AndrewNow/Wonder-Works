@@ -42,7 +42,7 @@ const Footer = () => {
               target="_blank"
               href="https://www.tiktok.com/@wonderworks_studios"
               alt="Tik Tok social media link"
-              >
+            >
               <TikTok />
             </motion.a>
             <motion.a
@@ -68,7 +68,14 @@ const Footer = () => {
           </Icons>
           <p>
             © Wonder Works Studio, Inc. {new Date().getFullYear()}. <br />
-            Website by Blanck Studio
+            Website by&nbsp;
+            <a
+              href="https://www.blanckstudio.co/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Blanck Studio
+            </a>
           </p>
         </IconWrapper>
       </Inner>
@@ -98,6 +105,14 @@ const Inner = styled.div`
     line-height: 23px;
     padding-right: 6rem;
   }
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+
   @media (max-width: ${breakpoints.xl}px) {
     p {
       padding-right: 7rem;

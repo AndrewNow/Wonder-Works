@@ -1128,7 +1128,7 @@ const WordSpan = styled(motion.span)`
 const ImaginationBG = styled(motion.div)`
   z-index: 0;
   height: 100%;
-  width: 99vw;
+  /* width: 99vw; */
   margin: 0 auto;
   position: relative;
 
