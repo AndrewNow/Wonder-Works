@@ -142,7 +142,36 @@ const Projects = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="Projects" />
+      <Seo
+        title="Projects"
+        keywords={[
+          `Wonder Works`,
+          `WonderWorks`,
+          `Wonder Works Roblox`,
+          `Roblox`,
+          `Gaming`,
+          `wonder works gaming`,
+          `wonderworks gaming`,
+          `wonder works games`,
+          `wonderworks games`,
+          `games`,
+          `projects`,
+          `wonder works roblox games`,
+          `wonderworks roblox games`,
+          `roblox games`,
+          `roblox gaming`,
+          `fun`,
+          `timmeh`,
+          `wonder works timmeh`,
+          `wonderworks timmeh`,
+          `overlook bay`,
+          `wonder works overlook bay`,
+          `wonderworks overlook bay`,
+          `traitor`,
+          `wonder works traitor`,
+          `wonderworks traitor`,
+        ]}
+      />
       <CarouselWrapper ref={blueSectionRef}>
         <ProjectsPageCarousel />
       </CarouselWrapper>

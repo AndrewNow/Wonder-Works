@@ -274,7 +274,17 @@ const HomeIndex = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="Home" />
+      <Seo
+        title="Home"
+        keywords={[
+          `Wonder Works`,
+          `WonderWorks`,
+          `Wonder Works Roblox`,
+          `Roblox`,
+          `Gaming`,
+          `wonder works gaming`,
+        ]}
+      />
       <Background style={{ y: homeBackground }}>
         <StaircaseWrapper>
           <Svg.Staircase />

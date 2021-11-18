@@ -197,7 +197,23 @@ const About = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="About" />
+      <Seo
+        title="About"
+        keywords={[
+          `Wonder Works`,
+          `WonderWorks`,
+          `Wonder Works Roblox`,
+          `Roblox`,
+          `Gaming`,
+          `wonder works gaming`,
+          `wonderworks gaming`,
+          `wonder works about`,
+          `wonderworks about`,
+          `about`,
+          `wonder works info`,
+          `wonderworks info`,
+        ]}
+      />
       <Background style={{ y: mediumParallax }}>
         <SkateboardWrapper
           variants={skateboardAnimation}

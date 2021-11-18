@@ -271,7 +271,27 @@ const Careers = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="Careers" />
+      <Seo
+        title="Careers"
+        keywords={[
+          `Wonder Works`,
+          `WonderWorks`,
+          `Wonder Works Roblox`,
+          `Roblox`,
+          `Gaming`,
+          `wonder works gaming`,
+          `wonderworks gaming`,
+          `wonder works jobs`,
+          `wonderworks jobs`,
+          `jobs`,
+          `careers`,
+          `positions`,
+          `wonder works positions`,
+          `wonderworks positions`,
+          `wonder works info`,
+          `wonderworks info`,
+        ]}
+      />
       {/* loading animation */}
       <Cascade variants={CascadeAnim} initial="visible" animate="hidden">
         <Yellow variants={CascadeChild} />

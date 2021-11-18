@@ -199,7 +199,23 @@ const Investors = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="Investment Centre" />
+      <Seo
+        title="Investment Centre"
+        keywords={[
+          `Wonder Works`,
+          `WonderWorks`,
+          `Wonder Works Roblox`,
+          `Roblox`,
+          `Gaming`,
+          `wonder works gaming`,
+          `wonder works investors`,
+          `investment`,
+          `jobs`,
+          `wonder works jobs`,
+          `wonder works MAU`,
+          `wonder works DAU`,
+        ]}
+      />
       <Header>
         <p>Investment Centre</p>
       </Header>

@@ -79,7 +79,23 @@ const Contact = ({ data }) => {
 
   return (
     <Layout title={siteTitle}>
-      <Seo title="Contact" />
+      <Seo
+        title="Contact"
+        keywords={[
+          `Wonder Works`,
+          `WonderWorks`,
+          `Wonder Works Roblox`,
+          `Roblox`,
+          `Gaming`,
+          `wonder works gaming`,
+          `wonderworks gaming`,
+          `wonder works contact`,
+          `wonderworks contact`,
+          `contact`,
+          `wonder works info`,
+          `wonderworks info`,
+        ]}
+      />
       <LetsWork
         svg={<Svg.BlueGear />}
         currentProjects={
