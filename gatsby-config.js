@@ -20,7 +20,7 @@ module.exports = {
 
         // Include GTM in development.
         // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: false,
+        includeInDevelopment: true,
 
         // datalayer to be set before GTM is loaded
         // should be an object or a function that is executed in the browser
@@ -100,12 +100,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -154,6 +148,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
+            title: "Wonder Works' RRS Feed",
           },
         ],
       },

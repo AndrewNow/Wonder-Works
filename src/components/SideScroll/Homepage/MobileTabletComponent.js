@@ -15,7 +15,7 @@ import {
   WWJamsBG,
 } from "../../../svg/homepage"
 import { useInView } from "react-intersection-observer"
-import { useEmblaCarousel } from "embla-carousel/react"
+import useEmblaCarousel from "embla-carousel-react"
 import { StaticImage } from "gatsby-plugin-image"
 import { useThrottleFn } from "react-use"
 

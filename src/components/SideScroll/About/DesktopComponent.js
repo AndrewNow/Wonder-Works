@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import breakpoints from "../../breakpoints"
 import * as Svg from "../../../svg/aboutpage"
 import { useInView } from "react-intersection-observer"
-import { useEmblaCarousel } from "embla-carousel/react"
+import useEmblaCarousel from "embla-carousel-react"
 // import { useThrottleFn } from "react-use"
 
 const DesktopComponent = () => {

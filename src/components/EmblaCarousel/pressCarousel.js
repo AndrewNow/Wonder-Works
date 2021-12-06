@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react"
-import { useEmblaCarousel } from "embla-carousel/react"
+import useEmblaCarousel from "embla-carousel-react"
 import styled from "styled-components"
 import { NextButtonPress, PrevButtonPress } from "./buttons"
 import { GatsbyImage } from "gatsby-plugin-image"

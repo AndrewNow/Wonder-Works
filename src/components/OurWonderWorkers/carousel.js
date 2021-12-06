@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react"
-import { useEmblaCarousel } from "embla-carousel/react"
+import useEmblaCarousel from "embla-carousel-react"
 import { graphql, useStaticQuery } from "gatsby"
 import { NextButton, PrevButton } from "../EmblaCarousel/buttons"
 import styled from "styled-components"

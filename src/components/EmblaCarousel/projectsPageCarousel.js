@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react"
-import { useEmblaCarousel } from "embla-carousel/react"
+import useEmblaCarousel from "embla-carousel-react"
 import styled from "styled-components"
 import ReactPlayer from "react-player/file"
 import { useInView } from "react-intersection-observer"

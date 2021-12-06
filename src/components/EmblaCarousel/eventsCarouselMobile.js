@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react"
-import { useEmblaCarousel } from "embla-carousel/react"
+import useEmblaCarousel from "embla-carousel-react"
 import breakpoints from "../breakpoints"
 import { motion } from "framer-motion"
 import styled from "styled-components"
