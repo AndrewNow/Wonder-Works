@@ -7,14 +7,13 @@ import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { BigPlus, TwoPlus, PlusButton } from "../svg/careerspage"
 import { ContactUs } from "../components/contactUs"
 import { WOShortLogo } from "../svg/logos"
-import emailjs from "emailjs-com"
+// import emailjs from "emailjs-com"
 import breakpoints from "../components/breakpoints"
 import { Arrow, ColoredGears, DividingLineSVG } from "../svg/miscellaneous"
 import {
   motion,
   useViewportScroll,
   useTransform,
-  AnimatePresence,
 } from "framer-motion"
 import {
   useGlobalDispatchContext,
@@ -100,34 +99,34 @@ const Careers = ({ data }) => {
     },
   }
 
-  const bottomMessage = {
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-    hidden: {
-      y: 20,
-      opacity: 0,
-    },
-    exit: {
-      y: -20,
-      opacity: 0,
-    },
-  }
-  const fileSizeMsg = {
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-    hidden: {
-      y: -20,
-      opacity: 0,
-    },
-    exit: {
-      y: 20,
-      opacity: 0,
-    },
-  }
+  // const bottomMessage = {
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //   },
+  //   hidden: {
+  //     y: 20,
+  //     opacity: 0,
+  //   },
+  //   exit: {
+  //     y: -20,
+  //     opacity: 0,
+  //   },
+  // }
+  // const fileSizeMsg = {
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //   },
+  //   hidden: {
+  //     y: -20,
+  //     opacity: 0,
+  //   },
+  //   exit: {
+  //     y: 20,
+  //     opacity: 0,
+  //   },
+  // }
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })
