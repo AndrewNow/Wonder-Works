@@ -61,7 +61,7 @@ export const TeamCarousel = ({ index }) => {
 
   const onScroll = useCallback(() => {
     if (!embla) return
-
+    
     const engine = embla.dangerouslyGetEngine()
     const scrollProgress = embla.scrollProgress()
 

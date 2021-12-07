@@ -113,27 +113,27 @@ const MobileTabletComponent = () => {
   })
 
   // prevent excessive scrolling
-  const preventEdgeScrolling = embla => {
-    const { limit, target, location, scrollTo } = embla.dangerouslyGetEngine()
+  // const preventEdgeScrolling = embla => {
+  //   const { limit, target, location, scrollTo } = embla.dangerouslyGetEngine()
 
-    return () => {
-      if (limit.reachedMax(target.get())) {
-        if (limit.reachedMax(location.get())) location.set(limit.max)
-        target.set(limit.max)
-        scrollTo.distance(0, false)
-      }
-      if (limit.reachedMin(target.get())) {
-        if (limit.reachedMin(location.get())) location.set(limit.min)
-        target.set(limit.min)
-        scrollTo.distance(0, false)
-      }
-    }
-  }
+  //   return () => {
+  //     if (limit.reachedMax(target.get())) {
+  //       if (limit.reachedMax(location.get())) location.set(limit.max)
+  //       target.set(limit.max)
+  //       scrollTo.distance(0, false)
+  //     }
+  //     if (limit.reachedMin(target.get())) {
+  //       if (limit.reachedMin(location.get())) location.set(limit.min)
+  //       target.set(limit.min)
+  //       scrollTo.distance(0, false)
+  //     }
+  //   }
+  // }
 
   // Run Embla
   useEffect(() => {
     if (!embla) return
-    embla.on("scroll", preventEdgeScrolling(embla))
+    // embla.on("scroll", preventEdgeScrolling(embla))
   }, [embla])
 
   // ------------------- 4. Data for slide markup -------------------
