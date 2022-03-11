@@ -34,6 +34,7 @@ const NotFoundPage = ({ data }) => {
         <BackToWebButton to="/" aria-label="Link to return back to homepage">
           Back To <br /> Web
         </BackToWebButton>
+        <div>test</div>
         <MetaverseText>
           <h3>
             Looks like you’re lost in the metaverse! <br /> Let us guide you
