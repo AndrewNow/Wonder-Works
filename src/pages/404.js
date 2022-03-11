@@ -26,6 +26,7 @@ const NotFoundPage = ({ data }) => {
       <Wrapper>
         <AnimationWrapper>
           <MobileNavAnimation />
+          <div>Test2</div>
         </AnimationWrapper>
         <FourOFour>
           <h1>404</h1>
