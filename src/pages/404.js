@@ -26,16 +26,14 @@ const NotFoundPage = ({ data }) => {
       <Wrapper>
         <AnimationWrapper>
           <MobileNavAnimation />
-          <div>Test2</div>
         </AnimationWrapper>
         <FourOFour>
           <h1>404</h1>
-          <h2>Page Not Found</h2>
+          <h2>Page Not Found, Sorry!</h2>
         </FourOFour>
         <BackToWebButton to="/" aria-label="Link to return back to homepage">
           Back To <br /> Web
         </BackToWebButton>
-        <div>test</div>
         <MetaverseText>
           <h3>
             Looks like you’re lost in the metaverse! <br /> Let us guide you
