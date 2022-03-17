@@ -20,6 +20,7 @@ import {
 import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCarousel"
 import breakpoints from "../components/breakpoints"
 import OurPillarsHomepage from "../components/SideScroll/ourPillarsHomepage"
+import LandingPage from "../components/HomePage/landingPage"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -49,74 +50,31 @@ const HomeIndex = ({ data }) => {
 
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
-  const blueSectionRef = useRef()
-  const { currentTheme } = useGlobalStateContext()
-  const dispatch = useGlobalDispatchContext()
+  // const blueSectionRef = useRef()
+  // const { currentTheme } = useGlobalStateContext()
+  // const dispatch = useGlobalDispatchContext()
 
-  const toggleLightTheme = useCallback(() => {
-    dispatch({ type: "TOGGLE_THEME", theme: "light" })
-  }, [dispatch])
+  // const toggleLightTheme = useCallback(() => {
+  //   dispatch({ type: "TOGGLE_THEME", theme: "light" })
+  // }, [dispatch])
 
-  useEffect(() => {
-    const onScroll = () => {
-      const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
-      if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
-        toggleLightTheme()
-      }
-    }
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [toggleLightTheme])
+  // useEffect(() => {
+  //   const onScroll = () => {
+  //     const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
+  //     if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
+  //       toggleLightTheme()
+  //     }
+  //   }
+  //   window.addEventListener("scroll", onScroll)
+  //   return () => window.removeEventListener("scroll", onScroll)
+  // }, [toggleLightTheme])
 
-  useEffect(() => {
-    window.localStorage.setItem("theme", currentTheme)
-  }, [currentTheme])
+  // useEffect(() => {
+  //   window.localStorage.setItem("theme", currentTheme)
+  // }, [currentTheme])
 
   // ----------framer motion animation variants----------
-  const line = {
-    visible: {
-      transition: {
-        duration: 2,
-        delay: 1.2,
-        delayChildren: 0.6,
-        staggerChildren: 0.2,
-        staggerDirection: 1,
-      },
-    },
-  }
 
-  const word = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        type: "spring",
-        stiffness: 100,
-        damping: 11,
-      },
-    },
-    hidden: {
-      y: 200,
-      opacity: 0,
-    },
-  }
-  const wordMobile = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        type: "spring",
-        stiffness: 100,
-        damping: 11,
-      },
-    },
-    hidden: {
-      y: 100,
-      opacity: 0,
-    },
-  }
   const line2 = {
     visible: {
       transition: {
@@ -306,71 +264,7 @@ const HomeIndex = ({ data }) => {
           <Svg.Portal />
         </PortalWrapper>
       </Background>
-      <LandingText>
-        <h1>
-          <First variants={line} initial="hidden" animate="visible">
-            <Span variants={word}>dreaming</Span>
-            <Span variants={word}>up</Span>
-          </First>
-          <Second variants={line} initial="hidden" animate="visible">
-            <Span variants={word}>wonderful</Span>
-            <Span variants={word}>works</Span>
-          </Second>
-          <Third variants={line} initial="hidden" animate="visible">
-            <Span variants={word}>in</Span>
-            <Span variants={word}>the</Span>
-            <Span variants={word}>metaverse</Span>
-          </Third>
-        </h1>
-        <motion.h4 variants={subtitle} initial="hidden" animate="visible">
-          The latest in Roblox gaming lives here.
-        </motion.h4>
-        <motion.div
-          variants={button}
-          initial="hidden"
-          animate="visible"
-          whileTap={{ scale: 0.9 }}
-        >
-          <DiscoverMore to="/about">
-            DISCOVER MORE <Arrow />
-          </DiscoverMore>
-        </motion.div>
-      </LandingText>
-
-      {/* start mobile text animation layout */}
-      <LandingTextMobile>
-        <h1>
-          <First variants={line} initial="hidden" animate="visible">
-            <Span variants={wordMobile}>dreaming</Span>
-            <Span variants={wordMobile}>up</Span>
-          </First>
-          <Second variants={line} initial="hidden" animate="visible">
-            <Span variants={wordMobile}>wonderful</Span>
-          </Second>
-          <Third variants={line} initial="hidden" animate="visible">
-            <Span variants={wordMobile}>works</Span>
-            <Span variants={wordMobile}>in</Span>
-            <Span variants={wordMobile}>the</Span>
-          </Third>
-          <Fourth variants={line} initial="hidden" animate="visible">
-            <Span variants={wordMobile}>metaverse</Span>
-          </Fourth>
-        </h1>
-        <motion.h4 variants={subtitle} initial="hidden" animate="visible">
-          The latest in Roblox gaming lives here.
-        </motion.h4>
-        <motion.div
-          variants={button}
-          initial="hidden"
-          animate="visible"
-          whileTap={{ scale: 0.9 }}
-        >
-          <DiscoverMore to="/about">
-            DISCOVER MORE <Arrow />
-          </DiscoverMore>
-        </motion.div>
-      </LandingTextMobile>
-      {/* end mobile text animation layout */}
+      <LandingPage />
       <ImaginationSection ref={sectionRef}>
         <ImaginationText>
           <h2>
@@ -437,15 +331,18 @@ const HomeIndex = ({ data }) => {
           </BlueTriangleWrapper>
         </ImaginationBG>
       </ImaginationSection>
-      {/* ==============  */}
-      <OurPillarsHomepage />
+      {/* TO BE DELETED */}
+      {/* <OurPillarsHomepage /> */}
+      {/* TO BE DELETED */}
       <Press>
         <h4>As Seen On...</h4>
         <AsSeenOnLogosHome />
       </Press>
-      <LatestProjects ref={blueSectionRef}>
+      {/* TO BE DELETED */}
+      {/* <LatestProjects ref={blueSectionRef}>
         <LatestProjectsCarousel />
-      </LatestProjects>
+      </LatestProjects> */}
+      {/* TO BE DELETED */}
       <InvestmentCenter>
         <InvestmentWrapper ref={countUpRef}>
           <Brief

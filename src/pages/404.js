@@ -29,7 +29,7 @@ const NotFoundPage = ({ data }) => {
         </AnimationWrapper>
         <FourOFour>
           <h1>404</h1>
-          <h2>Page Not Found, Sorry.</h2>
+          <h2>Page Not Found</h2>
         </FourOFour>
         <BackToWebButton to="/" aria-label="Link to return back to homepage">
           Back To <br /> Web
