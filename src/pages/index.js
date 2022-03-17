@@ -31,47 +31,32 @@ const HomeIndex = ({ data }) => {
     threshold: 0.65,
     triggerOnce: true,
   })
-  const [countUpRef, countUpInView] = useInView({
-    root: null,
-    threshold: 0.25,
-    triggerOnce: true,
-  })
 
-  const [countUpRef2, countUpInView2] = useInView({
-    root: null,
-    threshold: 0.2,
-    triggerOnce: true,
-  })
-  const [countUpRef3, countUpInView3] = useInView({
-    root: null,
-    threshold: 0.2,
-    triggerOnce: true,
-  })
 
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
-  // const blueSectionRef = useRef()
-  // const { currentTheme } = useGlobalStateContext()
-  // const dispatch = useGlobalDispatchContext()
+  const blueSectionRef = useRef()
+  const { currentTheme } = useGlobalStateContext()
+  const dispatch = useGlobalDispatchContext()
 
-  // const toggleLightTheme = useCallback(() => {
-  //   dispatch({ type: "TOGGLE_THEME", theme: "light" })
-  // }, [dispatch])
+  const toggleLightTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "light" })
+  }, [dispatch])
 
-  // useEffect(() => {
-  //   const onScroll = () => {
-  //     const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
-  //     if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
-  //       toggleLightTheme()
-  //     }
-  //   }
-  //   window.addEventListener("scroll", onScroll)
-  //   return () => window.removeEventListener("scroll", onScroll)
-  // }, [toggleLightTheme])
+  useEffect(() => {
+    const onScroll = () => {
+      const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
+      if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
+        toggleLightTheme()
+      }
+    }
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [toggleLightTheme])
 
-  // useEffect(() => {
-  //   window.localStorage.setItem("theme", currentTheme)
-  // }, [currentTheme])
+  useEffect(() => {
+    window.localStorage.setItem("theme", currentTheme)
+  }, [currentTheme])
 
   // ----------framer motion animation variants----------
 
