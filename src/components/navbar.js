@@ -157,13 +157,6 @@ const Navbar = () => {
             <motion.div variants={navItem} 
             whileHover={{ x: -15 }}
             >
-              <Link to="/investors" activeClassName="active">
-                Investors
-              </Link>
-            </motion.div>
-            <motion.div variants={navItem} 
-            whileHover={{ x: -15 }}
-            >
               <Link to="/careers" activeClassName="active">
                 Careers
               </Link>
@@ -219,12 +212,6 @@ const Navbar = () => {
                     <Link to="/projects" activeClassName="active">
                       <ActiveLinkSVG />
                       Projects
-                    </Link>
-                  </MobileNavElement>
-                  <MobileNavElement variants={navItem}>
-                    <Link to="/investors" activeClassName="active">
-                      <ActiveLinkSVG />
-                      Investors
                     </Link>
                   </MobileNavElement>
                   <MobileNavElement variants={navItem}>

@@ -51,45 +51,6 @@ export const TeamCarousel = ({ index }) => {
     setNextBtnEnabled(embla.canScrollNext())
   }, [embla])
 
-
-
-  // NOTE: embla.dangerouslyGetEngine() no longer seems to work in Gatsby v4.3. I've temporarily commented it out, which means that the scale scrolling will no longer appear.
-
-
-  // ---------- Scale slides on scroll effect ----------
-  // const SCALE_FACTOR = 5
-
-  // const numberWithinRange = (number, min, max) =>
-  //   Math.min(Math.max(number, min), max)
-
-  // const [parallaxValues, setParallaxValues] = useState([])
-
-  // const onScroll = useCallback(() => {
-  //   if (!embla) return
-
-  //   const engine = embla.dangerouslyGetEngine()
-  //   const scrollProgress = embla.scrollProgress()
-
-  //   const styles = embla.scrollSnapList().map((scrollSnap, index) => {
-  //     if (!embla.slidesInView().includes(index)) return 0
-  //     let diffToTarget = scrollSnap - scrollProgress
-
-  //     if (engine.options.loop) {
-  //       engine.slideLooper.loopPoints.forEach(loopItem => {
-  //         const target = loopItem.getTarget()
-  //         if (index === loopItem.index && target !== 0) {
-  //           const sign = Math.sign(target)
-  //           if (sign === -1) diffToTarget = scrollSnap - (1 + scrollProgress)
-  //           if (sign === 1) diffToTarget = scrollSnap + (1 - scrollProgress)
-  //         }
-  //       })
-  //     }
-  //     const scale = 1 - Math.abs(diffToTarget * SCALE_FACTOR)
-  //     return numberWithinRange(scale, 0, 1)
-  //   })
-  //   setParallaxValues(styles)
-  // }, [embla, setParallaxValues])
-
   // ---------- Run embla configurations ----------
   useEffect(() => {
     if (!embla) return

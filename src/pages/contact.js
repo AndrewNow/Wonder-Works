@@ -278,8 +278,8 @@ const CurrentProjects = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     width: 86px;
     height: 86px;
-    right: 25%;
-    top: 30%;
+    right: 26%;
+    top: 35%;
   }
   @media (max-width: ${breakpoints.xs}px) {
     top: 25%;
@@ -382,7 +382,7 @@ const OpenPositons = styled(motion.div)`
   border-radius: 100%;
 
   left: 25%;
-  top: -350%;
+  top: -100%;
 
   padding: 2rem;
   width: 265px;
@@ -412,12 +412,12 @@ const OpenPositons = styled(motion.div)`
     top: -5%;
   }
   @media (max-width: ${breakpoints.l}px) {
-    top: 20%;
+    top: -10%;
   }
   @media (max-width: ${breakpoints.m}px) {
     width: 130px;
     height: 130px;
-    top: 10%;
+    top: -10%;
   }
   @media (max-width: ${breakpoints.s}px) {
     top: 20%;
