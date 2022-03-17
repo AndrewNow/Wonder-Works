@@ -121,26 +121,6 @@ export const LetsWork = ({ svg, currentProjects }) => {
           </Contact>
           <Contact>
             <p>
-              <strong>press</strong>
-            </p>
-            <p>
-              for press <br />
-              inquiries
-            </p>
-            <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
-          </Contact>
-          <Contact>
-            <p>
-              <strong>collabs</strong>
-            </p>
-            <p>
-              influencer <br />
-              collaborations
-            </p>
-            <a href="mailto:collab@wonderworks.gg">collab@wonderworks.gg</a>
-          </Contact>
-          <Contact>
-            <p>
               <strong>careers</strong>
             </p>
             <p>
@@ -149,23 +129,11 @@ export const LetsWork = ({ svg, currentProjects }) => {
             </p>
             <a href="mailto:careers@wonderworks.gg">careers@wonderworks.gg</a>
           </Contact>
-          <Contact>
-            <p>
-              <strong>partnerships</strong>
-            </p>
-            <p>
-              brand <br />
-              partnerships
-            </p>
-            <a href="mailto:partnerships@wonderworks.gg">
-              partnerships@wonderworks.gg
-            </a>
-          </Contact>
-          <MobileContact>
+        {/* <MobileContact>
             <Link to="/contact">
               <Arrow />
             </Link>
-          </MobileContact>
+          </MobileContact> */}
         </Right>
       </Bottom>
     </BgSection>
@@ -353,7 +321,7 @@ const Right = styled.div`
     align-self: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
   @media (max-width: ${breakpoints.xs}px) {
     grid-template-columns: 1fr;
@@ -428,7 +396,8 @@ const Contact = styled.div`
     font-family: "calibre-regular";
     text-decoration: none;
     position: relative;
-    width: 80%;
+    /* width: 80%; */
+    display: inline-block;
 
     ::after {
       content: "";
@@ -508,29 +477,29 @@ const Contact = styled.div`
   }
 `
 
-const MobileContact = styled.div`
-  display: none;
+// const MobileContact = styled.div`
+//   display: none;
 
-  @media (max-width: ${breakpoints.l}px) {
-    display: block;
-    margin-bottom: 2rem;
-    margin-right: 4rem;
-    position: relative;
-    a {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-  }
+//   @media (max-width: ${breakpoints.l}px) {
+//     display: block;
+//     margin-bottom: 2rem;
+//     margin-right: 4rem;
+//     position: relative;
+//     a {
+//       position: absolute;
+//       bottom: 0;
+//       right: 0;
+//     }
+//   }
 
-  @media (max-width: ${breakpoints.s}px) {
-    margin-right: .5rem;
-  }
+//   @media (max-width: ${breakpoints.s}px) {
+//     margin-right: .5rem;
+//   }
 
-  @media (max-width: ${breakpoints.xs}px) {
-    margin-top: 2rem;
-    a {
-      left: 0;
-    }
-  }
-`
+//   @media (max-width: ${breakpoints.xs}px) {
+//     margin-top: 2rem;
+//     a {
+//       left: 0;
+//     }
+//   }
+// `

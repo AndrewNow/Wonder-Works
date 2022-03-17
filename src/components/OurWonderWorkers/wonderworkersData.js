@@ -6,7 +6,7 @@ import { PinkPortal, BluePortal } from "../../svg/miscellaneous"
 export const workerData = [
   {
     name: "Megan Letter",
-    title: "President",
+    title: "Co-Founder",
     portal: <BluePortal />,
     bio: "Most of the time, Megan can be spotted with a Starbucks drink in her hand, fueling her creative mind power to be at 150%. With this energy, she has launched her own brand, Stay Peachy, and a game called Overlook Bay on Roblox. Shortly after, Wonder Works Studio was born and now, she and her husband Zach will run this studio right out of the ballpark by creating more games for players of all ages. When Megan is not playing video games, you can find her taking part in her new podcast channel, Party of Two, where she will discuss everyday topics with special guests or hanging out with her fur babies and Zach.",
   },

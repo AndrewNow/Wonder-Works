@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import breakpoints from "./breakpoints"
-import { Link } from "gatsby"
-import { Arrow } from "../svg/miscellaneous"
+// import { Link } from "gatsby"
+// import { Arrow } from "../svg/miscellaneous"
 
 export const ContactUsHomePage = () => {
   return (
@@ -44,26 +44,6 @@ export const ContactUsHomePage = () => {
         </Contact>
         <Contact>
           <p>
-            <strong>press</strong>
-          </p>
-          <p>
-            for press <br />
-            press
-          </p>
-          <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
-        </Contact>
-        <Contact>
-          <p>
-            <strong>collabs</strong>
-          </p>
-          <p>
-            influencer <br />
-            collaborations
-          </p>
-          <a href="mailto:collab@wonderworks.gg">collab@wonderworks.gg</a>
-        </Contact>
-        <Contact>
-          <p>
             <strong>careers</strong>
           </p>
           <p>
@@ -72,23 +52,11 @@ export const ContactUsHomePage = () => {
           </p>
           <a href="mailto:careers@wonderworks.gg">careers@wonderworks.gg</a>
         </Contact>
-        <Contact>
-          <p>
-            <strong>partnerships</strong>
-          </p>
-          <p>
-            brand <br />
-            partnerships
-          </p>
-          <a href="mailto:partnerships@wonderworks.gg">
-            partnerships@wonderworks.gg
-          </a>
-        </Contact>
-        <MobileContact>
+        {/* <MobileContact>
           <Link to="/contact">
             <Arrow />
           </Link>
-        </MobileContact>
+        </MobileContact> */}
       </Right>
     </Wrapper>
   )
@@ -132,26 +100,7 @@ export const ContactUs = () => {
           </p>
           <a href="mailto:info@wonderworks.gg">info@wonderworks.gg</a>
         </Contact>
-        <Contact>
-          <p>
-            <strong>press</strong>
-          </p>
-          <p>
-            for press <br />
-            press
-          </p>
-          <a href="mailto:press@wonderworks.gg">press@wonderworks.gg</a>
-        </Contact>
-        <Contact>
-          <p>
-            <strong>collabs</strong>
-          </p>
-          <p>
-            influencer <br />
-            collaborations
-          </p>
-          <a href="mailto:collab@wonderworks.gg">collab@wonderworks.gg</a>
-        </Contact>
+
         <Contact>
           <p>
             <strong>careers</strong>
@@ -162,23 +111,11 @@ export const ContactUs = () => {
           </p>
           <a href="mailto:careers@wonderworks.gg">careers@wonderworks.gg</a>
         </Contact>
-        <Contact>
-          <p>
-            <strong>partnerships</strong>
-          </p>
-          <p>
-            brand <br />
-            partnerships
-          </p>
-          <a href="mailto:partnerships@wonderworks.gg">
-            partnerships@wonderworks.gg
-          </a>
-        </Contact>
-        <MobileContact>
+        {/* <MobileContact>
           <Link to="/contact">
             <Arrow />
           </Link>
-        </MobileContact>
+        </MobileContact> */}
       </Right>
     </Wrapper>
   )
@@ -206,14 +143,14 @@ const Wrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10rem;
+  padding-bottom: 15rem;
   padding-top: 10rem;
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 85%;
     flex-direction: column;
   }
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: ${breakpoints.m}px) {
     padding-bottom: 6rem;
   }
   @media (max-width: ${breakpoints.xs}px) {
@@ -228,14 +165,13 @@ const Left = styled.div`
     font-size: 6.5625vw;
     line-height: 105%;
     white-space: nowrap;
-    padding-bottom: 15rem;
+    /* padding-bottom: 15rem; */
   }
 
   h2 {
     width: 60%;
     font-family: "ppwoodland-light";
     white-space: nowrap;
-    padding-bottom: 5rem;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
@@ -277,6 +213,7 @@ const Left = styled.div`
 `
 const Right = styled.div`
   align-self: flex-end;
+  margin-top: 1rem;
   @media (max-width: ${breakpoints.xl}px) {
     margin-top: 5rem;
   }
@@ -296,7 +233,6 @@ const Right = styled.div`
     align-self: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
   }
   @media (max-width: ${breakpoints.xs}px) {
     grid-template-columns: 1fr;
@@ -332,7 +268,8 @@ const Contact = styled.div`
     font-family: "calibre-regular";
     text-decoration: none;
     position: relative;
-    width: 80%;
+    /* width: 80%; */
+    display: inline-block; 
 
     ::after {
       content: "";
@@ -411,52 +348,52 @@ const Contact = styled.div`
     }
   }
 `
-const MobileContact = styled.div`
-  display: none;
+// const MobileContact = styled.div`
+//   display: none;
 
-  @media (max-width: ${breakpoints.l}px) {
-    display: block;
-    margin-right: 4rem;
-    position: relative;
-    a {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    margin-right: 0rem;
+//   @media (max-width: ${breakpoints.l}px) {
+//     display: block;
+//     margin-right: 4rem;
+//     position: relative;
+//     a {
+//       position: absolute;
+//       bottom: 0;
+//       right: 0;
+//     }
+//   }
+//   @media (max-width: ${breakpoints.m}px) {
+//     margin-right: 0rem;
 
-    a {
-      right: 45%;
-    }
-  }
-  @media (max-width: 700px) {
-    a {
-      right: 33%;
-    }
-  }
-  @media (max-width: 600px) {
-    a {
-      right: 28%;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    margin-right: 0.5rem;
-    a {
-      right: 30%;
-    }
-  }
+//     a {
+//       right: 45%;
+//     }
+//   }
+//   @media (max-width: 700px) {
+//     a {
+//       right: 33%;
+//     }
+//   }
+//   @media (max-width: 600px) {
+//     a {
+//       right: 28%;
+//     }
+//   }
+//   @media (max-width: ${breakpoints.s}px) {
+//     margin-right: 0.5rem;
+//     a {
+//       right: 30%;
+//     }
+//   }
 
-  @media (max-width: 400px) {
-    a {
-      right: 0%;
-    }
-  }
-  @media (max-width: ${breakpoints.xs}px) {
-    margin-top: 4rem;
-    a {
-      left: 0;
-    }
-  }
-`
+//   @media (max-width: 400px) {
+//     a {
+//       right: 0%;
+//     }
+//   }
+//   @media (max-width: ${breakpoints.xs}px) {
+//     margin-top: 4rem;
+//     a {
+//       left: 0;
+//     }
+//   }
+// `
