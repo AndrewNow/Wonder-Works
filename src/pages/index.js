@@ -32,7 +32,6 @@ const HomeIndex = ({ data }) => {
     triggerOnce: true,
   })
 
-
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
   const blueSectionRef = useRef()
@@ -109,6 +108,23 @@ const HomeIndex = ({ data }) => {
     },
   }
 
+  const StaircaseAnim = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 2,
+        delay: 2.75,
+        type: "spring",
+        stiffness: 100,
+        damping: 5,
+      },
+    },
+    hidden: {
+      y: 50,
+      opacity: 0,
+    },
+  }
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })
@@ -142,7 +158,11 @@ const HomeIndex = ({ data }) => {
         ]}
       />
       <Background style={{ y: homeBackground }}>
-        <StaircaseWrapper>
+        <StaircaseWrapper
+          variants={StaircaseAnim}
+          initial="hidden"
+          animate="visible"
+        >
           <Svg.Staircase />
         </StaircaseWrapper>
         <CogWrapper
@@ -293,10 +313,10 @@ const Background = styled(motion.div)`
     height: 110vh;
   }
 `
-const StaircaseWrapper = styled.div`
+const StaircaseWrapper = styled(motion.div)`
   position: absolute;
-  top: 23%;
-  left: 8%;
+  top: 30%;
+  left: 7%;
 
   @media (max-width: ${breakpoints.xl}px) {
     left: 5%;
@@ -325,8 +345,8 @@ const StaircaseWrapper = styled.div`
 `
 const CogWrapper = styled(motion.div)`
   position: absolute;
-  top: 45%;
-  right: 40%;
+  top: 69%;
+  left: 33%;
   display: flex;
   justify-content: center;
   align-items: center;

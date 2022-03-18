@@ -9,7 +9,7 @@ const LandingPage = () => {
     visible: {
       transition: {
         duration: 2,
-        delay: .5,
+        delay: 0.5,
         // delay: 1.2,
         // delayChildren: 0.6,
         staggerChildren: 0.2,
@@ -45,22 +45,25 @@ const LandingPage = () => {
     animate: {
       color: "#1a1748", // black
       transition: {
-        delay: 2.2,
-        duration: 0.5,
+        delay: 2.4,
+        duration: 0.3,
       },
     },
   }
 
   const loader = {
     initial: {
-      opacity: 1,
+      // opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
     },
     animate: {
       // y: "-100vh",
-      opacity: 0,
+      // opacity: 0,
+      clipPath: "inset(0% 0% 100% 0%)",
       transition: {
-        delay: 2.2,
-        duration: 0.5,
+        delay: 2.4,
+        duration: 0.75,
+        ease: [0.77, 0, 0.175, 1],
       },
       transitionEnd: { display: "none" },
     },
@@ -68,13 +71,18 @@ const LandingPage = () => {
 
   const video = {
     initial: {
-      opacity: 0,
+      clipPath: "inset(100% 0% 0% 0%)",
+      // opacity: 0,
+      // y: 0,
     },
     animate: {
-      opacity: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
+      // opacity: 1,
+      // y: "-100%",
       transition: {
-        delay: 3,
-        duration: 0.6,
+        delay: 2.9,
+        duration: 1,
+        ease: [0.77, 0, 0.175, 1],
       },
     },
   }
@@ -96,46 +104,18 @@ const LandingPage = () => {
       const landingTextTop = landingTextArea.top
       const landingTextLeft = landingTextArea.left
 
-      // 2. ===TOP TEXT ANIMATION===
+      // 2.=============== TOP TEXT ANIMATION COORDS ===============
+      // 2.=============== TOP TEXT ANIMATION COORDS ===============
       const topBox = textTopRef.current.getBoundingClientRect()
-
       // 2.1 get top text box's distance to top and left of DOM
       const yDistanceTopText = topBox.y - landingTextTop
       const xDistanceTopText = topBox.x - landingTextLeft
 
-      // 2.2 then, run the top text box animation sequence
-      async function topTextSequence() {
-        await animationTop.start({
-          y: -yDistanceTopText,
-          transition: {
-            delay: 1.75,
-            duration: 1,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 100,
-            damping: 11,
-          },
-        })
-        await animationTop.start({
-          x: -xDistanceTopText,
-          transition: {
-            duration: 0.7,
-            ease: "easeIn",
-            type: "spring",
-            stiffness: 100,
-            damping: 11,
-          },
-        })
-        animationTop.start({ scale: 1 })
-      }
-      topTextSequence()
-
-      // 3. ===BOTTOM TEXT ANIMATION===
+      // 3. =============== BOTTOM TEXT ANIMATION COORDS ===============
+      // 3. =============== BOTTOM TEXT ANIMATION COORDS ===============
       const bottomBox = textBottomRef.current.getBoundingClientRect()
-
       const measureBottomTextHeightFromTop =
         textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
-
       const bottomTravelDistance =
         window.innerHeight -
         measureBottomTextHeightFromTop +
@@ -144,35 +124,66 @@ const LandingPage = () => {
       const yDistanceBottomText = bottomTravelDistance / 2
       const xDistanceBottomText = bottomBox.x - landingTextLeft
 
-      // to-do: write the height of the bottom text to state
-      // so that the video box can have adequate spacing
+      // 4 =============== ANIMATIONS ===============
+      // 4 =============== ANIMATIONS ===============
 
-      // 3.1 do the same as above, but move to bottom-right position
+      // 4.1 ANIMATE BOTTOM TEXT
+      async function topTextSequence() {
+        await animationTop.start({
+          y: -yDistanceTopText,
+          transition: {
+            delay: 1.25,
+            duration: 0.75,
+            ease: [0.77, 0, 0.175, 1],
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+          },
+        })
+        await animationTop.start({
+          x: -xDistanceTopText,
+          transition: {
+            duration: 0.4,
+            ease: [0.77, 0, 0.175, 1],
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+          },
+        })
+        animationTop.start({ scale: 1 })
+      }
+      topTextSequence()
+
+      // 4.2 ANIMATE BOTTOM TEXT
       async function bottomTextSequence() {
         await animationBottom.start({
           y: yDistanceBottomText,
           transition: {
-            delay: 1.75,
-            duration: 1,
-            ease: "easeOut",
+            delay: 1.25,
+            duration: 0.75,
+            ease: [0.77, 0, 0.175, 1],
             type: "spring",
-            stiffness: 100,
-            damping: 11,
+            stiffness: 125,
+            damping: 20,
           },
         })
         await animationBottom.start({
           x: xDistanceBottomText,
           transition: {
-            duration: 0.7,
-            ease: "easeIn",
+            duration: 0.4,
+            ease: [0.77, 0, 0.175, 1],
             type: "spring",
             stiffness: 100,
-            damping: 11,
+            damping: 15,
           },
         })
         animationBottom.start({ scale: 1 })
       }
       bottomTextSequence()
+
+      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      // to-do: write the height of the bottom text to state
+      // so that the video box can have adequate spacing
 
       // const bottomBoxHeight = textBottomRef.current.offsetHeight
     }
@@ -222,7 +233,7 @@ const LandingPage = () => {
             </ThirdLine>
           </motion.h1>
         </TextBlock>
-        <LandingVideo variants={video} initial="initial" animate="animate"/>
+        <LandingVideo variants={video} initial="initial" animate="animate" />
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />
     </>
@@ -255,11 +266,11 @@ const LandingVideo = styled(motion.div)`
 const LandingText = styled.div`
   z-index: 9999;
 
-  /* overflow: hidden; */
+  overflow-x: hidden;
   position: relative;
   height: 85vh;
   width: 90%;
-  transform: translateY(10vh);
+  transform: translateY(12vh);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
