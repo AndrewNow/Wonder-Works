@@ -108,94 +108,7 @@ const HomeIndex = ({ data }) => {
       opacity: 0,
     },
   }
-  const investorFadeIn = {
-    visible: {
-      transition: {
-        delay: 0.3,
-        // type: "spring",
-        // stiffness: 100,
-        // damping: 13,
-        staggerChildren: 0.15,
-      },
-    },
-    hidden: {},
-  }
-  const investorWords = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      y: 70,
-      opacity: 0,
-    },
-  }
-  const subtitle = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay: 1.2,
-        type: "spring",
-        stiffness: 100,
-        damping: 13,
-      },
-    },
-    hidden: {
-      y: 100,
-      opacity: 0,
-    },
-  }
 
-  const button = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay: 1.4,
-        type: "spring",
-        stiffness: 100,
-        damping: 13,
-      },
-    },
-    hidden: {
-      y: 100,
-      opacity: 0,
-    },
-  }
-
-  const circleAnimation = {
-    inView: {
-      transition: {
-        duration: 0.5,
-        delay: 1,
-      },
-      scale: 1,
-    },
-    notInView: {
-      scale: 0,
-    },
-  }
-
-  const circleText = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.2,
-        duration: 0.5,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: -60,
-    },
-  }
 
   // ---------- Parrallax scroll logic using Framer  ----------
   const { scrollYProgress } = useViewportScroll({ passive: true })
@@ -245,9 +158,9 @@ const HomeIndex = ({ data }) => {
         >
           <Svg.Cog />
         </CogWrapper>
-        <PortalWrapper>
+        {/* <PortalWrapper>
           <Svg.Portal />
-        </PortalWrapper>
+        </PortalWrapper> */}
       </Background>
       <LandingPage />
       <ImaginationSection ref={sectionRef}>
