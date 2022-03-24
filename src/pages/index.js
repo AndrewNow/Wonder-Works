@@ -58,6 +58,8 @@ const HomeIndex = ({ data }) => {
     window.localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
 
+  console.log(currentTheme)
+
   // ----------framer motion animation variants----------
 
   const line2 = {
@@ -183,7 +185,13 @@ const HomeIndex = ({ data }) => {
           <Svg.Portal />
         </PortalWrapper> */}
       </Background>
-      <LandingPage />
+      <div
+        style={{
+          paddingTop: "12vh",
+        }}
+      >
+        <LandingPage />
+      </div>
       <KeepScrollingWrapper>
         <KeepScrolling>
           <p>Discover more!</p>

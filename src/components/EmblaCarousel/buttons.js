@@ -200,8 +200,9 @@ export const PrevButtonBrandedProjects = ({ enabled, onClick }) => {
     <EmblaButtonBrandedProjects
       onClick={onClick}
       disabled={!enabled}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.1, y: "-50%" }}
+      whileTap={{ scale: 0.9, y: "-50%" }}
+      initial={{ y: "-50%" }}
     >
       <svg
         width="53"
@@ -612,8 +613,6 @@ const EmblaButtonBrandedProjects = styled(motion.button)`
   touch-action: manipulation;
   position: absolute;
   z-index: 1;
-  top: 45%;
-  /* transform: translateY(-50%); */
   border: 0;
   width: 51px;
   height: 58px;
@@ -631,8 +630,6 @@ const EmblaButtonBrandedProjects = styled(motion.button)`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    top: 91%;
-
     svg {
       max-width: 38px;
       opacity: 0.9;

@@ -40,6 +40,7 @@ const Layout = ({ children }) => {
 export default Layout
 
 const GlobalWrapper = styled.div`
+  /* position: relative; */
   margin: 0 auto;
   background-color: var(--color-white);
   width: 100%;

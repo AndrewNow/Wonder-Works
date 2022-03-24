@@ -48,7 +48,7 @@ const Navbar = () => {
     hidden: {
       opacity: 0,
     },
-  }
+  } 
   const navAnimationMobile = {
     visible: {
       opacity: 1,
@@ -133,37 +133,27 @@ const Navbar = () => {
             exit="hidden"
             variants={navAnimation}
           >
-            <motion.div variants={navItem} 
-            whileHover={{ x: -15 }}
-            >
+            <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/" activeClassName="active">
                 Home
               </Link>
             </motion.div>
-            <motion.div variants={navItem} 
-            whileHover={{ x: -15 }}
-            >
+            <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/about" activeClassName="active">
                 About
               </Link>
             </motion.div>
-            <motion.div variants={navItem} 
-            whileHover={{ x: -15 }}
-            >
+            <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/projects" activeClassName="active">
                 Projects
               </Link>
             </motion.div>
-            <motion.div variants={navItem} 
-            whileHover={{ x: -15 }}
-            >
+            <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/careers" activeClassName="active">
                 Careers
               </Link>
             </motion.div>
-            <motion.div variants={navItem} 
-            whileHover={{ x: -15 }}
-            >
+            <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/contact" activeClassName="active">
                 Contact
               </Link>
@@ -317,9 +307,9 @@ const HomeLink = styled(Link)`
 const Dropdown = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  position: fixed;
   align-items: flex-end;
   z-index: 2000;
+  position: fixed;
   right: 3.5%;
   margin-right: 0.5rem;
   transform: translateY(37.5%);
@@ -330,7 +320,7 @@ const Dropdown = styled(motion.div)`
     transition-delay: 0.2s;
     text-decoration: none;
 
-    &.active {
+    .active {
       font-family: "calibre-semibold";
     }
   }
@@ -400,7 +390,7 @@ const MobileAnimation = styled(motion.div)`
   display: flex;
   justify-content: center;
   position: relative;
-  `
+`
 
 const MobileNav = styled(motion.div)`
   margin: 0 auto;
@@ -410,7 +400,6 @@ const MobileNav = styled(motion.div)`
   height: 80%;
   margin-top: 2rem;
   width: 90%;
-
 
   /* justify-content: flex-start; */
 `

@@ -7,7 +7,7 @@ import {
   PrevButtonBrandedProjects,
 } from "../../components/EmblaCarousel/buttons"
 import { BrandedProjectsGear } from "../../svg/homepage"
-import { useAnimation, motion } from "framer-motion"
+import { useAnimation, motion, animate } from "framer-motion"
 
 const BrandedProjects = () => {
   const slideData = [
@@ -18,14 +18,18 @@ const BrandedProjects = () => {
       thumbnail: ``,
     },
     {
-      brand: `David Guetta2`,
-      title: `DJ Party`,
+      brand: `Insomniac`,
+      title: `World Party`,
       year: `2021`,
       thumbnail: ``,
     },
     {
-      brand: `David Guetta3`,
-      title: `DJ Party`,
+      title: `Froot Loops`,
+      year: `2021`,
+      thumbnail: ``,
+    },
+    {
+      title: `Timmeh`,
       year: `2021`,
       thumbnail: ``,
     },
@@ -54,30 +58,24 @@ const BrandedProjects = () => {
     if (!embla) return
     embla.on("select", onSelect)
     onSelect()
+    // animateGear()
   }, [embla, onSelect])
 
-  const [animateGear, setAnimateGear] = useState(false)
-  useEffect(() => {
-    setAnimateGear(true)
-  }, [scrollPrev, scrollNext])
-
-
-  
-  const turnGear = useAnimation()
-  // animate gear when left or right buttons are clicked
-  useEffect(() => {
-    async function animateGear() {
-      await turnGear.start({
-        rotate: 180,
-        transition: { ease: "linear", duration: 4 },
-      })
-    }
-    animateGear()
-  }, [])
+  // const turnGear = useAnimation()
+  // // animate gear when left or right buttons are clicked
+  // async function animateGear() {
+  //   await turnGear.start({
+  //     rotate: 180,
+  //     transition: { ease: "linear", duration: 0.25 },
+  //   })
+  // }
 
   return (
     <Wrapper>
-      <Title>Branded Projects</Title>
+      <Title>
+        <h1>Branded Projects</h1>
+        <h3>Ushering global brands into the Metaverse</h3>
+      </Title>
       <Embla>
         <EmblaViewport ref={emblaRef}>
           <EmblaContainer>
@@ -87,7 +85,11 @@ const BrandedProjects = () => {
                   <SlideWrapper>
                     <SlideText>
                       <h3>
-                        {slide.brand} <br />
+                        {slide.brand && (
+                          <>
+                            {slide.brand} <br />
+                          </>
+                        )}
                         {slide.title} <br /> <br />
                         {slide.year}
                       </h3>
@@ -131,7 +133,18 @@ const BrandedProjects = () => {
           enabled={nextBtnEnabled}
         />
       </Embla>
-      <GearWrapper animate={turnGear}>
+      <GearWrapper
+        // animate={turnGear}
+        animate={{
+          rotate: 180,
+          transition: {
+            repeat: "Infinity",
+            ease: "linear",
+            duration: 15,
+          },
+        }}
+        initial={{ rotate: 0 }}
+      >
         <BrandedProjectsGear />
       </GearWrapper>
     </Wrapper>
@@ -145,27 +158,55 @@ const Wrapper = styled.section`
   min-height: 100vh;
   padding-bottom: 5rem;
   position: relative;
+  overflow-x: hidden;
 `
 
-const Title = styled.h1`
-  color: var(--color-orange);
-  font-family: "ppwoodland-bold";
+const Title = styled.div`
   padding-top: 10rem;
   padding-bottom: 10rem;
   width: 87.5%;
   margin: 0 auto;
+  h1,
+  h3 {
+    color: var(--color-orange);
+  }
+  h1 {
+    font-family: "ppwoodland-bold";
+  }
+  h3 {
+    font-family: "calibre-regular";
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    h3 {
+      padding-top: 1rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    h3 {
+      padding-top: 2rem;
+      font-size: 21px;
+      line-height: 120%;
+    }
+  }
 `
 
 const Embla = styled.div`
   width: 80%;
   margin-top: 5rem;
-  min-height: 70vh;
+  margin-bottom: 20vh;
   position: relative;
+  top: 25%;
   z-index: 2;
   position: relative;
   margin-left: auto;
   margin-right: auto;
 
+
+  button {
+    top: 50%;
+  }
   button:first-of-type {
     left: -3%;
   }
@@ -174,45 +215,30 @@ const Embla = styled.div`
     right: -3%;
   }
 
-  @media (max-width: ${breakpoints.xxl}px) {
-    button:first-of-type {
-      padding-top: 1rem;
-      top: auto;
-      bottom: -12%;
-      left: 0%;
-    }
-
-    button:last-of-type {
-      padding-top: 1rem;
-      top: auto;
-      bottom: -12%;
-      right: 3%;
-    }
-  }
-
   @media (max-width: ${breakpoints.xl}px) {
-    width: 100%;
     button:first-of-type {
-      padding-top: 1rem;
-      top: auto;
-      bottom: -10%;
-      left: 3%;
+      left: -7.5%;
     }
 
     button:last-of-type {
-      padding-top: 1rem;
-      top: auto;
-      bottom: -10%;
-      right: 3%;
+      right: -7.5%;
     }
   }
-
-  @media (max-width: ${breakpoints.s}px) {
-    button {
-      display: none;
+  @media (max-width: ${breakpoints.l}px) {
+    button:first-of-type {
+      left: -8%;
     }
+
+    button:last-of-type {
+      right: -8%;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 `
+
 const EmblaViewport = styled.div`
   overflow: hidden;
   width: 100%;
@@ -237,13 +263,27 @@ const SlideWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: ${breakpoints.l}px) {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
 `
 
 const SlideText = styled.div`
-  margin-right: 7rem;
+  margin-right: 10rem;
   h3 {
+    white-space: nowrap;
     font-family: "calibre-medium";
     color: var(--color-white);
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-right: 5rem;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin: 2rem;
+    align-self: flex-start;
   }
 `
 
@@ -252,6 +292,10 @@ const SlideMedia = styled.div`
   width: 720px;
   max-width: 800px;
   background: white;
+
+  @media (max-width: ${breakpoints.l}px) {
+    max-width: 85vw;
+  }
 `
 
 const GearWrapper = styled(motion.div)`
@@ -259,4 +303,26 @@ const GearWrapper = styled(motion.div)`
   z-index: 1;
   top: 30%;
   right: 10%;
+  aspect-ratio: 1/1;
+  width: 33vw;
+  height: 33vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    max-width: 33vw;
+  }
+
+  @media (max-width: ${breakpoints.xl}px) {
+    right: 5%;
+    width: 40vw;
+    height: 40vw;
+    svg {
+      max-width: 40vw;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    top: 25%;
+    right: 3%;
+  }
 `

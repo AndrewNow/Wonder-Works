@@ -291,13 +291,11 @@ const LandingVideo = styled(motion.div)`
 
 const LandingText = styled.div`
   z-index: 999;
-
   overflow-x: hidden;
   position: relative;
   height: 85vh;
   width: 90%;
   margin: 0 auto;
-  margin-top: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
