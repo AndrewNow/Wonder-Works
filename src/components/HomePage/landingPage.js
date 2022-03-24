@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import { motion, useAnimation } from "framer-motion"
 import breakpoints from "../breakpoints"
+import ReactPlayer from "react-player/file"
 
 const LandingPage = () => {
   // ----------framer motion animation variants----------
@@ -96,98 +97,109 @@ const LandingPage = () => {
   const animationBottom = useAnimation()
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // 1. get the parent's bounds
-      const landingTextArea = landingTextRef.current.getBoundingClientRect()
-
-      // 1.1 get each edge's margin spacing
-      const landingTextTop = landingTextArea.top
-      const landingTextLeft = landingTextArea.left
-
-      // 2.=============== TOP TEXT ANIMATION COORDS ===============
-      // 2.=============== TOP TEXT ANIMATION COORDS ===============
-      const topBox = textTopRef.current.getBoundingClientRect()
-      // 2.1 get top text box's distance to top and left of DOM
-      const yDistanceTopText = topBox.y - landingTextTop
-      const xDistanceTopText = topBox.x - landingTextLeft
-
-      // 3. =============== BOTTOM TEXT ANIMATION COORDS ===============
-      // 3. =============== BOTTOM TEXT ANIMATION COORDS ===============
-      const bottomBox = textBottomRef.current.getBoundingClientRect()
-      const measureBottomTextHeightFromTop =
-        textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
-      const bottomTravelDistance =
-        window.innerHeight -
-        measureBottomTextHeightFromTop +
-        textBottomRef.current.offsetHeight
-
-      const yDistanceBottomText = bottomTravelDistance / 2
-      const xDistanceBottomText = bottomBox.x - landingTextLeft
-
-      // 4 =============== ANIMATIONS ===============
-      // 4 =============== ANIMATIONS ===============
-
-      // 4.1 ANIMATE BOTTOM TEXT
-      async function topTextSequence() {
-        await animationTop.start({
-          y: -yDistanceTopText,
-          transition: {
-            delay: 1.25,
-            duration: 0.75,
-            ease: [0.77, 0, 0.175, 1],
-            type: "spring",
-            stiffness: 100,
-            damping: 20,
-          },
-        })
-        await animationTop.start({
-          x: -xDistanceTopText,
-          transition: {
-            duration: 0.4,
-            ease: [0.77, 0, 0.175, 1],
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-          },
-        })
-        animationTop.start({ scale: 1 })
-      }
-      topTextSequence()
-
-      // 4.2 ANIMATE BOTTOM TEXT
-      async function bottomTextSequence() {
-        await animationBottom.start({
-          y: yDistanceBottomText,
-          transition: {
-            delay: 1.25,
-            duration: 0.75,
-            ease: [0.77, 0, 0.175, 1],
-            type: "spring",
-            stiffness: 125,
-            damping: 20,
-          },
-        })
-        await animationBottom.start({
-          x: xDistanceBottomText,
-          transition: {
-            duration: 0.4,
-            ease: [0.77, 0, 0.175, 1],
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-          },
-        })
-        animationBottom.start({ scale: 1 })
-      }
-      bottomTextSequence()
-
-      // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      // to-do: write the height of the bottom text to state
-      // so that the video box can have adequate spacing
-
-      // const bottomBoxHeight = textBottomRef.current.offsetHeight
+    if (typeof window == "undefined") {
+      return
     }
+    // 1. ~~~~~ GET PARENT BOUNDING BOX COORDINATES ~~~~~
+    const landingTextArea = landingTextRef.current.getBoundingClientRect()
+    // 1.1 get each edge of the landing text area's spacing
+    // (relative to top and sides of the viewport)
+    const landingTextTop = landingTextArea.top
+    const landingTextLeft = landingTextArea.left
+
+    // 2. ~~~~~ TOP TEXT ANIMATION DESTINATION COORDS ~~~~~
+    const topBox = textTopRef.current.getBoundingClientRect()
+    // 2.1 get top text box's distance to top and left of DOM
+    const yDistanceTopText = topBox.top - landingTextTop
+    const xDistanceTopText = topBox.left - landingTextLeft
+
+    // 3. ~~~~~ BOTTOM TEXT ANIMATION COORDS ~~~~~
+    const bottomBox = textBottomRef.current.getBoundingClientRect()
+    const measureBottomTextHeightFromTop =
+      textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
+    const bottomTravelDistance =
+      window.innerHeight -
+      measureBottomTextHeightFromTop +
+      textBottomRef.current.offsetHeight
+    const yDistanceBottomText = bottomTravelDistance / 2
+    const xDistanceBottomText = bottomBox.x - landingTextLeft
+
+    // 4 ~~~~~ ANIMATIONS ~~~~~
+    // 4 ~~~~~ ANIMATIONS ~~~~~
+
+    // 4.1 ANIMATE BOTTOM TEXT
+    async function topTextSequence() {
+      await animationTop.start({
+        y: -yDistanceTopText,
+        transition: {
+          delay: 1.25,
+          duration: 0.75,
+          ease: [0.77, 0, 0.175, 1],
+          // type: "spring",
+          // stiffness: 100,
+          // damping: 20,
+        },
+      })
+      await animationTop.start({
+        x: -xDistanceTopText,
+        transition: {
+          duration: 0.4,
+          ease: [1, 0.175, 0, 0.77],
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+        },
+      })
+      animationTop.start({ scale: 1 })
+    }
+    topTextSequence()
+
+    // 4.2 ANIMATE BOTTOM TEXT
+    async function bottomTextSequence() {
+      await animationBottom.start({
+        y: yDistanceBottomText,
+        transition: {
+          delay: 1.25,
+          duration: 0.75,
+          ease: [0.77, 0, 0.175, 1],
+          // type: "spring",
+          // stiffness: 125,
+          // damping: 20,
+        },
+      })
+      await animationBottom.start({
+        x: xDistanceBottomText,
+        transition: {
+          duration: 0.4,
+          ease: [0.77, 0, 0.175, 1],
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+        },
+      })
+      animationBottom.start({ scale: 1 })
+    }
+    bottomTextSequence()
+
+    // lock the body for the duration of the animation
+
+    // document.body.style.overflow = "hidden"
+    // const unlockBody = () => {
+    //   document.body.style.overflow = "visible"
+    // }
+    // const unlockBodyScroll = () => {
+    //   setTimeout(unlockBody, 3000)
+    // }
+    // unlockBodyScroll()
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // to-do: write the height of the bottom text to state
+    // so that the video box can have adequate spacing
+
+    // const bottomBoxHeight = textBottomRef.current.offsetHeight
   }, [])
+
+  
 
   return (
     <>
@@ -233,7 +245,14 @@ const LandingPage = () => {
             </ThirdLine>
           </motion.h1>
         </TextBlock>
-        <LandingVideo variants={video} initial="initial" animate="animate" />
+        <LandingVideo variants={video} initial="initial" animate="animate">
+          <ReactPlayer
+            url={`https://ww-2022.s3.us-east-2.amazonaws.com/REEL+TIME+OF.mp4`}
+            width="100%"
+            height="100%"
+            muted={true}
+          />
+        </LandingVideo>
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />
     </>
@@ -243,8 +262,9 @@ const LandingPage = () => {
 export default LandingPage
 
 const Cover = styled(motion.div)`
-  position: fixed;
-  z-index: 9998;
+  position: absolute;
+  /* was: fixed */
+  z-index: 998;
   top: 0;
   left: 0;
   height: 100vh;
@@ -256,32 +276,40 @@ const LandingVideo = styled(motion.div)`
   position: absolute;
   right: 0;
   bottom: 0;
+  aspect-ratio: 966/547;
   width: 966px;
-  height: 547px;
+  height: auto;
   background-color: #a9f2ed;
   border-radius: 10px;
+  overflow: hidden;
   margin-bottom: 10vh;
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 90%;
+  }
 `
 
 const LandingText = styled.div`
-  z-index: 9999;
+  z-index: 999;
 
   overflow-x: hidden;
   position: relative;
   height: 85vh;
   width: 90%;
-  transform: translateY(12vh);
   margin: 0 auto;
+  margin-top: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 97%;
+  }
 `
 
 const TextBlock = styled(motion.div)`
   position: relative;
-  //was:
-  /* position: absolute; */
   z-index: 10;
 
   h1 {
@@ -290,8 +318,8 @@ const TextBlock = styled(motion.div)`
     font-family: "balgin-medium";
     font-size: 5.73vw;
     line-height: 50%;
+    /* line-height: 80%; */
     width: 100%;
-    /* color: var(--color-black); */
   }
   @media (max-width: ${breakpoints.xl}px) {
     h1 {
@@ -302,6 +330,44 @@ const TextBlock = styled(motion.div)`
     h1 {
       font-size: 9vw;
     }
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    h1 {
+      font-size: 40px;
+      line-height: 60%;
+      white-space: nowrap;
+    }
+  }
+`
+
+const FirstLine = styled(motion.div)`
+  position: relative;
+  height: 100%;
+  padding-bottom: 2rem;
+  vertical-align: top;
+  overflow: hidden;
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding-bottom: 0.5rem;
+  }
+`
+const SecondLine = styled(motion.div)`
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding-bottom: 0.25rem;
+`
+const ThirdLine = styled(motion.div)`
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  margin-top: 1rem;
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 0.25rem;
   }
 `
 
@@ -327,7 +393,7 @@ const Span = styled(motion.span)`
     margin-right: 1rem;
   }
   @media (max-width: ${breakpoints.s}px) {
-    margin-right: 0.75rem;
+    margin-right: 0.5rem;
   }
 `
 const SpanBottom = styled(motion.span)`
@@ -355,20 +421,4 @@ const SpanBottom = styled(motion.span)`
     margin-right: 0.75rem;
   }
 `
-const FirstLine = styled(motion.div)`
-  position: relative;
-  padding-bottom: 2rem;
-  vertical-align: top;
-  overflow: hidden;
-`
-const SecondLine = styled(motion.div)`
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 0.25rem;
-`
-const ThirdLine = styled(motion.div)`
-  overflow: hidden;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  margin-top: 1rem;
-`
+

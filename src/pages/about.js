@@ -12,7 +12,7 @@ import {
   AnimatePresence,
 } from "framer-motion"
 import * as Svg from "../svg/aboutpage"
-import { GreenStars, PinkStar } from "../svg/miscellaneous"
+import { GreenStars, PinkStar, KeepScrollingSVG } from "../svg/miscellaneous"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
@@ -272,29 +272,7 @@ const About = ({ data }) => {
         </LandingText>
         <KeepScrolling>
           <p>Keep scrolling!</p>
-          <motion.svg
-            animate={{
-              y: 7,
-              transition: {
-                repeat: "Infinity",
-                repeatType: "reverse",
-                duration: 0.5,
-                ease: "easeInOut",
-              },
-            }}
-            width="20"
-            height="32"
-            viewBox="0 0 20 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.6822 31.0008L10.683 31.0009L10.683 30.9884C10.683 24.5945 12.1429 19.9019 14.873 17.3953L14.873 17.3953C15.8941 16.4573 16.9241 15.9805 17.7001 15.738C18.0882 15.6168 18.4127 15.5542 18.6407 15.5219C18.7547 15.5058 18.8445 15.4972 18.906 15.4927C18.9648 15.4884 18.9971 15.4878 18.9998 15.4878L19 15.4878L19.1 15.4878L19.1 15.3878L19.1 14.0586L19.1 13.9586L19 13.9586C18.8611 13.9586 15.8835 13.9906 13.2475 16.983C12.1734 18.1953 11.3182 19.7173 10.6844 21.5172L10.6844 1L10.6844 0.9L10.5844 0.9L9.41559 0.9L9.31559 0.9L9.31559 1L9.31558 21.533C8.68132 19.7346 7.82755 18.2217 6.75277 16.9965L6.75262 16.9963C4.11073 13.9989 1.14031 13.9719 0.999999 13.9719L0.899999 13.9719L0.899999 14.0719L0.899999 15.4011L0.899999 15.5011L0.999999 15.5011C0.999809 15.5011 1.00229 15.5011 1.00754 15.5012L1.02987 15.5019C1.04939 15.5027 1.07805 15.5041 1.11516 15.5069C1.18938 15.5124 1.29737 15.5232 1.4337 15.5442C1.70639 15.586 2.09222 15.6685 2.54785 15.8307C3.45869 16.1549 4.64938 16.7982 5.77414 18.0756L5.77415 18.0756C8.11433 20.7317 9.31266 25.0732 9.31266 31L9.31266 31.1L9.41266 31.1L10.5815 31.1L10.6697 31.1L10.6807 31.0125L10.6822 31.0008Z"
-              fill="#1A1749"
-              stroke="#1A1749"
-              strokeWidth="0.2"
-            />
-          </motion.svg>
+          <KeepScrollingSVG />
         </KeepScrolling>
         <Logos>
           <h4>As Seen On...</h4>

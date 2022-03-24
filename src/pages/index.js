@@ -1,14 +1,13 @@
 import React, { useRef, useCallback, useEffect } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import * as Svg from "../svg/homepage"
-import { Arrow } from "../svg/miscellaneous"
+import { KeepScrollingSVG } from "../svg/miscellaneous"
 import { GreenStars, ColoredGears } from "../svg/miscellaneous"
-import CountUp from "react-countup"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import MailchimpComponent from "../components/Mailchimp/component"
 import { AsSeenOnLogosHome } from "../components/AsSeenOn/AsSeenOnLogos"
@@ -19,8 +18,10 @@ import {
 } from "../context/globalContext"
 import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCarousel"
 import breakpoints from "../components/breakpoints"
-import OurPillarsHomepage from "../components/SideScroll/ourPillarsHomepage"
 import LandingPage from "../components/HomePage/landingPage"
+import BrandedProjects from "../components/HomePage/brandedProjects"
+// import CountUp from "react-countup"
+// import OurPillarsHomepage from "../components/SideScroll/ourPillarsHomepage"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -183,6 +184,12 @@ const HomeIndex = ({ data }) => {
         </PortalWrapper> */}
       </Background>
       <LandingPage />
+      <KeepScrollingWrapper>
+        <KeepScrolling>
+          <p>Discover more!</p>
+          <KeepScrollingSVG />
+        </KeepScrolling>
+      </KeepScrollingWrapper>
       <ImaginationSection ref={sectionRef}>
         <ImaginationText>
           <h2>
@@ -257,9 +264,12 @@ const HomeIndex = ({ data }) => {
         <AsSeenOnLogosHome />
       </Press>
       {/* TO BE DELETED */}
-      <LatestProjects ref={blueSectionRef}>
+      {/* <LatestProjects ref={blueSectionRef}>
         <LatestProjectsCarousel />
-      </LatestProjects>
+      </LatestProjects> */}
+      <div ref={blueSectionRef}>
+        <BrandedProjects />
+      </div>
       <CareerFlip />
       <Newsletter>
         <OrangeBackgroundMobileTablet>
@@ -294,13 +304,14 @@ export const pageQuery = graphql`
 
 const Background = styled(motion.div)`
   z-index: 0;
-  height: 120vh;
+  height: 100vh;
   max-width: 100%;
   margin: 0 auto;
   position: absolute;
   top: -2.5rem;
   left: 0;
   right: 0;
+  background: var(--color-white);
 
   @media (max-width: 1700px) {
     overflow-x: hidden;
@@ -315,7 +326,7 @@ const Background = styled(motion.div)`
 `
 const StaircaseWrapper = styled(motion.div)`
   position: absolute;
-  top: 30%;
+  top: 33%;
   left: 7%;
 
   @media (max-width: ${breakpoints.xl}px) {
@@ -329,10 +340,10 @@ const StaircaseWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.m}px) {
     svg {
       width: 400px;
-      height: auto;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    top: 30%;
     svg {
       width: 300px;
     }
@@ -450,226 +461,33 @@ const PortalWrapper = styled.div`
   }
 `
 
-const LandingText = styled.div`
-  z-index: 2;
-  position: relative;
-  padding-top: 13rem;
-  width: 90%;
-  margin: 0 auto;
+const KeepScrollingWrapper = styled.div`
+  width: 100%;
+  display: block;
+  /* padding-top: 15vh; */
+  margin-top: 2rem;
+`
+const KeepScrolling = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-
-  h1 {
-    z-index: 2;
-    font-family: "balgin-medium";
-    font-size: 7.3vw;
-    line-height: 100%;
-    color: var(--color-black);
-  }
-
-  h4 {
-    z-index: 2;
-    margin-top: 7.5rem;
-    margin-bottom: 4rem;
-    text-transform: uppercase;
-    color: var(--color-black);
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    padding-top: 16rem;
-    h1 {
-      font-size: 7.8vw;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    h1 {
-      font-size: 9vw;
-    }
-    h4 {
-      font-size: 32px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    display: none;
-  }
-`
-
-const LandingTextMobile = styled.div`
-  display: none;
-
-  @media (max-width: ${breakpoints.m}px) {
-    z-index: 2;
-    position: relative;
-    padding-top: 13rem;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    h1 {
-      z-index: 2;
-      font-family: "balgin-medium";
-      font-size: 12vw;
-      line-height: 100%;
-      color: var(--color-black);
-    }
-
-    h4 {
-      z-index: 2;
-      margin-top: 4.5rem;
-      font-size: 22px;
-      line-height: 110%;
-      margin-bottom: 4rem;
-      text-transform: uppercase;
-      color: var(--color-black);
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    h1 {
-      font-size: 12vw;
-    }
-    h4 {
-      font-size: inherit;
-      width: 90%;
-      font-size: 16px;
-      line-height: 120%;
-      text-align: center;
-      white-space: nowrap;
-    }
-  }
-  @media (max-width: ${breakpoints.xs}px) {
-    padding-top: 10.5rem;
-    h4 {
-      margin-top: 2.5rem;
-      width: 85%;
-      white-space: normal;
-    }
-  }
-`
-
-const Span = styled(motion.span)`
-  margin-right: 2.5rem;
-  display: inline-block;
-  position: relative;
-  vertical-align: text-top;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    margin-right: 2rem;
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    margin-right: 1.5rem;
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    margin-right: 1rem;
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    margin-right: 0.75rem;
-  }
-`
-const First = styled(motion.div)`
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
   position: relative;
   z-index: 2;
-  padding-bottom: 2rem;
-  vertical-align: top;
-  display: inline;
-  overflow: hidden;
-`
-const Second = styled(motion.div)`
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  padding-bottom: 0.25rem;
-`
-const Third = styled(motion.div)`
-  overflow: hidden;
-  padding-bottom: 0.25rem;
-`
-const Fourth = styled(motion.div)`
-  overflow: hidden;
-  padding-bottom: 0.25rem;
-`
 
-const DiscoverMore = styled(Link)`
-  border: 2px solid var(--color-black);
-  border-radius: 50px;
-  padding: 0.75rem 2.75rem;
-  transition: var(--hover-transition);
-  cursor: pointer;
-  background-color: var(--color-white);
-  text-decoration: none;
-  color: var(--color-black);
-  font-family: "calibre-medium";
-  font-size: 28px;
-  line-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    margin-left: 0.75rem !important;
-    transition: var(--hover-transition);
-  }
-  :hover {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    svg {
-      fill: var(--color-white);
-      transform: translateX(0.25rem);
-    }
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    font-size: 25px;
-    padding: 0.5rem 2.5rem;
-    svg {
-      margin-left: 0.45rem;
-      /* scale: 0.8; */
-      transform: scale(0.8);
-    }
-    :hover {
-      svg {
-        transform: translateX(0.25rem) scale(0.8);
-      }
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    font-size: 20px;
-    line-height: 17px;
-    width: auto;
-  }
-  @media (max-width: ${breakpoints.m}px) {
+  p {
+    font-family: "calibre-semibold";
+    text-transform: uppercase;
     font-size: 18px;
-    padding: 0.5rem 1.75rem;
-    border: 1px solid var(--color-black);
-    svg {
-      /* scale: 0.75; */
-      transform: scale(0.75);
-    }
-    :hover {
-      svg {
-        transform: translateX(0.25rem) scale(0.75);
-      }
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    padding: 0.35rem 1.25rem;
-    svg {
-      /* scale: 0.85; */
-      transform: scale(0.85);
-    }
-    :hover {
-      svg {
-        transform: translateX(0.25rem) scale(0.85);
-      }
-    }
+    margin-bottom: 0.5rem;
   }
 `
 
 const ImaginationSection = styled.section`
   height: 100vh;
-  margin-top: 15rem;
+  padding-top: 15rem;
   margin-bottom: 5rem;
   text-align: center;
   position: relative;
