@@ -199,8 +199,6 @@ const LandingPage = () => {
     // const bottomBoxHeight = textBottomRef.current.offsetHeight
   }, [])
 
-  
-
   return (
     <>
       <LandingText ref={landingTextRef}>
@@ -264,11 +262,12 @@ export default LandingPage
 const Cover = styled(motion.div)`
   position: absolute;
   /* was: fixed */
+  overflow-x: hidden;
   z-index: 998;
   top: 0;
   left: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: var(--color-black);
 `
 
@@ -284,8 +283,23 @@ const LandingVideo = styled(motion.div)`
   overflow: hidden;
   margin-bottom: 10vh;
 
-  @media (max-width: ${breakpoints.s}px) {
+  @media (max-width: 1600px) {
+    width: 53vw;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 55vw;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 80%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    margin-bottom: 15vh;
     width: 90%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 `
 
@@ -293,7 +307,9 @@ const LandingText = styled.div`
   z-index: 999;
   overflow-x: hidden;
   position: relative;
-  height: 85vh;
+  min-height: 89vh;
+  // was: height: 85vh;
+  /* height: calc(100vh - 2.5rem * 2); */
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -315,8 +331,8 @@ const TextBlock = styled(motion.div)`
     z-index: 2;
     font-family: "balgin-medium";
     font-size: 5.73vw;
-    line-height: 50%;
-    /* line-height: 80%; */
+    /* line-height: 50%; */
+    line-height: 80%;
     width: 100%;
   }
   @media (max-width: ${breakpoints.xl}px) {
@@ -333,7 +349,7 @@ const TextBlock = styled(motion.div)`
   @media (max-width: ${breakpoints.s}px) {
     h1 {
       font-size: 40px;
-      line-height: 60%;
+      line-height: 100%;
       white-space: nowrap;
     }
   }
@@ -342,9 +358,10 @@ const TextBlock = styled(motion.div)`
 const FirstLine = styled(motion.div)`
   position: relative;
   height: 100%;
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
+  padding-bottom: 1rem;
   vertical-align: top;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 0.5rem;
@@ -355,6 +372,9 @@ const SecondLine = styled(motion.div)`
   height: 100%;
   overflow: hidden;
   padding-bottom: 0.25rem;
+
+  @media (max-width: ${breakpoints.xl}px) {
+  }
 `
 const ThirdLine = styled(motion.div)`
   position: relative;
@@ -364,14 +384,18 @@ const ThirdLine = styled(motion.div)`
   padding-bottom: 0.25rem;
   margin-top: 1rem;
 
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-top: 0.75rem;
+    padding-top: 0rem;
+  }
   @media (max-width: ${breakpoints.s}px) {
-    margin-top: 0.25rem;
+    margin-top: 0rem;
   }
 `
 
 const Span = styled(motion.span)`
   // margin-right to simulate word spacing
-  margin-right: 2.5rem;
+  margin-right: 2rem;
   height: 100%;
   display: inline-block;
   position: relative;
@@ -381,10 +405,11 @@ const Span = styled(motion.span)`
     margin-right: 0;
   }
 
-  @media (max-width: ${breakpoints.xl}px) {
-    margin-right: 2rem;
+  @media (max-width: ${breakpoints.xxl}px) {
+    margin-right: 1.75rem;
   }
-  @media (max-width: ${breakpoints.l}px) {
+
+  @media (max-width: ${breakpoints.xl}px) {
     margin-right: 1.5rem;
   }
   @media (max-width: ${breakpoints.m}px) {
@@ -407,16 +432,12 @@ const SpanBottom = styled(motion.span)`
   }
 
   @media (max-width: ${breakpoints.xl}px) {
-    margin-right: 2rem;
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    margin-right: 1.5rem;
+    margin-right: 1.25rem;
   }
   @media (max-width: ${breakpoints.m}px) {
-    margin-right: 1rem;
-  }
-  @media (max-width: ${breakpoints.s}px) {
     margin-right: 0.75rem;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    margin-right: 0.25rem;
+  }
 `
-

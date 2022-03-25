@@ -227,8 +227,9 @@ export const NextButtonBrandedProjects = ({ enabled, onClick }) => {
     <EmblaButtonBrandedProjects
       onClick={onClick}
       disabled={!enabled}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1, y: "-50%" }}
+      whileTap={{ scale: 0.9, y: "-50%" }}
+      initial={{ y: "-50%" }}
     >
       <svg
         width="53"
@@ -628,7 +629,11 @@ const EmblaButtonBrandedProjects = styled(motion.button)`
     cursor: default;
     opacity: 0.3;
   }
-
+  @media (max-width: ${breakpoints.l}px) {
+    svg {
+      max-width: 45px;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     svg {
       max-width: 38px;

@@ -7,7 +7,7 @@ import {
   PrevButtonBrandedProjects,
 } from "../../components/EmblaCarousel/buttons"
 import { BrandedProjectsGear } from "../../svg/homepage"
-import { useAnimation, motion, animate } from "framer-motion"
+import { useAnimation, motion } from "framer-motion"
 
 const BrandedProjects = () => {
   const slideData = [
@@ -159,6 +159,10 @@ const Wrapper = styled.section`
   padding-bottom: 5rem;
   position: relative;
   overflow-x: hidden;
+
+  @media (max-width: ${breakpoints.s}px) {
+    min-height: none;
+  }
 `
 
 const Title = styled.div`
@@ -176,14 +180,15 @@ const Title = styled.div`
   h3 {
     font-family: "calibre-regular";
   }
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.l}px) {
     h3 {
       padding-top: 1rem;
     }
+    padding-bottom: 3rem;
   }
   @media (max-width: ${breakpoints.s}px) {
     padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 3.5rem;
     h3 {
       padding-top: 2rem;
       font-size: 21px;
@@ -202,7 +207,6 @@ const Embla = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-
 
   button {
     top: 50%;
@@ -226,16 +230,26 @@ const Embla = styled.div`
   }
   @media (max-width: ${breakpoints.l}px) {
     button:first-of-type {
-      left: -8%;
+      left: -9.5%;
     }
 
     button:last-of-type {
-      right: -8%;
+      right: -9.5%;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
     margin-top: 2rem;
     margin-bottom: 2rem;
+
+    button:first-of-type {
+    top: 110%;
+    left: 0%;
+  }
+  
+  button:last-of-type {
+    top: 110%;
+    right: 0%;
+  }
   }
 `
 
@@ -285,6 +299,10 @@ const SlideText = styled.div`
     margin: 2rem;
     align-self: flex-start;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin: .75rem;
+  }
 `
 
 const SlideMedia = styled.div`
@@ -324,5 +342,12 @@ const GearWrapper = styled(motion.div)`
   @media (max-width: ${breakpoints.l}px) {
     top: 25%;
     right: 3%;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    top: 27.5%;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    top: 33%;
+    right: 0;
   }
 `

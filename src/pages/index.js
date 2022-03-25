@@ -339,13 +339,14 @@ const StaircaseWrapper = styled(motion.div)`
 
   @media (max-width: ${breakpoints.xl}px) {
     left: 5%;
-    top: 15%;
+    top: 40%;
     svg {
       width: 450px;
       height: auto;
     }
   }
   @media (max-width: ${breakpoints.m}px) {
+    top: 33%;
     svg {
       width: 400px;
     }
@@ -393,15 +394,16 @@ const CogWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.m}px) {
-    top: 45%;
+    top: 47%;
     svg {
       width: 85px;
       height: 85px;
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 41vh;
-    right: 42%;
+    top: 55vh;
+    left: auto;
+    right: 20%;
     svg {
       width: 50px;
       height: 50px;
