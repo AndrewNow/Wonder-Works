@@ -300,6 +300,7 @@ const LandingVideo = styled(motion.div)`
     width: 95%;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 17vh;
   }
 `
 

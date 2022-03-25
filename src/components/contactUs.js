@@ -144,14 +144,19 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 15rem;
-  padding-top: 10rem;
+  /* was: padding-top: 10rem; */
+  padding-top: 25rem;
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 85%;
     flex-direction: column;
+    padding-top: 15rem;
   }
   @media (max-width: ${breakpoints.m}px) {
     padding-bottom: 6rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding-top: 10rem;
   }
   @media (max-width: ${breakpoints.xs}px) {
     width: 90%;

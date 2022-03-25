@@ -20,6 +20,7 @@ import LatestProjectsCarousel from "../components/EmblaCarousel/latestProjectsCa
 import breakpoints from "../components/breakpoints"
 import LandingPage from "../components/HomePage/landingPage"
 import BrandedProjects from "../components/HomePage/brandedProjects"
+import OurWonderWorkers from "../components/HomePage/Staff/ourWonderWorkers"
 // import CountUp from "react-countup"
 // import OurPillarsHomepage from "../components/SideScroll/ourPillarsHomepage"
 
@@ -267,10 +268,6 @@ const HomeIndex = ({ data }) => {
       {/* TO BE DELETED */}
       {/* <OurPillarsHomepage /> */}
       {/* TO BE DELETED */}
-      <Press>
-        <h4>As Seen On...</h4>
-        <AsSeenOnLogosHome />
-      </Press>
       {/* TO BE DELETED */}
       {/* <LatestProjects ref={blueSectionRef}>
         <LatestProjectsCarousel />
@@ -278,8 +275,13 @@ const HomeIndex = ({ data }) => {
       <div ref={blueSectionRef}>
         <BrandedProjects />
       </div>
+      <Press>
+        <h4>As Seen On...</h4>
+        <AsSeenOnLogosHome />
+      </Press>
+      <OurWonderWorkers />
       <CareerFlip />
-      <Newsletter>
+      {/* <Newsletter>
         <OrangeBackgroundMobileTablet>
           <Svg.BigOrangeBackgroundMobileTablet />
         </OrangeBackgroundMobileTablet>
@@ -287,7 +289,7 @@ const HomeIndex = ({ data }) => {
         <OrangeBackground>
           <Svg.BigOrangeBackground />
         </OrangeBackground>
-      </Newsletter>
+      </Newsletter> */}
       <ContactUsWrapper>
         <SVGWrapper>
           <ColoredGears gearColor={"#eb2c90"} />
@@ -1214,7 +1216,7 @@ const SVGWrapper = styled.div`
   height: 500px;
   position: absolute;
   z-index: 1;
-  top: -5%;
+  top: 10%;
   right: 15%;
   transform: rotate(90deg);
   svg {
@@ -1260,9 +1262,7 @@ const SVGWrapper = styled.div`
   @media (max-width: 400px) {
     width: 150px;
     height: 150px;
-    top: 35%;
-  }
-  @media (max-width: ${breakpoints.xs}px) {
-    top: 28%;
+    top: 37%;
+    right: 3%;
   }
 `
