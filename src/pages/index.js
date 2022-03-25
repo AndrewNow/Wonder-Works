@@ -67,7 +67,7 @@ const HomeIndex = ({ data }) => {
     visible: {
       transition: {
         duration: 2,
-        delay: 1.2,
+        delay: .2,
         delayChildren: 0.6,
         staggerChildren: 0.2,
         staggerDirection: 1,
@@ -248,9 +248,9 @@ const HomeIndex = ({ data }) => {
           <CircleStrokeWrapper style={{ y: smallParallax }}>
             <Svg.CircleStroke />
           </CircleStrokeWrapper>
-          <BlueTrianglesWrapper>
+          <LightBlueTriangleWrapper>
             <Svg.BlueTriangles />
-          </BlueTrianglesWrapper>
+          </LightBlueTriangleWrapper>
           <PurpleTriangleWrapper style={{ y: mediumParallax }}>
             <Svg.PurpleTriangle />
           </PurpleTriangleWrapper>
@@ -724,9 +724,9 @@ const CircleStrokeWrapper = styled(motion.div)`
   }
 `
 
-const BlueTrianglesWrapper = styled(motion.div)`
+const LightBlueTriangleWrapper = styled(motion.div)`
   position: absolute;
-  bottom: 10%;
+  bottom: 15%;
   left: 5%;
   margin: 0 auto;
   width: 90vw;
@@ -806,12 +806,12 @@ const PurpleTriangleWrapper = styled(motion.div)`
 
 const GreenTriangleWrapper = styled(motion.div)`
   position: absolute;
-  top: 15%;
+  top: 0%;
   right: 25%;
 
   @media (max-width: ${breakpoints.xxl}px) {
     right: 20%;
-    top: 17%;
+    top: 5%;
   }
   @media (max-width: ${breakpoints.xl}px) {
     top: 5%;
