@@ -99,6 +99,14 @@ const Wrapper = styled.section`
     margin: 0 auto;
     padding-bottom: 10rem;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 5rem 0;
+
+    h1 {
+      padding-bottom: 3rem;
+    }
+  }
 `
 
 const InnerWrapper = styled.div`
@@ -142,7 +150,8 @@ const JoinOurTeam = styled.div`
   @media (max-width: ${breakpoints.s}px) {
     padding: 3rem 0;
     h4 {
-      width: 75%;
+      width: 80%;
+      font-size: 21px;
     }
   }
 `

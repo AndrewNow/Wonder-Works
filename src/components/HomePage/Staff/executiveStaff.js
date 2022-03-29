@@ -1,18 +1,21 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
+import breakpoints from "../../breakpoints"
 
 const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
   const [clicked, setClicked] = useState(false)
 
   const bioAnim = {
     visible: {
-      y: "0",
+      // y: "0",
+      height: "96.5%",
       opacity: 1,
-      transitionEnd: { display: "block" },
+      display: "block",
     },
     hidden: {
-      y: "-100%",
+      // y: "-100%",
+      height: 0,
       opacity: 0,
       transitionEnd: { display: "none" },
     },
@@ -25,7 +28,7 @@ const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
         <p>{title}</p>
       </TopText>
       <ImageWrapper>{imgSrc}</ImageWrapper>
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <Bio
           variants={bioAnim}
           initial="hidden"
@@ -48,6 +51,20 @@ const Card = styled.div`
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   overflow: hidden;
+  width: 350px;
+  height: 100%;
+
+  @media (max-width: ${breakpoints.xl}px) {
+    margin: 1rem 0.5rem;
+    border-bottom: none;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    height: auto;
+
+    :last-child {
+      border-bottom: 1px solid black;
+    }
+  }
 `
 
 const TopText = styled.div`
@@ -79,10 +96,22 @@ const Bio = styled(motion.div)`
   background: var(--color-black);
   border-radius: 10px;
   cursor: pointer;
+  overflow-y: scroll;
+  scrollbar-width: none;
 
   p {
     margin: 0.5rem;
     color: var(--color-white);
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    position: relative;
+    background: none;
+    overflow: hidden;
+    p {
+      color: black;
+      margin: 0;
+    }
   }
 `
 
@@ -94,4 +123,13 @@ const ImageWrapper = styled.div`
   aspect-ratio: 1/1;
   max-height: 300px;
   cursor: pointer;
+  pointer-events: none;
+
+  @media (max-width: ${breakpoints.m}px) {
+    border-radius: 0;
+    overflow: visible;
+    max-width: 75%;
+    position: relative;
+    z-index: 2;
+  }
 `
