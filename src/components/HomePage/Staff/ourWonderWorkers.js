@@ -71,6 +71,7 @@ const OurWonderWorkers = () => {
             objectFit="cover"
             width={1350}
             placeholder="blurred"
+            className="border-radius"
           />
         </GroupPhoto>
       </JoinOurTeam>
@@ -157,15 +158,15 @@ const JoinOurTeam = styled.div`
 `
 
 const GroupPhoto = styled.div`
+  overflow: hidden;
   border-radius: 30px;
   border: 2px solid var(--color-black);
+  box-sizing: border-box;
+  
   display: block;
   margin: 5rem auto;
-  overflow: hidden;
   max-width: 69%;
-  box-sizing: border-box;
   aspect-ratio: 1350/900;
-
   display: flex;
   justify-content: center;
   align-items: center;

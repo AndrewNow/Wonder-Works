@@ -76,6 +76,10 @@ body {
   z-index: 0;
 }
 
+.border-radius {
+  border-radius: 20px;
+}
+
 /* --------------------- See layout.js for all typography breakpoints! --------------------- */
 
 h1 {
