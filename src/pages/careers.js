@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import styled from "styled-components"
-import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
+// import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { BigPlus, TwoPlus, PlusButton } from "../svg/careerspage"
 import { ContactUs } from "../components/contactUs"
 import { WOShortLogo } from "../svg/logos"
@@ -188,9 +188,9 @@ const Careers = ({ data }) => {
           <TwoPlus />
         </TwoPlusWrapper>
       </LandingSection>
-      <WonderWorkersWrapper>
+      {/* <WonderWorkersWrapper>
         <WonderWorkers />
-      </WonderWorkersWrapper>
+      </WonderWorkersWrapper> */}
       <CareerSection>
         <CareerWrapper>
           <CareerLeft>

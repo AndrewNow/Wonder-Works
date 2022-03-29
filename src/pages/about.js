@@ -15,7 +15,6 @@ import * as Svg from "../svg/aboutpage"
 import { GreenStars, PinkStar, KeepScrollingSVG } from "../svg/miscellaneous"
 import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
-import WonderWorkers from "../components/OurWonderWorkers/wonderworkers"
 import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
 import { AsSeenOnLogosAbout } from "../components/AsSeenOn/AsSeenOnLogos"
@@ -344,9 +343,9 @@ const About = ({ data }) => {
         </BlueSquigglyWrapper>
       </MeganZach>
       <PressCarousel />
-      <WonderWorkersWrapper>
+      {/* <WonderWorkersWrapper>
         <WonderWorkers />
-      </WonderWorkersWrapper>
+      </WonderWorkersWrapper> */}
       <LetsWork svg={<ColoredGears gearColor={"#eb2c90"} />} />
       <CareerFlip />
       <Newsletter>
