@@ -66,9 +66,14 @@
 }
 
 body {
-  
   margin: 0;
   overscroll-behavior: none;
+}
+
+/* fixes border-radius inconsistency for iOS */
+.gatsby-image-wrapper {
+  position: relative;
+  z-index: 0;
 }
 
 /* --------------------- See layout.js for all typography breakpoints! --------------------- */
