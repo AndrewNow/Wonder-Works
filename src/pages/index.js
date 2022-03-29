@@ -44,11 +44,18 @@ const HomeIndex = ({ data }) => {
     dispatch({ type: "TOGGLE_THEME", theme: "light" })
   }, [dispatch])
 
+  const toggleBlueTheme = useCallback(() => {
+    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  }, [dispatch])
+
   useEffect(() => {
     const onScroll = () => {
       const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
       if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
         toggleLightTheme()
+      }
+      else {
+        toggleBlueTheme()
       }
     }
     window.addEventListener("scroll", onScroll)
@@ -59,7 +66,6 @@ const HomeIndex = ({ data }) => {
     window.localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
 
-  console.log(currentTheme)
 
   // ----------framer motion animation variants----------
 

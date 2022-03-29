@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 
-const ExecutiveStaff = ({ title, name, bio, index, imgSrc }) => {
+const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
   const [clicked, setClicked] = useState(false)
 
   const bioAnim = {
@@ -19,7 +19,7 @@ const ExecutiveStaff = ({ title, name, bio, index, imgSrc }) => {
   }
 
   return (
-    <Card index={index} onClick={() => setClicked(!clicked)}>
+    <Card onClick={() => setClicked(!clicked)}>
       <TopText>
         <p>{name}</p>
         <p>{title}</p>

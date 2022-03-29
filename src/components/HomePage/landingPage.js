@@ -11,8 +11,6 @@ const LandingPage = () => {
       transition: {
         duration: 2,
         delay: 0.5,
-        // delay: 1.2,
-        // delayChildren: 0.6,
         staggerChildren: 0.2,
         staggerDirection: 1,
       },
@@ -359,9 +357,9 @@ const TextBlock = styled(motion.div)`
 const FirstLine = styled(motion.div)`
   position: relative;
   height: 100%;
-  /* padding-bottom: 2rem; */
   padding-bottom: 1rem;
   vertical-align: top;
+  /* padding-bottom: 2rem; */
   /* overflow: hidden; */
 
   @media (max-width: ${breakpoints.s}px) {
