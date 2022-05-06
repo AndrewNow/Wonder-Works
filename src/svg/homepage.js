@@ -776,7 +776,7 @@ export const WWJamsBG = () => {
   )
 }
 
-export const BrandedProjectsGear = () => {
+export const OurProjectsGear = () => {
   return (
     <svg
       width="666"

@@ -29,14 +29,17 @@ const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
       </TopText>
       <ImageWrapper>{imgSrc}</ImageWrapper>
       <AnimatePresence exitBeforeEnter>
-        <Bio
-          variants={bioAnim}
-          initial="hidden"
-          animate={clicked ? "visible" : "hidden"}
-          exit="hidden"
-        >
-          <p>{bio}</p>
-        </Bio>
+        {clicked && (
+          <Bio
+            key="modal"
+            variants={bioAnim}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <p>{bio}</p>
+          </Bio>
+        )}
       </AnimatePresence>
     </Card>
   )
@@ -44,7 +47,7 @@ const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
 
 export default ExecutiveStaff
 
-const Card = styled.div`
+const Card = styled(motion.div)`
   position: relative;
   padding: 0.5rem;
   margin: 0 0.5rem;

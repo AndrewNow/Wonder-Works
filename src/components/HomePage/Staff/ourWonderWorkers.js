@@ -1,10 +1,10 @@
-import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import { MapExecutiveStaff, MapOtherStaff } from "./mapStaffData"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../../breakpoints"
+import Carousel from "./carousel"
 
 const OurWonderWorkers = () => {
   const line = {
@@ -34,7 +34,6 @@ const OurWonderWorkers = () => {
     },
   }
 
-  // ---------- intersection observer logic, Refs ----------
   const [sectionRef, sectionInView] = useInView({
     root: null,
     threshold: 0.3,
@@ -61,19 +60,10 @@ const OurWonderWorkers = () => {
           <motion.span variants={word}>under </motion.span>
           <motion.span variants={word}>one </motion.span>
           <motion.span variants={word}>roof!</motion.span>
-          {/* Join our wonderful team working under one roof! */}
         </motion.h4>
-        <GroupPhoto>
-          <StaticImage
-            src="../../../images/Home/ww-group.png"
-            alt="Group photo in front of the Wonder Works building."
-            quality={90}
-            objectFit="cover"
-            width={1350}
-            placeholder="blurred"
-            className="border-radius"
-          />
-        </GroupPhoto>
+        <SlideShow>
+          <Carousel />
+        </SlideShow>
       </JoinOurTeam>
       <InnerWrapper
         style={{
@@ -115,7 +105,7 @@ const InnerWrapper = styled.div`
   margin: 0 auto;
 
   @media (max-width: ${breakpoints.m}px) {
-    border: none!important;
+    border: none !important;
   }
 `
 
@@ -134,7 +124,7 @@ const JoinOurTeam = styled.div`
       overflow: hidden;
       display: inline-block;
       vertical-align: top;
-      padding-bottom: .5rem;
+      padding-bottom: 0.5rem;
       margin-right: 0.5%;
     }
   }
@@ -157,12 +147,12 @@ const JoinOurTeam = styled.div`
   }
 `
 
-const GroupPhoto = styled.div`
+const SlideShow = styled.div`
   overflow: hidden;
   border-radius: 30px;
   border: 2px solid var(--color-black);
   box-sizing: border-box;
-  
+
   display: block;
   margin: 5rem auto;
   max-width: 69%;
@@ -170,6 +160,7 @@ const GroupPhoto = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   @media (max-width: ${breakpoints.l}px) {
     max-width: 85%;

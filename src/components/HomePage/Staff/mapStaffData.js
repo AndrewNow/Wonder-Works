@@ -4,6 +4,7 @@ import OtherStaff from "./otherStaff"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import breakpoints from "../../breakpoints"
+import Marquee from "react-fast-marquee"
 
 export const MapExecutiveStaff = () => {
   const staffData = [
@@ -219,16 +220,28 @@ export const MapOtherStaff = () => {
 
   return (
     <OtherStaffWrapper>
-      {otherStaffData.map((otherStaff, index) => (
-        <OtherStaff
-          key={index + "other"}
-          title={otherStaff.title}
-          name={otherStaff.name}
-          imgSrc={otherStaff.imgSrc}
-          rotationTop={otherStaff.rotationTop}
-          rotationBottom={otherStaff.rotationBottom}
-        />
-      ))}
+      <Marquee gradientColor={[255, 205, 48]} style={{ overflowY: "hidden" }}>
+        {otherStaffData.map((otherStaff, index) => {
+          const min = Math.ceil(-6)
+          const max = Math.floor(7)
+          const rotationTop = `${Math.floor(
+            Math.random() * (max - min + 1) + min
+          )}deg`
+          const rotationBottom = `${Math.floor(
+            Math.random() * (max - min + 1) + min
+          )}deg`
+          return (
+            <OtherStaff
+              key={index + "other"}
+              title={otherStaff.title}
+              name={otherStaff.name}
+              imgSrc={otherStaff.imgSrc}
+              rotationTop={rotationTop}
+              rotationBottom={rotationBottom}
+            />
+          )
+        })}
+      </Marquee>
     </OtherStaffWrapper>
   )
 }

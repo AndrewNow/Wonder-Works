@@ -195,9 +195,9 @@ export const NextButtonPress = ({ enabled, onClick }) => {
     </EmblaButtonPress>
   )
 }
-export const PrevButtonBrandedProjects = ({ enabled, onClick }) => {
+export const PrevButtonOurProjects = ({ enabled, onClick }) => {
   return (
-    <EmblaButtonBrandedProjects
+    <EmblaButtonOurProjects
       onClick={onClick}
       disabled={!enabled}
       whileHover={{ scale: 1.1, y: "-50%" }}
@@ -218,13 +218,13 @@ export const PrevButtonBrandedProjects = ({ enabled, onClick }) => {
           // strokeWidth="0.2"
         />
       </svg>
-    </EmblaButtonBrandedProjects>
+    </EmblaButtonOurProjects>
   )
 }
 
-export const NextButtonBrandedProjects = ({ enabled, onClick }) => {
+export const NextButtonOurProjects = ({ enabled, onClick }) => {
   return (
-    <EmblaButtonBrandedProjects
+    <EmblaButtonOurProjects
       onClick={onClick}
       disabled={!enabled}
       whileHover={{ scale: 1, y: "-50%" }}
@@ -245,7 +245,7 @@ export const NextButtonBrandedProjects = ({ enabled, onClick }) => {
           // strokeWidth="0.2"
         />
       </svg>
-    </EmblaButtonBrandedProjects>
+    </EmblaButtonOurProjects>
   )
 }
 
@@ -607,7 +607,7 @@ const EmblaButtonPress = styled(motion.button)`
   }
 `
 
-const EmblaButtonBrandedProjects = styled(motion.button)`
+const EmblaButtonOurProjects = styled(motion.button)`
   outline: 0;
   cursor: pointer;
   background-color: transparent;

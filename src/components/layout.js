@@ -57,8 +57,8 @@ const GlobalWrapper = styled.div`
     }
 
     h3 {
-      font-size: 45px;
-      line-height: 50px;
+      font-size: 50px;
+      line-height: 60px;
     }
 
     h4 {

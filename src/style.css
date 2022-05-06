@@ -76,9 +76,22 @@ body {
   z-index: 0;
 }
 
-.border-radius {
-  border-radius: 20px;
+/* .border-radius {
+  border-radius: 30px;
+  box-sizing: border-box;
 }
+
+@media (max-width: 992px) {
+  .border-radius {
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 374px) {
+  .border-radius {
+    border-radius: 10px;
+  }
+} */
 
 /* --------------------- See layout.js for all typography breakpoints! --------------------- */
 
