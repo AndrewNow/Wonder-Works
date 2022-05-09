@@ -43,11 +43,15 @@ const Wrapper = styled.section`
 const Inner = styled.div`
   padding: 10rem 0;
   width: 90%;
+  max-width: 1850px;
   margin: 0 auto;
 
   h1 {
     font-family: "ppwoodland-bold";
     color: black;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    padding: 7rem 0;
   }
   @media (max-width: ${breakpoints.m}px) {
     padding: 5rem 0;
@@ -59,6 +63,7 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 5rem;
+  margin-bottom: 2rem;
 
   @media (max-width: ${breakpoints.xl}px) {
     flex-direction: column;

@@ -10,6 +10,17 @@ const Footer = () => {
       <Inner>
         <WWLogoWrapper>
           <WOShortLogo />
+          <p>
+            © Wonder Works Studio, Inc. {new Date().getFullYear()}. <br />
+            Website by&nbsp;
+            <a
+              href="https://www.blanckstudio.co/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Blanck Studio
+            </a>
+          </p>
         </WWLogoWrapper>
         <IconWrapper>
           <Icons>
@@ -65,17 +76,6 @@ const Footer = () => {
               <Roblox />
             </motion.a>
           </Icons>
-          <p>
-            © Wonder Works Studio, Inc. {new Date().getFullYear()}. <br />
-            Website by&nbsp;
-            <a
-              href="https://www.blanckstudio.co/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Blanck Studio
-            </a>
-          </p>
         </IconWrapper>
       </Inner>
     </FooterWrapper>
@@ -93,6 +93,7 @@ const FooterWrapper = styled.footer`
 const Inner = styled.div`
   margin: 0 auto;
   width: 92.5%;
+  max-width: 1850px;
   padding: 2.5rem 0;
   display: flex;
   justify-content: space-between;
@@ -130,9 +131,12 @@ const Inner = styled.div`
   }
 `
 const WWLogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
   svg {
     width: 80px;
-    margin-right: 0.5rem;
+    margin-right: 5rem;
   }
   @media (max-width: ${breakpoints.xl}px) {
     svg {
@@ -141,9 +145,21 @@ const WWLogoWrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.l}px) {
+    flex-direction: column-reverse;
     svg {
       width: 50px;
+      margin-right: 0;
     }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    a {
+      font-family: "calibre-medium";
+      font-size: 19px;
+      line-height: 23px;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    max-width: 90vw;
   }
 `
 
@@ -211,7 +227,7 @@ const IconWrapper = styled.div`
   align-items: center;
 
   @media (max-width: ${breakpoints.l}px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   @media (max-width: ${breakpoints.xs}px) {
     max-width: 90vw;

@@ -57,8 +57,8 @@ const GlobalWrapper = styled.div`
     }
 
     h3 {
-      font-size: 50px;
-      line-height: 60px;
+      font-size: 40px;
+      line-height: 120%;
     }
 
     h4 {
@@ -96,7 +96,6 @@ const GlobalWrapper = styled.div`
 
     h3 {
       font-size: 35px;
-      line-height: 42px;
     }
 
     h4 {
@@ -130,12 +129,10 @@ const GlobalWrapper = styled.div`
 
     h2 {
       font-size: 50px;
-      line-height: 54px;
     }
 
     h3 {
       font-size: 30px;
-      line-height: 34px;
     }
 
     h4 {
@@ -174,7 +171,6 @@ const GlobalWrapper = styled.div`
 
     h3 {
       font-size: 28px;
-      line-height: 32px;
     }
 
     h4 {
@@ -213,7 +209,6 @@ const GlobalWrapper = styled.div`
 
     h3 {
       font-size: 16px;
-      line-height: 19px;
     }
 
     h4 {
@@ -253,7 +248,6 @@ const GlobalWrapper = styled.div`
 
     h3 {
       font-size: 18px;
-      line-height: 20px;
     }
 
     h4 {

@@ -43,13 +43,12 @@ const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
   }
 
   const [hovered, setHovered] = useState(false)
-  console.log(hovered)
 
   return (
     <Card
+      onClick={() => setHovered(!hovered)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => setHovered(!hovered)}
     >
       <div
         style={{
@@ -92,8 +91,9 @@ export default OtherStaff
 const Card = styled(motion.div)`
   position: relative;
   padding: 0.5rem;
-  margin: 0 1rem;
-  display: inline;
+  margin: 0 2rem;
+  /* display: inline; */
+  cursor: pointer;
 
   @media (max-width: ${breakpoints.s}px) {
     margin: 0 0.25rem;
@@ -140,7 +140,7 @@ const TextBottom = styled(motion.p)`
 `
 
 const ImageWrapper = styled(motion.div)`
-  margin: 3rem auto;
+  margin: 1rem auto;
   border-radius: 50%;
   overflow: hidden;
   aspect-ratio: 1/1;

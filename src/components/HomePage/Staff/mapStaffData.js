@@ -219,50 +219,84 @@ export const MapOtherStaff = () => {
   ]
 
   return (
-    <OtherStaffWrapper>
-      <Marquee
-        gradientColor={[255, 205, 48]}
-        style={{ overflowY: "hidden" }}
-        gradientWidth={100}
-        // play={false}
-      >
-        {otherStaffData.map((otherStaff, index) => {
-          const min = Math.ceil(-6)
-          const max = Math.floor(7)
-          const rotationTop = `${Math.floor(
-            Math.random() * (max - min + 1) + min
-          )}deg`
-          const rotationBottom = `${Math.floor(
-            Math.random() * (max - min + 1) + min
-          )}deg`
-          return (
-            <OtherStaff
-              key={index + "other"}
-              title={otherStaff.title}
-              name={otherStaff.name}
-              imgSrc={otherStaff.imgSrc}
-              rotationTop={rotationTop}
-              rotationBottom={rotationBottom}
-            />
-          )
-        })}
-      </Marquee>
-    </OtherStaffWrapper>
+    <MarqueeSection>
+      <OtherStaffWrapper>
+        <Marquee
+          gradientColor={[255, 205, 48]}
+          style={{ overflowY: "hidden" }}
+          gradientWidth={75}
+        >
+          {otherStaffData.map((otherStaff, index) => {
+            const min = Math.ceil(-6)
+            const max = Math.floor(7)
+            const rotationTop = `${Math.floor(
+              Math.random() * (max - min + 1) + min
+            )}deg`
+            const rotationBottom = `${Math.floor(
+              Math.random() * (max - min + 1) + min
+            )}deg`
+            return (
+              <OtherStaff
+                key={index + "other"}
+                title={otherStaff.title}
+                name={otherStaff.name}
+                imgSrc={otherStaff.imgSrc}
+                rotationTop={rotationTop}
+                rotationBottom={rotationBottom}
+              />
+            )
+          })}
+        </Marquee>
+      </OtherStaffWrapper>
+      <OtherStaffWrapper>
+        <Marquee
+          gradientColor={[255, 205, 48]}
+          style={{ overflowY: "hidden" }}
+          gradientWidth={75}
+          direction="right"
+        >
+          {/* same array but reversed */}
+          {otherStaffData.reverse().map((otherStaff, index) => {
+            const min = Math.ceil(-6)
+            const max = Math.floor(7)
+            const rotationTop = `${Math.floor(
+              Math.random() * (max - min + 1) + min
+            )}deg`
+            const rotationBottom = `${Math.floor(
+              Math.random() * (max - min + 1) + min
+            )}deg`
+            return (
+              <OtherStaff
+                key={index + "other"}
+                title={otherStaff.title}
+                name={otherStaff.name}
+                imgSrc={otherStaff.imgSrc}
+                rotationTop={rotationTop}
+                rotationBottom={rotationBottom}
+              />
+            )
+          })}
+        </Marquee>
+      </OtherStaffWrapper>
+    </MarqueeSection>
   )
 }
+
+const MarqueeSection = styled.div`
+  margin: 1rem auto;
+  width: 100%;
+`
 
 const OtherStaffWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100%;
-  margin: 5rem auto;
 
   @media (max-width: ${breakpoints.xxl}px) {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  
+
   @media (max-width: ${breakpoints.m}px) {
     display: flex;
     flex-direction: column;

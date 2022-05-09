@@ -48,6 +48,7 @@ const Wrapper = styled.div`
 
 const Inner = styled.div`
   width: 90%;
+  max-width: 1850px;
   margin: 0 auto;
   padding: 10rem 0;
 

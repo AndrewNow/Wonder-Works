@@ -273,8 +273,8 @@ const LandingVideo = styled(motion.div)`
   position: absolute;
   right: 0;
   bottom: 0;
-  aspect-ratio: 966/547;
-  width: 966px;
+  aspect-ratio: 1375/775;
+  width: 1375px;
   height: auto;
   background-color: #a9f2ed;
   border-radius: 10px;

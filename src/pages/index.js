@@ -127,10 +127,10 @@ const HomeIndex = ({ data }) => {
         <LandingPage />
       </div>
       <LinkWrapper>
-        <LinkTo href="/">
+        <LinkTo to="/">
           Partnership inquiries <Arrow />
         </LinkTo>
-        <LinkTo href="/">
+        <LinkTo to="/">
           Career opportunities <Arrow />
         </LinkTo>
       </LinkWrapper>
@@ -150,10 +150,10 @@ const HomeIndex = ({ data }) => {
         <FooterContactInner>
           <h2>Let's work wonders together.</h2>
           <FooterContactLinkWrapper>
-            <LinkTo href="/">
+            <LinkTo to="/">
               Partnership inquiries <Arrow />
             </LinkTo>
-            <LinkTo href="/">
+            <LinkTo to="/">
               Career opportunities <Arrow />
             </LinkTo>
           </FooterContactLinkWrapper>
@@ -230,7 +230,8 @@ const StaircaseWrapper = styled(motion.div)`
 `
 const CogWrapper = styled(motion.div)`
   position: absolute;
-  top: 69%;
+  z-index: 1999;
+  bottom: -2%;
   left: 33%;
   display: flex;
   justify-content: center;
@@ -451,7 +452,7 @@ const Press = styled.div`
     color: black;
   }
   @media (max-width: ${breakpoints.xl}px) {
-    background-color: var(--color-white);
+    /* background-color: var(--color-white); */
     h4 {
       padding-top: 5rem;
       padding-bottom: 2.5rem;

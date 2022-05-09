@@ -69,6 +69,7 @@ const OurWonderWorkers = () => {
         style={{
           borderTop: "1px solid black",
           borderBottom: "1px solid black",
+          maxWidth: "98%!important"
         }}
       >
         <MapOtherStaff />
@@ -103,9 +104,11 @@ const Wrapper = styled.section`
 const InnerWrapper = styled.div`
   width: 98%;
   margin: 0 auto;
+  max-width: 1900px;
 
   @media (max-width: ${breakpoints.m}px) {
-    border: none !important;
+    /* border: none !important; */
+    width: 90%;
   }
 `
 

@@ -159,16 +159,15 @@ const Wrapper = styled.section`
   padding-bottom: 5rem;
   position: relative;
   overflow-x: hidden;
-
   @media (max-width: ${breakpoints.s}px) {
     min-height: none;
   }
 `
 
 const Title = styled.div`
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding: 10rem 0;
   width: 90%;
+  max-width: 1850px;
   margin: 0 auto;
 
   display: flex;
@@ -181,13 +180,14 @@ const Title = styled.div`
   }
   h1 {
     font-family: "ppwoodland-bold";
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
   h3 {
     font-family: "calibre-regular";
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
+    padding: 7rem 0;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -211,6 +211,7 @@ const Title = styled.div`
 
 const Embla = styled.div`
   width: 80%;
+  max-width: 1850px;
   margin-top: 5rem;
   margin-bottom: 20vh;
   position: relative;
@@ -254,14 +255,14 @@ const Embla = styled.div`
     margin-bottom: 2rem;
 
     button:first-of-type {
-    top: 110%;
-    left: 0%;
-  }
-  
-  button:last-of-type {
-    top: 110%;
-    right: 0%;
-  }
+      top: 110%;
+      left: 0%;
+    }
+
+    button:last-of-type {
+      top: 110%;
+      right: 0%;
+    }
   }
 `
 
@@ -285,6 +286,7 @@ const EmblaSlide = styled.div`
 
 const SlideWrapper = styled.div`
   width: 80%;
+  max-width: 1850px;
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;

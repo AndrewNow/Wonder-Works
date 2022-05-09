@@ -154,10 +154,17 @@ export default ImaginationSection
 
 const SectionWrapper = styled.section`
   height: 100vh;
+  margin: 0 auto;
   margin-top: 15rem;
   margin-bottom: 5rem;
   text-align: center;
   position: relative;
+  max-width: 1850px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h2,
   p {
@@ -186,21 +193,20 @@ const SectionWrapper = styled.section`
 const ImaginationBG = styled(motion.div)`
   z-index: 0;
   height: 100%;
-  /* width: 99vw; */
+  width: 100%;
   margin: 0 auto;
-  position: relative;
-
-  @media (max-width: ${breakpoints.xl}px) {
-    /* top: 15%; */
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `
 
 const ImaginationText = styled.div`
   text-align: center;
-  position: absolute;
+  align-self: center;
   z-index: 10;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  width: 100%;
   h2,
   h3 {
     z-index: 2;
@@ -216,6 +222,13 @@ const ImaginationText = styled.div`
     padding-top: 7rem;
     margin: 0 auto;
     width: 80%;
+    max-width: 1700px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    h3 {
+      padding-top: 5rem;
+      width: 65%;
+    }
   }
   @media (max-width: ${breakpoints.xl}px) {
     h2 {
@@ -375,6 +388,7 @@ const LightBlueTriangleWrapper = styled(motion.div)`
   left: 5%;
   margin: 0 auto;
   width: 90vw;
+  max-width: 1850px;
   overflow: hidden;
   @media (max-width: 1700px) {
     left: 5%;
