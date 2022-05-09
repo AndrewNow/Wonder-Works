@@ -62,21 +62,25 @@ const Inner = styled.div`
     text-align: right;
     margin-bottom: 5rem;
   }
+
+  
+  @media (max-width: ${breakpoints.l}px) {    
+    span:nth-of-type(2) {
+      flex-direction: column;
+    }
+  }
+
   @media (max-width: ${breakpoints.s}px) {
     padding: 5rem 0;
   }
 `
 
-const Flex = styled.div`
+const Flex = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   margin-top: 5rem;
-
-  :first-child {
-    border: 1px solid red;
-  }
 
   @media (max-width: ${breakpoints.l}px) {
     flex-direction: column-reverse;
@@ -94,12 +98,19 @@ const Text = styled.div`
 
   @media (max-width: ${breakpoints.l}px) {
     width: 100%;
+    margin-bottom: 2rem;
   }
 `
 const Graph = styled.div`
-  max-width: 900px;
-  min-width: 30%;
+  /* max-width: 900px; */
+  width: 900px;
+  max-width: 100%;
+  /* min-width: 30%; */
   height: 500px;
   background: white;
-  border: 1px solid red;
+  border-radius: 10px;
+
+  @media (max-width: ${breakpoints.l}px) {
+    height: 250px;
+  }
 `

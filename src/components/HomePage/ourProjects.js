@@ -7,7 +7,7 @@ import {
   PrevButtonOurProjects,
 } from "../EmblaCarousel/buttons"
 import { OurProjectsGear } from "../../svg/homepage"
-import { useAnimation, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 const OurProjects = () => {
   const slideData = [
@@ -341,6 +341,9 @@ const GearWrapper = styled(motion.div)`
   justify-content: center;
   svg {
     max-width: 33vw;
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto;
   }
 
   @media (max-width: ${breakpoints.xl}px) {
@@ -359,7 +362,7 @@ const GearWrapper = styled(motion.div)`
     top: 27.5%;
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 33%;
+    top: 25%;
     right: 0;
   }
 `
