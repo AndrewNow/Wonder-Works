@@ -17,7 +17,7 @@ import CareerFlip from "../components/CareerFlip/CareerFlip"
 import PressCarousel from "../components/EmblaCarousel/pressCarousel"
 import { LetsWork } from "../components/letsWork"
 import MailchimpComponent from "../components/Mailchimp/component"
-import { AsSeenOnLogosAbout } from "../components/AsSeenOn/AsSeenOnLogos"
+// import { AsSeenOnLogosAbout } from "../components/AsSeenOn/AsSeenOnLogos"
 import {
   useGlobalDispatchContext,
   useGlobalStateContext,
@@ -275,7 +275,7 @@ const About = ({ data }) => {
         </KeepScrolling>
         <Logos>
           <h4>As Seen On...</h4>
-          <AsSeenOnLogosAbout />
+          {/* <AsSeenOnLogosAbout /> */}
         </Logos>
       </OrangeBg>
       <OurPillarsAboutPage />
