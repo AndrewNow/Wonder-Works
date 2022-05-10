@@ -2,12 +2,39 @@ import React from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import breakpoints from "../breakpoints"
+import { motion } from "framer-motion"
+import {
+  line,
+  word,
+  textFadeIn,
+  textChild,
+} from "../../components/textAnimationValues"
+import { useInView } from "react-intersection-observer"
 
 const CaseStudy = () => {
+  const [sectionRef, sectionInView] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
+  const [textRef, textInView] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
   return (
-    <Wrapper>
+    <Wrapper ref={sectionRef}>
       <Inner>
-        <h1>Case Study</h1>
+        <motion.h1
+          variants={line}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+        >
+          <motion.span variants={word}>Case </motion.span>
+          <motion.span variants={word}>Study</motion.span>
+        </motion.h1>
         <Content>
           <Image>
             <StaticImage
@@ -16,9 +43,14 @@ const CaseStudy = () => {
               quality={100}
             />
           </Image>
-          <Text>
-            <h4>1.0 Traitor</h4>
-            <h5>
+          <Text
+            ref={textRef}
+            initial="hidden"
+            variants={textFadeIn}
+            animate={textInView ? "visible" : "hidden"}
+          >
+            <motion.h4 variants={textChild}>1.0 Traitor</motion.h4>
+            <motion.h5 variants={textChild}>
               Our team built Traitor in 3 weeks, a successful test of our
               ability to quickly enter a new genre and take share with
               higher-quality production. Like many of our experiences, Traitor
@@ -26,7 +58,7 @@ const CaseStudy = () => {
               build virality into all of our content and our Traitor influencer
               tournaments generated 4M+ views on YouTube and 18M+ visits to the
               game.
-            </h5>
+            </motion.h5>
           </Text>
         </Content>
       </Inner>
@@ -49,6 +81,21 @@ const Inner = styled.div`
   h1 {
     font-family: "ppwoodland-bold";
     color: black;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    span:last-of-type {
+      margin-right: 0;
+    }
+    span {
+      height: 100%;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+      padding-bottom: 0.5rem;
+      margin-right: 2%;
+    }
   }
   @media (max-width: ${breakpoints.xxl}px) {
     padding: 7rem 0;
@@ -79,13 +126,13 @@ const Image = styled.div`
   z-index: 5;
   background-color: var(--color-black);
   box-shadow: 12px 12px 0px #eb2c90;
-  
+
   @media (max-width: ${breakpoints.s}px) {
     box-shadow: 5px 5px 0px #eb2c90;
   }
 `
 
-const Text = styled.div`
+const Text = styled(motion.div)`
   width: 50%;
   margin-left: 4rem;
 

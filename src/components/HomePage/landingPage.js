@@ -34,7 +34,7 @@ const LandingPage = () => {
     },
   }
 
-  const whiteToBlack = {
+  const whiteToBlackText = {
     initial: {
       color: "#f7f7fc", // white
       transition: {
@@ -52,12 +52,9 @@ const LandingPage = () => {
 
   const loader = {
     initial: {
-      // opacity: 1,
       clipPath: "inset(0% 0% 0% 0%)",
     },
     animate: {
-      // y: "-100vh",
-      // opacity: 0,
       clipPath: "inset(0% 0% 100% 0%)",
       transition: {
         delay: 2.4,
@@ -71,13 +68,9 @@ const LandingPage = () => {
   const video = {
     initial: {
       clipPath: "inset(100% 0% 0% 0%)",
-      // opacity: 0,
-      // y: 0,
     },
     animate: {
       clipPath: "inset(0% 0% 0% 0%)",
-      // opacity: 1,
-      // y: "-100%",
       transition: {
         delay: 2.9,
         duration: 1,
@@ -102,30 +95,30 @@ const LandingPage = () => {
     const landingTextArea = landingTextRef.current.getBoundingClientRect()
     // 1.1 get each edge of the landing text area's spacing
     // (relative to top and sides of the viewport)
-    const landingTextTop = landingTextArea.top
-    const landingTextLeft = landingTextArea.left
 
-    // 2. ~~~~~ TOP TEXT ANIMATION DESTINATION COORDS ~~~~~
+    // 2. ~~~~~ TOP TEXT SECTION ANIMATION DESTINATION COORDS ~~~~~
     const topBox = textTopRef.current.getBoundingClientRect()
     // 2.1 get top text box's distance to top and left of DOM
-    const yDistanceTopText = topBox.top - landingTextTop
-    const xDistanceTopText = topBox.left - landingTextLeft
+    const yDistanceTopText = topBox.top - landingTextArea.top
+    const xDistanceTopText = topBox.left - landingTextArea.left
 
-    // 3. ~~~~~ BOTTOM TEXT ANIMATION COORDS ~~~~~
+    // 3. ~~~~~ BOTTOM TEXT SECTION ANIMATION DESTINATION COORDS ~~~~~
     const bottomBox = textBottomRef.current.getBoundingClientRect()
+
     const measureBottomTextHeightFromTop =
       textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
+
     const bottomTravelDistance =
       window.innerHeight -
       measureBottomTextHeightFromTop +
       textBottomRef.current.offsetHeight
+
     const yDistanceBottomText = bottomTravelDistance / 2
-    const xDistanceBottomText = bottomBox.x - landingTextLeft
+    const xDistanceBottomText = bottomBox.x - landingTextArea.left
 
     // 4 ~~~~~ ANIMATIONS ~~~~~
-    // 4 ~~~~~ ANIMATIONS ~~~~~
 
-    // 4.1 ANIMATE BOTTOM TEXT
+    // 4.1 ANIMATE TOP TEXT
     async function topTextSequence() {
       await animationTop.start({
         y: -yDistanceTopText,
@@ -133,9 +126,6 @@ const LandingPage = () => {
           delay: 1.25,
           duration: 0.75,
           ease: [0.77, 0, 0.175, 1],
-          // type: "spring",
-          // stiffness: 100,
-          // damping: 20,
         },
       })
       await animationTop.start({
@@ -160,9 +150,6 @@ const LandingPage = () => {
           delay: 1.25,
           duration: 0.75,
           ease: [0.77, 0, 0.175, 1],
-          // type: "spring",
-          // stiffness: 125,
-          // damping: 20,
         },
       })
       await animationBottom.start({
@@ -208,7 +195,7 @@ const LandingPage = () => {
           }}
         >
           <motion.h1
-            variants={whiteToBlack}
+            variants={whiteToBlackText}
             initial="initial"
             animate="animate"
           >
@@ -230,7 +217,7 @@ const LandingPage = () => {
           }}
         >
           <motion.h1
-            variants={whiteToBlack}
+            variants={whiteToBlackText}
             initial="initial"
             animate="animate"
           >

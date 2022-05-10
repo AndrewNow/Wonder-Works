@@ -2,12 +2,30 @@ import React from "react"
 import styled from "styled-components"
 import { Timeline } from "react-twitter-widgets"
 import breakpoints from "../breakpoints"
+import { line, word } from "../../components/textAnimationValues"
+import { useInView } from "react-intersection-observer"
+import { motion } from "framer-motion"
 
 const TwitterWidget = () => {
+  const [sectionRef, sectionInView] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
   return (
-    <Wrapper>
+    <Wrapper ref={sectionRef}>
       <Inner>
-        <h2>What we're up to</h2>
+        <motion.h2
+          variants={line}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+        >
+          <motion.span variants={word}>What </motion.span>
+          <motion.span variants={word}>we're</motion.span>
+          <motion.span variants={word}>up </motion.span>
+          <motion.span variants={word}>to</motion.span>
+        </motion.h2>
         <Timeline
           dataSource={{
             sourceType: "profile",
@@ -47,8 +65,22 @@ const Inner = styled.div`
     margin-bottom: 5rem;
     font-size: 5.2vw;
     line-height: 120%;
-
     text-align: center;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    span:last-of-type {
+      margin-right: 0;
+    }
+    span {
+      height: 100%;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+      padding-bottom: 0.25rem;
+      margin-right: 1%;
+    }
   }
   @media (max-width: ${breakpoints.xxl}px) {
     h2 {

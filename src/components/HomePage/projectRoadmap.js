@@ -1,29 +1,71 @@
 import React from "react"
 import styled from "styled-components"
 import breakpoints from "../breakpoints"
+import { useInView } from "react-intersection-observer"
+import { motion } from "framer-motion"
+import {
+  line,
+  word,
+  textFadeIn,
+  textChild,
+} from "../../components/textAnimationValues"
 
 const ProjectRoadmap = () => {
+  const [sectionRef, sectionInView] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
+  const [textRef, textInView] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+  const [textRef2, textInView2] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
   return (
-    <Wrapper>
+    <Wrapper ref={sectionRef}>
       <Inner>
-        <h1>Project Roadmap</h1>
+        <motion.h1
+          variants={line}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+        >
+          <motion.span variants={word}>Project </motion.span>
+          <motion.span variants={word}>Roadmap</motion.span>
+        </motion.h1>
         <Flex>
           <Graph></Graph>
-          <Text>
-            <h4>Structured development</h4>
-            <p>
+          <Text
+            ref={textRef}
+            initial="hidden"
+            variants={textFadeIn}
+            animate={textInView ? "visible" : "hidden"}
+          >
+            <motion.h4 variants={textChild}>Structured development</motion.h4>
+            <motion.p variants={textChild}>
               We use agile scrum methodology to ensure our teams focus on only
               priority goals to build the best experiences faster. <br />
               <br /> Our producers design detailed sprints and roadmaps to help
               our teams to stay on track across months of content, allowing us
               to tackle multiple projects without overwhelming team members.
-            </p>
+            </motion.p>
           </Text>
         </Flex>
         <Flex>
-          <Text>
-            <h4>Collaboration-focused</h4>
-            <p>
+          <Text
+            ref={textRef2}
+            initial="hidden"
+            variants={textFadeIn}
+            animate={textInView2 ? "visible" : "hidden"}
+          >
+            <motion.h4 variants={textChild}>Collaboration-focused</motion.h4>
+            <motion.p variants={textChild}>
               From the initial creative kick-off meeting to the big release,
               each team member has a respected voice in the game’s creative
               direction and development. <br /> <br />
@@ -31,7 +73,7 @@ const ProjectRoadmap = () => {
               letting our teams build what they love. This starts right away
               from the game design documents and initial concepts all the way to
               release builds and live ops.
-            </p>
+            </motion.p>
           </Text>
           <Graph></Graph>
         </Flex>
@@ -62,10 +104,23 @@ const Inner = styled.div`
     font-family: "ppwoodland-bold";
     text-align: right;
     margin-bottom: 5rem;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    span:last-of-type {
+      margin-right: 0;
+    }
+    span {
+      height: 100%;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+      padding-bottom: 0.5rem;
+      margin-right: 2%;
+    }
   }
 
-  
-  @media (max-width: ${breakpoints.l}px) {    
+  @media (max-width: ${breakpoints.l}px) {
     span:nth-of-type(2) {
       flex-direction: column;
     }
@@ -88,7 +143,7 @@ const Flex = styled.span`
   }
 `
 
-const Text = styled.div`
+const Text = styled(motion.div)`
   width: 39%;
 
   h4 {

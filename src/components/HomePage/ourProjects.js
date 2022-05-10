@@ -8,6 +8,13 @@ import {
 } from "../EmblaCarousel/buttons"
 import { OurProjectsGear } from "../../svg/homepage"
 import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
+import {
+  line,
+  word,
+  textFadeIn,
+  textChild,
+} from "../../components/textAnimationValues"
 
 const OurProjects = () => {
   const slideData = [
@@ -70,11 +77,32 @@ const OurProjects = () => {
   //   })
   // }
 
+  const [sectionRef, sectionInView] = useInView({
+    root: null,
+    threshold: 0.3,
+    triggerOnce: true,
+  })
+
   return (
     <Wrapper>
-      <Title>
-        <h1>Our Projects</h1>
-        <h3>Ushering global brands into the Metaverse</h3>
+      <Title ref={sectionRef}>
+        <motion.h1
+          variants={line}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+        >
+          <motion.span variants={word}>Our</motion.span>
+          <motion.span variants={word}>Projects</motion.span>
+        </motion.h1>
+        <motion.h3
+          variants={textFadeIn}
+          initial="hidden"
+          animate={sectionInView ? "visible" : "hidden"}
+        >
+          <motion.span variants={textChild}>
+            Ushering global brands into the Metaverse
+          </motion.span>
+        </motion.h3>
       </Title>
       <Embla>
         <EmblaViewport ref={emblaRef}>
@@ -124,14 +152,8 @@ const OurProjects = () => {
             })}
           </EmblaContainer>
         </EmblaViewport>
-        <PrevButtonOurProjects
-          onClick={scrollPrev}
-          enabled={prevBtnEnabled}
-        />
-        <NextButtonOurProjects
-          onClick={scrollNext}
-          enabled={nextBtnEnabled}
-        />
+        <PrevButtonOurProjects onClick={scrollPrev} enabled={prevBtnEnabled} />
+        <NextButtonOurProjects onClick={scrollNext} enabled={nextBtnEnabled} />
       </Embla>
       <GearWrapper
         // animate={turnGear}
@@ -164,15 +186,15 @@ const Wrapper = styled.section`
   }
 `
 
-const Title = styled.div`
+const Title = styled(motion.div)`
   padding: 10rem 0;
   width: 90%;
   max-width: 1850px;
   margin: 0 auto;
 
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 
   h1,
   h3 {
@@ -181,6 +203,20 @@ const Title = styled.div`
   h1 {
     font-family: "ppwoodland-bold";
     margin-bottom: 0.5rem;
+    display: block;
+    overflow: hidden;
+    width: auto;
+    span:last-of-type {
+      margin-right: 0;
+    }
+    span {
+      height: 100%;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+      padding-bottom: 0.5rem;
+      margin-right: 2%;
+    }
   }
   h3 {
     font-family: "calibre-regular";
@@ -315,7 +351,7 @@ const SlideText = styled.div`
   }
 
   @media (max-width: ${breakpoints.s}px) {
-    margin: .75rem;
+    margin: 0.75rem;
   }
 `
 

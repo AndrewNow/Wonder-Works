@@ -38,7 +38,6 @@ const ImaginationSection = () => {
     visible: {
       transition: {
         duration: 2,
-        delay: 0.2,
         delayChildren: 0.6,
         staggerChildren: 0.2,
         staggerDirection: 1,

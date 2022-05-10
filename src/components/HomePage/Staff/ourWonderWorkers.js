@@ -5,35 +5,9 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../../breakpoints"
 import Carousel from "./carousel"
+import { line, word } from "../../../components/textAnimationValues"
 
 const OurWonderWorkers = () => {
-  const line = {
-    visible: {
-      transition: {
-        duration: 2,
-        staggerChildren: 0.1,
-        staggerDirection: 1,
-      },
-    },
-  }
-
-  const word = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        type: "spring",
-        stiffness: 100,
-        damping: 11,
-      },
-    },
-    hidden: {
-      y: 100,
-      opacity: 0,
-    },
-  }
-
   const [sectionRef, sectionInView] = useInView({
     root: null,
     threshold: 0.3,
@@ -69,7 +43,7 @@ const OurWonderWorkers = () => {
         style={{
           borderTop: "1px solid black",
           borderBottom: "1px solid black",
-          maxWidth: "98%!important"
+          maxWidth: "98%!important",
         }}
       >
         <MapOtherStaff />
