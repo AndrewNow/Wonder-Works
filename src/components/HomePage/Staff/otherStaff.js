@@ -25,7 +25,7 @@ const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
   const hoverAnimationBottom = {
     visible: {
       opacity: 1,
-      y: -10,
+      y: -5,
       x: "-50%",
       transition: {
         delay: 0.1,
@@ -137,6 +137,10 @@ const TextBottom = styled(motion.p)`
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: .25rem;
+  }
 `
 
 const ImageWrapper = styled(motion.div)`

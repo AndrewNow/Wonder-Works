@@ -255,7 +255,7 @@ const ImaginationText = styled.div`
       line-height: 60px;
     }
     h3 {
-      width: 75%;
+      width: 80%;
       padding-top: 2.5rem;
     }
   }

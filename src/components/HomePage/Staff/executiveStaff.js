@@ -8,13 +8,11 @@ const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
 
   const bioAnim = {
     visible: {
-      // y: "0",
       height: "96.5%",
       opacity: 1,
       display: "block",
     },
     hidden: {
-      // y: "-100%",
       height: 0,
       opacity: 0,
       transitionEnd: { display: "none" },
