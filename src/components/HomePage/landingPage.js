@@ -94,7 +94,6 @@ const LandingPage = ({ onCursor }) => {
   }
 
   const [modalOpen, setModalOpen] = useState(false)
-  console.log(modalOpen)
 
   const handleModal = () => {
     setModalOpen(!modalOpen)

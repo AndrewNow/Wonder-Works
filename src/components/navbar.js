@@ -139,16 +139,6 @@ const Navbar = () => {
               </Link>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/about" activeClassName="active">
-                About
-              </Link>
-            </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/projects" activeClassName="active">
-                Projects
-              </Link>
-            </motion.div>
-            <motion.div variants={navItem} whileHover={{ x: -15 }}>
               <Link to="/careers" activeClassName="active">
                 Careers
               </Link>
@@ -190,18 +180,6 @@ const Navbar = () => {
                     <Link to="/" activeClassName="active">
                       <ActiveLinkSVG />
                       Home
-                    </Link>
-                  </MobileNavElement>
-                  <MobileNavElement variants={navItem}>
-                    <Link to="/about" activeClassName="active">
-                      <ActiveLinkSVG />
-                      About
-                    </Link>
-                  </MobileNavElement>
-                  <MobileNavElement variants={navItem}>
-                    <Link to="/projects" activeClassName="active">
-                      <ActiveLinkSVG />
-                      Projects
                     </Link>
                   </MobileNavElement>
                   <MobileNavElement variants={navItem}>
@@ -312,7 +290,8 @@ const Dropdown = styled(motion.div)`
   position: fixed;
   right: 3.5%;
   margin-right: 0.5rem;
-  transform: translateY(37.5%);
+  /* transform: translateY(37.5%); */
+  transform: translateY(60%);
 
   a {
     color: ${props => props.theme.color}!important;

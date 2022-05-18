@@ -895,7 +895,7 @@ export const ProjectMilestonesGraph = ({ textInView }) => {
         x2="837.996"
         y2="119.519"
         stroke="#1764AF"
-        stroke-width="7"
+        strokeWidth="7"
       />
       <motion.rect
         x="306"
@@ -1020,7 +1020,7 @@ export const FirstPlayableGraph = ({ textInView2 }) => {
         x2="837.996"
         y2="163.519"
         stroke="#EB2C90"
-        stroke-width="7"
+        strokeWidth="7"
       />
       <motion.rect
         x="306"

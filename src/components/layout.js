@@ -5,10 +5,7 @@ import Navbar from "../components/navbar"
 import ScrollToTop from "./scrollToTop"
 import breakpoints from "./breakpoints"
 import CustomCursor from "./customCursor"
-import {
-  useGlobalStateContext,
-  useGlobalDispatchContext,
-} from "../context/globalContext"
+import { useGlobalStateContext } from "../context/globalContext"
 
 const Layout = ({ children }) => {
   // console credit watermark
