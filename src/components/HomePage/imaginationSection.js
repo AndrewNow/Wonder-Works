@@ -21,18 +21,28 @@ const ImaginationSection = () => {
     triggerOnce: true,
   })
 
-  let throttle = require("lodash/throttle")
-
   const { scrollYProgress } = useViewportScroll({ passive: true })
+
   const smallParallax = useTransform(
     scrollYProgress,
-    throttle(scrollYProgress => scrollYProgress * -350, 10)
+    scrollYProgress => scrollYProgress * -350
   )
-
   const mediumParallax = useTransform(
     scrollYProgress,
-    throttle(scrollYProgress => scrollYProgress * -700, 10)
+    scrollYProgress => scrollYProgress * -700
   )
+
+  
+  // let throttle = require("lodash/throttle")
+  // const smallParallax = useTransform(
+  //   scrollYProgress,
+  //   throttle(scrollYProgress => scrollYProgress * -350, 10)
+  // )
+
+  // const mediumParallax = useTransform(
+  //   scrollYProgress,
+  //   throttle(scrollYProgress => scrollYProgress * -700, 10)
+  // )
 
   const textLineAnimation = {
     visible: {

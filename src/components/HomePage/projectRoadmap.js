@@ -9,6 +9,7 @@ import {
   textFadeIn,
   textChild,
 } from "../../components/textAnimationValues"
+import { FirstPlayableGraph, ProjectMilestonesGraph } from "../../svg/homepage"
 
 const ProjectRoadmap = () => {
   const [sectionRef, sectionInView] = useInView({
@@ -40,7 +41,9 @@ const ProjectRoadmap = () => {
           <motion.span variants={word}>Roadmap</motion.span>
         </motion.h1>
         <Flex>
-          <Graph></Graph>
+          <Graph>
+            <ProjectMilestonesGraph textInView={textInView} />
+          </Graph>
           <Text
             ref={textRef}
             initial="hidden"
@@ -75,7 +78,9 @@ const ProjectRoadmap = () => {
               release builds and live ops.
             </motion.p>
           </Text>
-          <Graph></Graph>
+          <Graph>
+            <FirstPlayableGraph textInView2={textInView2} />
+          </Graph>
         </Flex>
       </Inner>
     </Wrapper>
@@ -159,14 +164,20 @@ const Text = styled(motion.div)`
 `
 const Graph = styled.div`
   /* max-width: 900px; */
-  width: 900px;
-  max-width: 100%;
+  aspect-ratio: 887/488;
+  max-width: 887px;
+  max-height: 488px;
   /* min-width: 30%; */
-  height: 500px;
-  background: white;
   border-radius: 10px;
+  position: relative;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 
   @media (max-width: ${breakpoints.l}px) {
     height: 250px;
+    max-width: 90vw;
   }
 `

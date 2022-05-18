@@ -7,7 +7,7 @@ import {
   PrevButtonOurProjects,
 } from "../EmblaCarousel/buttons"
 import { OurProjectsGear } from "../../svg/homepage"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import {
   line,
@@ -15,6 +15,7 @@ import {
   textFadeIn,
   textChild,
 } from "../../components/textAnimationValues"
+import ReactPlayer from "react-player/youtube"
 
 const OurProjects = () => {
   const slideData = [
@@ -23,22 +24,34 @@ const OurProjects = () => {
       title: `DJ Party`,
       year: `2021`,
       thumbnail: ``,
+      url: `https://www.youtube.com/watch?v=pyYjAjB8IrY`,
+    },
+    {
+      // brand: `F21`,
+      title: `F21`,
+      year: `2021`,
+      url: `https://www.youtube.com/watch?v=1bWLL0NgTHo`,
     },
     {
       brand: `Insomniac`,
       title: `World Party`,
       year: `2021`,
-      thumbnail: ``,
-    },
-    {
-      title: `Froot Loops`,
-      year: `2021`,
-      thumbnail: ``,
+      url: `https://www.youtube.com/watch?v=f41TFY--g0Q`,
     },
     {
       title: `Timmeh`,
       year: `2021`,
-      thumbnail: ``,
+      url: `https://www.youtube.com/watch?v=iaKlmpe3dlo`,
+    },
+    {
+      title: `Froot Loops`,
+      year: `2021`,
+      url: `https://www.youtube.com/watch?v=DOrLX8ESrIc`,
+    },
+    {
+      title: `Overlook RP`,
+      year: `2021`,
+      url: `https://www.youtube.com/watch?v=7BRe0-4WTzI`,
     },
   ]
 
@@ -65,17 +78,9 @@ const OurProjects = () => {
     if (!embla) return
     embla.on("select", onSelect)
     onSelect()
-    // animateGear()
   }, [embla, onSelect])
 
-  // const turnGear = useAnimation()
-  // // animate gear when left or right buttons are clicked
-  // async function animateGear() {
-  //   await turnGear.start({
-  //     rotate: 180,
-  //     transition: { ease: "linear", duration: 0.25 },
-  //   })
-  // }
+
 
   const [sectionRef, sectionInView] = useInView({
     root: null,
@@ -122,31 +127,25 @@ const OurProjects = () => {
                         {slide.year}
                       </h3>
                     </SlideText>
-                    <SlideMedia></SlideMedia>
+                    <SlideMedia>
+                      {/* <ReactPlayer
+                        className="react-player"
+                        url={slide.url}
+                        width="100%"
+                        height="100%"
+                        controls={true}
+                        playsinline={true}
+                        config={{
+                          youtube: {
+                            playerVars: {
+                              color: "white",
+                              playsinline: 1,
+                            },
+                          },
+                        }}
+                      /> */}
+                    </SlideMedia>
                   </SlideWrapper>
-                  {/* <ReactPlayer
-                    url={video.Src}
-                    width="100%"
-                    height="100%"
-                    playing={
-                      slidesInView === `video[${index}]` &&
-                      !paused &&
-                      videoInView
-                    }
-                    onEnded={() => setTimeout(() => scrollNext(), 1500)}
-                    onProgress={({ played }) =>
-                      !paused && setVideoProgress(played * 100)
-                    }
-                    progressInterval={500}
-                    light={thumbnailClicked ? false : video.light}
-                    playIcon={
-                      <PlayButtonLatestProjects
-                        setPaused={setPaused}
-                        paused={paused}
-                        setThumbnailClicked={setThumbnailClicked}
-                      />
-                    }
-                  /> */}
                 </EmblaSlide>
               )
             })}
@@ -336,6 +335,7 @@ const SlideWrapper = styled.div`
 
 const SlideText = styled.div`
   margin-right: 10rem;
+  min-width: 30%;
   h3 {
     white-space: nowrap;
     font-family: "calibre-medium";
@@ -359,7 +359,14 @@ const SlideMedia = styled.div`
   aspect-ratio: 16/9;
   width: 720px;
   max-width: 800px;
-  background: white;
+  background: transparent;
+  position: relative;
+
+  &.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   @media (max-width: ${breakpoints.l}px) {
     max-width: 85vw;

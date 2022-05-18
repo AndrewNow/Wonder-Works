@@ -2,11 +2,21 @@ import React from "react"
 import styled, { ThemeProvider } from "styled-components"
 import Footer from "../components/footer"
 import Navbar from "../components/navbar"
-import { useGlobalStateContext } from "../context/globalContext"
 import ScrollToTop from "./scrollToTop"
 import breakpoints from "./breakpoints"
+import CustomCursor from "./customCursor"
+import {
+  useGlobalStateContext,
+  useGlobalDispatchContext,
+} from "../context/globalContext"
 
 const Layout = ({ children }) => {
+  // console credit watermark
+  // console.log(
+  //   "%cDeveloped by Andrew Nowacki",
+  //   "background: black; color: white; display: block; text-align: center; padding: .5rem 2rem; border-radius: 15px; width: 30%; margin: 1rem auto;"
+  // )
+
   const darkNavTheme = {
     color: "var(--color-black)",
   }
@@ -15,18 +25,26 @@ const Layout = ({ children }) => {
     color: "var(--color-white)",
   }
 
-  const { currentTheme } = useGlobalStateContext()
+  const {
+    currentTheme,
+    // cursorStyles
+  } = useGlobalStateContext()
+  // const dispatch = useGlobalDispatchContext()
 
-//   console.log(
-//     // "%cDeveloped by Andrew Nowacki!",
-//     "%cLog me once!",
-//     "background: black; color: white; display: block; text-align: center; padding: .5rem 2rem; border-radius: 15px; width: 70%; margin: 1rem auto;"
-// )
+  // // update the cursor type when hovering over a given cursor element
+  // // cursorType represents the various cursor styles
+  // const onCursor = cursorType => {
+  //   // cursorType becomes whatever is defined in a hanlder only if what we defined is declared in the cursorStyles array within context
+  //   cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
+  //   // dispatch global state to the declared cursor type in the handler
+  //   dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
+  // }
 
   return (
     <ThemeProvider
       theme={currentTheme === "blue" ? darkNavTheme : lightNavTheme}
     >
+      <CustomCursor />
       <GlobalWrapper>
         <Navbar />
         <main>{children}</main>

@@ -188,6 +188,8 @@ const EmblaSlide = styled.div`
   /* padding-left: 10px; */
   /* height: 750px; */
   cursor: ew-resize;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  
   @media (max-width: ${breakpoints.xl}px) {
     /* height: 530px; */
   }

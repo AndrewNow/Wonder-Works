@@ -90,6 +90,9 @@ const Inner = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     h2 {
       font-size: 65px;
+      span {
+        margin-right: 1rem;
+      }
     }
   }
   @media (max-width: ${breakpoints.l}px) {
@@ -108,6 +111,9 @@ const Inner = styled.div`
     h2 {
       margin-bottom: 3rem;
       font-size: 50px;
+      span {
+        margin-right: 0.75rem;
+      }
     }
   }
 `

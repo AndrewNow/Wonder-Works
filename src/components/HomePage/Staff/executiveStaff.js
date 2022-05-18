@@ -127,8 +127,8 @@ const ImageWrapper = styled.div`
   pointer-events: none;
 
   @media (max-width: ${breakpoints.m}px) {
-    border-radius: 0;
-    overflow: visible;
+    /* border-radius: 0; */
+    /* overflow: visible; */
     max-width: 75%;
     position: relative;
     z-index: 2;

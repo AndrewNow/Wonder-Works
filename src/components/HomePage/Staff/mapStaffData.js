@@ -115,8 +115,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `-5deg`,
-      rotationBottom: `3deg`,
     },
     {
       name: "Alano Nunez",
@@ -129,8 +127,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `2deg`,
-      rotationBottom: `-3deg`,
     },
     {
       name: "Amber Calderon",
@@ -143,8 +139,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `4deg`,
-      rotationBottom: `-1deg`,
     },
     {
       name: "Andrew Hernandez",
@@ -157,8 +151,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `-2deg`,
-      rotationBottom: `3deg`,
     },
     {
       name: "Ash Sexton",
@@ -171,8 +163,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `4deg`,
-      rotationBottom: `-3deg`,
     },
     {
       name: "Bethany Roberts",
@@ -185,8 +175,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `-1deg`,
-      rotationBottom: `2deg`,
     },
     {
       name: "Billie Weddington",
@@ -199,8 +187,6 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `-3deg`,
-      rotationBottom: `-2deg`,
     },
     {
       name: "Cole Wilshire",
@@ -213,8 +199,222 @@ export const MapOtherStaff = () => {
           placeholder="blurred"
         />
       ),
-      rotationTop: `4deg`,
-      rotationBottom: `-3deg`,
+    },
+    {
+      name: "Daniel Kolman",
+      title: "Associate Environmental Artist III",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/daniel.jpg"
+          alt="image of Daniel Kolman"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Dylan Jackson",
+      title: "Associate Cinematic Animator II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/dylan.jpg"
+          alt="image of Dylan Jackson"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Emma Fox",
+      title: "Associate Creative I",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/emma.jpg"
+          alt="image of Emma Fox"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Everett Bradford",
+      title: "Associate 3D Artist II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/everett.jpg"
+          alt="image of Everett Bradford"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "FJ Hagen",
+      title: "Associate Developer I",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/fj.jpg"
+          alt="image of FJ Hagen"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Hector Ochoa",
+      title: "Associate 3D Artist III",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/hector.jpg"
+          alt="image of Hector Ochoa"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Hope Nasr",
+      title: "Associate Producer",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/hope.jpg"
+          alt="image of Hope Nasr"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Jo Hardman",
+      title: "Animator I",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/jo.jpg"
+          alt="image of Jo Hardman"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Jonathan Wallace",
+      title: "Associate Animator II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/jonathan.jpg"
+          alt="image of Jonathan Wallace"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Joseph Baumgratz",
+      title: "Associate Developer III",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/joseph.jpg"
+          alt="image of Joseph Baumgratz"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Joshua Tanner",
+      title: "Associate Developer I",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/joshua.jpg"
+          alt="image of Joshua Tanner"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Karla Parra",
+      title: "Associate Creative I",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/karla.jpg"
+          alt="image of Karla Parra"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Mary Braden",
+      title: "Associate QA II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/mary.jpg"
+          alt="image of Mary Braden"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "McKenzie Woodward",
+      title: "Associate Concept Artist III",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/mckenzie.jpg"
+          alt="image of McKenzie Woodward"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Megan Letter",
+      title: "Founder",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/megan.jpg"
+          alt="image of Megan Letter"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Michael Benavides",
+      title: "Associate Designer II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/michaelb.jpg"
+          alt="image of Michael Benavides"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Michael Martin",
+      title: "Associate Animator II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/michaelm.jpg"
+          alt="image of Michael Martin"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Molly Woodward",
+      title: "Associate Animator II",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/molly.jpg"
+          alt="image of Molly Woodward"
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
     },
   ]
 
@@ -227,8 +427,8 @@ export const MapOtherStaff = () => {
           gradientWidth={75}
         >
           {otherStaffData.map((otherStaff, index) => {
-            const min = Math.ceil(-6)
-            const max = Math.floor(7)
+            const min = Math.ceil(-5)
+            const max = Math.floor(6)
             const rotationTop = `${Math.floor(
               Math.random() * (max - min + 1) + min
             )}deg`
@@ -255,10 +455,10 @@ export const MapOtherStaff = () => {
           gradientWidth={75}
           direction="right"
         >
-          {/* same array but reversed */}
+          {/* same array but .reverse()'d */}
           {otherStaffData.reverse().map((otherStaff, index) => {
-            const min = Math.ceil(-6)
-            const max = Math.floor(7)
+            const min = Math.ceil(-5)
+            const max = Math.floor(6)
             const rotationTop = `${Math.floor(
               Math.random() * (max - min + 1) + min
             )}deg`

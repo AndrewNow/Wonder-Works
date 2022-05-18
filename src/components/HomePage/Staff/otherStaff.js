@@ -45,11 +45,7 @@ const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <Card
-      onClick={() => setHovered(!hovered)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <Card onClick={() => setHovered(!hovered)}>
       <div
         style={{
           transform: `rotate(${rotationTop})`,
@@ -65,7 +61,12 @@ const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
           {name}
         </TextTop>
       </div>
-      <ImageWrapper>{imgSrc}</ImageWrapper>
+      <ImageWrapper
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {imgSrc}
+      </ImageWrapper>
       <div
         style={{
           transform: `rotate(${rotationTop})`,
@@ -139,17 +140,18 @@ const TextBottom = styled(motion.p)`
   padding: 0.5rem;
 
   @media (max-width: ${breakpoints.s}px) {
-    padding: .25rem;
+    padding: 0.25rem;
   }
 `
 
-const ImageWrapper = styled(motion.div)`
+const ImageWrapper = styled.div`
   margin: 1rem auto;
   border-radius: 50%;
   overflow: hidden;
   aspect-ratio: 1/1;
   position: relative;
   z-index: 1;
+  max-height: 250px;
   > * {
     pointer-events: none;
   }

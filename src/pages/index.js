@@ -24,11 +24,20 @@ import CaseStudy from "../components/HomePage/caseStudy"
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
 
+  // context for the cursor
+  const dispatch = useGlobalDispatchContext()
+  const { cursorStyles } = useGlobalStateContext()
+  const onCursor = cursorType => {
+    // cursorType becomes whatever is defined in a hanlder only if what we defined is declared in the cursorStyles array within context
+    cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
+    // dispatch global state to the declared cursor type in the handler
+    dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
+  }
+
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
   const blueSectionRef = useRef()
   const { currentTheme } = useGlobalStateContext()
-  const dispatch = useGlobalDispatchContext()
 
   const toggleLightTheme = useCallback(() => {
     dispatch({ type: "TOGGLE_THEME", theme: "light" })
@@ -49,7 +58,7 @@ const HomeIndex = ({ data }) => {
     }
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
-  }, [toggleLightTheme])
+  }, [toggleLightTheme, toggleBlueTheme])
 
   useEffect(() => {
     window.localStorage.setItem("theme", currentTheme)
@@ -122,9 +131,10 @@ const HomeIndex = ({ data }) => {
       <div
         style={{
           paddingTop: "12vh",
+          position: "relative",
         }}
       >
-        <LandingPage />
+        <LandingPage onCursor={onCursor} />
       </div>
       <LinkWrapper>
         <LinkTo to="/">

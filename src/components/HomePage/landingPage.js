@@ -1,10 +1,11 @@
-import React, { useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { motion, useAnimation } from "framer-motion"
+import { motion, useAnimation, AnimatePresence } from "framer-motion"
 import breakpoints from "../breakpoints"
-import ReactPlayer from "react-player/file"
+import ReactPlayer from "react-player/youtube"
+import { StaticImage } from "gatsby-plugin-image"
 
-const LandingPage = () => {
+const LandingPage = ({ onCursor }) => {
   // ----------framer motion animation variants----------
   const line = {
     visible: {
@@ -77,6 +78,26 @@ const LandingPage = () => {
         ease: [0.77, 0, 0.175, 1],
       },
     },
+  }
+
+  const modal = {
+    hidden: {
+      opacity: 0,
+      transitionEnd: {
+        display: "none",
+      },
+    },
+    visible: {
+      opacity: 1,
+      display: "block",
+    },
+  }
+
+  const [modalOpen, setModalOpen] = useState(false)
+  console.log(modalOpen)
+
+  const handleModal = () => {
+    setModalOpen(!modalOpen)
   }
 
   const landingTextRef = useRef()
@@ -165,7 +186,6 @@ const LandingPage = () => {
       animationBottom.start({ scale: 1 })
     }
     bottomTextSequence()
-
     // lock the body for the duration of the animation
 
     // document.body.style.overflow = "hidden"
@@ -182,7 +202,7 @@ const LandingPage = () => {
     // so that the video box can have adequate spacing
 
     // const bottomBoxHeight = textBottomRef.current.offsetHeight
-  }, [])
+  }, [animationTop, animationBottom])
 
   return (
     <>
@@ -228,16 +248,56 @@ const LandingPage = () => {
             </ThirdLine>
           </motion.h1>
         </TextBlock>
-        <LandingVideo variants={video} initial="initial" animate="animate">
-          <ReactPlayer
-            url={`https://ww-2022.s3.us-east-2.amazonaws.com/REEL+TIME+OF.mp4`}
-            width="100%"
-            height="100%"
-            muted={true}
+        <VideoThumbnail
+          onClick={handleModal}
+          variants={video}
+          initial="initial"
+          animate="animate"
+        >
+          <StaticImage
+            onMouseEnter={() => onCursor("hovered")}
+            onMouseLeave={onCursor}
+            src="../../images/Home/wwReel.png"
+            alt="video reel thumbnail"
+            quality={100}
+            placeholder="blurred"
           />
-        </LandingVideo>
+        </VideoThumbnail>
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />
+      <AnimatePresence>
+        <Modal
+          variants={modal}
+          initial="hidden"
+          animate={modalOpen ? "visible" : "hidden"}
+          onClick={() => setModalOpen(false)}
+        >
+          <VideoWrapper>
+            <ReactPlayer
+              className="react-player"
+              width="100%"
+              height="100%"
+              controls={true}
+              playsinline={true}
+              url="https://www.youtube.com/watch?v=955ll_boJgg"
+              // muted={true}
+              playing={modalOpen ? true : false}
+              // config={{
+              //   youtube: {
+              //     playerVars: {
+              //       color: "white",
+              //       playsinline: 1,
+              //     },
+              //     embedOptions: {
+              //       width: 1280,
+              //       height: 720,
+              //     },
+              //   },
+              // }}
+            />
+          </VideoWrapper>
+        </Modal>
+      </AnimatePresence>
     </>
   )
 }
@@ -256,17 +316,63 @@ const Cover = styled(motion.div)`
   background-color: var(--color-black);
 `
 
-const LandingVideo = styled(motion.div)`
+const Modal = styled(motion.div)`
+  position: fixed;
+  /* was: fixed */
+  overflow-x: hidden;
+  z-index: 1998;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000060;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const VideoWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  max-width: 90%;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  width: 70vw;
+  height: auto;
+
+  &.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    width: 90vw;
+  }
+`
+
+const VideoThumbnail = styled(motion.div)`
+  cursor: pointer;
   position: absolute;
   right: 0;
   bottom: 0;
-  aspect-ratio: 1375/775;
-  width: 1375px;
+  aspect-ratio: 990/550;
+  width: 990px;
   height: auto;
   background-color: #a9f2ed;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 10vh;
+
+  /* &.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  } */
 
   @media (max-width: 1600px) {
     width: 53vw;

@@ -10,7 +10,7 @@ import { line, word } from "../../../components/textAnimationValues"
 const OurWonderWorkers = () => {
   const [sectionRef, sectionInView] = useInView({
     root: null,
-    threshold: 0.3,
+    threshold: 0.1,
     triggerOnce: true,
   })
 
@@ -20,11 +20,12 @@ const OurWonderWorkers = () => {
       <InnerWrapper>
         <MapExecutiveStaff />
       </InnerWrapper>
-      <JoinOurTeam ref={sectionRef}>
+      <JoinOurTeam>
         <motion.h4
           variants={line}
           initial="hidden"
           animate={sectionInView ? "visible" : "hidden"}
+          ref={sectionRef}
         >
           <motion.span variants={word}>Join </motion.span>
           <motion.span variants={word}>our </motion.span>
