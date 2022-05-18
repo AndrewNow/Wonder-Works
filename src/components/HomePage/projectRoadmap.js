@@ -133,6 +133,10 @@ const Inner = styled.div`
 
   @media (max-width: ${breakpoints.s}px) {
     padding: 5rem 0;
+
+    h1 {
+      margin-bottom: 0rem;
+    }
   }
 `
 
@@ -146,6 +150,11 @@ const Flex = styled.span`
   @media (max-width: ${breakpoints.l}px) {
     flex-direction: column-reverse;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
 `
 
 const Text = styled(motion.div)`
