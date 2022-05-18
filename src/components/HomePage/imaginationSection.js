@@ -47,8 +47,8 @@ const ImaginationSection = () => {
   const textLineAnimation = {
     visible: {
       transition: {
-        duration: 2,
-        delayChildren: 0.6,
+        duration: 1,
+        delayChildren: 0.2,
         staggerChildren: 0.2,
         staggerDirection: 1,
       },
@@ -78,7 +78,7 @@ const ImaginationSection = () => {
       opacity: 1,
       transition: {
         duration: 1,
-        delay: 0.4,
+        delay: 0.2,
         type: "spring",
         stiffness: 100,
         damping: 13,

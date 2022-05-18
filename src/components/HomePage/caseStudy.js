@@ -49,7 +49,7 @@ const CaseStudy = () => {
             variants={textFadeIn}
             animate={textInView ? "visible" : "hidden"}
           >
-            <motion.h4 variants={textChild}>1.0 Traitor</motion.h4>
+            <motion.h4 variants={textChild}>Traitor</motion.h4>
             <motion.h5 variants={textChild}>
               Our team built Traitor in 3 weeks, a successful test of our
               ability to quickly enter a new genre and take share with

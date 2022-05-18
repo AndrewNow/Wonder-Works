@@ -22,7 +22,7 @@ const OurProjects = () => {
     {
       brand: `David Guetta`,
       title: `DJ Party`,
-      year: `2021`,
+      year: `2022`,
       thumbnail: ``,
       url: `https://www.youtube.com/watch?v=pyYjAjB8IrY`,
     },
