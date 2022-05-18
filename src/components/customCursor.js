@@ -79,5 +79,8 @@ const Cursor = styled.div`
 
   @media (max-width: ${breakpoints.m}px) {
     display: none;
+    &.hovered {
+      display: none;
+    }
   }
 `

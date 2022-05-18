@@ -14,12 +14,13 @@ import {
 } from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
 import LandingPage from "../components/HomePage/landingPage"
-import OurProjects from "../components/HomePage/ourProjects"
+// import OurProjects from "../components/HomePage/ourProjects"
 import OurWonderWorkers from "../components/HomePage/Staff/ourWonderWorkers"
 import ImaginationSection from "../components/HomePage/imaginationSection"
 import TwitterWidget from "../components/HomePage/twitterWidget"
 import ProjectRoadmap from "../components/HomePage/projectRoadmap"
 import CaseStudy from "../components/HomePage/caseStudy"
+import StudioOwnedExperiences from "../components/HomePage/studioOwnedExperiences"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -137,10 +138,14 @@ const HomeIndex = ({ data }) => {
         <LandingPage onCursor={onCursor} />
       </div>
       <LinkWrapper>
-        <LinkTo to="/">
+        <LinkTo href="mailto:partnerships@wonderworks.gg" rel="noreferrer">
           Partnership inquiries <Arrow />
         </LinkTo>
-        <LinkTo to="/">
+        <LinkTo
+          href="https://wonder-works-studio-inc.breezy.hr/"
+          target="_blank"
+          rel="noreferrer"
+        >
           Career opportunities <Arrow />
         </LinkTo>
       </LinkWrapper>
@@ -148,7 +153,8 @@ const HomeIndex = ({ data }) => {
       <ProjectRoadmap />
       <CaseStudy />
       <div ref={blueSectionRef}>
-        <OurProjects />
+        {/* <OurProjects /> */}
+        <StudioOwnedExperiences />
       </div>
       <OurWonderWorkers />
       <Press>
@@ -160,10 +166,14 @@ const HomeIndex = ({ data }) => {
         <FooterContactInner>
           <h2>Let's work wonders together.</h2>
           <FooterContactLinkWrapper>
-            <LinkTo to="/">
+            <LinkTo href="mailto:partnerships@wonderworks.gg" rel="noreferrer">
               Partnership inquiries <Arrow />
             </LinkTo>
-            <LinkTo to="/">
+            <LinkTo
+              href="https://wonder-works-studio-inc.breezy.hr/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Career opportunities <Arrow />
             </LinkTo>
           </FooterContactLinkWrapper>
@@ -363,7 +373,7 @@ const LinkWrapper = styled.div`
   }
 `
 
-const LinkTo = styled(Link)`
+const LinkTo = styled.a`
   width: 400px;
   padding: 0.5rem 2.25rem;
   margin: 2rem 0.5rem;

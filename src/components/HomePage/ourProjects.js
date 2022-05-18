@@ -155,7 +155,6 @@ const OurProjects = () => {
         <NextButtonOurProjects onClick={scrollNext} enabled={nextBtnEnabled} />
       </Embla>
       <GearWrapper
-        // animate={turnGear}
         animate={{
           rotate: 180,
           transition: {

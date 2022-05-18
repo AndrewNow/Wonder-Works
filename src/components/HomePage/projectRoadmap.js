@@ -158,16 +158,20 @@ const Text = styled(motion.div)`
   }
 
   @media (max-width: ${breakpoints.l}px) {
-    width: 100%;
+    width: 80vw;
     margin-bottom: 2rem;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    width: 100%;
   }
 `
 const Graph = styled.div`
-  /* max-width: 900px; */
   aspect-ratio: 887/488;
-  max-width: 887px;
+  max-width: 53vw;
   max-height: 488px;
-  /* min-width: 30%; */
+  width: 887px;
+  height: auto;
   border-radius: 10px;
   position: relative;
 
@@ -176,8 +180,16 @@ const Graph = styled.div`
     height: 100%;
   }
 
+  @media (max-width: ${breakpoints.xl}px) {
+    max-width: 50vw;
+  }
+
   @media (max-width: ${breakpoints.l}px) {
-    height: 250px;
+    /* height: 250px; */
+    max-width: 80vw;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    /* height: 250px; */
     max-width: 90vw;
   }
 `

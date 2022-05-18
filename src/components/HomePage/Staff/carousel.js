@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useCallback } from "react"
 import styled from "styled-components"
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
@@ -24,11 +24,11 @@ const Carousel = (options = { loop: true }) => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [autoplay.current])
 
-  const startAutoplay = () => {
+  const startAutoplay = useCallback(() => {
     if (sectionInView) {
       autoplay.current.play()
     }
-  }
+  }, [sectionInView])
 
   useEffect(() => {
     if (!emblaApi) return
@@ -189,7 +189,7 @@ const EmblaSlide = styled.div`
   /* height: 750px; */
   cursor: ew-resize;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
-  
+
   @media (max-width: ${breakpoints.xl}px) {
     /* height: 530px; */
   }

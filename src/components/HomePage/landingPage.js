@@ -5,6 +5,8 @@ import breakpoints from "../breakpoints"
 import ReactPlayer from "react-player/youtube"
 import { StaticImage } from "gatsby-plugin-image"
 
+import { PressPlaySVG, PlayIcon } from "../EmblaCarousel/buttons"
+
 const LandingPage = ({ onCursor }) => {
   // ----------framer motion animation variants----------
   const line = {
@@ -261,6 +263,23 @@ const LandingPage = ({ onCursor }) => {
             quality={100}
             placeholder="blurred"
           />
+          <MobilePlayButton>
+            <motion.div
+              animate={{
+                rotate: 360,
+                transition: {
+                  repeat: "Infinity",
+                  duration: 10,
+                  ease: "linear",
+                },
+              }}
+            >
+              <PressPlaySVG />
+            </motion.div>
+            <motion.span>
+              <PlayIcon />
+            </motion.span>
+          </MobilePlayButton>
         </VideoThumbnail>
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />
@@ -530,5 +549,44 @@ const SpanBottom = styled(motion.span)`
   }
   @media (max-width: ${breakpoints.s}px) {
     margin-right: 0.25rem;
+  }
+`
+
+const MobilePlayButton = styled.div`
+  display: none;
+
+  @media (max-width: ${breakpoints.s}px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 105px;
+    height: 105px;
+    background-color: #1a174998;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1/1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      svg {
+        max-width: 90%;
+        max-height: 90%;
+      }
+    }
+    span {
+      position: absolute;
+      top: 50%;
+      left: 52%;
+      transform: translate(-50%, -50%);
+    }
   }
 `
