@@ -344,10 +344,15 @@ const Modal = styled(motion.div)`
   height: 100%;
   width: 100%;
   background-color: #00000060;
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  @media (max-width: ${breakpoints.s}px) {
+    background-color: #00000098;
+    backdrop-filter: blur(2px);
+  }
 `
 
 const VideoWrapper = styled.div`
@@ -409,7 +414,7 @@ const VideoThumbnail = styled(motion.div)`
     width: 95%;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 17vh;
+    margin-bottom: 20vh;
   }
 `
 

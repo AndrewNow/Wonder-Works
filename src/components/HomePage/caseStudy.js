@@ -116,6 +116,10 @@ const Content = styled.div`
     flex-direction: column;
     align-items: flex-start;
   }
+
+  @media (max-width: ${breakpoints.s}px) {
+    margin-top: 3rem;
+  }
 `
 
 const Image = styled.div`
@@ -152,5 +156,10 @@ const Text = styled(motion.div)`
     width: 100%;
     margin-left: 0;
     margin-top: 3rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    h4 {
+      font-size: 24px;
+    }
   }
 `
