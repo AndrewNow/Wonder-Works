@@ -118,7 +118,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Alano Nunez",
-      title: "Associate 3D Artist III",
+      title: "3D Artist",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/alano.png"
@@ -130,7 +130,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Amber Calderon",
-      title: "Associate Video Editor II",
+      title: "Video Editor",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/amber.png"
@@ -142,7 +142,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Andrew Hernandez",
-      title: "Associate Video Editor II",
+      title: "Video Editor",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/andrew.png"
@@ -154,7 +154,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Ash Sexton",
-      title: "Associate Creative III",
+      title: "Creative",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/ash.png"
@@ -190,7 +190,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Cole Wilshire",
-      title: "Associate Developer I",
+      title: "Developer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/cole.png"
@@ -202,7 +202,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Daniel Kolman",
-      title: "Associate Environmental Artist III",
+      title: "Environmental Artist",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/daniel.jpg"
@@ -214,7 +214,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Dylan Jackson",
-      title: "Associate Cinematic Animator II",
+      title: "Cinematic Animator",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/dylan.jpg"
@@ -226,7 +226,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Emma Fox",
-      title: "Associate Creative I",
+      title: "Creative",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/emma.jpg"
@@ -238,7 +238,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Everett Bradford",
-      title: "Associate 3D Artist II",
+      title: "3D Artist",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/everett.jpg"
@@ -250,7 +250,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "FJ Hagen",
-      title: "Associate Developer I",
+      title: "Developer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/fj.jpg"
@@ -262,7 +262,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Hector Ochoa",
-      title: "Associate 3D Artist III",
+      title: "3D Artist",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/hector.jpg"
@@ -274,7 +274,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Hope Nasr",
-      title: "Associate Producer",
+      title: "Producer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/hope.jpg"
@@ -286,7 +286,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Jo Hardman",
-      title: "Animator I",
+      title: "Animator",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/jo.jpg"
@@ -298,7 +298,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Jonathan Wallace",
-      title: "Associate Animator II",
+      title: "Animator",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/jonathan.jpg"
@@ -310,7 +310,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Joseph Baumgratz",
-      title: "Associate Developer III",
+      title: "Developer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/joseph.jpg"
@@ -322,7 +322,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Joshua Tanner",
-      title: "Associate Developer I",
+      title: "Developer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/joshua.jpg"
@@ -334,7 +334,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Karla Parra",
-      title: "Associate Creative I",
+      title: "Creative",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/karla.jpg"
@@ -346,7 +346,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Mary Braden",
-      title: "Associate QA II",
+      title: "QA",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/mary.jpg"
@@ -358,7 +358,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "McKenzie Woodward",
-      title: "Associate Concept Artist III",
+      title: "Concept Artist",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/mckenzie.jpg"
@@ -382,7 +382,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Michael Benavides",
-      title: "Associate Designer II",
+      title: "Designer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/michaelb.jpg"
@@ -394,7 +394,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Michael Martin",
-      title: "Associate Animator II",
+      title: "Animator",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/michaelm.jpg"
@@ -406,7 +406,7 @@ export const MapOtherStaff = () => {
     },
     {
       name: "Molly Woodward",
-      title: "Associate Animator II",
+      title: "Audio Engineer",
       imgSrc: (
         <StaticImage
           src="../../../images/Team/other/molly.jpg"
