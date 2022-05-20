@@ -1,13 +1,8 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import breakpoints from "../breakpoints"
-import useEmblaCarousel from "embla-carousel-react"
-import {
-  NextButtonOurProjects,
-  PrevButtonOurProjects,
-} from "../EmblaCarousel/buttons"
 import { OurProjectsGear } from "../../svg/homepage"
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import {
   line,
@@ -15,8 +10,8 @@ import {
   textFadeIn,
   textChild,
 } from "../../components/textAnimationValues"
-import ReactPlayer from "react-player/youtube"
 import { AttentionArrowSVG } from "../../svg/miscellaneous"
+import ReactPlayer from "react-player/lazy"
 
 const StudioOwnedExperiences = () => {
   const [sectionRef, sectionInView] = useInView({
@@ -57,7 +52,6 @@ const StudioOwnedExperiences = () => {
     {
       title: `EDC - Insomniac World Party`,
       // description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
-      title: `World Party`,
       // year: `2021`,
       url: `https://www.youtube.com/watch?v=f41TFY--g0Q`,
       color: "#B06EAB",
@@ -159,11 +153,7 @@ export default StudioOwnedExperiences
 
 const Wrapper = styled.section`
   background-color: var(--color-black);
-  /* min-height: 100vh; */
-  /* height: 100vh; */
-  /* padding-bottom: 5rem; */
   position: relative;
-  /* overflow-x: hidden; */
   @media (max-width: ${breakpoints.s}px) {
     min-height: none;
   }
@@ -254,8 +244,8 @@ const Title = styled.div`
 const GearWrapper = styled(motion.div)`
   position: absolute;
   z-index: 1;
-  top: 0%;
-  right: 9%;
+  top: 5%;
+  right: 12%;
   aspect-ratio: 1/1;
   width: 25vw;
   height: auto;

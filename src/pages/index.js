@@ -21,6 +21,7 @@ import TwitterWidget from "../components/HomePage/twitterWidget"
 import ProjectRoadmap from "../components/HomePage/projectRoadmap"
 import CaseStudy from "../components/HomePage/caseStudy"
 import StudioOwnedExperiences from "../components/HomePage/studioOwnedExperiences"
+import Navbar from "../components/navbar"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
@@ -38,32 +39,32 @@ const HomeIndex = ({ data }) => {
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
   const blueSectionRef = useRef()
-  const { currentTheme } = useGlobalStateContext()
+  // const { currentTheme } = useGlobalStateContext()
 
-  const toggleLightTheme = useCallback(() => {
-    dispatch({ type: "TOGGLE_THEME", theme: "light" })
-  }, [dispatch])
+  // const toggleLightTheme = useCallback(() => {
+  //   dispatch({ type: "TOGGLE_THEME", theme: "light" })
+  // }, [dispatch])
 
-  const toggleBlueTheme = useCallback(() => {
-    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
-  }, [dispatch])
+  // const toggleBlueTheme = useCallback(() => {
+  //   dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  // }, [dispatch])
 
-  useEffect(() => {
-    const onScroll = () => {
-      const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
-      if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
-        toggleLightTheme()
-      } else {
-        toggleBlueTheme()
-      }
-    }
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [toggleLightTheme, toggleBlueTheme])
+  // useEffect(() => {
+  //   const onScroll = () => {
+  //     const blueBackgroundDiv = blueSectionRef.current.getBoundingClientRect()
+  //     if (blueBackgroundDiv.y <= 150 && blueBackgroundDiv.bottom >= 150) {
+  //       toggleLightTheme()
+  //     } else {
+  //       toggleBlueTheme()
+  //     }
+  //   }
+  //   window.addEventListener("scroll", onScroll)
+  //   return () => window.removeEventListener("scroll", onScroll)
+  // }, [toggleLightTheme, toggleBlueTheme])
 
-  useEffect(() => {
-    window.localStorage.setItem("theme", currentTheme)
-  }, [currentTheme])
+  // useEffect(() => {
+  //   window.localStorage.setItem("theme", currentTheme)
+  // }, [currentTheme])
 
   // ----------framer motion animation variants----------
   const StaircaseAnim = {
@@ -91,6 +92,12 @@ const HomeIndex = ({ data }) => {
     scrollYProgress => scrollYProgress * 750
   )
 
+  // ---------- Navbar scrollTo ----------
+  const executeScrollCareers = () => careerRef.current.scrollIntoView()
+  const careerRef = useRef(null)
+  const executeScrollContact = () => contactRef.current.scrollIntoView()    
+  const contactRef = useRef(null)
+
   return (
     <Layout title={siteTitle}>
       <Seo
@@ -103,6 +110,10 @@ const HomeIndex = ({ data }) => {
           `Gaming`,
           `wonder works gaming`,
         ]}
+      />
+      <Navbar
+        executeScrollCareers={executeScrollCareers}
+        executeScrollContact={executeScrollContact}
       />
       <Background style={{ y: homeBackground }}>
         <StaircaseWrapper
@@ -150,12 +161,12 @@ const HomeIndex = ({ data }) => {
         </LinkTo>
       </LinkWrapper>
       <ImaginationSection />
-      <ProjectRoadmap />
-      <CaseStudy />
       <div ref={blueSectionRef}>
         {/* <OurProjects /> */}
         <StudioOwnedExperiences />
       </div>
+      <CaseStudy />
+      <ProjectRoadmap />
       <OurWonderWorkers />
       <Press>
         <h4>As Seen On...</h4>

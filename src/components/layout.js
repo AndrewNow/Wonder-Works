@@ -41,9 +41,9 @@ const Layout = ({ children }) => {
     <ThemeProvider
       theme={currentTheme === "blue" ? darkNavTheme : lightNavTheme}
     >
-      <CustomCursor />
       <GlobalWrapper>
-        <Navbar />
+        <CustomCursor />
+        {/* <Navbar /> */}
         <main>{children}</main>
         <ScrollToTop />
         <Footer />
@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
 export default Layout
 
 const GlobalWrapper = styled.div`
-  /* position: relative; */
+  position: relative;
   margin: 0 auto;
   background-color: var(--color-white);
   width: 100%;

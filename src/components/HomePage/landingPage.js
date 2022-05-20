@@ -187,22 +187,6 @@ const LandingPage = ({ onCursor }) => {
       animationBottom.start({ scale: 1 })
     }
     bottomTextSequence()
-    // lock the body for the duration of the animation
-
-    // document.body.style.overflow = "hidden"
-    // const unlockBody = () => {
-    //   document.body.style.overflow = "visible"
-    // }
-    // const unlockBodyScroll = () => {
-    //   setTimeout(unlockBody, 3000)
-    // }
-    // unlockBodyScroll()
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // to-do: write the height of the bottom text to state
-    // so that the video box can have adequate spacing
-
-    // const bottomBoxHeight = textBottomRef.current.offsetHeight
   }, [animationTop, animationBottom])
 
   return (
@@ -344,11 +328,11 @@ const Modal = styled(motion.div)`
   height: 100%;
   width: 100%;
   background-color: #00000060;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   @media (max-width: ${breakpoints.s}px) {
     background-color: #00000098;
     backdrop-filter: blur(2px);

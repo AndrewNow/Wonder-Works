@@ -12,7 +12,7 @@ import {
   useGlobalStateContext,
 } from "../context/globalContext"
 
-const Navbar = () => {
+const Navbar = ({ executeScrollCareers, executeScrollContact }) => {
   const [isOpen, setOpen] = useState(false)
   const [isOpenMobile, setOpenMobile] = useState(false)
 
@@ -48,7 +48,7 @@ const Navbar = () => {
     hidden: {
       opacity: 0,
     },
-  } 
+  }
   const navAnimationMobile = {
     visible: {
       opacity: 1,
@@ -109,7 +109,7 @@ const Navbar = () => {
           imgStyle={{ objectFit: "contain" }}
         />
       </HomeLink>
-      <HamburgerIcon>
+      {/* <HamburgerIcon>
         <Hamburger
           toggled={isOpen}
           toggle={setOpen}
@@ -138,21 +138,29 @@ const Navbar = () => {
                 Home
               </Link>
             </motion.div>
-            {/* <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/careers" activeClassName="active">
+            <motion.div variants={navItem} whileHover={{ x: -15 }}>
+              <a
+                // to="/careers"
+                activeClassName="active"
+                onClick={executeScrollCareers}
+              >
                 Careers
-              </Link>
+              </a>
             </motion.div>
             <motion.div variants={navItem} whileHover={{ x: -15 }}>
-              <Link to="/contact" activeClassName="active">
+              <Link
+                to="/contact"
+                activeClassName="active"
+                onClick={executeScrollCareers}
+              >
                 Contact
               </Link>
-            </motion.div> */}
+            </motion.div>
           </Dropdown>
         )}
       </AnimatePresence>
       {/* Mobile nav below here */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpenMobile && (
           <>
             <BackgroundBlur
@@ -182,7 +190,7 @@ const Navbar = () => {
                       Home
                     </Link>
                   </MobileNavElement>
-                  {/* <MobileNavElement variants={navItem}>
+                  <MobileNavElement variants={navItem}>
                     <Link to="/careers" activeClassName="active">
                       <ActiveLinkSVG />
                       Careers
@@ -193,13 +201,13 @@ const Navbar = () => {
                       <ActiveLinkSVG />
                       Contact
                     </Link>
-                  </MobileNavElement> */}
+                  </MobileNavElement>
                 </MobileNav>
               </DropdownMobile>
             </BackgroundBlur>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </>
   )
 }
