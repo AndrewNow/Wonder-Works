@@ -42,13 +42,13 @@ const StudioOwnedExperiences = () => {
       url: `https://www.youtube.com/watch?v=pyYjAjB8IrY`,
       color: "#D8E043",
     },
-    {
-      title: `F21`,
-      // description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
-      // year: `2021`,
-      url: `https://www.youtube.com/watch?v=1bWLL0NgTHo`,
-      color: "#5BC8F3",
-    },
+    // {
+    //   title: `F21`,
+    //   // description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
+    //   // year: `2021`,
+    //   url: `https://www.youtube.com/watch?v=1bWLL0NgTHo`,
+    //   color: "#5BC8F3",
+    // },
     {
       title: `EDC - Insomniac World Party`,
       // description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
