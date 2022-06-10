@@ -22,15 +22,22 @@ const StudioOwnedExperiences = () => {
 
   const slideData = [
     {
+      title: `Puma and the Land of Games`,
+      // description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
+      url: `https://www.youtube.com/watch?v=Aa3RWM5Q2ds`,
+      // year: `2021`,
+      color: "#D8E043",
+    },
+    {
       title: `Overlook RP`,
-      description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
+      // description: `Make a home, raise a pet, and explore the seaside town with your friends and family! Collect items, pets, and furniture and fully immerse yourself in the town! Attend college, or become the mayor, whatever you desire. What type of citizen would YOU be in Overlook Bay?`,
       url: `https://www.youtube.com/watch?v=7BRe0-4WTzI`,
       // year: `2021`,
       color: "#E795BF",
     },
     {
       title: `Timmeh`,
-      description: `KreekCraft and Timmeh need your help to save the universe from a dark destruction. Team up with your friends and defeat evil monsters, all while you solve the universe's biggest mystery. In this horror round based game, players will elude monsters, discover secrets, unlock easter eggs and collect many exciting cosmetics!`,
+      // description: `KreekCraft and Timmeh need your help to save the universe from a dark destruction. Team up with your friends and defeat evil monsters, all while you solve the universe's biggest mystery. In this horror round based game, players will elude monsters, discover secrets, unlock easter eggs and collect many exciting cosmetics!`,
       // year: `2021`,
       url: `https://www.youtube.com/watch?v=iaKlmpe3dlo`,
       color: "#B06EAB",
@@ -84,10 +91,10 @@ const StudioOwnedExperiences = () => {
               initial="hidden"
               animate={sectionInView ? "visible" : "hidden"}
             >
-              <motion.span variants={textChild}>
+              {/* <motion.span variants={textChild}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </motion.span>
+              </motion.span> */}
             </motion.h4>
           </Title>
           <GearWrapper

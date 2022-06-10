@@ -248,18 +248,7 @@ export const MapOtherStaff = () => {
         />
       ),
     },
-    {
-      name: "FJ Hagen",
-      title: "Developer",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/fj.jpg"
-          alt="image of FJ Hagen"
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
+
     {
       name: "Hector Ochoa",
       title: "3D Artist",
@@ -291,18 +280,6 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/jo.jpg"
           alt="image of Jo Hardman"
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
-    {
-      name: "Jonathan Wallace",
-      title: "Animator",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/jonathan.jpg"
-          alt="image of Jonathan Wallace"
           quality={85}
           placeholder="blurred"
         />

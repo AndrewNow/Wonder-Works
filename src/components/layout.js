@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
       theme={currentTheme === "blue" ? darkNavTheme : lightNavTheme}
     >
       <GlobalWrapper>
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         {/* <Navbar /> */}
         <main>{children}</main>
         <ScrollToTop />

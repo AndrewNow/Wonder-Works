@@ -239,7 +239,30 @@ const LandingPage = ({ onCursor }) => {
           initial="initial"
           animate="animate"
         >
-          <StaticImage
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=955ll_boJgg"
+            className="react-player"
+            width="100%"
+            height="100%"
+            controls={true}
+            playsinline={true}
+            muted={true}
+            playing={true}
+            // playing={modalOpen ? true : false}
+            // config={{
+            //   youtube: {
+            //     playerVars: {
+            //       color: "white",
+            //       playsinline: 1,
+            //     },
+            //     embedOptions: {
+            //       width: 1280,
+            //       height: 720,
+            //     },
+            //   },
+            // }}
+          />
+          {/* <StaticImage
             onMouseEnter={() => onCursor("hovered")}
             onMouseLeave={onCursor}
             src="../../images/Home/wwReel.png"
@@ -263,10 +286,11 @@ const LandingPage = ({ onCursor }) => {
             <motion.span>
               <PlayIcon />
             </motion.span>
-          </MobilePlayButton>
+          </MobilePlayButton> */}
         </VideoThumbnail>
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />
+      {/* 
       <AnimatePresence>
         <Modal
           variants={modal}
@@ -282,8 +306,8 @@ const LandingPage = ({ onCursor }) => {
               controls={true}
               playsinline={true}
               url="https://www.youtube.com/watch?v=955ll_boJgg"
-              // muted={true}
-              playing={modalOpen ? true : false}
+              muted={true}
+              // playing={modalOpen ? true : false}
               // config={{
               //   youtube: {
               //     playerVars: {
@@ -298,8 +322,9 @@ const LandingPage = ({ onCursor }) => {
               // }}
             />
           </VideoWrapper>
-        </Modal>
+        </Modal> 
       </AnimatePresence>
+      */}
     </>
   )
 }
@@ -347,7 +372,7 @@ const VideoWrapper = styled.div`
   display: block;
   max-width: 90%;
   margin: 0 auto;
-  aspect-ratio: 16/9;
+  aspect-ratio: 15.5/9;
   width: 70vw;
   height: auto;
 
@@ -367,19 +392,19 @@ const VideoThumbnail = styled(motion.div)`
   position: absolute;
   right: 0;
   bottom: 0;
-  aspect-ratio: 990/550;
-  width: 990px;
+  aspect-ratio: 16/9;
+  width: 1000px;
   height: auto;
   background-color: #a9f2ed;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 10vh;
+  margin-bottom: 12vh;
 
-  /* &.react-player {
+  &.react-player {
     position: absolute;
     top: 0;
     left: 0;
-  } */
+  }
 
   @media (max-width: 1600px) {
     width: 53vw;
