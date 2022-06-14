@@ -51,6 +51,7 @@
     "typewriter-effect": "^2.18.2"
   },
   "devDependencies": {
+    "gatsby-plugin-netlify": "^5.0.0",
     "prettier": "2.5.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
