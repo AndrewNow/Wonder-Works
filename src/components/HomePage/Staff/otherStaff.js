@@ -58,12 +58,12 @@ const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
           initial="hidden"
           animate={hovered ? "visible" : "hidden"}
         >
-          {name}
+          <p>{name}</p>
         </TextTop>
       </div>
       <ImageWrapper
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       >
         {imgSrc}
       </ImageWrapper>
@@ -80,7 +80,7 @@ const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
           animate={hovered ? "visible" : "hidden"}
           style={{ transform: `rotate(${rotationBottom})` }}
         >
-          {title}
+          <p>{title}</p>
         </TextBottom>
       </div>
     </Card>
@@ -101,43 +101,51 @@ const Card = styled(motion.div)`
   }
 `
 
-const TextTop = styled(motion.p)`
+const TextTop = styled(motion.div)`
   position: absolute;
   z-index: 20;
   top: 0;
   left: 50%;
   background: var(--color-black);
   color: white;
-  font-family: "balgin-bold";
-  text-align: center;
   box-sizing: border-box;
-  /* border: 2px solid #ffcd30; */
-  display: flex;
+  
+  text-align: center;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
-  padding-top: 0;
-
+  
+  /* padding: 0.5rem;
+  padding-top: 0; */
+  p {
+    line-height: 110%;
+    font-family: "balgin-bold";
+    padding: 0.5rem 1rem;
+    padding-top: 0.25rem;
+    color: white;
+  }
   @media (max-width: ${breakpoints.s}px) {
     white-space: nowrap;
   }
 `
 
-const TextBottom = styled(motion.p)`
+const TextBottom = styled(motion.div)`
   position: absolute;
   z-index: 2;
   bottom: 30%;
   left: 50%;
-  width: 100%;
   background: var(--color-black);
-  color: white;
-  text-align: center;
   box-sizing: border-box;
-  /* border: 2px solid #ffcd30; */
-  display: flex;
+  text-align: center;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+
+  p {
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    color: white;
+  }
 
   @media (max-width: ${breakpoints.s}px) {
     padding: 0.25rem;

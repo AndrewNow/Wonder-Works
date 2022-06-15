@@ -77,15 +77,27 @@ export const MapExecutiveStaff = () => {
 
   return (
     <Wrapper>
-      {staffData.map((staff, index) => (
-        <ExecutiveStaff
-          title={staff.title}
-          name={staff.name}
-          bio={staff.bio}
-          imgSrc={staff.imgSrc}
-          key={index}
-        />
-      ))}
+      {staffData.map((staff, index) => {
+        const min = Math.ceil(-5)
+        const max = Math.floor(6)
+        const rotationTop = `${Math.floor(
+          Math.random() * (max - min + 1) + min
+        )}deg`
+        const rotationBottom = `${Math.floor(
+          Math.random() * (max - min + 1) + min
+        )}deg`
+        return (
+          <ExecutiveStaff
+            title={staff.title}
+            name={staff.name}
+            bio={staff.bio}
+            imgSrc={staff.imgSrc}
+            key={index}
+            rotationTop={rotationTop}
+            rotationBottom={rotationBottom}
+          />
+        )
+      })}
     </Wrapper>
   )
 }
@@ -432,7 +444,7 @@ export const MapOtherStaff = () => {
           gradientWidth={75}
           direction="right"
         >
-          {/* same array but .reverse()'d */}
+          {/* same array but reversed */}
           {otherStaffData.reverse().map((otherStaff, index) => {
             const min = Math.ceil(-5)
             const max = Math.floor(6)

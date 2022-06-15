@@ -3,7 +3,14 @@ import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import breakpoints from "../../breakpoints"
 
-const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
+const ExecutiveStaff = ({
+  title,
+  name,
+  bio,
+  imgSrc,
+  rotationTop,
+  rotationBottom,
+}) => {
   const [clicked, setClicked] = useState(false)
 
   const bioAnim = {
@@ -19,12 +26,62 @@ const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
     },
   }
 
+  const hoverAnimationTop = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: "-50%",
+      transition: {
+        duration: 0.2,
+        type: "spring",
+        stiffness: 50,
+        damping: 8,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 10,
+      x: "-50%",
+    },
+  }
+  const hoverAnimationBottom = {
+    visible: {
+      opacity: 1,
+      y: -5,
+      x: "-50%",
+      transition: {
+        delay: 0.1,
+        duration: 0.2,
+        type: "spring",
+        stiffness: 100,
+        damping: 11,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 0,
+      x: "-50%",
+    },
+  }
+
   return (
     <Card onClick={() => setClicked(!clicked)}>
-      <TopText>
-        <p>{name}</p>
-        <p>{title}</p>
-      </TopText>
+      <div
+        style={{
+          transform: `rotate(${rotationTop})`,
+          position: "relative",
+          zIndex: "2",
+        }}
+      >
+        <TextTop
+          variants={hoverAnimationTop}
+          initial="hidden"
+          animate="visible"
+          // animate={hovered ? "visible" : "hidden"}
+        >
+          <p>{name}</p>
+        </TextTop>
+      </div>
       <ImageWrapper>{imgSrc}</ImageWrapper>
       <AnimatePresence exitBeforeEnter>
         {clicked && (
@@ -38,6 +95,23 @@ const ExecutiveStaff = ({ title, name, bio, imgSrc }) => {
             <p>{bio}</p>
           </Bio>
         )}
+        <div
+          style={{
+            transform: `rotate(${rotationBottom})`,
+            position: "relative",
+            zIndex: "2",
+          }}
+        >
+          <TextBottom
+            variants={hoverAnimationBottom}
+            initial="hidden"
+            animate="visible"
+            // style={{ transform: `rotate(${rotationBottom})` }}
+            // animate={hovered ? "visible" : "hidden"}
+          >
+            <p>{title}</p>
+          </TextBottom>
+        </div>
       </AnimatePresence>
     </Card>
   )
@@ -48,6 +122,7 @@ export default ExecutiveStaff
 const Card = styled(motion.div)`
   position: relative;
   padding: 0.5rem;
+  padding-bottom: 3rem;
   margin: 0 0.5rem;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -64,24 +139,6 @@ const Card = styled(motion.div)`
 
     :last-child {
       border-bottom: 1px solid black;
-    }
-  }
-`
-
-const TopText = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  cursor: pointer;
-
-  p {
-    color: black;
-    font-family: "calibre-medium";
-  }
-  > p {
-    max-width: 40%;
-    :nth-child(2) {
-      text-align: right;
     }
   }
 `
@@ -132,5 +189,56 @@ const ImageWrapper = styled.div`
     max-width: 75%;
     position: relative;
     z-index: 2;
+  }
+`
+
+const TextTop = styled(motion.div)`
+  position: absolute;
+  /* z-index: ; */
+  top: -10%;
+  left: 50%;
+  background: var(--color-black);
+  color: white;
+  box-sizing: border-box;
+
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  /* padding: 0.5rem;
+  padding-top: 0; */
+  p {
+    line-height: 110%;
+    font-family: "balgin-bold";
+    padding: 0.5rem 1rem;
+    padding-top: 0.25rem;
+    color: white;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    white-space: nowrap;
+  }
+`
+
+const TextBottom = styled(motion.div)`
+  position: absolute;
+  /* z-index: 2; */
+  bottom: 30%;
+  left: 50%;
+  background: var(--color-black);
+  box-sizing: border-box;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    color: white;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 0.25rem;
   }
 `
