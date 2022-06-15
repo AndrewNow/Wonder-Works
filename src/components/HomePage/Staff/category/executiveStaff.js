@@ -274,7 +274,7 @@ const TextTop = styled(motion.div)`
     line-height: 110%;
     font-family: "balgin-bold";
     padding: 0.5rem 1rem;
-    padding-top: 0.35rem;
+    padding-top: 0.45rem;
     vertical-align: super;
     color: white;
   }
