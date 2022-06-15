@@ -174,12 +174,30 @@ const Wrapper = styled.section`
     text-align: center;
     text-transform: uppercase;
     margin: 0 auto;
-    padding-bottom: 10rem;
+    padding-bottom: 8rem;
+    font-size: 100px;
+  }
+  @media (max-width: ${breakpoints.xxl}px) {
+    h1 {
+      font-size: 85px;
+    }
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    h1 {
+      font-size: 70px;
+      padding-bottom: 3rem;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h1 {
+      font-size: 55px;
+    }
   }
 
   @media (max-width: ${breakpoints.m}px) {
     padding: 7.5rem 0;
     h1 {
+      font-size: 52px;
       width: 80%;
       padding-bottom: 3rem;
     }
@@ -188,7 +206,13 @@ const Wrapper = styled.section`
     padding: 5rem 0;
 
     h1 {
+      font-size: 45px;
       padding-bottom: 3rem;
+    }
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    h1 {
+      font-size: 28px;
     }
   }
 `
