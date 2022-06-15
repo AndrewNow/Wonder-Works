@@ -18,6 +18,11 @@ const OurWonderWorkers = () => {
     threshold: 0.1,
     triggerOnce: true,
   })
+  const [ourWWRef, ourWWInView] = useInView({
+    root: null,
+    threshold: 0.1,
+    triggerOnce: true,
+  })
 
   return (
     <>
@@ -28,7 +33,6 @@ const OurWonderWorkers = () => {
               variants={line}
               initial="hidden"
               animate={founderInView ? "visible" : "hidden"}
-              ref={sectionRef}
             >
               <motion.span variants={word}>Meet </motion.span>
               <motion.span variants={word}>the </motion.span> <br />
@@ -38,7 +42,6 @@ const OurWonderWorkers = () => {
               variants={textChild}
               initial="hidden"
               animate={founderInView ? "visible" : "hidden"}
-              ref={sectionRef}
             >
               Utilising the power of new media and their creative minds, Megan
               and Zach founded Wonder Works Studio with a vision to create an
@@ -57,7 +60,16 @@ const OurWonderWorkers = () => {
         </WrapFounders>
       </Wrapper>
       <Wrapper>
-        <h1>Our Wonder Workers</h1>
+        <motion.h1
+          variants={line}
+          initial="hidden"
+          animate={ourWWInView ? "visible" : "hidden"}
+          ref={ourWWRef}
+        >
+          <motion.span variants={word}>Our </motion.span>
+          <motion.span variants={word}>Wonder </motion.span>
+          <motion.span variants={word}>Workers </motion.span>
+        </motion.h1>
         <InnerWrapper>
           <MapExecutiveStaff />
         </InnerWrapper>
@@ -176,6 +188,18 @@ const Wrapper = styled.section`
     margin: 0 auto;
     padding-bottom: 8rem;
     font-size: 100px;
+
+    position: relative;
+    display: block;
+    overflow: hidden;
+    span {
+      height: 100%;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: top;
+      padding-bottom: 0.5rem;
+      margin-right: 2%;
+    }
   }
   @media (max-width: ${breakpoints.xxl}px) {
     h1 {
