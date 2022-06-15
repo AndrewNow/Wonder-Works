@@ -67,6 +67,13 @@ const Wrapper = styled.section`
     padding-bottom: 10rem;
   }
 
+  @media (max-width: ${breakpoints.m}px) {
+    padding: 7.5rem 0;
+    h1 {
+      width: 80%;
+      padding-bottom: 3rem;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
     padding: 5rem 0;
 
@@ -79,6 +86,7 @@ const Wrapper = styled.section`
 const InnerWrapper = styled.div`
   width: 98%;
   margin: 0 auto;
+  padding: 2rem 0;
   max-width: 1900px;
 
   @media (max-width: ${breakpoints.m}px) {
@@ -114,6 +122,13 @@ const JoinOurTeam = styled.div`
       span {
         margin-right: 1%;
       }
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    h4 {
+      width: 65%;
+      font-size: 35px;
+      line-height: 120%;
     }
   }
   @media (max-width: ${breakpoints.s}px) {

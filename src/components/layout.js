@@ -1,10 +1,9 @@
 import React from "react"
 import styled, { ThemeProvider } from "styled-components"
 import Footer from "../components/footer"
-import Navbar from "../components/navbar"
 import ScrollToTop from "./scrollToTop"
 import breakpoints from "./breakpoints"
-import CustomCursor from "./customCursor"
+// import CustomCursor from "./customCursor"
 import { useGlobalStateContext } from "../context/globalContext"
 
 const Layout = ({ children }) => {
@@ -43,7 +42,6 @@ const Layout = ({ children }) => {
     >
       <GlobalWrapper>
         {/* <CustomCursor /> */}
-        {/* <Navbar /> */}
         <main>{children}</main>
         <ScrollToTop />
         <Footer />

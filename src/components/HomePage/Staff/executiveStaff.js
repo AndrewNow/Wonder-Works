@@ -29,7 +29,7 @@ const ExecutiveStaff = ({
   const hoverAnimationTop = {
     visible: {
       opacity: 1,
-      y: 0,
+      y: -30,
       x: "-50%",
       transition: {
         duration: 0.2,
@@ -47,7 +47,7 @@ const ExecutiveStaff = ({
   const hoverAnimationBottom = {
     visible: {
       opacity: 1,
-      y: -5,
+      y: 0,
       x: "-50%",
       transition: {
         delay: 0.1,
@@ -59,18 +59,47 @@ const ExecutiveStaff = ({
     },
     hidden: {
       opacity: 0,
-      y: 0,
+      y: -5,
       x: "-50%",
     },
   }
 
   return (
     <Card onClick={() => setClicked(!clicked)}>
+      <Clicky
+        initial={{ opacity: 1 }}
+        animate={{
+          opacity: clicked ? 0 : 1,
+          transition: {
+            delay: 0.1,
+            duration: 0.2,
+            ease: "easeInOut",
+          },
+        }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <svg
+          width="24"
+          height="23"
+          viewBox="0 0 24 23"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line x1="12.0469" x2="12.0469" y2="23" stroke="#F7F7FC" />
+          <line
+            x1="23.5469"
+            y1="11.5"
+            x2="0.546875"
+            y2="11.5"
+            stroke="#F7F7FC"
+          />
+        </svg>
+      </Clicky>
       <div
         style={{
           transform: `rotate(${rotationTop})`,
           position: "relative",
-          zIndex: "2",
+          zIndex: "3",
         }}
       >
         <TextTop
@@ -83,6 +112,23 @@ const ExecutiveStaff = ({
         </TextTop>
       </div>
       <ImageWrapper>{imgSrc}</ImageWrapper>
+      <div
+        style={{
+          transform: `rotate(${rotationBottom})`,
+          position: "relative",
+          zIndex: "2",
+        }}
+      >
+        <TextBottom
+          variants={hoverAnimationBottom}
+          initial="hidden"
+          animate="visible"
+          // style={{ transform: `rotate(${rotationBottom})` }}
+          // animate={hovered ? "visible" : "hidden"}
+        >
+          <p>{title}</p>
+        </TextBottom>
+      </div>
       <AnimatePresence exitBeforeEnter>
         {clicked && (
           <Bio
@@ -95,23 +141,6 @@ const ExecutiveStaff = ({
             <p>{bio}</p>
           </Bio>
         )}
-        <div
-          style={{
-            transform: `rotate(${rotationBottom})`,
-            position: "relative",
-            zIndex: "2",
-          }}
-        >
-          <TextBottom
-            variants={hoverAnimationBottom}
-            initial="hidden"
-            animate="visible"
-            // style={{ transform: `rotate(${rotationBottom})` }}
-            // animate={hovered ? "visible" : "hidden"}
-          >
-            <p>{title}</p>
-          </TextBottom>
-        </div>
       </AnimatePresence>
     </Card>
   )
@@ -121,36 +150,55 @@ export default ExecutiveStaff
 
 const Card = styled(motion.div)`
   position: relative;
-  padding: 0.5rem;
-  padding-bottom: 3rem;
+  padding: 3rem 0.5rem;
   margin: 0 0.5rem;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
   overflow: hidden;
   width: 350px;
   height: 100%;
+  cursor: pointer;
 
   @media (max-width: ${breakpoints.xl}px) {
-    margin: 1rem 0.5rem;
-    border-bottom: none;
+    width: 450px;
   }
   @media (max-width: ${breakpoints.l}px) {
     height: auto;
-
-    :last-child {
-      border-bottom: 1px solid black;
-    }
+    width: 350px;
+    max-width: 550px;
+  }
+  @media (max-width: ${breakpoints.m}px) {
+    width: 400px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 350px;
   }
 `
 
+const Clicky = styled(motion.div)`
+  cursor: pointer;
+  color: white;
+  background-color: var(--color-black);
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+`
+
 const Bio = styled(motion.div)`
-  z-index: 2;
+  z-index: 4;
   position: absolute;
   top: 0;
   left: 0;
   max-width: 100%;
   height: 96.5%;
   margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  padding-bottom: 1.5rem;
   background: var(--color-black);
   border-radius: 10px;
   cursor: pointer;
@@ -160,9 +208,16 @@ const Bio = styled(motion.div)`
   p {
     margin: 0.5rem;
     color: var(--color-white);
+    user-select: none;
   }
 
-  @media (max-width: ${breakpoints.m}px) {
+  @media (max-width: ${breakpoints.s}px) {
+    p {
+      font-size: 20px;
+      line-height: 130%;
+    }
+  }
+  /* @media (max-width: ${breakpoints.m}px) {
     position: relative;
     background: none;
     overflow: hidden;
@@ -170,7 +225,7 @@ const Bio = styled(motion.div)`
       color: black;
       margin: 0;
     }
-  }
+  } */
 `
 
 const ImageWrapper = styled.div`
@@ -194,8 +249,7 @@ const ImageWrapper = styled.div`
 
 const TextTop = styled(motion.div)`
   position: absolute;
-  /* z-index: ; */
-  top: -10%;
+  top: -15%;
   left: 50%;
   background: var(--color-black);
   color: white;
@@ -206,6 +260,7 @@ const TextTop = styled(motion.div)`
   justify-content: center;
   align-items: center;
 
+  box-shadow: 0px 0px 0px 3px #ffcd30;
   /* padding: 0.5rem;
   padding-top: 0; */
   p {
@@ -215,14 +270,30 @@ const TextTop = styled(motion.div)`
     padding-top: 0.25rem;
     color: white;
   }
+  @media (max-width: ${breakpoints.xl}px) {
+    margin-top: 2rem;
+    p {
+      font-size: 24px;
+    }
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    margin-top: 1rem;
+    p {
+      font-size: 24px;
+    }
+  }
   @media (max-width: ${breakpoints.s}px) {
+    margin-top: 1rem;
     white-space: nowrap;
+
+    p {
+      font-size: 24px;
+    }
   }
 `
 
 const TextBottom = styled(motion.div)`
   position: absolute;
-  /* z-index: 2; */
   bottom: 30%;
   left: 50%;
   background: var(--color-black);
@@ -231,6 +302,8 @@ const TextBottom = styled(motion.div)`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
+  box-shadow: 0px 0px 0px 3px #ffcd30;
 
   p {
     white-space: nowrap;

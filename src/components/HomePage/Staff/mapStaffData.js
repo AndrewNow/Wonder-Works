@@ -8,19 +8,19 @@ import Marquee from "react-fast-marquee"
 
 export const MapExecutiveStaff = () => {
   const staffData = [
-    {
-      name: "Zach Letter",
-      title: "Chief Executive Officer",
-      bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/execs/ZachLetter.png"
-          alt="image of Zach Letter"
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
+    // {
+    //   name: "Zach Letter",
+    //   title: "Chief Executive Officer",
+    //   bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
+    //   imgSrc: (
+    //     <StaticImage
+    //       src="../../../images/Team/execs/ZachLetter.png"
+    //       alt="image of Zach Letter"
+    //       quality={85}
+    //       placeholder="blurred"
+    //     />
+    //   ),
+    // },
     {
       name: "Kevin Perry",
       title: "Chief Operating Officer",
@@ -103,14 +103,31 @@ export const MapExecutiveStaff = () => {
 }
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100%;
+  width: 85%;
+  margin: 0 auto;
+
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 95%;
+  }
 
   @media (max-width: ${breakpoints.xl}px) {
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: ${breakpoints.m}px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
   }
 `
 
@@ -447,7 +464,7 @@ export const MapOtherStaff = () => {
           {/* same array but reversed */}
           {otherStaffData.reverse().map((otherStaff, index) => {
             const min = Math.ceil(-5)
-            const max = Math.floor(6)
+            const max = Math.floor(5)
             const rotationTop = `${Math.floor(
               Math.random() * (max - min + 1) + min
             )}deg`
@@ -477,6 +494,7 @@ const MarqueeSection = styled.div`
 `
 
 const OtherStaffWrapper = styled.div`
+  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
