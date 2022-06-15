@@ -176,6 +176,7 @@ const FlexFounders = styled.div`
 const Wrapper = styled.section`
   background: #ffcd30;
   padding: 8rem 0;
+  padding-top: 4rem;
 
   h2 {
     font-family: "balgin-bold";
@@ -220,6 +221,7 @@ const Wrapper = styled.section`
 
   @media (max-width: ${breakpoints.m}px) {
     padding: 7.5rem 0;
+    padding-top: 3rem;
     h1 {
       font-size: 52px;
       width: 80%;
@@ -227,8 +229,8 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    padding: 5rem 0;
-
+    padding: 3rem 0;
+    padding-top: 3rem;
     h1 {
       font-size: 45px;
       padding-bottom: 3rem;
