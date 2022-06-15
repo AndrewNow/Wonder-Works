@@ -245,18 +245,18 @@ export const MapOtherStaff = () => {
         />
       ),
     },
-    {
-      name: "Billie Weddington",
-      title: "HR Manager, Department Head",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/billie.png"
-          alt="image of Billie Weddington"
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
+    // {
+    //   name: "Billie Weddington",
+    //   title: "HR Manager, Department Head",
+    //   imgSrc: (
+    //     <StaticImage
+    //       src="../../../images/Team/other/billie.png"
+    //       alt="image of Billie Weddington"
+    //       quality={85}
+    //       placeholder="blurred"
+    //     />
+    //   ),
+    // },
     {
       name: "Cole Wilshire",
       title: "Developer",
@@ -293,18 +293,18 @@ export const MapOtherStaff = () => {
         />
       ),
     },
-    {
-      name: "Emma Fox",
-      title: "Creative",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/emma.jpg"
-          alt="image of Emma Fox"
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
+    // {
+    //   name: "Emma Fox",
+    //   title: "Creative",
+    //   imgSrc: (
+    //     <StaticImage
+    //       src="../../../images/Team/other/emma.jpg"
+    //       alt="image of Emma Fox"
+    //       quality={85}
+    //       placeholder="blurred"
+    //     />
+    //   ),
+    // },
     {
       name: "Everett Bradford",
       title: "3D Artist",
