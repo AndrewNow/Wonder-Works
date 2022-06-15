@@ -244,23 +244,19 @@ const LandingPage = ({ onCursor }) => {
             className="react-player"
             width="100%"
             height="100%"
-            controls={true}
             playsinline={true}
             muted={true}
             playing={true}
             // playing={modalOpen ? true : false}
-            // config={{
-            //   youtube: {
-            //     playerVars: {
-            //       color: "white",
-            //       playsinline: 1,
-            //     },
-            //     embedOptions: {
-            //       width: 1280,
-            //       height: 720,
-            //     },
-            //   },
-            // }}
+            controls={true}
+            config={{
+              youtube: {
+                playerVars: {
+                  color: "white",
+                  modestbranding: 1,
+                },
+              },
+            }}
           />
           {/* <StaticImage
             onMouseEnter={() => onCursor("hovered")}
@@ -290,41 +286,6 @@ const LandingPage = ({ onCursor }) => {
         </VideoThumbnail>
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />
-      {/* 
-      <AnimatePresence>
-        <Modal
-          variants={modal}
-          initial="hidden"
-          animate={modalOpen ? "visible" : "hidden"}
-          onClick={() => setModalOpen(false)}
-        >
-          <VideoWrapper>
-            <ReactPlayer
-              className="react-player"
-              width="100%"
-              height="100%"
-              controls={true}
-              playsinline={true}
-              url="https://www.youtube.com/watch?v=955ll_boJgg"
-              muted={true}
-              // playing={modalOpen ? true : false}
-              // config={{
-              //   youtube: {
-              //     playerVars: {
-              //       color: "white",
-              //       playsinline: 1,
-              //     },
-              //     embedOptions: {
-              //       width: 1280,
-              //       height: 720,
-              //     },
-              //   },
-              // }}
-            />
-          </VideoWrapper>
-        </Modal> 
-      </AnimatePresence>
-      */}
     </>
   )
 }
@@ -342,51 +303,7 @@ const Cover = styled(motion.div)`
   width: 100%;
   background-color: var(--color-black);
 `
-
-const Modal = styled(motion.div)`
-  position: fixed;
-  /* was: fixed */
-  overflow-x: hidden;
-  z-index: 1998;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #00000060;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: ${breakpoints.s}px) {
-    background-color: #00000098;
-    backdrop-filter: blur(2px);
-  }
-`
-
-const VideoWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  max-width: 90%;
-  margin: 0 auto;
-  aspect-ratio: 15.5/9;
-  width: 70vw;
-  height: auto;
-
-  &.react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  @media (max-width: ${breakpoints.s}px) {
-    width: 90vw;
-  }
-`
-
+  
 const VideoThumbnail = styled(motion.div)`
   cursor: pointer;
   position: absolute;
@@ -420,6 +337,7 @@ const VideoThumbnail = styled(motion.div)`
     width: 90%;
   }
   @media (max-width: ${breakpoints.s}px) {
+    border-radius: 5px;
     width: 95%;
     left: 50%;
     transform: translateX(-50%);

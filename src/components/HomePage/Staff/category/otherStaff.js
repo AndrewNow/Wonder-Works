@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
-import breakpoints from "../../breakpoints"
+import breakpoints from "../../../breakpoints"
 
 const OtherStaff = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
   const hoverAnimationTop = {

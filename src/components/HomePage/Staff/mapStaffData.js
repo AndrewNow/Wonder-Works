@@ -1,10 +1,63 @@
 import React from "react"
-import ExecutiveStaff from "./executiveStaff"
-import OtherStaff from "./otherStaff"
+import ExecutiveStaff from "./category/executiveStaff"
+import Founders from "./category/founders"
+import OtherStaff from "./category/otherStaff"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import breakpoints from "../../breakpoints"
 import Marquee from "react-fast-marquee"
+
+export const MapFounders = () => {
+  const founderData = [
+    {
+      name: "Zach Letter",
+      title: "Chief Executive Officer",
+      // bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/execs/ZachLetter.png"
+          alt="Portrait image of Zach Letter against a pale blue background."
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+    {
+      name: "Megan Letter",
+      title: "Founder",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/other/megan.jpg"
+          alt="Portrait image of Megan Letter against a pale blue background."
+          quality={85}
+          placeholder="blurred"
+        />
+      ),
+    },
+  ]
+
+  return founderData.map((staff, index) => {
+    const min = Math.ceil(-5)
+    const max = Math.floor(6)
+    const rotationTop = `${Math.floor(
+      Math.random() * (max - min + 1) + min
+    )}deg`
+    const rotationBottom = `${Math.floor(
+      Math.random() * (max - min + 1) + min
+    )}deg`
+    return (
+      <Founders
+        title={staff.title}
+        name={staff.name}
+        bio={staff.bio}
+        imgSrc={staff.imgSrc}
+        key={index}
+        rotationTop={rotationTop}
+        rotationBottom={rotationBottom}
+      />
+    )
+  })
+}
 
 export const MapExecutiveStaff = () => {
   const staffData = [
@@ -111,7 +164,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 
   @media (max-width: ${breakpoints.xxl}px) {
-    width: 95%;
+    width: 90%;
   }
 
   @media (max-width: ${breakpoints.xl}px) {
@@ -375,18 +428,6 @@ export const MapOtherStaff = () => {
       ),
     },
     {
-      name: "Megan Letter",
-      title: "Founder",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/megan.jpg"
-          alt="image of Megan Letter"
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
-    {
       name: "Michael Benavides",
       title: "Designer",
       imgSrc: (
@@ -508,5 +549,8 @@ const OtherStaffWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    margin: 0rem auto;
   }
 `

@@ -86,16 +86,18 @@ const StudioOwnedExperiences = () => {
               <motion.span variants={word}>Owned </motion.span>
               <motion.span variants={word}>Experiences</motion.span>
             </motion.h1>
-            <motion.h4
+            <motion.h5
               variants={textFadeIn}
               initial="hidden"
               animate={sectionInView ? "visible" : "hidden"}
             >
-              {/* <motion.span variants={textChild}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </motion.span> */}
-            </motion.h4>
+              <motion.span variants={textChild}>
+                We’re always dreaming up new adventures in exciting roleplay
+                games for immersive, imaginative fun for everyone. Check out our
+                ambitious new projects or our latest launches — they all live
+                here.
+              </motion.span>
+            </motion.h5>
           </Title>
           <GearWrapper
             animate={{
@@ -182,7 +184,7 @@ const TitleWrapper = styled.div`
   width: 50%;
   height: auto;
   position: sticky;
-  top: 20vh;
+  top: 10vh;
   align-self: flex-start;
   display: flex;
   justify-content: center;
@@ -209,7 +211,7 @@ const Title = styled.div`
   position: relative;
   z-index: 2;
   h1,
-  h4 {
+  h5 {
     color: white;
   }
   h1 {
@@ -219,6 +221,7 @@ const Title = styled.div`
     display: block;
     overflow: hidden;
     width: auto;
+    margin-bottom: 1rem;
     span {
       height: 100%;
       overflow: hidden;

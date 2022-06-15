@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
-import breakpoints from "../../breakpoints"
+import breakpoints from "../../../breakpoints"
 
 const ExecutiveStaff = ({
   title,
@@ -151,16 +151,24 @@ export default ExecutiveStaff
 const Card = styled(motion.div)`
   position: relative;
   padding: 3rem 0.5rem;
-  margin: 0 0.5rem;
-  overflow: hidden;
+  margin: 0 1rem;
+  /* overflow: hidden; */
   width: 350px;
+  max-width: 20vw;
   height: 100%;
   cursor: pointer;
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    margin: 0 1.5rem;
+  }
   @media (max-width: ${breakpoints.xl}px) {
-    width: 450px;
+    margin: 0 .5rem;
+    height: auto;
+    width: 300px;
+    max-width: 300px;
   }
   @media (max-width: ${breakpoints.l}px) {
+    margin: 0 .5rem;
     height: auto;
     width: 350px;
     max-width: 550px;
@@ -185,8 +193,16 @@ const Clicky = styled(motion.div)`
   height: 45px;
   border-radius: 100%;
   position: absolute;
-  bottom: 0rem;
-  left: 0rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
+
+  @media (max-width: ${breakpoints.s}px) {
+    right: 1.5rem;
+    bottom: 1rem;
+    left: auto;
+    width: 35px;
+    height: 35px;
+  }
 `
 
 const Bio = styled(motion.div)`
@@ -217,15 +233,6 @@ const Bio = styled(motion.div)`
       line-height: 130%;
     }
   }
-  /* @media (max-width: ${breakpoints.m}px) {
-    position: relative;
-    background: none;
-    overflow: hidden;
-    p {
-      color: black;
-      margin: 0;
-    }
-  } */
 `
 
 const ImageWrapper = styled.div`
@@ -237,8 +244,12 @@ const ImageWrapper = styled.div`
   max-height: 300px;
   cursor: pointer;
   pointer-events: none;
+  @media (max-width: ${breakpoints.xl}px) {
+    max-height: 350px;
+  }
 
   @media (max-width: ${breakpoints.m}px) {
+    max-height: 300px;
     /* border-radius: 0; */
     /* overflow: visible; */
     max-width: 75%;
