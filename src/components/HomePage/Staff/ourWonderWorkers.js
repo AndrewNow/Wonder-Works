@@ -175,7 +175,7 @@ const FlexFounders = styled.div`
 
 const Wrapper = styled.section`
   background: #ffcd30;
-  padding: 10rem 0;
+  padding: 8rem 0;
 
   h2 {
     font-family: "balgin-bold";
@@ -186,7 +186,7 @@ const Wrapper = styled.section`
     text-align: center;
     text-transform: uppercase;
     margin: 0 auto;
-    padding-bottom: 8rem;
+    padding-bottom: 7rem;
     font-size: 100px;
 
     position: relative;
@@ -198,7 +198,7 @@ const Wrapper = styled.section`
       display: inline-block;
       vertical-align: top;
       padding-bottom: 0.5rem;
-      margin-right: 1%;
+      margin-right: 2%;
     }
   }
   @media (max-width: ${breakpoints.xxl}px) {
