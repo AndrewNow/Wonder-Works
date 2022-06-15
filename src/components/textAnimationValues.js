@@ -7,7 +7,15 @@ export const line = {
     },
   },
 }
-
+export const lineStrong = {
+  visible: {
+    transition: {
+      duration: 2,
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+}
 export const word = {
   visible: {
     y: 0,
@@ -21,6 +29,22 @@ export const word = {
   },
   hidden: {
     y: 100,
+    opacity: 0,
+  },
+}
+export const wordStrong = {
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      type: "spring",
+      stiffness: 100,
+      damping: 11,
+    },
+  },
+  hidden: {
+    y: 150,
     opacity: 0,
   },
 }

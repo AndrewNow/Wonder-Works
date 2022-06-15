@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../../breakpoints"
 import Carousel from "./carousel"
-import { line, word, textChild } from "../../../components/textAnimationValues"
+import { line, word, wordStrong, textChild } from "../../../components/textAnimationValues"
 
 const OurWonderWorkers = () => {
   const [sectionRef, sectionInView] = useInView({
@@ -66,9 +66,9 @@ const OurWonderWorkers = () => {
           animate={ourWWInView ? "visible" : "hidden"}
           ref={ourWWRef}
         >
-          <motion.span variants={word}>Our </motion.span>
-          <motion.span variants={word}>Wonder </motion.span>
-          <motion.span variants={word}>Workers </motion.span>
+          <motion.span variants={wordStrong}>Our </motion.span>
+          <motion.span variants={wordStrong}>Wonder </motion.span>
+          <motion.span variants={wordStrong}>Workers </motion.span>
         </motion.h1>
         <InnerWrapper>
           <MapExecutiveStaff />
@@ -198,7 +198,7 @@ const Wrapper = styled.section`
       display: inline-block;
       vertical-align: top;
       padding-bottom: 0.5rem;
-      margin-right: 2%;
+      margin-right: 1%;
     }
   }
   @media (max-width: ${breakpoints.xxl}px) {
