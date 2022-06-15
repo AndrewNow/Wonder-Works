@@ -214,8 +214,8 @@ const GlobalWrapper = styled.div`
     }
 
     h4 {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 24px;
+      line-height: 100%;
     }
 
     h5 {
@@ -253,8 +253,8 @@ const GlobalWrapper = styled.div`
     }
 
     h4 {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 24px;
+      line-height: 100%;
     }
 
     h5 {

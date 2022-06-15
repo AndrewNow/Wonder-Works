@@ -311,6 +311,8 @@ const Slide = styled.div`
   h4 {
     font-family: "balgin-bold";
     padding: 1rem 0;
+    max-width: 90%;
+    margin: 0 auto;
   }
   p {
     max-width: 80%;
