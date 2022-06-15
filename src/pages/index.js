@@ -7,13 +7,8 @@ import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { Staircase, Cog } from "../svg/homepage"
 import { Arrow } from "../svg/miscellaneous"
 import { AsSeenOnLogosHome } from "../components/AsSeenOn/AsSeenOnLogos"
-import {
-  useGlobalDispatchContext,
-  useGlobalStateContext,
-} from "../context/globalContext"
 import breakpoints from "../components/breakpoints"
 import LandingPage from "../components/HomePage/landingPage"
-// import OurProjects from "../components/HomePage/ourProjects"
 import OurWonderWorkers from "../components/HomePage/Staff/ourWonderWorkers"
 import ImaginationSection from "../components/HomePage/imaginationSection"
 import TwitterWidget from "../components/HomePage/twitterWidget"
@@ -21,19 +16,14 @@ import ProjectRoadmap from "../components/HomePage/projectRoadmap"
 import CaseStudy from "../components/HomePage/caseStudy"
 import StudioOwnedExperiences from "../components/HomePage/studioOwnedExperiences"
 import Navbar from "../components/navbar"
+// import {
+//   useGlobalDispatchContext,
+//   useGlobalStateContext,
+// } from "../context/globalContext"
 
 const HomeIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Home`
 
-  // context for the cursor
-  const dispatch = useGlobalDispatchContext()
-  const { cursorStyles } = useGlobalStateContext()
-  const onCursor = cursorType => {
-    // cursorType becomes whatever is defined in a hanlder only if what we defined is declared in the cursorStyles array within context
-    cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
-    // dispatch global state to the declared cursor type in the handler
-    dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
-  }
 
   // ---------- determine if a blue background section is in view ----------
   // ---------- if in view, update navigation menu text color to white ----------
@@ -94,7 +84,7 @@ const HomeIndex = ({ data }) => {
   // ---------- Navbar scrollTo ----------
   const executeScrollCareers = () => careerRef.current.scrollIntoView()
   const careerRef = useRef(null)
-  const executeScrollContact = () => contactRef.current.scrollIntoView()    
+  const executeScrollContact = () => contactRef.current.scrollIntoView()
   const contactRef = useRef(null)
 
   return (
@@ -145,7 +135,7 @@ const HomeIndex = ({ data }) => {
           position: "relative",
         }}
       >
-        <LandingPage onCursor={onCursor} />
+        <LandingPage />
       </div>
       <LinkWrapper>
         <LinkTo href="mailto:partnerships@wonderworks.gg" rel="noreferrer">
@@ -308,62 +298,6 @@ const CogWrapper = styled(motion.div)`
   }
   @media (max-width: 375px) {
     top: 50vh;
-  }
-`
-const PortalWrapper = styled.div`
-  position: absolute;
-  top: 35%;
-  right: 0%;
-
-  @media (max-width: 1700px) {
-    right: -5%;
-    svg {
-      width: 550px;
-      height: auto;
-    }
-  }
-  @media (max-width: ${breakpoints.xxl}px) {
-    right: -10%;
-    top: 25%;
-    svg {
-      width: 550px;
-      height: auto;
-    }
-  }
-  @media (max-width: ${breakpoints.xl}px) {
-    top: 40%;
-    right: -10%;
-    svg {
-      width: 450px;
-    }
-  }
-  @media (max-width: ${breakpoints.l}px) {
-    svg {
-      width: 350px;
-    }
-  }
-  @media (max-width: ${breakpoints.m}px) {
-    right: -5%;
-    svg {
-      width: 300px;
-    }
-  }
-  @media (max-width: ${breakpoints.s}px) {
-    top: 45vh;
-    right: -25%;
-    svg {
-      width: 290px;
-    }
-  }
-  @media (max-width: 375px) {
-    top: 50vh;
-  }
-  @media (max-width: ${breakpoints.xs}px) {
-    top: 45%;
-    right: -25%;
-    svg {
-      width: 230px;
-    }
   }
 `
 

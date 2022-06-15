@@ -106,7 +106,6 @@ const ExecutiveStaff = ({
           variants={hoverAnimationTop}
           initial="hidden"
           animate="visible"
-          // animate={hovered ? "visible" : "hidden"}
         >
           <p>{name}</p>
         </TextTop>
@@ -123,8 +122,6 @@ const ExecutiveStaff = ({
           variants={hoverAnimationBottom}
           initial="hidden"
           animate="visible"
-          // style={{ transform: `rotate(${rotationBottom})` }}
-          // animate={hovered ? "visible" : "hidden"}
         >
           <p>{title}</p>
         </TextBottom>
@@ -152,7 +149,6 @@ const Card = styled(motion.div)`
   position: relative;
   padding: 3rem 0.5rem;
   margin: 0 1rem;
-  /* overflow: hidden; */
   width: 350px;
   max-width: 20vw;
   height: 100%;
@@ -278,7 +274,8 @@ const TextTop = styled(motion.div)`
     line-height: 110%;
     font-family: "balgin-bold";
     padding: 0.5rem 1rem;
-    padding-top: 0.25rem;
+    padding-top: 0.35rem;
+    vertical-align: super;
     color: white;
   }
   @media (max-width: ${breakpoints.xl}px) {

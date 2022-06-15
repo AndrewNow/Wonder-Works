@@ -1,23 +1,22 @@
-import React, { useCallback, useEffect } from "react"
+import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import breakpoints from "../components/breakpoints"
 import MobileNavAnimation from "../components/mobileNavAnimation"
-import { useGlobalDispatchContext } from "../context/globalContext"
 
 const NotFoundPage = ({ data }) => {
   // Make sure navbar starts in blue on page load
-  const dispatch = useGlobalDispatchContext()
+  // const dispatch = useGlobalDispatchContext()
 
-  const toggleBlueTheme = useCallback(() => {
-    dispatch({ type: "TOGGLE_THEME", theme: "blue" })
-  }, [dispatch])
+  // const toggleBlueTheme = useCallback(() => {
+  //   dispatch({ type: "TOGGLE_THEME", theme: "blue" })
+  // }, [dispatch])
 
-  useEffect(() => {
-    toggleBlueTheme()
-  }, [toggleBlueTheme])
+  // useEffect(() => {
+  //   toggleBlueTheme()
+  // }, [toggleBlueTheme])
 
   const siteTitle = data.site.siteMetadata.title
   return (

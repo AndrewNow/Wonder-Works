@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { motion, useAnimation, AnimatePresence } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
 import breakpoints from "../breakpoints"
 import ReactPlayer from "react-player/youtube"
-import { StaticImage } from "gatsby-plugin-image"
 
-import { PressPlaySVG, PlayIcon } from "../EmblaCarousel/buttons"
 
-const LandingPage = ({ onCursor }) => {
+const LandingPage = () => {
   // ----------framer motion animation variants----------
   const line = {
     visible: {
@@ -258,31 +256,6 @@ const LandingPage = ({ onCursor }) => {
               },
             }}
           />
-          {/* <StaticImage
-            onMouseEnter={() => onCursor("hovered")}
-            onMouseLeave={onCursor}
-            src="../../images/Home/wwReel.png"
-            alt="video reel thumbnail"
-            quality={100}
-            placeholder="blurred"
-          />
-          <MobilePlayButton>
-            <motion.div
-              animate={{
-                rotate: 360,
-                transition: {
-                  repeat: "Infinity",
-                  duration: 10,
-                  ease: "linear",
-                },
-              }}
-            >
-              <PressPlaySVG />
-            </motion.div>
-            <motion.span>
-              <PlayIcon />
-            </motion.span>
-          </MobilePlayButton> */}
         </VideoThumbnail>
       </LandingText>
       <Cover variants={loader} initial="initial" animate="animate" />

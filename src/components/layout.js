@@ -3,7 +3,6 @@ import styled, { ThemeProvider } from "styled-components"
 import Footer from "../components/footer"
 import ScrollToTop from "./scrollToTop"
 import breakpoints from "./breakpoints"
-// import CustomCursor from "./customCursor"
 import { useGlobalStateContext } from "../context/globalContext"
 
 const Layout = ({ children }) => {
@@ -27,21 +26,11 @@ const Layout = ({ children }) => {
   } = useGlobalStateContext()
   // const dispatch = useGlobalDispatchContext()
 
-  // // update the cursor type when hovering over a given cursor element
-  // // cursorType represents the various cursor styles
-  // const onCursor = cursorType => {
-  //   // cursorType becomes whatever is defined in a hanlder only if what we defined is declared in the cursorStyles array within context
-  //   cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
-  //   // dispatch global state to the declared cursor type in the handler
-  //   dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
-  // }
-
   return (
     <ThemeProvider
       theme={currentTheme === "blue" ? darkNavTheme : lightNavTheme}
     >
       <GlobalWrapper>
-        {/* <CustomCursor /> */}
         <main>{children}</main>
         <ScrollToTop />
         <Footer />

@@ -10,30 +10,30 @@ import Marquee from "react-fast-marquee"
 export const MapFounders = () => {
   const founderData = [
     {
-      name: "Zach Letter",
-      title: "Chief Executive Officer",
-      // bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/execs/ZachLetter.png"
-          alt="Portrait image of Zach Letter against a pale blue background."
-          quality={85}
-          placeholder="blurred"
-        />
-      ),
-    },
-    {
       name: "Megan Letter",
-      title: "Founder",
+      title: "Co-Founder",
       imgSrc: (
         <StaticImage
-          src="../../../images/Team/other/megan.jpg"
-          alt="Portrait image of Megan Letter against a pale blue background."
-          quality={85}
-          placeholder="blurred"
+        src="../../../images/Team/other/megan.jpg"
+        alt="Portrait image of Megan Letter against a pale blue background."
+        quality={85}
+        placeholder="blurred"
         />
-      ),
-    },
+        ),
+      },
+      {
+        name: "Zach Letter",
+        title: "CEO & Co-Founder",
+        // bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
+        imgSrc: (
+          <StaticImage
+            src="../../../images/Team/execs/ZachLetter.png"
+            alt="Portrait image of Zach Letter against a pale blue background."
+            quality={85}
+            placeholder="blurred"
+          />
+        ),
+      },
   ]
 
   return founderData.map((staff, index) => {
@@ -61,19 +61,6 @@ export const MapFounders = () => {
 
 export const MapExecutiveStaff = () => {
   const staffData = [
-    // {
-    //   name: "Zach Letter",
-    //   title: "Chief Executive Officer",
-    //   bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
-    //   imgSrc: (
-    //     <StaticImage
-    //       src="../../../images/Team/execs/ZachLetter.png"
-    //       alt="image of Zach Letter"
-    //       quality={85}
-    //       placeholder="blurred"
-    //     />
-    //   ),
-    // },
     {
       name: "Kevin Perry",
       title: "Chief Operating Officer",

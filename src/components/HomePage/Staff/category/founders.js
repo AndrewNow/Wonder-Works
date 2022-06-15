@@ -161,6 +161,8 @@ const TextTop = styled(motion.div)`
   box-shadow: 0px 0px 0px 3px #ffcd30;
   margin-top: 1rem;
   p {
+    padding-top: 0.35rem;
+    vertical-align: super;
     white-space: nowrap;
     line-height: 110%;
     font-family: "balgin-bold";
