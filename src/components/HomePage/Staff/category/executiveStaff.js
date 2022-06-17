@@ -237,18 +237,18 @@ const ImageWrapper = styled.div`
   border-radius: 100%;
   overflow: hidden;
   aspect-ratio: 1/1;
-  max-height: 300px;
+  height: 300px;
   cursor: pointer;
   pointer-events: none;
   @media (max-width: ${breakpoints.xl}px) {
-    max-height: 350px;
+    height: 350px;
   }
 
   @media (max-width: ${breakpoints.m}px) {
-    max-height: 300px;
+    height: 300px;
     /* border-radius: 0; */
     /* overflow: visible; */
-    max-width: 75%;
+    /* max-width: 75%; */
     position: relative;
     z-index: 2;
   }

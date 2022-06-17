@@ -3,15 +3,8 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import breakpoints from "../../../breakpoints"
 
-const Founders = ({
-  title,
-  name,
-  imgSrc,
-  rotationTop,
-  rotationBottom,
-}) => {
+const Founders = ({ title, name, imgSrc, rotationTop, rotationBottom }) => {
   const [clicked, setClicked] = useState(false)
-
 
   const hoverAnimationTop = {
     visible: {
@@ -102,7 +95,6 @@ const Card = styled(motion.div)`
     width: 350px;
   }
 
-
   @media (max-width: ${breakpoints.xxl}px) {
     width: 300px;
   }
@@ -122,24 +114,21 @@ const Card = styled(motion.div)`
   }
 `
 
-
-
 const ImageWrapper = styled.div`
   margin: 1rem auto;
+  display: block;
   /* clip-path: circle(50%); */
   border-radius: 100%;
   overflow: hidden;
   aspect-ratio: 1/1;
-  max-height: 400px;
+  height: 400px;
+
   pointer-events: none;
 
-  @media (max-width: ${breakpoints.l}px) {
-  
-  }
   @media (max-width: ${breakpoints.m}px) {
     /* border-radius: 0; */
     /* overflow: visible; */
-    max-width: 75%;
+    width: 75%;
     position: relative;
     z-index: 2;
   }

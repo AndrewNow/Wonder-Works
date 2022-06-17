@@ -171,16 +171,17 @@ const ImageWrapper = styled.div`
   aspect-ratio: 1/1;
   position: relative;
   z-index: 1;
-  max-height: 250px;
+  width: 250px;
+  height: auto;
   > * {
     pointer-events: none;
   }
   @media (max-width: ${breakpoints.m}px) {
-    max-height: 200px;
+    width: 200px;
   }
 
   @media (max-width: ${breakpoints.s}px) {
     margin: 0 auto;
-    max-height: 150px;
+    width: 150px;
   }
 `

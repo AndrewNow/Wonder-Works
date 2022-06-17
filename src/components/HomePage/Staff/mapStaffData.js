@@ -16,7 +16,7 @@ export const MapFounders = () => {
         <StaticImage
           src="../../../images/Team/other/megan.jpg"
           alt="Portrait image of Megan Letter against a pale blue background."
-          quality={85}
+          quality={80}
           placeholder="blurred"
           aspectRatio={1 / 1}
         />
@@ -30,7 +30,7 @@ export const MapFounders = () => {
         <StaticImage
           src="../../../images/Team/execs/ZachLetter.png"
           alt="Portrait image of Zach Letter against a pale blue background."
-          quality={85}
+          quality={80}
           placeholder="blurred"
           aspectRatio={1 / 1}
         />
