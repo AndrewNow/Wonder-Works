@@ -14,26 +14,28 @@ export const MapFounders = () => {
       title: "Co-Founder",
       imgSrc: (
         <StaticImage
-        src="../../../images/Team/other/megan.jpg"
-        alt="Portrait image of Megan Letter against a pale blue background."
-        quality={85}
-        placeholder="blurred"
+          src="../../../images/Team/other/megan.jpg"
+          alt="Portrait image of Megan Letter against a pale blue background."
+          quality={85}
+          placeholder="blurred"
+          aspectRatio={1 / 1}
         />
-        ),
-      },
-      {
-        name: "Zach Letter",
-        title: "CEO & Co-Founder",
-        // bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
-        imgSrc: (
-          <StaticImage
-            src="../../../images/Team/execs/ZachLetter.png"
-            alt="Portrait image of Zach Letter against a pale blue background."
-            quality={85}
-            placeholder="blurred"
-          />
-        ),
-      },
+      ),
+    },
+    {
+      name: "Zach Letter",
+      title: "CEO & Co-Founder",
+      // bio: "Gaming has been an integral part of Zach's life for as long as he can remember, it entertained him, connected him with lifelong companions and inspired him creatively. After graduating high school, he found solace in creating digital gaming content on the YouTube platform. During his 10 year entertainment career he amassed billions of collective views, millions of subscribers and hundreds of powerful influencer connections. Taking what he learned from his passion for gaming, entertainment career, and connections to digital influencers, he and his wife Megan founded Wonder Works Studio, a white glove, full service, premier gaming studio for the growing metaverse landscape. Forged in passion, understanding and close connection for the community they serve, Zach's goal is to bring high quality AAA experiences to the emerging and underserved eco systems that are Roblox and Web3.",
+      imgSrc: (
+        <StaticImage
+          src="../../../images/Team/execs/ZachLetter.png"
+          alt="Portrait image of Zach Letter against a pale blue background."
+          quality={85}
+          placeholder="blurred"
+          aspectRatio={1 / 1}
+        />
+      ),
+    },
   ]
 
   return founderData.map((staff, index) => {
@@ -69,7 +71,7 @@ export const MapExecutiveStaff = () => {
         <StaticImage
           src="../../../images/Team/execs/KevinPerry.png"
           alt="image of Kevin Perry"
-          quality={85}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -82,7 +84,7 @@ export const MapExecutiveStaff = () => {
         <StaticImage
           src="../../../images/Team/execs/JoshuaMixon.png"
           alt="image of Joshua Mixon"
-          quality={85}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -95,7 +97,7 @@ export const MapExecutiveStaff = () => {
         <StaticImage
           src="../../../images/Team/execs/JoeJurbala.webp"
           alt="image of Joe"
-          quality={85}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -108,7 +110,7 @@ export const MapExecutiveStaff = () => {
         <StaticImage
           src="../../../images/Team/execs/TysonLetter.jpg"
           alt="image of Tyson"
-          quality={85}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -180,8 +182,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/abbigail.png"
           alt="image of Abbigail Ely"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -192,8 +196,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/alano.png"
           alt="image of Alano Nunez"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -204,8 +210,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/amber.png"
           alt="image of Amber Calderon"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -216,8 +224,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/andrew.png"
           alt="image of Andrew Hernandez"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -228,8 +238,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/ash.png"
           alt="image of Ash Sexton"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -240,23 +252,13 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/bethany.png"
           alt="image of Bethany Roberts"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
-    // {
-    //   name: "Billie Weddington",
-    //   title: "HR Manager, Department Head",
-    //   imgSrc: (
-    //     <StaticImage
-    //       src="../../../images/Team/other/billie.png"
-    //       alt="image of Billie Weddington"
-    //       quality={85}
-    //       placeholder="blurred"
-    //     />
-    //   ),
-    // },
     {
       name: "Cole Wilshire",
       title: "Developer",
@@ -264,8 +266,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/cole.png"
           alt="image of Cole Wilshire"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -276,8 +280,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/daniel.jpg"
           alt="image of Daniel Kolman"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -288,23 +294,13 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/dylan.jpg"
           alt="image of Dylan Jackson"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
-    // {
-    //   name: "Emma Fox",
-    //   title: "Creative",
-    //   imgSrc: (
-    //     <StaticImage
-    //       src="../../../images/Team/other/emma.jpg"
-    //       alt="image of Emma Fox"
-    //       quality={85}
-    //       placeholder="blurred"
-    //     />
-    //   ),
-    // },
     {
       name: "Everett Bradford",
       title: "3D Artist",
@@ -312,8 +308,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/everett.jpg"
           alt="image of Everett Bradford"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -325,8 +323,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/hector.jpg"
           alt="image of Hector Ochoa"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -337,8 +337,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/hope.jpg"
           alt="image of Hope Nasr"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -349,8 +351,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/jo.jpg"
           alt="image of Jo Hardman"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -361,8 +365,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/joseph.jpg"
           alt="image of Joseph Baumgratz"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -373,8 +379,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/joshua.jpg"
           alt="image of Joshua Tanner"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -385,8 +393,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/karla.jpg"
           alt="image of Karla Parra"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -397,8 +407,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/mary.jpg"
           alt="image of Mary Braden"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -409,8 +421,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/mckenzie.jpg"
           alt="image of McKenzie Woodward"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -421,8 +435,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/michaelb.jpg"
           alt="image of Michael Benavides"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -433,8 +449,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/michaelm.jpg"
           alt="image of Michael Martin"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },
@@ -445,8 +463,10 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/molly.jpg"
           alt="image of Molly Woodward"
-          quality={85}
+          quality={75}
           placeholder="blurred"
+          width={250}
+          aspectRatio={1 / 1}
         />
       ),
     },

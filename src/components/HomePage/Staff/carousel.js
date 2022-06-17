@@ -42,7 +42,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/0.png"
           alt="Image of the Wonder Works team, all grouped up in front of our office."
-          quality={90}
+          quality={80}
           placeholder="blurred"
           // imgStyle={{ objectFit: "cover" }}
           // style={{height: "100%"}}
@@ -54,7 +54,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/1.jpg"
           alt="Image of Josh in front of his computer, coding some games."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -64,7 +64,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/2.jpg"
           alt="Image of two people in front of their workstation."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -74,7 +74,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/3.jpg"
           alt="Image of Abby in front of her computer."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -84,7 +84,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/4.jpg"
           alt="Group image of members of the Wonder Works team by their desks."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -94,7 +94,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/5.jpg"
           alt="Image of a spin to win wheel, featuring a bunch of available rewards for employees."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -104,7 +104,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/6.jpg"
           alt="Image of Michael in front of his computer."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -114,7 +114,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/7.jpg"
           alt="Image of Jo in front of her computer."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -124,7 +124,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/8.jpg"
           alt="Image of Morgan manning the front desk, with a Wonder Works mural behind her."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
@@ -134,7 +134,7 @@ const Carousel = (options = { loop: true }) => {
         <StaticImage
           src="../../../images/Team/candids/9.jpg"
           alt="Group image of all our Wonder Workers in front of their computers inside our office."
-          quality={90}
+          quality={80}
           placeholder="blurred"
         />
       ),
