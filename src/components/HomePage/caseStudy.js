@@ -41,6 +41,8 @@ const CaseStudy = () => {
               src="../../images/Home/caseStudy/traitor.png"
               alt="Thumbnail for Traitor, one of Wonder Works' most popular games."
               quality={100}
+              width={620}
+              placeholder="blurred"
             />
           </Image>
           <Text
@@ -124,6 +126,7 @@ const Content = styled.div`
 
 const Image = styled.div`
   position: relative;
+  display: block;
   height: auto;
   border-radius: 13px;
   border: 1px solid var(--color-black);
