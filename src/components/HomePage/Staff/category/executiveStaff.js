@@ -244,6 +244,10 @@ const ImageWrapper = styled.div`
     height: 350px;
   }
 
+  @media (max-width: ${breakpoints.l}px) {
+    height: 300px;
+  }
+
   @media (max-width: ${breakpoints.m}px) {
     height: 300px;
     /* border-radius: 0; */

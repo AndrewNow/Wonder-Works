@@ -164,6 +164,7 @@ const FlexFounders = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   @media (max-width: ${breakpoints.xxl}px) {
     /* margin: 0 2rem; */
   }

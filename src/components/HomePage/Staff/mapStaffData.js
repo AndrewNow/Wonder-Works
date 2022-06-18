@@ -19,6 +19,7 @@ export const MapFounders = () => {
           quality={80}
           placeholder="blurred"
           aspectRatio={1 / 1}
+          width={400}
         />
       ),
     },
@@ -33,6 +34,7 @@ export const MapFounders = () => {
           quality={80}
           placeholder="blurred"
           aspectRatio={1 / 1}
+          width={400}
         />
       ),
     },

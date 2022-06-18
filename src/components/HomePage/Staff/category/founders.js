@@ -85,14 +85,14 @@ export default Founders
 
 const Card = styled(motion.div)`
   position: relative;
-  padding: 3rem 0.5rem;
+  padding: 3rem 0rem;
   margin: 0 0.5rem;
   overflow: hidden;
   width: 420px;
   height: 100%;
 
   @media (max-width: 1650px) {
-    width: 350px;
+    width: 420px;
   }
 
   @media (max-width: ${breakpoints.xxl}px) {
@@ -121,16 +121,34 @@ const ImageWrapper = styled.div`
   border-radius: 100%;
   overflow: hidden;
   aspect-ratio: 1/1;
+  width: 400px;
   height: 400px;
-
   pointer-events: none;
 
+  @media (max-width: ${breakpoints.xxl}px) {
+    width: 280px;
+    height: 280px;
+  }
+  @media (max-width: ${breakpoints.xl}px) {
+    width: 400px;
+    height: 400px;
+  }
+  @media (max-width: ${breakpoints.l}px) {
+    width: 320px;
+    height: 320px;
+  }
+
   @media (max-width: ${breakpoints.m}px) {
-    /* border-radius: 0; */
-    /* overflow: visible; */
-    width: 75%;
-    position: relative;
-    z-index: 2;
+    width: 400px;
+    height: 400px;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    width: 350px;
+    height: 350px;
+  }
+  @media (max-width: ${breakpoints.xs}px) {
+    width: 300px;
+    height: 300px;
   }
 `
 
