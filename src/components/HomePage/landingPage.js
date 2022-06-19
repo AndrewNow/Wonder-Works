@@ -3,7 +3,45 @@ import styled from "styled-components"
 import { motion, useAnimation } from "framer-motion"
 import breakpoints from "../breakpoints"
 import ReactPlayer from "react-player/youtube"
+import { useInView } from "react-intersection-observer"
 
+// Hook for getting coordinates for the opening page animation.
+const useCoords = ({ landingTextRef, textTopRef, textBottomRef }) => {
+  // Initialize state
+  const [coords, setCoords] = useState({ x: 0, y: 0, yTop: 0, yBottom: 0 })
+
+  useEffect(() => {
+    if (typeof window == "undefined") {
+      return
+    }
+    // 1. ~~~~~ GET PARENT COMPONENT BOUNDING BOX COORDINATES ~~~~~
+    const landingTextArea = landingTextRef.current.getBoundingClientRect()
+    // 1.1 get each edge of the landing text area's spacing
+    // (relative to top and sides of the viewport)
+
+    // 2. ~~~~~ TOP TEXT & BOTTOM TEXT AREA - ANIMATION DESTINATION COORDS ~~~~~
+    // Destination coords AKA the bounds to which the text should animate towards.
+    const topBox = textTopRef.current.getBoundingClientRect()
+    const bottomBox = textBottomRef.current.getBoundingClientRect()
+
+    const measureBottomTextHeightFromTop =
+      textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
+
+    const bottomTravelDistance =
+      window.innerHeight -
+      measureBottomTextHeightFromTop +
+      textBottomRef.current.offsetHeight
+
+    setCoords({
+      x: bottomBox.x - landingTextArea.left,
+      y: bottomTravelDistance / 2,
+      // Get top text box's distance to top and left of DOM
+      yTop: topBox.top - landingTextArea.top,
+      xTop: topBox.left - landingTextArea.left,
+    })
+  }, [landingTextRef, textTopRef, textBottomRef])
+  return coords
+}
 
 const LandingPage = () => {
   // ----------framer motion animation variants----------
@@ -93,55 +131,27 @@ const LandingPage = () => {
     },
   }
 
-  const [modalOpen, setModalOpen] = useState(false)
-
-  const handleModal = () => {
-    setModalOpen(!modalOpen)
-  }
-
+  // Refs for the useCoords hook. We need these to identify the animation destination distance.
   const landingTextRef = useRef()
-
   const textTopRef = useRef()
-  const animationTop = useAnimation()
-
   const textBottomRef = useRef()
+
+  // Declare useAnimation for Framer
+  const animationTop = useAnimation()
   const animationBottom = useAnimation()
 
+  // Get the coords from our hook
+  const { x, y, yTop, xTop } = useCoords({
+    landingTextRef,
+    textTopRef,
+    textBottomRef,
+  })
+
   useEffect(() => {
-    if (typeof window == "undefined") {
-      return
-    }
-    // 1. ~~~~~ GET PARENT BOUNDING BOX COORDINATES ~~~~~
-    const landingTextArea = landingTextRef.current.getBoundingClientRect()
-    // 1.1 get each edge of the landing text area's spacing
-    // (relative to top and sides of the viewport)
-
-    // 2. ~~~~~ TOP TEXT SECTION ANIMATION DESTINATION COORDS ~~~~~
-    const topBox = textTopRef.current.getBoundingClientRect()
-    // 2.1 get top text box's distance to top and left of DOM
-    const yDistanceTopText = topBox.top - landingTextArea.top
-    const xDistanceTopText = topBox.left - landingTextArea.left
-
-    // 3. ~~~~~ BOTTOM TEXT SECTION ANIMATION DESTINATION COORDS ~~~~~
-    const bottomBox = textBottomRef.current.getBoundingClientRect()
-
-    const measureBottomTextHeightFromTop =
-      textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
-
-    const bottomTravelDistance =
-      window.innerHeight -
-      measureBottomTextHeightFromTop +
-      textBottomRef.current.offsetHeight
-
-    const yDistanceBottomText = bottomTravelDistance / 2
-    const xDistanceBottomText = bottomBox.x - landingTextArea.left
-
-    // 4 ~~~~~ ANIMATIONS ~~~~~
-
-    // 4.1 ANIMATE TOP TEXT
+    // 4.1 ANIMATE TOP TEXT TOWARDS TOP LEFT BOUNDS
     async function topTextSequence() {
       await animationTop.start({
-        y: -yDistanceTopText,
+        y: -yTop,
         transition: {
           delay: 1.25,
           duration: 0.75,
@@ -149,7 +159,7 @@ const LandingPage = () => {
         },
       })
       await animationTop.start({
-        x: -xDistanceTopText,
+        x: -xTop,
         transition: {
           duration: 0.4,
           ease: [1, 0.175, 0, 0.77],
@@ -162,10 +172,10 @@ const LandingPage = () => {
     }
     topTextSequence()
 
-    // 4.2 ANIMATE BOTTOM TEXT
+    // 4.2 ANIMATE BOTTOM TEXT TOWARDS BOTTOM RIGHT BOUNDS
     async function bottomTextSequence() {
       await animationBottom.start({
-        y: yDistanceBottomText,
+        y: y,
         transition: {
           delay: 1.25,
           duration: 0.75,
@@ -173,7 +183,7 @@ const LandingPage = () => {
         },
       })
       await animationBottom.start({
-        x: xDistanceBottomText,
+        x: x,
         transition: {
           duration: 0.4,
           ease: [0.77, 0, 0.175, 1],
@@ -185,7 +195,14 @@ const LandingPage = () => {
       animationBottom.start({ scale: 1 })
     }
     bottomTextSequence()
-  }, [animationTop, animationBottom])
+  }, [animationTop, animationBottom, x, y, yTop, xTop])
+
+  // Intersection observer to pause the video when no longer in view.
+  const [videoRef, videoInView] = useInView({
+    threshold: 0.2,
+    root: null,
+    triggerOnce: false,
+  })
 
   return (
     <>
@@ -232,10 +249,10 @@ const LandingPage = () => {
           </motion.h1>
         </TextBlock>
         <VideoThumbnail
-          onClick={handleModal}
           variants={video}
           initial="initial"
           animate="animate"
+          ref={videoRef}
         >
           <ReactPlayer
             url="https://www.youtube.com/watch?v=955ll_boJgg"
@@ -244,8 +261,7 @@ const LandingPage = () => {
             height="100%"
             playsinline={true}
             muted={true}
-            playing={true}
-            // playing={modalOpen ? true : false}
+            playing={videoInView ? true : false}
             controls={true}
             config={{
               youtube: {
@@ -267,7 +283,6 @@ export default LandingPage
 
 const Cover = styled(motion.div)`
   position: absolute;
-  /* was: fixed */
   overflow-x: hidden;
   z-index: 998;
   top: 0;
@@ -276,7 +291,7 @@ const Cover = styled(motion.div)`
   width: 100%;
   background-color: var(--color-black);
 `
-  
+
 const VideoThumbnail = styled(motion.div)`
   cursor: pointer;
   position: absolute;

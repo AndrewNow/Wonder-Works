@@ -44,6 +44,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of the Wonder Works team, all grouped up in front of our office."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
           // imgStyle={{ objectFit: "cover" }}
           // style={{height: "100%"}}
         />
@@ -56,6 +57,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of Josh in front of his computer, coding some games."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -66,6 +68,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of two people in front of their workstation."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -76,6 +79,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of Abby in front of her computer."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -86,6 +90,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Group image of members of the Wonder Works team by their desks."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -96,6 +101,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of a spin to win wheel, featuring a bunch of available rewards for employees."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -106,6 +112,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of Michael in front of his computer."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -116,6 +123,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of Jo in front of her computer."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -126,6 +134,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Image of Morgan manning the front desk, with a Wonder Works mural behind her."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
@@ -136,6 +145,7 @@ const Carousel = (options = { loop: true }) => {
           alt="Group image of all our Wonder Workers in front of their computers inside our office."
           quality={80}
           placeholder="blurred"
+          imgStyle={{ borderRadius: "10px" }}
         />
       ),
     },
