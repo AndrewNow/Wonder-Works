@@ -16,14 +16,12 @@ const useCoords = ({ landingTextRef, textTopRef, textBottomRef }) => {
     }
     // 1. ~~~~~ GET PARENT COMPONENT BOUNDING BOX COORDINATES ~~~~~
     const landingTextArea = landingTextRef.current.getBoundingClientRect()
-    // 1.1 get each edge of the landing text area's spacing
-    // (relative to top and sides of the viewport)
-
     // 2. ~~~~~ TOP TEXT & BOTTOM TEXT AREA - ANIMATION DESTINATION COORDS ~~~~~
     // Destination coords AKA the bounds to which the text should animate towards.
     const topBox = textTopRef.current.getBoundingClientRect()
     const bottomBox = textBottomRef.current.getBoundingClientRect()
 
+    // Since the text starts from the centre, set the distance to the top bounds for both top and bottom animations
     const measureBottomTextHeightFromTop =
       textBottomRef.current.offsetTop + textBottomRef.current.offsetHeight
 
@@ -202,6 +200,7 @@ const LandingPage = () => {
     threshold: 0.2,
     root: null,
     triggerOnce: false,
+    initialInView: true
   })
 
   return (
