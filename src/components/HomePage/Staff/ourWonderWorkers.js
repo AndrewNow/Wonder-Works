@@ -5,7 +5,12 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import breakpoints from "../../breakpoints"
 import Carousel from "./carousel"
-import { line, word, wordStrong, textChild } from "../../../components/textAnimationValues"
+import {
+  line,
+  word,
+  wordStrong,
+  textChild,
+} from "../../../components/textAnimationValues"
 
 const OurWonderWorkers = () => {
   const [sectionRef, sectionInView] = useInView({
@@ -157,6 +162,11 @@ const FounderText = styled.div`
   @media (max-width: ${breakpoints.m}px) {
     h2 > span {
       padding-bottom: 0.5rem;
+    }
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    p {
+      width: 94%;
     }
   }
 `

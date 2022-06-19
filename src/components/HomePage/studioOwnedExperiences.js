@@ -248,6 +248,11 @@ const Title = styled.div`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
+    width: 80%;
+    margin: 0 auto;
+    h1 {
+      font-size: 12vw;
+    }
   }
 `
 
@@ -323,6 +328,13 @@ const Slide = styled.div`
     font-family: "calibre-semibold";
     font-size: 14px;
     margin-top: 1rem;
+  }
+  @media (max-width: ${breakpoints.s}px) {
+    padding: 3rem 0;
+    padding-bottom: 3rem;
+    p {
+      margin-top: 1rem;
+    }
   }
 `
 
