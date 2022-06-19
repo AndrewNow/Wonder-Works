@@ -233,26 +233,25 @@ const Bio = styled(motion.div)`
 
 const ImageWrapper = styled.div`
   margin: 1rem auto;
-  /* clip-path: circle(50%); */
-  border-radius: 100%;
-  overflow: hidden;
+  clip-path: circle(50%);
+  /* border-radius: 100%; */
+  /* overflow: hidden; */
   aspect-ratio: 1/1;
+  width: 300px;
   height: 300px;
   cursor: pointer;
   pointer-events: none;
   @media (max-width: ${breakpoints.xl}px) {
+    width: 350px;
     height: 350px;
   }
-
+  
   @media (max-width: ${breakpoints.l}px) {
     height: 300px;
+    width: 300px;
   }
 
   @media (max-width: ${breakpoints.m}px) {
-    height: 300px;
-    /* border-radius: 0; */
-    /* overflow: visible; */
-    /* max-width: 75%; */
     position: relative;
     z-index: 2;
   }
