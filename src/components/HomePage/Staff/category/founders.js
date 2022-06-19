@@ -117,9 +117,9 @@ const Card = styled(motion.div)`
 const ImageWrapper = styled.div`
   margin: 1rem auto;
   display: block;
-  /* clip-path: circle(50%); */
-  border-radius: 100%;
-  overflow: hidden;
+  /* border-radius: 100%; */
+  /* overflow: hidden; */
+  clip-path: circle(50%);
   aspect-ratio: 1/1;
   width: 400px;
   height: 400px;
