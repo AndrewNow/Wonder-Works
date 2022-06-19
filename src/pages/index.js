@@ -287,7 +287,7 @@ const CogWrapper = styled(motion.div)`
     }
   }
   @media (max-width: ${breakpoints.s}px) {
-    top: 55vh;
+    top: 50vh;
     left: auto;
     right: 20%;
     svg {

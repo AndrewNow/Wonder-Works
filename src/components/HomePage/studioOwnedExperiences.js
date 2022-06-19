@@ -357,4 +357,8 @@ const SlideMedia = styled.div`
   @media (max-width: ${breakpoints.l}px) {
     max-width: 85vw;
   }
+  @media (max-width: ${breakpoints.s}px) {
+    max-width: none;
+    width: 90%;
+  }
 `

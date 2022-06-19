@@ -135,6 +135,7 @@ const Image = styled.div`
   box-shadow: 12px 12px 0px #eb2c90;
 
   @media (max-width: ${breakpoints.s}px) {
+    border: none;
     box-shadow: 5px 5px 0px #eb2c90;
   }
 `

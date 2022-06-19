@@ -116,19 +116,6 @@ const LandingPage = () => {
     },
   }
 
-  const modal = {
-    hidden: {
-      opacity: 0,
-      transitionEnd: {
-        display: "none",
-      },
-    },
-    visible: {
-      opacity: 1,
-      display: "block",
-    },
-  }
-
   // Refs for the useCoords hook. We need these to identify the animation destination distance.
   const landingTextRef = useRef()
   const textTopRef = useRef()
@@ -200,7 +187,7 @@ const LandingPage = () => {
     threshold: 0.2,
     root: null,
     triggerOnce: false,
-    initialInView: true
+    initialInView: true,
   })
 
   return (
@@ -304,7 +291,7 @@ const VideoThumbnail = styled(motion.div)`
   overflow: hidden;
   margin-bottom: 12vh;
 
-  &.react-player {
+  .react-player {
     position: absolute;
     top: 0;
     left: 0;
@@ -389,8 +376,6 @@ const FirstLine = styled(motion.div)`
   height: 100%;
   padding-bottom: 1rem;
   vertical-align: top;
-  /* padding-bottom: 2rem; */
-  /* overflow: hidden; */
 
   @media (max-width: ${breakpoints.s}px) {
     padding-bottom: 0.5rem;
@@ -468,44 +453,5 @@ const SpanBottom = styled(motion.span)`
   }
   @media (max-width: ${breakpoints.s}px) {
     margin-right: 0.25rem;
-  }
-`
-
-const MobilePlayButton = styled.div`
-  display: none;
-
-  @media (max-width: ${breakpoints.s}px) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 105px;
-    height: 105px;
-    background-color: #1a174998;
-    border-radius: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    div {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 1/1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      svg {
-        max-width: 90%;
-        max-height: 90%;
-      }
-    }
-    span {
-      position: absolute;
-      top: 50%;
-      left: 52%;
-      transform: translate(-50%, -50%);
-    }
   }
 `
