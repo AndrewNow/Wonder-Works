@@ -75,8 +75,9 @@ export const MapExecutiveStaff = () => {
           alt="image of Kevin Perry"
           quality={80}
           placeholder="blurred"
-          aspectRatio={1 / 1}
+          height={300}
           width={300}
+          transformOptions={{fit:"cover",  cropFocus: "top"}}
         />
       ),
     },
@@ -90,8 +91,9 @@ export const MapExecutiveStaff = () => {
           alt="image of Joshua Mixon"
           quality={80}
           placeholder="blurred"
-          aspectRatio={1 / 1}
+          height={300}
           width={300}
+          transformOptions={{fit:"cover",  cropFocus: "top"}}
         />
       ),
     },
@@ -105,8 +107,9 @@ export const MapExecutiveStaff = () => {
           alt="image of Joe"
           quality={80}
           placeholder="blurred"
-          aspectRatio={1 / 1}
+          height={300}
           width={300}
+          transformOptions={{fit:"cover",  cropFocus: "top"}}
         />
       ),
     },
@@ -120,8 +123,9 @@ export const MapExecutiveStaff = () => {
           alt="image of Tyson"
           quality={80}
           placeholder="blurred"
-          aspectRatio={1 / 1}
+          height={300}
           width={300}
+          transformOptions={{fit:"cover",  cropFocus: "top"}}
         />
       ),
     },
