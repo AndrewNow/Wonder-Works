@@ -45,6 +45,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
           // imgStyle={{ objectFit: "cover" }}
           // style={{height: "100%"}}
         />
@@ -58,6 +59,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -69,6 +71,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -80,6 +83,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -91,6 +95,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -102,6 +107,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -113,6 +119,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -124,6 +131,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -135,6 +143,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },
@@ -146,6 +155,7 @@ const Carousel = (options = { loop: true }) => {
           quality={80}
           placeholder="blurred"
           imgStyle={{ borderRadius: "10px" }}
+          width={1310}
         />
       ),
     },

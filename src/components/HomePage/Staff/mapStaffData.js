@@ -77,7 +77,7 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           height={300}
           width={300}
-          transformOptions={{fit:"cover",  cropFocus: "top"}}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -93,7 +93,7 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           height={300}
           width={300}
-          transformOptions={{fit:"cover",  cropFocus: "top"}}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -109,7 +109,7 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           height={300}
           width={300}
-          transformOptions={{fit:"cover",  cropFocus: "top"}}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -125,7 +125,7 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           height={300}
           width={300}
-          transformOptions={{fit:"cover",  cropFocus: "top"}}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
