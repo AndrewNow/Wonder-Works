@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 const TwitterWidget = () => {
   const [sectionRef, sectionInView] = useInView({
     root: null,
-    threshold: 0.3,
+    threshold: 0.1,
     triggerOnce: true,
   })
 
@@ -26,16 +26,20 @@ const TwitterWidget = () => {
           <motion.span variants={word}>up </motion.span>
           <motion.span variants={word}>to</motion.span>
         </motion.h2>
-        <Timeline
-          dataSource={{
-            sourceType: "profile",
-            screenName: "WonderWorksRB",
-          }}
-          options={{
-            height: "530",
-            width: "500",
-          }}
-        />
+        <Placeholder>
+          {sectionInView && (
+            <Timeline
+              dataSource={{
+                sourceType: "profile",
+                screenName: "WonderWorksRB",
+              }}
+              options={{
+                height: "530",
+                width: "500",
+              }}
+            />
+          )}
+        </Placeholder>
       </Inner>
     </Wrapper>
   )
@@ -48,6 +52,10 @@ const Wrapper = styled.section`
   /* height: 100vh; */
   position: relative;
   background: var(--color-pink);
+`
+
+const Placeholder = styled.div`
+  min-height: 530px;
 `
 
 const Inner = styled.div`
