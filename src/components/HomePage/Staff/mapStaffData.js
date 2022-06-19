@@ -77,7 +77,6 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           aspectRatio={1 / 1}
           width={300}
-          height={300}
         />
       ),
     },
@@ -93,7 +92,6 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           aspectRatio={1 / 1}
           width={300}
-          height={300}
         />
       ),
     },
@@ -109,7 +107,6 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           aspectRatio={1 / 1}
           width={300}
-          height={300}
         />
       ),
     },
@@ -125,7 +122,6 @@ export const MapExecutiveStaff = () => {
           placeholder="blurred"
           aspectRatio={1 / 1}
           width={300}
-          height={300}
         />
       ),
     },
