@@ -397,8 +397,7 @@ const LightBlueTriangleWrapper = styled(motion.div)`
   left: 5%;
   margin: 0 auto;
   width: 90vw;
-  max-width: 1850px;
-  overflow: hidden;
+  /* overflow: hidden; */
   @media (max-width: 1700px) {
     left: 5%;
     bottom: 10%;

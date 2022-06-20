@@ -199,7 +199,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -213,7 +215,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -227,7 +231,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -241,7 +247,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -255,7 +263,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -269,7 +279,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -283,7 +295,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -297,7 +311,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -311,7 +327,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -325,7 +343,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -340,7 +360,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -354,7 +376,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -368,7 +392,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -382,7 +408,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -396,7 +424,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -410,7 +440,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -424,7 +456,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -438,7 +472,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -452,7 +488,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -466,7 +504,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
@@ -480,7 +520,9 @@ export const MapOtherStaff = () => {
           quality={75}
           placeholder="blurred"
           width={250}
+          height={250}
           aspectRatio={1 / 1}
+          transformOptions={{ fit: "cover", cropFocus: "top" }}
         />
       ),
     },
