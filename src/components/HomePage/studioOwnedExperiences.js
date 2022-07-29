@@ -82,8 +82,7 @@ const StudioOwnedExperiences = () => {
               initial="hidden"
               animate={sectionInView ? "visible" : "hidden"}
             >
-              <motion.span variants={word}>Studio </motion.span>
-              <motion.span variants={word}>Owned </motion.span>
+              <motion.span variants={word}>Our </motion.span>
               <motion.span variants={word}>Experiences</motion.span>
             </motion.h1>
             <motion.h5

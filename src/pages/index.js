@@ -125,9 +125,6 @@ const HomeIndex = ({ data }) => {
         >
           <Cog />
         </CogWrapper>
-        {/* <PortalWrapper>
-          <Svg.Portal />
-        </PortalWrapper> */}
       </Background>
       <div
         style={{
@@ -151,7 +148,6 @@ const HomeIndex = ({ data }) => {
       </LinkWrapper>
       <ImaginationSection />
       <div ref={blueSectionRef}>
-        {/* <OurProjects /> */}
         <StudioOwnedExperiences />
       </div>
       <CaseStudy />
