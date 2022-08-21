@@ -159,9 +159,9 @@ const Card = styled(motion.div)`
   }
   @media (max-width: ${breakpoints.xl}px) {
     margin: 0 .5rem;
+    width: auto;
     height: auto;
-    width: 300px;
-    max-width: 300px;
+    max-width: 450px;
   }
   @media (max-width: ${breakpoints.l}px) {
     margin: 0 .5rem;
@@ -242,8 +242,8 @@ const ImageWrapper = styled.div`
   cursor: pointer;
   pointer-events: none;
   @media (max-width: ${breakpoints.xl}px) {
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    height: auto;
   }
   
   @media (max-width: ${breakpoints.l}px) {

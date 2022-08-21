@@ -34,8 +34,9 @@ const TwitterWidget = () => {
                 screenName: "WonderWorksRB",
               }}
               options={{
-                height: "530",
                 width: "500",
+                height: "530",
+                tweetLimit: 3
               }}
             />
           )}
@@ -55,7 +56,17 @@ const Wrapper = styled.section`
 `
 
 const Placeholder = styled.div`
-  min-height: 530px;
+  min-height: 100vh;
+  max-width: 80vw;
+  height: 530px;
+  overflow-y: scroll;
+  border-radius: 12px;
+  display: block;
+  position: relative;
+  @media (max-width: ${breakpoints.s}px) {
+    max-width: 90vw;
+    height: 530px;
+  }
 `
 
 const Inner = styled.div`

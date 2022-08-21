@@ -82,22 +82,6 @@ export const MapExecutiveStaff = () => {
       ),
     },
     {
-      name: "Joshua Mixon",
-      title: "Chief Production Officer",
-      bio: "Josh has created dozens of games with hundreds of millions of plays across the last 6 years on the Roblox platform. Through community outreach and teaching Josh has helped empower the next generation of gamers. Now, Josh is leading a team of the most talented engineers, modellers, animators, and designers this world has yet to see. Josh’s focus is on creating an enjoyable atmosphere through the promotion of creativity, collaboration, and innovation within the workspace. We all succeed when we love what we are doing - and Wonder Works Studio is built on the love of gaming.",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/execs/JoshuaMixon.png"
-          alt="image of Joshua Mixon"
-          quality={80}
-          placeholder="blurred"
-          height={300}
-          width={300}
-          transformOptions={{ fit: "cover", cropFocus: "top" }}
-        />
-      ),
-    },
-    {
       name: "Joe Jurbala",
       title: "Chief Business Officer",
       bio: "Joe has 7 years’ experience analyzing and investing across the global internet and game industries. His lifelong love for gaming has centered around its ability to drive positive social connections between players and the emergence of platforms like Roblox takes this to the next level. Joe is focused on finance and business development at Wonder Works and helps top brands and entertainers drive deep, meaningful connections to their communities through immersive digital experiences.",
@@ -161,7 +145,7 @@ export const MapExecutiveStaff = () => {
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   width: 85%;
   margin: 0 auto;
@@ -173,12 +157,13 @@ const Wrapper = styled.div`
   @media (max-width: ${breakpoints.xl}px) {
     width: 80%;
     margin: 0 auto;
-    display: grid;
+    flex-wrap: wrap;
+    /* display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
   }
 
   @media (max-width: ${breakpoints.m}px) {
@@ -196,21 +181,6 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/abbigail.png"
           alt="image of Abbigail Ely"
-          quality={75}
-          placeholder="blurred"
-          width={250}
-          aspectRatio={1 / 1}
-          transformOptions={{ fit: "cover", cropFocus: "top" }}
-        />
-      ),
-    },
-    {
-      name: "Alano Nunez",
-      title: "3D Artist",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/alano.png"
-          alt="image of Alano Nunez"
           quality={75}
           placeholder="blurred"
           width={250}
@@ -241,51 +211,6 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/andrew.png"
           alt="image of Andrew Hernandez"
-          quality={75}
-          placeholder="blurred"
-          width={250}
-          aspectRatio={1 / 1}
-          transformOptions={{ fit: "cover", cropFocus: "top" }}
-        />
-      ),
-    },
-    {
-      name: "Ash Sexton",
-      title: "Creative",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/ash.png"
-          alt="image of Ash Sexton"
-          quality={75}
-          placeholder="blurred"
-          width={250}
-          aspectRatio={1 / 1}
-          transformOptions={{ fit: "cover", cropFocus: "top" }}
-        />
-      ),
-    },
-    {
-      name: "Bethany Roberts",
-      title: "Recruiting Coordinator",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/bethany.png"
-          alt="image of Bethany Roberts"
-          quality={75}
-          placeholder="blurred"
-          width={250}
-          aspectRatio={1 / 1}
-          transformOptions={{ fit: "cover", cropFocus: "top" }}
-        />
-      ),
-    },
-    {
-      name: "Cole Wilshire",
-      title: "Developer",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/cole.png"
-          alt="image of Cole Wilshire"
           quality={75}
           placeholder="blurred"
           width={250}
@@ -467,21 +392,6 @@ export const MapOtherStaff = () => {
         <StaticImage
           src="../../../images/Team/other/michaelb.jpg"
           alt="image of Michael Benavides"
-          quality={75}
-          placeholder="blurred"
-          width={250}
-          aspectRatio={1 / 1}
-          transformOptions={{ fit: "cover", cropFocus: "top" }}
-        />
-      ),
-    },
-    {
-      name: "Michael Martin",
-      title: "Animator",
-      imgSrc: (
-        <StaticImage
-          src="../../../images/Team/other/michaelm.jpg"
-          alt="image of Michael Martin"
           quality={75}
           placeholder="blurred"
           width={250}
