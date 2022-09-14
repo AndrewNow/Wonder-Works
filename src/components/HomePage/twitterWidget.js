@@ -50,7 +50,7 @@ export default TwitterWidget
 
 const Wrapper = styled.section`
   width: 100%;
-  /* height: 100vh; */
+  height: 100vh;
   position: relative;
   background: var(--color-pink);
 `
@@ -58,14 +58,14 @@ const Wrapper = styled.section`
 const Placeholder = styled.div`
   min-height: 100vh;
   max-width: 80vw;
-  height: 530px;
-  overflow-y: scroll;
-  border-radius: 12px;
+  /* height: 530px; */
+  /* overflow-y: scroll; */
+  /* border-radius: 12px; */
   display: block;
   position: relative;
   @media (max-width: ${breakpoints.s}px) {
     max-width: 90vw;
-    height: 530px;
+    /* height: 530px; */
   }
 `
 
